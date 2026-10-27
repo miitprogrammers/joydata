@@ -1,0 +1,6 @@
+{
+  "name": "JOYdata",
+  "description": "Aplikasi rekap data akademis dan database kepesertaan cabang JOY - LPK Mizuno Semangat Bangsa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

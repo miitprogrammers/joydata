@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/[...path]" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/pengingat-absensi?slot=pagi",
+      "schedule": "0 1 * * 1-6"
+    },
+    {
+      "path": "/api/cron/pengingat-absensi?slot=sore",
+      "schedule": "0 9 * * 1-6"
+    }
+  ]
+}

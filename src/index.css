@@ -1,0 +1,60 @@
+@layer theme, base, vuetify-core, vuetify-components, vuetify-overrides, vuetify-utilities, vuetify-final, components, utilities;
+@import "tailwindcss";
+
+:root {
+  --font-display: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  --font-body: 'Public Sans', 'Noto Sans JP', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html,
+body,
+.v-application {
+  font-family: var(--font-body) !important;
+  background-color: #f8fafc !important;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display) !important;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono), var(--font-body);
+}
+
+/* Single-elevation flat SaaS table & card discipline (no nested shadow clutter) */
+.joy-surface {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.joy-table th {
+  font-family: var(--font-display) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: #475569 !important;
+  background-color: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  white-space: nowrap;
+}
+
+.joy-table td {
+  font-size: 0.875rem !important;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9 !important;
+  height: 44px !important;
+}
+
+.joy-table tr:hover td {
+  background-color: #f8fafc !important;
+}
