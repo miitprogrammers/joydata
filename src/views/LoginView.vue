@@ -84,10 +84,6 @@
             {{ $t('login.submit') }}
           </v-btn>
         </form>
-
-        <div class="mt-6 pt-4 border-t border-slate-100 text-xs text-slate-500">
-          {{ $t('login.demoHint') }}
-        </div>
       </div>
     </main>
 
@@ -111,8 +107,8 @@ const { t, locale } = useI18n();
 const vuetifyLocale = useLocale();
 const appStore = useAppStore();
 
-const username = ref('admin');
-const password = ref('admin123');
+const username = ref('');
+const password = ref('');
 const showPassword = ref(false);
 const submitting = ref(false);
 const errorMsg = ref('');

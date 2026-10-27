@@ -35,7 +35,6 @@ export default {
     username: 'ユーザー名',
     password: 'パスワード',
     submit: 'ログイン',
-    demoHint: '初期管理者アカウント: ユーザー名 "admin" · パスワード "admin123"',
   },
   tags: {
     standar: '学習開始',

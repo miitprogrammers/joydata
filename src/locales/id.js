@@ -35,7 +35,6 @@ export default {
     username: 'Username Staff',
     password: 'Kata Sandi',
     submit: 'Masuk Sistem',
-    demoHint: 'Akun awal Administrator: username "admin" · sandi "admin123"',
   },
   tags: {
     standar: 'Standar (Mulai Belajar)',
