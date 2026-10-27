@@ -4,6 +4,8 @@ import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useDisplay, useLocale } from 'vuetify';
 import { useAppStore } from './stores/appStore.js';
+import { pendingRequests } from './services/loadingState.js';
+import { preloaderMarkup } from './services/preloaderMarkup.js';
 import PWAInstallButton from './components/PWAInstallButton.vue';
 import PwaInstallPrompt from './components/PwaInstallPrompt.vue';
 
@@ -58,6 +60,55 @@ function handleLogout() {
 function updateOnline() {
   isOnline.value = navigator.onLine;
 }
+
+// Page preloader: covers the content from navigation until the new page's requests have settled,
+// so half-loaded pages (empty tables, "no data" states) are never shown.
+const PAGE_GRACE_MS = 250; // time for a freshly mounted page to start fetching
+const SETTLE_MS = 120; // no request in flight for this long = page loaded (covers sequential fetches)
+const MAX_MS = 15000; // never trap the user behind the overlay
+const pageLoading = ref(true);
+let settleTimer = null;
+let maxTimer = null;
+
+function finishPageLoad() {
+  clearTimeout(settleTimer);
+  clearTimeout(maxTimer);
+  pageLoading.value = false;
+}
+
+function scheduleSettle(delay) {
+  clearTimeout(settleTimer);
+  settleTimer = setTimeout(() => {
+    if (pendingRequests.value === 0) finishPageLoad();
+  }, delay);
+}
+
+function startPageLoad() {
+  pageLoading.value = true;
+  clearTimeout(maxTimer);
+  maxTimer = setTimeout(finishPageLoad, MAX_MS);
+  scheduleSettle(PAGE_GRACE_MS);
+}
+
+watch(pendingRequests, (count) => {
+  if (count === 0 && pageLoading.value) scheduleSettle(SETTLE_MS);
+});
+
+router.isReady().then(startPageLoad);
+router.afterEach((to, from) => {
+  if (to.path !== from.path) startPageLoad();
+});
+
+// The boot splash in index.html stays up until the first page has its data.
+const stopSplashWatch = watch(pageLoading, (loading) => {
+  if (loading) return;
+  const splash = document.getElementById('boot-splash');
+  if (splash) {
+    splash.classList.add('is-hidden');
+    setTimeout(() => splash.remove(), 300);
+  }
+  stopSplashWatch();
+});
 
 onMounted(() => {
   window.addEventListener('online', updateOnline);
@@ -180,6 +231,15 @@ onUnmounted(() => {
             日本語
           </button>
         </div>
+
+        <v-progress-linear
+          :active="pendingRequests > 0"
+          indeterminate
+          absolute
+          location="bottom"
+          color="primary"
+          height="2"
+        />
       </v-app-bar>
 
       <v-main>
@@ -192,10 +252,17 @@ onUnmounted(() => {
           {{ $t('app.offlineBanner') }}
         </div>
 
-        <div class="pa-4 pa-md-6">
+        <div class="pa-4 pa-md-6" :aria-busy="pageLoading">
           <router-view />
         </div>
       </v-main>
+
+      <transition name="joy-fade">
+        <div v-if="pageLoading" class="joy-page-preloader" role="status" :aria-label="$t('app.loading')">
+          <div v-if="preloaderMarkup" v-html="preloaderMarkup" />
+          <v-progress-circular v-else indeterminate color="primary" size="36" width="3" />
+        </div>
+      </transition>
     </template>
 
     <PwaInstallPrompt />
@@ -215,3 +282,26 @@ onUnmounted(() => {
     </v-snackbar>
   </v-app>
 </template>
+
+<style>
+/* Full-screen like the boot splash: above the app bar and drawer (~1000-1010), below Vuetify overlays (2000+). */
+.joy-page-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.joy-fade-enter-active,
+.joy-fade-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.joy-fade-enter-from,
+.joy-fade-leave-to {
+  opacity: 0;
+}
+</style>

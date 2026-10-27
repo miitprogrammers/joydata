@@ -1,3 +1,5 @@
+import { pendingRequests } from './loadingState.js';
+
 const ACCESS_KEY = 'joydata_access_token';
 const REFRESH_KEY = 'joydata_refresh_token';
 
@@ -41,7 +43,16 @@ async function tryRefreshToken() {
   }
 }
 
-export async function apiRequest(path, options = {}, allowRetry = true) {
+export async function apiRequest(path, options = {}) {
+  pendingRequests.value++;
+  try {
+    return await sendRequest(path, options, true);
+  } finally {
+    pendingRequests.value--;
+  }
+}
+
+async function sendRequest(path, options, allowRetry) {
   const { accessToken } = getStoredTokens();
   const headers = {
     ...(options.body ? { 'Content-Type': 'application/json' } : {}),
@@ -61,7 +72,7 @@ export async function apiRequest(path, options = {}, allowRetry = true) {
   if (res.status === 401 && allowRetry && path !== '/auth/login' && path !== '/auth/refresh') {
     const refreshed = await tryRefreshToken();
     if (refreshed?.accessToken) {
-      return apiRequest(path, options, false);
+      return sendRequest(path, options, false);
     }
   }
 

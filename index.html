@@ -25,8 +25,169 @@
     <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#2563eb">
   <link rel="apple-touch-icon" href="/joydata-icon-192.svg">
+  <style>
+    /*
+     * JOYdata preloader. This file is the single source of its markup and styles: the boot splash
+     * must render before the app bundle loads, and the in-app page preloader reuses the same markup
+     * (src/services/preloaderMarkup.js). The splash is removed from App.vue once the first page has data.
+     */
+    #boot-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      transition: opacity 0.3s ease;
+    }
+    #boot-splash.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .joy-preloader {
+      position: relative;
+      width: 176px;
+      height: 176px;
+      display: grid;
+      place-items: center;
+    }
+    .joy-preloader__rings {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .joy-preloader__rings circle,
+    .joy-preloader__satellite {
+      fill: none;
+      transform-box: view-box;
+      transform-origin: 50% 50%;
+    }
+    .joy-preloader__track {
+      stroke: #1e3a8a;
+      stroke-opacity: 0.08;
+      stroke-width: 6;
+    }
+    /* Main arc: spins while growing and shrinking (circumference r=92 ≈ 578). */
+    .joy-preloader__arc {
+      stroke: #1d4ed8;
+      stroke-width: 6;
+      stroke-linecap: round;
+      animation: joy-spin 1.6s linear infinite, joy-dash 1.6s ease-in-out infinite;
+    }
+    /* Two thin sky arcs on an inner lane, counter-rotating (circumference r=80 ≈ 503, two segments). */
+    .joy-preloader__twin {
+      stroke: #38bdf8;
+      stroke-opacity: 0.75;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 46 205.3;
+      animation: joy-spin-reverse 2.8s linear infinite;
+    }
+    /* Glowing dot riding the track at an easing pace, so it overtakes and falls behind the main arc. */
+    .joy-preloader__satellite {
+      animation: joy-spin 2.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    }
+    .joy-preloader__satellite circle {
+      fill: #38bdf8;
+      filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.9));
+    }
+    .joy-preloader__mark {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: joy-breathe 2.4s ease-in-out infinite;
+    }
+    .joy-preloader__logo {
+      width: 52px;
+      height: 52px;
+      filter: drop-shadow(0 6px 12px rgba(30, 58, 138, 0.25));
+    }
+    .joy-preloader__name {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #1e3a8a;
+    }
+    .joy-preloader__name span {
+      font-weight: 600;
+      color: #1d4ed8;
+    }
+    @keyframes joy-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes joy-spin-reverse {
+      to {
+        transform: rotate(-360deg);
+      }
+    }
+    @keyframes joy-dash {
+      0% {
+        stroke-dasharray: 2 578;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 260 578;
+        stroke-dashoffset: -70;
+      }
+      100% {
+        stroke-dasharray: 2 578;
+        stroke-dashoffset: -576;
+      }
+    }
+    @keyframes joy-breathe {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .joy-preloader__arc {
+        animation: joy-spin 4s linear infinite;
+        stroke-dasharray: 180 578;
+      }
+      .joy-preloader__twin {
+        animation-duration: 8s;
+      }
+      .joy-preloader__satellite {
+        animation-duration: 6s;
+      }
+      .joy-preloader__mark {
+        animation: none;
+      }
+    }
+  </style>
 </head>
   <body>
+    <div id="boot-splash" role="status" aria-label="Memuat JOYdata">
+      <div class="joy-preloader">
+        <svg class="joy-preloader__rings" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="joy-preloader__track" cx="100" cy="100" r="92" />
+          <circle class="joy-preloader__twin" cx="100" cy="100" r="80" />
+          <circle class="joy-preloader__arc" cx="100" cy="100" r="92" />
+          <g class="joy-preloader__satellite"><circle cx="100" cy="8" r="4.5" /></g>
+        </svg>
+        <div class="joy-preloader__mark">
+          <svg class="joy-preloader__logo" viewBox="0 0 128 128" fill="none" aria-hidden="true">
+            <rect width="128" height="128" rx="24" fill="#1E3A8A" />
+            <path d="M36 34H92V46H78V80C78 93.2548 67.2548 104 54 104C42.402 104 33 95.4 32 84H45C45.8 89.2 49.5 92 54 92C60.6274 92 65 87.2 65 80V46H36V34Z" fill="#FFFFFF" />
+            <circle cx="44" cy="62" r="7" fill="#38BDF8" />
+          </svg>
+          <div class="joy-preloader__name">JOY<span>data</span></div>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
