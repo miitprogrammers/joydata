@@ -311,7 +311,7 @@
             :class="
               monthly.sesiKelas === 0 || monthly.rasioKelas === null
                 ? 'text-slate-400'
-                : monthly.rasioKelas >= 75
+                : monthly.rasioKelas >= appStore.settings.ambang_kehadiran_rendah
                   ? 'text-emerald-700'
                   : 'text-red-700'
             "
@@ -392,7 +392,7 @@
                   :class="
                     monthly.sesiKelas === 0 || st.rasioKehadiran === null
                       ? 'text-slate-400 font-normal'
-                      : st.rasioKehadiran >= 75
+                      : st.rasioKehadiran >= appStore.settings.ambang_kehadiran_rendah
                         ? 'text-slate-900'
                         : 'text-red-700'
                   "

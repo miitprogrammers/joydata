@@ -135,7 +135,7 @@
             >
               <div
                 class="w-full rounded-t transition-all"
-                :class="m.rataRata !== null && m.rataRata >= 70 ? 'bg-blue-600' : 'bg-slate-300'"
+                :class="m.rataRata !== null && m.rataRata >= appStore.settings.kkm_ujian ? 'bg-blue-600' : 'bg-slate-300'"
                 :style="{ height: `${m.rataRata ? (m.rataRata / 100) * 80 : 4}px` }"
                 :title="`${m.bulan}: ${m.rataRata ?? '-'}`"
               />
@@ -160,19 +160,19 @@
           </div>
           <div class="space-y-2 pt-1 text-xs">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-emerald-700">A (≥90)</span>
+              <span class="font-bold text-emerald-700">A (≥{{ appStore.settings.batas_grade.A }})</span>
               <span class="font-mono font-semibold">{{ chartsData.distribusiUjian.A }}</span>
             </div>
             <div class="flex items-center justify-between">
-              <span class="font-bold text-blue-700">B (≥75)</span>
+              <span class="font-bold text-blue-700">B (≥{{ appStore.settings.batas_grade.B }})</span>
               <span class="font-mono font-semibold">{{ chartsData.distribusiUjian.B }}</span>
             </div>
             <div class="flex items-center justify-between">
-              <span class="font-bold text-amber-700">C (≥60)</span>
+              <span class="font-bold text-amber-700">C (≥{{ appStore.settings.batas_grade.C }})</span>
               <span class="font-mono font-semibold">{{ chartsData.distribusiUjian.C }}</span>
             </div>
             <div class="flex items-center justify-between">
-              <span class="font-bold text-red-600">D (&lt;60)</span>
+              <span class="font-bold text-red-600">D (&lt;{{ appStore.settings.batas_grade.C }})</span>
               <span class="font-mono font-semibold">{{ chartsData.distribusiUjian.D }}</span>
             </div>
           </div>
@@ -245,7 +245,7 @@
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center gap-1.5 text-xs font-bold text-amber-900">
               <v-icon icon="mdi-alert-circle-outline" size="16" class="text-amber-700" />
-              <span>{{ $t('dashboard.perhatianSikap') }} (&lt; KKM 70)</span>
+              <span>{{ $t('dashboard.perhatianSikap') }} (&lt; KKM {{ appStore.settings.kkm_sikap }})</span>
             </div>
             <span class="text-[10px] text-amber-800 font-mono">
               {{ chartsData.watchlist.sikapRendah.length }} peserta
@@ -274,12 +274,12 @@
           </div>
         </div>
 
-        <!-- Watchlist 2: Kehadiran Rendah (< 75%) -->
+        <!-- Watchlist 2: Kehadiran Rendah (< ambang kehadiran) -->
         <div class="joy-surface p-4 border border-red-200 bg-red-50/30">
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center gap-1.5 text-xs font-bold text-red-900">
               <v-icon icon="mdi-account-alert-outline" size="16" class="text-red-700" />
-              <span>{{ $t('dashboard.perhatianKehadiran') }} (&lt; 75%)</span>
+              <span>{{ $t('dashboard.perhatianKehadiran') }} (&lt; {{ appStore.settings.ambang_kehadiran_rendah }}%)</span>
             </div>
             <span class="text-[10px] text-red-800 font-mono">
               {{ chartsData.watchlist.kehadiranRendah.length }} peserta

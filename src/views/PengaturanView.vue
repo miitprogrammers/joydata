@@ -267,6 +267,7 @@ async function saveSettings() {
       ...form.value,
       ...updated,
     };
+    appStore.setSettings(updated);
     appStore.notify(t('pengaturan.berhasilDisimpan'), 'success');
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal menyimpan pengaturan', 'error');
@@ -286,6 +287,7 @@ async function confirmReset() {
       ...form.value,
       ...reset,
     };
+    appStore.setSettings(reset);
     appStore.notify(t('pengaturan.berhasilDireset'), 'success');
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal mereset pengaturan', 'error');

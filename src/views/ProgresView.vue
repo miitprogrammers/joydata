@@ -176,7 +176,7 @@
                   <span class="text-slate-600">{{ $t('progres.rataUjianKelas') }}:</span>
                   <span
                     class="font-mono font-bold"
-                    :class="summary.rataUjian !== null && summary.rataUjian >= 70 ? 'text-emerald-700' : 'text-slate-800'"
+                    :class="summary.rataUjian !== null && summary.rataUjian >= appStore.settings.kkm_ujian ? 'text-emerald-700' : 'text-slate-800'"
                   >
                     {{ summary.rataUjian !== null ? summary.rataUjian : '-' }}
                   </span>
@@ -185,7 +185,7 @@
                   <span class="text-slate-600">{{ $t('progres.rataSikapKelas') }}:</span>
                   <span
                     class="font-mono font-bold"
-                    :class="summary.rataSikap !== null && summary.rataSikap >= 70 ? 'text-emerald-700' : 'text-slate-800'"
+                    :class="summary.rataSikap !== null && summary.rataSikap >= appStore.settings.kkm_sikap ? 'text-emerald-700' : 'text-slate-800'"
                   >
                     {{ summary.rataSikap !== null ? summary.rataSikap : '-' }}
                   </span>
@@ -195,7 +195,7 @@
                   <span
                     class="font-mono font-bold"
                     :class="
-                      summary.rasioKehadiran !== null && summary.rasioKehadiran < 75
+                      summary.rasioKehadiran !== null && summary.rasioKehadiran < appStore.settings.ambang_kehadiran_rendah
                         ? 'text-red-600'
                         : 'text-emerald-700'
                     "
@@ -310,7 +310,7 @@
                 <td class="py-3 px-3 text-center font-mono">
                   <span
                     v-if="p.rasioKehadiran !== null"
-                    :class="p.rasioKehadiran < 75 ? 'text-red-600 font-bold' : 'text-slate-800 font-semibold'"
+                    :class="p.rasioKehadiran < appStore.settings.ambang_kehadiran_rendah ? 'text-red-600 font-bold' : 'text-slate-800 font-semibold'"
                   >
                     {{ p.rasioKehadiran }}%
                   </span>

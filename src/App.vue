@@ -252,7 +252,7 @@ onUnmounted(() => {
           {{ $t('app.offlineBanner') }}
         </div>
 
-        <div class="pa-4 pa-md-6" :aria-busy="pageLoading">
+        <div class="p-4 min-[960px]:p-6 print:p-0" :aria-busy="pageLoading">
           <router-view />
         </div>
       </v-main>

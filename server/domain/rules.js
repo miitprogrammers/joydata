@@ -168,7 +168,7 @@ export function computeSikapScore(events, basis = 75) {
   return Math.max(0, Math.min(100, Math.round(total * 100) / 100));
 }
 
-export function computeSikapSummary(events, basis = 75, kkm = 70) {
+export function computeSikapSummary(events, basis = 75, kkm = 70, batasGrade) {
   let poinPositif = 0;
   let poinNegatif = 0;
   let jumlahPositif = 0;
@@ -195,7 +195,7 @@ export function computeSikapSummary(events, basis = 75, kkm = 70) {
     jumlahPositif,
     jumlahNegatif,
     skorAkhir,
-    label: getGradeLabel(skorAkhir),
+    label: getGradeLabel(skorAkhir, batasGrade),
     lulusKkm: skorAkhir >= kkm,
   };
 }
@@ -590,6 +590,8 @@ export function computeProgresStudentMetrics({
   kaiwaRows = [],
   sikapSummary = { skorAkhir: 75, label: 'B', lulusKkm: true },
   absensiStats = { rasioKehadiran: null, hadir: 0, sesiKelas: 0 },
+  kkmUjian = 70,
+  batasGrade,
 }) {
   const ujianAvgs = (ujianRows || [])
     .map((r) => (r.nilaiAvg !== null && r.nilaiAvg !== undefined ? Number(r.nilaiAvg) : null))
@@ -600,8 +602,8 @@ export function computeProgresStudentMetrics({
       ? Math.round((ujianAvgs.reduce((acc, v) => acc + v, 0) / ujianAvgs.length) * 10) / 10
       : null;
 
-  const predikatUjian = rataUjian !== null ? getGradeLabel(rataUjian) : null;
-  const lulusKkmUjian = rataUjian !== null ? rataUjian >= 70 : null;
+  const predikatUjian = rataUjian !== null ? getGradeLabel(rataUjian, batasGrade) : null;
+  const lulusKkmUjian = rataUjian !== null ? rataUjian >= kkmUjian : null;
 
   // Kaiwa latest grade
   const sortedKaiwa = [...(kaiwaRows || [])].sort((a, b) => {

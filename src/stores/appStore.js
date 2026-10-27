@@ -9,6 +9,15 @@ import {
 
 const LOCALE_STORAGE_KEY = 'joydata_locale';
 
+// Institution settings (Pengaturan) used for display thresholds; the server applies the same values.
+const DEFAULT_SETTINGS = {
+  kkm_ujian: 70,
+  kkm_sikap: 70,
+  batas_grade: { A: 90, B: 75, C: 60 },
+  sikap_basis: 75,
+  ambang_kehadiran_rendah: 75,
+};
+
 export function getInitialLocale() {
   const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(LOCALE_STORAGE_KEY) : null;
   return saved === 'ja' ? 'ja' : 'id';
@@ -17,6 +26,7 @@ export function getInitialLocale() {
 export const useAppStore = defineStore('app', () => {
   const user = ref(null);
   const initialized = ref(false);
+  const settings = ref({ ...DEFAULT_SETTINGS });
   const locale = ref(getInitialLocale());
   const toast = ref({
     show: false,
@@ -78,7 +88,30 @@ export const useAppStore = defineStore('app', () => {
     setStoredTokens(data.accessToken, data.refreshToken);
     user.value = data.user;
     initialized.value = true;
+    await loadSettings();
     return data.user;
+  }
+
+  function setSettings(next) {
+    settings.value = { ...DEFAULT_SETTINGS, ...(next || {}) };
+  }
+
+  async function loadSettings() {
+    try {
+      setSettings(await apiRequest('/settings'));
+    } catch {
+      // keep the current values; pages still render with defaults
+    }
+  }
+
+  function gradeLabel(score) {
+    if (score === null || score === undefined || Number.isNaN(Number(score))) return '-';
+    const n = Number(score);
+    const batas = settings.value.batas_grade || DEFAULT_SETTINGS.batas_grade;
+    if (n >= batas.A) return 'A';
+    if (n >= batas.B) return 'B';
+    if (n >= batas.C) return 'C';
+    return 'D';
   }
 
   async function restoreSession() {
@@ -92,6 +125,7 @@ export const useAppStore = defineStore('app', () => {
     try {
       const data = await apiRequest('/auth/me');
       user.value = data.user;
+      await loadSettings();
     } catch {
       clearStoredTokens();
       user.value = null;
@@ -119,6 +153,10 @@ export const useAppStore = defineStore('app', () => {
   return {
     user,
     initialized,
+    settings,
+    setSettings,
+    loadSettings,
+    gradeLabel,
     locale,
     toast,
     isAuthenticated,

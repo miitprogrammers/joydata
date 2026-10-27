@@ -4,7 +4,7 @@
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 class="text-2xl font-bold text-slate-900 font-display">{{ $t('sikap.heading') }}</h1>
-        <p class="text-sm text-slate-600 mt-1">{{ $t('sikap.subheading') }}</p>
+        <p class="text-sm text-slate-600 mt-1">{{ $t('sikap.subheading', { basis: appStore.settings.sikap_basis, kkm: appStore.settings.kkm_sikap }) }}</p>
       </div>
       <v-btn
         color="primary"
@@ -88,7 +88,7 @@
         <div class="text-xs font-medium text-slate-500">{{ $t('sikap.kpiRataSkor') }}</div>
         <div class="mt-1.5 flex items-baseline gap-2">
           <span class="text-2xl font-bold text-slate-900 tabular-nums font-mono">
-            {{ kpi.rataSkorSikap !== null ? Number(kpi.rataSkorSikap).toFixed(1) : '75.0' }}
+            {{ kpi.rataSkorSikap !== null ? Number(kpi.rataSkorSikap).toFixed(1) : Number(appStore.settings.sikap_basis).toFixed(1) }}
           </span>
           <span class="text-xs text-slate-500 font-mono">/ 100</span>
         </div>
@@ -114,7 +114,7 @@
       </div>
 
       <div class="joy-surface p-4">
-        <div class="text-xs font-medium text-slate-500">{{ $t('sikap.kpiBawahKkm') }}</div>
+        <div class="text-xs font-medium text-slate-500">{{ $t('sikap.kpiBawahKkm', { kkm: appStore.settings.kkm_sikap }) }}</div>
         <div
           class="mt-1.5 text-2xl font-bold tabular-nums font-mono"
           :class="kpi.diBawahKkmCount > 0 ? 'text-red-700' : 'text-slate-900'"
@@ -122,7 +122,7 @@
           {{ kpi.diBawahKkmCount }}
           <span class="text-sm font-normal text-slate-500">/ {{ studentSummary.length }}</span>
         </div>
-        <div class="mt-1 text-xs text-slate-500">A≥90 · B≥75 · C≥60 · D&lt;60</div>
+        <div class="mt-1 text-xs text-slate-500">A≥{{ appStore.settings.batas_grade.A }} · B≥{{ appStore.settings.batas_grade.B }} · C≥{{ appStore.settings.batas_grade.C }} · D&lt;{{ appStore.settings.batas_grade.C }}</div>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
                 <th class="px-4 py-3 text-right whitespace-nowrap">{{ $t('sikap.colMinus') }}</th>
                 <th class="px-4 py-3 text-right whitespace-nowrap">{{ $t('sikap.colSkorAkhir') }}</th>
                 <th class="px-4 py-3 whitespace-nowrap">{{ $t('sikap.colLabel') }}</th>
-                <th class="px-4 py-3 whitespace-nowrap">{{ $t('sikap.colStatusKkm') }}</th>
+                <th class="px-4 py-3 whitespace-nowrap">{{ $t('sikap.colStatusKkm', { kkm: appStore.settings.kkm_sikap }) }}</th>
                 <th class="px-5 py-3 text-right whitespace-nowrap">{{ $t('app.actions') }}</th>
               </tr>
             </thead>

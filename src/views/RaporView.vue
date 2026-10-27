@@ -101,7 +101,7 @@
     <div
       v-else
       id="rapor-print-container"
-      class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 max-w-4xl mx-auto space-y-6 print:p-0 print:border-none print:shadow-none"
+      class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 max-w-4xl mx-auto space-y-6 print:space-y-4 print:p-0 print:border-none print:shadow-none"
     >
       <!-- Formal Letterhead / Kop Surat -->
       <div class="border-b-2 border-slate-900 pb-4 flex items-center justify-between">
@@ -179,7 +179,7 @@
             {{ raporData.kpi.rataUjian !== null ? raporData.kpi.rataUjian : '-' }}
           </div>
           <div class="text-[10px] font-medium text-slate-400 mt-0.5">
-            {{ $t('rapor.predikat') }}: <span class="font-bold text-slate-700">{{ raporData.kpi.gradeUjian }}</span> (KKM 70)
+            {{ $t('rapor.predikat') }}: <span class="font-bold text-slate-700">{{ raporData.kpi.gradeUjian }}</span> (KKM {{ appStore.settings.kkm_ujian }})
           </div>
         </div>
 
@@ -194,7 +194,7 @@
         </div>
 
         <div class="p-3 bg-white border border-slate-200 rounded-lg">
-          <div class="text-[11px] font-medium text-slate-500">{{ $t('rapor.skorSikap') }}</div>
+          <div class="text-[11px] font-medium text-slate-500">{{ $t('rapor.skorSikap', { basis: raporData.sikapData.basis }) }}</div>
           <div
             class="text-xl font-bold font-mono mt-1"
             :class="raporData.kpi.lulusKkmSikap ? 'text-emerald-700' : 'text-red-600'"
@@ -202,7 +202,7 @@
             {{ raporData.kpi.skorSikap }}
           </div>
           <div class="text-[10px] font-medium text-slate-400 mt-0.5">
-            {{ $t('rapor.predikat') }}: <span class="font-bold text-slate-700">{{ raporData.kpi.predikatSikap }}</span> (KKM 70)
+            {{ $t('rapor.predikat') }}: <span class="font-bold text-slate-700">{{ raporData.kpi.predikatSikap }}</span> (KKM {{ appStore.settings.kkm_sikap }})
           </div>
         </div>
 
@@ -210,7 +210,7 @@
           <div class="text-[11px] font-medium text-slate-500">{{ $t('rapor.rasioKehadiran') }}</div>
           <div
             class="text-xl font-bold font-mono mt-1"
-            :class="raporData.kpi.rasioKehadiran !== null && raporData.kpi.rasioKehadiran < 75 ? 'text-red-600' : 'text-emerald-700'"
+            :class="raporData.kpi.rasioKehadiran !== null && raporData.kpi.rasioKehadiran < appStore.settings.ambang_kehadiran_rendah ? 'text-red-600' : 'text-emerald-700'"
           >
             {{ raporData.kpi.rasioKehadiran !== null ? `${raporData.kpi.rasioKehadiran}%` : '-' }}
           </div>
@@ -319,7 +319,7 @@
             3. {{ $t('rapor.secSikap') }}
           </h3>
           <span class="text-[11px] text-slate-600">
-            Basis: <strong class="font-mono">75</strong> · Skor Akhir:
+            Basis: <strong class="font-mono">{{ raporData.sikapData.basis }}</strong> · Skor Akhir:
             <strong class="font-mono" :class="raporData.sikapData.lulusKkm ? 'text-emerald-700' : 'text-red-600'">
               {{ raporData.sikapData.skorAkhir }} ({{ raporData.sikapData.predikat }})
             </strong>
@@ -338,7 +338,7 @@
           <tbody class="divide-y divide-slate-100">
             <tr v-if="raporData.sikapData.logs.length === 0">
               <td colspan="4" class="py-3 text-center text-slate-400">
-                {{ $t('rapor.tidakAdaInsidenSikap') }} (Skor Tetap Basis 75 / Predikat B)
+                {{ $t('rapor.tidakAdaInsidenSikap', { basis: raporData.sikapData.basis, predikat: raporData.sikapData.predikat }) }}
               </td>
             </tr>
             <tr v-for="s in raporData.sikapData.logs" :key="s.id">
@@ -359,7 +359,7 @@
       </div>
 
       <!-- Section 4: Rekap Kehadiran & Section 5: Data Penempatan 名簿 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-4">
         <!-- Absensi Breakdown -->
         <div class="space-y-2">
           <div class="border-b border-slate-200 pb-1.5">
@@ -435,7 +435,7 @@
       </div>
 
       <!-- Formal Signatures / Lembar Pengesahan -->
-      <div class="pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 text-center text-xs">
+      <div class="rapor-signatures pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 text-center text-xs">
         <div>
           <div class="text-[11px] text-slate-500 mb-12">Sensei Pengajar / Pembimbing</div>
           <div class="font-bold text-slate-900 border-t border-slate-300 pt-1.5">
@@ -684,14 +684,31 @@ onMounted(async () => {
   .no-print,
   .v-navigation-drawer,
   .v-app-bar,
+  .v-snackbar,
+  .joy-page-preloader,
   header,
   nav,
   footer {
     display: none !important;
   }
 
-  body {
+  /* The drawer and app bar are hidden, so drop the space Vuetify reserves for them (page padding: App.vue print:p-0). */
+  .v-main {
+    padding: 0 !important;
+  }
+
+  .v-application__wrap {
+    min-height: 0 !important;
+  }
+
+  html,
+  body,
+  .v-application,
+  .v-main {
     background: white !important;
+  }
+
+  body {
     color: black !important;
     font-size: 11pt !important;
   }
@@ -701,11 +718,21 @@ onMounted(async () => {
     border: none !important;
     padding: 0 !important;
     box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    /* Fit a typical month on one A4 page; zoom (unlike transform) also shrinks the layout used for page breaks. */
+    zoom: 0.85;
+  }
+
+  /* Keep table rows and the signature block whole across page breaks. */
+  #rapor-print-container tr,
+  .rapor-signatures {
+    break-inside: avoid;
   }
 
   @page {
     size: A4 portrait;
-    margin: 1.5cm 1.2cm;
+    margin: 1cm 1.2cm;
   }
 }
 </style>

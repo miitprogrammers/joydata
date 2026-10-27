@@ -3,7 +3,7 @@
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 class="text-2xl font-bold text-slate-900 font-display">{{ $t('sikapKategori.heading') }}</h1>
-        <p class="text-sm text-slate-600 mt-1">{{ $t('sikapKategori.subheading') }}</p>
+        <p class="text-sm text-slate-600 mt-1">{{ $t('sikapKategori.subheading', { basis: appStore.settings.sikap_basis }) }}</p>
       </div>
       <v-btn
         color="primary"

@@ -102,7 +102,7 @@
       </div>
 
       <div class="joy-surface p-4">
-        <div class="text-xs font-medium text-slate-500">{{ $t('ujian.kpiLulusKkm') }}</div>
+        <div class="text-xs font-medium text-slate-500">{{ $t('ujian.kpiLulusKkm', { kkm: kpiMeta.kkm }) }}</div>
         <div class="mt-1.5 text-2xl font-bold text-emerald-700 tabular-nums font-mono">
           {{ computedKpi.lulusKkmCount }}
           <span class="text-sm font-normal text-slate-500">/ {{ computedKpi.totalBaris }}</span>
@@ -127,7 +127,7 @@
           <span class="text-slate-300" aria-hidden="true">·</span>
           <span class="text-red-700">D: {{ computedKpi.distribusi.D }}</span>
         </div>
-        <div class="mt-1 text-xs text-slate-500">A≥90 · B≥75 · C≥60 · D&lt;60</div>
+        <div class="mt-1 text-xs text-slate-500">A≥{{ appStore.settings.batas_grade.A }} · B≥{{ appStore.settings.batas_grade.B }} · C≥{{ appStore.settings.batas_grade.C }} · D&lt;{{ appStore.settings.batas_grade.C }}</div>
       </div>
     </div>
 
@@ -280,7 +280,7 @@
                 <th class="px-4 py-3 whitespace-nowrap">{{ $t('ujian.colKelas') }}</th>
                 <th class="px-4 py-3 text-right whitespace-nowrap">{{ $t('ujian.colJumlahUjian') }}</th>
                 <th class="px-4 py-3 text-right whitespace-nowrap">{{ $t('ujian.colAvg') }}</th>
-                <th class="px-4 py-3 whitespace-nowrap">{{ $t('sikap.colStatusKkm') }}</th>
+                <th class="px-4 py-3 whitespace-nowrap">{{ $t('sikap.colStatusKkm', { kkm: kpiMeta.kkm }) }}</th>
                 <th class="px-5 py-3 text-right whitespace-nowrap">{{ $t('app.actions') }}</th>
               </tr>
             </thead>
@@ -600,12 +600,7 @@ const displayedStudentSummary = computed(() => {
 });
 
 function computeGrade(val) {
-  if (val === null || val === undefined || Number.isNaN(Number(val))) return '-';
-  const n = Number(val);
-  if (n >= 90) return 'A';
-  if (n >= 75) return 'B';
-  if (n >= 60) return 'C';
-  return 'D';
+  return appStore.gradeLabel(val);
 }
 
 const computedKpi = computed(() => {

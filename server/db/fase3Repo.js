@@ -367,7 +367,7 @@ export async function getProgresData({ periode, kelasId, tag }) {
     let sumSikap = 0;
     for (const p of classStudents) {
       const pSikap = classSikap.filter((s) => s.pesertaId === p.id);
-      const summ = computeSikapSummary(pSikap, settings.sikap_basis, settings.kkm_sikap);
+      const summ = computeSikapSummary(pSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
       sumSikap += summ.skorAkhir;
     }
     const avgSikap = classStudents.length > 0 ? Math.round((sumSikap / classStudents.length) * 10) / 10 : null;
@@ -405,7 +405,7 @@ export async function getProgresData({ periode, kelasId, tag }) {
     const studentKaiwa = kaiwaInPeriod.filter((k) => k.pesertaId === student.id);
     const studentSikap = sikapInPeriod.filter((s) => s.pesertaId === student.id);
 
-    const sikapSummary = computeSikapSummary(studentSikap, settings.sikap_basis, settings.kkm_sikap);
+    const sikapSummary = computeSikapSummary(studentSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
 
     const studentClassId = student.kelasId;
     const classAllAbsensi = absensiInPeriod.filter((a) => a.kelasId === studentClassId);
@@ -423,6 +423,8 @@ export async function getProgresData({ periode, kelasId, tag }) {
       kaiwaRows: studentKaiwa,
       sikapSummary,
       absensiStats: studentAbsensiStat,
+      kkmUjian: settings.kkm_ujian,
+      batasGrade: settings.batas_grade,
     });
 
     const k = student.kelasId ? kelasMap.get(student.kelasId) : null;
@@ -477,7 +479,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
       return {
         ...u,
         nilaiAvg: avg,
-        grade: avg !== null ? getGradeLabel(avg) : '-',
+        grade: avg !== null ? getGradeLabel(avg, settings.batas_grade) : '-',
         lulusKkm: avg !== null ? avg >= settings.kkm_ujian : false,
       };
     })
@@ -502,7 +504,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
     })
     .sort((a, b) => String(a.tanggalPenilaian).localeCompare(String(b.tanggalPenilaian)));
 
-  const sikapSummary = computeSikapSummary(sikapLogs, settings.sikap_basis, settings.kkm_sikap);
+  const sikapSummary = computeSikapSummary(sikapLogs, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
 
   const classId = student.kelasId;
   const classAbsensi = (state.absensi || []).filter(
@@ -547,7 +549,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
     penempatan,
     kpi: {
       rataUjian: overallExamAvg,
-      gradeUjian: overallExamAvg !== null ? getGradeLabel(overallExamAvg) : '-',
+      gradeUjian: overallExamAvg !== null ? getGradeLabel(overallExamAvg, settings.batas_grade) : '-',
       lulusKkmUjian: overallExamAvg !== null ? overallExamAvg >= settings.kkm_ujian : false,
       gradeKaiwa: latestKaiwa ? latestKaiwa.grade : '-',
       sesiKaiwa: kaiwaList.length,
@@ -623,7 +625,7 @@ export async function getDashboardChartsData({ periode }) {
   for (const u of examsInCurrentMonth) {
     const avg = resolveNilaiAvg(u);
     if (avg !== null) {
-      const g = getGradeLabel(avg);
+      const g = getGradeLabel(avg, settings.batas_grade);
       if (distribusiUjian[g] !== undefined) distribusiUjian[g]++;
     }
   }
@@ -668,7 +670,7 @@ export async function getDashboardChartsData({ periode }) {
   for (const p of activePeserta) {
     const k = activeClasses.find((c) => c.id === p.kelasId);
     const pSikap = sikapInCurrentMonth.filter((s) => s.pesertaId === p.id);
-    const summ = computeSikapSummary(pSikap, settings.sikap_basis, settings.kkm_sikap);
+    const summ = computeSikapSummary(pSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
     if (summ.skorAkhir < settings.kkm_sikap) {
       studentWatchlistSikap.push({
         pesertaId: p.id,

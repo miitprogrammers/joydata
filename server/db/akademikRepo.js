@@ -10,6 +10,7 @@ import {
 import { listStaff } from './authStaffRepo.js';
 import { listSikapKategori } from './masterRepo.js';
 import { listKelas, listPeserta } from './pesertaRepo.js';
+import { getSystemSettings } from './fase3Repo.js';
 import {
   getGradeLabel,
   computeNilaiUjianAvg,
@@ -107,6 +108,8 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
       .sort((a, b) => String(b.tanggalUjian).localeCompare(String(a.tanggalUjian)) || b.id - a.id);
   }
 
+  const settings = await getSystemSettings();
+  const batasGrade = settings.batas_grade;
   const enrichedAll = rawRows.map((r) => {
     const p = lookups.pesertaById.get(Number(r.pesertaId));
     const kl = lookups.kelasById.get(Number(r.kelasId));
@@ -115,7 +118,7 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
     return {
       ...r,
       nilaiAvg: avg,
-      gradeLabel: getGradeLabel(avg),
+      gradeLabel: getGradeLabel(avg, batasGrade),
       pesertaNama: p?.nama || `Peserta #${r.pesertaId}`,
       mancationAkunId: p?.mancationAkunId || null,
       kelasNama: kl?.namaKelas || '-',
@@ -133,7 +136,7 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
     : enrichedAll;
 
   // KPI dihitung dari seluruh baris penilaian pada filter aktif (§11 mainIdea.md)
-  const kkm = 70;
+  const kkm = settings.kkm_ujian;
   const validAvgs = items.map((r) => r.nilaiAvg).filter((v) => v !== null);
   const rataRataPeriode =
     validAvgs.length > 0
@@ -143,7 +146,7 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
   const distribusi = { A: 0, B: 0, C: 0, D: 0 };
   let lulusKkmCount = 0;
   for (const v of validAvgs) {
-    const lbl = getGradeLabel(v);
+    const lbl = getGradeLabel(v, batasGrade);
     if (distribusi[lbl] !== undefined) distribusi[lbl] += 1;
     if (v >= kkm) lulusKkmCount += 1;
   }
@@ -175,7 +178,7 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
         kelasNama: p.namaKelas,
         jumlahUjian: vals.length,
         rataRata: avg,
-        gradeLabel: getGradeLabel(avg),
+        gradeLabel: getGradeLabel(avg, batasGrade),
         lulusKkm: avg !== null ? avg >= kkm : null,
       };
     })
@@ -194,6 +197,7 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
       distribusi,
       lulusKkmCount,
       kkm,
+      batasGrade,
     },
     items,
     studentSummary,
@@ -638,12 +642,13 @@ export async function listNilaiSikap({ periode, kelasId, sentiment, search } = {
     eventsByPeserta.get(pid).push(r);
   }
 
-  const kkm = 70;
-  const basis = 75;
+  const settings = await getSystemSettings();
+  const kkm = settings.kkm_sikap;
+  const basis = settings.sikap_basis;
 
   const allStudentSummaries = targetRoster.map((p) => {
     const evs = eventsByPeserta.get(Number(p.id)) || [];
-    const sum = computeSikapSummary(evs, basis, kkm);
+    const sum = computeSikapSummary(evs, basis, kkm, settings.batas_grade);
     return {
       pesertaId: p.id,
       mancationAkunId: p.mancationAkunId,
