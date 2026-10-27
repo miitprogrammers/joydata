@@ -677,16 +677,6 @@ export function createApiRouter() {
     }
   });
 
-  // Cron placeholder endpoint for Vercel Cron (§14.8 mainIdea.md, Fase 4)
-  router.get('/cron/pengingat-absensi', async (req, res) => {
-    const secret = process.env.CRON_SECRET;
-    if (secret && req.headers.authorization !== `Bearer ${secret}`) {
-      return res.status(401).json({ error: 'UNAUTHORIZED_CRON' });
-    }
-    const info = await getAbsensiBelumDiisi();
-    return res.json({ ok: true, scheduledPhase: 4, ...info });
-  });
-
 
   // Fase 3 Endpoints: Progres Peserta (§12 mainIdea.md)
   router.get('/progres', requireAuth, requirePageAccess('progres-peserta'), async (req, res) => {
@@ -718,7 +708,7 @@ export function createApiRouter() {
   // Fase 3 Endpoints: Update Data Penempatan 名簿 (§15 mainIdea.md)
   router.put('/peserta/:id/penempatan', requireAuth, async (req, res) => {
     try {
-      const updated = await updatePesertaPenempatan(req.params.id, req.body || {}, req.user.id);
+      const updated = await updatePesertaPenempatan(req.params.id, req.body || {}, req.user);
       return res.json(updated);
     } catch (err) {
       return handleRouteError(res, err);
@@ -736,7 +726,7 @@ export function createApiRouter() {
 
   router.patch('/settings', requireAuth, requireAdminRole, async (req, res) => {
     try {
-      const updated = await updateSystemSettings(req.body || {}, req.user.id);
+      const updated = await updateSystemSettings(req.body || {}, req.user);
       return res.json(updated);
     } catch (err) {
       return handleRouteError(res, err);
@@ -745,7 +735,7 @@ export function createApiRouter() {
 
   router.post('/settings/reset', requireAuth, requireAdminRole, async (req, res) => {
     try {
-      const reset = await resetSystemSettings(req.user.id);
+      const reset = await resetSystemSettings(req.user);
       return res.json(reset);
     } catch (err) {
       return handleRouteError(res, err);
@@ -780,27 +770,35 @@ export function createApiRouter() {
   });
 
   // Fase 4 Endpoints: Web Push Notification & VAPID (§14.8 mainIdea.md)
-  router.get('/push/public-key', (_req, res) => {
-    return res.json({ publicKey: getVapidPublicKey() });
-  });
-
-  router.get('/push/status', requireAuth, (req, res) => {
-    return res.json(getPushSubscriptionStatus(req.user.id));
-  });
-
-  router.post('/push/subscribe', requireAuth, (req, res) => {
+  router.get('/push/public-key', async (_req, res) => {
     try {
-      const result = savePushSubscriptionRecord(req.user.id, req.body || {});
+      return res.json({ publicKey: await getVapidPublicKey() });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/push/status', requireAuth, async (req, res) => {
+    try {
+      return res.json(await getPushSubscriptionStatus(req.user.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/push/subscribe', requireAuth, async (req, res) => {
+    try {
+      const result = await savePushSubscriptionRecord(req.user.id, req.body || {});
       return res.json(result);
     } catch (err) {
       return handleRouteError(res, err);
     }
   });
 
-  router.delete('/push/subscribe', requireAuth, (req, res) => {
+  router.delete('/push/subscribe', requireAuth, async (req, res) => {
     try {
       const endpoint = req.body?.endpoint || req.query?.endpoint || null;
-      const result = removePushSubscriptionRecord(req.user.id, endpoint);
+      const result = await removePushSubscriptionRecord(req.user.id, endpoint);
       return res.json(result);
     } catch (err) {
       return handleRouteError(res, err);
@@ -833,9 +831,9 @@ export function createApiRouter() {
     }
   });
 
-  router.get('/push/logs', requireAuth, (_req, res) => {
+  router.get('/push/logs', requireAuth, async (_req, res) => {
     try {
-      return res.json(listPushLogs(50));
+      return res.json(await listPushLogs(50));
     } catch (err) {
       return handleRouteError(res, err);
     }
@@ -863,7 +861,7 @@ export function createApiRouter() {
   router.get('/cron/pengingat-absensi', cronGuard, async (req, res) => {
     try {
       const date = req.query.tanggal || null;
-      const report = await runPengingatAbsensiCron(date);
+      const report = await runPengingatAbsensiCron(date, req.query.slot);
       return res.json(report);
     } catch (err) {
       return handleRouteError(res, err);
@@ -873,7 +871,7 @@ export function createApiRouter() {
   router.post('/cron/trigger-pengingat', requireAuth, async (req, res) => {
     try {
       const date = req.body?.tanggal || null;
-      const report = await runPengingatAbsensiCron(date);
+      const report = await runPengingatAbsensiCron(date, 'manual');
       return res.json(report);
     } catch (err) {
       return handleRouteError(res, err);

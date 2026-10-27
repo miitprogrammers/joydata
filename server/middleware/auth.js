@@ -2,6 +2,11 @@ import jwt from 'jsonwebtoken';
 import { getStaffSessionById } from '../db/repository.js';
 import { canAccessPage, canChangeStatusTag } from '../domain/rules.js';
 
+// The fallback secrets are public (they are in this file), so a deployment must never run on them.
+if (process.env.VERCEL && (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)) {
+  throw new Error('JWT_SECRET and JWT_REFRESH_SECRET must be set in the Vercel environment variables');
+}
+
 const ACCESS_SECRET = process.env.JWT_SECRET || 'joydata-internal-access-secret-key-2026';
 const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'joydata-internal-refresh-secret-key-2026';
 

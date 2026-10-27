@@ -3,6 +3,7 @@ import path from 'node:path';
 import bcrypt from 'bcryptjs';
 import pg from 'pg';
 import {
+  isDemoSeedEnabled,
   SEED_ROLES,
   SEED_PAGES,
   SEED_PROGRAMS,
@@ -28,7 +29,7 @@ let initPromise = null;
 let storageMode = 'local'; // 'postgres' | 'local'
 let localState = null;
 
-const LOCAL_DB_PATH = path.resolve(process.cwd(), '.data', 'joydata-db.json');
+export const LOCAL_DB_PATH = path.resolve(process.cwd(), '.data', 'joydata-db.json');
 
 export function getPool() {
   return pgPool;
@@ -55,7 +56,7 @@ function createPgPoolIfConfigured() {
   return pgPool;
 }
 
-function createInitialLocalState() {
+export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
   const now = new Date().toISOString();
   const adminHash = bcrypt.hashSync('admin123', 10);
   const senseiHash = bcrypt.hashSync('sensei123', 10);
@@ -69,165 +70,209 @@ function createInitialLocalState() {
 
   const staff = [
     { id: 1, nama: 'Admin Utama JOY', username: 'admin', passwordHash: adminHash, roleId: 1, active: true, deletedAt: null, createdAt: now },
-    { id: 2, nama: 'Tanaka Kenji (Sensei JOY 1)', username: 'sensei_joy1', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
-    { id: 3, nama: 'Dewi Anggraini (Sensei JOY 2)', username: 'sensei_joy2', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
-    { id: 4, nama: 'Rizal Hakim (Sensei JOY 3)', username: 'sensei_joy3', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
-    { id: 5, nama: 'Budi Santoso (Manager)', username: 'manager_joy', passwordHash: managerHash, roleId: 2, active: true, deletedAt: null, createdAt: now },
-    { id: 6, nama: 'Yamamoto Haruka (Viewer JP)', username: 'viewer_jp', passwordHash: viewerHash, roleId: 4, active: true, deletedAt: null, createdAt: now },
   ];
+  if (demo) {
+    staff.push(
+      { id: 2, nama: 'Tanaka Kenji (Sensei JOY 1)', username: 'sensei_joy1', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
+      { id: 3, nama: 'Dewi Anggraini (Sensei JOY 2)', username: 'sensei_joy2', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
+      { id: 4, nama: 'Rizal Hakim (Sensei JOY 3)', username: 'sensei_joy3', passwordHash: senseiHash, roleId: 3, active: true, deletedAt: null, createdAt: now },
+      { id: 5, nama: 'Budi Santoso (Manager)', username: 'manager_joy', passwordHash: managerHash, roleId: 2, active: true, deletedAt: null, createdAt: now },
+      { id: 6, nama: 'Yamamoto Haruka (Viewer JP)', username: 'viewer_jp', passwordHash: viewerHash, roleId: 4, active: true, deletedAt: null, createdAt: now },
+    );
+  }
 
   const programs = SEED_PROGRAMS.map((p) => ({ ...p, createdAt: now }));
 
-  const kelas = [
-    { id: 1, namaKelas: 'JOY 1', programId: 1, tanggalStart: '2026-01-12', description: 'Kelas intensif Tokutei Ginou Kaigo & Pengolahan Makanan', mancationClassId: 139, senseiId: 2, status: 'aktif', deletedAt: null, createdAt: now },
-    { id: 2, namaKelas: 'JOY 2', programId: 1, tanggalStart: '2026-02-09', description: 'Kelas menengah N4 persiapan JFT-Basic & SSW', mancationClassId: 142, senseiId: 3, status: 'aktif', deletedAt: null, createdAt: now },
-    { id: 3, namaKelas: 'JOY 3', programId: 2, tanggalStart: '2026-03-02', description: 'Kelas dasar Ginou Jisshuusei manufaktur & konstruksi', mancationClassId: 144, senseiId: 4, status: 'aktif', deletedAt: null, createdAt: now },
-  ];
+  const kelas = demo
+    ? [
+        { id: 1, namaKelas: 'JOY 1', programId: 1, tanggalStart: '2026-01-12', description: 'Kelas intensif Tokutei Ginou Kaigo & Pengolahan Makanan', mancationClassId: 139, senseiId: 2, status: 'aktif', deletedAt: null, createdAt: now },
+        { id: 2, namaKelas: 'JOY 2', programId: 1, tanggalStart: '2026-02-09', description: 'Kelas menengah N4 persiapan JFT-Basic & SSW', mancationClassId: 142, senseiId: 3, status: 'aktif', deletedAt: null, createdAt: now },
+        { id: 3, namaKelas: 'JOY 3', programId: 2, tanggalStart: '2026-03-02', description: 'Kelas dasar Ginou Jisshuusei manufaktur & konstruksi', mancationClassId: 144, senseiId: 4, status: 'aktif', deletedAt: null, createdAt: now },
+      ]
+    : [];
 
-  const peserta = SEED_MANCATION_STUDENTS.map((s, idx) => {
-    const k = kelas.find((kl) => kl.mancationClassId === s.mancationClassId);
-    const defaultTags = ['siap_interview', 'siap_interview', 'berkembang', 'standar', 'berkembang'];
-    const tag = defaultTags[idx % defaultTags.length];
-    return {
-      id: idx + 1,
-      mancationAkunId: s.mancationAkunId,
-      kelasId: k ? k.id : null,
-      statusTag: tag,
-      sumber: 'roster',
-      keteranganLuarKelas: null,
-      alasan: '',
-      tanggalMasuk: k ? k.tanggalStart : '2026-01-12',
-      pendidikanAkhir: idx % 3 === 0 ? 'SMK Teknik Mesin' : idx % 3 === 1 ? 'SMA IPA' : 'D3 Keperawatan',
+  const peserta = demo
+    ? SEED_MANCATION_STUDENTS.map((s, idx) => {
+        const k = kelas.find((kl) => kl.mancationClassId === s.mancationClassId);
+        const defaultTags = ['siap_interview', 'siap_interview', 'berkembang', 'standar', 'berkembang'];
+        const tag = defaultTags[idx % defaultTags.length];
+        return {
+          id: idx + 1,
+          mancationAkunId: s.mancationAkunId,
+          kelasId: k ? k.id : null,
+          statusTag: tag,
+          sumber: 'roster',
+          keteranganLuarKelas: null,
+          alasan: '',
+          tanggalMasuk: k ? k.tanggalStart : '2026-01-12',
+          pendidikanAkhir: idx % 3 === 0 ? 'SMK Teknik Mesin' : idx % 3 === 1 ? 'SMA IPA' : 'D3 Keperawatan',
+          tanggalLahirLokal: null,
+          statusPernikahanLokal: '',
+          jumlahAnakLokal: null,
+          agamaLokal: '',
+          daerahAsalLokal: '',
+          catatanBebas: idx === 0 ? 'Lulus JFT-Basic A2 & SSW Pengolahan Makanan' : '',
+          createdAt: now,
+          updatedAt: now,
+        };
+      })
+    : [];
+
+  if (demo) {
+    peserta.push({
+      id: peserta.length + 1,
+      mancationAkunId: 9801,
+      kelasId: null,
+      statusTag: 'siap_interview',
+      sumber: 'manual',
+      keteranganLuarKelas: 'alumni',
+      alasan: 'Telah berangkat kerja ke Jepang (Aichi)',
+      tanggalMasuk: '2025-07-10',
+      pendidikanAkhir: 'SMK Otomotif',
       tanggalLahirLokal: null,
       statusPernikahanLokal: '',
       jumlahAnakLokal: null,
       agamaLokal: '',
       daerahAsalLokal: '',
-      catatanBebas: idx === 0 ? 'Lulus JFT-Basic A2 & SSW Pengolahan Makanan' : '',
+      catatanBebas: 'Alumni angkatan sebelumnya',
       createdAt: now,
       updatedAt: now,
-    };
-  });
+    });
+  }
 
-  peserta.push({
-    id: peserta.length + 1,
-    mancationAkunId: 9801,
-    kelasId: null,
-    statusTag: 'siap_interview',
-    sumber: 'manual',
-    keteranganLuarKelas: 'alumni',
-    alasan: 'Telah berangkat kerja ke Jepang (Aichi)',
-    tanggalMasuk: '2025-07-10',
-    pendidikanAkhir: 'SMK Otomotif',
-    tanggalLahirLokal: null,
-    statusPernikahanLokal: '',
-    jumlahAnakLokal: null,
-    agamaLokal: '',
-    daerahAsalLokal: '',
-    catatanBebas: 'Alumni angkatan sebelumnya',
-    createdAt: now,
-    updatedAt: now,
-  });
+  const pesertaPenempatan = demo
+    ? [
+        {
+          pesertaId: 1,
+          tanggalLulusUjian: '2026-08-18',
+          perusahaanNaitei: 'Kabushikigaisha Tokai Foods (東海フーズ株式会社)',
+          jenisPekerjaan: 'Pengolahan Makanan (飲食料品製造業)',
+          prefekturId: 23,
+          lokasiKerja: 'Nagoya, Aichi',
+          rencanaMulaiKerja: '2026-12-01',
+          updatedAt: now,
+        },
+        {
+          pesertaId: 2,
+          tanggalLulusUjian: '2026-09-04',
+          perusahaanNaitei: 'Sakura Care Fukushi Kai (さくら福祉会)',
+          jenisPekerjaan: 'Kaigo / Perawat Lansia (介護)',
+          prefekturId: 27,
+          lokasiKerja: 'Sakai, Osaka',
+          rencanaMulaiKerja: '2027-01-15',
+          updatedAt: now,
+        },
+        {
+          pesertaId: peserta.length,
+          tanggalLulusUjian: '2025-12-12',
+          perusahaanNaitei: 'Meinan Seiki Co., Ltd. (名南精機株式会社)',
+          jenisPekerjaan: 'Manufaktur Komponen (素形材・産業機械)',
+          prefekturId: 23,
+          lokasiKerja: 'Toyota, Aichi',
+          rencanaMulaiKerja: '2026-04-01',
+          updatedAt: now,
+        },
+      ]
+    : [];
 
-  const pesertaPenempatan = [
-    {
-      pesertaId: 1,
-      tanggalLulusUjian: '2026-08-18',
-      perusahaanNaitei: 'Kabushikigaisha Tokai Foods (東海フーズ株式会社)',
-      jenisPekerjaan: 'Pengolahan Makanan (飲食料品製造業)',
-      prefekturId: 23,
-      lokasiKerja: 'Nagoya, Aichi',
-      rencanaMulaiKerja: '2026-12-01',
-      updatedAt: now,
-    },
-    {
-      pesertaId: 2,
-      tanggalLulusUjian: '2026-09-04',
-      perusahaanNaitei: 'Sakura Care Fukushi Kai (さくら福祉会)',
-      jenisPekerjaan: 'Kaigo / Perawat Lansia (介護)',
-      prefekturId: 27,
-      lokasiKerja: 'Sakai, Osaka',
-      rencanaMulaiKerja: '2027-01-15',
-      updatedAt: now,
-    },
-    {
-      pesertaId: peserta.length,
-      tanggalLulusUjian: '2025-12-12',
-      perusahaanNaitei: 'Meinan Seiki Co., Ltd. (名南精機株式会社)',
-      jenisPekerjaan: 'Manufaktur Komponen (素形材・産業機械)',
-      prefekturId: 23,
-      lokasiKerja: 'Toyota, Aichi',
-      rencanaMulaiKerja: '2026-04-01',
-      updatedAt: now,
-    },
-  ];
-
-  const pesertaStatusLog = [
-    {
-      id: 1,
-      pesertaId: 1,
-      statusLama: 'berkembang',
-      statusBaru: 'siap_interview',
-      diubahOlehStaffId: 1,
-      catatan: 'Nilai kaiwa stabil A dan lulus simulasi mensetsu.',
-      createdAt: now,
-    },
-    {
-      id: 2,
-      pesertaId: 2,
-      statusLama: 'berkembang',
-      statusBaru: 'siap_interview',
-      diubahOlehStaffId: 1,
-      catatan: 'Sertifikat SSW Kaigo sudah terbit.',
-      createdAt: now,
-    },
-  ];
+  const pesertaStatusLog = demo
+    ? [
+        {
+          id: 1,
+          pesertaId: 1,
+          statusLama: 'berkembang',
+          statusBaru: 'siap_interview',
+          diubahOlehStaffId: 1,
+          catatan: 'Nilai kaiwa stabil A dan lulus simulasi mensetsu.',
+          createdAt: now,
+        },
+        {
+          id: 2,
+          pesertaId: 2,
+          statusLama: 'berkembang',
+          statusBaru: 'siap_interview',
+          diubahOlehStaffId: 1,
+          catatan: 'Sertifikat SSW Kaigo sudah terbit.',
+          createdAt: now,
+        },
+      ]
+    : [];
 
   const curYm = now.slice(0, 7);
-  const nilaiUjian = [
-    { id: 1, pesertaId: 1, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 90, nilaiBunpou: 86, nilaiDokkai: 88, nilaiChoukai: 84, catatan: 'Ujian evaluasi N4 pekan 1', penilaiId: 2, createdAt: now },
-    { id: 2, pesertaId: 2, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 92, nilaiBunpou: 88, nilaiDokkai: 90, nilaiChoukai: 86, catatan: 'Konsisten sangat baik', penilaiId: 2, createdAt: now },
-    { id: 3, pesertaId: 3, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 76, nilaiBunpou: 72, nilaiDokkai: 74, nilaiChoukai: null, catatan: 'Sesi choukai izin klinik', penilaiId: 2, createdAt: now },
-    { id: 4, pesertaId: 4, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 64, nilaiBunpou: 62, nilaiDokkai: 68, nilaiChoukai: 60, catatan: 'Perlu pendampingan bunpou', penilaiId: 2, createdAt: now },
-    { id: 5, pesertaId: 6, kelasId: 2, tanggalUjian: `${curYm}-09`, codeUjian: 'M002', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 85, nilaiBunpou: 82, nilaiDokkai: 80, nilaiChoukai: 83, catatan: 'Simulasi JFT-Basic', penilaiId: 3, createdAt: now },
-    { id: 6, pesertaId: 10, kelasId: 3, tanggalUjian: `${curYm}-10`, codeUjian: 'HIRAGANA-01', pola: 'tunggal', nilaiTunggal: 88, nilaiMojiGoi: null, nilaiBunpou: null, nilaiDokkai: null, nilaiChoukai: null, catatan: 'Tes dasar penulisan kana', penilaiId: 4, createdAt: now },
-    { id: 7, pesertaId: 11, kelasId: 3, tanggalUjian: `${curYm}-10`, codeUjian: 'HIRAGANA-01', pola: 'tunggal', nilaiTunggal: 79, nilaiMojiGoi: null, nilaiBunpou: null, nilaiDokkai: null, nilaiChoukai: null, catatan: 'Lancar membaca', penilaiId: 4, createdAt: now },
+  const nilaiUjian = demo
+    ? [
+        { id: 1, pesertaId: 1, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 90, nilaiBunpou: 86, nilaiDokkai: 88, nilaiChoukai: 84, catatan: 'Ujian evaluasi N4 pekan 1', penilaiId: 2, createdAt: now },
+        { id: 2, pesertaId: 2, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 92, nilaiBunpou: 88, nilaiDokkai: 90, nilaiChoukai: 86, catatan: 'Konsisten sangat baik', penilaiId: 2, createdAt: now },
+        { id: 3, pesertaId: 3, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 76, nilaiBunpou: 72, nilaiDokkai: 74, nilaiChoukai: null, catatan: 'Sesi choukai izin klinik', penilaiId: 2, createdAt: now },
+        { id: 4, pesertaId: 4, kelasId: 1, tanggalUjian: `${curYm}-06`, codeUjian: 'M001', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 64, nilaiBunpou: 62, nilaiDokkai: 68, nilaiChoukai: 60, catatan: 'Perlu pendampingan bunpou', penilaiId: 2, createdAt: now },
+        { id: 5, pesertaId: 6, kelasId: 2, tanggalUjian: `${curYm}-09`, codeUjian: 'M002', pola: 'variable', nilaiTunggal: null, nilaiMojiGoi: 85, nilaiBunpou: 82, nilaiDokkai: 80, nilaiChoukai: 83, catatan: 'Simulasi JFT-Basic', penilaiId: 3, createdAt: now },
+        { id: 6, pesertaId: 10, kelasId: 3, tanggalUjian: `${curYm}-10`, codeUjian: 'HIRAGANA-01', pola: 'tunggal', nilaiTunggal: 88, nilaiMojiGoi: null, nilaiBunpou: null, nilaiDokkai: null, nilaiChoukai: null, catatan: 'Tes dasar penulisan kana', penilaiId: 4, createdAt: now },
+        { id: 7, pesertaId: 11, kelasId: 3, tanggalUjian: `${curYm}-10`, codeUjian: 'HIRAGANA-01', pola: 'tunggal', nilaiTunggal: 79, nilaiMojiGoi: null, nilaiBunpou: null, nilaiDokkai: null, nilaiChoukai: null, catatan: 'Lancar membaca', penilaiId: 4, createdAt: now },
+      ]
+    : [];
+
+  const nilaiKaiwa = demo
+    ? [
+        { id: 1, pesertaId: 1, kelasId: 1, tanggalKaiwa: `${curYm}-04`, grade: 'B', description: 'Perkenalan diri masih agak cepat', penilaiId: 2, createdAt: now },
+        { id: 2, pesertaId: 1, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'A', description: 'Jikoshoukai & tanya jawab mensetsu sangat lancar', penilaiId: 2, createdAt: now },
+        { id: 3, pesertaId: 2, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'A', description: 'Keigo sopan dan pengucapan jelas', penilaiId: 2, createdAt: now },
+        { id: 4, pesertaId: 3, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'B', description: 'Respons cukup baik, perlu memperkaya kosakata kerja', penilaiId: 2, createdAt: now },
+        { id: 5, pesertaId: 4, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'C', description: 'Masih ragu menyusun kalimat spontan', penilaiId: 2, createdAt: now },
+        { id: 6, pesertaId: 6, kelasId: 2, tanggalKaiwa: `${curYm}-15`, grade: 'A', description: 'Simulasi mensetsu pengolahan makanan baik', penilaiId: 3, createdAt: now },
+        { id: 7, pesertaId: 7, kelasId: 2, tanggalKaiwa: `${curYm}-15`, grade: 'B', description: 'Intonasi baik, latihan mendengar pertanyaan panjang', penilaiId: 3, createdAt: now },
+      ]
+    : [];
+
+  const nilaiSikap = demo
+    ? [
+        { id: 1, pesertaId: 1, kelasId: 1, kategoriId: 3, tanggalPenilaian: `${curYm}-05`, sentiment: 'positif', bobot: 5, description: 'Memimpin piket 5S ruang kelas dengan rapi', penilaiId: 2, createdAt: now },
+        { id: 2, pesertaId: 1, kelasId: 1, kategoriId: 8, tanggalPenilaian: `${curYm}-12`, sentiment: 'positif', bobot: 10, description: 'Nilai tertinggi evaluasi mingguan kelas JOY 1', penilaiId: 2, createdAt: now },
+        { id: 3, pesertaId: 2, kelasId: 1, kategoriId: 6, tanggalPenilaian: `${curYm}-08`, sentiment: 'positif', bobot: 5, description: 'Disiplin menerapkan Horenso ke Sensei', penilaiId: 2, createdAt: now },
+        { id: 4, pesertaId: 4, kelasId: 1, kategoriId: 10, tanggalPenilaian: `${curYm}-11`, sentiment: 'negatif', bobot: 10, description: 'Terlambat mengumpulkan buku latihan kanji', penilaiId: 2, createdAt: now },
+        { id: 5, pesertaId: 6, kelasId: 2, kategoriId: 5, tanggalPenilaian: `${curYm}-13`, sentiment: 'positif', bobot: 5, description: 'Aktif membantu rekan latihan kaiwa', penilaiId: 3, createdAt: now },
+      ]
+    : [];
+
+  const absensi = demo
+    ? [
+        { id: 1, pesertaId: 1, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 2, pesertaId: 2, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 3, pesertaId: 3, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 4, pesertaId: 4, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'sakit', description: 'Surat dokter klinik', penilaiId: 2, updatedAt: now },
+        { id: 5, pesertaId: 5, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 6, pesertaId: 1, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 7, pesertaId: 2, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 8, pesertaId: 3, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'izin', description: 'Urus paspor imigrasi', penilaiId: 2, updatedAt: now },
+        { id: 9, pesertaId: 4, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 10, pesertaId: 5, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
+        { id: 11, pesertaId: 6, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
+        { id: 12, pesertaId: 7, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
+        { id: 13, pesertaId: 8, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'alfa', description: 'Tanpa keterangan pagi', penilaiId: 3, updatedAt: now },
+        { id: 14, pesertaId: 9, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
+      ]
+    : [];
+
+  const sikapKategori = SEED_SIKAP_KATEGORI.map((k) => ({ ...k, createdAt: now }));
+
+  const auditLog = [
+    {
+      id: 1,
+      staffId: 1,
+      staffNama: 'Admin Utama JOY',
+      aksi: 'SYSTEM_SEED',
+      entitas: 'system',
+      entitasId: 'init',
+      detail: { info: 'Inisialisasi awal database JOYdata Cabang JOY' },
+      createdAt: now,
+    },
   ];
 
-  const nilaiKaiwa = [
-    { id: 1, pesertaId: 1, kelasId: 1, tanggalKaiwa: `${curYm}-04`, grade: 'B', description: 'Perkenalan diri masih agak cepat', penilaiId: 2, createdAt: now },
-    { id: 2, pesertaId: 1, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'A', description: 'Jikoshoukai & tanya jawab mensetsu sangat lancar', penilaiId: 2, createdAt: now },
-    { id: 3, pesertaId: 2, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'A', description: 'Keigo sopan dan pengucapan jelas', penilaiId: 2, createdAt: now },
-    { id: 4, pesertaId: 3, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'B', description: 'Respons cukup baik, perlu memperkaya kosakata kerja', penilaiId: 2, createdAt: now },
-    { id: 5, pesertaId: 4, kelasId: 1, tanggalKaiwa: `${curYm}-14`, grade: 'C', description: 'Masih ragu menyusun kalimat spontan', penilaiId: 2, createdAt: now },
-    { id: 6, pesertaId: 6, kelasId: 2, tanggalKaiwa: `${curYm}-15`, grade: 'A', description: 'Simulasi mensetsu pengolahan makanan baik', penilaiId: 3, createdAt: now },
-    { id: 7, pesertaId: 7, kelasId: 2, tanggalKaiwa: `${curYm}-15`, grade: 'B', description: 'Intonasi baik, latihan mendengar pertanyaan panjang', penilaiId: 3, createdAt: now },
-  ];
-
-  const nilaiSikap = [
-    { id: 1, pesertaId: 1, kelasId: 1, kategoriId: 3, tanggalPenilaian: `${curYm}-05`, sentiment: 'positif', bobot: 5, description: 'Memimpin piket 5S ruang kelas dengan rapi', penilaiId: 2, createdAt: now },
-    { id: 2, pesertaId: 1, kelasId: 1, kategoriId: 8, tanggalPenilaian: `${curYm}-12`, sentiment: 'positif', bobot: 10, description: 'Nilai tertinggi evaluasi mingguan kelas JOY 1', penilaiId: 2, createdAt: now },
-    { id: 3, pesertaId: 2, kelasId: 1, kategoriId: 6, tanggalPenilaian: `${curYm}-08`, sentiment: 'positif', bobot: 5, description: 'Disiplin menerapkan Horenso ke Sensei', penilaiId: 2, createdAt: now },
-    { id: 4, pesertaId: 4, kelasId: 1, kategoriId: 10, tanggalPenilaian: `${curYm}-11`, sentiment: 'negatif', bobot: 10, description: 'Terlambat mengumpulkan buku latihan kanji', penilaiId: 2, createdAt: now },
-    { id: 5, pesertaId: 6, kelasId: 2, kategoriId: 5, tanggalPenilaian: `${curYm}-13`, sentiment: 'positif', bobot: 5, description: 'Aktif membantu rekan latihan kaiwa', penilaiId: 3, createdAt: now },
-  ];
-
-  const absensi = [
-    { id: 1, pesertaId: 1, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 2, pesertaId: 2, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 3, pesertaId: 3, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 4, pesertaId: 4, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'sakit', description: 'Surat dokter klinik', penilaiId: 2, updatedAt: now },
-    { id: 5, pesertaId: 5, kelasId: 1, tanggalAbsensi: `${curYm}-01`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 6, pesertaId: 1, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 7, pesertaId: 2, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 8, pesertaId: 3, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'izin', description: 'Urus paspor imigrasi', penilaiId: 2, updatedAt: now },
-    { id: 9, pesertaId: 4, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 10, pesertaId: 5, kelasId: 1, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 2, updatedAt: now },
-    { id: 11, pesertaId: 6, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
-    { id: 12, pesertaId: 7, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
-    { id: 13, pesertaId: 8, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'alfa', description: 'Tanpa keterangan pagi', penilaiId: 3, updatedAt: now },
-    { id: 14, pesertaId: 9, kelasId: 2, tanggalAbsensi: `${curYm}-02`, status: 'hadir', description: '', penilaiId: 3, updatedAt: now },
-  ];
+  const mancationKelasCache = demo
+    ? SEED_MANCATION_CLASSES.map((c) => ({ ...c, syncedAt: now }))
+    : [];
+  const mancationPesertaCache = demo
+    ? [...SEED_MANCATION_STUDENTS, ...SEED_MANCATION_OUTSIDE_CANDIDATES].map((s) => ({ ...s, syncedAt: now }))
+    : [];
 
   return {
     roles,
@@ -243,37 +288,24 @@ function createInitialLocalState() {
     nilaiKaiwa,
     nilaiSikap,
     absensi,
-    sikapKategori: SEED_SIKAP_KATEGORI.map((k) => ({ ...k, createdAt: now })),
+    sikapKategori,
     settings: { ...SEED_SETTINGS },
-    auditLog: [
-      {
-        id: 1,
-        staffId: 1,
-        staffNama: 'Admin Utama JOY',
-        aksi: 'SYSTEM_SEED',
-        entitas: 'system',
-        entitasId: 'init',
-        detail: { info: 'Inisialisasi awal database JOYdata Cabang JOY' },
-        createdAt: now,
-      },
-    ],
-    mancationKelasCache: SEED_MANCATION_CLASSES.map((c) => ({ ...c, syncedAt: now })),
-    mancationPesertaCache: [...SEED_MANCATION_STUDENTS, ...SEED_MANCATION_OUTSIDE_CANDIDATES].map(
-      (s) => ({ ...s, syncedAt: now })
-    ),
+    auditLog,
+    mancationKelasCache,
+    mancationPesertaCache,
     seq: {
-      role: 5,
-      staff: 7,
-      program: 5,
-      kelas: 4,
+      role: roles.length + 1,
+      staff: staff.length + 1,
+      program: programs.length + 1,
+      kelas: kelas.length + 1,
       peserta: peserta.length + 1,
-      pesertaStatusLog: 3,
-      sikapKategori: 15,
+      pesertaStatusLog: pesertaStatusLog.length + 1,
+      sikapKategori: sikapKategori.length + 1,
       nilaiUjian: nilaiUjian.length + 1,
       nilaiKaiwa: nilaiKaiwa.length + 1,
       nilaiSikap: nilaiSikap.length + 1,
       absensi: absensi.length + 1,
-      auditLog: 2,
+      auditLog: auditLog.length + 1,
     },
   };
 }
@@ -326,10 +358,14 @@ export function readLocalState() {
   return localState;
 }
 
+export function writeLocalStateFile(state) {
+  fs.mkdirSync(path.dirname(LOCAL_DB_PATH), { recursive: true });
+  fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(state, null, 2), 'utf8');
+}
+
 export function saveLocalState() {
   if (!localState) return;
-  fs.mkdirSync(path.dirname(LOCAL_DB_PATH), { recursive: true });
-  fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(localState, null, 2), 'utf8');
+  writeLocalStateFile(localState);
 }
 
 async function initPostgresSchemaAndSeed(pool) {
@@ -374,25 +410,36 @@ async function initPostgresSchemaAndSeed(pool) {
   }
 
   const staffCount = await pool.query(`SELECT COUNT(*)::int AS cnt FROM staff`);
+  let demoStaffSeeded = false;
   if (staffCount.rows[0].cnt === 0) {
     const adminHash = bcrypt.hashSync('admin123', 10);
-    const senseiHash = bcrypt.hashSync('sensei123', 10);
-    const managerHash = bcrypt.hashSync('manager123', 10);
-    const viewerHash = bcrypt.hashSync('viewer123', 10);
     const roleMapRes = await pool.query(`SELECT id, kode FROM role`);
     const rMap = Object.fromEntries(roleMapRes.rows.map((r) => [r.kode, r.id]));
 
     await pool.query(
-      `INSERT INTO staff (nama, username, password_hash, role_id, active) VALUES
-       ('Admin Utama JOY', 'admin', $1, $2, TRUE),
-       ('Tanaka Kenji (Sensei JOY 1)', 'sensei_joy1', $3, $4, TRUE),
-       ('Dewi Anggraini (Sensei JOY 2)', 'sensei_joy2', $3, $4, TRUE),
-       ('Rizal Hakim (Sensei JOY 3)', 'sensei_joy3', $3, $4, TRUE),
-       ('Budi Santoso (Manager)', 'manager_joy', $5, $6, TRUE),
-       ('Yamamoto Haruka (Viewer JP)', 'viewer_jp', $7, $8, TRUE)
+      `INSERT INTO staff (nama, username, password_hash, role_id, active)
+       VALUES ('Admin Utama JOY', 'admin', $1, $2, TRUE)
        ON CONFLICT (username) DO NOTHING`,
-      [adminHash, rMap.admin, senseiHash, rMap.sensei, managerHash, rMap.manager, viewerHash, rMap.viewer]
+      [adminHash, rMap.admin]
     );
+
+    if (isDemoSeedEnabled()) {
+      const senseiHash = bcrypt.hashSync('sensei123', 10);
+      const managerHash = bcrypt.hashSync('manager123', 10);
+      const viewerHash = bcrypt.hashSync('viewer123', 10);
+
+      await pool.query(
+        `INSERT INTO staff (nama, username, password_hash, role_id, active) VALUES
+         ('Tanaka Kenji (Sensei JOY 1)', 'sensei_joy1', $1, $2, TRUE),
+         ('Dewi Anggraini (Sensei JOY 2)', 'sensei_joy2', $1, $2, TRUE),
+         ('Rizal Hakim (Sensei JOY 3)', 'sensei_joy3', $1, $2, TRUE),
+         ('Budi Santoso (Manager)', 'manager_joy', $3, $4, TRUE),
+         ('Yamamoto Haruka (Viewer JP)', 'viewer_jp', $5, $6, TRUE)
+         ON CONFLICT (username) DO NOTHING`,
+        [senseiHash, rMap.sensei, managerHash, rMap.manager, viewerHash, rMap.viewer]
+      );
+      demoStaffSeeded = true;
+    }
   }
 
   const progCount = await pool.query(`SELECT COUNT(*)::int AS cnt FROM program`);
@@ -406,7 +453,9 @@ async function initPostgresSchemaAndSeed(pool) {
   }
 
   const kelasCount = await pool.query(`SELECT COUNT(*)::int AS cnt FROM kelas`);
-  if (kelasCount.rows[0].cnt === 0) {
+  // Only seed demo kelas together with the demo sensei accounts, otherwise they would
+  // be created with sensei_id = NULL (dangling) after a reset removed the demo staff.
+  if (demoStaffSeeded && kelasCount.rows[0].cnt === 0) {
     const progs = await pool.query(`SELECT id FROM program ORDER BY urutan ASC`);
     const senseis = await pool.query(
       `SELECT s.id FROM staff s JOIN role r ON r.id = s.role_id WHERE r.kode = 'sensei' ORDER BY s.id ASC`
@@ -449,9 +498,15 @@ export async function ensureInitialized() {
         initialized = true;
         return storageMode;
       } catch (err) {
-        console.warn('PostgreSQL unavailable, activating local persistent store:', err.message);
         pgPool = null;
+        pool.end().catch(() => {});
+        // Vercel has no writable disk for the local store: fail this request and retry Postgres on the next.
+        if (process.env.VERCEL) throw err;
+        console.warn('PostgreSQL unavailable, activating local persistent store:', err.message);
       }
+    }
+    if (process.env.VERCEL) {
+      throw new Error('DATABASE_URL is not configured; the local store cannot be used on Vercel');
     }
     readLocalState();
     storageMode = 'local';

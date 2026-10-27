@@ -2,6 +2,9 @@ import {
   readLocalState,
   saveLocalState,
   appendAudit,
+  ensureInitialized,
+  getMode,
+  getPool,
 } from './engine.js';
 import {
   computeNilaiUjianAvg,
@@ -13,9 +16,12 @@ import {
   validateSettingsPayload,
 } from '../domain/rules.js';
 import {
+  isDemoSeedEnabled,
   SEED_MANCATION_STUDENTS,
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
+import { formatPersonName } from '../domain/nameFormat.js';
+import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 
 export const DEFAULT_SETTINGS = {
   kkm_ujian: 70,
@@ -29,16 +35,74 @@ export const DEFAULT_SETTINGS = {
 
 function getStudentNameMap(state) {
   const map = new Map();
-  for (const s of SEED_MANCATION_OUTSIDE_CANDIDATES || []) {
-    map.set(Number(s.mancationAkunId), s.nama);
+  const demo = isDemoSeedEnabled();
+  if (demo) {
+    for (const s of SEED_MANCATION_OUTSIDE_CANDIDATES || []) {
+      map.set(Number(s.mancationAkunId), formatPersonName(s.nama));
+    }
   }
   for (const s of state.mancationPesertaCache || []) {
-    map.set(Number(s.mancationAkunId), s.nama);
+    map.set(Number(s.mancationAkunId), formatPersonName(s.nama));
   }
-  for (const s of SEED_MANCATION_STUDENTS || []) {
-    map.set(Number(s.mancationAkunId), s.nama);
+  if (demo) {
+    for (const s of SEED_MANCATION_STUDENTS || []) {
+      map.set(Number(s.mancationAkunId), formatPersonName(s.nama));
+    }
   }
   return map;
+}
+
+/**
+ * Snapshot shaped like the local store for the report computations below. In postgres mode it is read
+ * from the database only, so reports never touch the local file (which does not exist on Vercel).
+ */
+async function loadReportState() {
+  await ensureInitialized();
+  if (getMode() !== 'postgres') return readLocalState();
+
+  const query = (sql) => getPool().query(sql).then((res) => res.rows);
+  const [kelas, peserta, staff, programs, sikapKategori, mancationPesertaCache, nilaiUjian, nilaiKaiwa, nilaiSikap, absensi] =
+    await Promise.all([
+      query(`SELECT id, nama_kelas AS "namaKelas", program_id AS "programId", tanggal_start::text AS "tanggalStart",
+               description, mancation_class_id AS "mancationClassId", sensei_id AS "senseiId", status,
+               deleted_at AS "deletedAt"
+             FROM kelas`),
+      query(`SELECT id, mancation_akun_id AS "mancationAkunId", kelas_id AS "kelasId", status_tag AS "statusTag",
+               sumber, keterangan_luar_kelas AS "keteranganLuarKelas", tanggal_masuk::text AS "tanggalMasuk"
+             FROM peserta`),
+      query(`SELECT id, nama FROM staff`),
+      query(`SELECT id, nama_id AS "namaId", nama_ja AS "namaJa" FROM program`),
+      query(`SELECT id, nama_id AS "namaId", nama_ja AS "namaJa" FROM sikap_kategori`),
+      query(`SELECT mancation_akun_id AS "mancationAkunId", nama FROM mancation_peserta_cache`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_ujian::text AS "tanggalUjian",
+               nama_ujian AS "codeUjian", tipe_penilaian AS "pola", nilai_tunggal::float AS "nilaiTunggal",
+               moji_goi::float AS "nilaiMojiGoi", bunpou::float AS "nilaiBunpou", dokkai::float AS "nilaiDokkai",
+               choukai::float AS "nilaiChoukai", catatan
+             FROM nilai_ujian`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalKaiwa",
+               grade, catatan AS "description"
+             FROM nilai_kaiwa`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", kategori_id AS "kategoriId",
+               tanggal::text AS "tanggalPenilaian", sentiment, ABS(bobot)::float AS "bobot", keterangan AS "description"
+             FROM nilai_sikap`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal::text AS "tanggalAbsensi",
+               status, keterangan AS "description", diinput_oleh_staff_id AS "penilaiId"
+             FROM absensi`),
+    ]);
+
+  return {
+    settings: await readStoredSettings(),
+    kelas,
+    peserta,
+    staff,
+    programs,
+    sikapKategori,
+    mancationPesertaCache,
+    nilaiUjian,
+    nilaiKaiwa,
+    nilaiSikap,
+    absensi,
+  };
 }
 
 function resolveNilaiAvg(u) {
@@ -48,66 +112,166 @@ function resolveNilaiAvg(u) {
   return computeNilaiUjianAvg(u);
 }
 
+// Settings live in the `settings` table (one row per key) in postgres mode, in state.settings otherwise.
+// The VAPID key pair shares that storage but is owned by fase4Repo and never returned from here.
+async function readStoredSettings() {
+  await ensureInitialized();
+  let stored;
+  if (getMode() !== 'postgres') {
+    stored = readLocalState().settings || {};
+  } else {
+    const res = await getPool().query('SELECT key, value FROM settings WHERE key <> $1', [VAPID_SETTINGS_KEY]);
+    stored = Object.fromEntries(res.rows.map((r) => [r.key, r.value]));
+  }
+  const { [VAPID_SETTINGS_KEY]: _vapid, ...settings } = stored;
+  return settings;
+}
+
+async function writeStoredSettings(next) {
+  if (getMode() !== 'postgres') {
+    const state = readLocalState();
+    const vapidKeys = state.settings?.[VAPID_SETTINGS_KEY];
+    state.settings = { ...next, updatedAt: new Date().toISOString() };
+    if (vapidKeys) state.settings[VAPID_SETTINGS_KEY] = vapidKeys;
+    saveLocalState();
+    return;
+  }
+  const client = await getPool().connect();
+  try {
+    await client.query('BEGIN');
+    for (const [key, value] of Object.entries(next)) {
+      await client.query(
+        `INSERT INTO settings (key, value, updated_at) VALUES ($1, $2::jsonb, NOW())
+         ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = NOW()`,
+        [key, JSON.stringify(value)]
+      );
+    }
+    await client.query('COMMIT');
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
 export async function getSystemSettings() {
-  const state = await readLocalState();
   return {
     ...DEFAULT_SETTINGS,
-    ...(state.settings || {}),
+    ...(await readStoredSettings()),
   };
 }
 
-export async function updateSystemSettings(payload, staffId) {
+export async function updateSystemSettings(payload, actor) {
   const val = validateSettingsPayload(payload);
   if (!val.ok) {
     throw new Error(val.code);
   }
 
-  const state = await readLocalState();
-  const oldSettings = { ...state.settings };
-  state.settings = {
-    ...DEFAULT_SETTINGS,
-    ...val.normalized,
-    updatedAt: new Date().toISOString(),
-  };
+  const dataLama = await getSystemSettings();
+  const dataBaru = { ...DEFAULT_SETTINGS, ...val.normalized };
+  await writeStoredSettings(dataBaru);
+  await appendAudit(actor, 'UPDATE_SETTINGS', 'settings', 1, { dataLama, dataBaru });
 
-  await saveLocalState(state);
-  await appendAudit({
-    staffId,
-    aksi: 'UPDATE_SETTINGS',
-    entitas: 'settings',
-    entitasId: 1,
-    dataLama: oldSettings,
-    dataBaru: state.settings,
-  });
-
-  return state.settings;
+  return getSystemSettings();
 }
 
-export async function resetSystemSettings(staffId) {
-  const state = await readLocalState();
-  const oldSettings = { ...state.settings };
-  state.settings = {
-    ...DEFAULT_SETTINGS,
-    updatedAt: new Date().toISOString(),
-  };
+export async function resetSystemSettings(actor) {
+  const dataLama = await getSystemSettings();
+  const dataBaru = { ...DEFAULT_SETTINGS };
+  await writeStoredSettings(dataBaru);
+  await appendAudit(actor, 'RESET_SETTINGS', 'settings', 1, { dataLama, dataBaru });
 
-  await saveLocalState(state);
-  await appendAudit({
-    staffId,
-    aksi: 'RESET_SETTINGS',
-    entitas: 'settings',
-    entitasId: 1,
-    dataLama: oldSettings,
-    dataBaru: state.settings,
-  });
-
-  return state.settings;
+  return getSystemSettings();
 }
 
-export async function updatePesertaPenempatan(pesertaId, payload, staffId) {
+const optionalDate = (v) => (/^\d{4}-\d{2}-\d{2}$/.test(String(v || '')) ? String(v) : null);
+
+// Penempatan shown on the rapor: peserta_penempatan plus peserta.pendidikan_akhir in postgres mode,
+// the pesertaPenempatan collection of the local store otherwise.
+async function loadPenempatan(pid, state = null) {
+  if (getMode() !== 'postgres') {
+    const local = state || readLocalState();
+    return (local.pesertaPenempatan || []).find((p) => p.pesertaId === pid) || {
+      pesertaId: pid,
+      tanggalLulusUjian: null,
+      perusahaanNaitei: '',
+      jenisPekerjaan: '',
+      lokasiKerja: '',
+      rencanaMulaiKerja: null,
+      pendidikanTerakhir: '',
+      catatanBebas: '',
+    };
+  }
+  const res = await getPool().query(
+    `SELECT p.id AS "pesertaId", pp.tanggal_lulus_ujian::text AS "tanggalLulusUjian",
+            COALESCE(pp.perusahaan_naitei, '') AS "perusahaanNaitei", COALESCE(pp.jenis_pekerjaan, '') AS "jenisPekerjaan",
+            COALESCE(pp.lokasi_kerja, '') AS "lokasiKerja", pp.rencana_mulai_kerja::text AS "rencanaMulaiKerja",
+            p.pendidikan_akhir AS "pendidikanTerakhir", p.catatan_bebas AS "catatanBebas"
+     FROM peserta p
+     LEFT JOIN peserta_penempatan pp ON pp.peserta_id = p.id
+     WHERE p.id = $1`,
+    [pid]
+  );
+  if (!res.rows.length) throw new Error('NOT_FOUND');
+  return res.rows[0];
+}
+
+export async function updatePesertaPenempatan(pesertaId, payload, actor) {
   const pid = Number(pesertaId);
   if (!Number.isInteger(pid) || pid <= 0) {
     throw new Error('VALIDATION_ERROR');
+  }
+  await ensureInitialized();
+
+  const normalized = {
+    pesertaId: pid,
+    tanggalLulusUjian: optionalDate(payload?.tanggalLulusUjian),
+    perusahaanNaitei: String(payload?.perusahaanNaitei || '').trim(),
+    jenisPekerjaan: String(payload?.jenisPekerjaan || '').trim(),
+    lokasiKerja: String(payload?.lokasiKerja || '').trim(),
+    rencanaMulaiKerja: optionalDate(payload?.rencanaMulaiKerja),
+    pendidikanTerakhir: String(payload?.pendidikanTerakhir || '').trim(),
+    catatanBebas: String(payload?.catatanBebas || '').trim(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  if (getMode() === 'postgres') {
+    const dataLama = await loadPenempatan(pid);
+    const client = await getPool().connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('UPDATE peserta SET pendidikan_akhir = $1, updated_at = NOW() WHERE id = $2', [
+        normalized.pendidikanTerakhir,
+        pid,
+      ]);
+      await client.query(
+        `INSERT INTO peserta_penempatan
+           (peserta_id, tanggal_lulus_ujian, perusahaan_naitei, jenis_pekerjaan, lokasi_kerja, rencana_mulai_kerja, updated_at)
+         VALUES ($1, $2, $3, $4, $5, $6, NOW())
+         ON CONFLICT (peserta_id) DO UPDATE SET
+           tanggal_lulus_ujian = EXCLUDED.tanggal_lulus_ujian, perusahaan_naitei = EXCLUDED.perusahaan_naitei,
+           jenis_pekerjaan = EXCLUDED.jenis_pekerjaan, lokasi_kerja = EXCLUDED.lokasi_kerja,
+           rencana_mulai_kerja = EXCLUDED.rencana_mulai_kerja, updated_at = NOW()`,
+        [
+          pid,
+          normalized.tanggalLulusUjian,
+          normalized.perusahaanNaitei,
+          normalized.jenisPekerjaan,
+          normalized.lokasiKerja,
+          normalized.rencanaMulaiKerja,
+        ]
+      );
+      await client.query('COMMIT');
+    } catch (err) {
+      await client.query('ROLLBACK');
+      throw err;
+    } finally {
+      client.release();
+    }
+    const dataBaru = await loadPenempatan(pid);
+    await appendAudit(actor, 'UPDATE_PENEMPATAN', 'peserta_penempatan', pid, { dataLama, dataBaru });
+    return dataBaru;
   }
 
   const state = await readLocalState();
@@ -119,18 +283,6 @@ export async function updatePesertaPenempatan(pesertaId, payload, staffId) {
   state.pesertaPenempatan = state.pesertaPenempatan || [];
   let existing = state.pesertaPenempatan.find((p) => p.pesertaId === pid);
   const dataLama = existing ? { ...existing } : null;
-
-  const normalized = {
-    pesertaId: pid,
-    tanggalLulusUjian: payload?.tanggalLulusUjian || null,
-    perusahaanNaitei: String(payload?.perusahaanNaitei || '').trim(),
-    jenisPekerjaan: String(payload?.jenisPekerjaan || '').trim(),
-    lokasiKerja: String(payload?.lokasiKerja || '').trim(),
-    rencanaMulaiKerja: payload?.rencanaMulaiKerja || null,
-    pendidikanTerakhir: String(payload?.pendidikanTerakhir || '').trim(),
-    catatanBebas: String(payload?.catatanBebas || '').trim(),
-    updatedAt: new Date().toISOString(),
-  };
 
   if (existing) {
     Object.assign(existing, normalized);
@@ -146,20 +298,13 @@ export async function updatePesertaPenempatan(pesertaId, payload, staffId) {
   }
 
   await saveLocalState(state);
-  await appendAudit({
-    staffId,
-    aksi: 'UPDATE_PENEMPATAN',
-    entitas: 'peserta_penempatan',
-    entitasId: pid,
-    dataLama,
-    dataBaru: existing,
-  });
+  await appendAudit(actor, 'UPDATE_PENEMPATAN', 'peserta_penempatan', pid, { dataLama, dataBaru: existing });
 
   return existing;
 }
 
 export async function getProgresData({ periode, kelasId, tag }) {
-  const state = await readLocalState();
+  const state = await loadReportState();
   const activeMonth = periode || new Date().toISOString().slice(0, 7);
   const nameMap = getStudentNameMap(state);
 
@@ -307,7 +452,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
     throw new Error('VALIDATION_ERROR');
   }
 
-  const state = await readLocalState();
+  const state = await loadReportState();
   const student = (state.peserta || []).find((p) => p.id === pid && !p.deletedAt);
   if (!student) {
     throw new Error('NOT_FOUND');
@@ -323,16 +468,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
   const program = kelas?.programId ? (state.programs || []).find((pr) => pr.id === kelas.programId) : null;
   const sensei = kelas?.senseiId ? (state.staff || []).find((s) => s.id === kelas.senseiId) : null;
 
-  const penempatan = (state.pesertaPenempatan || []).find((p) => p.pesertaId === pid) || {
-    pesertaId: pid,
-    tanggalLulusUjian: null,
-    perusahaanNaitei: '',
-    jenisPekerjaan: '',
-    lokasiKerja: '',
-    rencanaMulaiKerja: null,
-    pendidikanTerakhir: '',
-    catatanBebas: '',
-  };
+  const penempatan = await loadPenempatan(pid, state);
 
   const ujianList = (state.nilaiUjian || [])
     .filter((u) => u.pesertaId === pid && u.tanggalUjian && String(u.tanggalUjian).startsWith(activeMonth))
@@ -445,7 +581,7 @@ export async function getStudentRapor({ pesertaId, periode }) {
 }
 
 export async function getDashboardChartsData({ periode }) {
-  const state = await readLocalState();
+  const state = await loadReportState();
   const activeMonth = periode || new Date().toISOString().slice(0, 7);
   const settings = { ...DEFAULT_SETTINGS, ...(state.settings || {}) };
   const nameMap = getStudentNameMap(state);
@@ -587,7 +723,6 @@ export async function getDashboardChartsData({ periode }) {
 
 export async function exportAkademikData({ tipe = 'progres', periode, kelasId, locale = 'id' }) {
   const isJa = locale === 'ja';
-  const state = await readLocalState();
   const activeMonth = periode || new Date().toISOString().slice(0, 7);
 
   function escapeCsv(val) {

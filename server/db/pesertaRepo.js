@@ -7,8 +7,9 @@ import {
   appendAudit,
   appendLocalAudit,
 } from './engine.js';
-import { SEED_MANCATION_OUTSIDE_CANDIDATES } from './seedData.js';
+import { isDemoSeedEnabled, SEED_MANCATION_OUTSIDE_CANDIDATES } from './seedData.js';
 import { findPrefectureById } from './prefectures.js';
+import { formatPersonName } from '../domain/nameFormat.js';
 import {
   fetchMancationRoster,
   lookupMancationAccountById,
@@ -374,7 +375,7 @@ function mergePesertaWithMancation(pRow, penempatanRow, kelasRow, mancationMap) 
   return {
     id: Number(pRow.id),
     mancationAkunId: Number(pRow.mancationAkunId),
-    nama: m?.nama || `Peserta #${pRow.mancationAkunId}`,
+    nama: formatPersonName(m?.nama) || `Peserta #${pRow.mancationAkunId}`,
     whatsapp: m?.whatsapp || '',
     kelasId: pRow.kelasId ? Number(pRow.kelasId) : null,
     namaKelas: kelasRow?.namaKelas || '',
@@ -416,8 +417,10 @@ export async function listPeserta({ sumber = 'roster', kelasId = null, statusTag
 
   const mancationMap = new Map();
   for (const s of snapshot.students || []) mancationMap.set(Number(s.mancationAkunId), s);
-  for (const s of SEED_MANCATION_OUTSIDE_CANDIDATES) {
-    if (!mancationMap.has(s.mancationAkunId)) mancationMap.set(s.mancationAkunId, s);
+  if (isDemoSeedEnabled()) {
+    for (const s of SEED_MANCATION_OUTSIDE_CANDIDATES) {
+      if (!mancationMap.has(s.mancationAkunId)) mancationMap.set(s.mancationAkunId, s);
+    }
   }
   for (const s of mancationData.students || []) mancationMap.set(Number(s.mancationAkunId), s);
 
@@ -702,12 +705,15 @@ export async function lookupOutsideAccount(akunId) {
 
   return {
     found: Boolean(account && Number(account.cliId ?? 9) === 9),
-    account: account && Number(account.cliId ?? 9) === 9 ? account : null,
+    account:
+      account && Number(account.cliId ?? 9) === 9
+        ? { ...account, nama: formatPersonName(account.nama) }
+        : null,
     alreadyRegistered: Boolean(existing),
     existingSumber: existing?.sumber || null,
-    candidateHints: SEED_MANCATION_OUTSIDE_CANDIDATES.map((c) => ({
+    candidateHints: (isDemoSeedEnabled() ? SEED_MANCATION_OUTSIDE_CANDIDATES : []).map((c) => ({
       mancationAkunId: c.mancationAkunId,
-      nama: c.nama,
+      nama: formatPersonName(c.nama),
     })),
   };
 }

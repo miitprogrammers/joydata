@@ -1,3 +1,13 @@
+/**
+ * Demo/seed data switch. Defaults to enabled to preserve the original dev experience.
+ * Set JOY_SEED_DEMO=false to bootstrap an empty dataset (only roles, pages, access,
+ * admin account, settings, master program & sikap kategori) instead of the JOY demo data.
+ */
+export function isDemoSeedEnabled() {
+  const raw = String(process.env.JOY_SEED_DEMO ?? 'true').trim().toLowerCase();
+  return !['false', '0', 'no', 'off'].includes(raw);
+}
+
 export const SEED_ROLES = [
   { id: 1, kode: 'admin', roleNameId: 'Administrator', roleNameJa: '管理者', isSystem: true },
   { id: 2, kode: 'manager', roleNameId: 'Manager', roleNameJa: 'マネージャー', isSystem: true },

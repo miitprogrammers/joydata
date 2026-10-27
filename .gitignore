@@ -9,3 +9,10 @@ coverage/
 .data/
 .playwright-cli/
 
+# Participant data and private working files (this repository is public)
+/_chat.txt
+/absensi*.json
+/nilai-ujian-*.json
+/scripts/_reports-dump.json
+/scripts/gen-absensi-*.mjs
+

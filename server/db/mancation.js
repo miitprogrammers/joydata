@@ -1,9 +1,20 @@
 import mysql from 'mysql2/promise';
 import {
+  isDemoSeedEnabled,
   SEED_MANCATION_CLASSES,
   SEED_MANCATION_STUDENTS,
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
+
+function snapshotClasses(snapshotFallback) {
+  if (snapshotFallback?.classes?.length) return snapshotFallback.classes;
+  return isDemoSeedEnabled() ? SEED_MANCATION_CLASSES : [];
+}
+
+function snapshotStudents(snapshotFallback) {
+  if (snapshotFallback?.students?.length) return snapshotFallback.students;
+  return isDemoSeedEnabled() ? SEED_MANCATION_STUDENTS : [];
+}
 
 let mysqlPool = null;
 let lastSyncMeta = {
@@ -95,8 +106,8 @@ export async function fetchMancationRoster(classIds = [139, 142, 144], snapshotF
     };
     return {
       ...lastSyncMeta,
-      classes: snapshotFallback?.classes?.length ? snapshotFallback.classes : SEED_MANCATION_CLASSES,
-      students: (snapshotFallback?.students?.length ? snapshotFallback.students : SEED_MANCATION_STUDENTS).filter(
+      classes: snapshotClasses(snapshotFallback),
+      students: snapshotStudents(snapshotFallback).filter(
         (s) => cleanClassIds.length === 0 || cleanClassIds.includes(Number(s.mancationClassId))
       ),
     };
@@ -167,8 +178,8 @@ export async function fetchMancationRoster(classIds = [139, 142, 144], snapshotF
     };
     return {
       ...lastSyncMeta,
-      classes: snapshotFallback?.classes?.length ? snapshotFallback.classes : SEED_MANCATION_CLASSES,
-      students: (snapshotFallback?.students?.length ? snapshotFallback.students : SEED_MANCATION_STUDENTS).filter(
+      classes: snapshotClasses(snapshotFallback),
+      students: snapshotStudents(snapshotFallback).filter(
         (s) => cleanClassIds.length === 0 || cleanClassIds.includes(Number(s.mancationClassId))
       ),
     };
@@ -202,8 +213,8 @@ export async function lookupMancationAccountById(akunId, snapshotFallback = null
   }
 
   const allFallback = [
-    ...(snapshotFallback?.students || SEED_MANCATION_STUDENTS),
-    ...SEED_MANCATION_OUTSIDE_CANDIDATES,
+    ...(snapshotFallback?.students || (isDemoSeedEnabled() ? SEED_MANCATION_STUDENTS : [])),
+    ...(isDemoSeedEnabled() ? SEED_MANCATION_OUTSIDE_CANDIDATES : []),
   ];
   return allFallback.find((s) => Number(s.mancationAkunId) === numericId) || null;
 }

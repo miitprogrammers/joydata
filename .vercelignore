@@ -1,0 +1,17 @@
+# Secrets and the server-local store never go to Vercel (env vars are set in the Vercel dashboard).
+.env*
+!.env.example
+.data/
+
+# Local tooling and build output (Vercel installs and builds itself)
+node_modules/
+dist/
+dev-dist/
+coverage/
+.playwright-cli/
+
+# Import/working files that contain participant data
+_chat.txt
+absensi*.json
+nilai-ujian-*.json
+scripts/_reports-dump.json
