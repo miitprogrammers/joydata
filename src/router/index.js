@@ -21,6 +21,7 @@ import AuditLogView from '../views/AuditLogView.vue';
 import ProgresView from '../views/ProgresView.vue';
 import RaporView from '../views/RaporView.vue';
 import PengaturanView from '../views/PengaturanView.vue';
+import SmartReportView from '../views/SmartReportView.vue';
 
 const NoAccessState = defineComponent({
   name: 'NoAccessState',
@@ -148,6 +149,8 @@ const routes = [
   { path: '/progres', name: 'progres-peserta', component: ProgresView, meta: { pageKode: 'progres-peserta' } },
   { path: '/rapor', name: 'rapor-peserta', component: RaporView, meta: { pageKode: 'rapor-peserta' } },
   { path: '/config/pengaturan', name: 'pengaturan', component: PengaturanView, meta: { pageKode: 'pengaturan' } },
+  // Fase 4: Smart Report (bundle PDF + resume AI)
+  { path: '/smart-report', name: 'smart-report', component: SmartReportView, meta: { pageKode: 'smart-report' } },
   {
     path: '/no-access',
     name: 'no-access',

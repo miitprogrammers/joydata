@@ -238,6 +238,22 @@ CREATE TABLE IF NOT EXISTS mancation_peserta_cache (
   synced_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Smart Report: resume AI (Gemini) per peserta atau per kelas, ID + JA. data_hash = sidik data sumber
+-- saat resume dibuat, untuk menandai resume yang sudah usang setelah nilai berubah.
+CREATE TABLE IF NOT EXISTS smart_report_resume (
+  scope VARCHAR(20) NOT NULL CHECK (scope IN ('peserta', 'kelas')),
+  ref_id INTEGER NOT NULL,
+  teks_id TEXT NOT NULL DEFAULT '',
+  teks_ja TEXT NOT NULL DEFAULT '',
+  data_hash VARCHAR(64) NOT NULL DEFAULT '',
+  model VARCHAR(80) NOT NULL DEFAULT '',
+  dibuat_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  dibuat_at TIMESTAMPTZ NULL,
+  diedit_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  diedit_at TIMESTAMPTZ NULL,
+  PRIMARY KEY (scope, ref_id)
+);
+
 CREATE INDEX IF NOT EXISTS idx_peserta_kelas ON peserta(kelas_id);
 CREATE INDEX IF NOT EXISTS idx_peserta_sumber ON peserta(sumber);
 CREATE INDEX IF NOT EXISTS idx_absensi_kelas_tanggal ON absensi(kelas_id, tanggal);

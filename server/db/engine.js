@@ -329,6 +329,19 @@ function ensurePhase2Collections(state) {
     state.pushLogs = [];
     dirty = true;
   }
+  if (!Array.isArray(state.smartReportResume)) {
+    state.smartReportResume = [];
+    dirty = true;
+  }
+  for (const p of SEED_PAGES) {
+    if ((state.pages || []).some((existing) => existing.kode === p.kode)) continue;
+    const { defaultRoles = [], ...page } = p;
+    state.pages.push({ ...page });
+    for (const role of (state.roles || []).filter((r) => defaultRoles.includes(r.kode))) {
+      state.access.push({ roleId: role.id, pageId: page.id });
+    }
+    dirty = true;
+  }
   state.seq = state.seq || {};
   state.seq.nilaiUjian = state.seq.nilaiUjian || (state.nilaiUjian.length + 1);
   state.seq.nilaiKaiwa = state.seq.nilaiKaiwa || ((state.nilaiKaiwa || []).length + 1);
@@ -383,6 +396,7 @@ async function initPostgresSchemaAndSeed(pool) {
   }
   await pool.query(`SELECT setval('role_id_seq', GREATEST((SELECT COALESCE(MAX(id), 1) FROM role), 4))`);
 
+  const existingPageKodes = new Set((await pool.query(`SELECT kode FROM page`)).rows.map((r) => r.kode));
   for (const p of SEED_PAGES) {
     await pool.query(
       `INSERT INTO page (id, kode, bar, route_path, title_id, title_ja, icon, urutan, fase)
@@ -397,6 +411,15 @@ async function initPostgresSchemaAndSeed(pool) {
          fase = EXCLUDED.fase`,
       [p.id, p.kode, p.bar, p.routePath, p.titleId, p.titleJa, p.icon, p.urutan, p.fase]
     );
+    // A page added after the first install starts with its default roles; later access changes stay with the admin.
+    if (existingPageKodes.size > 0 && !existingPageKodes.has(p.kode) && p.defaultRoles?.length) {
+      await pool.query(
+        `INSERT INTO access (role_id, page_id)
+         SELECT r.id, pg.id FROM role r, page pg WHERE r.kode = ANY($1) AND pg.kode = $2
+         ON CONFLICT DO NOTHING`,
+        [p.defaultRoles, p.kode]
+      );
+    }
   }
 
   const adminRoleRes = await pool.query(`SELECT id FROM role WHERE kode = 'admin' LIMIT 1`);

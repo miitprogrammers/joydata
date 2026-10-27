@@ -27,6 +27,8 @@ export const SEED_PAGES = [
   { id: 8, kode: 'data-peserta', bar: 'main', routePath: '/peserta', titleId: 'Data Peserta', titleJa: '受講生名簿', icon: 'mdi-account-group-outline', urutan: 8, fase: 1 },
   { id: 9, kode: 'peserta-luar', bar: 'main', routePath: '/peserta-luar', titleId: 'Peserta Luar Kelas', titleJa: 'クラス外受講生（卒業・休学）', icon: 'mdi-account-arrow-right-outline', urutan: 9, fase: 1 },
   { id: 10, kode: 'rapor-peserta', bar: 'main', routePath: '/rapor', titleId: 'Rapor Peserta', titleJa: '個人成績表（PDF）', icon: 'mdi-file-certificate-outline', urutan: 10, fase: 3 },
+  // defaultRoles: role yang otomatis diberi akses saat halaman ini pertama kali ditambahkan ke database
+  { id: 18, kode: 'smart-report', bar: 'main', routePath: '/smart-report', titleId: 'Smart Report', titleJa: 'スマートレポート', icon: 'mdi-file-chart-outline', urutan: 11, fase: 4, defaultRoles: ['admin', 'manager', 'viewer'] },
   // Config bar (7 halaman sesuai §8 mainIdea.md)
   { id: 11, kode: 'crud-staff', bar: 'config', routePath: '/config/staff', titleId: 'Crud Staff', titleJa: 'スタッフ管理', icon: 'mdi-badge-account-horizontal-outline', urutan: 11, fase: 1 },
   { id: 12, kode: 'akun-notifikasi', bar: 'config', routePath: '/config/akun', titleId: 'Akun & Notifikasi Staff', titleJa: 'アカウント・通知設定', icon: 'mdi-bell-cog-outline', urutan: 12, fase: 1 },

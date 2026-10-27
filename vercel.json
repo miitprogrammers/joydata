@@ -1,7 +1,8 @@
 {
   "functions": {
     "api/**/*.js": {
-      "includeFiles": "supabase/migrations/**"
+      "includeFiles": "supabase/migrations/**",
+      "maxDuration": 60
     }
   },
   "rewrites": [

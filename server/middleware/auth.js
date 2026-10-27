@@ -69,6 +69,15 @@ export function requirePageAccess(pageKode) {
   };
 }
 
+export function requireRoleKodes(...roleKodes) {
+  return (req, res, next) => {
+    if (!roleKodes.includes(req.user?.role?.kode)) {
+      return res.status(403).json({ error: 'ROLE_NOT_ALLOWED' });
+    }
+    return next();
+  };
+}
+
 export function requireAdminRole(req, res, next) {
   if (!canChangeStatusTag(req.user?.role?.kode)) {
     return res.status(403).json({ error: 'ADMIN_ROLE_REQUIRED' });

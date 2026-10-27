@@ -70,6 +70,13 @@ import {
   listPushLogs,
   runPengingatAbsensiCron,
 } from './db/fase4Repo.js';
+import {
+  getSmartReportOptions,
+  getSmartReportPeserta,
+  getSmartReportKelas,
+  generateSmartResume,
+  updateSmartResume,
+} from './db/smartReportRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
 import { JAPAN_PREFECTURES } from './db/prefectures.js';
@@ -79,6 +86,7 @@ import {
   requireAuth,
   requirePageAccess,
   requireAdminRole,
+  requireRoleKodes,
 } from './middleware/auth.js';
 
 function handleRouteError(res, err) {
@@ -116,9 +124,15 @@ function handleRouteError(res, err) {
     'MISSING_KEYS',
     'INVALID_KEYS',
     'INVALID_PAYLOAD',
+    'SMART_REPORT_NO_DATA',
   ]);
+  // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
+  const serviceCodes = new Set(['AI_NOT_CONFIGURED', 'AI_ACCESS_DENIED', 'AI_RATE_LIMITED', 'AI_OVERLOADED', 'AI_FAILED']);
   if (code === 'NOT_FOUND') {
     return res.status(404).json({ error: code });
+  }
+  if (serviceCodes.has(code)) {
+    return res.status(503).json({ error: code });
   }
   if (clientCodes.has(code)) {
     return res.status(400).json({ error: code });
@@ -704,6 +718,68 @@ export function createApiRouter() {
       return handleRouteError(res, err);
     }
   });
+
+  // Smart Report: full-journey bundle per peserta or per class, with an AI resume (Gemini).
+  // Everyone with page access can read and print; only admin and manager write resumes (each call is billed).
+  router.get('/smart-report/opsi', requireAuth, requirePageAccess('smart-report'), async (_req, res) => {
+    try {
+      return res.json(await getSmartReportOptions());
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/smart-report/peserta/:id', requireAuth, requirePageAccess('smart-report'), async (req, res) => {
+    try {
+      return res.json(await getSmartReportPeserta({ pesertaId: req.params.id }));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/smart-report/kelas/:id', requireAuth, requirePageAccess('smart-report'), async (req, res) => {
+    try {
+      return res.json(await getSmartReportKelas({ kelasId: req.params.id }));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post(
+    '/smart-report/resume/:scope/:id',
+    requireAuth,
+    requirePageAccess('smart-report'),
+    requireRoleKodes('admin', 'manager'),
+    async (req, res) => {
+      try {
+        return res.json(await generateSmartResume({ scope: req.params.scope, id: req.params.id, actor: req.user }));
+      } catch (err) {
+        return handleRouteError(res, err);
+      }
+    }
+  );
+
+  router.put(
+    '/smart-report/resume/:scope/:id',
+    requireAuth,
+    requirePageAccess('smart-report'),
+    requireRoleKodes('admin', 'manager'),
+    async (req, res) => {
+      try {
+        return res.json(
+          await updateSmartResume({
+            scope: req.params.scope,
+            id: req.params.id,
+            teksId: req.body?.teksId,
+            teksJa: req.body?.teksJa,
+            actor: req.user,
+          })
+        );
+      } catch (err) {
+        return handleRouteError(res, err);
+      }
+    }
+  );
 
   // Fase 3 Endpoints: Update Data Penempatan 名簿 (§15 mainIdea.md)
   router.put('/peserta/:id/penempatan', requireAuth, async (req, res) => {

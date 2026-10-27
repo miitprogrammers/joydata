@@ -14,7 +14,7 @@
     "push:nilai-ujian": "node scripts/push-nilai-ujian.mjs",
     "migrate:supabase": "node scripts/migrate-local-to-supabase.mjs",
     "lint": "tsc --noEmit",
-    "test": "npx --yes tsx --test server/domain/rules.test.js"
+    "test": "npx --yes tsx --test server/domain/rules.test.js server/domain/smartReport.test.js"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

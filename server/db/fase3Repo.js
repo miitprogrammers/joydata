@@ -33,7 +33,7 @@ export const DEFAULT_SETTINGS = {
   periode_default: 'auto',
 };
 
-function getStudentNameMap(state) {
+export function getStudentNameMap(state) {
   const map = new Map();
   const demo = isDemoSeedEnabled();
   if (demo) {
@@ -56,7 +56,7 @@ function getStudentNameMap(state) {
  * Snapshot shaped like the local store for the report computations below. In postgres mode it is read
  * from the database only, so reports never touch the local file (which does not exist on Vercel).
  */
-async function loadReportState() {
+export async function loadReportState() {
   await ensureInitialized();
   if (getMode() !== 'postgres') return readLocalState();
 
@@ -80,7 +80,7 @@ async function loadReportState() {
                choukai::float AS "nilaiChoukai", catatan
              FROM nilai_ujian`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalKaiwa",
-               grade, catatan AS "description"
+               grade, topik, catatan AS "description"
              FROM nilai_kaiwa`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", kategori_id AS "kategoriId",
                tanggal::text AS "tanggalPenilaian", sentiment, ABS(bobot)::float AS "bobot", keterangan AS "description"
@@ -189,7 +189,7 @@ const optionalDate = (v) => (/^\d{4}-\d{2}-\d{2}$/.test(String(v || '')) ? Strin
 
 // Penempatan shown on the rapor: peserta_penempatan plus peserta.pendidikan_akhir in postgres mode,
 // the pesertaPenempatan collection of the local store otherwise.
-async function loadPenempatan(pid, state = null) {
+export async function loadPenempatan(pid, state = null) {
   if (getMode() !== 'postgres') {
     const local = state || readLocalState();
     return (local.pesertaPenempatan || []).find((p) => p.pesertaId === pid) || {
