@@ -200,6 +200,7 @@ export async function loadPenempatan(pid, state = null) {
       lokasiKerja: '',
       rencanaMulaiKerja: null,
       pendidikanTerakhir: '',
+      pendidikanTerakhirJa: '',
       catatanBebas: '',
     };
   }
@@ -207,7 +208,8 @@ export async function loadPenempatan(pid, state = null) {
     `SELECT p.id AS "pesertaId", pp.tanggal_lulus_ujian::text AS "tanggalLulusUjian",
             COALESCE(pp.perusahaan_naitei, '') AS "perusahaanNaitei", COALESCE(pp.jenis_pekerjaan, '') AS "jenisPekerjaan",
             COALESCE(pp.lokasi_kerja, '') AS "lokasiKerja", pp.rencana_mulai_kerja::text AS "rencanaMulaiKerja",
-            p.pendidikan_akhir AS "pendidikanTerakhir", p.catatan_bebas AS "catatanBebas"
+            p.pendidikan_akhir AS "pendidikanTerakhir", p.pendidikan_akhir_ja AS "pendidikanTerakhirJa",
+            p.catatan_bebas AS "catatanBebas"
      FROM peserta p
      LEFT JOIN peserta_penempatan pp ON pp.peserta_id = p.id
      WHERE p.id = $1`,
@@ -235,16 +237,21 @@ export async function updatePesertaPenempatan(pesertaId, payload, actor) {
     catatanBebas: String(payload?.catatanBebas || '').trim(),
     updatedAt: new Date().toISOString(),
   };
+  // Left out by clients that predate the field: keep the stored value instead of clearing it.
+  if (payload?.pendidikanTerakhirJa !== undefined) {
+    normalized.pendidikanTerakhirJa = String(payload.pendidikanTerakhirJa || '').trim();
+  }
 
   if (getMode() === 'postgres') {
     const dataLama = await loadPenempatan(pid);
     const client = await getPool().connect();
     try {
       await client.query('BEGIN');
-      await client.query('UPDATE peserta SET pendidikan_akhir = $1, updated_at = NOW() WHERE id = $2', [
-        normalized.pendidikanTerakhir,
-        pid,
-      ]);
+      await client.query(
+        `UPDATE peserta SET pendidikan_akhir = $1, pendidikan_akhir_ja = COALESCE($3, pendidikan_akhir_ja), updated_at = NOW()
+         WHERE id = $2`,
+        [normalized.pendidikanTerakhir, pid, normalized.pendidikanTerakhirJa ?? null]
+      );
       await client.query(
         `INSERT INTO peserta_penempatan
            (peserta_id, tanggal_lulus_ujian, perusahaan_naitei, jenis_pekerjaan, lokasi_kerja, rencana_mulai_kerja, updated_at)
@@ -301,6 +308,39 @@ export async function updatePesertaPenempatan(pesertaId, payload, actor) {
   await appendAudit(actor, 'UPDATE_PENEMPATAN', 'peserta_penempatan', pid, { dataLama, dataBaru: existing });
 
   return existing;
+}
+
+/**
+ * Class and peserta pickers for the report pages (Progres, Rapor, Smart Report). Read from the report snapshot,
+ * so these pages do not depend on access to Data Kelas / Data Peserta and do not trigger a Mancation sync.
+ */
+export async function getReportOptions() {
+  const state = await loadReportState();
+  const nameMap = getStudentNameMap(state);
+  const peserta = (state.peserta || []).filter((p) => !p.deletedAt);
+  const kelas = (state.kelas || [])
+    .filter((k) => !k.deletedAt)
+    .map((k) => ({
+      id: k.id,
+      namaKelas: k.namaKelas,
+      status: k.status,
+      jumlahPeserta: peserta.filter((p) => p.kelasId === k.id).length,
+    }))
+    .sort((a, b) => a.namaKelas.localeCompare(b.namaKelas, undefined, { numeric: true }));
+  const namaKelas = new Map(kelas.map((k) => [k.id, k.namaKelas]));
+  return {
+    kelas,
+    peserta: peserta
+      .map((p) => ({
+        id: p.id,
+        nama: nameMap.get(Number(p.mancationAkunId)) || p.nama || `Peserta #${p.mancationAkunId}`,
+        mancationAkunId: p.mancationAkunId,
+        kelasId: p.kelasId,
+        namaKelas: namaKelas.get(p.kelasId) || '-',
+        sumber: p.sumber || 'roster',
+      }))
+      .sort((a, b) => a.nama.localeCompare(b.nama)),
+  };
 }
 
 export async function getProgresData({ periode, kelasId, tag }) {
@@ -533,7 +573,8 @@ export async function getStudentRapor({ pesertaId, periode }) {
       nama: resolvedNama,
       mancationAkunId: student.mancationAkunId,
       statusTag: student.statusTag || 'standar',
-      tanggalMasuk: student.tanggalMasuk || null,
+      // Follows the class start date unless set by hand (pesertaRepo.tanggalMasukToStore).
+      tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,
       sumber: student.sumber || 'roster',
       keteranganLuarKelas: student.keteranganLuarKelas || null,
     },

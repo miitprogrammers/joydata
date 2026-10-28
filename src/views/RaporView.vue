@@ -428,7 +428,12 @@
             </div>
             <div class="flex justify-between pt-1">
               <span class="text-slate-600">Pendidikan Terakhir (最終学歴):</span>
-              <span class="text-slate-800 font-medium">{{ raporData.penempatan.pendidikanTerakhir || '-' }}</span>
+              <span class="text-slate-800 font-medium text-right">
+                {{ raporData.penempatan.pendidikanTerakhir || '-' }}
+                <span v-if="raporData.penempatan.pendidikanTerakhirJa" class="block font-normal">
+                  {{ raporData.penempatan.pendidikanTerakhirJa }}
+                </span>
+              </span>
             </div>
           </div>
         </div>
@@ -545,6 +550,18 @@
             />
           </div>
 
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">
+              Pendidikan Terakhir – Bahasa Jepang (最終学歴・日本語):
+            </label>
+            <input
+              v-model="penempatanForm.pendidikanTerakhirJa"
+              type="text"
+              class="joy-input w-full p-2 text-xs"
+              placeholder="例：SMKN 1 Cianjur（国立職業高等学校）自動車工学科（2025年卒業）"
+            />
+          </div>
+
           <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
             <button type="button" class="joy-btn-secondary text-xs" @click="penempatanModal = false">
               {{ $t('common.batal') }}
@@ -596,12 +613,14 @@ const penempatanForm = ref({
   lokasiKerja: '',
   rencanaMulaiKerja: '',
   pendidikanTerakhir: '',
+  pendidikanTerakhirJa: '',
 });
 
+// From the report pickers endpoint: /peserta belongs to Data Peserta, which a role with only Rapor access cannot open.
 async function loadAllPeserta() {
   try {
-    const data = await apiRequest('/peserta');
-    allPesertaList.value = data.items || [];
+    const data = await apiRequest('/laporan/opsi');
+    allPesertaList.value = (data.peserta || []).filter((p: any) => p.sumber === 'roster');
   } catch (err: any) {
     console.error('Failed to load students', err);
   }
@@ -638,6 +657,7 @@ function openPenempatanModal() {
     lokasiKerja: p.lokasiKerja || '',
     rencanaMulaiKerja: p.rencanaMulaiKerja || '',
     pendidikanTerakhir: p.pendidikanTerakhir || '',
+    pendidikanTerakhirJa: p.pendidikanTerakhirJa || '',
   };
   penempatanModal.value = true;
 }

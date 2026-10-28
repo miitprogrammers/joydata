@@ -22,7 +22,7 @@
         <div class="text-[11px] text-slate-500">{{ $t('smartReport.sensei') }}</div>
         <div class="font-bold text-slate-800 mt-0.5">{{ report.kelas?.senseiNama || '-' }}</div>
         <div class="text-[10px] text-slate-500">
-          {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || report.kelas?.tanggalStart || '-' }}
+          {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || '-' }}
         </div>
       </div>
       <div>
@@ -75,6 +75,7 @@
       :resume="report.resume"
       :can-write="canWrite"
       :busy="busy"
+      :locked="locked"
       :generate="generate"
       :save="save"
     />
@@ -305,6 +306,7 @@ const props = defineProps<{
   printDate: string;
   canWrite: boolean;
   busy?: boolean;
+  locked?: boolean;
   generate: () => Promise<void>;
   save: (payload: { teksId: string; teksJa: string }) => Promise<void>;
 }>();

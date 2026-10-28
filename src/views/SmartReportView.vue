@@ -11,25 +11,6 @@
 
       <div class="flex flex-wrap items-center gap-2">
         <button
-          v-if="mode === 'kelas' && kelasData && canWrite"
-          type="button"
-          class="joy-btn-secondary text-xs flex items-center gap-1.5"
-          :disabled="bulk.running || !pendingResumes.length"
-          @click="generateAll"
-        >
-          <v-progress-circular v-if="bulk.running" indeterminate size="14" width="2" color="primary" />
-          <v-icon v-else icon="mdi-creation" size="16" />
-          <span>
-            {{
-              bulk.running
-                ? $t('smartReport.buatSemuaProgres', { i: bulk.index, n: bulk.total })
-                : pendingResumes.length
-                  ? $t('smartReport.buatSemua', { n: pendingResumes.length })
-                  : $t('smartReport.semuaResumeTerkini')
-            }}
-          </span>
-        </button>
-        <button
           v-if="hasReport"
           type="button"
           class="joy-btn-primary text-xs flex items-center gap-1.5 shadow-sm"
@@ -97,8 +78,65 @@
       </button>
     </div>
 
-    <div v-if="!canWrite" class="no-print text-[11px] text-slate-500 -mt-3">
+    <div v-if="!canWrite && !(mode === 'kelas' && kelasData)" class="no-print text-[11px] text-slate-500 -mt-3">
       {{ $t('smartReport.resumeHanyaBaca') }}
+    </div>
+
+    <!-- Class mode: every resume of the bundle in one action -->
+    <div
+      v-if="mode === 'kelas' && kelasData && !loading"
+      class="no-print joy-surface p-4 flex flex-col sm:flex-row sm:items-center gap-3"
+    >
+      <div class="flex-1 min-w-0">
+        <div class="text-sm font-semibold text-slate-900 flex items-center gap-1.5">
+          <v-icon icon="mdi-creation" size="16" class="text-blue-800" />
+          {{ $t('smartReport.panelJudul') }}
+        </div>
+        <div class="text-xs text-slate-500 mt-0.5">
+          {{
+            bulk.running
+              ? $t('smartReport.buatSemuaProgres', { done: bulk.done, n: bulk.total })
+              : $t('smartReport.statusResume', resumeStatus)
+          }}
+        </div>
+        <div v-if="bulk.running" class="mt-2 h-1.5 rounded-full bg-slate-100 overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-500"
+            :style="{ width: `${(bulk.done / bulk.total) * 100}%`, background: '#1E3A8A' }"
+          />
+        </div>
+      </div>
+
+      <div v-if="!canWrite" class="text-xs text-slate-500">{{ $t('smartReport.resumeHanyaBaca') }}</div>
+      <div v-else-if="bulk.running" class="flex items-center gap-2">
+        <v-progress-circular indeterminate size="16" width="2" color="primary" />
+        <button type="button" class="joy-btn-secondary text-xs" :disabled="bulk.stop" @click="bulk.stop = true">
+          {{ $t('smartReport.hentikan') }}
+        </button>
+      </div>
+      <div v-else class="flex flex-wrap items-center gap-2">
+        <button
+          v-if="resumeStatus.siap > 0"
+          type="button"
+          class="joy-btn-secondary text-xs"
+          @click="generateAll(true)"
+        >
+          {{ $t('smartReport.buatUlangSemua') }}
+        </button>
+        <button
+          type="button"
+          class="joy-btn-primary text-xs flex items-center gap-1.5 shadow-sm"
+          :disabled="!pendingResumes.length"
+          @click="generateAll(false)"
+        >
+          <v-icon icon="mdi-creation" size="16" />
+          {{
+            pendingResumes.length
+              ? $t('smartReport.buatSemua', { n: pendingResumes.length })
+              : $t('smartReport.semuaResumeTerkini')
+          }}
+        </button>
+      </div>
     </div>
 
     <!-- States -->
@@ -138,6 +176,7 @@
           :print-date="printDate"
           :can-write="canWrite"
           :busy="isBulkTarget('kelas', kelasData.kelas.id)"
+          :locked="bulk.running"
           :generate="() => generateResume('kelas', kelasData.kelas.id)"
           :save="(payload) => saveResume('kelas', kelasData.kelas.id, payload)"
         />
@@ -149,6 +188,7 @@
           :print-date="printDate"
           :can-write="canWrite"
           :busy="isBulkTarget('peserta', p.student.id)"
+          :locked="bulk.running"
           :generate="() => generateResume('peserta', p.student.id)"
           :save="(payload) => saveResume('peserta', p.student.id, payload)"
         />
@@ -173,6 +213,10 @@ type ResumePayload = { teksId: string; teksJa: string };
 const MODES: Mode[] = ['peserta', 'kelas'];
 // Writing a resume calls Gemini (billed), so only these roles may do it; the server enforces the same rule.
 const WRITER_ROLES = ['admin', 'manager'];
+// Resumes written at the same time in a bulk run: about 3x faster, well under the AI providers' rate limits.
+const BULK_CONCURRENCY = 3;
+// Errors that will fail every remaining resume the same way, so a bulk run stops at the first one.
+const BULK_FATAL_CODES = new Set(['AI_NOT_CONFIGURED', 'AI_ACCESS_DENIED', 'ROLE_NOT_ALLOWED', 'FORBIDDEN_PAGE_ACCESS']);
 
 const route = useRoute();
 const router = useRouter();
@@ -189,7 +233,7 @@ const error = ref('');
 const pesertaData = ref<any>(null);
 const kelasData = ref<any>(null);
 
-const bulk = reactive({ running: false, index: 0, total: 0, scope: '' as Scope | '', id: 0 });
+const bulk = reactive({ running: false, stop: false, done: 0, total: 0, active: [] as string[] });
 
 const canWrite = computed(() => WRITER_ROLES.includes(appStore.user?.role?.kode));
 
@@ -203,16 +247,28 @@ const selectionReady = computed(() => (mode.value === 'kelas' ? !!selectedKelasI
 
 const hasReport = computed(() => (mode.value === 'kelas' ? !!kelasData.value : !!pesertaData.value));
 
-// Resumes that are missing or written from older data, peserta first so the class resume comes last.
-const pendingResumes = computed(() => {
+type ResumeTarget = { scope: Scope; id: number; nama: string; resume: any };
+
+// Every resume of the class bundle: one per peserta, then the class resume.
+const resumeTargets = computed<ResumeTarget[]>(() => {
   if (!kelasData.value) return [];
-  const list: { scope: Scope; id: number; nama: string }[] = kelasData.value.peserta
-    .filter((p: any) => !p.resume || p.resume.usang)
-    .map((p: any) => ({ scope: 'peserta' as Scope, id: p.student.id, nama: p.student.nama }));
-  if (!kelasData.value.resume || kelasData.value.resume.usang) {
-    list.push({ scope: 'kelas', id: kelasData.value.kelas.id, nama: kelasData.value.kelas.namaKelas });
-  }
-  return list;
+  return [
+    ...kelasData.value.peserta.map((p: any) => ({ scope: 'peserta' as Scope, id: p.student.id, nama: p.student.nama, resume: p.resume })),
+    { scope: 'kelas', id: kelasData.value.kelas.id, nama: kelasData.value.kelas.namaKelas, resume: kelasData.value.resume },
+  ];
+});
+
+// Missing, or written from older data.
+const pendingResumes = computed(() => resumeTargets.value.filter((r) => !r.resume || r.resume.usang));
+
+const resumeStatus = computed(() => {
+  const all = resumeTargets.value;
+  return {
+    total: all.length,
+    siap: all.filter((r) => r.resume && !r.resume.usang).length,
+    belum: all.filter((r) => !r.resume).length,
+    usang: all.filter((r) => r.resume?.usang).length,
+  };
 });
 
 const printDate = computed(() =>
@@ -237,7 +293,7 @@ function syncQuery() {
 
 async function loadOptions() {
   try {
-    options.value = await apiRequest('/smart-report/opsi');
+    options.value = await apiRequest('/laporan/opsi');
   } catch (err: any) {
     error.value = errorText(err);
   }
@@ -308,29 +364,63 @@ async function saveResume(scope: Scope, id: number, payload: ResumePayload) {
   }
 }
 
+const targetKey = (scope: Scope, id: number) => `${scope}:${id}`;
+
 function isBulkTarget(scope: Scope, id: number) {
-  return bulk.running && bulk.scope === scope && bulk.id === id;
+  return bulk.active.includes(targetKey(scope, id));
 }
 
-// One request per resume keeps every call well inside the serverless time limit.
-async function generateAll() {
-  const queue = [...pendingResumes.value];
-  Object.assign(bulk, { running: true, index: 0, total: queue.length });
-  let done = 0;
-  try {
-    for (const item of queue) {
-      Object.assign(bulk, { index: done + 1, scope: item.scope, id: item.id });
+/**
+ * Writes the resumes of the class bundle, BULK_CONCURRENCY at a time, one request each so every call stays
+ * inside the serverless time limit. all = rewrite every resume, otherwise only missing and outdated ones.
+ * A failure does not stop the others; pressing the button again retries what is still missing.
+ */
+async function generateAll(all: boolean) {
+  const queue = all ? [...resumeTargets.value] : [...pendingResumes.value];
+  if (!queue.length) return;
+  if (all && !confirm(t('smartReport.konfirmasiBuatUlangSemua', { n: queue.length }))) return;
+
+  Object.assign(bulk, { running: true, stop: false, done: 0, total: queue.length, active: [] });
+  const failed: { nama: string; err: any }[] = [];
+  let next = 0;
+
+  const worker = async () => {
+    while (!bulk.stop && next < queue.length) {
+      const item = queue[next++];
+      const key = targetKey(item.scope, item.id);
+      bulk.active.push(key);
       try {
         applyResume(item.scope, item.id, await apiRequest(`/smart-report/resume/${item.scope}/${item.id}`, { method: 'POST' }));
-        done += 1;
       } catch (err: any) {
-        appStore.notify(t('smartReport.buatSemuaGagal', { nama: item.nama, pesan: errorText(err) }), 'error');
-        return;
+        failed.push({ nama: item.nama, err });
+        if (BULK_FATAL_CODES.has(err?.code)) bulk.stop = true;
+      } finally {
+        bulk.active = bulk.active.filter((k) => k !== key);
+        bulk.done += 1;
       }
     }
-    appStore.notify(t('smartReport.buatSemuaSelesai', { n: done }), 'success');
+  };
+
+  try {
+    await Promise.all(Array.from({ length: Math.min(BULK_CONCURRENCY, queue.length) }, worker));
   } finally {
-    Object.assign(bulk, { running: false, scope: '', id: 0 });
+    const ok = bulk.done - failed.length;
+    if (failed.length) {
+      appStore.notify(
+        t('smartReport.buatSemuaSebagian', {
+          ok,
+          gagal: failed.length,
+          nama: failed.map((f) => f.nama).join(', '),
+          pesan: errorText(failed[0].err),
+        }),
+        'error'
+      );
+    } else if (bulk.stop) {
+      appStore.notify(t('smartReport.buatSemuaDihentikan', { ok }), 'info');
+    } else {
+      appStore.notify(t('smartReport.buatSemuaSelesai', { n: ok }), 'success');
+    }
+    Object.assign(bulk, { running: false, stop: false, active: [] });
   }
 }
 

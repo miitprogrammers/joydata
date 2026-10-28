@@ -134,6 +134,7 @@ export function validateManualPesertaInput(input, existingPesertaList, mancation
       keteranganLuarKelas: input.keteranganLuarKelas,
       alasan: String(input.alasan || '').trim(),
       pendidikanAkhir: String(input.pendidikanAkhir || '').trim(),
+      pendidikanAkhirJa: String(input.pendidikanAkhirJa || '').trim(),
       tanggalMasuk: input.tanggalMasuk || null,
       catatanBebas: String(input.catatanBebas || '').trim(),
     },

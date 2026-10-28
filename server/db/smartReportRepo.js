@@ -190,45 +190,20 @@ function toResumeView(row, currentHash) {
 // ---------------------------------------------------------------------------------------------------------
 
 async function pesertaReport(ctx, student, journey, resumeRow) {
+  const kelas = kelasInfo(ctx, student.kelasId);
   return {
     student: {
       id: student.id,
       nama: namaPeserta(ctx, student),
       mancationAkunId: student.mancationAkunId,
       statusTag: student.statusTag || 'standar',
-      tanggalMasuk: student.tanggalMasuk || null,
+      // Follows the class start date unless set by hand (pesertaRepo.tanggalMasukToStore).
+      tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,
     },
-    kelas: kelasInfo(ctx, student.kelasId),
+    kelas,
     penempatan: await loadPenempatan(student.id, ctx.state),
     ...journey,
     resume: toResumeView(resumeRow, hashFacts(pesertaFacts(ctx, student, journey), PROMPT_VERSION)),
-  };
-}
-
-export async function getSmartReportOptions() {
-  const ctx = createContext(await loadReportState());
-  const peserta = activePeserta(ctx);
-  const kelas = (ctx.state.kelas || [])
-    .filter((k) => !k.deletedAt)
-    .map((k) => ({
-      id: k.id,
-      namaKelas: k.namaKelas,
-      status: k.status,
-      jumlahPeserta: peserta.filter((p) => p.kelasId === k.id).length,
-    }))
-    .sort((a, b) => a.namaKelas.localeCompare(b.namaKelas, undefined, { numeric: true }));
-  const namaKelas = new Map(kelas.map((k) => [k.id, k.namaKelas]));
-  return {
-    kelas,
-    peserta: peserta
-      .map((p) => ({
-        id: p.id,
-        nama: namaPeserta(ctx, p),
-        mancationAkunId: p.mancationAkunId,
-        kelasId: p.kelasId,
-        namaKelas: namaKelas.get(p.kelasId) || '-',
-      }))
-      .sort((a, b) => a.nama.localeCompare(b.nama)),
   };
 }
 

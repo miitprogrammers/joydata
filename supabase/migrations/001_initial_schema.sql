@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS peserta (
   alasan TEXT NOT NULL DEFAULT '',
   tanggal_masuk DATE NULL,
   pendidikan_akhir VARCHAR(160) NOT NULL DEFAULT '',
+  pendidikan_akhir_ja VARCHAR(200) NOT NULL DEFAULT '',
   tanggal_lahir_lokal DATE NULL,
   status_pernikahan_lokal VARCHAR(60) NOT NULL DEFAULT '',
   jumlah_anak_lokal INTEGER NULL,
@@ -85,6 +86,9 @@ CREATE TABLE IF NOT EXISTS peserta (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Added after the first install: Japanese version of pendidikan_akhir for the ja locale and the rapor.
+ALTER TABLE peserta ADD COLUMN IF NOT EXISTS pendidikan_akhir_ja VARCHAR(200) NOT NULL DEFAULT '';
 
 CREATE TABLE IF NOT EXISTS peserta_penempatan (
   peserta_id INTEGER PRIMARY KEY REFERENCES peserta(id) ON DELETE CASCADE,

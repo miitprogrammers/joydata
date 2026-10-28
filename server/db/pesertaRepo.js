@@ -161,6 +161,7 @@ export async function syncMancationAndReconcile() {
         alasan: '',
         tanggalMasuk: null,
         pendidikanAkhir: '',
+        pendidikanAkhirJa: '',
         tanggalLahirLokal: null,
         statusPernikahanLokal: '',
         jumlahAnakLokal: null,
@@ -395,8 +396,12 @@ function mergePesertaWithMancation(pRow, penempatanRow, kelasRow, mancationMap) 
     agamaLokal: pRow.agamaLokal || '',
     daerahAsalLokal: pRow.daerahAsalLokal || '',
     hasMancationBiodata: Boolean(m?.tanggalLahir || m?.daerahAsal),
-    tanggalMasuk: pRow.tanggalMasuk || null,
+    // Follows the start date of the peserta's class until a different date is set by hand.
+    tanggalMasuk: pRow.tanggalMasuk || kelasRow?.tanggalStart || null,
+    tanggalMasukManual: Boolean(pRow.tanggalMasuk),
+    tanggalMulaiKelas: kelasRow?.tanggalStart || null,
     pendidikanAkhir: pRow.pendidikanAkhir || '',
+    pendidikanAkhirJa: pRow.pendidikanAkhirJa || '',
     catatanBebas: pRow.catatanBebas || '',
     penempatan: {
       tanggalLulusUjian: penempatanRow?.tanggalLulusUjian || null,
@@ -433,6 +438,7 @@ export async function listPeserta({ sumber = 'roster', kelasId = null, statusTag
         `SELECT id, mancation_akun_id AS "mancationAkunId", kelas_id AS "kelasId", status_tag AS "statusTag",
                 sumber, keterangan_luar_kelas AS "keteranganLuarKelas", alasan,
                 tanggal_masuk::text AS "tanggalMasuk", pendidikan_akhir AS "pendidikanAkhir",
+                pendidikan_akhir_ja AS "pendidikanAkhirJa",
                 tanggal_lahir_lokal::text AS "tanggalLahirLokal", status_pernikahan_lokal AS "statusPernikahanLokal",
                 jumlah_anak_lokal AS "jumlahAnakLokal", agama_lokal AS "agamaLokal",
                 daerah_asal_lokal AS "daerahAsalLokal", catatan_bebas AS "catatanBebas"
@@ -445,7 +451,10 @@ export async function listPeserta({ sumber = 'roster', kelasId = null, statusTag
                 prefektur_id AS "prefekturId", lokasi_kerja AS "lokasiKerja",
                 rencana_mulai_kerja::text AS "rencanaMulaiKerja" FROM peserta_penempatan`
       ),
-      pool.query(`SELECT id, nama_kelas AS "namaKelas", mancation_class_id AS "mancationClassId" FROM kelas WHERE deleted_at IS NULL`),
+      pool.query(
+        `SELECT id, nama_kelas AS "namaKelas", mancation_class_id AS "mancationClassId", tanggal_start::text AS "tanggalStart"
+         FROM kelas WHERE deleted_at IS NULL`
+      ),
     ]);
 
     const penMap = new Map(penRes.rows.map((r) => [Number(r.pesertaId), r]));
@@ -540,6 +549,11 @@ function cleanOptionalDate(v) {
   return /^\d{4}-\d{2}-\d{2}$/.test(s) ? s : null;
 }
 
+// Only a date that differs from the class start is stored, so an unchanged peserta keeps following the class.
+function tanggalMasukToStore(tanggalMasuk, tanggalMulaiKelas) {
+  return tanggalMasuk && tanggalMasuk !== tanggalMulaiKelas ? tanggalMasuk : null;
+}
+
 export async function updatePesertaSupplementAndPenempatan(pesertaId, payload, actor) {
   await ensureInitialized();
   const id = Number(pesertaId);
@@ -547,6 +561,8 @@ export async function updatePesertaSupplementAndPenempatan(pesertaId, payload, a
 
   const tanggalMasuk = cleanOptionalDate(payload.tanggalMasuk);
   const pendidikanAkhir = String(payload.pendidikanAkhir || '').trim();
+  // Left out by clients that predate the field: keep the stored value instead of clearing it.
+  const pendidikanAkhirJa = payload.pendidikanAkhirJa !== undefined ? String(payload.pendidikanAkhirJa || '').trim() : undefined;
   const catatanBebas = String(payload.catatanBebas || '').trim();
   const tanggalLahirLokal = cleanOptionalDate(payload.tanggalLahirLokal);
   const statusPernikahanLokal = String(payload.statusPernikahanLokal || '').trim();
@@ -572,9 +588,15 @@ export async function updatePesertaSupplementAndPenempatan(pesertaId, payload, a
 
   if (getMode() === 'postgres') {
     const pool = getPool();
-    const pCheck = await pool.query(`SELECT id, sumber, keterangan_luar_kelas, alasan FROM peserta WHERE id = $1`, [id]);
+    const pCheck = await pool.query(
+      `SELECT p.id, p.sumber, p.keterangan_luar_kelas, p.alasan, k.tanggal_start::text AS tanggal_mulai_kelas
+       FROM peserta p LEFT JOIN kelas k ON k.id = p.kelas_id AND k.deleted_at IS NULL
+       WHERE p.id = $1`,
+      [id]
+    );
     if (pCheck.rows.length === 0) throw new Error('NOT_FOUND');
     const cur = pCheck.rows[0];
+    const tanggalMasukDisimpan = tanggalMasukToStore(tanggalMasuk, cur.tanggal_mulai_kelas);
     const nextKet = cur.sumber === 'manual' && keteranganLuarKelas ? keteranganLuarKelas : cur.keterangan_luar_kelas;
     const nextAlasan = cur.sumber === 'manual' && alasan !== undefined ? alasan : cur.alasan;
 
@@ -583,9 +605,10 @@ export async function updatePesertaSupplementAndPenempatan(pesertaId, payload, a
        SET tanggal_masuk = $1, pendidikan_akhir = $2, catatan_bebas = $3,
            tanggal_lahir_lokal = $4, status_pernikahan_lokal = $5, jumlah_anak_lokal = $6,
            agama_lokal = $7, daerah_asal_lokal = $8,
-           keterangan_luar_kelas = $9, alasan = $10, updated_at = NOW()
+           keterangan_luar_kelas = $9, alasan = $10, pendidikan_akhir_ja = COALESCE($12, pendidikan_akhir_ja),
+           updated_at = NOW()
        WHERE id = $11`,
-      [tanggalMasuk, pendidikanAkhir, catatanBebas, tanggalLahirLokal, statusPernikahanLokal, jumlahAnakLokal, agamaLokal, daerahAsalLokal, nextKet, nextAlasan, id]
+      [tanggalMasukDisimpan, pendidikanAkhir, catatanBebas, tanggalLahirLokal, statusPernikahanLokal, jumlahAnakLokal, agamaLokal, daerahAsalLokal, nextKet, nextAlasan, id, pendidikanAkhirJa ?? null]
     );
 
     await pool.query(
@@ -607,8 +630,10 @@ export async function updatePesertaSupplementAndPenempatan(pesertaId, payload, a
   const target = db.peserta.find((p) => p.id === id);
   if (!target) throw new Error('NOT_FOUND');
 
-  target.tanggalMasuk = tanggalMasuk;
+  const kelasTarget = db.kelas.find((k) => k.id === target.kelasId && !k.deletedAt);
+  target.tanggalMasuk = tanggalMasukToStore(tanggalMasuk, kelasTarget?.tanggalStart || null);
   target.pendidikanAkhir = pendidikanAkhir;
+  if (pendidikanAkhirJa !== undefined) target.pendidikanAkhirJa = pendidikanAkhirJa;
   target.catatanBebas = catatanBebas;
   target.tanggalLahirLokal = tanggalLahirLokal;
   target.statusPernikahanLokal = statusPernikahanLokal;
@@ -738,9 +763,9 @@ export async function createPesertaLuarKelas(payload, actor) {
   if (getMode() === 'postgres') {
     const res = await getPool().query(
       `INSERT INTO peserta
-        (mancation_akun_id, kelas_id, status_tag, sumber, keterangan_luar_kelas, alasan, tanggal_masuk, pendidikan_akhir, catatan_bebas)
-       VALUES ($1, NULL, $2, 'manual', $3, $4, $5, $6, $7) RETURNING id`,
-      [norm.mancationAkunId, norm.statusTag, norm.keteranganLuarKelas, norm.alasan, norm.tanggalMasuk, norm.pendidikanAkhir, norm.catatanBebas]
+        (mancation_akun_id, kelas_id, status_tag, sumber, keterangan_luar_kelas, alasan, tanggal_masuk, pendidikan_akhir, pendidikan_akhir_ja, catatan_bebas)
+       VALUES ($1, NULL, $2, 'manual', $3, $4, $5, $6, $7, $8) RETURNING id`,
+      [norm.mancationAkunId, norm.statusTag, norm.keteranganLuarKelas, norm.alasan, norm.tanggalMasuk, norm.pendidikanAkhir, norm.pendidikanAkhirJa, norm.catatanBebas]
     );
     await appendAudit(actor, 'CREATE_PESERTA_LUAR', 'peserta', res.rows[0].id, {
       mancationAkunId: norm.mancationAkunId,
@@ -762,6 +787,7 @@ export async function createPesertaLuarKelas(payload, actor) {
     alasan: norm.alasan,
     tanggalMasuk: norm.tanggalMasuk,
     pendidikanAkhir: norm.pendidikanAkhir,
+    pendidikanAkhirJa: norm.pendidikanAkhirJa,
     tanggalLahirLokal: null,
     statusPernikahanLokal: '',
     jumlahAnakLokal: null,

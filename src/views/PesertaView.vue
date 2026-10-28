@@ -102,7 +102,8 @@
                 {{ p.tanggalMasuk || '-' }}
               </td>
               <td class="px-4 py-2.5 text-slate-700">
-                {{ p.pendidikanAkhir || '-' }}
+                {{ pendidikanBaris(p)[0] || '-' }}
+                <div v-if="pendidikanBaris(p)[1]" class="text-xs text-slate-500">{{ pendidikanBaris(p)[1] }}</div>
               </td>
               <td class="px-4 py-2.5">
                 <template v-if="p.penempatan?.perusahaanNaitei">
@@ -159,6 +160,12 @@ import PesertaDetailDialog from '../components/PesertaDetailDialog.vue';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
+
+// Both languages are shown: the active locale's text first, the other one below it.
+function pendidikanBaris(p) {
+  const baris = locale.value === 'ja' ? [p.pendidikanAkhirJa, p.pendidikanAkhir] : [p.pendidikanAkhir, p.pendidikanAkhirJa];
+  return baris.filter(Boolean);
+}
 
 const loading = ref(true);
 const syncing = ref(false);

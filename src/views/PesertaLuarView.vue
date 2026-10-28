@@ -94,7 +94,10 @@
               <td class="px-4 py-2.5 text-xs font-semibold text-slate-700 whitespace-nowrap">
                 {{ $t(`luarTypes.${p.keteranganLuarKelas || 'alumni'}`) }}
               </td>
-              <td class="px-4 py-2.5 text-slate-700">{{ p.pendidikanAkhir || '-' }}</td>
+              <td class="px-4 py-2.5 text-slate-700">
+                {{ pendidikanBaris(p)[0] || '-' }}
+                <div v-if="pendidikanBaris(p)[1]" class="text-xs text-slate-500">{{ pendidikanBaris(p)[1] }}</div>
+              </td>
               <td class="px-4 py-2.5">
                 <template v-if="p.penempatan?.perusahaanNaitei">
                   <div class="text-sm font-medium text-slate-900 truncate max-w-xs">
@@ -221,6 +224,14 @@
             hide-details="auto"
           />
 
+          <v-text-field
+            v-model="addForm.pendidikanAkhirJa"
+            :label="$t('peserta.pendidikanAkhirJa')"
+            variant="outlined"
+            density="comfortable"
+            hide-details="auto"
+          />
+
           <v-textarea
             v-model="addForm.alasan"
             :label="$t('pesertaLuar.colAlasan')"
@@ -273,6 +284,12 @@ import PesertaDetailDialog from '../components/PesertaDetailDialog.vue';
 const { t, locale } = useI18n();
 const appStore = useAppStore();
 
+// Both languages are shown: the active locale's text first, the other one below it.
+function pendidikanBaris(p) {
+  const baris = locale.value === 'ja' ? [p.pendidikanAkhirJa, p.pendidikanAkhir] : [p.pendidikanAkhir, p.pendidikanAkhirJa];
+  return baris.filter(Boolean);
+}
+
 const loading = ref(true);
 const items = ref([]);
 const syncMeta = ref(null);
@@ -291,6 +308,7 @@ const addForm = ref({
   keteranganLuarKelas: 'alumni',
   tanggalMasuk: '',
   pendidikanAkhir: '',
+  pendidikanAkhirJa: '',
   alasan: '',
 });
 
@@ -347,6 +365,7 @@ function openAddDialog() {
     keteranganLuarKelas: 'cuti',
     tanggalMasuk: '',
     pendidikanAkhir: '',
+    pendidikanAkhirJa: '',
     alasan: '',
   };
   addDialog.value = true;

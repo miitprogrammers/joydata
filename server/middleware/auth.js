@@ -56,13 +56,14 @@ export async function requireAuth(req, res, next) {
   }
 }
 
-export function requirePageAccess(pageKode) {
+/** Allows the request when the role may open any one of the given pages. */
+export function requirePageAccess(...pageKodes) {
   return (req, res, next) => {
     const allowedKodes = (req.user?.allowedPages || []).map((p) => p.kode);
-    if (!canAccessPage(allowedKodes, pageKode)) {
+    if (!pageKodes.some((kode) => canAccessPage(allowedKodes, kode))) {
       return res.status(403).json({
         error: 'FORBIDDEN_PAGE_ACCESS',
-        pageKode,
+        pageKode: pageKodes.join('|'),
       });
     }
     return next();

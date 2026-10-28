@@ -71,6 +71,7 @@ const TABLES = [
     id: (r) => r.id, mancation_akun_id: (r) => r.mancationAkunId, kelas_id: (r) => orNull(r.kelasId), status_tag: (r) => str(r.statusTag),
     sumber: (r) => str(r.sumber), keterangan_luar_kelas: (r) => orNull(r.keteranganLuarKelas), alasan: (r) => str(r.alasan),
     tanggal_masuk: (r) => orNull(r.tanggalMasuk), pendidikan_akhir: (r) => str(r.pendidikanAkhir),
+    pendidikan_akhir_ja: (r) => str(r.pendidikanAkhirJa),
     tanggal_lahir_lokal: (r) => orNull(r.tanggalLahirLokal), status_pernikahan_lokal: (r) => str(r.statusPernikahanLokal),
     jumlah_anak_lokal: (r) => num(r.jumlahAnakLokal), agama_lokal: (r) => str(r.agamaLokal),
     daerah_asal_lokal: (r) => str(r.daerahAsalLokal), catatan_bebas: (r) => str(r.catatanBebas),

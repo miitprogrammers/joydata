@@ -9,7 +9,7 @@
         <button
           type="button"
           class="joy-btn-secondary text-[11px] py-1 px-2.5"
-          :disabled="isBusy"
+          :disabled="isBusy || locked"
           @click="startEdit"
         >
           {{ resume ? $t('smartReport.resumeEdit') : $t('smartReport.resumeTulisManual') }}
@@ -17,7 +17,7 @@
         <button
           type="button"
           class="joy-btn-primary text-[11px] py-1 px-2.5 flex items-center gap-1"
-          :disabled="isBusy"
+          :disabled="isBusy || locked"
           @click="runGenerate"
         >
           <v-icon icon="mdi-creation" size="14" />
@@ -112,6 +112,8 @@ const props = defineProps<{
   canWrite: boolean;
   // Set by the parent while it writes this resume as part of a bulk run.
   busy?: boolean;
+  // Set by the parent during a bulk run, so no resume is written twice at the same time.
+  locked?: boolean;
   generate: () => Promise<void>;
   save: (payload: { teksId: string; teksJa: string }) => Promise<void>;
 }>();

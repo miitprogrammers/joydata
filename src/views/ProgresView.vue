@@ -485,10 +485,11 @@ const filteredPesertaList = computed(() => {
   return pesertaList.value;
 });
 
+// From the report pickers endpoint: /kelas belongs to Data Kelas, which a role with only Progres access cannot open.
 async function fetchClasses() {
   try {
-    const data = await apiRequest('/kelas');
-    kelasList.value = data.items || [];
+    const data = await apiRequest('/laporan/opsi');
+    kelasList.value = data.kelas || [];
   } catch (err: any) {
     console.error('Failed to load classes', err);
   }

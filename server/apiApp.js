@@ -60,6 +60,7 @@ import {
   resetSystemSettings,
   getDashboardChartsData,
   exportAkademikData,
+  getReportOptions,
 } from './db/fase3Repo.js';
 import {
   getVapidPublicKey,
@@ -71,7 +72,6 @@ import {
   runPengingatAbsensiCron,
 } from './db/fase4Repo.js';
 import {
-  getSmartReportOptions,
   getSmartReportPeserta,
   getSmartReportKelas,
   generateSmartResume,
@@ -706,6 +706,20 @@ export function createApiRouter() {
     }
   });
 
+  // Class & peserta pickers shared by the report pages, so a role with only report access can still choose
+  router.get(
+    '/laporan/opsi',
+    requireAuth,
+    requirePageAccess('progres-peserta', 'rapor-peserta', 'smart-report'),
+    async (_req, res) => {
+      try {
+        return res.json(await getReportOptions());
+      } catch (err) {
+        return handleRouteError(res, err);
+      }
+    }
+  );
+
   // Fase 3 Endpoints: Rapor Peserta (§14.2 mainIdea.md)
   router.get('/rapor/:pesertaId', requireAuth, requirePageAccess('rapor-peserta'), async (req, res) => {
     try {
@@ -721,14 +735,6 @@ export function createApiRouter() {
 
   // Smart Report: full-journey bundle per peserta or per class, with an AI resume (Gemini).
   // Everyone with page access can read and print; only admin and manager write resumes (each call is billed).
-  router.get('/smart-report/opsi', requireAuth, requirePageAccess('smart-report'), async (_req, res) => {
-    try {
-      return res.json(await getSmartReportOptions());
-    } catch (err) {
-      return handleRouteError(res, err);
-    }
-  });
-
   router.get('/smart-report/peserta/:id', requireAuth, requirePageAccess('smart-report'), async (req, res) => {
     try {
       return res.json(await getSmartReportPeserta({ pesertaId: req.params.id }));

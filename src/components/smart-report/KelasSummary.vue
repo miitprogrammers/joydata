@@ -33,6 +33,7 @@
       :resume="resume"
       :can-write="canWrite"
       :busy="busy"
+      :locked="locked"
       :generate="generate"
       :save="save"
     />
@@ -149,6 +150,7 @@ const props = defineProps<{
   printDate: string;
   canWrite: boolean;
   busy?: boolean;
+  locked?: boolean;
   generate: () => Promise<void>;
   save: (payload: { teksId: string; teksJa: string }) => Promise<void>;
 }>();

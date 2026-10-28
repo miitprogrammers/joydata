@@ -37,9 +37,13 @@
                 v-model="form.tanggalMasuk"
                 type="date"
                 :label="$t('peserta.tanggalMasuk')"
+                :hint="tanggalMasukHint"
+                persistent-hint
+                :append-inner-icon="tanggalMasukBedaKelas ? 'mdi-restore' : undefined"
                 variant="outlined"
                 density="comfortable"
                 hide-details="auto"
+                @click:append-inner="form.tanggalMasuk = detail.tanggalMulaiKelas"
               />
               <v-text-field
                 v-model="form.pendidikanAkhir"
@@ -47,6 +51,14 @@
                 variant="outlined"
                 density="comfortable"
                 hide-details="auto"
+              />
+              <v-text-field
+                v-model="form.pendidikanAkhirJa"
+                :label="$t('peserta.pendidikanAkhirJa')"
+                variant="outlined"
+                density="comfortable"
+                hide-details="auto"
+                class="md:col-span-2"
               />
 
               <template v-if="detail.sumber === 'manual'">
@@ -301,6 +313,7 @@ const savingTag = ref(false);
 const form = ref({
   tanggalMasuk: '',
   pendidikanAkhir: '',
+  pendidikanAkhirJa: '',
   catatanBebas: '',
   keteranganLuarKelas: 'alumni',
   alasan: '',
@@ -330,6 +343,23 @@ const tagOptions = computed(() => [
   { value: 'siap_interview', label: t('tags.siap_interview') },
 ]);
 
+// Tanggal masuk follows the class start date; the server stores it only when it is set to a different date.
+const tanggalMasukBedaKelas = computed(() =>
+  Boolean(
+    detail.value?.tanggalMulaiKelas &&
+      form.value.tanggalMasuk &&
+      form.value.tanggalMasuk !== detail.value.tanggalMulaiKelas
+  )
+);
+
+const tanggalMasukHint = computed(() => {
+  const tanggal = detail.value?.tanggalMulaiKelas;
+  if (!tanggal) return '';
+  return tanggalMasukBedaKelas.value
+    ? t('peserta.tanggalMasukManual', { tanggal })
+    : t('peserta.tanggalMasukIkutKelas', { tanggal });
+});
+
 const luarOptions = computed(() => [
   { value: 'alumni', label: t('luarTypes.alumni') },
   { value: 'cuti', label: t('luarTypes.cuti') },
@@ -348,6 +378,7 @@ function populateForm(d) {
   form.value = {
     tanggalMasuk: d.tanggalMasuk || '',
     pendidikanAkhir: d.pendidikanAkhir || '',
+    pendidikanAkhirJa: d.pendidikanAkhirJa || '',
     catatanBebas: d.catatanBebas || '',
     keteranganLuarKelas: d.keteranganLuarKelas || 'alumni',
     alasan: d.alasan || '',
