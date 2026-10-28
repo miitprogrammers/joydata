@@ -39,9 +39,17 @@
         "nama": "Ujian Kotoba Minggu 3 (Bab 13-18)",
         "folder": "M003 - Kotoba Minggu 3",
         "tanggal": "2026-08-11",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-08-11", "Varian B dibuat 2026-08-12 dan kertas Varian B peserta bertanggal 2026-08-12, jadi ujian utama kemungkinan sehari sebelumnya"],
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-08-11", "Varian B dibuat 2026-08-12 dan kertas Varian B peserta bertanggal 2026-08-12, jadi ujian utama kemungkinan sehari sebelumnya", "Tanggal dikonfirmasi pengguna 2026-10-28"],
         "remed": [{ "tanggal": "2026-08-12", "keterangan": "Varian B (tanggal di kertas peserta)" }]
+      },
+      {
+        "kode": "BK01",
+        "nama": "Ujian Bunpou & Kanji Bab 1-9 (Tes Progres)",
+        "folder": "BK01 - Bunpou & Kanji Bab 1-9",
+        "tanggal": "2026-08-28",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-08-27", "Kertas Joy 1 tanpa kolom tanggal; kertas Joy 2 bertanggal 2026-08-28 (3 peserta) dan ujian Joy 1 & Joy 2 biasanya bersamaan", "Ada di unggahan 17 peserta Joy 1 (2026-10-28)", "Tanggal dikonfirmasi pengguna 2026-10-28"]
       },
       {
         "kode": "M009",
@@ -116,16 +124,48 @@
         "nama": "Ujian Kotoba Minggu 3 (Bab 13-18)",
         "folder": "M003 - Kotoba Minggu 3",
         "tanggal": "2026-08-11",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-08-11", "Ujian kotoba mingguan Joy 2 selalu bersamaan dengan Joy 1"]
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-08-11", "Ujian kotoba mingguan Joy 2 selalu bersamaan dengan Joy 1", "Tanggal dikonfirmasi pengguna 2026-10-28"]
+      },
+      {
+        "kode": "BK01",
+        "nama": "Ujian Bunpou & Kanji Bab 1-9 (Tes Progres)",
+        "folder": "BK01 - Bunpou & Kanji Bab 1-9",
+        "tanggal": "2026-08-28",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-08-27", "Kertas peserta: 28/08/2026, 2026/08/28 (3 peserta)"]
+      },
+      {
+        "kode": "M009",
+        "nama": "Ujian Bunpou & Kanji Minggu 9, Tes Progres 1 (Bab 1-15)",
+        "folder": "M009 - Bunpou & Kanji Minggu 9",
+        "tanggal": "2026-09-08",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-08 (kertas sama dengan Joy 1)", "Kertas peserta: 08-09-2026"]
+      },
+      {
+        "kode": "M011",
+        "nama": "Ujian Bunpou & Kanji Minggu 11 (Bab 16-21)",
+        "folder": "M011 - Bunpou & Kanji Minggu 11",
+        "tanggal": "2026-09-11",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-11 (kertas sama dengan Joy 1)", "Kertas Joy 2 tanpa kolom tanggal; disamakan dengan Joy 1", "Tanggal dikonfirmasi pengguna 2026-10-28"]
+      },
+      {
+        "kode": "CP01",
+        "nama": "Shiken Komprehensif Bunpou & Kanji Bab 1-25",
+        "folder": "CP01 - Shiken Komprehensif Bab 1-25",
+        "tanggal": "2026-09-18",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-18 (kertas sama dengan Joy 1)", "Kertas Joy 2 tanpa kolom tanggal; disamakan dengan Joy 1", "Tanggal dikonfirmasi pengguna 2026-10-28"]
       },
       {
         "kode": "CP02",
         "nama": "Simulasi JLPT N5 (漢字入り)",
         "folder": "CP02 - Simulasi JLPT N5",
         "tanggal": "2026-09-29",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-09-29", "Chat 01-10: papan peringkat & simulasi pemecahan kelas mencakup lebih dari satu kelas"]
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-29", "Chat 01-10: papan peringkat & simulasi pemecahan kelas mencakup lebih dari satu kelas", "Tanggal dikonfirmasi pengguna 2026-10-28"]
       },
       {
         "kode": "N5TO",
@@ -146,40 +186,44 @@
     ],
     "Joy 3": [
       {
-        "kode": "QZ01",
-        "nama": "Quiz Kotoba Minggu 1",
-        "folder": "QZ01 - Quiz Kotoba Minggu 1",
-        "tanggal": null,
-        "tanggalMinimal": "2026-08-26",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-08-26", "Kelas dugaan: materi paling awal, Joy 3 mulai 2026-08-09"]
+        "kode": "M001",
+        "nama": "Ujian Kotoba Minggu 1 (Bab 1-6)",
+        "folder": "M001 - Kotoba Minggu 1",
+        "tanggal": "2026-08-27",
+        "status": "pasti",
+        "sumber": ["Kertas peserta: 27-08-2026, 27 Agustus 2026 (3 peserta)", "Kertas sama dengan M001 Joy 1/2; dulu dipetakan sebagai QZ01 Quiz Kotoba Minggu 1 (folder diganti nama 2026-10-28)"]
       },
       {
-        "kode": "QZ02",
-        "nama": "Quiz Kotoba Bab 4-7",
-        "folder": "QZ02 - Quiz Kotoba Bab 4-7",
-        "tanggal": null,
-        "tanggalMinimal": "2026-08-28",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-08-28", "Kelas dugaan"]
+        "kode": "M002",
+        "nama": "Ujian Kotoba Minggu 2 (Bab 7-12)",
+        "folder": "M002 - Kotoba Minggu 2",
+        "tanggal": "2026-09-08",
+        "status": "pasti",
+        "sumber": ["Kertas peserta: 8-09-2026, 8 September 2026 (5 peserta)", "Kertas sama dengan M002 Joy 1/2; dulu dipetakan sebagai QZ02 Quiz Kotoba Bab 4-7"]
+      },
+      {
+        "kode": "M003",
+        "nama": "Ujian Kotoba Minggu 3 (Bab 13-18)",
+        "folder": "M003 - Kotoba Minggu 3",
+        "tanggal": "2026-09-14",
+        "status": "pasti",
+        "sumber": ["Kertas peserta: 14-09-2026 (4 peserta)", "Kertas sama dengan M003 Joy 1/2"]
       },
       {
         "kode": "SB01",
         "nama": "Shiken Bunpou Bab 1-4",
         "folder": "SB01 - Shiken Bunpou Bab 1-4",
-        "tanggal": null,
-        "tanggalMinimal": "2026-09-18",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-09-18", "Kelas dugaan: berurutan dengan Shiken Bunpou Bab 1-15 Joy 3"]
+        "tanggal": "2026-09-18",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-18", "Kertas peserta: 18-09-2026"]
       },
       {
         "kode": "SB02",
         "nama": "Shiken Bunpou Bab 5-9",
         "folder": "SB02 - Shiken Bunpou Bab 5-9",
-        "tanggal": null,
-        "tanggalMinimal": "2026-09-29",
-        "status": "kemungkinan",
-        "sumber": ["Dokumen dibuat 2026-09-29", "Kelas dugaan: berurutan dengan Shiken Bunpou Bab 1-15 Joy 3"]
+        "tanggal": "2026-09-29",
+        "status": "pasti",
+        "sumber": ["Dokumen dibuat 2026-09-29", "Kertas peserta: 29-09-2026 (2 peserta)"]
       },
       {
         "kode": "SB03",
@@ -187,13 +231,13 @@
         "folder": "SB03 - Shiken Bunpou Bab 1-15",
         "tanggal": "2026-10-09",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-10-06", "Chat 08-10: Joy 3 Shiken M1-15 Bunpou (besok)"]
+        "sumber": ["Dokumen dibuat 2026-10-06", "Chat 08-10: Joy 3 Shiken M1-15 Bunpou (besok)", "Kertas peserta: 9-10-2026"]
       }
     ]
   },
   "belumDipetakan": [
-    { "nama": "Ujian Bunpou & Kanji Bab 1-9", "dokumenDibuat": "2026-08-27", "catatan": "Kelas tidak diketahui" },
-    { "nama": "Ujian Bunpou & Kanji Minggu 10", "dokumenDibuat": "2026-09-11", "catatan": "Kelas tidak diketahui; dibuat bersamaan dengan Minggu 11 Joy 1, mungkin Joy 2" },
-    { "nama": "Ujian Joy 2 setelah Agustus (M009-M011, CP01)", "dokumenDibuat": null, "catatan": "Tidak ada informasi di dokumen maupun chat" }
+    { "nama": "Ujian Bunpou & Kanji Minggu 10", "dokumenDibuat": "2026-09-11", "catatan": "Tidak ada di unggahan peserta mana pun (2026-10-28)" },
+    { "nama": "Quiz Kotoba Minggu 1", "dokumenDibuat": "2026-08-26", "catatan": "Tidak ada di unggahan peserta; Joy 3 memakai Ujian Kotoba Minggu 1 (M001)" },
+    { "nama": "Quiz Kotoba Bab 4-7", "dokumenDibuat": "2026-08-28", "catatan": "Tidak ada di unggahan peserta; Joy 3 memakai Ujian Kotoba Minggu 2 (M002)" }
   ]
 }
