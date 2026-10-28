@@ -43,7 +43,99 @@ async function getSnapshotFallbackFromDb() {
   };
 }
 
-export async function syncMancationAndReconcile() {
+// Page loads read Mancation live at most once per window and reuse the roster of the last live sync in between;
+// the Sinkron button and kelas changes pass force to read live right away.
+const MANCATION_SYNC_TTL_MS = 10 * 60 * 1000;
+let pendingSync = null;
+
+export function syncMancationAndReconcile({ force = false } = {}) {
+  if (force) return runMancationSync(true);
+  // Lists loaded together (roster, manual, kelas) share one run instead of syncing several times.
+  pendingSync ||= runMancationSync(false).finally(() => {
+    pendingSync = null;
+  });
+  return pendingSync;
+}
+
+// The roster written by the last live sync, or null once that sync is older than the window.
+// Students cached by an earlier sync who have since left the class are not part of it.
+function recentRosterFromCache(snapshot, activeClassIds) {
+  const syncedByClass = new Map(snapshot.classes.map((c) => [Number(c.mancationClassId), new Date(c.syncedAt).getTime()]));
+  const times = activeClassIds.map((id) => syncedByClass.get(id));
+  if (times.some((t) => !t)) return null;
+  const oldest = Math.min(...times);
+  if (Date.now() - oldest > MANCATION_SYNC_TTL_MS) return null;
+  return {
+    source: 'cache',
+    configured: true,
+    syncedAt: new Date(oldest).toISOString(),
+    errorMessage: null,
+    classes: snapshot.classes,
+    students: snapshot.students.filter(
+      (s) => activeClassIds.includes(Number(s.mancationClassId)) && new Date(s.syncedAt).getTime() >= oldest
+    ),
+  };
+}
+
+function valuesWithNow(rowCount, width) {
+  return Array.from({ length: rowCount }, (_, r) => {
+    const cols = Array.from({ length: width }, (_, c) => `$${r * width + c + 1}`);
+    return `(${cols.join(', ')}, NOW())`;
+  }).join(', ');
+}
+
+// One transaction, so every row of a live sync carries the same synced_at (recentRosterFromCache relies on it).
+async function writeMancationCache(pool, { classes, students }) {
+  const classRows = [...new Map(classes.map((c) => [Number(c.mancationClassId), c])).values()];
+  const studentRows = [...new Map(students.map((s) => [Number(s.mancationAkunId), s])).values()];
+  const client = await pool.connect();
+  try {
+    await client.query('BEGIN');
+    if (studentRows.length > 0) {
+      await client.query(
+        `INSERT INTO mancation_peserta_cache
+          (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, synced_at)
+         VALUES ${valuesWithNow(studentRows.length, 10)}
+         ON CONFLICT (mancation_akun_id) DO UPDATE SET
+           mancation_class_id = EXCLUDED.mancation_class_id, nama = EXCLUDED.nama,
+           email = EXCLUDED.email, whatsapp = EXCLUDED.whatsapp,
+           tanggal_lahir = EXCLUDED.tanggal_lahir, status_pernikahan = EXCLUDED.status_pernikahan,
+           jumlah_anak = EXCLUDED.jumlah_anak, agama = EXCLUDED.agama,
+           alamat = EXCLUDED.alamat, synced_at = NOW()`,
+        studentRows.flatMap((ms) => [
+          ms.mancationAkunId,
+          ms.mancationClassId,
+          ms.nama,
+          ms.email || '',
+          ms.whatsapp || '',
+          ms.tanggalLahir || null,
+          ms.statusPernikahan || '',
+          ms.jumlahAnak ?? null,
+          ms.agama || '',
+          ms.daerahAsal || '',
+        ])
+      );
+    }
+    if (classRows.length > 0) {
+      await client.query(
+        `INSERT INTO mancation_kelas_cache (mancation_class_id, nama_kelas, program_studi, class_stat, synced_at)
+         VALUES ${valuesWithNow(classRows.length, 4)}
+         ON CONFLICT (mancation_class_id) DO UPDATE SET
+           nama_kelas = EXCLUDED.nama_kelas, program_studi = EXCLUDED.program_studi,
+           class_stat = EXCLUDED.class_stat, synced_at = NOW()`,
+        classRows.flatMap((mc) => [mc.mancationClassId, mc.namaKelas, mc.programStudi || '', mc.classStat || 1])
+      );
+    }
+    await client.query('COMMIT');
+  } catch (err) {
+    await client.query('ROLLBACK');
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
+async function runMancationSync(force) {
   await ensureInitialized();
 
   let activeClassIds = [139, 142, 144];
@@ -66,7 +158,9 @@ export async function syncMancationAndReconcile() {
   }
 
   const snapshotFallback = await getSnapshotFallbackFromDb();
-  const mancationData = await fetchMancationRoster(activeClassIds, snapshotFallback);
+  const mancationData =
+    (!force && recentRosterFromCache(snapshotFallback, activeClassIds)) ||
+    (await fetchMancationRoster(activeClassIds, snapshotFallback));
 
   const kelasByMancationId = new Map(
     allLocalKelas.filter((k) => k.mancationClassId).map((k) => [Number(k.mancationClassId), k])
@@ -75,41 +169,7 @@ export async function syncMancationAndReconcile() {
   if (getMode() === 'postgres') {
     const pool = getPool();
     if (mancationData.source === 'live') {
-      for (const mc of mancationData.classes) {
-        await pool.query(
-          `INSERT INTO mancation_kelas_cache (mancation_class_id, nama_kelas, program_studi, class_stat, synced_at)
-           VALUES ($1, $2, $3, $4, NOW())
-           ON CONFLICT (mancation_class_id) DO UPDATE SET
-             nama_kelas = EXCLUDED.nama_kelas, program_studi = EXCLUDED.program_studi,
-             class_stat = EXCLUDED.class_stat, synced_at = NOW()`,
-          [mc.mancationClassId, mc.namaKelas, mc.programStudi || '', mc.classStat || 1]
-        );
-      }
-      for (const ms of mancationData.students) {
-        await pool.query(
-          `INSERT INTO mancation_peserta_cache
-            (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, synced_at)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())
-           ON CONFLICT (mancation_akun_id) DO UPDATE SET
-             mancation_class_id = EXCLUDED.mancation_class_id, nama = EXCLUDED.nama,
-             email = EXCLUDED.email, whatsapp = EXCLUDED.whatsapp,
-             tanggal_lahir = EXCLUDED.tanggal_lahir, status_pernikahan = EXCLUDED.status_pernikahan,
-             jumlah_anak = EXCLUDED.jumlah_anak, agama = EXCLUDED.agama,
-             alamat = EXCLUDED.alamat, synced_at = NOW()`,
-          [
-            ms.mancationAkunId,
-            ms.mancationClassId,
-            ms.nama,
-            ms.email || '',
-            ms.whatsapp || '',
-            ms.tanggalLahir || null,
-            ms.statusPernikahan || '',
-            ms.jumlahAnak ?? null,
-            ms.agama || '',
-            ms.daerahAsal || '',
-          ]
-        );
-      }
+      await writeMancationCache(pool, mancationData);
     }
 
     const existingRes = await pool.query(
@@ -270,7 +330,7 @@ export async function createKelas(payload, actor) {
       [namaKelas, programId, tanggalStart, description, mancationClassId, senseiId, status]
     );
     await appendAudit(actor, 'CREATE_KELAS', 'kelas', res.rows[0].id, { namaKelas, mancationClassId });
-    await syncMancationAndReconcile();
+    await syncMancationAndReconcile({ force: true });
     return res.rows[0];
   }
 
@@ -293,7 +353,7 @@ export async function createKelas(payload, actor) {
   db.kelas.push(row);
   appendLocalAudit(db, actor, 'CREATE_KELAS', 'kelas', row.id, { namaKelas, mancationClassId });
   saveLocalState();
-  await syncMancationAndReconcile();
+  await syncMancationAndReconcile({ force: true });
   return row;
 }
 
@@ -323,7 +383,7 @@ export async function updateKelas(kelasId, payload, actor) {
     );
     if (res.rows.length === 0) throw new Error('NOT_FOUND');
     await appendAudit(actor, 'UPDATE_KELAS', 'kelas', id, { namaKelas, mancationClassId, status });
-    await syncMancationAndReconcile();
+    await syncMancationAndReconcile({ force: true });
     return res.rows[0];
   }
 
@@ -342,7 +402,7 @@ export async function updateKelas(kelasId, payload, actor) {
   target.status = status;
   appendLocalAudit(db, actor, 'UPDATE_KELAS', 'kelas', id, { namaKelas, mancationClassId, status });
   saveLocalState();
-  await syncMancationAndReconcile();
+  await syncMancationAndReconcile({ force: true });
   return target;
 }
 

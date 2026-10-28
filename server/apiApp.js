@@ -217,7 +217,7 @@ export function createApiRouter() {
   // Mancation Live Sync Trigger
   router.post('/mancation/sync', requireAuth, async (_req, res) => {
     try {
-      const syncResult = await syncMancationAndReconcile();
+      const syncResult = await syncMancationAndReconcile({ force: true });
       return res.json({
         source: syncResult.source,
         configured: syncResult.configured,
