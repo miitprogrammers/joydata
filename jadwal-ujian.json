@@ -107,8 +107,8 @@
         "folder": "M001 - Kotoba Minggu 1",
         "tanggal": "2026-07-17",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-07-16", "Chat 18-07: Hasil Test Mingguan Joy 2"],
-        "remed": [{ "tanggal": "2026-08-07", "keterangan": "Varian B, ujian ulangan & susulan bersama (chat 29-07)" }]
+        "sumber": ["Dokumen dibuat 2026-07-16", "Chat 18-07: Hasil Test Mingguan Joy 2", "Kertas peserta Varian A: 17-07 (1 peserta menulis 19-07)"],
+        "remed": [{ "tanggal": "2026-08-07", "keterangan": "Varian B, ujian ulangan & susulan bersama (chat 29-07); kertas Varian B 07-08 (3 peserta)" }]
       },
       {
         "kode": "M002",
@@ -116,8 +116,8 @@
         "folder": "M002 - Kotoba Minggu 2",
         "tanggal": "2026-07-24",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-07-24", "Chat 24-07: Hasil Shiken mingguan minggu ke 2 Joy 2"],
-        "remed": [{ "tanggal": "2026-08-07", "keterangan": "Varian B, ujian ulangan & susulan bersama (chat 29-07)" }]
+        "sumber": ["Dokumen dibuat 2026-07-24", "Chat 24-07: Hasil Shiken mingguan minggu ke 2 Joy 2", "Kertas peserta Varian A: 24-07"],
+        "remed": [{ "tanggal": "2026-08-07", "keterangan": "Varian B, ujian ulangan & susulan bersama (chat 29-07); kertas Varian B 07-08 (4 peserta)" }]
       },
       {
         "kode": "M003",
@@ -125,7 +125,8 @@
         "folder": "M003 - Kotoba Minggu 3",
         "tanggal": "2026-08-11",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-08-11", "Ujian kotoba mingguan Joy 2 selalu bersamaan dengan Joy 1", "Tanggal dikonfirmasi pengguna 2026-10-28"]
+        "sumber": ["Dokumen dibuat 2026-08-11", "Ujian kotoba mingguan Joy 2 selalu bersamaan dengan Joy 1", "Tanggal dikonfirmasi pengguna 2026-10-28", "Kertas peserta Varian A: 11-08 (10 peserta)"],
+        "remed": [{ "tanggal": "2026-08-12", "keterangan": "Varian B \"Remedial\" (tanggal di kertas 3 peserta), sama dengan Joy 1" }]
       },
       {
         "kode": "BK01",
@@ -133,7 +134,7 @@
         "folder": "BK01 - Bunpou & Kanji Bab 1-9",
         "tanggal": "2026-08-28",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-08-27", "Kertas peserta: 28/08/2026, 2026/08/28 (3 peserta)"]
+        "sumber": ["Dokumen dibuat 2026-08-27", "Kertas peserta: 28-08 (7 peserta)"]
       },
       {
         "kode": "M009",
@@ -141,7 +142,7 @@
         "folder": "M009 - Bunpou & Kanji Minggu 9",
         "tanggal": "2026-09-08",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-09-08 (kertas sama dengan Joy 1)", "Kertas peserta: 08-09-2026"]
+        "sumber": ["Dokumen dibuat 2026-09-08 (kertas sama dengan Joy 1)", "Kertas peserta: 08-09-2026 (3 peserta)"]
       },
       {
         "kode": "M011",
@@ -165,7 +166,8 @@
         "folder": "CP02 - Simulasi JLPT N5",
         "tanggal": "2026-09-29",
         "status": "pasti",
-        "sumber": ["Dokumen dibuat 2026-09-29", "Chat 01-10: papan peringkat & simulasi pemecahan kelas mencakup lebih dari satu kelas", "Tanggal dikonfirmasi pengguna 2026-10-28"]
+        "sumber": ["Dokumen dibuat 2026-09-29", "Chat 01-10: papan peringkat & simulasi pemecahan kelas mencakup lebih dari satu kelas", "Tanggal dikonfirmasi pengguna 2026-10-28"],
+        "catatan": "Lembar choukai tulisan tangan bertanggal 2026-09-30 (24 soal, もんだい1-4) ada di folder CP02 5 peserta. Bukan bagian kertas CP02 (Moji-Goi + Bunpou-Dokkai, 68 soal) dan tidak ada di Joy 1; diabaikan, tidak dinilai (keputusan pengguna 2026-10-28)."
       },
       {
         "kode": "N5TO",
