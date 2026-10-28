@@ -8,6 +8,7 @@ import {
   restoreAliases,
   makeNameScrubber,
   hashFacts,
+  catatanUntukPeserta,
 } from './smartReport.js';
 
 const settings = {
@@ -137,4 +138,32 @@ test('Smart Report: facts sent to Gemini carry no names, and class aliases map b
   assert.equal(/budi/i.test(JSON.stringify(kelasFacts)), false);
   assert.equal(kelasFacts.peringkat[0].peserta, 'P01');
   assert.equal(restoreAliases('P01 unggul; P01さんは良好。P99 tidak ada.', aliases), 'Budi Santoso unggul; Budi Santosoさんは良好。P99 tidak ada.');
+});
+
+test('catatanUntukPeserta removes staff working notes but keeps the learning content', () => {
+  const m001 =
+    'Fokus latihan: jam: pukul 9 = くじ (bukan きゅうじ). Rincian: A 20 · F 18 (dikoreksi saat input: F2 GO benar (keputusan 28-10: romaji dihitung benar; pemeriksa 0); nilai pemeriksa 89; pemeriksa メリ; tanggal di kertas 29-08-2026).';
+  assert.equal(catatanUntukPeserta(m001), 'Fokus latihan: jam: pukul 9 = くじ (bukan きゅうじ). Rincian: A 20 · F 18.');
+  const n5 =
+    'Rincian: Moji-Goi 22/35 (soal 20 rusak, dihitung benar) · Bunpou-Dokkai 19/32 (bunpou 18/26, dokkai 1/6) · Choukai 14/24 (dikoreksi saat input: no. 4 dijawab ④; pemeriksa 15). Perkiraan skala JLPT ±108/180.';
+  assert.equal(
+    catatanUntukPeserta(n5),
+    'Rincian: Moji-Goi 22/35 (soal 20 rusak, dihitung benar) · Bunpou-Dokkai 19/32 (bunpou 18/26, dokkai 1/6) · Choukai 14/24. Perkiraan skala JLPT ±108/180.'
+  );
+  assert.equal(
+    catatanUntukPeserta('Kuat: baca kanji. Catatan pemeriksaan: hanya halaman 1, 3, 5 yang diunggah. Rincian: A 10 (sama dengan nilai pemeriksa 97).'),
+    'Kuat: baca kanji. Rincian: A 10.'
+  );
+  assert.equal(catatanUntukPeserta(''), '');
+});
+
+test('catatanUntukPeserta keeps the useful part of a mixed bracket and drops checker remarks outside brackets', () => {
+  assert.equal(
+    catatanUntukPeserta('Rincian: A 20 · G 10 (tata bahasa 62/70, kanji 30/30; C6 いちばん ditulis di luar kurung, dikoreksi benar saat input). Ujian Bunpou & Kanji.'),
+    'Rincian: A 20 · G 10 (tata bahasa 62/70, kanji 30/30). Ujian Bunpou & Kanji.'
+  );
+  assert.equal(
+    catatanUntukPeserta('Choukai: 4 5/6. Moji-Goi no. 7 dua jawaban dihitamkan (② dan ④) = 0, pemeriksa membenarkan; Choukai no. 7 kosong. Lembar difoto pudar, dibaca dengan peningkatan kontras. Kuat: hobi fotografi.'),
+    'Choukai: 4 5/6. Choukai no. 7 kosong. Kuat: hobi fotografi.'
+  );
 });

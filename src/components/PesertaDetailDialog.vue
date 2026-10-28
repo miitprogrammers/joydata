@@ -26,6 +26,7 @@
         <v-tab value="meibo" class="text-none text-xs font-medium">{{ $t('peserta.tabMeibo') }}</v-tab>
         <v-tab value="biodata" class="text-none text-xs font-medium">{{ $t('peserta.tabBiodata') }}</v-tab>
         <v-tab value="tag" class="text-none text-xs font-medium">{{ $t('peserta.tabStatusTag') }}</v-tab>
+        <v-tab value="portal" class="text-none text-xs font-medium">{{ $t('portal.admin.tab') }}</v-tab>
       </v-tabs>
 
       <v-card-text class="pa-6" style="max-height: 68vh">
@@ -266,6 +267,63 @@
               </div>
             </div>
           </v-window-item>
+
+          <!-- Tab 4: Akses Portal Peserta (login email Mancation, sandi awal = tanggal lahir ddmmyy) -->
+          <v-window-item value="portal">
+            <div class="text-sm font-semibold text-slate-900 mb-3">{{ $t('portal.admin.judul') }}</div>
+            <div v-if="portalLoading" class="py-6 flex justify-center">
+              <v-progress-circular indeterminate size="24" color="primary" />
+            </div>
+            <div v-else-if="portal" class="space-y-4">
+              <p v-if="!portal.email" class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                {{ $t('portal.admin.tanpaEmail') }}
+              </p>
+              <dl v-else class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
+                <div>
+                  <dt class="text-xs text-slate-500">{{ $t('portal.admin.email') }}</dt>
+                  <dd class="text-slate-900 break-all">{{ portal.email }}</dd>
+                </div>
+                <div>
+                  <dt class="text-xs text-slate-500">{{ $t('portal.admin.alamat') }}</dt>
+                  <dd class="text-slate-900 break-all">{{ portalUrl }}</dd>
+                </div>
+                <div class="sm:col-span-2 space-y-1 text-xs">
+                  <p v-if="!portal.aktif" class="font-semibold text-red-700">{{ $t('portal.admin.nonaktif') }}</p>
+                  <p v-if="portal.terkunciSampai" class="font-semibold text-amber-800">
+                    {{ $t('portal.admin.terkunci', { waktu: formatDateTimeFull(portal.terkunciSampai) }) }}
+                  </p>
+                  <p class="text-slate-700">
+                    {{ portal.pakaiSandiAwal ? (portal.punyaTanggalLahir ? $t('portal.admin.sandiAwal') : $t('portal.admin.tanpaTanggalLahir')) : $t('portal.admin.sandiSendiri') }}
+                  </p>
+                  <p class="text-slate-500">
+                    {{ portal.loginTerakhir ? $t('portal.admin.loginTerakhir', { waktu: formatDateTimeFull(portal.loginTerakhir) }) : $t('portal.admin.belumLogin') }}
+                  </p>
+                </div>
+              </dl>
+              <div v-if="portal.email" class="flex flex-wrap gap-2">
+                <v-btn
+                  variant="tonal"
+                  color="primary"
+                  class="text-none"
+                  prepend-icon="mdi-lock-reset"
+                  :disabled="!portal.punyaTanggalLahir"
+                  :loading="portalSaving === 'reset'"
+                  @click="resetPortalPassword"
+                >
+                  {{ $t('portal.admin.reset') }}
+                </v-btn>
+                <v-btn
+                  variant="text"
+                  :color="portal.aktif ? 'error' : 'primary'"
+                  class="text-none"
+                  :loading="portalSaving === 'aktif'"
+                  @click="togglePortal"
+                >
+                  {{ portal.aktif ? $t('portal.admin.nonaktifkan') : $t('portal.admin.aktifkan') }}
+                </v-btn>
+              </div>
+            </div>
+          </v-window-item>
         </v-window>
       </v-card-text>
 
@@ -274,7 +332,7 @@
           {{ $t('app.close') }}
         </v-btn>
         <v-btn
-          v-if="activeTab !== 'tag'"
+          v-if="activeTab !== 'tag' && activeTab !== 'portal'"
           color="primary"
           variant="flat"
           class="text-none"
@@ -417,10 +475,68 @@ watch(
   ([open, id]) => {
     if (open && id) {
       activeTab.value = 'meibo';
+      portal.value = null;
       loadDetail();
     }
   }
 );
+
+// Portal account status is loaded only when its tab is opened.
+const portal = ref(null);
+const portalLoading = ref(false);
+const portalSaving = ref('');
+const portalUrl = `${window.location.origin}/portal`;
+
+async function loadPortal() {
+  if (!detail.value) return;
+  portalLoading.value = true;
+  try {
+    portal.value = await apiRequest(`/peserta/${detail.value.id}/portal`);
+  } catch (err) {
+    appStore.notify(t(`messages.${err.code}`) || t('messages.GENERIC_ERROR'), 'error');
+  } finally {
+    portalLoading.value = false;
+  }
+}
+
+watch(activeTab, (tab) => {
+  if (tab === 'portal' && !portal.value) loadPortal();
+});
+
+async function resetPortalPassword() {
+  if (!confirm(t('portal.admin.resetKonfirmasi', { nama: detail.value.nama }))) return;
+  portalSaving.value = 'reset';
+  try {
+    portal.value = await apiRequest(`/peserta/${detail.value.id}/portal/reset`, { method: 'POST' });
+    appStore.notify(t('portal.admin.resetOk'), 'success');
+  } catch (err) {
+    appStore.notify(t(`messages.${err.code}`) || t('messages.GENERIC_ERROR'), 'error');
+  } finally {
+    portalSaving.value = '';
+  }
+}
+
+async function togglePortal() {
+  portalSaving.value = 'aktif';
+  try {
+    portal.value = await apiRequest(`/peserta/${detail.value.id}/portal`, { method: 'PATCH', body: { aktif: !portal.value.aktif } });
+    appStore.notify(t('messages.saved'), 'success');
+  } catch (err) {
+    appStore.notify(t(`messages.${err.code}`) || t('messages.GENERIC_ERROR'), 'error');
+  } finally {
+    portalSaving.value = '';
+  }
+}
+
+function formatDateTimeFull(iso) {
+  return new Date(iso).toLocaleString(locale.value === 'ja' ? 'ja-JP' : 'id-ID', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+}
 
 async function submitMeibo() {
   if (!detail.value) return;

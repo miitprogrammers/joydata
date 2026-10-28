@@ -333,6 +333,10 @@ function ensurePhase2Collections(state) {
     state.smartReportResume = [];
     dirty = true;
   }
+  if (!Array.isArray(state.pesertaAkun)) {
+    state.pesertaAkun = [];
+    dirty = true;
+  }
   for (const p of SEED_PAGES) {
     if ((state.pages || []).some((existing) => existing.kode === p.kode)) continue;
     const { defaultRoles = [], ...page } = p;

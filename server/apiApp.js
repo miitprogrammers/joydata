@@ -76,7 +76,16 @@ import {
   getSmartReportKelas,
   generateSmartResume,
   updateSmartResume,
+  getPortalReport,
 } from './db/smartReportRepo.js';
+import {
+  authenticatePeserta,
+  changePesertaPassword,
+  getPortalAccountStatus,
+  resetPesertaPortalPassword,
+  setPesertaPortalAktif,
+} from './db/portalRepo.js';
+import { signPortalToken, requirePeserta } from './middleware/portalAuth.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
 import { JAPAN_PREFECTURES } from './db/prefectures.js';
@@ -125,6 +134,9 @@ function handleRouteError(res, err) {
     'INVALID_KEYS',
     'INVALID_PAYLOAD',
     'SMART_REPORT_NO_DATA',
+    'PORTAL_PASSWORD_TOO_SHORT',
+    'PORTAL_PASSWORD_SAME',
+    'PORTAL_NO_BIRTH_DATE',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set(['AI_NOT_CONFIGURED', 'AI_ACCESS_DENIED', 'AI_RATE_LIMITED', 'AI_OVERLOADED', 'AI_FAILED']);
@@ -199,6 +211,42 @@ export function createApiRouter() {
       const { oldPassword, newPassword } = req.body || {};
       const result = await changeOwnPassword(req.user.id, oldPassword, newPassword);
       return res.json(result);
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Portal Peserta: login email Mancation, data milik sendiri saja (token & secret terpisah dari staf)
+  router.post('/portal/auth/login', async (req, res) => {
+    try {
+      const { email, password } = req.body || {};
+      const session = await authenticatePeserta(email, password);
+      return res.json({ token: signPortalToken(session), peserta: session });
+    } catch (err) {
+      if (err.message === 'INVALID_CREDENTIALS') return res.status(401).json({ error: err.message });
+      if (err.message === 'PORTAL_ACCOUNT_LOCKED') return res.status(423).json({ error: err.message });
+      if (err.message === 'PORTAL_DISABLED') return res.status(403).json({ error: err.message });
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/auth/me', requirePeserta({ allowPasswordChange: true }), (req, res) => {
+    res.json({ peserta: req.peserta });
+  });
+
+  router.post('/portal/auth/password', requirePeserta({ allowPasswordChange: true }), async (req, res) => {
+    try {
+      const session = await changePesertaPassword(req.peserta.id, req.body?.oldPassword, req.body?.newPassword);
+      // Changing the password raises versi_token, so the old token is replaced right away.
+      return res.json({ token: signPortalToken(session), peserta: session });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/dashboard', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await getPortalReport(req.peserta.id));
     } catch (err) {
       return handleRouteError(res, err);
     }
@@ -317,6 +365,32 @@ export function createApiRouter() {
       }
       const updated = await updatePesertaSupplementAndPenempatan(req.params.id, req.body || {}, req.user);
       return res.json(updated);
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Akun portal peserta (login email Mancation): status, reset sandi ke tanggal lahir, aktif/nonaktif.
+  const requirePortalManager = requirePageAccess('data-peserta', 'peserta-luar');
+  router.get('/peserta/:id/portal', requireAuth, requirePortalManager, async (req, res) => {
+    try {
+      return res.json(await getPortalAccountStatus(req.params.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/peserta/:id/portal/reset', requireAuth, requirePortalManager, async (req, res) => {
+    try {
+      return res.json(await resetPesertaPortalPassword(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.patch('/peserta/:id/portal', requireAuth, requirePortalManager, async (req, res) => {
+    try {
+      return res.json(await setPesertaPortalAktif(req.params.id, req.body?.aktif, req.user));
     } catch (err) {
       return handleRouteError(res, err);
     }

@@ -124,7 +124,7 @@ onUnmounted(() => {
 <template>
   <v-app class="bg-slate-50 text-slate-900">
     <!-- Public Layout (Login) -->
-    <template v-if="route.meta.public || !appStore.isAuthenticated">
+    <template v-if="route.meta.public || route.meta.portal || !appStore.isAuthenticated">
       <!-- Offline Connectivity Banner (PWA Requirement) -->
       <div
         v-if="!isOnline"

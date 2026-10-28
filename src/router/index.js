@@ -22,6 +22,9 @@ import ProgresView from '../views/ProgresView.vue';
 import RaporView from '../views/RaporView.vue';
 import PengaturanView from '../views/PengaturanView.vue';
 import SmartReportView from '../views/SmartReportView.vue';
+import PortalLoginView from '../views/portal/PortalLoginView.vue';
+import PortalHomeView from '../views/portal/PortalHomeView.vue';
+import { getPortalToken } from '../services/portalApi.js';
 
 const NoAccessState = defineComponent({
   name: 'NoAccessState',
@@ -84,6 +87,19 @@ const routes = [
   {
     path: '/',
     redirect: '/dashboard',
+  },
+  // Peserta portal: its own login and session (portalApi.js), outside the staff layout.
+  {
+    path: '/portal/login',
+    name: 'portal-login',
+    component: PortalLoginView,
+    meta: { portal: true, portalPublic: true },
+  },
+  {
+    path: '/portal',
+    name: 'portal',
+    component: PortalHomeView,
+    meta: { portal: true },
   },
   {
     path: '/dashboard',
@@ -168,6 +184,12 @@ export const router = createRouter({
 });
 
 router.beforeEach(async (to) => {
+  if (to.meta.portal) {
+    const loggedIn = Boolean(getPortalToken());
+    if (to.meta.portalPublic) return loggedIn ? '/portal' : true;
+    return loggedIn ? true : '/portal/login';
+  }
+
   const appStore = useAppStore();
   if (!appStore.initialized) {
     await appStore.restoreSession();

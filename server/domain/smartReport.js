@@ -493,3 +493,71 @@ export function restoreAliases(text, aliases) {
 export function hashFacts(facts, version) {
   return createHash('sha256').update(`${version}:${JSON.stringify(facts)}`).digest('hex');
 }
+
+// Staff working notes inside exam catatan: who checked the paper, the checker's score, input corrections,
+// upload/photo remarks. The portal shows peserta their catatan without these.
+const STAFF_NOTE = /pemeriksa|dikoreksi\b[^;.]*\bsaat input|keputusan \d|di kertas|kertas (tanpa|varian|bertanggal)|diunggah|terunggah|dipindahkan|terfoto|difoto|\bfoto\b|\bscan\b|perlu dicek/i;
+
+/** Splits on `sep` outside parentheses. */
+function splitTopLevel(text, sep) {
+  const parts = [];
+  let depth = 0;
+  let from = 0;
+  for (let i = 0; i < text.length; i += 1) {
+    if (text[i] === '(') depth += 1;
+    else if (text[i] === ')') depth = Math.max(0, depth - 1);
+    else if (depth === 0 && text.startsWith(sep, i)) {
+      parts.push(text.slice(from, i));
+      from = i + sep.length;
+    }
+  }
+  parts.push(text.slice(from));
+  return parts;
+}
+
+/** Drops the staff parts of every parenthesised group; a group left empty disappears with its leading space. */
+function cleanGroups(text) {
+  let out = '';
+  for (let i = 0; i < text.length; i += 1) {
+    if (text[i] !== '(') {
+      out += text[i];
+      continue;
+    }
+    let depth = 0;
+    let end = -1;
+    for (let j = i; j < text.length; j += 1) {
+      if (text[j] === '(') depth += 1;
+      else if (text[j] === ')' && (depth -= 1) === 0) {
+        end = j;
+        break;
+      }
+    }
+    if (end === -1) {
+      out += text.slice(i);
+      break;
+    }
+    const kept = splitTopLevel(text.slice(i + 1, end), ';')
+      .map((part) => part.trim())
+      .filter((part) => part && !STAFF_NOTE.test(part))
+      .map(cleanGroups);
+    if (kept.length) out += `(${kept.join('; ')})`;
+    else out = out.replace(/\s+$/, '');
+    i = end;
+  }
+  return out;
+}
+
+/** Exam catatan as shown to the peserta, without the staff working notes (STAFF_NOTE) in or outside brackets. */
+export function catatanUntukPeserta(catatan) {
+  const sentences = cleanGroups(String(catatan || ''))
+    .split(/(?<=[.!?])\s+(?=[A-Z])/)
+    .map((sentence) =>
+      splitTopLevel(sentence, ';')
+        .map((clause) => clause.trim())
+        .filter((clause) => clause && !STAFF_NOTE.test(clause.replace(/\([^()]*\)/g, '')))
+        .join('; ')
+    )
+    .filter(Boolean)
+    .map((sentence) => (/[.!?)]$/.test(sentence) ? sentence : `${sentence}.`));
+  return sentences.join(' ').replace(/\s+([.,;])/g, '$1').replace(/\s{2,}/g, ' ').trim();
+}

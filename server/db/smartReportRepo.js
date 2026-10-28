@@ -7,6 +7,7 @@ import {
   buildKelasAiFacts,
   restoreAliases,
   hashFacts,
+  catatanUntukPeserta,
 } from '../domain/smartReport.js';
 import { writeResume, PROMPT_VERSION } from '../ai/smartResume.js';
 
@@ -239,6 +240,64 @@ export async function getSmartReportKelas({ kelasId }) {
     peserta: await Promise.all(
       members.map((m) => pesertaReport(ctx, m.student, m.journey, pesertaResumes.get(m.pesertaId) || null))
     ),
+  };
+}
+
+/**
+ * The peserta's own report for the peserta portal. Leaves out what is internal to staff: status tag, AI resume,
+ * catatan bebas, free-text sikap notes, absensi notes, and every other peserta's name or score (the ranking is
+ * only the peserta's own position and class averages).
+ */
+export async function getPortalReport(pesertaId) {
+  const pid = parseId(pesertaId);
+  const ctx = createContext(await loadReportState());
+  const student = findPeserta(ctx, pid);
+  const journey = journeyOf(ctx, student);
+  const kelas = kelasInfo(ctx, student.kelasId);
+  const summary = student.kelasId ? buildKelasSummary(kelasMembers(ctx, student.kelasId), ctx.settings) : null;
+  const pen = await loadPenempatan(pid, ctx.state);
+  const s = ctx.settings;
+
+  return {
+    settings: {
+      kkm_ujian: s.kkm_ujian,
+      kkm_sikap: s.kkm_sikap,
+      batas_grade: s.batas_grade,
+      ambang_kehadiran_rendah: s.ambang_kehadiran_rendah,
+    },
+    peserta: {
+      nama: namaPeserta(ctx, student),
+      tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,
+    },
+    kelas,
+    rentang: journey.rentang,
+    kpi: journey.kpi,
+    ujian: { ...journey.ujian, daftar: journey.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
+    kaiwa: journey.kaiwa,
+    sikap: { daftar: journey.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
+    absensi: journey.absensi,
+    bulanan: journey.bulanan,
+    tidakHadir: (ctx.state.absensi || [])
+      .filter((a) => Number(a.pesertaId) === pid && a.tanggalAbsensi && a.status !== 'hadir')
+      .map((a) => ({ tanggal: String(a.tanggalAbsensi).slice(0, 10), status: a.status }))
+      .sort((a, b) => b.tanggal.localeCompare(a.tanggal)),
+    peringkat: summary
+      ? {
+          posisi: summary.ranking.find((r) => r.pesertaId === pid)?.peringkat ?? null,
+          jumlahDinilai: summary.statistik.jumlahDinilai,
+          jumlahPeserta: summary.statistik.jumlahPeserta,
+          rataKelas: summary.statistik.rataKelas,
+          rataKehadiranKelas: summary.statistik.rataKehadiran,
+          perUjian: summary.perUjian.map(({ kode, tanggal, rata }) => ({ kode, tanggal, rata })),
+        }
+      : null,
+    penempatan: {
+      tanggalLulusUjian: pen.tanggalLulusUjian || null,
+      perusahaanNaitei: pen.perusahaanNaitei || '',
+      jenisPekerjaan: pen.jenisPekerjaan || '',
+      lokasiKerja: pen.lokasiKerja || '',
+      rencanaMulaiKerja: pen.rencanaMulaiKerja || null,
+    },
   };
 }
 

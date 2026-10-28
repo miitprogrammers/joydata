@@ -258,6 +258,23 @@ CREATE TABLE IF NOT EXISTS smart_report_resume (
   PRIMARY KEY (scope, ref_id)
 );
 
+-- Portal peserta: login dengan email Mancation. Tanpa baris / password_hash NULL = masih memakai sandi awal
+-- (tanggal lahir ddmmyy) yang wajib diganti saat login pertama. versi_token naik setiap sandi diganti atau
+-- direset sehingga token lama tidak berlaku lagi.
+CREATE TABLE IF NOT EXISTS peserta_akun (
+  peserta_id INTEGER PRIMARY KEY REFERENCES peserta(id) ON DELETE CASCADE,
+  password_hash TEXT NULL,
+  wajib_ganti_sandi BOOLEAN NOT NULL DEFAULT TRUE,
+  aktif BOOLEAN NOT NULL DEFAULT TRUE,
+  gagal_login INTEGER NOT NULL DEFAULT 0,
+  terkunci_sampai TIMESTAMPTZ NULL,
+  versi_token INTEGER NOT NULL DEFAULT 0,
+  login_terakhir TIMESTAMPTZ NULL,
+  sandi_diubah_at TIMESTAMPTZ NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE INDEX IF NOT EXISTS idx_peserta_kelas ON peserta(kelas_id);
 CREATE INDEX IF NOT EXISTS idx_peserta_sumber ON peserta(sumber);
 CREATE INDEX IF NOT EXISTS idx_absensi_kelas_tanggal ON absensi(kelas_id, tanggal);
