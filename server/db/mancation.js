@@ -62,9 +62,28 @@ function normalizeDate(val) {
   return /^\d{4}-\d{2}-\d{2}$/.test(str) ? str : null;
 }
 
+// t_datapeserta stores agama and region as IDs; the joins turn them into names (agama_nama, des_nama, ...).
+const DATAPESERTA_SELECT = `
+  SELECT dp.*, ag.nama_agama AS agama_nama,
+         ds.nama AS des_nama, kc.nama AS kec_nama, kt.nama AS kota_nama, pv.nama AS prof_nama
+  FROM t_datapeserta dp
+  LEFT JOIN t_agama ag ON ag.id_agama = dp.data_agama
+  LEFT JOIN desa ds ON ds.id = dp.data_des
+  LEFT JOIN kecamatan kc ON kc.id = dp.data_kec
+  LEFT JOIN kota kt ON kt.id = dp.data_kota
+  LEFT JOIN provinsi pv ON pv.id = dp.data_prof`;
+
+// status_pernikahan has no lookup table in mancation; the codes follow the KTP marital status order.
+const STATUS_PERNIKAHAN = {
+  0: 'Belum Menikah',
+  1: 'Menikah',
+  2: 'Cerai Hidup',
+  3: 'Cerai Mati',
+};
+
 function buildDaerahAsal(dp) {
   if (!dp) return '';
-  const parts = [dp.data_des, dp.data_kec, dp.data_kota, dp.data_prof]
+  const parts = [dp.des_nama, dp.kec_nama, dp.kota_nama, dp.prof_nama]
     .map((x) => (x == null ? '' : String(x).trim()))
     .filter(Boolean);
   return parts.join(', ');
@@ -81,9 +100,9 @@ function mapMancationStudentRow(akun, dp) {
     email: String(akun.akun_email ?? akun.email ?? '').trim(),
     whatsapp: String(dp?.data_hp ?? dp?.no_hp ?? akun.akun_hp ?? '').trim(),
     tanggalLahir: normalizeDate(dp?.data_tl),
-    statusPernikahan: String(dp?.status_pernikahan ?? '').trim(),
+    statusPernikahan: STATUS_PERNIKAHAN[dp?.status_pernikahan] ?? '',
     jumlahAnak: dp?.anak != null && dp?.anak !== '' ? Number(dp.anak) : null,
-    agama: String(dp?.agama_nama ?? dp?.data_agama ?? '').trim(),
+    agama: String(dp?.agama_nama ?? '').trim(),
     daerahAsal: buildDaerahAsal(dp),
     hasDatapeserta: Boolean(dp),
   };
@@ -139,7 +158,7 @@ export async function fetchMancationRoster(classIds = [139, 142, 144], snapshotF
         try {
           const dpPlaceholders = akunIds.map(() => '?').join(',');
           const [dpRows] = await pool.query(
-            `SELECT * FROM t_datapeserta WHERE akun_id IN (${dpPlaceholders})`,
+            `${DATAPESERTA_SELECT} WHERE dp.akun_id IN (${dpPlaceholders})`,
             akunIds
           );
           for (const dp of dpRows) {
@@ -201,7 +220,7 @@ export async function lookupMancationAccountById(akunId, snapshotFallback = null
       const akun = rows[0];
       let dp = null;
       try {
-        const [dpRows] = await pool.query('SELECT * FROM t_datapeserta WHERE akun_id = ? LIMIT 1', [numericId]);
+        const [dpRows] = await pool.query(`${DATAPESERTA_SELECT} WHERE dp.akun_id = ? LIMIT 1`, [numericId]);
         dp = dpRows?.[0] || null;
       } catch {
         dp = null;
