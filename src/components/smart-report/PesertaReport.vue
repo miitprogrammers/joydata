@@ -73,16 +73,14 @@
       </div>
     </div>
 
-    <ResumeCard
-      :title="$t('smartReport.resumeJudul')"
-      :resume="report.resume"
-      :can-write="canWrite"
-      :portal="portal"
-      :busy="busy"
-      :locked="locked"
-      :generate="generate"
-      :save="save"
-    />
+    <!-- Exam statistics (beside the chart instead when there is no per-section panel) -->
+    <div v-if="ujianCells.length && adaBagian" class="grid grid-cols-3 gap-2 text-center sr-keep">
+      <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-1.5 px-2">
+        <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
+        <div class="text-base font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
+        <div class="text-[10px] text-slate-400">{{ cell.note }}</div>
+      </div>
+    </div>
 
     <!-- Tren & bagian -->
     <div class="grid grid-cols-1 md:grid-cols-3 print:grid-cols-3 gap-5 sr-keep">
@@ -94,7 +92,7 @@
           :aria-label="$t('smartReport.grafikAria', { n: trendPoints.length, kkm: settings.kkm_ujian })"
         />
       </div>
-      <div class="space-y-1.5">
+      <div v-if="adaBagian" class="space-y-1.5">
         <h3 class="sr-section-title">{{ $t('smartReport.secBagian') }}</h3>
         <div class="space-y-2.5 pt-1">
           <div v-for="b in bagianRows" :key="b.key" class="text-[11px]">
@@ -117,6 +115,14 @@
           </div>
         </div>
       </div>
+      <div v-else-if="ujianCells.length" class="space-y-1.5">
+        <h3 class="sr-section-title">{{ $t('laporan.statistikUjian') }}</h3>
+        <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-1.5 px-2 text-center">
+          <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
+          <div class="text-base font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
+          <div class="text-[10px] text-slate-400">{{ cell.note }}</div>
+        </div>
+      </div>
     </div>
 
     <!-- 1. Riwayat ujian -->
@@ -130,11 +136,7 @@
           <tr>
             <th>{{ $t('smartReport.colTanggal') }}</th>
             <th>{{ $t('smartReport.colKode') }}</th>
-            <th class="text-center">{{ $t('smartReport.bagian_mojiGoi') }}</th>
-            <th class="text-center">{{ $t('smartReport.bagian_bunpou') }}</th>
-            <th class="text-center">{{ $t('smartReport.bagian_dokkai') }}</th>
-            <th class="text-center">{{ $t('smartReport.bagian_choukai') }}</th>
-            <th class="text-center">{{ $t('smartReport.colTunggal') }}</th>
+            <th v-for="key in kolomBagian" :key="key" class="text-center">{{ $t(`smartReport.bagian_${key}`) }}</th>
             <th class="text-center">{{ $t('smartReport.colRata') }}</th>
             <th class="text-center">{{ $t('smartReport.colGrade') }}</th>
             <th class="text-center">{{ $t('smartReport.colStatus') }}</th>
@@ -142,29 +144,20 @@
         </thead>
         <tbody>
           <tr v-if="!report.ujian.daftar.length">
-            <td colspan="10" class="text-center text-slate-400 py-3">{{ $t('smartReport.tidakAdaUjian') }}</td>
+            <td :colspan="5 + kolomBagian.length" class="text-center text-slate-400 py-3">{{ $t('smartReport.tidakAdaUjian') }}</td>
           </tr>
-          <template v-for="u in report.ujian.daftar" :key="u.id">
-            <tr class="sr-num">
-              <td class="font-sans">{{ u.tanggal }}</td>
-              <td class="font-bold text-slate-800">{{ u.kode }}</td>
-              <td class="text-center">{{ fmt(u.mojiGoi) }}</td>
-              <td class="text-center">{{ fmt(u.bunpou) }}</td>
-              <td class="text-center">{{ fmt(u.dokkai) }}</td>
-              <td class="text-center">{{ fmt(u.choukai) }}</td>
-              <td class="text-center">{{ fmt(u.nilaiTunggal) }}</td>
-              <td class="text-center font-bold text-slate-900 bg-slate-50">{{ fmt(u.rata) }}</td>
-              <td class="text-center font-bold">{{ u.grade }}</td>
-              <td class="text-center text-[10px] font-sans font-semibold">
-                <span :class="u.lulusKkm ? 'text-emerald-700' : 'text-red-600'">
-                  {{ u.lulusKkm ? $t('smartReport.lulus') : $t('smartReport.belumLulus') }}
-                </span>
-              </td>
-            </tr>
-            <tr v-if="u.catatan" class="sr-note-row">
-              <td colspan="10">{{ u.catatan }}</td>
-            </tr>
-          </template>
+          <tr v-for="u in report.ujian.daftar" :key="u.id" class="sr-num">
+            <td class="font-sans">{{ u.tanggal }}</td>
+            <td class="font-bold text-slate-800">{{ u.kode }}</td>
+            <td v-for="key in kolomBagian" :key="key" class="text-center">{{ fmt(u[key]) }}</td>
+            <td class="text-center font-bold text-slate-900 bg-slate-50">{{ fmt(u.rata) }}</td>
+            <td class="text-center font-bold">{{ u.grade }}</td>
+            <td class="text-center text-[10px] font-sans font-semibold">
+              <span :class="u.lulusKkm ? 'text-emerald-700' : 'text-red-600'">
+                {{ u.lulusKkm ? $t('smartReport.lulus') : $t('smartReport.belumLulus') }}
+              </span>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -196,7 +189,7 @@
               </template>
               <span v-else class="text-slate-300">-</span>
             </td>
-            <td class="text-center">{{ b.kaiwa.length ? b.kaiwa.join(', ') : '-' }}</td>
+            <td class="text-center">{{ kaiwaRingkas(b.kaiwa) }}</td>
             <td class="text-center">
               <span class="font-bold" :class="statusClass(b.sikap.lulusKkm)">{{ fmt(b.sikap.skor) }}</span>
               <span v-if="b.sikap.positif || b.sikap.negatif" class="text-slate-400">
@@ -223,56 +216,26 @@
       </table>
     </div>
 
-    <!-- 3. Kaiwa -->
-    <div class="space-y-1.5">
-      <h3 class="sr-section-title">3. {{ $t('smartReport.secKaiwa') }}</h3>
-      <table v-if="report.kaiwa.daftar.length" class="sr-table">
-        <thead>
-          <tr>
-            <th class="w-24">{{ $t('smartReport.colTanggal') }}</th>
-            <th>{{ $t('smartReport.colTopik') }}</th>
-            <th class="text-center w-14">{{ $t('smartReport.colGrade') }}</th>
-            <th>{{ $t('smartReport.colCatatan') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="k in report.kaiwa.daftar" :key="k.id">
-            <td class="font-mono">{{ k.tanggal }}</td>
-            <td>{{ k.topik || '-' }}</td>
-            <td class="text-center font-bold text-blue-800">{{ k.grade }}</td>
-            <td class="text-slate-600">{{ k.catatan || '-' }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div v-else class="text-[11px] text-slate-400">{{ $t('smartReport.tidakAdaKaiwa') }}</div>
-    </div>
-
-    <!-- 4. Sikap -->
-    <div class="space-y-1.5">
-      <h3 class="sr-section-title">4. {{ $t('smartReport.secSikap') }}</h3>
-      <table v-if="report.sikap.daftar.length" class="sr-table">
-        <thead>
-          <tr>
-            <th class="w-24">{{ $t('smartReport.colTanggal') }}</th>
-            <th>{{ $t('smartReport.colKategori') }}</th>
-            <th class="text-center w-16">{{ $t('smartReport.colDampak') }}</th>
-            <th v-if="!portal">{{ $t('smartReport.colKeterangan') }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="s in report.sikap.daftar" :key="s.id">
-            <td class="font-mono">{{ s.tanggal }}</td>
-            <td class="font-medium text-slate-800">{{ locale === 'ja' ? s.kategoriNamaJa : s.kategoriNamaId }}</td>
-            <td class="text-center font-mono font-bold">
-              <span v-if="s.sentiment === 'positif'" class="text-emerald-700">+{{ s.bobot }}</span>
-              <span v-else class="text-red-600">−{{ s.bobot }}</span>
-            </td>
-            <td v-if="!portal" class="text-slate-600">{{ s.keterangan || '-' }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div v-else class="text-[11px] text-slate-400">
-        {{ $t('smartReport.tidakAdaSikap', { basis: settings.sikap_basis }) }}
+    <!-- 3. Kaiwa & 4. Sikap, in numbers -->
+    <div class="grid grid-cols-2 gap-5 sr-keep">
+      <div class="space-y-1.5">
+        <h3 class="sr-section-title">3. {{ $t('smartReport.secKaiwa') }}</h3>
+        <StatKaiwa
+          :grades="report.kaiwa.daftar.map((k: any) => k.grade)"
+          :grade-terakhir="report.kpi.kaiwaTerakhir"
+          :kaiwa-card="report.kaiwaCard"
+        />
+      </div>
+      <div class="space-y-1.5">
+        <h3 class="sr-section-title">4. {{ $t('smartReport.secSikap') }}</h3>
+        <StatSikap
+          :rows="report.sikap.daftar"
+          :skor="report.kpi.skorSikap"
+          :skor-label="$t('smartReport.skorSikap')"
+          :skor-note="$t('smartReport.skorSikapDesc', { kkm: settings.kkm_sikap })"
+          :lulus-kkm="report.kpi.lulusKkmSikap"
+          :basis="settings.sikap_basis"
+        />
       </div>
     </div>
 
@@ -286,6 +249,18 @@
         </div>
       </div>
     </div>
+
+    <!-- One overall review of every score -->
+    <ResumeCard
+      :title="$t('laporan.reviewJudul')"
+      :resume="report.resume"
+      :can-write="canWrite"
+      :date-only="portal"
+      :busy="busy"
+      :locked="locked"
+      :generate="generate"
+      :save="save"
+    />
 
     <!-- Tanda tangan -->
     <div class="sr-keep pt-6 border-t border-slate-200 grid grid-cols-3 gap-6 text-center text-xs">
@@ -304,6 +279,9 @@ import ReportHeader from './ReportHeader.vue';
 import './smartReport.css';
 import ResumeCard from './ResumeCard.vue';
 import ScoreTrendChart from './ScoreTrendChart.vue';
+import StatKaiwa from './StatKaiwa.vue';
+import StatSikap from './StatSikap.vue';
+import { bertanda, hitungGrade } from './reportStats.js';
 
 const props = defineProps<{
   report: any;
@@ -314,7 +292,7 @@ const props = defineProps<{
   locked?: boolean;
   generate: () => Promise<void>;
   save: (payload: { teksId: string; teksJa: string }) => Promise<void>;
-  // Peserta portal: read-only, without the status tag and the free-text sikap notes.
+  // Peserta portal: read-only, without the status tag.
   portal?: boolean;
 }>();
 
@@ -341,6 +319,32 @@ const trendPoints = computed(() =>
 );
 
 const bagianRows = computed(() => BAGIAN.map((key) => ({ key, value: props.report.ujian.bagian[key] })));
+// Single-score exams have no section scores; their columns and the per-section panel would only hold dashes.
+const adaBagian = computed(() => bagianRows.value.some((b) => b.value !== null));
+const kolomBagian = computed(() => (adaBagian.value ? BAGIAN : []));
+
+// "5× · A1 B3 C1": sessions of a month and how many of each grade.
+function kaiwaRingkas(grades: string[]) {
+  if (!grades.length) return '-';
+  const counts = Object.entries(hitungGrade(grades)).filter(([, n]) => n > 0).map(([g, n]) => `${g}${n}`);
+  return `${grades.length}× · ${counts.join(' ')}`;
+}
+
+const ujianCells = computed(() => {
+  // How many exams passed the KKM is already in the KPI row above.
+  const { tertinggi, terendah, tren } = props.report.ujian;
+  if (!tertinggi) return [];
+  return [
+    { label: t('laporan.tertinggi'), value: fmt(tertinggi.rata), note: tertinggi.kode, tone: 'text-slate-900' },
+    { label: t('laporan.terendah'), value: fmt(terendah.rata), note: terendah.kode, tone: 'text-slate-900' },
+    {
+      label: t('laporan.tren'),
+      value: tren ? bertanda(tren.selisih) : '-',
+      note: tren ? t('laporan.trenNote', { n: tren.jumlahPembanding }) : '',
+      tone: !tren || tren.selisih === 0 ? 'text-slate-900' : tren.selisih > 0 ? 'text-emerald-700' : 'text-red-600',
+    },
+  ];
+});
 
 const penempatanRows = computed(() => {
   const p = props.report.penempatan || {};

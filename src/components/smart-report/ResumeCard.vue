@@ -70,10 +70,10 @@
           <p class="text-[11.5px] leading-relaxed text-slate-800 whitespace-pre-line text-justify" lang="ja">{{ resume.teksJa }}</p>
         </div>
       </div>
-      <div v-if="portal" class="text-[10px] text-slate-400 italic">
+      <div v-if="dateOnly" class="text-[10px] text-slate-400 italic">
         <span v-if="resume.tanggal">{{ $t('smartReport.resumeDiperbarui', { tanggal: formatDate(resume.tanggal) }) }}</span>
       </div>
-      <div v-else class="text-[10px] text-slate-400 italic">
+      <div v-else class="no-print text-[10px] text-slate-400 italic">
         <span v-if="resume.dibuatAt">
           {{ $t('smartReport.resumeSumberAi', { model: resume.model || 'Gemini', tanggal: formatDate(resume.dibuatAt) }) }}
         </span>
@@ -107,7 +107,7 @@ export interface SmartResume {
   dieditAt: string | null;
   dieditOleh: string | null;
   usang: boolean;
-  // Peserta portal only: last written or edited, instead of the fields above.
+  // With dateOnly: last written or edited, instead of the fields above.
   tanggal?: string | null;
 }
 
@@ -115,8 +115,8 @@ const props = defineProps<{
   title: string;
   resume: SmartResume | null;
   canWrite: boolean;
-  // Peserta portal: only the text and its date.
-  portal?: boolean;
+  // Only the text and its date (peserta portal, rapor): no AI model, editor or outdated warning.
+  dateOnly?: boolean;
   // Set by the parent while it writes this resume as part of a bulk run.
   busy?: boolean;
   // Set by the parent during a bulk run, so no resume is written twice at the same time.

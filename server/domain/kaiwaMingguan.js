@@ -95,3 +95,19 @@ export function kaiwaWeeklyHistory(sessions, { dari, sampai, target, senseiWajib
   }
   return weeks;
 }
+
+/**
+ * Kaiwa Card weeks for a report: every week that has started, from the week the rule applies and the peserta
+ * joined; with `bulan` (YYYY-MM) only the weeks whose Monday falls in that month, so a week counts in one month.
+ * sessions: [{ tanggal, senseiId }] of one peserta.
+ */
+export function kaiwaCardRekap(sessions, { rule, tanggalMasuk = null, bulan = null, hariIni = todayJakarta() }) {
+  const dari =
+    [tanggalMasuk, rule.mulai].filter(isIsoDate).reduce((a, b) => (a > b ? a : b), '') ||
+    sessions.map((s) => s.tanggal).filter(isIsoDate).sort()[0];
+  if (!dari || dari > hariIni) return { target: rule.target, jumlahMinggu: 0, tercapai: 0 };
+  const weeks = kaiwaWeeklyHistory(sessions, { dari, sampai: hariIni, ...rule }).filter(
+    (w) => !bulan || w.mulai.startsWith(bulan)
+  );
+  return { target: rule.target, jumlahMinggu: weeks.length, tercapai: weeks.filter((w) => w.tercapai).length };
+}

@@ -7,6 +7,7 @@ import {
   normalizeKaiwaRuleSettings,
   kaiwaWeekProgress,
   kaiwaWeeklyHistory,
+  kaiwaCardRekap,
 } from './kaiwaMingguan.js';
 
 test('Kaiwa Card weeks run Monday to Sunday in Jakarta time', () => {
@@ -65,4 +66,23 @@ test('Kaiwa Card history lists every week from joining to now, empty weeks inclu
       ['2026-10-12', 1, false],
     ]
   );
+});
+
+test('Kaiwa Card report summary counts started weeks, each in the month of its Monday', () => {
+  const rule = { target: 2, senseiWajibId: 4, mulai: '2026-10-19' };
+  const sessions = [
+    { tanggal: '2026-10-20', senseiId: 4 },
+    { tanggal: '2026-10-22', senseiId: 2 },
+    { tanggal: '2026-10-27', senseiId: 2 },
+    { tanggal: '2026-11-03', senseiId: 4 },
+    { tanggal: '2026-11-04', senseiId: 3 },
+  ];
+  const opts = { rule, tanggalMasuk: '2026-08-10', hariIni: '2026-11-05' };
+  // Weeks of 19 Oct, 26 Oct and 2 Nov (the week of 26 Oct ends on 1 Nov but belongs to October).
+  assert.deepEqual(kaiwaCardRekap(sessions, opts), { target: 2, jumlahMinggu: 3, tercapai: 2 });
+  assert.deepEqual(kaiwaCardRekap(sessions, { ...opts, bulan: '2026-10' }), { target: 2, jumlahMinggu: 2, tercapai: 1 });
+  assert.deepEqual(kaiwaCardRekap(sessions, { ...opts, bulan: '2026-11' }), { target: 2, jumlahMinggu: 1, tercapai: 1 });
+  // Joined after the rule started: counted from the joining week only.
+  assert.equal(kaiwaCardRekap(sessions, { ...opts, tanggalMasuk: '2026-10-28' }).jumlahMinggu, 2);
+  assert.equal(kaiwaCardRekap([], { ...opts, hariIni: '2026-10-01' }).jumlahMinggu, 0);
 });

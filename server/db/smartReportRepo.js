@@ -10,7 +10,15 @@ import {
   catatanUntukPeserta,
 } from '../domain/smartReport.js';
 import { writeResume, PROMPT_VERSION } from '../ai/smartResume.js';
-import { todayJakarta, weekOf, addDays, kaiwaRule, kaiwaWeekProgress, kaiwaWeeklyHistory } from '../domain/kaiwaMingguan.js';
+import {
+  todayJakarta,
+  weekOf,
+  addDays,
+  kaiwaRule,
+  kaiwaWeekProgress,
+  kaiwaWeeklyHistory,
+  kaiwaCardRekap,
+} from '../domain/kaiwaMingguan.js';
 
 const MAX_RESUME_LENGTH = 6000;
 // Weeks of Kaiwa Card history shown in the peserta portal.
@@ -195,6 +203,7 @@ function toResumeView(row, currentHash) {
 
 async function pesertaReport(ctx, student, journey, resumeRow) {
   const kelas = kelasInfo(ctx, student.kelasId);
+  const rule = kaiwaRule(ctx.settings);
   return {
     student: {
       id: student.id,
@@ -207,8 +216,28 @@ async function pesertaReport(ctx, student, journey, resumeRow) {
     kelas,
     penempatan: await loadPenempatan(student.id, ctx.state),
     ...journey,
+    // Kaiwa Card weeks over the whole journey, since the rule applies.
+    kaiwaCard: {
+      ...kaiwaCardRekap(journey.kaiwa.daftar, { rule, tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null }),
+      senseiWajibNama: staffNama(ctx, rule.senseiWajibId),
+    },
     resume: toResumeView(resumeRow, hashFacts(pesertaFacts(ctx, student, journey), PROMPT_VERSION)),
   };
+}
+
+/** A stored resume as printed under the reports: the text and when it was last written or edited. */
+function resumeUntukCetak(row) {
+  return row ? { teksId: row.teksId, teksJa: row.teksJa, tanggal: row.dieditAt || row.dibuatAt || null } : null;
+}
+
+/** The monthly rapor, with the peserta's resume as the one overall review printed at its bottom. */
+export async function getRaporPeserta({ pesertaId, periode, state = null }) {
+  const pid = parseId(pesertaId);
+  const [rapor, resumeRow] = await Promise.all([
+    getStudentRapor({ pesertaId: pid, periode, state }),
+    readResume('peserta', pid),
+  ]);
+  return { ...rapor, resume: resumeUntukCetak(resumeRow) };
 }
 
 export async function getSmartReportPeserta({ pesertaId }) {
@@ -371,12 +400,8 @@ export async function getPortalSmartReport(pesertaId) {
       ujian: { ...report.ujian, daftar: report.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
       kaiwa: { ...report.kaiwa, daftar: portalKaiwaDaftar(ctx, report.kaiwa.daftar) },
       sikap: { ...report.sikap, daftar: report.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
-      resume: {
-        teksId: resumeRow.teksId,
-        teksJa: resumeRow.teksJa,
-        // Last written or edited; who did it and whether it is outdated are for staff.
-        tanggal: resumeRow.dieditAt || resumeRow.dibuatAt || null,
-      },
+      // Who wrote it and whether it is outdated are for staff.
+      resume: resumeUntukCetak(resumeRow),
     },
   };
 }
@@ -408,7 +433,7 @@ export async function getPortalRapor(pesertaId, periode) {
   const periodeOptions = raporPeriodeOptions(student.tanggalMasuk || kelas?.tanggalStart || null);
   const bulan = periodeOptions.includes(String(periode || '')) ? String(periode) : periodeOptions[0];
 
-  const rapor = await getStudentRapor({ pesertaId: pid, periode: bulan, state });
+  const rapor = await getRaporPeserta({ pesertaId: pid, periode: bulan, state });
   const { statusTag, sumber, keteranganLuarKelas, ...studentInfo } = rapor.student;
   const { catatanBebas, ...penempatan } = rapor.penempatan;
   return {

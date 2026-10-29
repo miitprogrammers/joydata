@@ -21,7 +21,7 @@ import {
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
 import { formatPersonName } from '../domain/nameFormat.js';
-import { DEFAULT_KAIWA_TARGET } from '../domain/kaiwaMingguan.js';
+import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 import { listStaff } from './authStaffRepo.js';
 
@@ -550,6 +550,18 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
 
   const latestKaiwa = kaiwaList.length > 0 ? kaiwaList[0] : null;
 
+  // Kaiwa Card weeks of this month (a week belongs to the month of its Monday).
+  const rule = kaiwaRule(settings);
+  const kaiwaCard = {
+    ...kaiwaCardRekap(
+      (state.nilaiKaiwa || [])
+        .filter((k) => k.pesertaId === pid && k.tanggalKaiwa)
+        .map((k) => ({ tanggal: String(k.tanggalKaiwa).slice(0, 10), senseiId: k.senseiId ?? null })),
+      { rule, tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null, bulan: activeMonth }
+    ),
+    senseiWajibNama: rule.senseiWajibId ? (state.staff || []).find((s) => s.id === rule.senseiWajibId)?.nama || null : null,
+  };
+
   const kategoriMap = new Map((state.sikapKategori || []).map((k) => [k.id, k]));
   const sikapLogs = (state.nilaiSikap || [])
     .filter((s) => s.pesertaId === pid && s.tanggalPenilaian && String(s.tanggalPenilaian).startsWith(activeMonth))
@@ -621,6 +633,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     },
     ujianList,
     kaiwaList,
+    kaiwaCard,
     sikapData: {
       basis: settings.sikap_basis,
       kkm: settings.kkm_sikap,

@@ -54,7 +54,6 @@ import {
 } from './db/repository.js';
 import {
   getProgresData,
-  getStudentRapor,
   updatePesertaPenempatan,
   getSystemSettings,
   updateSystemSettings,
@@ -80,6 +79,7 @@ import {
   getPortalReport,
   getPortalSmartReport,
   getPortalRapor,
+  getRaporPeserta,
 } from './db/smartReportRepo.js';
 import {
   authenticatePeserta,
@@ -828,7 +828,7 @@ export function createApiRouter() {
   // Fase 3 Endpoints: Rapor Peserta (§14.2 mainIdea.md)
   router.get('/rapor/:pesertaId', requireAuth, requirePageAccess('rapor-peserta'), async (req, res) => {
     try {
-      const data = await getStudentRapor({
+      const data = await getRaporPeserta({
         pesertaId: req.params.pesertaId,
         periode: req.query.periode,
       });

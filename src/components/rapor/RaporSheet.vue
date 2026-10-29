@@ -30,7 +30,7 @@
     </div>
 
     <!-- Student & Academic Identity Block -->
-    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs" :class="identitasClass">
       <div>
         <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
         <div class="font-bold text-slate-900 text-sm mt-0.5">{{ raporData.student.nama }}</div>
@@ -69,6 +69,20 @@
       <div v-else>
         <div class="text-[11px] text-slate-500">{{ $t('smartReport.tanggalMasuk') }}</div>
         <div class="font-bold text-slate-800 mt-0.5">{{ raporData.student.tanggalMasuk || '-' }}</div>
+      </div>
+
+      <!-- Legend: what the colour of this block means -->
+      <div v-if="!portal" class="col-span-full border-t border-black/10 pt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-500">
+        <span>{{ $t('rapor.legendWarna') }}:</span>
+        <span
+          v-for="(warna, status) in STATUS_WARNA"
+          :key="status"
+          class="inline-flex items-center gap-1.5"
+          :class="status === raporData.student.statusTag ? 'font-semibold text-slate-800' : ''"
+        >
+          <span class="w-3 h-3 rounded-sm border" :class="warna.contoh" />
+          {{ $t(`tag.${status}`) }}
+        </span>
       </div>
     </div>
 
@@ -124,7 +138,7 @@
       </div>
     </div>
 
-    <!-- Section 1: Rincian Ujian Tertulis -->
+    <!-- Section 1: Ujian tertulis — scores only, no notes per exam -->
     <div class="space-y-2">
       <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
@@ -135,37 +149,45 @@
         </span>
       </div>
 
+      <div v-if="ujian" class="grid grid-cols-4 gap-2 text-center">
+        <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-1.5 px-2">
+          <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
+          <div class="text-base font-bold font-mono mt-0.5" :class="cell.tone">{{ cell.value }}</div>
+          <div class="text-[10px] text-slate-400">{{ cell.note }}</div>
+        </div>
+      </div>
+
       <table class="w-full text-left text-xs border border-slate-200 rounded">
         <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px] font-semibold">
           <tr>
-            <th class="py-2 px-2.5">Tanggal</th>
-            <th class="py-2 px-2.5">Kode Ujian</th>
-            <th class="py-2 px-2 text-center">Pola</th>
-            <th class="py-2 px-2 text-center">Moji-Goi</th>
-            <th class="py-2 px-2 text-center">Bunpou</th>
-            <th class="py-2 px-2 text-center">Dokkai</th>
-            <th class="py-2 px-2 text-center">Choukai</th>
-            <th class="py-2 px-2 text-center">Tunggal</th>
-            <th class="py-2 px-2.5 text-center font-bold">Rata-rata</th>
-            <th class="py-2 px-2 text-center">Grade</th>
-            <th class="py-2 px-2.5 text-center">Status</th>
+            <th class="py-2 px-2.5">{{ $t('smartReport.colTanggal') }}</th>
+            <th class="py-2 px-2.5">{{ $t('smartReport.colKode') }}</th>
+            <template v-if="adaBagian">
+              <th class="py-2 px-2 text-center">Moji-Goi</th>
+              <th class="py-2 px-2 text-center">Bunpou</th>
+              <th class="py-2 px-2 text-center">Dokkai</th>
+              <th class="py-2 px-2 text-center">Choukai</th>
+            </template>
+            <th class="py-2 px-2.5 text-center font-bold">{{ $t('smartReport.colRata') }}</th>
+            <th class="py-2 px-2 text-center">{{ $t('smartReport.colGrade') }}</th>
+            <th class="py-2 px-2.5 text-center">{{ $t('smartReport.colStatus') }}</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-100">
           <tr v-if="raporData.ujianList.length === 0">
-            <td colspan="11" class="py-4 text-center text-slate-400">
+            <td :colspan="adaBagian ? 9 : 5" class="py-4 text-center text-slate-400">
               {{ $t('rapor.belumAdaUjian') }}
             </td>
           </tr>
           <tr v-for="u in raporData.ujianList" :key="u.id" class="font-mono">
             <td class="py-1.5 px-2.5 text-slate-700 font-sans">{{ u.tanggalUjian }}</td>
             <td class="py-1.5 px-2.5 font-bold text-slate-800">{{ u.codeUjian }}</td>
-            <td class="py-1.5 px-2 text-center text-[10px] text-slate-500 uppercase">{{ u.pola }}</td>
-            <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiMojiGoi ?? '-' }}</td>
-            <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiBunpou ?? '-' }}</td>
-            <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiDokkai ?? '-' }}</td>
-            <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiChoukai ?? '-' }}</td>
-            <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiTunggal ?? '-' }}</td>
+            <template v-if="adaBagian">
+              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiMojiGoi ?? '-' }}</td>
+              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiBunpou ?? '-' }}</td>
+              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiDokkai ?? '-' }}</td>
+              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiChoukai ?? '-' }}</td>
+            </template>
             <td class="py-1.5 px-2.5 text-center font-bold text-slate-900 bg-slate-50/50">
               {{ u.nilaiAvg !== null ? u.nilaiAvg : '-' }}
             </td>
@@ -180,86 +202,31 @@
       </table>
     </div>
 
-    <!-- Section 2: Evaluasi Lisan & Percakapan (Kaiwa) -->
-    <div class="space-y-2">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
-          2. {{ $t('rapor.secKaiwa') }}
-        </h3>
-        <span class="text-[11px] font-mono text-slate-600">
-          Grade Akhir: <strong class="text-blue-700">{{ raporData.kpi.gradeKaiwa }}</strong>
-        </span>
+    <!-- Section 2 (kaiwa) & 3 (sikap): numbers only -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <div class="border-b border-slate-200 pb-1.5">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">2. {{ $t('rapor.secKaiwa') }}</h3>
+        </div>
+        <StatKaiwa
+          :grades="raporData.kaiwaList.map((k: any) => k.grade)"
+          :grade-terakhir="raporData.kpi.gradeKaiwa"
+          :kaiwa-card="raporData.kaiwaCard"
+        />
       </div>
-
-      <table class="w-full text-left text-xs border border-slate-200 rounded">
-        <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px] font-semibold">
-          <tr>
-            <th class="py-2 px-2.5 w-28">Tanggal</th>
-            <th class="py-2 px-2.5 w-20 text-center">Grade</th>
-            <th class="py-2 px-4">Catatan & Evaluasi Percakapan Sensei</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-          <tr v-if="raporData.kaiwaList.length === 0">
-            <td colspan="3" class="py-4 text-center text-slate-400">
-              {{ $t('rapor.belumAdaKaiwa') }}
-            </td>
-          </tr>
-          <tr v-for="k in raporData.kaiwaList" :key="k.id">
-            <td class="py-1.5 px-2.5 font-mono text-slate-700">{{ k.tanggalKaiwa }}</td>
-            <td class="py-1.5 px-2.5 text-center font-mono font-bold text-blue-800">{{ k.grade }}</td>
-            <td class="py-1.5 px-4 text-slate-700 italic">
-              {{ k.description || '-' }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Section 3: Evaluasi Sikap & Kedisiplinan -->
-    <div class="space-y-2">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
-          3. {{ $t('rapor.secSikap') }}
-        </h3>
-        <span class="text-[11px] text-slate-600">
-          Basis: <strong class="font-mono">{{ raporData.sikapData.basis }}</strong> · Skor Akhir:
-          <strong class="font-mono" :class="raporData.sikapData.lulusKkm ? 'text-emerald-700' : 'text-red-600'">
-            {{ raporData.sikapData.skorAkhir }} ({{ raporData.sikapData.predikat }})
-          </strong>
-        </span>
+      <div class="space-y-2">
+        <div class="border-b border-slate-200 pb-1.5">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">3. {{ $t('rapor.secSikap') }}</h3>
+        </div>
+        <StatSikap
+          :rows="raporData.sikapData.logs"
+          :skor="raporData.sikapData.skorAkhir"
+          :skor-label="$t('laporan.skorAkhir')"
+          :skor-note="$t('laporan.basisKkm', { basis: raporData.sikapData.basis, kkm: settings.kkm_sikap })"
+          :lulus-kkm="raporData.sikapData.lulusKkm"
+          :basis="raporData.sikapData.basis"
+        />
       </div>
-
-      <table class="w-full text-left text-xs border border-slate-200 rounded">
-        <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px] font-semibold">
-          <tr>
-            <th class="py-2 px-2.5 w-28">Tanggal</th>
-            <th class="py-2 px-3">Kategori Kejadian</th>
-            <th class="py-2 px-2 text-center w-20">Dampak</th>
-            <th v-if="!portal" class="py-2 px-4">Keterangan / Catatan Observasi</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-          <tr v-if="raporData.sikapData.logs.length === 0">
-            <td :colspan="portal ? 3 : 4" class="py-3 text-center text-slate-400">
-              {{ $t('rapor.tidakAdaInsidenSikap', { basis: raporData.sikapData.basis, predikat: raporData.sikapData.predikat }) }}
-            </td>
-          </tr>
-          <tr v-for="s in raporData.sikapData.logs" :key="s.id">
-            <td class="py-1.5 px-2.5 font-mono text-slate-700">{{ s.tanggalPenilaian }}</td>
-            <td class="py-1.5 px-3 font-medium text-slate-800">
-              {{ locale === 'ja' ? s.kategoriNamaJa : s.kategoriNamaId }}
-            </td>
-            <td class="py-1.5 px-2 text-center font-mono font-bold">
-              <span v-if="s.sentiment === 'positif'" class="text-emerald-700">+{{ s.bobot }}</span>
-              <span v-else class="text-red-600">−{{ s.bobot }}</span>
-            </td>
-            <td v-if="!portal" class="py-1.5 px-4 text-slate-600">
-              {{ s.description || '-' }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <!-- Section 4: Rekap Kehadiran & Section 5: Data Penempatan 名簿 -->
@@ -343,6 +310,18 @@
       </div>
     </div>
 
+    <!-- One overall review (the Smart Report resume), at the bottom -->
+    <ResumeCard
+      v-if="raporData.resume"
+      :title="$t('laporan.reviewJudul')"
+      :resume="raporData.resume"
+      :can-write="false"
+      :generate="noop"
+      :save="noop"
+      date-only
+    />
+    <p v-else-if="!portal" class="no-print text-[11px] text-slate-400 italic">{{ $t('laporan.reviewBelumAda') }}</p>
+
     <!-- Formal Signatures / Lembar Pengesahan -->
     <div class="rapor-signatures pt-8 border-t border-slate-200 grid grid-cols-3 gap-6 text-center text-xs">
       <div>
@@ -373,19 +352,68 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import ResumeCard from '../smart-report/ResumeCard.vue';
+import StatKaiwa from '../smart-report/StatKaiwa.vue';
+import StatSikap from '../smart-report/StatSikap.vue';
+import { ringkasUjian, bertanda } from '../smart-report/reportStats.js';
 
-// The printable monthly rapor (A4), for staff (RaporView) and for the peserta portal.
-defineProps<{
+// The printable monthly rapor (A4), for staff (RaporView) and for the peserta portal: numbers per section and
+// one overall review at the bottom.
+const props = defineProps<{
   raporData: any;
   // kkm_ujian, kkm_sikap, ambang_kehadiran_rendah
   settings: any;
   printDate: string;
-  // Peserta portal: leaves out the status tag and the free-text sikap notes.
+  // Peserta portal: leaves out the status tag.
   portal?: boolean;
 }>();
 
-const { locale } = useI18n();
+const { t } = useI18n();
+
+const noop = async () => {};
+
+// Identity block tinted by the status tag (blok), with a legend swatch per status (contoh). The portal hides
+// the status, so there the block stays neutral and has no legend.
+const STATUS_WARNA: Record<string, { blok: string; contoh: string }> = {
+  standar: { blok: 'bg-slate-50 border-slate-200', contoh: 'bg-slate-200 border-slate-400' },
+  berkembang: { blok: 'bg-blue-50 border-blue-200', contoh: 'bg-blue-200 border-blue-400' },
+  siap_interview: { blok: 'bg-emerald-50 border-emerald-200', contoh: 'bg-emerald-200 border-emerald-400' },
+};
+const identitasClass = computed(
+  () => ((!props.portal && STATUS_WARNA[props.raporData.student.statusTag]) || STATUS_WARNA.standar).blok
+);
+
+// Single-score exams have no section scores; their four columns would only hold dashes.
+const adaBagian = computed(() =>
+  props.raporData.ujianList.some((u: any) => [u.nilaiMojiGoi, u.nilaiBunpou, u.nilaiDokkai, u.nilaiChoukai].some((v) => v != null))
+);
+
+const ujian = computed(() =>
+  ringkasUjian(props.raporData.ujianList.map((u: any) => ({ kode: u.codeUjian, nilai: u.nilaiAvg, lulus: u.lulusKkm })))
+);
+
+const ujianCells = computed(() => {
+  const s = ujian.value;
+  if (!s) return [];
+  return [
+    { label: t('laporan.tertinggi'), value: s.tertinggi.nilai, note: s.tertinggi.kode, tone: 'text-slate-900' },
+    { label: t('laporan.terendah'), value: s.terendah.nilai, note: s.terendah.kode, tone: 'text-slate-900' },
+    {
+      label: t('laporan.lulusKkm', { kkm: props.settings.kkm_ujian }),
+      value: `${s.lulus}/${s.jumlah}`,
+      note: t('laporan.ujian'),
+      tone: s.lulus === s.jumlah ? 'text-emerald-700' : 'text-amber-700',
+    },
+    {
+      label: t('laporan.perubahan'),
+      value: bertanda(s.selisih),
+      note: t('laporan.pertamaTerakhir'),
+      tone: s.selisih === null || s.selisih === 0 ? 'text-slate-900' : s.selisih > 0 ? 'text-emerald-700' : 'text-red-600',
+    },
+  ];
+});
 </script>
 
 <style>
@@ -436,7 +464,8 @@ const { locale } = useI18n();
 
   /* Keep table rows and the signature block whole across page breaks. */
   #rapor-print-container tr,
-  .rapor-signatures {
+  .rapor-signatures,
+  #rapor-print-container .sr-resume {
     break-inside: avoid;
   }
 

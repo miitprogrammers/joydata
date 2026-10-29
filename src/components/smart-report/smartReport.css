@@ -53,15 +53,6 @@
   .sr-num td {
     font-variant-numeric: tabular-nums;
   }
-
-  .sr-note-row td {
-    border-top: 0;
-    padding: 0 8px 6px 16px;
-    font-size: 10px;
-    font-style: italic;
-    color: #64748b;
-    white-space: pre-line;
-  }
 }
 
 @media print {

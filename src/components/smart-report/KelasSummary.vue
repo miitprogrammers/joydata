@@ -28,16 +28,6 @@
       </div>
     </div>
 
-    <ResumeCard
-      :title="$t('smartReport.resumeKelasJudul')"
-      :resume="resume"
-      :can-write="canWrite"
-      :busy="busy"
-      :locked="locked"
-      :generate="generate"
-      :save="save"
-    />
-
     <div class="grid grid-cols-1 md:grid-cols-3 print:grid-cols-3 gap-5 sr-keep">
       <div class="md:col-span-2 print:col-span-2 space-y-1.5">
         <h3 class="sr-section-title">{{ $t('smartReport.secTrenKelas') }}</h3>
@@ -132,6 +122,17 @@
       </div>
       <div v-else class="text-[11px] text-slate-400">{{ $t('smartReport.tidakAdaPerhatian') }}</div>
     </div>
+
+    <!-- One overall review of the class, at the bottom -->
+    <ResumeCard
+      :title="$t('laporan.reviewKelasJudul')"
+      :resume="resume"
+      :can-write="canWrite"
+      :busy="busy"
+      :locked="locked"
+      :generate="generate"
+      :save="save"
+    />
   </article>
 </template>
 
