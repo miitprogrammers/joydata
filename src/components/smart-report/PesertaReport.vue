@@ -43,9 +43,6 @@
           {{ fmt(report.kpi.rataUjian) }}
           <span v-if="report.kpi.rataUjian !== null" class="text-xs font-semibold text-slate-500">({{ report.kpi.gradeUjian }})</span>
         </div>
-        <div class="text-[10px] text-slate-400 mt-0.5">
-          {{ $t('smartReport.lulusKkmDari', { lulus: report.kpi.jumlahLulusUjian, total: report.kpi.jumlahUjian, kkm: settings.kkm_ujian }) }}
-        </div>
       </div>
       <div class="p-3 border border-slate-200 rounded-lg">
         <div class="text-[11px] font-medium text-slate-500">{{ $t('smartReport.kaiwaTerakhir') }}</div>
@@ -74,57 +71,34 @@
       </div>
     </div>
 
-    <!-- Exam statistics (beside the chart instead when there is no per-section panel) -->
-    <div v-if="ujianCells.length && adaBagian" class="grid grid-cols-3 gap-2 text-center sr-keep">
-      <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-1.5 px-2">
-        <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
-        <div class="text-base font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
-        <div class="text-[10px] text-slate-400">{{ cell.note }}</div>
-      </div>
-    </div>
+    <!-- Exam trend, full width -->
+    <section class="border border-slate-200 rounded-lg px-3.5 pt-3 pb-2 space-y-1 sr-keep">
+      <h3 class="sr-section-title border-b-0 pb-0">{{ $t('smartReport.secTren') }}</h3>
+      <ScoreTrendChart
+        :points="trendPoints"
+        :kkm="settings.kkm_ujian"
+        :width="1000"
+        :aria-label="$t('smartReport.grafikAria', { n: trendPoints.length, kkm: settings.kkm_ujian })"
+      />
+    </section>
 
-    <!-- Tren & bagian -->
-    <div class="grid grid-cols-1 md:grid-cols-3 print:grid-cols-3 gap-5 sr-keep">
-      <div class="md:col-span-2 print:col-span-2 space-y-1.5">
-        <h3 class="sr-section-title">{{ $t('smartReport.secTren') }}</h3>
-        <ScoreTrendChart
-          :points="trendPoints"
-          :kkm="settings.kkm_ujian"
-          :aria-label="$t('smartReport.grafikAria', { n: trendPoints.length, kkm: settings.kkm_ujian })"
-        />
-      </div>
-      <div v-if="adaBagian" class="space-y-1.5">
-        <h3 class="sr-section-title">{{ $t('smartReport.secBagian') }}</h3>
-        <div class="space-y-2.5 pt-1">
-          <div v-for="b in bagianRows" :key="b.key" class="text-[11px]">
-            <div class="flex justify-between text-slate-600">
-              <span>{{ $t(`smartReport.bagian_${b.key}`) }}</span>
-              <span class="font-bold text-slate-800" style="font-variant-numeric: tabular-nums">{{ fmt(b.value) }}</span>
-            </div>
-            <div class="relative h-1.5 mt-1 rounded-full bg-slate-100">
-              <div
-                v-if="b.value !== null"
-                class="absolute inset-y-0 left-0 rounded-full"
-                :style="{ width: `${Math.min(100, b.value)}%`, background: '#1E3A8A' }"
-              />
-              <div class="absolute -inset-y-0.5 w-px bg-slate-500" :style="{ left: `${settings.kkm_ujian}%` }" />
-            </div>
-          </div>
-          <div class="text-[10px] text-slate-400 flex items-center gap-1">
-            <span class="inline-block w-px h-2.5 bg-slate-500" />
-            {{ $t('smartReport.kkmLabel', { kkm: settings.kkm_ujian }) }}
-          </div>
-        </div>
-      </div>
-      <div v-else-if="ujianCells.length" class="space-y-1.5">
-        <h3 class="sr-section-title">{{ $t('laporan.statistikUjian') }}</h3>
-        <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-1.5 px-2 text-center">
+    <!-- Exam statistics; a second row of section averages for exams scored per section -->
+    <section v-if="ujianCells.length" class="border border-slate-200 rounded-lg p-3.5 space-y-2 sr-keep">
+      <h3 class="sr-section-title border-b-0 pb-0">{{ $t('laporan.statistikUjian') }}</h3>
+      <div class="grid grid-cols-4 gap-2 text-center">
+        <div v-for="cell in ujianCells" :key="cell.label" class="border border-slate-200 rounded py-2 px-2">
           <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
-          <div class="text-base font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
+          <div class="text-lg font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
           <div class="text-[10px] text-slate-400">{{ cell.note }}</div>
         </div>
       </div>
-    </div>
+      <div v-if="bagianCells.length" class="grid grid-cols-4 gap-2 text-center">
+        <div v-for="cell in bagianCells" :key="cell.key" class="border border-slate-200 rounded py-1.5 px-2">
+          <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
+          <div class="text-base font-bold mt-0.5" :class="cell.tone" style="font-variant-numeric: tabular-nums">{{ cell.value }}</div>
+        </div>
+      </div>
+    </section>
 
     <!-- 1. Rekap bulanan -->
     <div class="space-y-1.5">
@@ -283,9 +257,20 @@ const trendPoints = computed(() =>
   }))
 );
 
-const bagianRows = computed(() => BAGIAN.map((key) => ({ key, value: props.report.ujian.bagian[key] })));
-// Single-score exams have no section scores; the per-section panel would only hold dashes.
-const adaBagian = computed(() => bagianRows.value.some((b) => b.value !== null));
+// Average per section; single-score exams have none, so the row only shows for section-scored ones.
+const bagianCells = computed(() => {
+  const cells = BAGIAN.map((key) => {
+    const value = props.report.ujian.bagian[key];
+    return {
+      key,
+      label: t('laporan.rataBagian', { bagian: t(`smartReport.bagian_${key}`) }),
+      value: fmt(value),
+      tone: value === null ? 'text-slate-400' : value >= props.settings.kkm_ujian ? 'text-slate-900' : 'text-red-600',
+      ada: value !== null,
+    };
+  });
+  return cells.some((c) => c.ada) ? cells : [];
+});
 
 // "5× · A1 B3 C1": sessions of a month and how many of each grade.
 function kaiwaRingkas(grades: string[]) {
@@ -295,8 +280,8 @@ function kaiwaRingkas(grades: string[]) {
 }
 
 const ujianCells = computed(() => {
-  // How many exams passed the KKM is already in the KPI row above.
   const { tertinggi, terendah, tren } = props.report.ujian;
+  const { jumlahUjian, jumlahLulusUjian } = props.report.kpi;
   if (!tertinggi) return [];
   return [
     { label: t('laporan.tertinggi'), value: fmt(tertinggi.rata), note: tertinggi.kode, tone: 'text-slate-900' },
@@ -306,6 +291,12 @@ const ujianCells = computed(() => {
       value: tren ? bertanda(tren.selisih) : '-',
       note: tren ? t('laporan.trenNote', { n: tren.jumlahPembanding }) : '',
       tone: !tren || tren.selisih === 0 ? 'text-slate-900' : tren.selisih > 0 ? 'text-emerald-700' : 'text-red-600',
+    },
+    {
+      label: t('laporan.ketuntasan'),
+      value: `${jumlahLulusUjian}/${jumlahUjian}`,
+      note: t('laporan.ketuntasanNote', { persen: Math.round((jumlahLulusUjian / jumlahUjian) * 1000) / 10, kkm: props.settings.kkm_ujian }),
+      tone: jumlahLulusUjian === jumlahUjian ? 'text-emerald-700' : 'text-amber-700',
     },
   ];
 });

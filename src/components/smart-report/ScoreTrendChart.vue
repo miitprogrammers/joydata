@@ -100,20 +100,22 @@ const props = defineProps<{
   points: TrendPoint[];
   kkm: number;
   ariaLabel: string;
+  // Drawing width in SVG units (the height stays 180): wider for a full-width chart, so it gets longer, not taller.
+  width?: number;
 }>();
 
-const W = 640;
+const W = computed(() => props.width ?? 640);
 const H = 180;
 const PAD = { left: 30, right: 74, top: 14, bottom: 26 };
 const TICKS = [0, 25, 50, 75, 100];
-const MAX_X_LABELS = 14;
+const maxXLabels = computed(() => Math.round((14 * W.value) / 640));
 
 const y = (v: number) => PAD.top + (1 - Math.max(0, Math.min(100, v)) / 100) * (H - PAD.top - PAD.bottom);
 
 const xOf = (i: number) => {
   const n = props.points.length;
-  if (n <= 1) return (PAD.left + W - PAD.right) / 2;
-  return PAD.left + 12 + (i / (n - 1)) * (W - PAD.left - PAD.right - 24);
+  if (n <= 1) return (PAD.left + W.value - PAD.right) / 2;
+  return PAD.left + 12 + (i / (n - 1)) * (W.value - PAD.left - PAD.right - 24);
 };
 
 const formatValue = (v: number) => (Number.isInteger(v) ? String(v) : v.toFixed(1));
@@ -162,7 +164,7 @@ const segments = computed(() => {
 
 const xLabels = computed(() => {
   const n = props.points.length;
-  const step = Math.ceil(n / MAX_X_LABELS);
+  const step = Math.ceil(n / maxXLabels.value);
   return props.points
     .map((p, index) => ({ label: p.label, index, x: xOf(index) }))
     .filter((p) => p.index % step === 0 || p.index === n - 1);

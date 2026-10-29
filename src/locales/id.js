@@ -504,6 +504,8 @@ export default {
   },
   // Printed rapor and Smart Report: number blocks and the one overall review
   laporan: {
+    ketuntasan: 'Ketuntasan',
+    ketuntasanNote: '{persen}% ujian ≥ KKM {kkm}',
     rataBagian: 'Rata-rata {bagian}',
     legendWarna: 'Warna blok ini menunjukkan status',
     statistikUjian: 'Statistik Ujian',
@@ -554,7 +556,6 @@ export default {
     program: 'Program',
     statusTag: 'Status',
     rataUjian: 'Rata-rata Ujian',
-    lulusKkmDari: '{lulus} dari {total} ujian ≥ KKM {kkm}',
     kaiwaTerakhir: 'Kaiwa Terakhir',
     sesiKaiwa: '{n} sesi kaiwa',
     skorSikap: 'Skor Sikap',

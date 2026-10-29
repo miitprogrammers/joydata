@@ -504,6 +504,8 @@ export default {
   },
   // Printed rapor and Smart Report: number blocks and the one overall review
   laporan: {
+    ketuntasan: '合格率',
+    ketuntasanNote: '{persen}%（基準{kkm}以上）',
     rataBagian: '{bagian} 平均',
     legendWarna: 'この欄の色はステータスを表します',
     statistikUjian: '試験の統計',
@@ -554,7 +556,6 @@ export default {
     program: 'プログラム',
     statusTag: 'ステータス',
     rataUjian: '試験総合平均',
-    lulusKkmDari: '{total}回中{lulus}回が合格基準点{kkm}以上',
     kaiwaTerakhir: '直近会話評価',
     sesiKaiwa: '会話評価{n}回',
     skorSikap: '態度評定点',
