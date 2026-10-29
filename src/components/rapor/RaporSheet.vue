@@ -30,7 +30,7 @@
     </div>
 
     <!-- Student & Academic Identity Block -->
-    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs" :class="identitasClass">
+    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs" :class="warnaIdentitas(raporData.student.statusTag, portal)">
       <div>
         <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
         <div class="font-bold text-slate-900 text-sm mt-0.5">{{ raporData.student.nama }}</div>
@@ -71,19 +71,7 @@
         <div class="font-bold text-slate-800 mt-0.5">{{ raporData.student.tanggalMasuk || '-' }}</div>
       </div>
 
-      <!-- Legend: what the colour of this block means -->
-      <div v-if="!portal" class="col-span-full border-t border-black/10 pt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-slate-500">
-        <span>{{ $t('rapor.legendWarna') }}:</span>
-        <span
-          v-for="(warna, status) in STATUS_WARNA"
-          :key="status"
-          class="inline-flex items-center gap-1.5"
-          :class="status === raporData.student.statusTag ? 'font-semibold text-slate-800' : ''"
-        >
-          <span class="w-3 h-3 rounded-sm border" :class="warna.contoh" />
-          {{ $t(`tag.${status}`) }}
-        </span>
-      </div>
+      <StatusLegend v-if="!portal" :status-tag="raporData.student.statusTag" />
     </div>
 
     <!-- KPI Executive Summary Cards -->
@@ -138,7 +126,7 @@
       </div>
     </div>
 
-    <!-- Section 1: Ujian tertulis — scores only, no notes per exam -->
+    <!-- Section 1: Ujian tertulis — a summary in numbers, no list of exams -->
     <div class="space-y-2">
       <div class="flex items-center justify-between border-b border-slate-200 pb-1.5">
         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
@@ -157,49 +145,17 @@
         </div>
       </div>
 
-      <table class="w-full text-left text-xs border border-slate-200 rounded">
-        <thead class="bg-slate-50 text-slate-600 border-b border-slate-200 text-[11px] font-semibold">
-          <tr>
-            <th class="py-2 px-2.5">{{ $t('smartReport.colTanggal') }}</th>
-            <th class="py-2 px-2.5">{{ $t('smartReport.colKode') }}</th>
-            <template v-if="adaBagian">
-              <th class="py-2 px-2 text-center">Moji-Goi</th>
-              <th class="py-2 px-2 text-center">Bunpou</th>
-              <th class="py-2 px-2 text-center">Dokkai</th>
-              <th class="py-2 px-2 text-center">Choukai</th>
-            </template>
-            <th class="py-2 px-2.5 text-center font-bold">{{ $t('smartReport.colRata') }}</th>
-            <th class="py-2 px-2 text-center">{{ $t('smartReport.colGrade') }}</th>
-            <th class="py-2 px-2.5 text-center">{{ $t('smartReport.colStatus') }}</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-          <tr v-if="raporData.ujianList.length === 0">
-            <td :colspan="adaBagian ? 9 : 5" class="py-4 text-center text-slate-400">
-              {{ $t('rapor.belumAdaUjian') }}
-            </td>
-          </tr>
-          <tr v-for="u in raporData.ujianList" :key="u.id" class="font-mono">
-            <td class="py-1.5 px-2.5 text-slate-700 font-sans">{{ u.tanggalUjian }}</td>
-            <td class="py-1.5 px-2.5 font-bold text-slate-800">{{ u.codeUjian }}</td>
-            <template v-if="adaBagian">
-              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiMojiGoi ?? '-' }}</td>
-              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiBunpou ?? '-' }}</td>
-              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiDokkai ?? '-' }}</td>
-              <td class="py-1.5 px-2 text-center text-slate-600">{{ u.nilaiChoukai ?? '-' }}</td>
-            </template>
-            <td class="py-1.5 px-2.5 text-center font-bold text-slate-900 bg-slate-50/50">
-              {{ u.nilaiAvg !== null ? u.nilaiAvg : '-' }}
-            </td>
-            <td class="py-1.5 px-2 text-center font-bold">{{ u.grade }}</td>
-            <td class="py-1.5 px-2.5 text-center text-[10px] font-sans font-semibold">
-              <span :class="u.lulusKkm ? 'text-emerald-700' : 'text-red-600'">
-                {{ u.lulusKkm ? $t('rapor.lulus') : $t('rapor.tidakLulus') }}
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- Section averages, for exams scored per section -->
+      <div v-if="bagianCells.length" class="grid grid-cols-4 gap-2 text-center">
+        <div v-for="cell in bagianCells" :key="cell.key" class="border border-slate-200 rounded py-1.5 px-2">
+          <div class="text-[10px] text-slate-500">{{ cell.label }}</div>
+          <div class="text-base font-bold font-mono mt-0.5" :class="cell.tone">{{ cell.value }}</div>
+        </div>
+      </div>
+
+      <p v-if="!raporData.ujianList.length" class="text-xs text-slate-400 text-center py-3 border border-slate-200 rounded">
+        {{ $t('rapor.belumAdaUjian') }}
+      </p>
     </div>
 
     <!-- Section 2 (kaiwa) & 3 (sikap): numbers only -->
@@ -357,7 +313,8 @@ import { useI18n } from 'vue-i18n';
 import ResumeCard from '../smart-report/ResumeCard.vue';
 import StatKaiwa from '../smart-report/StatKaiwa.vue';
 import StatSikap from '../smart-report/StatSikap.vue';
-import { ringkasUjian, bertanda } from '../smart-report/reportStats.js';
+import StatusLegend from '../smart-report/StatusLegend.vue';
+import { ringkasUjian, bertanda, warnaIdentitas } from '../smart-report/reportStats.js';
 
 // The printable monthly rapor (A4), for staff (RaporView) and for the peserta portal: numbers per section and
 // one overall review at the bottom.
@@ -374,21 +331,29 @@ const { t } = useI18n();
 
 const noop = async () => {};
 
-// Identity block tinted by the status tag (blok), with a legend swatch per status (contoh). The portal hides
-// the status, so there the block stays neutral and has no legend.
-const STATUS_WARNA: Record<string, { blok: string; contoh: string }> = {
-  standar: { blok: 'bg-slate-50 border-slate-200', contoh: 'bg-slate-200 border-slate-400' },
-  berkembang: { blok: 'bg-blue-50 border-blue-200', contoh: 'bg-blue-200 border-blue-400' },
-  siap_interview: { blok: 'bg-emerald-50 border-emerald-200', contoh: 'bg-emerald-200 border-emerald-400' },
-};
-const identitasClass = computed(
-  () => ((!props.portal && STATUS_WARNA[props.raporData.student.statusTag]) || STATUS_WARNA.standar).blok
-);
 
-// Single-score exams have no section scores; their four columns would only hold dashes.
-const adaBagian = computed(() =>
-  props.raporData.ujianList.some((u: any) => [u.nilaiMojiGoi, u.nilaiBunpou, u.nilaiDokkai, u.nilaiChoukai].some((v) => v != null))
-);
+const BAGIAN = [
+  { key: 'nilaiMojiGoi', label: 'Moji-Goi' },
+  { key: 'nilaiBunpou', label: 'Bunpou' },
+  { key: 'nilaiDokkai', label: 'Dokkai' },
+  { key: 'nilaiChoukai', label: 'Choukai' },
+];
+
+// Average per section this month; single-score exams have none, so the row only shows for section-scored ones.
+const bagianCells = computed(() => {
+  const cells = BAGIAN.map(({ key, label }) => {
+    const nilai = props.raporData.ujianList.map((u: any) => u[key]).filter((v: any) => v !== null && v !== undefined);
+    const rata = nilai.length ? Math.round((nilai.reduce((a: number, b: number) => a + b, 0) / nilai.length) * 10) / 10 : null;
+    return {
+      key,
+      label: t('laporan.rataBagian', { bagian: label }),
+      value: rata ?? '-',
+      tone: rata === null ? 'text-slate-400' : rata >= props.settings.kkm_ujian ? 'text-slate-900' : 'text-red-600',
+      ada: rata !== null,
+    };
+  });
+  return cells.some((c) => c.ada) ? cells : [];
+});
 
 const ujian = computed(() =>
   ringkasUjian(props.raporData.ujianList.map((u: any) => ({ kode: u.codeUjian, nilai: u.nilaiAvg, lulus: u.lulusKkm })))

@@ -1,6 +1,18 @@
-// Number summaries shared by the printed rapor (RaporSheet) and the Smart Report (PesertaReport).
+// Shared by the printed rapor (RaporSheet) and the Smart Report (PesertaReport): status colours and number summaries.
 
 const round1 = (v) => Math.round(v * 10) / 10;
+
+// Identity block tinted by the status tag (blok), with a legend swatch per status (contoh).
+export const STATUS_WARNA = {
+  standar: { blok: 'bg-slate-50 border-slate-200', contoh: 'bg-slate-200 border-slate-400' },
+  berkembang: { blok: 'bg-blue-50 border-blue-200', contoh: 'bg-blue-200 border-blue-400' },
+  siap_interview: { blok: 'bg-emerald-50 border-emerald-200', contoh: 'bg-emerald-200 border-emerald-400' },
+};
+
+/** Classes of the identity block; the peserta portal hides the status, so there it stays neutral. */
+export function warnaIdentitas(statusTag, portal = false) {
+  return ((!portal && STATUS_WARNA[statusTag]) || STATUS_WARNA.standar).blok;
+}
 
 /** rows: [{ kode, nilai, lulus }] in date order; nilai null = not scored. */
 export function ringkasUjian(rows) {
