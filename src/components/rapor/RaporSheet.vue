@@ -30,7 +30,7 @@
     </div>
 
     <!-- Student & Academic Identity Block -->
-    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs" :class="warnaIdentitas(raporData.student.statusTag, portal)">
+    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-5 gap-4 text-xs" :class="warnaIdentitas(raporData.student.statusTag, portal)">
       <div>
         <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
         <div class="font-bold text-slate-900 text-sm mt-0.5">{{ raporData.student.nama }}</div>
@@ -48,6 +48,8 @@
         <div class="font-bold text-slate-800 mt-0.5">{{ raporData.kelas?.senseiNama || '-' }}</div>
         <div class="text-[10px] text-slate-500">Cabang JOY</div>
       </div>
+
+      <PeringkatCell :peringkat="raporData.peringkat" :note="$t('laporan.peringkatBulanIni')" />
 
       <div v-if="!portal">
         <div class="text-[11px] text-slate-500">{{ $t('progres.statusTag') }}</div>
@@ -314,6 +316,7 @@ import ResumeCard from '../smart-report/ResumeCard.vue';
 import StatKaiwa from '../smart-report/StatKaiwa.vue';
 import StatSikap from '../smart-report/StatSikap.vue';
 import StatusLegend from '../smart-report/StatusLegend.vue';
+import PeringkatCell from '../smart-report/PeringkatCell.vue';
 import { ringkasUjian, bertanda, warnaIdentitas } from '../smart-report/reportStats.js';
 
 // The printable monthly rapor (A4), for staff (RaporView) and for the peserta portal: numbers per section and

@@ -504,6 +504,10 @@ export default {
   },
   // Printed rapor and Smart Report: number blocks and the one overall review
   laporan: {
+    peringkatKelas: 'Peringkat Kelas',
+    peringkatBulanIni: 'nilai ujian bulan ini',
+    peringkatSeluruh: 'rata-rata seluruh ujian',
+    belumDinilai: 'belum ada nilai',
     ketuntasan: 'Ketuntasan',
     ketuntasanNote: '{persen}% ujian ≥ KKM {kkm}',
     rataBagian: 'Rata-rata {bagian}',

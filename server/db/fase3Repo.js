@@ -21,6 +21,7 @@ import {
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
 import { formatPersonName } from '../domain/nameFormat.js';
+import { urutkanPeringkat } from '../domain/smartReport.js';
 import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 import { listStaff } from './authStaffRepo.js';
@@ -581,7 +582,8 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
   const classAbsensi = (state.absensi || []).filter(
     (a) => a.kelasId === classId && a.tanggalAbsensi && String(a.tanggalAbsensi).startsWith(activeMonth)
   );
-  const classRoster = (state.peserta || []).filter((p) => p.kelasId === classId && !p.deletedAt).map((p) => p.id);
+  const classMembers = (state.peserta || []).filter((p) => p.kelasId === classId && !p.deletedAt);
+  const classRoster = classMembers.map((p) => p.id);
   const classCalc = computeClassMonthlyAbsensi(classRoster, classAbsensi);
   const studentAbs = classCalc.studentStats.get(pid) || {
     hadir: 0,
@@ -593,9 +595,32 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     rasioKetidakhadiran: null,
   };
 
+  const rataBulan = (avgs) =>
+    avgs.length > 0 ? Math.round((avgs.reduce((a, b) => a + b, 0) / avgs.length) * 10) / 10 : null;
   const examAvgs = ujianList.map((u) => u.nilaiAvg).filter((v) => v !== null && Number.isFinite(v));
-  const overallExamAvg =
-    examAvgs.length > 0 ? Math.round((examAvgs.reduce((a, b) => a + b, 0) / examAvgs.length) * 10) / 10 : null;
+  const overallExamAvg = rataBulan(examAvgs);
+
+  // Class rank of this month: every classmate's exam average of the month, attendance breaking ties. Kept to the
+  // month so the rapor of a past month does not change when later scores come in.
+  const rankRows = classMembers.map((p) => ({
+    pesertaId: p.id,
+    nama: nameMap.get(Number(p.mancationAkunId)) || p.nama || '',
+    rata: rataBulan(
+      (state.nilaiUjian || [])
+        .filter((u) => u.pesertaId === p.id && u.tanggalUjian && String(u.tanggalUjian).startsWith(activeMonth))
+        .map(resolveNilaiAvg)
+        .filter((v) => v !== null && Number.isFinite(v))
+    ),
+    rasioKehadiran: classCalc.studentStats.get(p.id)?.rasioKehadiran ?? null,
+  }));
+  const ranked = urutkanPeringkat(rankRows, (r) => r.rata);
+  const peringkat = classId
+    ? {
+        posisi: ranked.find((r) => r.pesertaId === pid)?.peringkat ?? null,
+        jumlahDinilai: ranked.length,
+        jumlahPeserta: classMembers.length,
+      }
+    : null;
 
   return {
     periode: activeMonth,
@@ -619,6 +644,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
         }
       : null,
     penempatan,
+    peringkat,
     kpi: {
       rataUjian: overallExamAvg,
       gradeUjian: overallExamAvg !== null ? getGradeLabel(overallExamAvg, settings.batas_grade) : '-',

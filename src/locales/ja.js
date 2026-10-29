@@ -504,6 +504,10 @@ export default {
   },
   // Printed rapor and Smart Report: number blocks and the one overall review
   laporan: {
+    peringkatKelas: 'クラス順位',
+    peringkatBulanIni: '今月の試験',
+    peringkatSeluruh: '全試験の平均',
+    belumDinilai: '未評価',
     ketuntasan: '合格率',
     ketuntasanNote: '{persen}%（基準{kkm}以上）',
     rataBagian: '{bagian} 平均',

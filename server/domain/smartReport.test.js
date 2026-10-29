@@ -9,6 +9,7 @@ import {
   makeNameScrubber,
   hashFacts,
   catatanUntukPeserta,
+  urutkanPeringkat,
 } from './smartReport.js';
 
 const settings = {
@@ -117,6 +118,23 @@ test('Smart Report: class ranking shares ranks on equal averages and lists who n
   assert.equal(summary.statistik.jumlahLulusKkm, 3);
   assert.deepEqual(summary.distribusiGrade, { A: 1, B: 2, C: 1, D: 0 });
   assert.deepEqual(summary.perluPerhatian.map((p) => [p.nama, p.alasan]), [['Dedi', ['ujian', 'kehadiran']]]);
+});
+
+test('Class ranking helper: rows without a score are left out, ties share a rank', () => {
+  const ranked = urutkanPeringkat(
+    [
+      { pesertaId: 1, nama: 'Ani', rata: 85, rasioKehadiran: 90 },
+      { pesertaId: 2, nama: 'Budi', rata: null, rasioKehadiran: 100 },
+      { pesertaId: 3, nama: 'Citra', rata: 85, rasioKehadiran: 100 },
+      { pesertaId: 4, nama: 'Dedi', rata: 92, rasioKehadiran: 60 },
+    ],
+    (r) => r.rata
+  );
+  assert.deepEqual(ranked.map((r) => [r.nama, r.peringkat]), [
+    ['Dedi', 1],
+    ['Citra', 2],
+    ['Ani', 2],
+  ]);
 });
 
 test('Smart Report: facts sent to Gemini carry no names, and class aliases map back to names', () => {

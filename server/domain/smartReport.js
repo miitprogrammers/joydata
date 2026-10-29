@@ -244,6 +244,27 @@ export function buildPesertaJourney({
  * Class page of the Smart Report: statistics over the members' journeys and a ranking by exam average
  * (ties broken by attendance). members: [{ pesertaId, nama, journey }]
  */
+/**
+ * Class ranking: highest average first, then attendance, then name; equal averages share a rank (1, 2, 2, 4).
+ * Rows without an average (nilaiOf returns null) are left out. Used by the class report and the monthly rapor.
+ * rows: [{ nama, rasioKehadiran, ... }]
+ */
+export function urutkanPeringkat(rows, nilaiOf) {
+  const ranked = rows
+    .filter((r) => nilaiOf(r) !== null && nilaiOf(r) !== undefined)
+    .sort(
+      (a, b) =>
+        nilaiOf(b) - nilaiOf(a) ||
+        (b.rasioKehadiran ?? -1) - (a.rasioKehadiran ?? -1) ||
+        String(a.nama).localeCompare(String(b.nama))
+    )
+    .map((r) => ({ ...r, peringkat: null }));
+  for (let i = 0; i < ranked.length; i += 1) {
+    ranked[i].peringkat = i > 0 && nilaiOf(ranked[i]) === nilaiOf(ranked[i - 1]) ? ranked[i - 1].peringkat : i + 1;
+  }
+  return ranked;
+}
+
 export function buildKelasSummary(members, settings) {
   const rows = members.map(({ pesertaId, nama, journey }) => ({
     pesertaId,
@@ -252,20 +273,8 @@ export function buildKelasSummary(members, settings) {
     bagian: journey.ujian.bagian,
   }));
 
-  const dinilai = rows
-    .filter((r) => r.rataUjian !== null)
-    .sort(
-      (a, b) =>
-        b.rataUjian - a.rataUjian ||
-        (b.rasioKehadiran ?? -1) - (a.rasioKehadiran ?? -1) ||
-        a.nama.localeCompare(b.nama)
-    );
-  const ranking = dinilai.map((r) => ({ ...r, peringkat: null }));
-  // Equal averages share a rank (1, 2, 2, 4).
-  for (let i = 0; i < ranking.length; i += 1) {
-    ranking[i].peringkat =
-      i > 0 && ranking[i].rataUjian === ranking[i - 1].rataUjian ? ranking[i - 1].peringkat : i + 1;
-  }
+  const ranking = urutkanPeringkat(rows, (r) => r.rataUjian);
+  const dinilai = ranking;
   const tanpaNilai = rows
     .filter((r) => r.rataUjian === null)
     .sort((a, b) => a.nama.localeCompare(b.nama))

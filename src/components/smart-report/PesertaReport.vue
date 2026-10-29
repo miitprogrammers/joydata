@@ -7,7 +7,7 @@
     <!-- Identitas -->
     <div
       class="border rounded-lg p-3.5 grid grid-cols-2 gap-3 text-xs"
-      :class="[portal ? 'sm:grid-cols-3 print:grid-cols-3' : 'sm:grid-cols-4 print:grid-cols-4', warnaIdentitas(report.student.statusTag, portal)]"
+      :class="[portal ? 'sm:grid-cols-4 print:grid-cols-4' : 'sm:grid-cols-5 print:grid-cols-5', warnaIdentitas(report.student.statusTag, portal)]"
     >
       <div>
         <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
@@ -28,6 +28,7 @@
           {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || '-' }}
         </div>
       </div>
+      <PeringkatCell :peringkat="report.peringkat" :note="$t('laporan.peringkatSeluruh')" />
       <div v-if="!portal">
         <div class="text-[11px] text-slate-500">{{ $t('smartReport.statusTag') }}</div>
         <div class="font-bold text-slate-800 mt-0.5">{{ $t(`tag.${report.student.statusTag}`) }}</div>
@@ -220,6 +221,7 @@ import ScoreTrendChart from './ScoreTrendChart.vue';
 import StatKaiwa from './StatKaiwa.vue';
 import StatSikap from './StatSikap.vue';
 import StatusLegend from './StatusLegend.vue';
+import PeringkatCell from './PeringkatCell.vue';
 import { bertanda, hitungGrade, warnaIdentitas } from './reportStats.js';
 
 const props = defineProps<{

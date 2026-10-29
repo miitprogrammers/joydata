@@ -201,7 +201,22 @@ function toResumeView(row, currentHash) {
 
 // ---------------------------------------------------------------------------------------------------------
 
-async function pesertaReport(ctx, student, journey, resumeRow) {
+/** The peserta's place in the class ranking of `summary` (buildKelasSummary), or null without a class. */
+function peringkatDari(summary, pid) {
+  if (!summary) return null;
+  return {
+    posisi: summary.ranking.find((r) => r.pesertaId === pid)?.peringkat ?? null,
+    jumlahDinilai: summary.statistik.jumlahDinilai,
+    jumlahPeserta: summary.statistik.jumlahPeserta,
+  };
+}
+
+/** The class summary of a peserta's own class (for the class rank), or null without a class. */
+function ringkasanKelasPeserta(ctx, student) {
+  return student.kelasId ? buildKelasSummary(kelasMembers(ctx, student.kelasId), ctx.settings) : null;
+}
+
+async function pesertaReport(ctx, student, journey, resumeRow, peringkat = null) {
   const kelas = kelasInfo(ctx, student.kelasId);
   const rule = kaiwaRule(ctx.settings);
   return {
@@ -215,6 +230,8 @@ async function pesertaReport(ctx, student, journey, resumeRow) {
     },
     kelas,
     penempatan: await loadPenempatan(student.id, ctx.state),
+    // Class rank over the whole journey (the class report's ranking).
+    peringkat,
     ...journey,
     // Kaiwa Card weeks over the whole journey, since the rule applies.
     kaiwaCard: {
@@ -244,9 +261,10 @@ export async function getSmartReportPeserta({ pesertaId }) {
   const pid = parseId(pesertaId);
   const ctx = createContext(await loadReportState());
   const student = findPeserta(ctx, pid);
+  const peringkat = peringkatDari(ringkasanKelasPeserta(ctx, student), pid);
   return {
     settings: ctx.settings,
-    peserta: await pesertaReport(ctx, student, journeyOf(ctx, student), await readResume('peserta', pid)),
+    peserta: await pesertaReport(ctx, student, journeyOf(ctx, student), await readResume('peserta', pid), peringkat),
   };
 }
 
@@ -264,13 +282,19 @@ export async function getSmartReportKelas({ kelasId }) {
     readResumes('peserta', members.map((m) => m.pesertaId)),
   ]);
 
+  // One report per peserta in class-rank order (unranked peserta last, by name), as in the ranking table.
+  const urutan = new Map(summary.ranking.map((r, i) => [r.pesertaId, i]));
+  const urut = [...members].sort((a, b) => urutan.get(a.pesertaId) - urutan.get(b.pesertaId));
+
   return {
     settings: ctx.settings,
     kelas,
     ringkasan: summary,
     resume: toResumeView(kelasResume, hashFacts(facts, PROMPT_VERSION)),
     peserta: await Promise.all(
-      members.map((m) => pesertaReport(ctx, m.student, m.journey, pesertaResumes.get(m.pesertaId) || null))
+      urut.map((m) =>
+        pesertaReport(ctx, m.student, m.journey, pesertaResumes.get(m.pesertaId) || null, peringkatDari(summary, m.pesertaId))
+      )
     ),
   };
 }
@@ -332,7 +356,7 @@ export async function getPortalReport(pesertaId) {
   const student = findPeserta(ctx, pid);
   const journey = journeyOf(ctx, student);
   const kelas = kelasInfo(ctx, student.kelasId);
-  const summary = student.kelasId ? buildKelasSummary(kelasMembers(ctx, student.kelasId), ctx.settings) : null;
+  const summary = ringkasanKelasPeserta(ctx, student);
   const pen = await loadPenempatan(pid, ctx.state);
   const tanggalMasuk = student.tanggalMasuk || kelas?.tanggalStart || null;
   const kaiwaDaftar = portalKaiwaDaftar(ctx, journey.kaiwa.daftar);
@@ -358,9 +382,7 @@ export async function getPortalReport(pesertaId) {
       .sort((a, b) => b.tanggal.localeCompare(a.tanggal)),
     peringkat: summary
       ? {
-          posisi: summary.ranking.find((r) => r.pesertaId === pid)?.peringkat ?? null,
-          jumlahDinilai: summary.statistik.jumlahDinilai,
-          jumlahPeserta: summary.statistik.jumlahPeserta,
+          ...peringkatDari(summary, pid),
           rataKelas: summary.statistik.rataKelas,
           rataKehadiranKelas: summary.statistik.rataKehadiran,
           perUjian: summary.perUjian.map(({ kode, tanggal, rata }) => ({ kode, tanggal, rata })),
@@ -387,7 +409,8 @@ export async function getPortalSmartReport(pesertaId) {
   const resumeRow = await readResume('peserta', pid);
   if (!resumeRow) return { tersedia: false };
 
-  const report = await pesertaReport(ctx, student, journeyOf(ctx, student), resumeRow);
+  const peringkat = peringkatDari(ringkasanKelasPeserta(ctx, student), pid);
+  const report = await pesertaReport(ctx, student, journeyOf(ctx, student), resumeRow, peringkat);
   const { statusTag, ...studentInfo } = report.student;
   const { tanggalLulusUjian, perusahaanNaitei, jenisPekerjaan, lokasiKerja } = report.penempatan;
   return {
