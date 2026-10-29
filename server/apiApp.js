@@ -42,6 +42,7 @@ import {
   createNilaiKaiwa,
   updateNilaiKaiwa,
   deleteNilaiKaiwa,
+  getKaiwaMingguan,
   listNilaiSikap,
   createNilaiSikap,
   updateNilaiSikap,
@@ -77,6 +78,8 @@ import {
   generateSmartResume,
   updateSmartResume,
   getPortalReport,
+  getPortalSmartReport,
+  getPortalRapor,
 } from './db/smartReportRepo.js';
 import {
   authenticatePeserta,
@@ -122,6 +125,9 @@ function handleRouteError(res, err) {
     'EMPTY_VARIABLE_SCORES',
     'DUPLICATE_NILAI_UJIAN',
     'INVALID_KAIWA_GRADE',
+    'KAIWA_SENSEI_REQUIRED',
+    'INVALID_KAIWA_SENSEI',
+    'INVALID_KAIWA_TARGET',
     'INVALID_SIKAP_BOBOT',
     'EMPTY_ABSENSI_ENTRIES',
     'INVALID_KKM_UJIAN',
@@ -247,6 +253,22 @@ export function createApiRouter() {
   router.get('/portal/dashboard', requirePeserta(), async (req, res) => {
     try {
       return res.json(await getPortalReport(req.peserta.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/rapor', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await getPortalRapor(req.peserta.id, req.query.periode));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/smart-report', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await getPortalSmartReport(req.peserta.id));
     } catch (err) {
       return handleRouteError(res, err);
     }
@@ -652,6 +674,15 @@ export function createApiRouter() {
         search: req.query.search,
       });
       return res.json(data);
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Kaiwa Card: target sesi per minggu (Senin–Minggu) dan sensei wajib, per peserta
+  router.get('/kaiwa/mingguan', requireAuth, requirePageAccess('kaiwa-mingguan'), async (req, res) => {
+    try {
+      return res.json(await getKaiwaMingguan({ minggu: req.query.minggu, kelasId: req.query.kelasId }));
     } catch (err) {
       return handleRouteError(res, err);
     }

@@ -98,6 +98,7 @@ export function buildPesertaJourney({
       topik: k.topik || '',
       grade: k.grade,
       catatan: k.description || '',
+      senseiId: k.senseiId ?? null,
     }))
     .sort((a, b) => a.tanggal.localeCompare(b.tanggal));
 

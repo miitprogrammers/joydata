@@ -267,7 +267,10 @@
                 <td class="px-4 py-2.5 text-xs text-slate-700 max-w-md">
                   {{ row.description || '-' }}
                 </td>
-                <td class="px-4 py-2.5 text-xs text-slate-600 whitespace-nowrap">{{ row.penilaiNama }}</td>
+                <td class="px-4 py-2.5 text-xs whitespace-nowrap">
+                  <span v-if="row.senseiNama" class="text-slate-600">{{ row.senseiNama }}</span>
+                  <span v-else class="italic text-amber-700">{{ $t('kaiwa.senseiBelumDiisi') }}</span>
+                </td>
                 <td class="px-5 py-2.5 text-right whitespace-nowrap">
                   <v-btn
                     icon="mdi-pencil-outline"
@@ -309,6 +312,19 @@
             density="comfortable"
             hide-details="auto"
             @update:model-value="onStudentSelected"
+          />
+
+          <v-select
+            v-model="form.senseiId"
+            :items="senseiSelectItems"
+            item-title="label"
+            item-value="value"
+            :label="$t('kaiwa.colSensei')"
+            :hint="$t('kaiwa.senseiHint')"
+            persistent-hint
+            variant="outlined"
+            density="comfortable"
+            hide-details="auto"
           />
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -425,6 +441,7 @@ const studentSummary = ref([]);
 const items = ref([]);
 const kelasOptions = ref([]);
 const rosterOptions = ref([]);
+const senseiOptions = ref([]);
 
 const dialogOpen = ref(false);
 const editingId = ref(null);
@@ -434,6 +451,7 @@ const form = ref({
   tanggalKaiwa: todayIso(),
   grade: 'B',
   description: '',
+  senseiId: null,
 });
 
 const deleteDialog = ref(false);
@@ -455,6 +473,19 @@ const gradeFilterOptions = computed(() => [
 const kelasSelectItems = computed(() =>
   kelasOptions.value.map((k) => ({ value: k.id, label: k.namaKelas }))
 );
+
+const senseiSelectItems = computed(() =>
+  senseiOptions.value.map((s) => ({
+    value: s.id,
+    label: s.wajib ? `${s.nama} ★ ${t('kaiwa.senseiWajib')}` : s.nama,
+  }))
+);
+
+// A sensei typing in their own kaiwa is the default; other roles pick the sensei.
+function defaultSenseiId() {
+  const me = Number(appStore.user?.id);
+  return senseiOptions.value.some((s) => s.id === me) ? me : null;
+}
 
 const rosterSelectItems = computed(() =>
   rosterOptions.value.map((p) => ({
@@ -531,6 +562,7 @@ async function loadData() {
     items.value = res.items || [];
     kelasOptions.value = res.kelasOptions || [];
     rosterOptions.value = res.rosterOptions || [];
+    senseiOptions.value = res.senseiOptions || [];
     syncMeta.value = res.syncMeta || null;
   } catch (err) {
     const key = `messages.${err.code}`;
@@ -569,6 +601,7 @@ function openCreate(presetStudent = null) {
     tanggalKaiwa: defaultDateForPeriode(),
     grade: presetStudent?.latestGrade || 'B',
     description: '',
+    senseiId: defaultSenseiId(),
   };
   dialogOpen.value = true;
 }
@@ -581,6 +614,7 @@ function openEdit(row) {
     tanggalKaiwa: row.tanggalKaiwa,
     grade: row.grade || 'B',
     description: row.description || '',
+    senseiId: row.senseiId ?? null,
   };
   dialogOpen.value = true;
 }
@@ -594,6 +628,7 @@ async function submitForm() {
       tanggalKaiwa: form.value.tanggalKaiwa,
       grade: form.value.grade,
       description: String(form.value.description || '').trim(),
+      senseiId: form.value.senseiId,
     };
     if (editingId.value) {
       await apiRequest(`/kaiwa/${editingId.value}`, { method: 'PATCH', body });

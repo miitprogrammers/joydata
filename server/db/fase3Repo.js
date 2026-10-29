@@ -21,7 +21,9 @@ import {
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
 import { formatPersonName } from '../domain/nameFormat.js';
+import { DEFAULT_KAIWA_TARGET } from '../domain/kaiwaMingguan.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
+import { listStaff } from './authStaffRepo.js';
 
 export const DEFAULT_SETTINGS = {
   kkm_ujian: 70,
@@ -31,6 +33,12 @@ export const DEFAULT_SETTINGS = {
   ambang_kehadiran_rendah: 75,
   rentang_tren_bulan: 12,
   periode_default: 'auto',
+  // Kaiwa Card: sessions needed per week, the sensei one of them must be with (staff id, null = none), and the
+  // date the rule applies from (null = every week). The rule was set up in JOYdata in the week of 26 Oct 2026;
+  // before it hardly any kaiwa was recorded, so earlier weeks cannot be judged.
+  kaiwa_target_mingguan: DEFAULT_KAIWA_TARGET,
+  kaiwa_sensei_wajib_id: null,
+  kaiwa_berlaku_mulai: '2026-10-26',
 };
 
 export function getStudentNameMap(state) {
@@ -80,7 +88,7 @@ export async function loadReportState() {
                choukai::float AS "nilaiChoukai", catatan
              FROM nilai_ujian`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalKaiwa",
-               grade, topik, catatan AS "description"
+               grade, topik, catatan AS "description", sensei_staff_id AS "senseiId"
              FROM nilai_kaiwa`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", kategori_id AS "kategoriId",
                tanggal::text AS "tanggalPenilaian", sentiment, ABS(bobot)::float AS "bobot", keterangan AS "description"
@@ -169,7 +177,17 @@ export async function updateSystemSettings(payload, actor) {
   }
 
   const dataLama = await getSystemSettings();
-  const dataBaru = { ...DEFAULT_SETTINGS, ...val.normalized };
+  const dataBaru = {
+    ...DEFAULT_SETTINGS,
+    kaiwa_target_mingguan: dataLama.kaiwa_target_mingguan,
+    kaiwa_sensei_wajib_id: dataLama.kaiwa_sensei_wajib_id,
+    kaiwa_berlaku_mulai: dataLama.kaiwa_berlaku_mulai,
+    ...val.normalized,
+  };
+  if (dataBaru.kaiwa_sensei_wajib_id !== dataLama.kaiwa_sensei_wajib_id && dataBaru.kaiwa_sensei_wajib_id !== null) {
+    const staff = await listStaff();
+    if (!staff.some((s) => s.id === dataBaru.kaiwa_sensei_wajib_id && s.active)) throw new Error('INVALID_KAIWA_SENSEI');
+  }
   await writeStoredSettings(dataBaru);
   await appendAudit(actor, 'UPDATE_SETTINGS', 'settings', 1, { dataLama, dataBaru });
 
@@ -488,13 +506,14 @@ export async function getProgresData({ periode, kelasId, tag }) {
   };
 }
 
-export async function getStudentRapor({ pesertaId, periode }) {
+/** state: a loadReportState() snapshot the caller already has, to skip reading it again. */
+export async function getStudentRapor({ pesertaId, periode, state: loadedState = null }) {
   const pid = Number(pesertaId);
   if (!Number.isInteger(pid) || pid <= 0) {
     throw new Error('VALIDATION_ERROR');
   }
 
-  const state = await loadReportState();
+  const state = loadedState || (await loadReportState());
   const student = (state.peserta || []).find((p) => p.id === pid && !p.deletedAt);
   if (!student) {
     throw new Error('NOT_FOUND');

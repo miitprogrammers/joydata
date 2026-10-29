@@ -22,6 +22,7 @@ import {
   VALID_ABSENSI_STATUS,
   computeClassMonthlyAbsensi,
 } from '../domain/rules.js';
+import { todayJakarta, isIsoDate, weekOf, addDays, kaiwaRule, kaiwaWeekProgress } from '../domain/kaiwaMingguan.js';
 
 function currentYearMonth() {
   return new Date().toISOString().slice(0, 7);
@@ -392,7 +393,7 @@ export async function listNilaiKaiwa({ periode, kelasId, grade, search } = {}) {
   const gFilter = grade && ['A', 'B', 'C'].includes(String(grade).toUpperCase()) ? String(grade).toUpperCase() : null;
   const q = String(search || '').trim().toLowerCase();
 
-  const lookups = await loadAcademicLookups();
+  const [lookups, settings] = await Promise.all([loadAcademicLookups(), getSystemSettings()]);
   let rawRows = [];
 
   if (getMode() === 'postgres') {
@@ -406,6 +407,7 @@ export async function listNilaiKaiwa({ periode, kelasId, grade, search } = {}) {
         grade,
         catatan AS "description",
         diinput_oleh_staff_id AS "penilaiId",
+        sensei_staff_id AS "senseiId",
         created_at AS "createdAt"
       FROM nilai_kaiwa
       WHERE TO_CHAR(tanggal_sesi, 'YYYY-MM') = $1
@@ -464,12 +466,15 @@ export async function listNilaiKaiwa({ periode, kelasId, grade, search } = {}) {
       const p = lookups.pesertaById.get(Number(r.pesertaId));
       const kl = lookups.kelasById.get(Number(r.kelasId));
       const st = lookups.staffById.get(Number(r.penilaiId));
+      const sensei = r.senseiId ? lookups.staffById.get(Number(r.senseiId)) : null;
       return {
         ...r,
+        senseiId: r.senseiId ?? null,
         pesertaNama: p?.nama || `Peserta #${r.pesertaId}`,
         mancationAkunId: p?.mancationAkunId || null,
         kelasNama: kl?.namaKelas || '-',
         penilaiNama: st?.nama || '-',
+        senseiNama: sensei?.nama || null,
       };
     })
     .filter((r) => {
@@ -498,20 +503,39 @@ export async function listNilaiKaiwa({ periode, kelasId, grade, search } = {}) {
     items: enrichedItems,
     kelasOptions: lookups.kelasOptions,
     rosterOptions: lookups.rosterItems,
+    senseiOptions: kaiwaSenseiOptions(lookups, settings),
   };
+}
+
+// The staff a kaiwa can be held with: every active sensei, plus the required sensei of the Kaiwa Card rule.
+function kaiwaSenseiOptions(lookups, settings) {
+  const wajibId = kaiwaRule(settings).senseiWajibId;
+  return [...lookups.staffById.values()]
+    .filter((s) => s.active && (s.roleKode === 'sensei' || Number(s.id) === wajibId))
+    .map((s) => ({ id: Number(s.id), nama: s.nama, wajib: Number(s.id) === wajibId }))
+    .sort((a, b) => a.nama.localeCompare(b.nama));
+}
+
+// Chosen in the form; clients that predate the field send none, so a sensei typing in their own kaiwa is the default.
+async function resolveKaiwaSensei(senseiId, actor) {
+  const id = senseiId ?? (actor?.role?.kode === 'sensei' ? Number(actor.id) : null);
+  if (!id) throw new Error('KAIWA_SENSEI_REQUIRED');
+  const staff = await listStaff();
+  if (!staff.some((s) => Number(s.id) === id && s.active)) throw new Error('INVALID_KAIWA_SENSEI');
+  return id;
 }
 
 export async function createNilaiKaiwa(payload, actor) {
   await ensureInitialized();
   const check = validateAndNormalizeNilaiKaiwa(payload);
   if (!check.ok) throw new Error(check.code);
-  const d = check.normalized;
+  const d = { ...check.normalized, senseiId: await resolveKaiwaSensei(check.normalized.senseiId, actor) };
 
   if (getMode() === 'postgres') {
     const res = await getPool().query(
-      `INSERT INTO nilai_kaiwa (peserta_id, kelas_id, tanggal_sesi, topik, grade, catatan, diinput_oleh_staff_id)
-       VALUES ($1, $2, $3, '', $4, $5, $6) RETURNING id`,
-      [d.pesertaId, d.kelasId, d.tanggalKaiwa, d.grade, d.description, actor?.id || null]
+      `INSERT INTO nilai_kaiwa (peserta_id, kelas_id, tanggal_sesi, topik, grade, catatan, diinput_oleh_staff_id, sensei_staff_id)
+       VALUES ($1, $2, $3, '', $4, $5, $6, $7) RETURNING id`,
+      [d.pesertaId, d.kelasId, d.tanggalKaiwa, d.grade, d.description, actor?.id || null, d.senseiId]
     );
     await appendAudit(actor, 'CREATE_NILAI_KAIWA', 'nilai_kaiwa', res.rows[0].id, { dataBaru: d });
     return { id: res.rows[0].id, ...d };
@@ -526,6 +550,7 @@ export async function createNilaiKaiwa(payload, actor) {
     grade: d.grade,
     description: d.description,
     penilaiId: actor?.id || null,
+    senseiId: d.senseiId,
     createdAt: new Date().toISOString(),
   };
   db.nilaiKaiwa.push(created);
@@ -539,13 +564,14 @@ export async function updateNilaiKaiwa(idRaw, payload, actor) {
   const id = Number(idRaw);
   const check = validateAndNormalizeNilaiKaiwa(payload);
   if (!id || !check.ok) throw new Error(check.code || 'VALIDATION_ERROR');
-  const d = check.normalized;
+  const d = { ...check.normalized, senseiId: await resolveKaiwaSensei(check.normalized.senseiId, actor) };
 
   if (getMode() === 'postgres') {
     const res = await getPool().query(
-      `UPDATE nilai_kaiwa SET peserta_id = $1, kelas_id = $2, tanggal_sesi = $3, grade = $4, catatan = $5, diinput_oleh_staff_id = $6
-       WHERE id = $7 RETURNING id`,
-      [d.pesertaId, d.kelasId, d.tanggalKaiwa, d.grade, d.description, actor?.id || null, id]
+      `UPDATE nilai_kaiwa SET peserta_id = $1, kelas_id = $2, tanggal_sesi = $3, grade = $4, catatan = $5, diinput_oleh_staff_id = $6,
+         sensei_staff_id = $7
+       WHERE id = $8 RETURNING id`,
+      [d.pesertaId, d.kelasId, d.tanggalKaiwa, d.grade, d.description, actor?.id || null, d.senseiId, id]
     );
     if (res.rows.length === 0) throw new Error('NOT_FOUND');
     await appendAudit(actor, 'UPDATE_NILAI_KAIWA', 'nilai_kaiwa', id, { dataBaru: d });
@@ -563,6 +589,7 @@ export async function updateNilaiKaiwa(idRaw, payload, actor) {
     grade: d.grade,
     description: d.description,
     penilaiId: actor?.id || row.penilaiId,
+    senseiId: d.senseiId,
   });
   appendLocalAudit(db, actor, 'UPDATE_NILAI_KAIWA', 'nilai_kaiwa', id, { dataLama, dataBaru: d });
   saveLocalState();
@@ -585,6 +612,107 @@ export async function deleteNilaiKaiwa(idRaw, actor) {
   appendLocalAudit(db, actor, 'DELETE_NILAI_KAIWA', 'nilai_kaiwa', id, { dataLama: removed });
   saveLocalState();
   return { deleted: true };
+}
+
+// ============================================================================
+// 2b. KAIWA MINGGUAN (Kaiwa Card): sesi Senin–Minggu per peserta vs target & sensei wajib
+// ============================================================================
+const KAIWA_RIWAYAT_MINGGU = 6;
+
+async function readKaiwaSessions(dari, sampai) {
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `SELECT id, peserta_id AS "pesertaId", tanggal_sesi::text AS tanggal, grade, sensei_staff_id AS "senseiId"
+       FROM nilai_kaiwa WHERE tanggal_sesi BETWEEN $1 AND $2 ORDER BY tanggal_sesi, id`,
+      [dari, sampai]
+    );
+    return res.rows;
+  }
+  return (readLocalState().nilaiKaiwa || [])
+    .filter((r) => r.tanggalKaiwa >= dari && r.tanggalKaiwa <= sampai)
+    .map((r) => ({ id: r.id, pesertaId: r.pesertaId, tanggal: r.tanggalKaiwa, grade: r.grade, senseiId: r.senseiId ?? null }))
+    .sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id - b.id);
+}
+
+/**
+ * Every roster peserta's Kaiwa Card for the week containing `minggu` (default: this week, never before the week
+ * the rule applies from), plus the recent weeks since then.
+ */
+export async function getKaiwaMingguan({ minggu, kelasId } = {}) {
+  await ensureInitialized();
+  const rule = kaiwaRule(await getSystemSettings());
+  const hariIni = todayJakarta();
+  let week = weekOf(isIsoDate(minggu) ? String(minggu) : hariIni);
+  if (rule.mulai && week.mulai < rule.mulai) week = weekOf(rule.mulai);
+  const kId = kelasId ? Number(kelasId) : null;
+  const riwayatMulai = addDays(week.mulai, -7 * (KAIWA_RIWAYAT_MINGGU - 1));
+
+  const [lookups, sessions] = await Promise.all([loadAcademicLookups(), readKaiwaSessions(riwayatMulai, week.selesai)]);
+  const staffNama = (id) => (id ? lookups.staffById.get(Number(id))?.nama || null : null);
+
+  const byPeserta = new Map();
+  for (const s of sessions) {
+    const pid = Number(s.pesertaId);
+    if (!byPeserta.has(pid)) byPeserta.set(pid, []);
+    byPeserta.get(pid).push({ ...s, senseiId: s.senseiId ?? null, senseiNama: staffNama(s.senseiId) });
+  }
+  // A peserta counts from the week they joined.
+  const kelasRoster = lookups.rosterItems.filter((p) => p.kelasId && (!kId || Number(p.kelasId) === kId));
+  const rosterFor = (selesai) => kelasRoster.filter((p) => !p.tanggalMasuk || p.tanggalMasuk <= selesai);
+  const sesiDalam = (pid, mulai, selesai) =>
+    (byPeserta.get(Number(pid)) || []).filter((s) => s.tanggal >= mulai && s.tanggal <= selesai);
+
+  const peserta = rosterFor(week.selesai)
+    .map((p) => {
+      const sesi = sesiDalam(p.id, week.mulai, week.selesai);
+      return {
+        pesertaId: Number(p.id),
+        nama: p.nama,
+        mancationAkunId: p.mancationAkunId,
+        kelasId: Number(p.kelasId),
+        kelasNama: p.namaKelas || '-',
+        ...kaiwaWeekProgress(sesi, rule),
+        sesi,
+      };
+    })
+    .sort((a, b) => Number(a.tercapai) - Number(b.tercapai) || a.jumlah - b.jumlah || a.nama.localeCompare(b.nama));
+
+  const riwayat = [];
+  for (let i = 0; i < KAIWA_RIWAYAT_MINGGU; i += 1) {
+    const mulai = addDays(week.mulai, -7 * i);
+    if (rule.mulai && mulai < rule.mulai) break;
+    const selesai = addDays(mulai, 6);
+    const roster = rosterFor(selesai);
+    riwayat.push({
+      mulai,
+      selesai,
+      jumlahPeserta: roster.length,
+      tercapai: roster.filter((p) => kaiwaWeekProgress(sesiDalam(p.id, mulai, selesai), rule).tercapai).length,
+    });
+  }
+
+  return {
+    minggu: {
+      ...week,
+      hariIni,
+      mingguIni: hariIni >= week.mulai && hariIni <= week.selesai,
+      adaSebelumnya: !rule.mulai || week.mulai > rule.mulai,
+    },
+    berlakuMulai: rule.mulai,
+    target: rule.target,
+    senseiWajib: rule.senseiWajibId ? { id: rule.senseiWajibId, nama: staffNama(rule.senseiWajibId) } : null,
+    ringkasan: {
+      jumlahPeserta: peserta.length,
+      tercapai: peserta.filter((p) => p.tercapai).length,
+      kurangSesi: peserta.filter((p) => p.kurang > 0).length,
+      belumWajib: rule.senseiWajibId ? peserta.filter((p) => !p.wajibTerpenuhi).length : 0,
+      jumlahSesi: peserta.reduce((sum, p) => sum + p.jumlah, 0),
+      tanpaSensei: peserta.reduce((sum, p) => sum + p.sesi.filter((s) => !s.senseiId).length, 0),
+    },
+    peserta,
+    riwayat,
+    kelasOptions: lookups.kelasOptions.map((k) => ({ id: k.id, namaKelas: k.namaKelas })),
+  };
 }
 
 // ============================================================================

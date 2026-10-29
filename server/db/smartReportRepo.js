@@ -1,5 +1,5 @@
 import { ensureInitialized, getMode, getPool, readLocalState, saveLocalState, appendAudit } from './engine.js';
-import { DEFAULT_SETTINGS, loadReportState, getStudentNameMap, loadPenempatan } from './fase3Repo.js';
+import { DEFAULT_SETTINGS, loadReportState, getStudentNameMap, loadPenempatan, getStudentRapor } from './fase3Repo.js';
 import {
   buildPesertaJourney,
   buildKelasSummary,
@@ -10,8 +10,11 @@ import {
   catatanUntukPeserta,
 } from '../domain/smartReport.js';
 import { writeResume, PROMPT_VERSION } from '../ai/smartResume.js';
+import { todayJakarta, weekOf, addDays, kaiwaRule, kaiwaWeekProgress, kaiwaWeeklyHistory } from '../domain/kaiwaMingguan.js';
 
 const MAX_RESUME_LENGTH = 6000;
+// Weeks of Kaiwa Card history shown in the peserta portal.
+const PORTAL_KAIWA_MINGGU = 12;
 
 function parseId(value) {
   const id = Number(value);
@@ -243,11 +246,57 @@ export async function getSmartReportKelas({ kelasId }) {
   };
 }
 
-/**
- * The peserta's own report for the peserta portal. Leaves out what is internal to staff: status tag, AI resume,
- * catatan bebas, free-text sikap notes, absensi notes, and every other peserta's name or score (the ranking is
- * only the peserta's own position and class averages).
- */
+// ---------------------------------------------------------------------------------------------------------
+// Peserta portal. Everything here is the peserta's own data only, without what is internal to staff: status tag,
+// catatan bebas, free-text sikap notes, absensi notes, staff notes in exam catatan, who typed a record in, and
+// every other peserta's name or score (the ranking is only the peserta's own position and class averages).
+
+function portalSettings(s) {
+  return {
+    kkm_ujian: s.kkm_ujian,
+    kkm_sikap: s.kkm_sikap,
+    batas_grade: s.batas_grade,
+    sikap_basis: s.sikap_basis,
+    ambang_kehadiran_rendah: s.ambang_kehadiran_rendah,
+  };
+}
+
+function staffNama(ctx, id) {
+  return id ? (ctx.state.staff || []).find((st) => st.id === Number(id))?.nama || null : null;
+}
+
+/** Kaiwa sessions with the sensei's name instead of a staff id; wajib = held with the required sensei. */
+function portalKaiwaDaftar(ctx, daftar) {
+  const { senseiWajibId } = kaiwaRule(ctx.settings);
+  return daftar.map(({ senseiId, ...k }) => ({
+    ...k,
+    senseiNama: staffNama(ctx, senseiId),
+    wajib: Boolean(senseiWajibId) && Number(senseiId) === senseiWajibId,
+  }));
+}
+
+/** This week's Kaiwa Card and the weeks before it, from the week the peserta joined or the rule started. */
+function portalKaiwaCard(ctx, daftar, tanggalMasuk) {
+  const rule = kaiwaRule(ctx.settings);
+  const hariIni = todayJakarta();
+  const minggu = weekOf(hariIni);
+  const sesi = daftar.filter((k) => k.tanggal >= minggu.mulai && k.tanggal <= minggu.selesai);
+  const dari = [addDays(minggu.mulai, -7 * (PORTAL_KAIWA_MINGGU - 1)), tanggalMasuk, rule.mulai]
+    .filter(Boolean)
+    .reduce((a, b) => (a > b ? a : b));
+  const sessions = daftar.map((k) => ({ tanggal: k.tanggal, senseiId: k.wajib ? rule.senseiWajibId : null }));
+  return {
+    minggu: { ...minggu, hariIni },
+    senseiWajib: rule.senseiWajibId ? { nama: staffNama(ctx, rule.senseiWajibId) } : null,
+    ...kaiwaWeekProgress(sessions.filter((k) => k.tanggal >= minggu.mulai && k.tanggal <= minggu.selesai), rule),
+    sesi,
+    riwayat: kaiwaWeeklyHistory(sessions, { dari: dari > hariIni ? hariIni : dari, sampai: hariIni, ...rule }).map(
+      ({ mulai, selesai, jumlah, kurang, wajibTerpenuhi, tercapai }) => ({ mulai, selesai, jumlah, kurang, wajibTerpenuhi, tercapai })
+    ),
+  };
+}
+
+/** The peserta's own report for the portal dashboard and its pages. */
 export async function getPortalReport(pesertaId) {
   const pid = parseId(pesertaId);
   const ctx = createContext(await loadReportState());
@@ -256,24 +305,21 @@ export async function getPortalReport(pesertaId) {
   const kelas = kelasInfo(ctx, student.kelasId);
   const summary = student.kelasId ? buildKelasSummary(kelasMembers(ctx, student.kelasId), ctx.settings) : null;
   const pen = await loadPenempatan(pid, ctx.state);
-  const s = ctx.settings;
+  const tanggalMasuk = student.tanggalMasuk || kelas?.tanggalStart || null;
+  const kaiwaDaftar = portalKaiwaDaftar(ctx, journey.kaiwa.daftar);
 
   return {
-    settings: {
-      kkm_ujian: s.kkm_ujian,
-      kkm_sikap: s.kkm_sikap,
-      batas_grade: s.batas_grade,
-      ambang_kehadiran_rendah: s.ambang_kehadiran_rendah,
-    },
+    settings: portalSettings(ctx.settings),
     peserta: {
       nama: namaPeserta(ctx, student),
-      tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,
+      tanggalMasuk,
     },
     kelas,
     rentang: journey.rentang,
     kpi: journey.kpi,
     ujian: { ...journey.ujian, daftar: journey.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
-    kaiwa: journey.kaiwa,
+    kaiwa: { ...journey.kaiwa, daftar: kaiwaDaftar },
+    kaiwaCard: portalKaiwaCard(ctx, kaiwaDaftar, tanggalMasuk),
     sikap: { daftar: journey.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
     absensi: journey.absensi,
     bulanan: journey.bulanan,
@@ -298,6 +344,82 @@ export async function getPortalReport(pesertaId) {
       lokasiKerja: pen.lokasiKerja || '',
       rencanaMulaiKerja: pen.rencanaMulaiKerja || null,
     },
+  };
+}
+
+/**
+ * The peserta's Smart Report as staff print it, with the resume already written for it (the portal never
+ * writes one). Not available until a resume exists.
+ */
+export async function getPortalSmartReport(pesertaId) {
+  const pid = parseId(pesertaId);
+  const ctx = createContext(await loadReportState());
+  const student = findPeserta(ctx, pid);
+  const resumeRow = await readResume('peserta', pid);
+  if (!resumeRow) return { tersedia: false };
+
+  const report = await pesertaReport(ctx, student, journeyOf(ctx, student), resumeRow);
+  const { statusTag, ...studentInfo } = report.student;
+  const { tanggalLulusUjian, perusahaanNaitei, jenisPekerjaan, lokasiKerja } = report.penempatan;
+  return {
+    tersedia: true,
+    settings: portalSettings(ctx.settings),
+    peserta: {
+      ...report,
+      student: studentInfo,
+      penempatan: { tanggalLulusUjian, perusahaanNaitei, jenisPekerjaan, lokasiKerja },
+      ujian: { ...report.ujian, daftar: report.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
+      kaiwa: { ...report.kaiwa, daftar: portalKaiwaDaftar(ctx, report.kaiwa.daftar) },
+      sikap: { ...report.sikap, daftar: report.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
+      resume: {
+        teksId: resumeRow.teksId,
+        teksJa: resumeRow.teksJa,
+        // Last written or edited; who did it and whether it is outdated are for staff.
+        tanggal: resumeRow.dieditAt || resumeRow.dibuatAt || null,
+      },
+    },
+  };
+}
+
+/** Months a rapor can be opened for: from the month the peserta joined to this month, newest first. */
+function raporPeriodeOptions(tanggalMasuk) {
+  const sampai = todayJakarta().slice(0, 7);
+  const dari = tanggalMasuk && tanggalMasuk.slice(0, 7) < sampai ? tanggalMasuk.slice(0, 7) : sampai;
+  const options = [];
+  let [y, m] = sampai.split('-').map(Number);
+  for (let bulan = sampai; bulan >= dari; bulan = `${y}-${String(m).padStart(2, '0')}`) {
+    options.push(bulan);
+    m -= 1;
+    if (m === 0) {
+      y -= 1;
+      m = 12;
+    }
+  }
+  return options;
+}
+
+/** The peserta's monthly rapor as staff print it. */
+export async function getPortalRapor(pesertaId, periode) {
+  const pid = parseId(pesertaId);
+  const state = await loadReportState();
+  const ctx = createContext(state);
+  const student = findPeserta(ctx, pid);
+  const kelas = kelasInfo(ctx, student.kelasId);
+  const periodeOptions = raporPeriodeOptions(student.tanggalMasuk || kelas?.tanggalStart || null);
+  const bulan = periodeOptions.includes(String(periode || '')) ? String(periode) : periodeOptions[0];
+
+  const rapor = await getStudentRapor({ pesertaId: pid, periode: bulan, state });
+  const { statusTag, sumber, keteranganLuarKelas, ...studentInfo } = rapor.student;
+  const { catatanBebas, ...penempatan } = rapor.penempatan;
+  return {
+    ...rapor,
+    student: studentInfo,
+    penempatan,
+    ujianList: rapor.ujianList.map(({ catatan, ...u }) => u),
+    kaiwaList: rapor.kaiwaList.map(({ senseiId, ...k }) => k),
+    sikapData: { ...rapor.sikapData, logs: rapor.sikapData.logs.map(({ description, ...rest }) => rest) },
+    settings: portalSettings(rapor.settings),
+    periodeOptions,
   };
 }
 

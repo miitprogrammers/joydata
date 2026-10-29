@@ -148,8 +148,16 @@ CREATE TABLE IF NOT EXISTS nilai_kaiwa (
   grade CHAR(1) NOT NULL CHECK (grade IN ('A', 'B', 'C')),
   catatan TEXT NOT NULL DEFAULT '',
   diinput_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  sensei_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Added after the first install: the sensei who held the kaiwa (Kaiwa Card), separate from the staff who typed it
+-- in. Older rows typed in by a sensei are theirs; rows typed in by another role stay empty until a staff fills them.
+ALTER TABLE nilai_kaiwa ADD COLUMN IF NOT EXISTS sensei_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL;
+UPDATE nilai_kaiwa k SET sensei_staff_id = k.diinput_oleh_staff_id
+FROM staff s JOIN role r ON r.id = s.role_id
+WHERE k.sensei_staff_id IS NULL AND s.id = k.diinput_oleh_staff_id AND r.kode = 'sensei';
 
 CREATE TABLE IF NOT EXISTS nilai_sikap (
   id SERIAL PRIMARY KEY,
@@ -281,6 +289,7 @@ CREATE INDEX IF NOT EXISTS idx_absensi_kelas_tanggal ON absensi(kelas_id, tangga
 CREATE INDEX IF NOT EXISTS idx_nilai_ujian_peserta_tgl ON nilai_ujian(peserta_id, tanggal_ujian);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_nilai_ujian_unique ON nilai_ujian(peserta_id, kelas_id, tanggal_ujian, nama_ujian);
 CREATE INDEX IF NOT EXISTS idx_nilai_kaiwa_peserta_tgl ON nilai_kaiwa(peserta_id, tanggal_sesi);
+CREATE INDEX IF NOT EXISTS idx_nilai_kaiwa_tanggal ON nilai_kaiwa(tanggal_sesi);
 CREATE INDEX IF NOT EXISTS idx_nilai_sikap_peserta_tgl ON nilai_sikap(peserta_id, tanggal);
 CREATE INDEX IF NOT EXISTS idx_audit_log_created_at ON audit_log(created_at DESC);
 

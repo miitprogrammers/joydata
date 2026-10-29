@@ -198,6 +198,65 @@
             * Nilai di bawah C (&lt; {{ form.batas_grade.C }}) otomatis mendapat Predikat D (Kurang).
           </div>
         </div>
+
+        <!-- Card 4: Kaiwa Card (aturan kaiwa mingguan) -->
+        <div class="joy-surface p-6 space-y-4">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-base font-bold text-slate-900 font-display">
+              4. {{ $t('pengaturan.secKaiwaCard') }}
+            </h2>
+            <p class="text-xs text-slate-500 mt-0.5">
+              {{ $t('pengaturan.secKaiwaCardDesc') }}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label for="set-kaiwa-target" class="block font-semibold text-slate-700 mb-1">
+                {{ $t('pengaturan.kaiwaTarget') }}:
+              </label>
+              <input
+                id="set-kaiwa-target"
+                v-model.number="form.kaiwa_target_mingguan"
+                type="number"
+                min="1"
+                max="14"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">
+                {{ $t('pengaturan.kaiwaTargetHelp') }}
+              </span>
+            </div>
+
+            <div>
+              <label for="set-kaiwa-sensei" class="block font-semibold text-slate-700 mb-1">
+                {{ $t('pengaturan.kaiwaSenseiWajib') }}:
+              </label>
+              <select id="set-kaiwa-sensei" v-model="form.kaiwa_sensei_wajib_id" class="joy-input w-full p-2.5 text-xs">
+                <option :value="null">{{ $t('pengaturan.kaiwaTanpaSenseiWajib') }}</option>
+                <option v-for="s in staffOptions" :key="s.id" :value="s.id">{{ s.nama }}</option>
+              </select>
+              <span class="text-[11px] text-slate-500 mt-1 block">
+                {{ $t('pengaturan.kaiwaSenseiWajibHelp') }}
+              </span>
+            </div>
+
+            <div>
+              <label for="set-kaiwa-mulai" class="block font-semibold text-slate-700 mb-1">
+                {{ $t('pengaturan.kaiwaBerlakuMulai') }}:
+              </label>
+              <input
+                id="set-kaiwa-mulai"
+                v-model="form.kaiwa_berlaku_mulai"
+                type="date"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">
+                {{ $t('pengaturan.kaiwaBerlakuMulaiHelp') }}
+              </span>
+            </div>
+          </div>
+        </div>
       </template>
     </div>
   </div>
@@ -230,7 +289,24 @@ const form = ref({
   },
   rentang_tren_bulan: 12,
   periode_default: 'auto',
+  kaiwa_target_mingguan: 4,
+  kaiwa_sensei_wajib_id: null as number | null,
+  kaiwa_berlaku_mulai: '' as string | null,
 });
+
+// Active staff for the required kaiwa sensei; settings are admin-only and admins always keep Crud Staff.
+const staffOptions = ref<{ id: number; nama: string }[]>([]);
+
+async function loadStaffOptions() {
+  try {
+    const data = await apiRequest('/staff');
+    staffOptions.value = (data.items || [])
+      .filter((s: any) => s.active && s.roleKode !== 'viewer')
+      .map((s: any) => ({ id: Number(s.id), nama: s.nama }));
+  } catch {
+    staffOptions.value = [];
+  }
+}
 
 async function loadSettings() {
   loading.value = true;
@@ -248,6 +324,9 @@ async function loadSettings() {
       },
       rentang_tren_bulan: data.rentang_tren_bulan ?? 12,
       periode_default: data.periode_default ?? 'auto',
+      kaiwa_target_mingguan: data.kaiwa_target_mingguan ?? 4,
+      kaiwa_sensei_wajib_id: data.kaiwa_sensei_wajib_id ?? null,
+      kaiwa_berlaku_mulai: data.kaiwa_berlaku_mulai ?? '',
     };
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal memuat pengaturan', 'error');
@@ -297,6 +376,6 @@ async function confirmReset() {
 }
 
 onMounted(async () => {
-  await loadSettings();
+  await Promise.all([loadSettings(), loadStaffOptions()]);
 });
 </script>

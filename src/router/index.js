@@ -15,6 +15,7 @@ import ProgramView from '../views/ProgramView.vue';
 import RoleAksesView from '../views/RoleAksesView.vue';
 import NilaiUjianView from '../views/NilaiUjianView.vue';
 import NilaiKaiwaView from '../views/NilaiKaiwaView.vue';
+import KaiwaMingguanView from '../views/KaiwaMingguanView.vue';
 import NilaiSikapView from '../views/NilaiSikapView.vue';
 import AbsensiView from '../views/AbsensiView.vue';
 import AuditLogView from '../views/AuditLogView.vue';
@@ -23,7 +24,15 @@ import RaporView from '../views/RaporView.vue';
 import PengaturanView from '../views/PengaturanView.vue';
 import SmartReportView from '../views/SmartReportView.vue';
 import PortalLoginView from '../views/portal/PortalLoginView.vue';
+import PortalLayout from '../views/portal/PortalLayout.vue';
 import PortalHomeView from '../views/portal/PortalHomeView.vue';
+import PortalKaiwaView from '../views/portal/PortalKaiwaView.vue';
+import PortalUjianView from '../views/portal/PortalUjianView.vue';
+import PortalKehadiranView from '../views/portal/PortalKehadiranView.vue';
+import PortalSikapView from '../views/portal/PortalSikapView.vue';
+import PortalRaporView from '../views/portal/PortalRaporView.vue';
+import PortalSmartReportView from '../views/portal/PortalSmartReportView.vue';
+import PortalProfilView from '../views/portal/PortalProfilView.vue';
 import { getPortalToken } from '../services/portalApi.js';
 
 const NoAccessState = defineComponent({
@@ -97,9 +106,20 @@ const routes = [
   },
   {
     path: '/portal',
-    name: 'portal',
-    component: PortalHomeView,
+    component: PortalLayout,
     meta: { portal: true },
+    // portalTitle: i18n key of the page title in the portal's app bar
+    children: [
+      { path: '', name: 'portal', component: PortalHomeView, meta: { portalTitle: 'portal.menu.beranda' } },
+      { path: 'kaiwa', name: 'portal-kaiwa', component: PortalKaiwaView, meta: { portalTitle: 'portal.menu.kaiwa' } },
+      { path: 'ujian', name: 'portal-ujian', component: PortalUjianView, meta: { portalTitle: 'portal.menu.ujian' } },
+      { path: 'kehadiran', name: 'portal-kehadiran', component: PortalKehadiranView, meta: { portalTitle: 'portal.menu.kehadiran' } },
+      { path: 'sikap', name: 'portal-sikap', component: PortalSikapView, meta: { portalTitle: 'portal.menu.sikap' } },
+      { path: 'rapor', name: 'portal-rapor', component: PortalRaporView, meta: { portalTitle: 'portal.menu.rapor' } },
+      { path: 'smart-report', name: 'portal-smart-report', component: PortalSmartReportView, meta: { portalTitle: 'portal.menu.smartReport' } },
+      { path: 'profil', name: 'portal-profil', component: PortalProfilView, meta: { portalTitle: 'portal.menu.profil' } },
+      { path: ':pathMatch(.*)*', redirect: '/portal' },
+    ],
   },
   {
     path: '/dashboard',
@@ -158,6 +178,7 @@ const routes = [
   // Fase 2 active academic & audit views
   { path: '/nilai-ujian', name: 'rekap-nilai-ujian', component: NilaiUjianView, meta: { pageKode: 'rekap-nilai-ujian' } },
   { path: '/nilai-kaiwa', name: 'rekap-nilai-kaiwa', component: NilaiKaiwaView, meta: { pageKode: 'rekap-nilai-kaiwa' } },
+  { path: '/kaiwa-mingguan', name: 'kaiwa-mingguan', component: KaiwaMingguanView, meta: { pageKode: 'kaiwa-mingguan' } },
   { path: '/nilai-sikap', name: 'rekap-nilai-sikap', component: NilaiSikapView, meta: { pageKode: 'rekap-nilai-sikap' } },
   { path: '/absensi', name: 'rekap-absensi', component: AbsensiView, meta: { pageKode: 'rekap-absensi' } },
   { path: '/config/audit-log', name: 'riwayat-aktivitas', component: AuditLogView, meta: { pageKode: 'riwayat-aktivitas' } },

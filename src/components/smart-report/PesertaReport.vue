@@ -5,7 +5,10 @@
     <ReportHeader :title="$t('smartReport.kopJudulPeserta')" :rentang="report.rentang" :print-date="printDate" />
 
     <!-- Identitas -->
-    <div class="bg-slate-50 border border-slate-200 rounded-lg p-3.5 grid grid-cols-2 sm:grid-cols-4 print:grid-cols-4 gap-3 text-xs">
+    <div
+      class="bg-slate-50 border border-slate-200 rounded-lg p-3.5 grid grid-cols-2 gap-3 text-xs"
+      :class="portal ? 'sm:grid-cols-3 print:grid-cols-3' : 'sm:grid-cols-4 print:grid-cols-4'"
+    >
       <div>
         <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
         <div class="font-bold text-slate-900 text-sm mt-0.5">{{ report.student.nama }}</div>
@@ -25,7 +28,7 @@
           {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || '-' }}
         </div>
       </div>
-      <div>
+      <div v-if="!portal">
         <div class="text-[11px] text-slate-500">{{ $t('smartReport.statusTag') }}</div>
         <div class="font-bold text-slate-800 mt-0.5">{{ $t(`tag.${report.student.statusTag}`) }}</div>
       </div>
@@ -74,6 +77,7 @@
       :title="$t('smartReport.resumeJudul')"
       :resume="report.resume"
       :can-write="canWrite"
+      :portal="portal"
       :busy="busy"
       :locked="locked"
       :generate="generate"
@@ -252,7 +256,7 @@
             <th class="w-24">{{ $t('smartReport.colTanggal') }}</th>
             <th>{{ $t('smartReport.colKategori') }}</th>
             <th class="text-center w-16">{{ $t('smartReport.colDampak') }}</th>
-            <th>{{ $t('smartReport.colKeterangan') }}</th>
+            <th v-if="!portal">{{ $t('smartReport.colKeterangan') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -263,7 +267,7 @@
               <span v-if="s.sentiment === 'positif'" class="text-emerald-700">+{{ s.bobot }}</span>
               <span v-else class="text-red-600">−{{ s.bobot }}</span>
             </td>
-            <td class="text-slate-600">{{ s.keterangan || '-' }}</td>
+            <td v-if="!portal" class="text-slate-600">{{ s.keterangan || '-' }}</td>
           </tr>
         </tbody>
       </table>
@@ -297,6 +301,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ReportHeader from './ReportHeader.vue';
+import './smartReport.css';
 import ResumeCard from './ResumeCard.vue';
 import ScoreTrendChart from './ScoreTrendChart.vue';
 
@@ -309,6 +314,8 @@ const props = defineProps<{
   locked?: boolean;
   generate: () => Promise<void>;
   save: (payload: { teksId: string; teksJa: string }) => Promise<void>;
+  // Peserta portal: read-only, without the status tag and the free-text sikap notes.
+  portal?: boolean;
 }>();
 
 const { t, locale } = useI18n();

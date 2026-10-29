@@ -1,0 +1,122 @@
+/* Shared by the Smart Report components (staff Smart Report and the peserta portal); in the components layer so
+   Tailwind utilities still win. Printing: the page wraps the reports in #smart-report-print. */
+@layer components {
+  .sr-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+  }
+
+  .sr-title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+  }
+
+  .sr-title-row .sr-section-title {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .sr-table {
+    width: 100%;
+    font-size: 11px;
+    border: 1px solid #e2e8f0;
+    border-collapse: collapse;
+  }
+
+  .sr-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 5px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  .sr-table td {
+    padding: 4px 8px;
+    border-top: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: top;
+  }
+
+  .sr-num td {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sr-note-row td {
+    border-top: 0;
+    padding: 0 8px 6px 16px;
+    font-size: 10px;
+    font-style: italic;
+    color: #64748b;
+    white-space: pre-line;
+  }
+}
+
+@media print {
+  .no-print,
+  .v-navigation-drawer,
+  .v-app-bar,
+  .v-snackbar,
+  .joy-page-preloader,
+  header,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  .v-main {
+    padding: 0 !important;
+  }
+
+  .v-application__wrap {
+    min-height: 0 !important;
+  }
+
+  html,
+  body,
+  .v-application,
+  .v-main {
+    background: white !important;
+  }
+
+  #smart-report-print {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    zoom: 0.82;
+  }
+
+  #smart-report-print .sr-page {
+    max-width: none;
+  }
+
+  #smart-report-print .sr-page + .sr-page {
+    break-before: page;
+  }
+
+  #smart-report-print tr,
+  #smart-report-print .sr-keep,
+  #smart-report-print .sr-resume {
+    break-inside: avoid;
+  }
+
+  #smart-report-print thead {
+    display: table-header-group;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 1cm 1.2cm;
+  }
+}

@@ -139,6 +139,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ReportHeader from './ReportHeader.vue';
+import './smartReport.css';
 import ResumeCard from './ResumeCard.vue';
 import ScoreTrendChart from './ScoreTrendChart.vue';
 

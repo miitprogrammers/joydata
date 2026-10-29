@@ -3,6 +3,8 @@
  * Decoupled from Express, PostgreSQL, and MySQL so every invariant is unit-testable.
  */
 
+import { normalizeKaiwaRuleSettings } from './kaiwaMingguan.js';
+
 export const VALID_STATUS_TAGS = ['standar', 'berkembang', 'siap_interview'];
 export const VALID_KETERANGAN_LUAR = ['keluar', 'alumni', 'cuti'];
 export const PROTECTED_ADMIN_PAGES = ['role-akses', 'crud-staff'];
@@ -311,8 +313,14 @@ export function validateAndNormalizeNilaiKaiwa(input) {
   const tanggalKaiwa = String(input?.tanggalKaiwa || '').trim();
   const grade = String(input?.grade || '').trim().toUpperCase();
   const description = String(input?.description ?? input?.catatan ?? '').trim();
+  // The sensei who held the kaiwa; null when the client sends none (the repository then decides).
+  const senseiRaw = input?.senseiId;
+  const senseiId = senseiRaw === null || senseiRaw === undefined || senseiRaw === '' ? null : Number(senseiRaw);
 
   if (!Number.isInteger(pesertaId) || pesertaId <= 0 || !Number.isInteger(kelasId) || kelasId <= 0) {
+    return { ok: false, code: 'VALIDATION_ERROR' };
+  }
+  if (senseiId !== null && (!Number.isInteger(senseiId) || senseiId <= 0)) {
     return { ok: false, code: 'VALIDATION_ERROR' };
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggalKaiwa)) {
@@ -330,6 +338,7 @@ export function validateAndNormalizeNilaiKaiwa(input) {
       tanggalKaiwa,
       grade,
       description,
+      senseiId,
     },
   };
 }
@@ -568,6 +577,14 @@ export function validateSettingsPayload(input) {
     return { ok: false, code: 'INVALID_BATAS_GRADE' };
   }
 
+  // Kaiwa Card rule. Left out by clients that predate it; the caller then keeps the stored values.
+  let kaiwa = {};
+  if (input?.kaiwa_target_mingguan !== undefined) {
+    const checked = normalizeKaiwaRuleSettings(input);
+    if (!checked.ok) return checked;
+    kaiwa = checked.normalized;
+  }
+
   return {
     ok: true,
     normalized: {
@@ -578,6 +595,7 @@ export function validateSettingsPayload(input) {
       batas_grade: { A: Math.round(a), B: Math.round(b), C: Math.round(c) },
       rentang_tren_bulan: Number(input?.rentang_tren_bulan ?? 12),
       periode_default: String(input?.periode_default || 'auto'),
+      ...kaiwa,
     },
   };
 }
