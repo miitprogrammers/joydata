@@ -1,15 +1,15 @@
 <template>
   <div class="space-y-2">
-    <div class="grid grid-cols-3 gap-2 text-center">
+    <div class="grid gap-2 text-center" :class="kaiwaCard === undefined ? 'grid-cols-2' : 'grid-cols-3'">
       <div class="border border-slate-200 rounded py-1.5">
-        <div class="text-[10px] text-slate-500">{{ $t('laporan.sesiKaiwa') }}</div>
+        <div class="text-[10px] text-slate-500">{{ labelSesi }}</div>
         <div class="text-base font-bold font-mono mt-0.5 text-slate-900">{{ grades.length }}</div>
       </div>
       <div class="border border-slate-200 rounded py-1.5">
         <div class="text-[10px] text-slate-500">{{ $t('laporan.gradeTerakhir') }}</div>
         <div class="text-base font-bold font-mono mt-0.5 text-blue-800">{{ gradeTerakhir || '-' }}</div>
       </div>
-      <div class="border border-slate-200 rounded py-1.5">
+      <div v-if="kaiwaCard !== undefined" class="border border-slate-200 rounded py-1.5">
         <div class="text-[10px] text-slate-500">{{ $t('laporan.kaiwaCard') }}</div>
         <div class="text-base font-bold font-mono mt-0.5" :class="kaiwaCardTone">
           {{ kaiwaCard?.jumlahMinggu ? `${kaiwaCard.tercapai}/${kaiwaCard.jumlahMinggu}` : '-' }}
@@ -37,12 +37,14 @@
 import { computed } from 'vue';
 import { hitungGrade } from './reportStats.js';
 
-// Kaiwa in numbers for the printed reports: sessions, latest grade, Kaiwa Card weeks, grade distribution.
+// A graded practice (kaiwa, mensetsu renshuu) in numbers for the printed reports: sessions, latest grade,
+// grade distribution, and for kaiwa the Kaiwa Card weeks.
 const props = defineProps<{
   grades: string[];
   gradeTerakhir: string | null;
-  // { target, jumlahMinggu, tercapai, senseiWajibNama } from the report API
-  kaiwaCard: any;
+  labelSesi: string;
+  // Kaiwa only: { target, jumlahMinggu, tercapai, senseiWajibNama } from the report API; left out otherwise.
+  kaiwaCard?: any;
 }>();
 
 const GRADES = ['A', 'B', 'C'] as const;

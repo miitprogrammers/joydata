@@ -78,6 +78,7 @@ function journeyOf(ctx, student) {
     kelasId: student.kelasId,
     ujianRows: ctx.state.nilaiUjian || [],
     kaiwaRows: ctx.state.nilaiKaiwa || [],
+    mensetsuRows: ctx.state.nilaiMensetsu || [],
     sikapRows: ctx.sikapRows,
     absensiRows: ctx.state.absensi || [],
     settings: ctx.settings,
@@ -328,6 +329,11 @@ function portalKaiwaDaftar(ctx, daftar) {
   }));
 }
 
+/** Mensetsu renshuu sessions with the name of the staff who held them instead of a staff id. */
+function portalMensetsuDaftar(ctx, daftar) {
+  return daftar.map(({ senseiId, ...m }) => ({ ...m, senseiNama: staffNama(ctx, senseiId) }));
+}
+
 /** This week's Kaiwa Card and the weeks before it, from the week the peserta joined or the rule started. */
 function portalKaiwaCard(ctx, daftar, tanggalMasuk) {
   const rule = kaiwaRule(ctx.settings);
@@ -373,6 +379,7 @@ export async function getPortalReport(pesertaId) {
     ujian: { ...journey.ujian, daftar: journey.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
     kaiwa: { ...journey.kaiwa, daftar: kaiwaDaftar },
     kaiwaCard: portalKaiwaCard(ctx, kaiwaDaftar, tanggalMasuk),
+    mensetsu: { ...journey.mensetsu, daftar: portalMensetsuDaftar(ctx, journey.mensetsu.daftar) },
     sikap: { daftar: journey.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
     absensi: journey.absensi,
     bulanan: journey.bulanan,
@@ -422,6 +429,7 @@ export async function getPortalSmartReport(pesertaId) {
       penempatan: { tanggalLulusUjian, perusahaanNaitei, jenisPekerjaan, lokasiKerja },
       ujian: { ...report.ujian, daftar: report.ujian.daftar.map((u) => ({ ...u, catatan: catatanUntukPeserta(u.catatan) })) },
       kaiwa: { ...report.kaiwa, daftar: portalKaiwaDaftar(ctx, report.kaiwa.daftar) },
+      mensetsu: { ...report.mensetsu, daftar: portalMensetsuDaftar(ctx, report.mensetsu.daftar) },
       sikap: { ...report.sikap, daftar: report.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
       // Who wrote it and whether it is outdated are for staff.
       resume: resumeUntukCetak(resumeRow),
@@ -465,6 +473,7 @@ export async function getPortalRapor(pesertaId, periode) {
     penempatan,
     ujianList: rapor.ujianList.map(({ catatan, ...u }) => u),
     kaiwaList: rapor.kaiwaList.map(({ senseiId, ...k }) => k),
+    mensetsuList: rapor.mensetsuList.map(({ senseiId, ...m }) => m),
     sikapData: { ...rapor.sikapData, logs: rapor.sikapData.logs.map(({ description, ...rest }) => rest) },
     settings: portalSettings(rapor.settings),
     periodeOptions,

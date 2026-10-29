@@ -115,6 +115,7 @@ const UNSUPPORTED = {
   pesertaPenempatan: 'peserta_penempatan',
   pesertaStatusLog: 'peserta_status_log',
   nilaiKaiwa: 'nilai_kaiwa',
+  nilaiMensetsu: 'nilai_mensetsu',
   nilaiSikap: 'nilai_sikap',
   pushSubscriptions: 'push_subscription',
   pushLogs: 'push_log',

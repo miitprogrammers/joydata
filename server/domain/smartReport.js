@@ -61,6 +61,7 @@ export function buildPesertaJourney({
   kelasId = null,
   ujianRows = [],
   kaiwaRows = [],
+  mensetsuRows = [],
   sikapRows = [],
   absensiRows = [],
   settings,
@@ -102,6 +103,18 @@ export function buildPesertaJourney({
     }))
     .sort((a, b) => a.tanggal.localeCompare(b.tanggal));
 
+  // Mensetsu renshuu (interview practice), graded like kaiwa.
+  const mensetsuDaftar = mensetsuRows
+    .filter((m) => Number(m.pesertaId) === pid && m.tanggalMensetsu)
+    .map((m) => ({
+      id: m.id,
+      tanggal: toDay(m.tanggalMensetsu),
+      grade: m.grade,
+      catatan: m.description || '',
+      senseiId: m.senseiId ?? null,
+    }))
+    .sort((a, b) => a.tanggal.localeCompare(b.tanggal) || a.id - b.id);
+
   const sikapDaftar = sikapRows
     .filter((s) => Number(s.pesertaId) === pid && s.tanggalPenilaian)
     .map((s) => ({
@@ -120,6 +133,7 @@ export function buildPesertaJourney({
   const ownDates = [
     ...ujianDaftar.map((u) => u.tanggal),
     ...kaiwaDaftar.map((k) => k.tanggal),
+    ...mensetsuDaftar.map((m) => m.tanggal),
     ...sikapDaftar.map((s) => s.tanggal),
     ...ownAbsensi.map((a) => toDay(a.tanggalAbsensi)),
   ].sort();
@@ -159,6 +173,7 @@ export function buildPesertaJourney({
       ujianRata: mean(ujianBulan.map((u) => u.rata)),
       jumlahUjian: ujianBulan.length,
       kaiwa: kaiwaDaftar.filter((k) => toMonth(k.tanggal) === periode).map((k) => k.grade),
+      mensetsu: mensetsuDaftar.filter((m) => toMonth(m.tanggal) === periode).map((m) => m.grade),
       sikap: {
         skor: sikap.skorAkhir,
         predikat: sikap.label,
@@ -209,6 +224,10 @@ export function buildPesertaJourney({
   for (const k of kaiwaDaftar) {
     if (k.grade in distribusiKaiwa) distribusiKaiwa[k.grade] += 1;
   }
+  const distribusiMensetsu = { A: 0, B: 0, C: 0 };
+  for (const m of mensetsuDaftar) {
+    if (m.grade in distribusiMensetsu) distribusiMensetsu[m.grade] += 1;
+  }
 
   return {
     rentang,
@@ -220,6 +239,8 @@ export function buildPesertaJourney({
       jumlahLulusUjian: ujianDaftar.filter((u) => u.lulusKkm).length,
       kaiwaTerakhir: kaiwaDaftar.length ? kaiwaDaftar[kaiwaDaftar.length - 1].grade : null,
       jumlahKaiwa: kaiwaDaftar.length,
+      mensetsuTerakhir: mensetsuDaftar.length ? mensetsuDaftar[mensetsuDaftar.length - 1].grade : null,
+      jumlahMensetsu: mensetsuDaftar.length,
       skorSikap,
       predikatSikap: skorSikap !== null ? getGradeLabel(skorSikap, batasGrade) : '-',
       lulusKkmSikap: skorSikap !== null ? skorSikap >= kkmSikap : null,
@@ -234,6 +255,7 @@ export function buildPesertaJourney({
       tren,
     },
     kaiwa: { daftar: kaiwaDaftar, distribusi: distribusiKaiwa },
+    mensetsu: { daftar: mensetsuDaftar, distribusi: distribusiMensetsu },
     sikap: { daftar: sikapDaftar },
     absensi: absensiTotal,
     bulanan,
@@ -285,8 +307,10 @@ export function buildKelasSummary(members, settings) {
   for (const r of dinilai) distribusiGrade[r.gradeUjian] += 1;
 
   const distribusiKaiwa = { A: 0, B: 0, C: 0 };
+  const distribusiMensetsu = { A: 0, B: 0, C: 0 };
   for (const r of rows) {
     if (r.kaiwaTerakhir in distribusiKaiwa) distribusiKaiwa[r.kaiwaTerakhir] += 1;
+    if (r.mensetsuTerakhir in distribusiMensetsu) distribusiMensetsu[r.mensetsuTerakhir] += 1;
   }
 
   const ujianSemua = members.flatMap(({ journey }) => journey.ujian.daftar);
@@ -355,6 +379,7 @@ export function buildKelasSummary(members, settings) {
     },
     distribusiGrade,
     distribusiKaiwa,
+    distribusiMensetsu,
     bagian: Object.fromEntries(BAGIAN_UJIAN.map((b) => [b.key, mean(ujianSemua.map((u) => u[b.key]))])),
     perUjian,
     ranking: [...ranking, ...tanpaNilai],
@@ -430,6 +455,17 @@ export function buildPesertaAiFacts(journey, { nama, programNama, settings }) {
         compact({ tanggal: k.tanggal, topik: scrub(k.topik), grade: k.grade, catatan: scrub(k.catatan) })
       ),
     },
+    // Only with sessions: a resume written before mensetsu renshuu existed keeps its fingerprint.
+    ...(journey.kpi.jumlahMensetsu
+      ? {
+          mensetsu: {
+            jumlahSesi: journey.kpi.jumlahMensetsu,
+            gradeTerakhir: journey.kpi.mensetsuTerakhir,
+            distribusi: journey.mensetsu.distribusi,
+            daftar: journey.mensetsu.daftar.map((m) => compact({ tanggal: m.tanggal, grade: m.grade, catatan: scrub(m.catatan) })),
+          },
+        }
+      : {}),
     sikap: {
       skorRataBulanan: journey.kpi.skorSikap,
       predikat: journey.kpi.predikatSikap,
@@ -476,6 +512,9 @@ export function buildKelasAiFacts(summary, { programNama, settings }) {
     },
     distribusiPredikatUjian: summary.distribusiGrade,
     distribusiKaiwaTerakhir: summary.distribusiKaiwa,
+    ...(Object.values(summary.distribusiMensetsu).some(Boolean)
+      ? { distribusiMensetsuTerakhir: summary.distribusiMensetsu }
+      : {}),
     rataPerBagian: summary.bagian,
     rataPerUjian: summary.perUjian,
     peringkat: summary.ranking.map((r) =>
@@ -488,6 +527,7 @@ export function buildKelasAiFacts(summary, { programNama, settings }) {
         kehadiran: r.rasioKehadiran,
         skorSikap: r.skorSikap,
         kaiwaTerakhir: r.kaiwaTerakhir,
+        mensetsuTerakhir: r.mensetsuTerakhir,
       })
     ),
     perluPerhatian: summary.perluPerhatian.map((p) => ({ peserta: aliasOf.get(p.pesertaId), alasan: p.alasan })),

@@ -11,6 +11,7 @@ import {
   computeNilaiUjianAvg,
   validateAndNormalizeNilaiUjian,
   validateAndNormalizeNilaiKaiwa,
+  validateAndNormalizeNilaiMensetsu,
   computeKaiwaMetricsForPeriod,
   validateAndNormalizeNilaiSikap,
   computeAbsensiRasio,
@@ -370,3 +371,29 @@ test('Fase 4: identifyClassesNeedingAbsensiReminder excludes weekends, holidays,
   assert.equal(workdayResult.classesNeedingReminder[0].senseiPengajarId, 4);
 });
 
+test('Mensetsu renshuu: graded A / B / C like kaiwa, with the same class metrics', () => {
+  const ok = validateAndNormalizeNilaiMensetsu({ pesertaId: 1, kelasId: 2, tanggalMensetsu: '2026-10-30', grade: 'b', catatan: 'Jikoshoukai lancar' });
+  assert.equal(ok.ok, true);
+  assert.deepEqual(ok.normalized, {
+    pesertaId: 1,
+    kelasId: 2,
+    tanggalMensetsu: '2026-10-30',
+    grade: 'B',
+    description: 'Jikoshoukai lancar',
+    senseiId: null,
+  });
+  assert.equal(validateAndNormalizeNilaiMensetsu({ pesertaId: 1, kelasId: 2, tanggalMensetsu: '2026-10-30', grade: 'D' }).code, 'INVALID_MENSETSU_GRADE');
+  assert.equal(validateAndNormalizeNilaiMensetsu({ pesertaId: 1, kelasId: 2, tanggalKaiwa: '2026-10-30', grade: 'A' }).code, 'VALIDATION_ERROR');
+
+  const metrics = computeKaiwaMetricsForPeriod(
+    [1, 2, 3],
+    [
+      { id: 1, pesertaId: 1, tanggalMensetsu: '2026-10-02', grade: 'C' },
+      { id: 2, pesertaId: 1, tanggalMensetsu: '2026-10-20', grade: 'A' },
+      { id: 3, pesertaId: 2, tanggalMensetsu: '2026-10-12', grade: 'B' },
+    ],
+    'tanggalMensetsu'
+  );
+  assert.deepEqual(metrics.distribusi, { A: 1, B: 1, C: 0, belumAda: 1 });
+  assert.equal(metrics.rataPoinOrdinal, 2);
+});

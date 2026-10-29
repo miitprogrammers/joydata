@@ -307,13 +307,17 @@ export function validateAndNormalizeNilaiUjian(input) {
   };
 }
 
-export function validateAndNormalizeNilaiKaiwa(input) {
+/**
+ * A graded practice session (kaiwa, mensetsu renshuu): peserta, class, date under `tanggalKey`, grade A/B/C,
+ * note and the sensei who held it.
+ */
+function validateGradedSession(input, tanggalKey, invalidGradeCode) {
   const pesertaId = Number(input?.pesertaId);
   const kelasId = Number(input?.kelasId);
-  const tanggalKaiwa = String(input?.tanggalKaiwa || '').trim();
+  const tanggal = String(input?.[tanggalKey] || '').trim();
   const grade = String(input?.grade || '').trim().toUpperCase();
   const description = String(input?.description ?? input?.catatan ?? '').trim();
-  // The sensei who held the kaiwa; null when the client sends none (the repository then decides).
+  // The sensei who held the session; null when the client sends none (the repository then decides).
   const senseiRaw = input?.senseiId;
   const senseiId = senseiRaw === null || senseiRaw === undefined || senseiRaw === '' ? null : Number(senseiRaw);
 
@@ -323,11 +327,11 @@ export function validateAndNormalizeNilaiKaiwa(input) {
   if (senseiId !== null && (!Number.isInteger(senseiId) || senseiId <= 0)) {
     return { ok: false, code: 'VALIDATION_ERROR' };
   }
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggalKaiwa)) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggal)) {
     return { ok: false, code: 'VALIDATION_ERROR' };
   }
   if (!VALID_KAIWA_GRADES.includes(grade)) {
-    return { ok: false, code: 'INVALID_KAIWA_GRADE' };
+    return { ok: false, code: invalidGradeCode };
   }
 
   return {
@@ -335,7 +339,7 @@ export function validateAndNormalizeNilaiKaiwa(input) {
     normalized: {
       pesertaId,
       kelasId,
-      tanggalKaiwa,
+      [tanggalKey]: tanggal,
       grade,
       description,
       senseiId,
@@ -343,17 +347,27 @@ export function validateAndNormalizeNilaiKaiwa(input) {
   };
 }
 
+export function validateAndNormalizeNilaiKaiwa(input) {
+  return validateGradedSession(input, 'tanggalKaiwa', 'INVALID_KAIWA_GRADE');
+}
+
+/** Mensetsu renshuu (interview practice): graded A / B / C like kaiwa. */
+export function validateAndNormalizeNilaiMensetsu(input) {
+  return validateGradedSession(input, 'tanggalMensetsu', 'INVALID_MENSETSU_GRADE');
+}
+
 /**
  * Computes the 3 distinct Kaiwa metrics (§13.1 mainIdea.md):
  * 1. Distribusi grade kelas: 1 peserta = 1 nilai (grade terakhir pada periode; tanpa sesi = 'belumAda', bukan C).
  * 2. Tren perkembangan: rata-rata poin ordinal (A=3, B=2, C=1) dari semua baris sesi.
  * 3. Aktivitas kaiwa: jumlah sesi penilaian pada periode.
+ * The same three metrics serve mensetsu renshuu, whose rows carry their date under tanggalKey 'tanggalMensetsu'.
  */
-export function computeKaiwaMetricsForPeriod(rosterPesertaIds, kaiwaRows) {
+export function computeKaiwaMetricsForPeriod(rosterPesertaIds, kaiwaRows, tanggalKey = 'tanggalKaiwa') {
   const rows = Array.isArray(kaiwaRows) ? kaiwaRows : [];
   const sorted = [...rows].sort((a, b) => {
-    const da = String(a.tanggalKaiwa || '');
-    const db = String(b.tanggalKaiwa || '');
+    const da = String(a[tanggalKey] || '');
+    const db = String(b[tanggalKey] || '');
     if (da !== db) return db.localeCompare(da);
     return Number(b.id || 0) - Number(a.id || 0);
   });
@@ -607,6 +621,7 @@ export function computeProgresStudentMetrics({
   student,
   ujianRows = [],
   kaiwaRows = [],
+  mensetsuRows = [],
   sikapSummary = { skorAkhir: 75, label: 'B', lulusKkm: true },
   absensiStats = { rasioKehadiran: null, hadir: 0, sesiKelas: 0 },
   kkmUjian = 70,
@@ -633,6 +648,11 @@ export function computeProgresStudentMetrics({
   });
   const gradeKaiwaTerakhir = sortedKaiwa.length > 0 ? sortedKaiwa[0].grade : null;
 
+  const sortedMensetsu = [...(mensetsuRows || [])].sort(
+    (a, b) => String(b.tanggalMensetsu || '').localeCompare(String(a.tanggalMensetsu || '')) || Number(b.id || 0) - Number(a.id || 0)
+  );
+  const gradeMensetsuTerakhir = sortedMensetsu.length > 0 ? sortedMensetsu[0].grade : null;
+
   return {
     pesertaId: Number(student?.id),
     mancationAkunId: Number(student?.mancationAkunId),
@@ -646,6 +666,8 @@ export function computeProgresStudentMetrics({
     lulusKkmUjian,
     gradeKaiwaTerakhir,
     sesiKaiwaCount: sortedKaiwa.length,
+    gradeMensetsuTerakhir,
+    sesiMensetsuCount: sortedMensetsu.length,
     skorSikap: sikapSummary?.skorAkhir ?? 75,
     predikatSikap: sikapSummary?.label ?? 'B',
     lulusKkmSikap: sikapSummary?.lulusKkm ?? true,

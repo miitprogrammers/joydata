@@ -159,6 +159,20 @@ UPDATE nilai_kaiwa k SET sensei_staff_id = k.diinput_oleh_staff_id
 FROM staff s JOIN role r ON r.id = s.role_id
 WHERE k.sensei_staff_id IS NULL AND s.id = k.diinput_oleh_staff_id AND r.kode = 'sensei';
 
+-- Mensetsu renshuu (interview practice): graded A / B / C with a note, like kaiwa. sensei_staff_id = who held
+-- the practice interview (any staff), diinput_oleh_staff_id = who typed it in.
+CREATE TABLE IF NOT EXISTS nilai_mensetsu (
+  id SERIAL PRIMARY KEY,
+  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
+  kelas_id INTEGER NULL REFERENCES kelas(id) ON DELETE SET NULL,
+  tanggal_sesi DATE NOT NULL,
+  grade CHAR(1) NOT NULL CHECK (grade IN ('A', 'B', 'C')),
+  catatan TEXT NOT NULL DEFAULT '',
+  sensei_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  diinput_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS nilai_sikap (
   id SERIAL PRIMARY KEY,
   peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
@@ -290,6 +304,7 @@ CREATE INDEX IF NOT EXISTS idx_nilai_ujian_peserta_tgl ON nilai_ujian(peserta_id
 CREATE UNIQUE INDEX IF NOT EXISTS idx_nilai_ujian_unique ON nilai_ujian(peserta_id, kelas_id, tanggal_ujian, nama_ujian);
 CREATE INDEX IF NOT EXISTS idx_nilai_kaiwa_peserta_tgl ON nilai_kaiwa(peserta_id, tanggal_sesi);
 CREATE INDEX IF NOT EXISTS idx_nilai_kaiwa_tanggal ON nilai_kaiwa(tanggal_sesi);
+CREATE INDEX IF NOT EXISTS idx_nilai_mensetsu_peserta_tgl ON nilai_mensetsu(peserta_id, tanggal_sesi);
 CREATE INDEX IF NOT EXISTS idx_nilai_sikap_peserta_tgl ON nilai_sikap(peserta_id, tanggal);
 CREATE INDEX IF NOT EXISTS idx_audit_log_created_at ON audit_log(created_at DESC);
 

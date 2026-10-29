@@ -286,6 +286,7 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     pesertaStatusLog,
     nilaiUjian,
     nilaiKaiwa,
+    nilaiMensetsu: [],
     nilaiSikap,
     absensi,
     sikapKategori,
@@ -303,6 +304,7 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
       sikapKategori: sikapKategori.length + 1,
       nilaiUjian: nilaiUjian.length + 1,
       nilaiKaiwa: nilaiKaiwa.length + 1,
+      nilaiMensetsu: 1,
       nilaiSikap: nilaiSikap.length + 1,
       absensi: absensi.length + 1,
       auditLog: auditLog.length + 1,
@@ -337,6 +339,10 @@ function ensurePhase2Collections(state) {
     state.pesertaAkun = [];
     dirty = true;
   }
+  if (!Array.isArray(state.nilaiMensetsu)) {
+    state.nilaiMensetsu = [];
+    dirty = true;
+  }
   for (const p of SEED_PAGES) {
     if ((state.pages || []).some((existing) => existing.kode === p.kode)) continue;
     const { defaultRoles = [], ...page } = p;
@@ -349,6 +355,7 @@ function ensurePhase2Collections(state) {
   state.seq = state.seq || {};
   state.seq.nilaiUjian = state.seq.nilaiUjian || (state.nilaiUjian.length + 1);
   state.seq.nilaiKaiwa = state.seq.nilaiKaiwa || ((state.nilaiKaiwa || []).length + 1);
+  state.seq.nilaiMensetsu = state.seq.nilaiMensetsu || ((state.nilaiMensetsu || []).length + 1);
   state.seq.nilaiSikap = state.seq.nilaiSikap || ((state.nilaiSikap || []).length + 1);
   state.seq.absensi = state.seq.absensi || ((state.absensi || []).length + 1);
   state.seq.pushSubscription = state.seq.pushSubscription || ((state.pushSubscriptions || []).length + 1);

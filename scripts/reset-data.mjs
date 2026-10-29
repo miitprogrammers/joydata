@@ -2,7 +2,7 @@
  * JOYdata data reset — wipes demo/transactional data and leaves a clean baseline.
  *
  * Keeps (master): role, page, access, settings, program, sikap_kategori, and the admin account.
- * Clears: staff (non-admin), kelas, peserta, nilai_ujian, nilai_kaiwa, nilai_sikap,
+ * Clears: staff (non-admin), kelas, peserta, nilai_ujian, nilai_kaiwa, nilai_mensetsu, nilai_sikap,
  *         absensi, peserta_penempatan, peserta_status_log, audit_log, mancation caches, push logs.
  *
  * Safety guards (override with --force only when you are sure):
@@ -34,6 +34,7 @@ const forced = args.has('--force') || process.env.RESET_FORCE === 'true';
 const CLEAR_TABLES = [
   'nilai_ujian',
   'nilai_kaiwa',
+  'nilai_mensetsu',
   'nilai_sikap',
   'absensi',
   'peserta_penempatan',
@@ -57,6 +58,7 @@ function summarize(state) {
     peserta: n(state.peserta),
     nilaiUjian: n(state.nilaiUjian),
     nilaiKaiwa: n(state.nilaiKaiwa),
+    nilaiMensetsu: n(state.nilaiMensetsu),
     nilaiSikap: n(state.nilaiSikap),
     absensi: n(state.absensi),
     penempatan: n(state.pesertaPenempatan),

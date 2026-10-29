@@ -223,6 +223,14 @@
               <span class="text-blue-700 font-bold">B: {{ chartsData.distribusiKaiwa.B }}</span>
               <span class="text-amber-700 font-bold">C: {{ chartsData.distribusiKaiwa.C }}</span>
             </div>
+            <template v-if="chartsData.distribusiMensetsu">
+              <div class="text-[11px] font-semibold text-slate-500 mt-2">{{ $t('dashboard.mensetsuTerakhir') }}:</div>
+              <div class="flex items-center justify-between font-mono text-[11px] bg-slate-50 p-1.5 rounded">
+                <span class="text-emerald-700 font-bold">A: {{ chartsData.distribusiMensetsu.A }}</span>
+                <span class="text-blue-700 font-bold">B: {{ chartsData.distribusiMensetsu.B }}</span>
+                <span class="text-amber-700 font-bold">C: {{ chartsData.distribusiMensetsu.C }}</span>
+              </div>
+            </template>
             <div class="text-[11px] font-semibold text-slate-500 mt-2">Kejadian Sikap:</div>
             <div class="flex items-center justify-between text-[11px]">
               <span class="text-emerald-700 font-semibold">+{{ chartsData.sikapSentimen.positif }} Positif</span>

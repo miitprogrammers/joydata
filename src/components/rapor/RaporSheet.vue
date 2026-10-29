@@ -77,7 +77,7 @@
     </div>
 
     <!-- KPI Executive Summary Cards -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
       <div class="p-3 bg-white border border-slate-200 rounded-lg">
         <div class="text-[11px] font-medium text-slate-500">{{ $t('rapor.rataUjian') }}</div>
         <div
@@ -98,6 +98,16 @@
         </div>
         <div class="text-[10px] font-medium text-slate-400 mt-0.5">
           {{ raporData.kpi.sesiKaiwa }} {{ $t('rapor.sesiTerlaksana') }}
+        </div>
+      </div>
+
+      <div class="p-3 bg-white border border-slate-200 rounded-lg">
+        <div class="text-[11px] font-medium text-slate-500">{{ $t('rapor.mensetsuTerakhir') }}</div>
+        <div class="text-xl font-bold font-mono mt-1 text-blue-700">
+          {{ raporData.kpi.gradeMensetsu }}
+        </div>
+        <div class="text-[10px] font-medium text-slate-400 mt-0.5">
+          {{ raporData.kpi.sesiMensetsu }} {{ $t('rapor.sesiTerlaksana') }}
         </div>
       </div>
 
@@ -160,21 +170,36 @@
       </p>
     </div>
 
-    <!-- Section 2 (kaiwa) & 3 (sikap): numbers only -->
+    <!-- Section 2 (kaiwa) & 3 (mensetsu renshuu): numbers only -->
     <div class="grid grid-cols-2 gap-4">
       <div class="space-y-2">
         <div class="border-b border-slate-200 pb-1.5">
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">2. {{ $t('rapor.secKaiwa') }}</h3>
         </div>
-        <StatKaiwa
+        <StatGrade
           :grades="raporData.kaiwaList.map((k: any) => k.grade)"
           :grade-terakhir="raporData.kpi.gradeKaiwa"
+          :label-sesi="$t('laporan.sesiKaiwa')"
           :kaiwa-card="raporData.kaiwaCard"
         />
       </div>
       <div class="space-y-2">
         <div class="border-b border-slate-200 pb-1.5">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">3. {{ $t('rapor.secSikap') }}</h3>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">3. {{ $t('rapor.secMensetsu') }}</h3>
+        </div>
+        <StatGrade
+          :grades="raporData.mensetsuList.map((m: any) => m.grade)"
+          :grade-terakhir="raporData.kpi.gradeMensetsu"
+          :label-sesi="$t('laporan.sesiMensetsu')"
+        />
+      </div>
+    </div>
+
+    <!-- Section 4 (sikap) & 5 (kehadiran) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <div class="border-b border-slate-200 pb-1.5">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">4. {{ $t('rapor.secSikap') }}</h3>
         </div>
         <StatSikap
           :rows="raporData.sikapData.logs"
@@ -185,15 +210,11 @@
           :basis="raporData.sikapData.basis"
         />
       </div>
-    </div>
-
-    <!-- Section 4: Rekap Kehadiran & Section 5: Data Penempatan 名簿 -->
-    <div class="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-4">
       <!-- Absensi Breakdown -->
       <div class="space-y-2">
         <div class="border-b border-slate-200 pb-1.5">
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
-            4. {{ $t('rapor.secAbsensi') }}
+            5. {{ $t('rapor.secAbsensi') }}
           </h3>
         </div>
         <div class="border border-slate-200 rounded p-3 text-xs space-y-1.5">
@@ -225,45 +246,45 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Data Penempatan 名簿 -->
-      <div class="space-y-2">
-        <div class="border-b border-slate-200 pb-1.5 flex items-center justify-between">
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
-            5. {{ $t('rapor.secPenempatan') }}
-          </h3>
-          <span class="text-[10px] text-slate-400">Data 名簿</span>
+    <!-- Section 6: Data Penempatan 名簿 -->
+    <div class="space-y-2">
+      <div class="border-b border-slate-200 pb-1.5 flex items-center justify-between">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
+          6. {{ $t('rapor.secPenempatan') }}
+        </h3>
+        <span class="text-[10px] text-slate-400">Data 名簿</span>
+      </div>
+      <div class="border border-slate-200 rounded p-3 text-xs grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+        <div class="flex justify-between py-0.5 border-b border-slate-50">
+          <span class="text-slate-600">Tanggal Lulus Ujian (合格日):</span>
+          <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.tanggalLulusUjian || '-' }}</span>
         </div>
-        <div class="border border-slate-200 rounded p-3 text-xs space-y-1.5">
-          <div class="flex justify-between py-0.5 border-b border-slate-50">
-            <span class="text-slate-600">Tanggal Lulus Ujian (合格日):</span>
-            <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.tanggalLulusUjian || '-' }}</span>
-          </div>
-          <div class="flex justify-between py-0.5 border-b border-slate-50">
-            <span class="text-slate-600">Perusahaan Naitei (内定企業名):</span>
-            <span class="font-bold text-slate-800">{{ raporData.penempatan.perusahaanNaitei || '-' }}</span>
-          </div>
-          <div class="flex justify-between py-0.5 border-b border-slate-50">
-            <span class="text-slate-600">Jenis Pekerjaan (内定した業務):</span>
-            <span class="text-slate-800">{{ raporData.penempatan.jenisPekerjaan || '-' }}</span>
-          </div>
-          <div class="flex justify-between py-0.5 border-b border-slate-50">
-            <span class="text-slate-600">Lokasi Kerja (勤務地):</span>
-            <span class="text-slate-800">{{ raporData.penempatan.lokasiKerja || '-' }}</span>
-          </div>
-          <div class="flex justify-between py-0.5 border-b border-slate-50">
-            <span class="text-slate-600">Rencana Mulai Kerja (就業開始予定日):</span>
-            <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.rencanaMulaiKerja || '-' }}</span>
-          </div>
-          <div class="flex justify-between pt-1">
-            <span class="text-slate-600">Pendidikan Terakhir (最終学歴):</span>
-            <span class="text-slate-800 font-medium text-right">
-              {{ raporData.penempatan.pendidikanTerakhir || '-' }}
-              <span v-if="raporData.penempatan.pendidikanTerakhirJa" class="block font-normal">
-                {{ raporData.penempatan.pendidikanTerakhirJa }}
-              </span>
+        <div class="flex justify-between py-0.5 border-b border-slate-50">
+          <span class="text-slate-600">Perusahaan Naitei (内定企業名):</span>
+          <span class="font-bold text-slate-800">{{ raporData.penempatan.perusahaanNaitei || '-' }}</span>
+        </div>
+        <div class="flex justify-between py-0.5 border-b border-slate-50">
+          <span class="text-slate-600">Jenis Pekerjaan (内定した業務):</span>
+          <span class="text-slate-800">{{ raporData.penempatan.jenisPekerjaan || '-' }}</span>
+        </div>
+        <div class="flex justify-between py-0.5 border-b border-slate-50">
+          <span class="text-slate-600">Lokasi Kerja (勤務地):</span>
+          <span class="text-slate-800">{{ raporData.penempatan.lokasiKerja || '-' }}</span>
+        </div>
+        <div class="flex justify-between py-0.5 border-b border-slate-50">
+          <span class="text-slate-600">Rencana Mulai Kerja (就業開始予定日):</span>
+          <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.rencanaMulaiKerja || '-' }}</span>
+        </div>
+        <div class="flex justify-between pt-1">
+          <span class="text-slate-600">Pendidikan Terakhir (最終学歴):</span>
+          <span class="text-slate-800 font-medium text-right">
+            {{ raporData.penempatan.pendidikanTerakhir || '-' }}
+            <span v-if="raporData.penempatan.pendidikanTerakhirJa" class="block font-normal">
+              {{ raporData.penempatan.pendidikanTerakhirJa }}
             </span>
-          </div>
+          </span>
         </div>
       </div>
     </div>
@@ -313,7 +334,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ResumeCard from '../smart-report/ResumeCard.vue';
-import StatKaiwa from '../smart-report/StatKaiwa.vue';
+import StatGrade from '../smart-report/StatGrade.vue';
 import StatSikap from '../smart-report/StatSikap.vue';
 import StatusLegend from '../smart-report/StatusLegend.vue';
 import PeringkatCell from '../smart-report/PeringkatCell.vue';

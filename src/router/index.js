@@ -16,6 +16,7 @@ import RoleAksesView from '../views/RoleAksesView.vue';
 import NilaiUjianView from '../views/NilaiUjianView.vue';
 import NilaiKaiwaView from '../views/NilaiKaiwaView.vue';
 import KaiwaMingguanView from '../views/KaiwaMingguanView.vue';
+import NilaiMensetsuView from '../views/NilaiMensetsuView.vue';
 import NilaiSikapView from '../views/NilaiSikapView.vue';
 import AbsensiView from '../views/AbsensiView.vue';
 import AuditLogView from '../views/AuditLogView.vue';
@@ -27,6 +28,7 @@ import PortalLoginView from '../views/portal/PortalLoginView.vue';
 import PortalLayout from '../views/portal/PortalLayout.vue';
 import PortalHomeView from '../views/portal/PortalHomeView.vue';
 import PortalKaiwaView from '../views/portal/PortalKaiwaView.vue';
+import PortalMensetsuView from '../views/portal/PortalMensetsuView.vue';
 import PortalUjianView from '../views/portal/PortalUjianView.vue';
 import PortalKehadiranView from '../views/portal/PortalKehadiranView.vue';
 import PortalSikapView from '../views/portal/PortalSikapView.vue';
@@ -112,6 +114,7 @@ const routes = [
     children: [
       { path: '', name: 'portal', component: PortalHomeView, meta: { portalTitle: 'portal.menu.beranda' } },
       { path: 'kaiwa', name: 'portal-kaiwa', component: PortalKaiwaView, meta: { portalTitle: 'portal.menu.kaiwa' } },
+      { path: 'mensetsu', name: 'portal-mensetsu', component: PortalMensetsuView, meta: { portalTitle: 'portal.menu.mensetsu' } },
       { path: 'ujian', name: 'portal-ujian', component: PortalUjianView, meta: { portalTitle: 'portal.menu.ujian' } },
       { path: 'kehadiran', name: 'portal-kehadiran', component: PortalKehadiranView, meta: { portalTitle: 'portal.menu.kehadiran' } },
       { path: 'sikap', name: 'portal-sikap', component: PortalSikapView, meta: { portalTitle: 'portal.menu.sikap' } },
@@ -179,6 +182,7 @@ const routes = [
   { path: '/nilai-ujian', name: 'rekap-nilai-ujian', component: NilaiUjianView, meta: { pageKode: 'rekap-nilai-ujian' } },
   { path: '/nilai-kaiwa', name: 'rekap-nilai-kaiwa', component: NilaiKaiwaView, meta: { pageKode: 'rekap-nilai-kaiwa' } },
   { path: '/kaiwa-mingguan', name: 'kaiwa-mingguan', component: KaiwaMingguanView, meta: { pageKode: 'kaiwa-mingguan' } },
+  { path: '/mensetsu', name: 'rekap-mensetsu', component: NilaiMensetsuView, meta: { pageKode: 'rekap-mensetsu' } },
   { path: '/nilai-sikap', name: 'rekap-nilai-sikap', component: NilaiSikapView, meta: { pageKode: 'rekap-nilai-sikap' } },
   { path: '/absensi', name: 'rekap-absensi', component: AbsensiView, meta: { pageKode: 'rekap-absensi' } },
   { path: '/config/audit-log', name: 'riwayat-aktivitas', component: AuditLogView, meta: { pageKode: 'riwayat-aktivitas' } },

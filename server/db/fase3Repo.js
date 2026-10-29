@@ -70,7 +70,7 @@ export async function loadReportState() {
   if (getMode() !== 'postgres') return readLocalState();
 
   const query = (sql) => getPool().query(sql).then((res) => res.rows);
-  const [kelas, peserta, staff, programs, sikapKategori, mancationPesertaCache, nilaiUjian, nilaiKaiwa, nilaiSikap, absensi] =
+  const [kelas, peserta, staff, programs, sikapKategori, mancationPesertaCache, nilaiUjian, nilaiKaiwa, nilaiMensetsu, nilaiSikap, absensi] =
     await Promise.all([
       query(`SELECT id, nama_kelas AS "namaKelas", program_id AS "programId", tanggal_start::text AS "tanggalStart",
                description, mancation_class_id AS "mancationClassId", sensei_id AS "senseiId", status,
@@ -91,6 +91,9 @@ export async function loadReportState() {
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalKaiwa",
                grade, topik, catatan AS "description", sensei_staff_id AS "senseiId"
              FROM nilai_kaiwa`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalMensetsu",
+               grade, catatan AS "description", sensei_staff_id AS "senseiId"
+             FROM nilai_mensetsu`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", kategori_id AS "kategoriId",
                tanggal::text AS "tanggalPenilaian", sentiment, ABS(bobot)::float AS "bobot", keterangan AS "description"
              FROM nilai_sikap`),
@@ -109,6 +112,7 @@ export async function loadReportState() {
     mancationPesertaCache,
     nilaiUjian,
     nilaiKaiwa,
+    nilaiMensetsu,
     nilaiSikap,
     absensi,
   };
@@ -386,6 +390,9 @@ export async function getProgresData({ periode, kelasId, tag }) {
   const kaiwaInPeriod = (state.nilaiKaiwa || []).filter(
     (k) => k.tanggalKaiwa && String(k.tanggalKaiwa).startsWith(activeMonth)
   );
+  const mensetsuInPeriod = (state.nilaiMensetsu || []).filter(
+    (m) => m.tanggalMensetsu && String(m.tanggalMensetsu).startsWith(activeMonth)
+  );
   const sikapInPeriod = (state.nilaiSikap || []).filter(
     (s) => s.tanggalPenilaian && String(s.tanggalPenilaian).startsWith(activeMonth)
   );
@@ -407,6 +414,11 @@ export async function getProgresData({ periode, kelasId, tag }) {
 
     const absensiCalc = computeClassMonthlyAbsensi(studentIds, classAbsensi);
     const kaiwaCalc = computeKaiwaMetricsForPeriod(studentIds, classKaiwa);
+    const mensetsuCalc = computeKaiwaMetricsForPeriod(
+      studentIds,
+      mensetsuInPeriod.filter((m) => m.kelasId === k.id),
+      'tanggalMensetsu'
+    );
 
     const validExamAvgs = classUjian
       .map((u) => (u.nilaiAvg !== null ? Number(u.nilaiAvg) : null))
@@ -446,6 +458,9 @@ export async function getProgresData({ periode, kelasId, tag }) {
       kaiwaDistribusi: kaiwaCalc.distribusi,
       rataPoinKaiwa: kaiwaCalc.rataPoinOrdinal,
       totalSesiKaiwa: kaiwaCalc.jumlahSesi,
+      mensetsuDistribusi: mensetsuCalc.distribusi,
+      rataPoinMensetsu: mensetsuCalc.rataPoinOrdinal,
+      totalSesiMensetsu: mensetsuCalc.jumlahSesi,
     });
   }
 
@@ -480,6 +495,7 @@ export async function getProgresData({ periode, kelasId, tag }) {
       student,
       ujianRows: studentUjian,
       kaiwaRows: studentKaiwa,
+      mensetsuRows: mensetsuInPeriod.filter((m) => m.pesertaId === student.id),
       sikapSummary,
       absensiStats: studentAbsensiStat,
       kkmUjian: settings.kkm_ujian,
@@ -550,6 +566,10 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     .sort((a, b) => String(b.tanggalKaiwa).localeCompare(String(a.tanggalKaiwa)));
 
   const latestKaiwa = kaiwaList.length > 0 ? kaiwaList[0] : null;
+
+  const mensetsuList = (state.nilaiMensetsu || [])
+    .filter((m) => m.pesertaId === pid && m.tanggalMensetsu && String(m.tanggalMensetsu).startsWith(activeMonth))
+    .sort((a, b) => String(b.tanggalMensetsu).localeCompare(String(a.tanggalMensetsu)) || b.id - a.id);
 
   // Kaiwa Card weeks of this month (a week belongs to the month of its Monday).
   const rule = kaiwaRule(settings);
@@ -651,6 +671,8 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
       lulusKkmUjian: overallExamAvg !== null ? overallExamAvg >= settings.kkm_ujian : false,
       gradeKaiwa: latestKaiwa ? latestKaiwa.grade : '-',
       sesiKaiwa: kaiwaList.length,
+      gradeMensetsu: mensetsuList.length ? mensetsuList[0].grade : '-',
+      sesiMensetsu: mensetsuList.length,
       skorSikap: sikapSummary.skorAkhir,
       predikatSikap: sikapSummary.label,
       lulusKkmSikap: sikapSummary.lulusKkm,
@@ -660,6 +682,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     ujianList,
     kaiwaList,
     kaiwaCard,
+    mensetsuList,
     sikapData: {
       basis: settings.sikap_basis,
       kkm: settings.kkm_sikap,
@@ -753,6 +776,12 @@ export async function getDashboardChartsData({ periode }) {
     kaiwaInCurrentMonth
   );
 
+  const mensetsuDist = computeKaiwaMetricsForPeriod(
+    activePeserta.map((p) => p.id),
+    (state.nilaiMensetsu || []).filter((m) => m.tanggalMensetsu && String(m.tanggalMensetsu).startsWith(activeMonth)),
+    'tanggalMensetsu'
+  );
+
   const sikapInCurrentMonth = (state.nilaiSikap || []).filter(
     (s) => s.tanggalPenilaian && String(s.tanggalPenilaian).startsWith(activeMonth)
   );
@@ -810,6 +839,9 @@ export async function getDashboardChartsData({ periode }) {
     distribusiKaiwa: kaiwaDist.distribusi,
     rataPoinKaiwa: kaiwaDist.rataPoinOrdinal,
     totalSesiKaiwa: kaiwaDist.jumlahSesi,
+    distribusiMensetsu: mensetsuDist.distribusi,
+    rataPoinMensetsu: mensetsuDist.rataPoinOrdinal,
+    totalSesiMensetsu: mensetsuDist.jumlahSesi,
     sikapSentimen: {
       positif: positifCount,
       negatif: negatifCount,
@@ -835,8 +867,8 @@ export async function exportAkademikData({ tipe = 'progres', periode, kelasId, l
   if (tipe === 'progres') {
     const data = await getProgresData({ periode: activeMonth, kelasId });
     const headers = isJa
-      ? ['ID', '氏名', 'クラス', '試験平均', '試験判定', '会話直近', '態度スコア', '態度判定', '出席率(%)', 'ステータスタグ']
-      : ['ID', 'Nama Peserta', 'Kelas', 'Rata-rata Ujian', 'Predikat Ujian', 'Grade Kaiwa Terakhir', 'Skor Sikap', 'Predikat Sikap', 'Rasio Kehadiran (%)', 'Status Tag'];
+      ? ['ID', '氏名', 'クラス', '試験平均', '試験判定', '会話直近', '面接練習直近', '態度スコア', '態度判定', '出席率(%)', 'ステータスタグ']
+      : ['ID', 'Nama Peserta', 'Kelas', 'Rata-rata Ujian', 'Predikat Ujian', 'Grade Kaiwa Terakhir', 'Grade Mensetsu Terakhir', 'Skor Sikap', 'Predikat Sikap', 'Rasio Kehadiran (%)', 'Status Tag'];
 
     const rows = data.pesertaList.map((p) => [
       p.mancationAkunId || p.pesertaId,
@@ -845,6 +877,7 @@ export async function exportAkademikData({ tipe = 'progres', periode, kelasId, l
       p.rataUjian !== null ? p.rataUjian : '-',
       p.predikatUjian || '-',
       p.gradeKaiwaTerakhir || '-',
+      p.gradeMensetsuTerakhir || '-',
       p.skorSikap,
       p.predikatSikap,
       p.rasioKehadiran !== null ? p.rasioKehadiran + '%' : '-',

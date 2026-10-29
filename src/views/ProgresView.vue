@@ -211,6 +211,14 @@
                     <span class="text-amber-700 font-bold">C:{{ summary.kaiwaDistribusi.C }}</span>
                   </div>
                 </div>
+                <div v-if="summary.mensetsuDistribusi" class="flex items-center justify-between py-1">
+                  <span class="text-slate-600">{{ $t('progres.mensetsuTerakhirDist') }}:</span>
+                  <div class="flex items-center gap-1.5 font-mono text-[11px]">
+                    <span class="text-emerald-700 font-bold">A:{{ summary.mensetsuDistribusi.A }}</span>
+                    <span class="text-blue-700 font-bold">B:{{ summary.mensetsuDistribusi.B }}</span>
+                    <span class="text-amber-700 font-bold">C:{{ summary.mensetsuDistribusi.C }}</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -237,6 +245,7 @@
                 <th class="py-3 px-3">{{ $t('common.kelas') }}</th>
                 <th class="py-3 px-3 text-center">{{ $t('progres.nilaiUjianAvg') }}</th>
                 <th class="py-3 px-3 text-center">{{ $t('progres.kaiwaTerakhir') }}</th>
+                <th class="py-3 px-3 text-center">{{ $t('progres.mensetsuTerakhir') }}</th>
                 <th class="py-3 px-3 text-center">{{ $t('progres.skorSikap') }}</th>
                 <th class="py-3 px-3 text-center">{{ $t('progres.kehadiran') }}</th>
                 <th class="py-3 px-3 text-center">{{ $t('progres.statusTag') }}</th>
@@ -245,7 +254,7 @@
             </thead>
             <tbody class="divide-y divide-slate-100">
               <tr v-if="filteredPesertaList.length === 0">
-                <td colspan="9" class="py-10 text-center text-slate-400">
+                <td colspan="10" class="py-10 text-center text-slate-400">
                   {{ $t('common.tidakAdaData') }}
                 </td>
               </tr>
@@ -293,6 +302,20 @@
                     }"
                   >
                     {{ p.gradeKaiwaTerakhir }}
+                  </span>
+                  <span v-else class="text-slate-400">-</span>
+                </td>
+                <td class="py-3 px-3 text-center">
+                  <span
+                    v-if="p.gradeMensetsuTerakhir"
+                    class="font-mono font-bold px-2 py-0.5 rounded text-xs"
+                    :class="{
+                      'bg-emerald-100 text-emerald-800': p.gradeMensetsuTerakhir === 'A',
+                      'bg-blue-100 text-blue-800': p.gradeMensetsuTerakhir === 'B',
+                      'bg-amber-100 text-amber-800': p.gradeMensetsuTerakhir === 'C',
+                    }"
+                  >
+                    {{ p.gradeMensetsuTerakhir }}
                   </span>
                   <span v-else class="text-slate-400">-</span>
                 </td>

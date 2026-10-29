@@ -37,7 +37,7 @@
     </div>
 
     <!-- KPI -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 print:grid-cols-4 gap-3 text-center">
+    <div class="grid grid-cols-2 sm:grid-cols-5 print:grid-cols-5 gap-3 text-center">
       <div class="p-3 border border-slate-200 rounded-lg">
         <div class="text-[11px] font-medium text-slate-500">{{ $t('smartReport.rataUjian') }}</div>
         <div class="text-xl font-bold mt-1" :class="statusClass(report.kpi.lulusKkmUjian)">
@@ -49,6 +49,11 @@
         <div class="text-[11px] font-medium text-slate-500">{{ $t('smartReport.kaiwaTerakhir') }}</div>
         <div class="text-xl font-bold mt-1 text-blue-800">{{ report.kpi.kaiwaTerakhir || '-' }}</div>
         <div class="text-[10px] text-slate-400 mt-0.5">{{ $t('smartReport.sesiKaiwa', { n: report.kpi.jumlahKaiwa }) }}</div>
+      </div>
+      <div class="p-3 border border-slate-200 rounded-lg">
+        <div class="text-[11px] font-medium text-slate-500">{{ $t('smartReport.mensetsuTerakhir') }}</div>
+        <div class="text-xl font-bold mt-1 text-blue-800">{{ report.kpi.mensetsuTerakhir || '-' }}</div>
+        <div class="text-[10px] text-slate-400 mt-0.5">{{ $t('smartReport.sesiMensetsu', { n: report.kpi.jumlahMensetsu }) }}</div>
       </div>
       <div class="p-3 border border-slate-200 rounded-lg">
         <div class="text-[11px] font-medium text-slate-500">{{ $t('smartReport.skorSikap') }}</div>
@@ -110,6 +115,7 @@
             <th>{{ $t('smartReport.colPeriode') }}</th>
             <th class="text-center">{{ $t('smartReport.colUjian') }}</th>
             <th class="text-center">{{ $t('smartReport.colKaiwa') }}</th>
+            <th class="text-center">{{ $t('smartReport.colMensetsu') }}</th>
             <th class="text-center">{{ $t('smartReport.colSikap') }}</th>
             <th class="text-center">{{ $t('smartReport.colKehadiran') }}</th>
             <th class="text-center">{{ $t('smartReport.colSia') }}</th>
@@ -117,7 +123,7 @@
         </thead>
         <tbody>
           <tr v-if="!report.bulanan.length">
-            <td colspan="6" class="text-center text-slate-400 py-3">{{ $t('smartReport.belumAdaData') }}</td>
+            <td colspan="7" class="text-center text-slate-400 py-3">{{ $t('smartReport.belumAdaData') }}</td>
           </tr>
           <tr v-for="b in report.bulanan" :key="b.periode" class="sr-num">
             <td class="font-bold text-slate-800">{{ b.periode }}</td>
@@ -129,6 +135,7 @@
               <span v-else class="text-slate-300">-</span>
             </td>
             <td class="text-center">{{ kaiwaRingkas(b.kaiwa) }}</td>
+            <td class="text-center">{{ kaiwaRingkas(b.mensetsu || []) }}</td>
             <td class="text-center">
               <span class="font-bold" :class="statusClass(b.sikap.lulusKkm)">{{ fmt(b.sikap.skor) }}</span>
               <span v-if="b.sikap.positif || b.sikap.negatif" class="text-slate-400">
@@ -155,18 +162,31 @@
       </table>
     </div>
 
-    <!-- 2. Kaiwa & 3. Sikap, in numbers -->
+    <!-- 2. Kaiwa & 3. Mensetsu renshuu, in numbers -->
     <div class="grid grid-cols-2 gap-5 sr-keep">
       <div class="space-y-1.5">
         <h3 class="sr-section-title">2. {{ $t('smartReport.secKaiwa') }}</h3>
-        <StatKaiwa
+        <StatGrade
           :grades="report.kaiwa.daftar.map((k: any) => k.grade)"
           :grade-terakhir="report.kpi.kaiwaTerakhir"
+          :label-sesi="$t('laporan.sesiKaiwa')"
           :kaiwa-card="report.kaiwaCard"
         />
       </div>
       <div class="space-y-1.5">
-        <h3 class="sr-section-title">3. {{ $t('smartReport.secSikap') }}</h3>
+        <h3 class="sr-section-title">3. {{ $t('smartReport.secMensetsu') }}</h3>
+        <StatGrade
+          :grades="report.mensetsu.daftar.map((m: any) => m.grade)"
+          :grade-terakhir="report.kpi.mensetsuTerakhir"
+          :label-sesi="$t('laporan.sesiMensetsu')"
+        />
+      </div>
+    </div>
+
+    <!-- 4. Sikap & 5. Penempatan (hanya bila ada isinya) -->
+    <div class="grid grid-cols-2 gap-5 sr-keep">
+      <div class="space-y-1.5">
+        <h3 class="sr-section-title">4. {{ $t('smartReport.secSikap') }}</h3>
         <StatSikap
           :rows="report.sikap.daftar"
           :skor="report.kpi.skorSikap"
@@ -176,15 +196,13 @@
           :basis="settings.sikap_basis"
         />
       </div>
-    </div>
-
-    <!-- 4. Penempatan (hanya bila ada isinya) -->
-    <div v-if="penempatanRows.length" class="space-y-1.5 sr-keep">
-      <h3 class="sr-section-title">4. {{ $t('smartReport.secPenempatan') }}</h3>
-      <div class="border border-slate-200 rounded p-3 grid grid-cols-2 gap-x-6 gap-y-1 text-[11px]">
-        <div v-for="row in penempatanRows" :key="row.label" class="flex justify-between gap-3 border-b border-slate-50 py-0.5">
-          <span class="text-slate-500">{{ row.label }}</span>
-          <span class="font-semibold text-slate-800 text-right">{{ row.value }}</span>
+      <div v-if="penempatanRows.length" class="space-y-1.5">
+        <h3 class="sr-section-title">5. {{ $t('smartReport.secPenempatan') }}</h3>
+        <div class="border border-slate-200 rounded p-3 space-y-1 text-[11px]">
+          <div v-for="row in penempatanRows" :key="row.label" class="flex justify-between gap-3 border-b border-slate-50 py-0.5">
+            <span class="text-slate-500">{{ row.label }}</span>
+            <span class="font-semibold text-slate-800 text-right">{{ row.value }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -218,7 +236,7 @@ import ReportHeader from './ReportHeader.vue';
 import './smartReport.css';
 import ResumeCard from './ResumeCard.vue';
 import ScoreTrendChart from './ScoreTrendChart.vue';
-import StatKaiwa from './StatKaiwa.vue';
+import StatGrade from './StatGrade.vue';
 import StatSikap from './StatSikap.vue';
 import StatusLegend from './StatusLegend.vue';
 import PeringkatCell from './PeringkatCell.vue';
@@ -274,7 +292,7 @@ const bagianCells = computed(() => {
   return cells.some((c) => c.ada) ? cells : [];
 });
 
-// "5× · A1 B3 C1": sessions of a month and how many of each grade.
+// "5× · A1 B3 C1": kaiwa or mensetsu sessions of a month and how many of each grade.
 function kaiwaRingkas(grades: string[]) {
   if (!grades.length) return '-';
   const counts = Object.entries(hitungGrade(grades)).filter(([, n]) => n > 0).map(([g, n]) => `${g}${n}`);

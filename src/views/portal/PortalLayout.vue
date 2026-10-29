@@ -133,6 +133,7 @@ const NAV = [
     items: [
       { key: 'beranda', to: '/portal', icon: 'mdi-home-outline' },
       { key: 'kaiwa', to: '/portal/kaiwa', icon: 'mdi-card-account-details-star-outline' },
+      { key: 'mensetsu', to: '/portal/mensetsu', icon: 'mdi-account-tie-voice' },
       { key: 'ujian', to: '/portal/ujian', icon: 'mdi-clipboard-text-outline' },
       { key: 'kehadiran', to: '/portal/kehadiran', icon: 'mdi-calendar-check-outline' },
       { key: 'sikap', to: '/portal/sikap', icon: 'mdi-scale-balance' },

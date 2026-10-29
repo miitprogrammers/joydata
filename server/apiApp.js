@@ -43,6 +43,10 @@ import {
   updateNilaiKaiwa,
   deleteNilaiKaiwa,
   getKaiwaMingguan,
+  listNilaiMensetsu,
+  createNilaiMensetsu,
+  updateNilaiMensetsu,
+  deleteNilaiMensetsu,
   listNilaiSikap,
   createNilaiSikap,
   updateNilaiSikap,
@@ -128,6 +132,7 @@ function handleRouteError(res, err) {
     'KAIWA_SENSEI_REQUIRED',
     'INVALID_KAIWA_SENSEI',
     'INVALID_KAIWA_TARGET',
+    'INVALID_MENSETSU_GRADE',
     'INVALID_SIKAP_BOBOT',
     'EMPTY_ABSENSI_ENTRIES',
     'INVALID_KKM_UJIAN',
@@ -707,6 +712,46 @@ export function createApiRouter() {
   router.delete('/kaiwa/:id', requireAuth, requirePageAccess('rekap-nilai-kaiwa'), async (req, res) => {
     try {
       return res.json(await deleteNilaiKaiwa(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Rekap Mensetsu Renshuu (latihan wawancara, A/B/C + catatan, metrik seperti kaiwa)
+  router.get('/mensetsu', requireAuth, requirePageAccess('rekap-mensetsu'), async (req, res) => {
+    try {
+      return res.json(
+        await listNilaiMensetsu({
+          periode: req.query.periode,
+          kelasId: req.query.kelasId,
+          grade: req.query.grade,
+          search: req.query.search,
+        })
+      );
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/mensetsu', requireAuth, requirePageAccess('rekap-mensetsu'), async (req, res) => {
+    try {
+      return res.status(201).json(await createNilaiMensetsu(req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.patch('/mensetsu/:id', requireAuth, requirePageAccess('rekap-mensetsu'), async (req, res) => {
+    try {
+      return res.json(await updateNilaiMensetsu(req.params.id, req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.delete('/mensetsu/:id', requireAuth, requirePageAccess('rekap-mensetsu'), async (req, res) => {
+    try {
+      return res.json(await deleteNilaiMensetsu(req.params.id, req.user));
     } catch (err) {
       return handleRouteError(res, err);
     }

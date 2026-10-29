@@ -16,6 +16,7 @@ import {
   computeNilaiUjianAvg,
   validateAndNormalizeNilaiUjian,
   validateAndNormalizeNilaiKaiwa,
+  validateAndNormalizeNilaiMensetsu,
   computeKaiwaMetricsForPeriod,
   validateAndNormalizeNilaiSikap,
   computeSikapSummary,
@@ -713,6 +714,214 @@ export async function getKaiwaMingguan({ minggu, kelasId } = {}) {
     riwayat,
     kelasOptions: lookups.kelasOptions.map((k) => ({ id: k.id, namaKelas: k.namaKelas })),
   };
+}
+
+// ============================================================================
+// 2c. REKAP MENSETSU RENSHUU (latihan wawancara, Grade A/B/C + catatan, metrik seperti kaiwa)
+// ============================================================================
+export async function listNilaiMensetsu({ periode, kelasId, grade, search } = {}) {
+  await ensureInitialized();
+  const ym = /^\d{4}-\d{2}$/.test(String(periode || '')) ? String(periode) : currentYearMonth();
+  const kId = kelasId ? Number(kelasId) : null;
+  const gFilter = grade && ['A', 'B', 'C'].includes(String(grade).toUpperCase()) ? String(grade).toUpperCase() : null;
+  const q = String(search || '').trim().toLowerCase();
+
+  const lookups = await loadAcademicLookups();
+  let rawRows = [];
+
+  if (getMode() === 'postgres') {
+    const params = [ym];
+    let sql = `
+      SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalMensetsu", grade,
+             catatan AS "description", diinput_oleh_staff_id AS "penilaiId", sensei_staff_id AS "senseiId",
+             created_at AS "createdAt"
+      FROM nilai_mensetsu
+      WHERE TO_CHAR(tanggal_sesi, 'YYYY-MM') = $1
+    `;
+    if (kId) {
+      params.push(kId);
+      sql += ` AND kelas_id = $${params.length}`;
+    }
+    sql += ` ORDER BY tanggal_sesi DESC, id DESC`;
+    rawRows = (await getPool().query(sql, params)).rows;
+  } else {
+    rawRows = (readLocalState().nilaiMensetsu || [])
+      .filter((r) => String(r.tanggalMensetsu || '').startsWith(ym) && (!kId || Number(r.kelasId) === kId))
+      .sort((a, b) => String(b.tanggalMensetsu).localeCompare(String(a.tanggalMensetsu)) || b.id - a.id);
+  }
+
+  const targetRoster = kId ? lookups.rosterItems.filter((p) => Number(p.kelasId) === kId) : lookups.rosterItems;
+  const metrics = computeKaiwaMetricsForPeriod(targetRoster.map((p) => p.id), rawRows, 'tanggalMensetsu');
+
+  const countByPeserta = new Map();
+  for (const r of rawRows) countByPeserta.set(Number(r.pesertaId), (countByPeserta.get(Number(r.pesertaId)) || 0) + 1);
+
+  const studentSummary = targetRoster
+    .map((p) => {
+      const latest = metrics.latestByPeserta.get(Number(p.id)) || null;
+      return {
+        pesertaId: p.id,
+        mancationAkunId: p.mancationAkunId,
+        pesertaNama: p.nama,
+        kelasId: p.kelasId,
+        kelasNama: p.namaKelas,
+        latestGrade: latest ? latest.grade : null,
+        latestTanggal: latest ? latest.tanggalMensetsu : null,
+        latestDescription: latest ? latest.description : '',
+        jumlahSesi: countByPeserta.get(Number(p.id)) || 0,
+      };
+    })
+    .filter((s) => {
+      if (gFilter && s.latestGrade !== gFilter) return false;
+      if (q && !s.pesertaNama.toLowerCase().includes(q) && !String(s.mancationAkunId || '').includes(q)) return false;
+      return true;
+    });
+
+  const items = rawRows
+    .map((r) => {
+      const p = lookups.pesertaById.get(Number(r.pesertaId));
+      const sensei = r.senseiId ? lookups.staffById.get(Number(r.senseiId)) : null;
+      return {
+        ...r,
+        senseiId: r.senseiId ?? null,
+        pesertaNama: p?.nama || `Peserta #${r.pesertaId}`,
+        mancationAkunId: p?.mancationAkunId || null,
+        kelasNama: lookups.kelasById.get(Number(r.kelasId))?.namaKelas || '-',
+        penilaiNama: lookups.staffById.get(Number(r.penilaiId))?.nama || '-',
+        senseiNama: sensei?.nama || null,
+      };
+    })
+    .filter((r) => {
+      if (gFilter && r.grade !== gFilter) return false;
+      if (
+        q &&
+        !r.pesertaNama.toLowerCase().includes(q) &&
+        !String(r.mancationAkunId || '').includes(q) &&
+        !String(r.description || '').toLowerCase().includes(q)
+      ) {
+        return false;
+      }
+      return true;
+    });
+
+  return {
+    periode: ym,
+    syncMeta: lookups.syncMeta,
+    metrics: {
+      distribusi: metrics.distribusi,
+      rataPoinOrdinal: metrics.rataPoinOrdinal,
+      jumlahSesi: rawRows.length,
+      totalPeserta: targetRoster.length,
+    },
+    studentSummary,
+    items,
+    kelasOptions: lookups.kelasOptions,
+    rosterOptions: lookups.rosterItems,
+    // Any active staff can hold a practice interview (Japanese staff included).
+    senseiOptions: [...lookups.staffById.values()]
+      .filter((s) => s.active)
+      .map((s) => ({ id: Number(s.id), nama: s.nama }))
+      .sort((a, b) => a.nama.localeCompare(b.nama)),
+  };
+}
+
+// Optional; a sensei typing in their own session is the default.
+async function resolveMensetsuSensei(senseiId, actor) {
+  const id = senseiId ?? (actor?.role?.kode === 'sensei' ? Number(actor.id) : null);
+  if (!id) return null;
+  const staff = await listStaff();
+  if (!staff.some((s) => Number(s.id) === id && s.active)) throw new Error('INVALID_KAIWA_SENSEI');
+  return id;
+}
+
+export async function createNilaiMensetsu(payload, actor) {
+  await ensureInitialized();
+  const check = validateAndNormalizeNilaiMensetsu(payload);
+  if (!check.ok) throw new Error(check.code);
+  const d = { ...check.normalized, senseiId: await resolveMensetsuSensei(check.normalized.senseiId, actor) };
+
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `INSERT INTO nilai_mensetsu (peserta_id, kelas_id, tanggal_sesi, grade, catatan, diinput_oleh_staff_id, sensei_staff_id)
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+      [d.pesertaId, d.kelasId, d.tanggalMensetsu, d.grade, d.description, actor?.id || null, d.senseiId]
+    );
+    await appendAudit(actor, 'CREATE_NILAI_MENSETSU', 'nilai_mensetsu', res.rows[0].id, { dataBaru: d });
+    return { id: res.rows[0].id, ...d };
+  }
+
+  const db = readLocalState();
+  db.nilaiMensetsu = db.nilaiMensetsu || [];
+  const created = {
+    id: db.seq.nilaiMensetsu++,
+    pesertaId: d.pesertaId,
+    kelasId: d.kelasId,
+    tanggalMensetsu: d.tanggalMensetsu,
+    grade: d.grade,
+    description: d.description,
+    penilaiId: actor?.id || null,
+    senseiId: d.senseiId,
+    createdAt: new Date().toISOString(),
+  };
+  db.nilaiMensetsu.push(created);
+  appendLocalAudit(db, actor, 'CREATE_NILAI_MENSETSU', 'nilai_mensetsu', created.id, { dataBaru: d });
+  saveLocalState();
+  return created;
+}
+
+export async function updateNilaiMensetsu(idRaw, payload, actor) {
+  await ensureInitialized();
+  const id = Number(idRaw);
+  const check = validateAndNormalizeNilaiMensetsu(payload);
+  if (!id || !check.ok) throw new Error(check.code || 'VALIDATION_ERROR');
+  const d = { ...check.normalized, senseiId: await resolveMensetsuSensei(check.normalized.senseiId, actor) };
+
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `UPDATE nilai_mensetsu SET peserta_id = $1, kelas_id = $2, tanggal_sesi = $3, grade = $4, catatan = $5,
+         diinput_oleh_staff_id = $6, sensei_staff_id = $7
+       WHERE id = $8 RETURNING id`,
+      [d.pesertaId, d.kelasId, d.tanggalMensetsu, d.grade, d.description, actor?.id || null, d.senseiId, id]
+    );
+    if (res.rows.length === 0) throw new Error('NOT_FOUND');
+    await appendAudit(actor, 'UPDATE_NILAI_MENSETSU', 'nilai_mensetsu', id, { dataBaru: d });
+    return { id, ...d };
+  }
+
+  const db = readLocalState();
+  const row = (db.nilaiMensetsu || []).find((r) => r.id === id);
+  if (!row) throw new Error('NOT_FOUND');
+  const dataLama = { ...row };
+  Object.assign(row, {
+    pesertaId: d.pesertaId,
+    kelasId: d.kelasId,
+    tanggalMensetsu: d.tanggalMensetsu,
+    grade: d.grade,
+    description: d.description,
+    penilaiId: actor?.id || row.penilaiId,
+    senseiId: d.senseiId,
+  });
+  appendLocalAudit(db, actor, 'UPDATE_NILAI_MENSETSU', 'nilai_mensetsu', id, { dataLama, dataBaru: d });
+  saveLocalState();
+  return row;
+}
+
+export async function deleteNilaiMensetsu(idRaw, actor) {
+  await ensureInitialized();
+  const id = Number(idRaw);
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(`DELETE FROM nilai_mensetsu WHERE id = $1 RETURNING *`, [id]);
+    if (res.rows.length === 0) throw new Error('NOT_FOUND');
+    await appendAudit(actor, 'DELETE_NILAI_MENSETSU', 'nilai_mensetsu', id, { dataLama: res.rows[0] });
+    return { deleted: true };
+  }
+  const db = readLocalState();
+  const idx = (db.nilaiMensetsu || []).findIndex((r) => r.id === id);
+  if (idx === -1) throw new Error('NOT_FOUND');
+  const [removed] = db.nilaiMensetsu.splice(idx, 1);
+  appendLocalAudit(db, actor, 'DELETE_NILAI_MENSETSU', 'nilai_mensetsu', id, { dataLama: removed });
+  saveLocalState();
+  return { deleted: true };
 }
 
 // ============================================================================

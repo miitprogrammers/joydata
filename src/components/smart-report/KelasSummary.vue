@@ -84,6 +84,7 @@
             <th class="text-center">{{ $t('smartReport.colKehadiran') }}</th>
             <th class="text-center">{{ $t('smartReport.colSikap') }}</th>
             <th class="text-center">{{ $t('smartReport.colKaiwa') }}</th>
+            <th class="text-center">{{ $t('smartReport.colMensetsu') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -101,6 +102,7 @@
             </td>
             <td class="text-center" :class="r.lulusKkmSikap === false ? 'text-red-600 font-bold' : ''">{{ fmt(r.skorSikap) }}</td>
             <td class="text-center">{{ r.kaiwaTerakhir || '-' }}</td>
+            <td class="text-center">{{ r.mensetsuTerakhir || '-' }}</td>
           </tr>
         </tbody>
       </table>
