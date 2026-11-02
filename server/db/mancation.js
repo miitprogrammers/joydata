@@ -238,6 +238,80 @@ export async function lookupMancationAccountById(akunId, snapshotFallback = null
   return allFallback.find((s) => Number(s.mancationAkunId) === numericId) || null;
 }
 
+/**
+ * Finds JOY accounts (cli_id = 9) by name or akun_id for the class formation page, with their current Mancation class.
+ */
+export async function searchMancationAccounts(query, limit = 30) {
+  const pool = getMysqlPool();
+  if (!pool) throw new Error('MANCATION_UNAVAILABLE');
+  const q = String(query || '').trim();
+  const escaped = q.replace(/[\\%_]/g, (c) => `\\${c}`);
+  const akunId = /^\d+$/.test(q) ? Number(q) : 0;
+  let rows;
+  try {
+    // Names starting with the query first, then a word starting with it, then any other match.
+    [rows] = await pool.query(
+      `SELECT a.akun_id, a.akun_nama, a.akun_email, a.id_kelas, a.time_add, k.kel_nama
+       FROM t_akun a LEFT JOIN t_kelas k ON k.id = a.id_kelas
+       WHERE a.cli_id = 9 AND (a.akun_nama LIKE ? OR a.akun_id = ?)
+       ORDER BY a.akun_id = ? DESC,
+                CASE WHEN TRIM(a.akun_nama) LIKE ? THEN 0 WHEN a.akun_nama LIKE ? THEN 1 ELSE 2 END,
+                TRIM(a.akun_nama) ASC
+       LIMIT ?`,
+      [`%${escaped}%`, akunId, akunId, `${escaped}%`, `% ${escaped}%`, limit]
+    );
+  } catch {
+    throw new Error('MANCATION_UNAVAILABLE');
+  }
+  return rows.map((r) => ({
+    mancationAkunId: Number(r.akun_id),
+    nama: String(r.akun_nama ?? '').trim(),
+    email: String(r.akun_email ?? '').trim(),
+    mancationClassId: Number(r.id_kelas) || 0,
+    namaKelasMancation: String(r.kel_nama ?? '').trim(),
+    terdaftar: normalizeDate(r.time_add),
+  }));
+}
+
+/**
+ * The one write JOYdata makes to Mancation, from the class formation page: sets t_akun.id_kelas of JOY accounts
+ * (cli_id = 9; 0 = no class) in one transaction. Every account must still be in the class JOYdata expects
+ * (dariMancationClassId), so a roster changed in Mancation meanwhile is refused instead of overwritten.
+ */
+export async function moveMancationAccounts(moves) {
+  const pool = getMysqlPool();
+  if (!pool) throw new Error('MANCATION_UNAVAILABLE');
+  let conn;
+  try {
+    conn = await pool.getConnection();
+  } catch {
+    throw new Error('MANCATION_UNAVAILABLE');
+  }
+  try {
+    await conn.beginTransaction();
+    const [rows] = await conn.query('SELECT akun_id, id_kelas FROM t_akun WHERE cli_id = 9 AND akun_id IN (?) FOR UPDATE', [
+      moves.map((m) => m.mancationAkunId),
+    ]);
+    const currentByAkun = new Map(rows.map((r) => [Number(r.akun_id), Number(r.id_kelas) || 0]));
+    for (const m of moves) {
+      if (!currentByAkun.has(m.mancationAkunId)) throw new Error('MANCATION_ACCOUNT_NOT_FOUND');
+      if (currentByAkun.get(m.mancationAkunId) !== m.dariMancationClassId) throw new Error('FORMASI_KELAS_BERUBAH');
+    }
+    const byTarget = new Map();
+    for (const m of moves) byTarget.set(m.keMancationClassId, [...(byTarget.get(m.keMancationClassId) || []), m.mancationAkunId]);
+    for (const [classId, akunIds] of byTarget) {
+      await conn.query('UPDATE t_akun SET id_kelas = ? WHERE cli_id = 9 AND akun_id IN (?)', [classId, akunIds]);
+    }
+    await conn.commit();
+  } catch (err) {
+    await conn.rollback().catch(() => {});
+    if (err?.message === 'MANCATION_ACCOUNT_NOT_FOUND' || err?.message === 'FORMASI_KELAS_BERUBAH') throw err;
+    throw new Error('MANCATION_UNAVAILABLE');
+  } finally {
+    conn.release();
+  }
+}
+
 export function getMancationStatusMeta() {
   return {
     ...lastSyncMeta,

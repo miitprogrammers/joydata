@@ -98,6 +98,72 @@ export function reconcileRosterWithLocalPeserta(mancationStudents, existingPeser
 }
 
 /**
+ * Roster peserta of an active JOY class whose Mancation account is no longer in any JOY class
+ * (moved to another branch's class or to id_kelas 0): the sync takes them out of their JOYdata class.
+ * A finished class keeps its peserta for the record. Only call it with a live roster, a snapshot may be stale.
+ */
+export function findRosterPesertaLeavingJoy(mancationStudents, existingPesertaList, kelasByMancationId) {
+  const stillInJoy = new Set(mancationStudents.map((s) => Number(s.mancationAkunId)));
+  const activeKelasIds = new Set(
+    [...kelasByMancationId.values()].filter((k) => !k.deletedAt && k.status !== 'selesai').map((k) => Number(k.id))
+  );
+  return existingPesertaList.filter(
+    (p) =>
+      p.sumber === 'roster' && activeKelasIds.has(Number(p.kelasId)) && !stillInJoy.has(Number(p.mancationAkunId))
+  );
+}
+
+export const FORMASI_MAX_PERUBAHAN = 200;
+
+/**
+ * Plans a class formation change: each entry puts one Mancation account in an active JOY class mapped to Mancation,
+ * or takes it out of its class (kelasId null → Mancation id_kelas 0). Entries that change nothing are dropped.
+ * dariMancationClassId is where JOYdata believes the account is; an account JOYdata does not hold in a class
+ * is expected to have no class at all, so the Mancation write refuses a roster that changed meanwhile.
+ */
+export function planFormasiKelas(perubahan, pesertaList, kelasList) {
+  if (!Array.isArray(perubahan) || perubahan.length === 0 || perubahan.length > FORMASI_MAX_PERUBAHAN) {
+    return { ok: false, code: 'INVALID_FORMASI_KELAS' };
+  }
+  const kelasById = new Map(kelasList.filter((k) => !k.deletedAt).map((k) => [Number(k.id), k]));
+  const rosterByAkun = new Map(
+    pesertaList.filter((p) => p.sumber === 'roster').map((p) => [Number(p.mancationAkunId), p])
+  );
+
+  const seen = new Set();
+  const moves = [];
+  for (const item of perubahan) {
+    const akunId = Number(item?.mancationAkunId);
+    if (!Number.isInteger(akunId) || akunId <= 0 || seen.has(akunId)) {
+      return { ok: false, code: 'INVALID_FORMASI_KELAS' };
+    }
+    seen.add(akunId);
+
+    const keKelasId = item.kelasId == null ? null : Number(item.kelasId);
+    let keMancationClassId = 0;
+    if (keKelasId !== null) {
+      const target = kelasById.get(keKelasId);
+      if (!target || target.status === 'selesai' || !(Number(target.mancationClassId) > 0)) {
+        return { ok: false, code: 'INVALID_FORMASI_KELAS' };
+      }
+      keMancationClassId = Number(target.mancationClassId);
+    }
+
+    const current = rosterByAkun.get(akunId);
+    const dariKelasId = current?.kelasId ? Number(current.kelasId) : null;
+    if (dariKelasId === keKelasId) continue;
+    moves.push({
+      mancationAkunId: akunId,
+      dariKelasId,
+      keKelasId,
+      dariMancationClassId: dariKelasId ? Number(kelasById.get(dariKelasId)?.mancationClassId) || 0 : 0,
+      keMancationClassId,
+    });
+  }
+  return { ok: true, moves };
+}
+
+/**
  * Validates manual input for Peserta Luar Kelas (§14.2 mainIdea.md).
  */
 export function validateManualPesertaInput(input, existingPesertaList, mancationAccount) {

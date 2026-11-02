@@ -27,7 +27,7 @@ Seluruh isi di bawah adalah pengembangan dari draft awal ini.
 | Auth | JWT (access + refresh) + hash bcrypt/argon2 | diputuskan |
 | DB internal | Supabase (PostgreSQL, managed) | diputuskan |
 | Akses DB internal | `pg` (node-postgres) + SQL mentah | diputuskan |
-| DB eksternal | MySQL / MariaDB (mancation, live read-only) | diputuskan |
+| DB eksternal | MySQL / MariaDB (mancation, live read-only; satu penulisan: `t_akun.id_kelas` dari Formasi Kelas) | diputuskan |
 | Driver MySQL | `mysql2` (connection pool) | rekomendasi |
 | Migrasi internal | Supabase CLI | rekomendasi |
 | Ekspor | `exceljs` (.xlsx), `pdfmake` (.pdf) server-side | diputuskan |
@@ -50,11 +50,12 @@ Browser
   Node API (Vercel Serverless Functions)
         ├─ Auth internal (JWT, password ter-hash)        ──► Supabase/Postgres
         ├─ CRUD rekap (nilai, kaiwa, sikap, absensi, master) ──► Supabase/Postgres
-        └─ Data peserta & kelas (live, read-only)         ──► MySQL mancation
+        └─ Data peserta & kelas (live, read-only*)        ──► MySQL mancation
                                                  └─► snapshot fallback (Supabase)
 ```
 
 - **Write** bisnis selalu ke Supabase (internal) → tetap berfungsi walau MySQL mancation down. Snapshot fallback ditulis ke Supabase, bukan ke mancation (MySQL tetap read-only).
+- \* Satu-satunya pengecualian (disetujui user 2026-11-02): halaman **Formasi Kelas** (Data Kelas → Atur Formasi) menulis `t_akun.id_kelas` akun cli_id 9 (pindah kelas JOY, masuk dari tanpa kelas, atau cabut = 0) dalam satu transaksi, lalu sinkron live membawa JOYdata ikut. Penulisan ditolak bila kelas akun di mancation sudah berubah sejak formasi dimuat.
 - **Read** data peserta/kelas **live** dari MySQL mancation; *cache-on-read snapshot* dipakai sebagai fallback saat MySQL tidak dapat dijangkau (ditandai "data mungkin tidak terbaru"). **Kloning data dibatalkan** (`mainIdea.md` §14.1).
 
 ## 3. Frontend
@@ -138,7 +139,7 @@ Dashboard (lihat `mainIdea.md` §11) **tidak membutuhkan tabel data baru** — s
 
 ## 7. Database Eksternal — MySQL mancation
 
-- MariaDB (terverifikasi 11.8.9), diakses **read-only**; kredensial dari `.env`.
+- MariaDB (terverifikasi 11.8.9), diakses **read-only** kecuali `t_akun.id_kelas` dari Formasi Kelas (lihat §2); kredensial dari `.env`.
 - Tabel yang dipakai: `t_kelas` (kelas), `t_akun` (peserta & staff), `t_datapeserta` (identitas peserta), `t_prefecture` (47 prefektur), `t_accepting_comp` (master perusahaan naitei), `t_hasiltest` (hasil tes, tanpa tanggal).
 - **Kelengkapan:** hanya 17 dari 44 peserta JOY punya baris `t_datapeserta`; `t_akun.tgl_masuk` selalu `0000-00-00`; `t_akun.old_comp` (perusahaan naitei) 0 terisi → lihat pemetaan `mainIdea.md` §15.
 - Pemetaan: `kelas.mancationClassId` → `t_kelas.id` (JOY: 139, 142, 144); `peserta.mancationAkunId` → `t_akun.akun_id`.

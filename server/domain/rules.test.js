@@ -5,6 +5,8 @@ import {
   canChangeStatusTag,
   validateAccessMatrixUpdate,
   reconcileRosterWithLocalPeserta,
+  findRosterPesertaLeavingJoy,
+  planFormasiKelas,
   validateManualPesertaInput,
   computeSikapScore,
   computeSikapSummary,
@@ -88,6 +90,75 @@ test('Roster reconciliation promotes manual Peserta Luar Kelas to roster when as
   assert.equal(toUpdate[0].sumber, 'roster');
   assert.equal(toUpdate[0].keteranganLuarKelas, null);
   assert.equal(toUpdate[0].promotedFromManual, true);
+});
+
+test('Live sync releases roster peserta who left every JOY class, except from finished classes', () => {
+  const kelasByMancationId = new Map([
+    [139, { id: 1, status: 'aktif', deletedAt: null }],
+    [142, { id: 2, status: 'selesai', deletedAt: null }],
+  ]);
+  const roster = [{ mancationAkunId: 5001, mancationClassId: 139 }];
+  const existing = [
+    { id: 10, mancationAkunId: 5001, kelasId: 1, sumber: 'roster' }, // still in Joy 1
+    { id: 11, mancationAkunId: 5002, kelasId: 1, sumber: 'roster' }, // moved to id_kelas 0
+    { id: 12, mancationAkunId: 5003, kelasId: 2, sumber: 'roster' }, // graduate of a finished class
+    { id: 13, mancationAkunId: 5004, kelasId: null, sumber: 'roster' }, // already without class
+    { id: 14, mancationAkunId: 5005, kelasId: null, sumber: 'manual' },
+  ];
+  assert.deepEqual(
+    findRosterPesertaLeavingJoy(roster, existing, kelasByMancationId).map((p) => p.id),
+    [11]
+  );
+});
+
+test('Formasi kelas plans moves, removals and additions with the Mancation class each account should be in', () => {
+  const kelas = [
+    { id: 1, mancationClassId: 139, status: 'aktif', deletedAt: null },
+    { id: 2, mancationClassId: 142, status: 'aktif', deletedAt: null },
+    { id: 3, mancationClassId: 144, status: 'selesai', deletedAt: null },
+    { id: 4, mancationClassId: null, status: 'aktif', deletedAt: null },
+  ];
+  const peserta = [
+    { mancationAkunId: 5001, kelasId: 1, sumber: 'roster' },
+    { mancationAkunId: 5002, kelasId: 2, sumber: 'roster' },
+    { mancationAkunId: 5003, kelasId: null, sumber: 'roster' },
+    { mancationAkunId: 5004, kelasId: null, sumber: 'manual' },
+  ];
+
+  const plan = planFormasiKelas(
+    [
+      { mancationAkunId: 5001, kelasId: 2 }, // move Joy 1 -> Joy 2
+      { mancationAkunId: 5002, kelasId: null }, // take out of Joy 2
+      { mancationAkunId: 5003, kelasId: 1 }, // place a roster peserta without class
+      { mancationAkunId: 5004, kelasId: 1 }, // Peserta Luar Kelas back into a class
+      { mancationAkunId: 9001, kelasId: 2 }, // account new to JOYdata
+      { mancationAkunId: 5005, kelasId: null }, // nothing to change
+    ],
+    peserta,
+    kelas
+  );
+  assert.equal(plan.ok, true);
+  assert.deepEqual(plan.moves, [
+    { mancationAkunId: 5001, dariKelasId: 1, keKelasId: 2, dariMancationClassId: 139, keMancationClassId: 142 },
+    { mancationAkunId: 5002, dariKelasId: 2, keKelasId: null, dariMancationClassId: 142, keMancationClassId: 0 },
+    { mancationAkunId: 5003, dariKelasId: null, keKelasId: 1, dariMancationClassId: 0, keMancationClassId: 139 },
+    { mancationAkunId: 5004, dariKelasId: null, keKelasId: 1, dariMancationClassId: 0, keMancationClassId: 139 },
+    { mancationAkunId: 9001, dariKelasId: null, keKelasId: 2, dariMancationClassId: 0, keMancationClassId: 142 },
+  ]);
+
+  const invalid = (perubahan) => planFormasiKelas(perubahan, peserta, kelas).code;
+  assert.equal(invalid([]), 'INVALID_FORMASI_KELAS');
+  assert.equal(invalid([{ mancationAkunId: 5001, kelasId: 3 }]), 'INVALID_FORMASI_KELAS'); // finished class
+  assert.equal(invalid([{ mancationAkunId: 5001, kelasId: 4 }]), 'INVALID_FORMASI_KELAS'); // not mapped to Mancation
+  assert.equal(invalid([{ mancationAkunId: 5001, kelasId: 99 }]), 'INVALID_FORMASI_KELAS');
+  assert.equal(invalid([{ mancationAkunId: 'x', kelasId: 1 }]), 'INVALID_FORMASI_KELAS');
+  assert.equal(
+    invalid([
+      { mancationAkunId: 5001, kelasId: 2 },
+      { mancationAkunId: 5001, kelasId: null },
+    ]),
+    'INVALID_FORMASI_KELAS'
+  );
 });
 
 test('Peserta Luar Kelas manual validation enforces unique mancationAkunId and cli_id = 9', () => {

@@ -26,6 +26,9 @@ import {
   createKelas,
   updateKelas,
   softDeleteKelas,
+  getFormasiKelas,
+  cariAkunUntukFormasi,
+  simpanFormasiKelas,
   listPeserta,
   getPesertaDetail,
   updatePesertaSupplementAndPenempatan,
@@ -148,9 +151,18 @@ function handleRouteError(res, err) {
     'PORTAL_PASSWORD_TOO_SHORT',
     'PORTAL_PASSWORD_SAME',
     'PORTAL_NO_BIRTH_DATE',
+    'INVALID_FORMASI_KELAS',
+    'FORMASI_KELAS_BERUBAH',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
-  const serviceCodes = new Set(['AI_NOT_CONFIGURED', 'AI_ACCESS_DENIED', 'AI_RATE_LIMITED', 'AI_OVERLOADED', 'AI_FAILED']);
+  const serviceCodes = new Set([
+    'AI_NOT_CONFIGURED',
+    'AI_ACCESS_DENIED',
+    'AI_RATE_LIMITED',
+    'AI_OVERLOADED',
+    'AI_FAILED',
+    'MANCATION_UNAVAILABLE',
+  ]);
   if (code === 'NOT_FOUND') {
     return res.status(404).json({ error: code });
   }
@@ -336,6 +348,31 @@ export function createApiRouter() {
     try {
       const updated = await updateKelas(req.params.id, req.body || {}, req.user);
       return res.json(updated);
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Formasi Kelas: move, add and remove peserta; written to Mancation (t_akun.id_kelas), then synced into JOYdata.
+  router.get('/kelas/formasi', requireAuth, requirePageAccess('data-kelas'), async (_req, res) => {
+    try {
+      return res.json(await getFormasiKelas());
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/kelas/formasi/cari-akun', requireAuth, requirePageAccess('data-kelas'), async (req, res) => {
+    try {
+      return res.json(await cariAkunUntukFormasi(req.query.q));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.put('/kelas/formasi', requireAuth, requirePageAccess('data-kelas'), async (req, res) => {
+    try {
+      return res.json(await simpanFormasiKelas(req.body?.perubahan, req.user));
     } catch (err) {
       return handleRouteError(res, err);
     }

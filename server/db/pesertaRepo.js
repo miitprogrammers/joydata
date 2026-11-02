@@ -14,9 +14,13 @@ import {
   fetchMancationRoster,
   lookupMancationAccountById,
   getMancationStatusMeta,
+  searchMancationAccounts,
+  moveMancationAccounts,
 } from './mancation.js';
 import {
   reconcileRosterWithLocalPeserta,
+  findRosterPesertaLeavingJoy,
+  planFormasiKelas,
   validateManualPesertaInput,
   VALID_STATUS_TAGS,
   VALID_KETERANGAN_LUAR,
@@ -143,7 +147,7 @@ async function runMancationSync(force) {
 
   if (getMode() === 'postgres') {
     const kRes = await getPool().query(
-      `SELECT id, nama_kelas AS "namaKelas", mancation_class_id AS "mancationClassId", deleted_at AS "deletedAt" FROM kelas WHERE deleted_at IS NULL`
+      `SELECT id, nama_kelas AS "namaKelas", mancation_class_id AS "mancationClassId", status, deleted_at AS "deletedAt" FROM kelas WHERE deleted_at IS NULL`
     );
     allLocalKelas = kRes.rows;
   } else {
@@ -193,6 +197,18 @@ async function runMancationSync(force) {
         [upd.kelasId, upd.id]
       );
     }
+    if (mancationData.source === 'live') {
+      const leaving = findRosterPesertaLeavingJoy(mancationData.students, existingRes.rows, kelasByMancationId);
+      if (leaving.length > 0) {
+        await pool.query(`UPDATE peserta SET kelas_id = NULL, updated_at = NOW() WHERE id = ANY($1::int[])`, [
+          leaving.map((p) => p.id),
+        ]);
+        // Their cache rows still name the old class, which a snapshot fallback would put them back in.
+        await pool.query(`UPDATE mancation_peserta_cache SET mancation_class_id = 0 WHERE mancation_akun_id = ANY($1::int[])`, [
+          leaving.map((p) => p.mancationAkunId),
+        ]);
+      }
+    }
   } else {
     const db = readLocalState();
     const nowIso = new Date().toISOString();
@@ -239,6 +255,17 @@ async function runMancationSync(force) {
         target.sumber = 'roster';
         target.keteranganLuarKelas = null;
         target.updatedAt = nowIso;
+      }
+    }
+    if (mancationData.source === 'live') {
+      const leaving = findRosterPesertaLeavingJoy(mancationData.students, db.peserta, kelasByMancationId);
+      const leavingAkun = new Set(leaving.map((p) => Number(p.mancationAkunId)));
+      for (const p of leaving) {
+        p.kelasId = null;
+        p.updatedAt = nowIso;
+      }
+      for (const s of db.mancationPesertaCache) {
+        if (leavingAkun.has(Number(s.mancationAkunId))) s.mancationClassId = 0;
       }
     }
     if (toInsert.length > 0 || toUpdate.length > 0 || mancationData.source === 'live') {
@@ -427,6 +454,97 @@ export async function softDeleteKelas(kelasId, actor) {
   appendLocalAudit(db, actor, 'DELETE_KELAS', 'kelas', id, { namaKelas: target.namaKelas });
   saveLocalState();
   return { deleted: true };
+}
+
+// Formasi Kelas: Mancation's t_akun.id_kelas decides who is in which JOY class, so the page writes changes there
+// and a live sync brings JOYdata along. The board holds the active classes mapped to Mancation and the roster
+// peserta without a class.
+export async function getFormasiKelas() {
+  const [kelasData, pesertaData] = await Promise.all([listKelas(), listPeserta({ sumber: 'roster' })]);
+  const kelas = kelasData.items
+    .filter((k) => k.status !== 'selesai' && Number(k.mancationClassId) > 0)
+    .map((k) => ({ id: Number(k.id), namaKelas: k.namaKelas, mancationClassId: Number(k.mancationClassId) }));
+  const onBoard = new Set(kelas.map((k) => k.id));
+  const peserta = pesertaData.items
+    .filter((p) => p.kelasId === null || onBoard.has(p.kelasId))
+    .map((p) => ({ mancationAkunId: p.mancationAkunId, nama: p.nama, kelasId: p.kelasId, statusTag: p.statusTag }));
+  return { kelas, peserta, mancationSync: kelasData.mancationSync };
+}
+
+async function loadFormasiState() {
+  if (getMode() === 'postgres') {
+    const pool = getPool();
+    const [kRes, pRes] = await Promise.all([
+      pool.query(
+        `SELECT id, nama_kelas AS "namaKelas", mancation_class_id AS "mancationClassId", status, deleted_at AS "deletedAt" FROM kelas WHERE deleted_at IS NULL`
+      ),
+      pool.query(
+        `SELECT id, mancation_akun_id AS "mancationAkunId", kelas_id AS "kelasId", sumber, keterangan_luar_kelas AS "keteranganLuarKelas" FROM peserta`
+      ),
+    ]);
+    return { kelas: kRes.rows, peserta: pRes.rows };
+  }
+  const db = readLocalState();
+  return { kelas: db.kelas.filter((k) => !k.deletedAt), peserta: db.peserta };
+}
+
+const BATAS_CARI_AKUN = 30;
+
+export async function cariAkunUntukFormasi(query) {
+  await ensureInitialized();
+  const q = String(query || '').trim();
+  if (q.length < 3 && !/^\d+$/.test(q)) return { items: [], terbatas: false };
+  const [akun, { kelas, peserta }] = await Promise.all([
+    searchMancationAccounts(q, BATAS_CARI_AKUN),
+    loadFormasiState(),
+  ]);
+  const joyKelasByMancation = new Map(
+    kelas.filter((k) => k.mancationClassId).map((k) => [Number(k.mancationClassId), k])
+  );
+  const pesertaByAkun = new Map(peserta.map((p) => [Number(p.mancationAkunId), p]));
+  return {
+    items: akun.map((a) => {
+      const joyKelas = joyKelasByMancation.get(a.mancationClassId);
+      return {
+        ...a,
+        nama: formatPersonName(a.nama),
+        // kosong = no class yet, the only accounts that can be added; joy = in a JOY class; lain = another branch's class
+        posisi: !a.mancationClassId ? 'kosong' : joyKelas ? 'joy' : 'lain',
+        namaKelas: joyKelas?.namaKelas || a.namaKelasMancation || (a.mancationClassId ? `#${a.mancationClassId}` : ''),
+        keteranganLuarKelas: pesertaByAkun.get(a.mancationAkunId)?.keteranganLuarKelas || null,
+      };
+    }),
+    terbatas: akun.length >= BATAS_CARI_AKUN,
+  };
+}
+
+export async function simpanFormasiKelas(perubahan, actor) {
+  await ensureInitialized();
+  const { kelas, peserta } = await loadFormasiState();
+  const plan = planFormasiKelas(perubahan, peserta, kelas);
+  if (!plan.ok) throw new Error(plan.code);
+  if (plan.moves.length === 0) return { berubah: 0, sinkron: true };
+
+  await moveMancationAccounts(plan.moves);
+  // Mancation now holds the new formation; a live sync moves, adds and releases the JOYdata peserta to match.
+  const sync = await syncMancationAndReconcile({ force: true }).catch((err) => {
+    console.error('Formasi kelas: sync after the Mancation write failed', err);
+    return null;
+  });
+
+  const snapshot = await getSnapshotFallbackFromDb();
+  const namaByAkun = new Map(snapshot.students.map((s) => [Number(s.mancationAkunId), formatPersonName(s.nama)]));
+  const namaKelas = (id) => (id ? kelas.find((k) => Number(k.id) === id)?.namaKelas || `#${id}` : null);
+  for (const m of plan.moves) {
+    await appendAudit(actor, 'UPDATE_FORMASI_KELAS', 'mancation_akun', m.mancationAkunId, {
+      nama: namaByAkun.get(m.mancationAkunId) || '',
+      dariKelas: namaKelas(m.dariKelasId),
+      keKelas: namaKelas(m.keKelasId),
+      dariMancationClassId: m.dariMancationClassId,
+      keMancationClassId: m.keMancationClassId,
+    });
+  }
+  return { berubah: plan.moves.length, sinkron: sync?.source === 'live' };
 }
 
 function mergePesertaWithMancation(pRow, penempatanRow, kelasRow, mancationMap) {

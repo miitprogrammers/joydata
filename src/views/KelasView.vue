@@ -18,6 +18,16 @@
           {{ $t('app.syncMancation') }}
         </v-btn>
         <v-btn
+          variant="outlined"
+          color="primary"
+          size="small"
+          prepend-icon="mdi-account-switch-outline"
+          class="text-none"
+          @click="formasiOpen = true"
+        >
+          {{ $t('formasi.btn') }}
+        </v-btn>
+        <v-btn
           color="primary"
           variant="flat"
           size="small"
@@ -101,6 +111,8 @@
         </table>
       </div>
     </div>
+
+    <FormasiKelasDialog v-model="formasiOpen" @saved="loadData" />
 
     <v-dialog v-model="dialogOpen" max-width="580">
       <v-card class="rounded-xl">
@@ -207,6 +219,7 @@ import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import MancationSyncBanner from '../components/MancationSyncBanner.vue';
+import FormasiKelasDialog from '../components/FormasiKelasDialog.vue';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
@@ -235,6 +248,8 @@ const form = ref({
 
 const deleteDialog = ref(false);
 const deleteTarget = ref(null);
+
+const formasiOpen = ref(false);
 
 const programChoices = computed(() =>
   programs.value.map((p) => ({
