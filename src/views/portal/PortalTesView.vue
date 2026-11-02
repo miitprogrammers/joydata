@@ -80,18 +80,25 @@
           <v-btn value="kanji" class="text-none">Kanji</v-btn>
           <v-btn value="dokkai" class="text-none">Dokkai</v-btn>
         </v-btn-toggle>
+        <div v-if="jenisLatihan === 'dokkai'" class="mt-3 flex flex-wrap items-center gap-2">
+          <span class="text-xs text-slate-500">{{ $t('portal.tes.polaKalimat') }}</span>
+          <v-btn-toggle v-model="jlptLatihan" mandatory color="primary" variant="outlined" density="compact">
+            <v-btn v-for="j in jlptOptions" :key="j" :value="j" class="text-none" :disabled="!adaBacaanPola(j)">{{ j }}</v-btn>
+          </v-btn-toggle>
+        </div>
         <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
           <button
             v-for="m in materiLatihan"
             :key="m.kode"
             type="button"
-            class="rounded-xl border-2 px-3 py-2.5 text-left transition-colors"
+            class="rounded-xl border-2 px-3 py-2.5 text-left transition-colors disabled:opacity-40"
             :class="materiDipilih === m.kode ? 'border-blue-600 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'"
+            :disabled="jumlahMateri(m) === 0"
             @click="materiDipilih = m.kode"
           >
             <span class="block text-sm font-semibold text-slate-900">{{ m.judul }}</span>
             <span class="block text-[11px] text-slate-500 mt-0.5">
-              {{ $t(jenisLatihan === 'kanji' ? 'portal.tes.nKata' : 'portal.tes.nBacaan', { n: m.jumlah }) }}
+              {{ $t(jenisLatihan === 'kanji' ? 'portal.tes.nKata' : 'portal.tes.nBacaan', { n: jumlahMateri(m) }) }}
             </span>
           </button>
         </div>
@@ -173,14 +180,31 @@ const jenisLatihan = ref('kanji');
 const materiDipilih = ref('DASAR');
 const jumlahLatihan = ref(20);
 const memuatLatihan = ref(false);
+// Dokkai sentence-pattern level: N5 is the fixed bank, N4/N3 exist once sensei have approved AI passages.
+const jlptOptions = ref(['N5']);
+const jlptLatihan = ref('N5');
 
 const materiLatihan = computed(() => katalog.value[jenisLatihan.value] || []);
+
+function jumlahMateri(m) {
+  return jenisLatihan.value === 'dokkai' ? m.perJlpt?.[jlptLatihan.value]?.jumlah ?? m.jumlah : m.jumlah;
+}
+
+function adaBacaanPola(jlpt) {
+  return katalog.value.dokkai.some((m) => (m.perJlpt?.[jlpt]?.jumlah ?? 0) > 0);
+}
+
+watch(jlptLatihan, () => {
+  const sekarang = materiLatihan.value.find((m) => m.kode === materiDipilih.value);
+  if (!sekarang || jumlahMateri(sekarang) === 0) materiDipilih.value = materiLatihan.value.find((m) => jumlahMateri(m) > 0)?.kode ?? null;
+});
 const pilihanJumlah = computed(() =>
   jenisLatihan.value === 'kanji'
     ? [10, 20, 30, 50].map((n) => ({ value: n, label: String(n) })).concat({ value: 0, label: t('portal.tes.semua') })
     : [1, 3, 5, 10].map((n) => ({ value: n, label: String(n) })).concat({ value: 0, label: t('portal.tes.semua') })
 );
 watch(jenisLatihan, (j) => {
+  jlptLatihan.value = 'N5';
   materiDipilih.value = j === 'kanji' ? 'DASAR' : 'L1';
   jumlahLatihan.value = j === 'kanji' ? 20 : 3;
 });
@@ -200,6 +224,7 @@ async function muat() {
   try {
     const res = await portalRequest('/tes');
     katalog.value = res.materi;
+    jlptOptions.value = res.jlptOptions || ['N5'];
     riwayat.value = res.riwayat;
   } catch (err) {
     gagal(err);
@@ -222,6 +247,7 @@ async function mulaiLatihan() {
   memuatLatihan.value = true;
   try {
     const params = new URLSearchParams({ jenis: jenisLatihan.value, materi: materiDipilih.value, jumlah: String(jumlahLatihan.value || '') });
+    if (jenisLatihan.value === 'dokkai') params.set('jlpt', jlptLatihan.value);
     const res = await portalRequest(`/tes/latihan?${params}`);
     resmi.value = null;
     mulaiRunner({ jenisTes: res.jenis, modeTes: 'latihan', daftarSoal: res.soal, judul: `${res.jenis === 'kanji' ? 'Kanji' : 'Dokkai'} · ${res.materiJudul}` });

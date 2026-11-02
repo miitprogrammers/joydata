@@ -62,8 +62,14 @@
                 <div class="text-xs text-slate-500">{{ s.namaKelas }}</div>
               </td>
               <td class="px-4 py-2.5">
-                <div class="font-medium text-slate-900">{{ s.jenis === 'kanji' ? 'Kanji' : 'Dokkai' }} · {{ s.materiJudul }}</div>
-                <div class="text-xs text-slate-500">{{ jumlahLabel(s) }}</div>
+                <div class="font-medium text-slate-900 flex flex-wrap items-center gap-1.5">
+                  {{ s.jenis === 'kanji' ? 'Kanji' : 'Dokkai' }} · {{ s.materiJudul }}
+                  <span v-if="s.sumber === 'ai'" class="rounded px-1.5 py-0.5 text-[10px] font-bold bg-violet-100 text-violet-800">AI</span>
+                </div>
+                <div class="text-xs text-slate-500">
+                  {{ jumlahLabel(s) }}
+                  <template v-if="s.jenis === 'dokkai' && s.kanjiVolume"> · {{ $t('tesOnline.ai.kanjiDari', { volume: volumeLabel(s.kanjiVolume) }) }}</template>
+                </div>
               </td>
               <td class="px-4 py-2.5 whitespace-nowrap">
                 <div class="font-medium text-slate-900">{{ s.namaUjian }}</div>
@@ -71,9 +77,10 @@
               </td>
               <td class="px-4 py-2.5 whitespace-nowrap">
                 <span class="text-xs font-semibold" :class="statusClass(s)">{{ statusLabel(s) }}</span>
-                <div v-if="s.berlakuSampai" class="text-[11px] text-slate-500 tabular-nums">
+                <div v-if="s.berlakuSampai && s.status !== 'draf'" class="text-[11px] text-slate-500 tabular-nums">
                   {{ $t('tesOnline.sampai', { waktu: waktuPendek(s.berlakuSampai) }) }}
                 </div>
+                <div v-if="s.status === 'draf'" class="text-[11px] text-slate-500">{{ $t('tesOnline.ai.nBacaan', { n: s.jumlahBacaanAi }) }}</div>
               </td>
               <td class="px-4 py-2.5 text-right tabular-nums whitespace-nowrap">
                 <div class="font-medium text-slate-900">{{ s.jumlahSelesai }}/{{ s.jumlahPeserta }}</div>
@@ -83,16 +90,15 @@
                 </div>
               </td>
               <td class="px-5 py-2.5 text-right whitespace-nowrap">
-                <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openHasil(s)">{{ $t('tesOnline.hasilBtn') }}</v-btn>
-                <v-btn
-                  size="x-small"
-                  variant="text"
-                  class="text-none"
-                  :loading="busyId === s.id"
-                  @click="toggleStatus(s)"
-                >
-                  {{ s.status === 'aktif' ? $t('tesOnline.tutupBtn') : $t('tesOnline.bukaBtn') }}
-                </v-btn>
+                <template v-if="s.status === 'draf'">
+                  <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openTinjau(s.id, 0)">{{ $t('tesOnline.ai.tinjauBtn') }}</v-btn>
+                </template>
+                <template v-else>
+                  <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openHasil(s)">{{ $t('tesOnline.hasilBtn') }}</v-btn>
+                  <v-btn size="x-small" variant="text" class="text-none" :loading="busyId === s.id" @click="toggleStatus(s)">
+                    {{ s.status === 'aktif' && s.bisaDipakai ? $t('tesOnline.tutupBtn') : $t('tesOnline.bukaBtn') }}
+                  </v-btn>
+                </template>
                 <v-btn
                   v-if="!s.jumlahSelesai"
                   icon="mdi-trash-can-outline"
@@ -110,10 +116,10 @@
     </div>
 
     <!-- Open a code -->
-    <v-dialog v-model="createOpen" max-width="600">
+    <v-dialog v-model="createOpen" max-width="640" scrollable>
       <v-card class="rounded-xl">
         <div class="px-6 py-4 border-b border-slate-200 font-semibold text-slate-900 font-display">{{ $t('tesOnline.addTitle') }}</div>
-        <v-card-text class="pa-6 space-y-4">
+        <v-card-text class="pa-6 space-y-4" style="max-height: 72vh">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <v-select
               v-model="form.kelasId"
@@ -134,17 +140,67 @@
               :items="materiOptions"
               item-title="label"
               item-value="kode"
-              :label="$t('tesOnline.materi')"
+              :label="form.jenis === 'kanji' ? $t('tesOnline.materi') : $t('tesOnline.levelBacaan')"
               variant="outlined"
               density="comfortable"
               hide-details="auto"
             />
+
+            <template v-if="form.jenis === 'dokkai'">
+              <div class="self-center">
+                <p class="text-xs text-slate-500 mb-1">{{ $t('tesOnline.sumber') }}</p>
+                <v-btn-toggle v-model="form.sumber" mandatory color="primary" variant="outlined" density="comfortable">
+                  <v-btn value="bank" class="text-none">{{ $t('tesOnline.sumberBank') }}</v-btn>
+                  <v-btn value="ai" class="text-none" :disabled="form.materi === 'SEMUA'" prepend-icon="mdi-creation-outline">
+                    {{ $t('tesOnline.sumberAi') }}
+                  </v-btn>
+                </v-btn-toggle>
+              </div>
+              <v-select
+                v-model="form.jlpt"
+                :items="jlptChoices"
+                item-title="label"
+                item-value="value"
+                item-props="props"
+                :label="$t('tesOnline.polaKalimat')"
+                :hint="$t('tesOnline.polaHint')"
+                persistent-hint
+                variant="outlined"
+                density="comfortable"
+              />
+              <v-select
+                v-model="form.kanjiVolume"
+                :items="volumeChoices"
+                item-title="label"
+                item-value="value"
+                multiple
+                chips
+                closable-chips
+                :label="$t('tesOnline.kanjiBacaan')"
+                :hint="$t('tesOnline.kanjiBacaanHint')"
+                persistent-hint
+                variant="outlined"
+                density="comfortable"
+                :error-messages="form.kanjiVolume.length ? [] : [$t('tesOnline.kanjiMinimal')]"
+              />
+            </template>
+
             <v-text-field
               v-model="form.jumlahSoal"
               type="number"
               min="1"
               :label="form.jenis === 'kanji' ? $t('tesOnline.jumlahKata') : $t('tesOnline.jumlahBacaan')"
-              :hint="$t('tesOnline.jumlahHint', { n: materiAktif?.jumlah ?? '-' })"
+              :hint="jumlahHint"
+              persistent-hint
+              variant="outlined"
+              density="comfortable"
+            />
+            <v-select
+              v-if="form.jenis === 'dokkai' && form.sumber === 'ai'"
+              v-model="form.jumlahAi"
+              :items="[4, 6, 8]"
+              :label="$t('tesOnline.jumlahAi')"
+              :hint="$t('tesOnline.jumlahAiHint')"
               persistent-hint
               variant="outlined"
               density="comfortable"
@@ -178,16 +234,23 @@
               density="comfortable"
             />
           </div>
-          <p class="text-xs text-slate-500">{{ $t('tesOnline.acakInfo') }}</p>
+          <p v-if="bankKosong" class="text-xs font-medium text-amber-800 bg-amber-50 rounded px-3 py-2">
+            {{ $t('tesOnline.bankKosong', { jlpt: form.jlpt }) }}
+          </p>
+          <p class="text-xs text-slate-500">
+            {{ form.jenis === 'dokkai' && form.sumber === 'ai' ? $t('tesOnline.aiInfo') : $t('tesOnline.acakInfo') }}
+          </p>
         </v-card-text>
         <div class="px-6 py-3.5 border-t border-slate-200 flex justify-end gap-2 bg-slate-50/50">
           <v-btn variant="text" class="text-none" @click="createOpen = false">{{ $t('app.cancel') }}</v-btn>
           <v-btn color="primary" variant="flat" class="text-none" :loading="saving" :disabled="!formValid" @click="submitCreate">
-            {{ $t('tesOnline.buatBtn') }}
+            {{ form.jenis === 'dokkai' && form.sumber === 'ai' ? $t('tesOnline.buatAiBtn') : $t('tesOnline.buatBtn') }}
           </v-btn>
         </div>
       </v-card>
     </v-dialog>
+
+    <TinjauBacaanAiDialog v-model="tinjauOpen" :sesi-id="tinjauId" :buat-awal="tinjauBuatAwal" @changed="loadData" @aktif="setelahAktif" />
 
     <!-- The new code, big enough to read out or put on the board -->
     <v-dialog v-model="kodeBaruOpen" max-width="420">
@@ -271,6 +334,7 @@ import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
+import TinjauBacaanAiDialog from '../components/TinjauBacaanAiDialog.vue';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
@@ -279,16 +343,22 @@ const loading = ref(true);
 const items = ref([]);
 const kelasOptions = ref([]);
 const katalog = ref({ kanji: [], dokkai: [] });
+const jlptOptions = ref(['N5', 'N4', 'N3']);
+const volumeKanji = ref([]);
 const filterKelasId = ref('all');
 const filterStatus = ref('all');
 const busyId = ref(null);
 
 const createOpen = ref(false);
 const saving = ref(false);
-const form = ref({});
+const form = ref({ kanjiVolume: [] });
 const namaUjianDiubah = ref(false);
 const kodeBaruOpen = ref(false);
 const kodeBaru = ref(null);
+
+const tinjauOpen = ref(false);
+const tinjauId = ref(null);
+const tinjauBuatAwal = ref(0);
 
 const hasilOpen = ref(false);
 const hasilLoading = ref(false);
@@ -306,21 +376,58 @@ const kelasFilterOptions = computed(() => [
 const statusFilterOptions = computed(() => [
   { value: 'all', label: t('app.all') },
   { value: 'bisa', label: t('tesOnline.statusAktif') },
+  { value: 'draf', label: t('tesOnline.statusDraf') },
   { value: 'tutup', label: t('tesOnline.statusTutupSemua') },
 ]);
 const displayedItems = computed(() =>
-  items.value.filter(
-    (s) =>
-      (filterKelasId.value === 'all' || s.kelasId === filterKelasId.value) &&
-      (filterStatus.value === 'all' || (filterStatus.value === 'bisa') === s.bisaDipakai)
-  )
+  items.value.filter((s) => {
+    if (filterKelasId.value !== 'all' && s.kelasId !== filterKelasId.value) return false;
+    if (filterStatus.value === 'bisa') return s.bisaDipakai;
+    if (filterStatus.value === 'draf') return s.status === 'draf';
+    if (filterStatus.value === 'tutup') return !s.bisaDipakai && s.status !== 'draf';
+    return true;
+  })
 );
 
 const materiOptions = computed(() =>
   (katalog.value[form.value.jenis] || []).map((m) => ({ ...m, label: m.judul }))
 );
 const materiAktif = computed(() => materiOptions.value.find((m) => m.kode === form.value.materi));
-const formValid = computed(() => form.value.kelasId && form.value.materi && form.value.tanggalUjian && String(form.value.namaUjian || '').trim());
+// Passages a bank dokkai code can draw from at the chosen sentence-pattern level.
+const poolBank = computed(() => materiAktif.value?.perJlpt?.[form.value.jlpt]?.jumlah ?? materiAktif.value?.jumlah ?? 0);
+const bankKosong = computed(() => form.value.jenis === 'dokkai' && form.value.sumber === 'bank' && poolBank.value === 0);
+const jlptChoices = computed(() =>
+  jlptOptions.value.map((j) => {
+    const n = materiAktif.value?.perJlpt?.[j]?.jumlah ?? 0;
+    const bank = form.value.sumber === 'bank';
+    return {
+      value: j,
+      label: bank ? t('tesOnline.polaBank', { jlpt: j, n }) : j,
+      props: { disabled: bank && n === 0 },
+    };
+  })
+);
+const volumeChoices = computed(() =>
+  volumeKanji.value.map((v) => ({ value: v, label: v === 'DASAR' ? t('tesOnline.volDasar') : `Vol ${v.slice(3)}` }))
+);
+const jumlahHint = computed(() => {
+  if (form.value.jenis === 'dokkai' && form.value.sumber === 'ai') return t('tesOnline.jumlahHintAi');
+  return t('tesOnline.jumlahHint', { n: form.value.jenis === 'dokkai' ? poolBank.value : materiAktif.value?.jumlah ?? '-' });
+});
+const formValid = computed(
+  () =>
+    form.value.kelasId &&
+    form.value.materi &&
+    form.value.tanggalUjian &&
+    String(form.value.namaUjian || '').trim() &&
+    (form.value.jenis !== 'dokkai' || form.value.kanjiVolume.length) &&
+    !bankKosong.value
+);
+
+function saranNamaUjian() {
+  const dasar = materiAktif.value?.saranNamaUjian || '';
+  return form.value.jenis === 'dokkai' && form.value.jlpt !== 'N5' ? dasar.replace('DK-', `DK-${form.value.jlpt}-`) : dasar;
+}
 
 watch(
   () => form.value.jenis,
@@ -328,12 +435,22 @@ watch(
     if (!jenis || jenis === lama || !createOpen.value) return;
     form.value.materi = (katalog.value[jenis] || [])[0]?.kode || null;
     form.value.jumlahSoal = jenis === 'kanji' ? 20 : 5;
+    form.value.sumber = 'bank';
+    form.value.jlpt = 'N5';
   }
 );
 watch(
-  () => form.value.materi,
+  () => [form.value.materi, form.value.jlpt],
   () => {
-    if (!namaUjianDiubah.value) form.value.namaUjian = materiAktif.value?.saranNamaUjian || '';
+    if (form.value.materi === 'SEMUA' && form.value.sumber === 'ai') form.value.sumber = 'bank';
+    if (!namaUjianDiubah.value) form.value.namaUjian = saranNamaUjian();
+  }
+);
+watch(
+  () => form.value.sumber,
+  (sumber) => {
+    // A bank code cannot use a pattern level that has no passages yet.
+    if (sumber === 'bank' && poolBank.value === 0) form.value.jlpt = 'N5';
   }
 );
 
@@ -342,17 +459,29 @@ function hariIni() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
+function volumeLabel(volume) {
+  if (!volume) return t('tesOnline.semuaVolume');
+  return volume.map((v) => (v === 'DASAR' ? t('tesOnline.volDasar') : `Vol ${v.slice(3)}`)).join(', ');
+}
+
 function jumlahLabel(s) {
-  const total = katalog.value[s.jenis]?.find((m) => m.kode === s.materi)?.jumlah;
+  if (s.sumber === 'ai') {
+    const total = s.jumlahBacaanAi ?? 0;
+    return t('tesOnline.nBacaanAcak', { n: s.jumlahSoal ? Math.min(s.jumlahSoal, total) : total, total });
+  }
+  const info = katalog.value[s.jenis]?.find((m) => m.kode === s.materi);
+  const total = s.jenis === 'dokkai' ? info?.perJlpt?.[s.jlpt]?.jumlah : info?.jumlah;
   const n = s.jumlahSoal ?? total;
   return t(s.jenis === 'kanji' ? 'tesOnline.nKataAcak' : 'tesOnline.nBacaanAcak', { n, total });
 }
 
 function statusLabel(s) {
+  if (s.status === 'draf') return t('tesOnline.statusDraf');
   if (s.status === 'ditutup') return t('tesOnline.statusDitutup');
   return s.bisaDipakai ? t('tesOnline.statusAktif') : t('tesOnline.statusKedaluwarsa');
 }
 function statusClass(s) {
+  if (s.status === 'draf') return 'text-amber-700';
   return s.bisaDipakai ? 'text-emerald-700' : 'text-slate-500';
 }
 function hasilStatusClass(status) {
@@ -389,6 +518,8 @@ async function loadData() {
     items.value = res.items || [];
     kelasOptions.value = res.kelasOptions || [];
     katalog.value = res.materi || { kanji: [], dokkai: [] };
+    jlptOptions.value = res.jlptOptions || ['N5', 'N4', 'N3'];
+    volumeKanji.value = res.volumeKanji || [];
   } catch (err) {
     notifyError(err);
   } finally {
@@ -403,7 +534,11 @@ function openCreate() {
     kelasId: filterKelasId.value !== 'all' ? filterKelasId.value : kelasOptions.value.find((k) => k.status === 'aktif')?.id ?? null,
     jenis: 'kanji',
     materi: materi?.kode || null,
+    sumber: 'bank',
+    jlpt: 'N5',
+    kanjiVolume: [...volumeKanji.value],
     jumlahSoal: 20,
+    jumlahAi: 8,
     tanggalUjian: hariIni(),
     namaUjian: materi?.saranNamaUjian || '',
     berlakuSampai: `${hariIni()}T23:59`,
@@ -415,23 +550,47 @@ async function submitCreate() {
   saving.value = true;
   try {
     const f = form.value;
+    const dokkai = f.jenis === 'dokkai';
     const created = await apiRequest('/tes-online', {
       method: 'POST',
       body: {
-        ...f,
+        kelasId: f.kelasId,
+        jenis: f.jenis,
+        materi: f.materi,
+        sumber: dokkai ? f.sumber : 'bank',
+        jlpt: dokkai ? f.jlpt : 'N5',
+        kanjiVolume: dokkai ? f.kanjiVolume : null,
         jumlahSoal: f.jumlahSoal === '' || f.jumlahSoal === null ? null : Number(f.jumlahSoal),
+        tanggalUjian: f.tanggalUjian,
+        namaUjian: f.namaUjian,
         berlakuSampai: f.berlakuSampai ? new Date(f.berlakuSampai).toISOString() : null,
       },
     });
     createOpen.value = false;
-    kodeBaru.value = created;
-    kodeBaruOpen.value = true;
     await loadData();
+    if (created.sumber === 'ai') {
+      openTinjau(created.id, f.jumlahAi);
+    } else {
+      kodeBaru.value = created;
+      kodeBaruOpen.value = true;
+    }
   } catch (err) {
     notifyError(err);
   } finally {
     saving.value = false;
   }
+}
+
+function openTinjau(id, buatAwal) {
+  tinjauId.value = id;
+  tinjauBuatAwal.value = buatAwal;
+  tinjauOpen.value = true;
+}
+
+async function setelahAktif(sesi) {
+  await loadData();
+  kodeBaru.value = sesi;
+  kodeBaruOpen.value = true;
 }
 
 async function toggleStatus(s) {

@@ -98,7 +98,11 @@ import {
 import { signPortalToken, requirePeserta } from './middleware/portalAuth.js';
 import {
   listSesiTes,
+  getSesiTes,
   createSesiTes,
+  tambahBacaanAi,
+  hapusBacaanAi,
+  ubahKunciBacaanAi,
   updateSesiTes,
   deleteSesiTes,
   getHasilSesiTes,
@@ -173,6 +177,9 @@ function handleRouteError(res, err) {
     'TES_SUDAH_DIKERJAKAN',
     'TES_PERCOBAAN_TIDAK_ADA',
     'TES_SESI_SUDAH_ADA_HASIL',
+    'TES_KODE_BELUM_AKTIF',
+    'TES_AI_BELUM_ADA_BACAAN',
+    'TES_SESI_BUKAN_DRAF',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
@@ -182,6 +189,7 @@ function handleRouteError(res, err) {
     'AI_OVERLOADED',
     'AI_FAILED',
     'MANCATION_UNAVAILABLE',
+    'TES_AI_GAGAL',
   ]);
   if (code === 'NOT_FOUND') {
     return res.status(404).json({ error: code });
@@ -320,9 +328,11 @@ export function createApiRouter() {
     }
   });
 
-  router.get('/portal/tes/latihan', requirePeserta(), (req, res) => {
+  router.get('/portal/tes/latihan', requirePeserta(), async (req, res) => {
     try {
-      return res.json(getLatihanTes({ jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah }));
+      return res.json(
+        await getLatihanTes({ jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah, jlpt: req.query.jlpt })
+      );
     } catch (err) {
       return handleRouteError(res, err);
     }
@@ -414,6 +424,39 @@ export function createApiRouter() {
   router.delete('/tes-online/:id', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
     try {
       return res.json(await deleteSesiTes(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Dokkai code written by AI: a draft whose passages the sensei reviews before activating it.
+  router.get('/tes-online/:id', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await getSesiTes(req.params.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/tes-online/:id/ai', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await tambahBacaanAi(req.params.id, req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.delete('/tes-online/:id/bacaan/:bacaanId', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await hapusBacaanAi(req.params.id, req.params.bacaanId, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.patch('/tes-online/:id/bacaan/:bacaanId', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await ubahKunciBacaanAi(req.params.id, req.params.bacaanId, req.body || {}, req.user));
     } catch (err) {
       return handleRouteError(res, err);
     }

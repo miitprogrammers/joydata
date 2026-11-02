@@ -176,6 +176,9 @@ CREATE TABLE IF NOT EXISTS nilai_mensetsu (
 -- Tes Online (kanji & dokkai di portal peserta): sensei membuka kode untuk satu kelas; peserta yang memasukkan kode
 -- mengerjakan kertas acak miliknya sendiri (soal + kunci disimpan di percobaan), nilainya masuk ke nilai_ujian.
 -- Tanpa kode, tes di portal hanya latihan dan tidak disimpan.
+-- Dokkai: sumber 'bank' (bank tetap + bacaan AI yang sudah disetujui) atau 'ai' (bacaan ditulis AI untuk kode ini,
+-- disimpan di kolom bacaan; kode berstatus draf sampai sensei meninjau dan mengaktifkannya). jlpt = level pola
+-- kalimat (tata bahasa saja); kanji_volume = volume kanji yang boleh tampil di bacaan (NULL = semua).
 CREATE TABLE IF NOT EXISTS tes_online_sesi (
   id SERIAL PRIMARY KEY,
   kode VARCHAR(12) NOT NULL UNIQUE,
@@ -186,10 +189,28 @@ CREATE TABLE IF NOT EXISTS tes_online_sesi (
   tanggal_ujian DATE NOT NULL,
   nama_ujian VARCHAR(40) NOT NULL,
   berlaku_sampai TIMESTAMPTZ NULL,
-  status VARCHAR(10) NOT NULL DEFAULT 'aktif' CHECK (status IN ('aktif', 'ditutup')),
+  status VARCHAR(10) NOT NULL DEFAULT 'aktif' CHECK (status IN ('draf', 'aktif', 'ditutup')),
+  sumber VARCHAR(10) NOT NULL DEFAULT 'bank' CHECK (sumber IN ('bank', 'ai')),
+  jlpt VARCHAR(2) NOT NULL DEFAULT 'N5' CHECK (jlpt IN ('N5', 'N4', 'N3')),
+  kanji_volume JSONB NULL,
+  bacaan JSONB NULL,
   dibuat_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+ALTER TABLE tes_online_sesi ADD COLUMN IF NOT EXISTS sumber VARCHAR(10) NOT NULL DEFAULT 'bank' CHECK (sumber IN ('bank', 'ai'));
+ALTER TABLE tes_online_sesi ADD COLUMN IF NOT EXISTS jlpt VARCHAR(2) NOT NULL DEFAULT 'N5' CHECK (jlpt IN ('N5', 'N4', 'N3'));
+ALTER TABLE tes_online_sesi ADD COLUMN IF NOT EXISTS kanji_volume JSONB NULL;
+ALTER TABLE tes_online_sesi ADD COLUMN IF NOT EXISTS bacaan JSONB NULL;
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM pg_constraint
+    WHERE conname = 'tes_online_sesi_status_check' AND pg_get_constraintdef(oid) NOT LIKE '%draf%'
+  ) THEN
+    ALTER TABLE tes_online_sesi DROP CONSTRAINT tes_online_sesi_status_check;
+    ALTER TABLE tes_online_sesi ADD CONSTRAINT tes_online_sesi_status_check CHECK (status IN ('draf', 'aktif', 'ditutup'));
+  END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS tes_online_percobaan (
   id SERIAL PRIMARY KEY,
@@ -202,6 +223,18 @@ CREATE TABLE IF NOT EXISTS tes_online_percobaan (
   mulai_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   selesai_at TIMESTAMPTZ NULL,
   UNIQUE (sesi_id, peserta_id)
+);
+
+-- Bacaan dokkai tulisan AI yang disetujui sensei (saat kode AI diaktifkan): ikut bank latihan dan kode bersumber bank
+-- pada level dan pola kalimat yang sama. data = bacaan lengkap dengan kunci (judul, teks, terjemahan, soal).
+CREATE TABLE IF NOT EXISTS dokkai_bacaan_ai (
+  id VARCHAR(40) PRIMARY KEY,
+  level VARCHAR(4) NOT NULL,
+  jlpt VARCHAR(2) NOT NULL CHECK (jlpt IN ('N5', 'N4', 'N3')),
+  data JSONB NOT NULL,
+  sesi_id INTEGER NULL REFERENCES tes_online_sesi(id) ON DELETE SET NULL,
+  disetujui_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE IF NOT EXISTS nilai_sikap (

@@ -12,6 +12,12 @@ import {
   alasanKodeTidakBerlaku,
   artiBeririsan,
   PANJANG_KODE,
+  poolDokkai,
+  validasiBacaanAi,
+  furiganaLengkap,
+  sederhanakanKanji,
+  kanjiDariVolume,
+  VOLUME_KANJI,
 } from './tesOnline.js';
 import { KANJI_DASAR } from './bankSoal/kanjiN5.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
@@ -35,10 +41,10 @@ test('Tes online catalogue: 80 kanji dasar, five volumes, and the dokkai levels'
   assert.equal(byKode.VOL1, 84);
   assert.equal(byKode.SEMUA, 417); // 服 is in VOL4 and VOL5 but asked once
   assert.equal(dokkai.find((m) => m.kode === 'L1').jumlah, 10);
-  assert.deepEqual(
-    dokkai.find((m) => m.kode === 'SEMUA'),
-    { kode: 'SEMUA', judul: 'Gabungan semua level', jumlah: 50, jumlahSoal: 100, saranNamaUjian: 'DK-ALL' }
-  );
+  const semua = dokkai.find((m) => m.kode === 'SEMUA');
+  assert.equal(semua.jumlah, 50);
+  assert.equal(semua.jumlahSoal, 100);
+  assert.deepEqual(semua.perJlpt, { N5: { jumlah: 50, jumlahSoal: 100 }, N4: { jumlah: 0, jumlahSoal: 0 }, N3: { jumlah: 0, jumlahSoal: 0 } });
 });
 
 test('Kanji paper: random subset per attempt, four distinct options, and the key points at the right answer', () => {
@@ -156,4 +162,91 @@ test('Opening a test code: class, material and exam code are required; a count o
   assert.equal(validateSesiTes({ kelasId: 3, jenis: 'dokkai', materi: 'VOL1', tanggalUjian: '2026-11-05', namaUjian: 'X' }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ kelasId: 3, jenis: 'kanji', materi: 'VOL1', tanggalUjian: '', namaUjian: 'X' }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ kelasId: 3, jenis: 'kanji', materi: 'VOL1', jumlahSoal: 0, tanggalUjian: '2026-11-05', namaUjian: 'X' }).code, 'INVALID_TES_ONLINE');
+});
+
+// An AI passage as a model might return it: furigana on every kanji, two questions, three options each.
+const bacaanAi = () => ({
+  judul: '会社{かいしゃ}の寮{りょう}',
+  teks: 'わたしは会社{かいしゃ}の寮{りょう}に住{す}んでいます。ごみは毎朝{まいあさ}捨{す}てます。',
+  terjemahan: 'Saya tinggal di asrama perusahaan. Sampah dibuang setiap pagi.',
+  soal: [
+    { tanya: 'どこに住{す}んでいますか。', tanyaId: 'Di mana ia tinggal?', opsi: ['Asrama perusahaan', 'Hotel', 'Rumah teman'], benar: 0, pembahasan: 'わたしは会社の寮に住んでいます = tinggal di asrama perusahaan' },
+    { tanya: 'いつごみを捨{す}てますか。', tanyaId: 'Kapan sampah dibuang?', opsi: ['Setiap malam', 'Setiap pagi', 'Hari Minggu'], benar: 1, pembahasan: 'ごみは毎朝捨てます = setiap pagi' },
+  ],
+});
+
+test('AI passages: every kanji needs furigana, two or three questions with three options and one key', () => {
+  assert.equal(furiganaLengkap('毎朝{まいあさ}六時{ろくじ}に起{お}きます。'), true);
+  assert.equal(furiganaLengkap('毎朝六時{ろくじ}に起{お}きます。'), false);
+  assert.equal(furiganaLengkap('休{やす}みのHobby{ほびー}'), false);
+
+  const ok = validasiBacaanAi(bacaanAi(), 'AI7-1');
+  assert.equal(ok.ok, true);
+  assert.deepEqual(ok.bacaan.soal.map((x) => x.id), ['AI7-1-1', 'AI7-1-2']);
+
+  const rusak = (ubah) => {
+    const b = bacaanAi();
+    ubah(b);
+    return validasiBacaanAi(b, 'AI7-1').alasan;
+  };
+  assert.equal(rusak((b) => { b.teks = '会社の寮に住んでいます。わたしは毎朝起きます。'; }), 'furigana');
+  assert.equal(rusak((b) => { b.soal = b.soal.slice(0, 1); }), 'jumlah_soal');
+  assert.equal(rusak((b) => { b.soal[0].opsi = ['A', 'A', 'B']; }), 'opsi');
+  assert.equal(rusak((b) => { b.soal[1].benar = 3; }), 'kunci');
+  assert.equal(rusak((b) => { b.soal[1].tanya = b.soal[0].tanya; }), 'soal');
+});
+
+test('Kanji outside the chosen volumes become kana, in the text, the questions and the explanations', () => {
+  assert.equal(sederhanakanKanji('寮{りょう}の規則{きそく}は同{おな}じです。'), 'りょうのきそくは同{おな}じです。');
+  const hanyaDasar = kanjiDariVolume(['DASAR']);
+  assert.equal(hanyaDasar.size, 80);
+  assert.equal(kanjiDariVolume().size, kanjiDariVolume(VOLUME_KANJI).size);
+
+  // Every JLPT level: the level is about grammar, the kanji follow the volumes.
+  for (const jlpt of ['N5', 'N4', 'N3']) {
+    const { bacaan } = validasiBacaanAi(bacaanAi(), 'AI7-1', { jlpt, kanjiBoleh: hanyaDasar });
+    assert.equal(bacaan.teks, 'わたしはかいしゃのりょうにすんでいます。ごみはまいあさすてます。');
+    assert.equal(bacaan.soal[1].tanya, 'いつごみをすてますか。');
+    assert.equal(bacaan.soal[0].pembahasan, 'わたしはかいしゃのりょうにすんでいます = tinggal di asrama perusahaan');
+  }
+
+  // A bank passage drawn for a code with only the basic kanji.
+  const [kertas] = buatSoalTes({ jenis: 'dokkai', materi: 'L2', jumlah: 1, kanjiBoleh: hanyaDasar }, rngDari(4));
+  assert.equal(furiganaLengkap(kertas.teks), true);
+  for (const [, base] of kertas.teks.matchAll(/([\u3400-\u9FFF\u3005]+)\{/g)) {
+    for (const c of base) assert.ok(hanyaDasar.has(c), c);
+  }
+});
+
+test('Dokkai pools per sentence-pattern level: N5 = bank + approved AI, N4/N3 = approved AI only', () => {
+  const tambahan = [
+    { id: 'AI1-1', level: 'L2', jlpt: 'N4', soal: [{}, {}] },
+    { id: 'AI1-2', level: 'L2', jlpt: 'N5', soal: [{}, {}] },
+    { id: 'AI2-1', level: 'L3', jlpt: 'N4', soal: [{}, {}] },
+  ];
+  assert.equal(poolDokkai('L2', tambahan).length, 11);
+  assert.deepEqual(poolDokkai('L2', tambahan, 'N4').map((b) => b.id), ['AI1-1']);
+  assert.deepEqual(poolDokkai('SEMUA', tambahan, 'N4').map((b) => b.id), ['AI1-1', 'AI2-1']);
+  assert.equal(poolDokkai('L2', tambahan, 'N3').length, 0);
+  assert.deepEqual(daftarMateriTes(tambahan).dokkai.find((m) => m.kode === 'L2').perJlpt.N4, { jumlah: 1, jumlahSoal: 2 });
+});
+
+test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only once passages exist, kanji volumes', () => {
+  const dasar = { kelasId: 3, jenis: 'dokkai', materi: 'L2', tanggalUjian: '2026-11-05', namaUjian: 'DK-L2' };
+  const ai = validateSesiTes({ ...dasar, sumber: 'ai', jlpt: 'N4', jumlahSoal: 5, kanjiVolume: ['VOL1', 'DASAR'] });
+  assert.equal(ai.ok, true);
+  assert.deepEqual(
+    { sumber: ai.normalized.sumber, jlpt: ai.normalized.jlpt, jumlahSoal: ai.normalized.jumlahSoal, kanjiVolume: ai.normalized.kanjiVolume },
+    { sumber: 'ai', jlpt: 'N4', jumlahSoal: 5, kanjiVolume: ['DASAR', 'VOL1'] }
+  );
+  assert.equal(validateSesiTes({ ...dasar, kanjiVolume: VOLUME_KANJI }).normalized.kanjiVolume, null);
+  assert.equal(validateSesiTes({ ...dasar, kanjiVolume: [] }).code, 'INVALID_TES_ONLINE');
+  assert.equal(validateSesiTes({ ...dasar, sumber: 'ai', materi: 'SEMUA' }).code, 'INVALID_TES_ONLINE');
+  assert.equal(validateSesiTes({ ...dasar, jenis: 'kanji', materi: 'VOL1', sumber: 'ai' }).code, 'INVALID_TES_ONLINE');
+  assert.equal(validateSesiTes({ ...dasar, jlpt: 'N3' }).code, 'INVALID_TES_ONLINE');
+  assert.equal(
+    validateSesiTes({ ...dasar, jlpt: 'N3' }, { tambahanDokkai: [{ id: 'AI1-1', level: 'L2', jlpt: 'N3', soal: [{}, {}] }] }).ok,
+    true
+  );
+  assert.equal(alasanKodeTidakBerlaku({ status: 'draf' }), 'TES_KODE_BELUM_AKTIF');
 });

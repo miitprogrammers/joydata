@@ -9,10 +9,14 @@ import {
 } from './engine.js';
 import { listKelas, listPeserta } from './pesertaRepo.js';
 import { upsertNilaiUjian } from './akademikRepo.js';
+import { tulisBacaanDokkai } from '../ai/dokkaiAi.js';
 import {
   JENIS_TES,
+  JLPT_DOKKAI,
+  VOLUME_KANJI,
   daftarMateriTes,
   cariMateri,
+  poolDokkai,
   buatSoalTes,
   soalTanpaKunci,
   nilaiTes,
@@ -21,6 +25,8 @@ import {
   normalisasiKodeTes,
   validateSesiTes,
   alasanKodeTidakBerlaku,
+  validasiBacaanAi,
+  kanjiDariVolume,
 } from '../domain/tesOnline.js';
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -31,8 +37,8 @@ const iso = (v) => (v ? new Date(v).toISOString() : null);
 const SESI_SELECT = `
   SELECT s.id, s.kode, s.kelas_id AS "kelasId", k.nama_kelas AS "namaKelas", s.jenis, s.materi,
          s.jumlah_soal AS "jumlahSoal", s.tanggal_ujian::text AS "tanggalUjian", s.nama_ujian AS "namaUjian",
-         s.berlaku_sampai AS "berlakuSampai", s.status, s.dibuat_oleh_staff_id AS "dibuatOlehStaffId",
-         st.nama AS "dibuatOleh", s.created_at AS "createdAt"
+         s.berlaku_sampai AS "berlakuSampai", s.status, s.sumber, s.jlpt, s.kanji_volume AS "kanjiVolume",
+         s.bacaan, s.dibuat_oleh_staff_id AS "dibuatOlehStaffId", st.nama AS "dibuatOleh", s.created_at AS "createdAt"
   FROM tes_online_sesi s
   LEFT JOIN kelas k ON k.id = s.kelas_id
   LEFT JOIN staff st ON st.id = s.dibuat_oleh_staff_id`;
@@ -45,6 +51,10 @@ function sesiView(row) {
     jumlahSoal: row.jumlahSoal == null ? null : Number(row.jumlahSoal),
     berlakuSampai: iso(row.berlakuSampai),
     createdAt: iso(row.createdAt),
+    sumber: row.sumber || 'bank',
+    jlpt: row.jlpt || 'N5',
+    kanjiVolume: row.kanjiVolume ?? null,
+    bacaan: row.bacaan ?? null,
     namaKelas: row.namaKelas || '',
     dibuatOleh: row.dibuatOleh || '',
   };
@@ -74,13 +84,30 @@ async function querySesi({ id = null, kode = null } = {}) {
 }
 
 async function insertSesi(d, kode, actor) {
+  // An AI code waits as a draft until a sensei has reviewed its passages.
+  const status = d.sumber === 'ai' ? 'draf' : 'aktif';
   if (getMode() === 'postgres') {
     const res = await getPool().query(
       `INSERT INTO tes_online_sesi
-         (kode, kelas_id, jenis, materi, jumlah_soal, tanggal_ujian, nama_ujian, berlaku_sampai, dibuat_oleh_staff_id)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+         (kode, kelas_id, jenis, materi, jumlah_soal, tanggal_ujian, nama_ujian, berlaku_sampai, status, sumber, jlpt,
+          kanji_volume, dibuat_oleh_staff_id)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
        ON CONFLICT (kode) DO NOTHING RETURNING id`,
-      [kode, d.kelasId, d.jenis, d.materi, d.jumlahSoal, d.tanggalUjian, d.namaUjian, d.berlakuSampai, actor?.id || null]
+      [
+        kode,
+        d.kelasId,
+        d.jenis,
+        d.materi,
+        d.jumlahSoal,
+        d.tanggalUjian,
+        d.namaUjian,
+        d.berlakuSampai,
+        status,
+        d.sumber,
+        d.jlpt,
+        d.kanjiVolume ? JSON.stringify(d.kanjiVolume) : null,
+        actor?.id || null,
+      ]
     );
     return res.rows[0] ? Number(res.rows[0].id) : null;
   }
@@ -91,7 +118,8 @@ async function insertSesi(d, kode, actor) {
     id,
     kode,
     ...d,
-    status: 'aktif',
+    status,
+    bacaan: null,
     dibuatOlehStaffId: actor?.id || null,
     createdAt: new Date().toISOString(),
   });
@@ -99,13 +127,21 @@ async function insertSesi(d, kode, actor) {
   return id;
 }
 
-async function patchSesi(id, { status, berlakuSampai }) {
+const KOLOM_SESI = { status: 'status', berlakuSampai: 'berlaku_sampai', bacaan: 'bacaan' };
+
+async function patchSesi(id, changes) {
+  const keys = Object.keys(changes).filter((k) => KOLOM_SESI[k]);
   if (getMode() === 'postgres') {
-    await getPool().query(`UPDATE tes_online_sesi SET status = $1, berlaku_sampai = $2 WHERE id = $3`, [status, berlakuSampai, id]);
+    const params = keys.map((k) => (k === 'bacaan' ? JSON.stringify(changes[k]) : changes[k]));
+    await getPool().query(
+      `UPDATE tes_online_sesi SET ${keys.map((k, i) => `${KOLOM_SESI[k]} = $${i + 1}`).join(', ')} WHERE id = $${keys.length + 1}`,
+      [...params, id]
+    );
     return;
   }
   const db = readLocalState();
-  Object.assign(db.tesOnlineSesi.find((s) => s.id === id), { status, berlakuSampai });
+  const row = db.tesOnlineSesi.find((s) => s.id === id);
+  for (const k of keys) row[k] = changes[k];
   saveLocalState();
 }
 
@@ -223,24 +259,79 @@ async function pesertaKelasId(pesertaId) {
   return readLocalState().peserta.find((p) => p.id === pesertaId)?.kelasId ?? null;
 }
 
-// ---------------------------------------------------------------------------------------------------------------
-// Staff: open, close and follow test codes (page tes-online).
+// AI passages a sensei approved, as pool entries ({ ...passage, level, jlpt }).
+async function queryBacaanAi() {
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(`SELECT id, level, jlpt, data FROM dokkai_bacaan_ai ORDER BY created_at, id`);
+    return res.rows.map((r) => ({ ...r.data, id: r.id, level: r.level, jlpt: r.jlpt }));
+  }
+  return readLocalState().dokkaiBacaanAi.map((r) => ({ ...r.data, id: r.id, level: r.level, jlpt: r.jlpt }));
+}
 
-function materiJudul(jenis, materi) {
-  return cariMateri(jenis, materi)?.judul || materi;
+async function insertBacaanAi(bacaan, { level, jlpt, sesiId }, actor) {
+  if (getMode() === 'postgres') {
+    for (const b of bacaan) {
+      await getPool().query(
+        `INSERT INTO dokkai_bacaan_ai (id, level, jlpt, data, sesi_id, disetujui_oleh_staff_id)
+         VALUES ($1, $2, $3, $4, $5, $6) ON CONFLICT (id) DO NOTHING`,
+        [b.id, level, jlpt, JSON.stringify(b), sesiId, actor?.id || null]
+      );
+    }
+    return;
+  }
+  const db = readLocalState();
+  for (const b of bacaan) {
+    if (db.dokkaiBacaanAi.some((r) => r.id === b.id)) continue;
+    db.dokkaiBacaanAi.push({
+      id: b.id,
+      level,
+      jlpt,
+      data: b,
+      sesiId,
+      disetujuiOlehStaffId: actor?.id || null,
+      createdAt: new Date().toISOString(),
+    });
+  }
+  saveLocalState();
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// What a code tests: material title, its passage pool and the kanji its passages may show.
+
+function materiJudul(sesi) {
+  const judul = cariMateri(sesi.jenis, sesi.materi)?.judul || sesi.materi;
+  return sesi.jenis === 'dokkai' && sesi.jlpt !== 'N5' ? `${judul} · ${sesi.jlpt}` : judul;
+}
+
+const kanjiBolehSesi = (sesi) => (sesi.kanjiVolume ? kanjiDariVolume(sesi.kanjiVolume) : null);
+
+function poolSesi(sesi, tambahan) {
+  if (sesi.jenis !== 'dokkai') return null;
+  if (sesi.sumber === 'ai') return (sesi.bacaan || []).map((b) => ({ ...b, level: sesi.materi, jlpt: sesi.jlpt }));
+  return poolDokkai(sesi.materi, tambahan, sesi.jlpt);
+}
+
+// The approved AI passages are only read when a bank dokkai code needs them.
+async function tambahanUntuk(sesi) {
+  return sesi.jenis === 'dokkai' && sesi.sumber === 'bank' ? queryBacaanAi() : [];
 }
 
 function denganStatus(sesi) {
+  const { bacaan, ...rest } = sesi;
   return {
-    ...sesi,
-    materiJudul: materiJudul(sesi.jenis, sesi.materi),
+    ...rest,
+    materiJudul: materiJudul(sesi),
+    jumlahBacaanAi: sesi.sumber === 'ai' ? (bacaan || []).length : null,
     bisaDipakai: alasanKodeTidakBerlaku(sesi) === null,
   };
 }
 
+// ---------------------------------------------------------------------------------------------------------------
+// Staff: open, review, close and follow test codes (page tes-online).
+
 export async function listSesiTes() {
   await ensureInitialized();
-  const [sesi, percobaan, kelasData] = await Promise.all([querySesi(), queryPercobaan(), listKelas()]);
+  const [sesi, percobaan, kelasData, tambahan] = await Promise.all([querySesi(), queryPercobaan(), listKelas(), queryBacaanAi()]);
   const rosterPerKelas = new Map(kelasData.items.map((k) => [Number(k.id), Number(k.jumlahPeserta) || 0]));
 
   const items = sesi.map((s) => {
@@ -258,13 +349,23 @@ export async function listSesiTes() {
   return {
     items,
     kelasOptions: kelasData.items.map((k) => ({ id: Number(k.id), namaKelas: k.namaKelas, status: k.status })),
-    materi: daftarMateriTes(),
+    materi: daftarMateriTes(tambahan),
+    jlptOptions: JLPT_DOKKAI,
+    volumeKanji: VOLUME_KANJI,
   };
+}
+
+/** One code with its AI passages and their keys (staff review). */
+export async function getSesiTes(idRaw) {
+  await ensureInitialized();
+  const [sesi] = await querySesi({ id: Number(idRaw) });
+  if (!sesi) throw new Error('NOT_FOUND');
+  return { ...denganStatus(sesi), bacaan: sesi.bacaan || [] };
 }
 
 export async function createSesiTes(payload, actor) {
   await ensureInitialized();
-  const check = validateSesiTes(payload);
+  const check = validateSesiTes(payload, { tambahanDokkai: await queryBacaanAi() });
   if (!check.ok) throw new Error(check.code);
   const d = check.normalized;
   const kelasData = await listKelas();
@@ -275,10 +376,106 @@ export async function createSesiTes(payload, actor) {
     const id = await insertSesi(d, kode, actor);
     if (id) {
       await appendAudit(actor, 'CREATE_TES_ONLINE', 'tes_online_sesi', id, { kode, ...d });
-      return denganStatus((await querySesi({ id }))[0]);
+      return getSesiTes(id);
     }
   }
   throw new Error('TES_KODE_GAGAL_DIBUAT');
+}
+
+async function sesiDrafAi(idRaw) {
+  const [sesi] = await querySesi({ id: Number(idRaw) });
+  if (!sesi) throw new Error('NOT_FOUND');
+  if (sesi.sumber !== 'ai' || sesi.status !== 'draf') throw new Error('TES_SESI_BUKAN_DRAF');
+  return sesi;
+}
+
+const MAKS_BACAAN_AI_PER_PERMINTAAN = 8;
+const tanpaFurigana = (s) => String(s || '').replace(/\{[^{}]*\}/g, '');
+
+/** Asks the AI for new passages for a draft code; only passages that pass validasiBacaanAi are added. */
+export async function tambahBacaanAi(idRaw, payload, actor) {
+  await ensureInitialized();
+  const sesi = await sesiDrafAi(idRaw);
+  const jumlah = Math.max(1, Math.min(MAKS_BACAAN_AI_PER_PERMINTAAN, Number(payload?.jumlah) || MAKS_BACAAN_AI_PER_PERMINTAAN));
+  const ada = sesi.bacaan || [];
+  const kanjiBoleh = kanjiBolehSesi(sesi) ?? undefined;
+
+  let mentah;
+  try {
+    mentah = await tulisBacaanDokkai({
+      level: sesi.materi,
+      jlpt: sesi.jlpt,
+      jumlah,
+      hindariJudul: ada.map((b) => tanpaFurigana(b.judul)),
+      kanjiBoleh,
+    });
+  } catch (err) {
+    // AI_FAILED reads "could not write the resume" (Smart Report); this one is about the passages.
+    throw new Error(err.message === 'AI_FAILED' ? 'TES_AI_GAGAL' : err.message);
+  }
+
+  let nomor = ada.reduce((max, b) => Math.max(max, Number(String(b.id).split('-')[1]) || 0), 0);
+  const baru = [];
+  const alasanDitolak = [];
+  for (const raw of mentah.bacaan) {
+    const v = validasiBacaanAi(raw, `AI${sesi.id}-${nomor + 1}`, { jlpt: sesi.jlpt, kanjiBoleh });
+    if (v.ok) {
+      nomor += 1;
+      baru.push(v.bacaan);
+    } else {
+      alasanDitolak.push(v.alasan);
+    }
+  }
+  if (!baru.length) throw new Error('TES_AI_GAGAL');
+
+  await patchSesi(sesi.id, { bacaan: [...ada, ...baru] });
+  await appendAudit(actor, 'TAMBAH_BACAAN_AI', 'tes_online_sesi', sesi.id, {
+    kode: sesi.kode,
+    dibuat: baru.length,
+    ditolak: alasanDitolak,
+    model: mentah.model,
+  });
+  return { sesi: await getSesiTes(sesi.id), dibuat: baru.length, ditolak: alasanDitolak.length };
+}
+
+export async function hapusBacaanAi(idRaw, bacaanId, actor) {
+  await ensureInitialized();
+  const sesi = await sesiDrafAi(idRaw);
+  const bacaan = (sesi.bacaan || []).filter((b) => b.id !== bacaanId);
+  if (bacaan.length === (sesi.bacaan || []).length) throw new Error('NOT_FOUND');
+  await patchSesi(sesi.id, { bacaan });
+  await appendAudit(actor, 'HAPUS_BACAAN_AI', 'tes_online_sesi', sesi.id, { kode: sesi.kode, bacaanId });
+  return getSesiTes(sesi.id);
+}
+
+/** A sensei correcting the key of one AI question during the review. */
+export async function ubahKunciBacaanAi(idRaw, bacaanId, payload, actor) {
+  await ensureInitialized();
+  const sesi = await sesiDrafAi(idRaw);
+  const benar = Number(payload?.benar);
+  let ketemu = false;
+  const bacaan = (sesi.bacaan || []).map((b) =>
+    b.id !== bacaanId
+      ? b
+      : {
+          ...b,
+          soal: b.soal.map((s) => {
+            if (s.id !== payload?.soalId) return s;
+            if (!Number.isInteger(benar) || benar < 0 || benar >= s.opsi.length) throw new Error('INVALID_TES_ONLINE');
+            ketemu = true;
+            return { ...s, benar };
+          }),
+        }
+  );
+  if (!ketemu) throw new Error('NOT_FOUND');
+  await patchSesi(sesi.id, { bacaan });
+  await appendAudit(actor, 'UBAH_KUNCI_BACAAN_AI', 'tes_online_sesi', sesi.id, {
+    kode: sesi.kode,
+    bacaanId,
+    soalId: payload.soalId,
+    benar,
+  });
+  return getSesiTes(sesi.id);
 }
 
 export async function updateSesiTes(idRaw, payload, actor) {
@@ -288,12 +485,20 @@ export async function updateSesiTes(idRaw, payload, actor) {
   if (!sesi) throw new Error('NOT_FOUND');
 
   const status = payload?.status ?? sesi.status;
-  if (!['aktif', 'ditutup'].includes(status)) throw new Error('INVALID_TES_ONLINE');
+  // A draft can only be activated (or deleted); afterwards a code moves between aktif and ditutup.
+  const bolehStatus = sesi.status === 'draf' ? ['draf', 'aktif'] : ['aktif', 'ditutup'];
+  if (!bolehStatus.includes(status)) throw new Error('INVALID_TES_ONLINE');
   let berlakuSampai = sesi.berlakuSampai;
   if (payload && 'berlakuSampai' in payload) {
     berlakuSampai = payload.berlakuSampai ? new Date(payload.berlakuSampai) : null;
     if (berlakuSampai && Number.isNaN(berlakuSampai.getTime())) throw new Error('INVALID_TES_ONLINE');
     berlakuSampai = berlakuSampai ? berlakuSampai.toISOString() : null;
+  }
+
+  // Activating an AI draft: the reviewed passages also join the bank for practice and bank codes.
+  if (sesi.status === 'draf' && status === 'aktif' && sesi.sumber === 'ai') {
+    if (!sesi.bacaan?.length) throw new Error('TES_AI_BELUM_ADA_BACAAN');
+    await insertBacaanAi(sesi.bacaan, { level: sesi.materi, jlpt: sesi.jlpt, sesiId: sesi.id }, actor);
   }
 
   await patchSesi(id, { status, berlakuSampai });
@@ -371,7 +576,7 @@ export async function getHasilSesiTes(idRaw) {
 
 export async function getTesPortal(pesertaId) {
   await ensureInitialized();
-  const [percobaan, sesi] = await Promise.all([queryPercobaan({ pesertaId }), querySesi()]);
+  const [percobaan, sesi, tambahan] = await Promise.all([queryPercobaan({ pesertaId }), querySesi(), queryBacaanAi()]);
   const sesiById = new Map(sesi.map((s) => [s.id, s]));
   const riwayat = percobaan
     .filter((p) => p.selesaiAt && sesiById.has(p.sesiId))
@@ -381,7 +586,7 @@ export async function getTesPortal(pesertaId) {
         id: p.id,
         kode: s.kode,
         jenis: s.jenis,
-        materiJudul: materiJudul(s.jenis, s.materi),
+        materiJudul: materiJudul(s),
         namaUjian: s.namaUjian,
         tanggalUjian: s.tanggalUjian,
         skor: p.skor,
@@ -389,15 +594,29 @@ export async function getTesPortal(pesertaId) {
       };
     })
     .sort((a, b) => b.selesaiAt.localeCompare(a.selesaiAt));
-  return { materi: daftarMateriTes(), riwayat };
+  return { materi: daftarMateriTes(tambahan), jlptOptions: JLPT_DOKKAI, riwayat };
 }
 
-export function getLatihanTes({ jenis, materi, jumlah }) {
+export async function getLatihanTes({ jenis, materi, jumlah, jlpt }) {
+  await ensureInitialized();
   const info = cariMateri(jenis, materi);
-  if (!info) throw new Error('INVALID_TES_ONLINE');
+  const pola = jenis === 'dokkai' ? jlpt || 'N5' : 'N5';
+  if (!info || !JLPT_DOKKAI.includes(pola)) throw new Error('INVALID_TES_ONLINE');
+  const pool = jenis === 'dokkai' ? poolDokkai(materi, await queryBacaanAi(), pola) : null;
+  if (pool && !pool.length) throw new Error('INVALID_TES_ONLINE');
   const n = Number(jumlah);
-  const soal = buatSoalTes({ jenis, materi, jumlah: Number.isInteger(n) && n > 0 ? n : null });
-  return { jenis, materi, materiJudul: info.judul, soal };
+  const soal = buatSoalTes({ jenis, materi, jumlah: Number.isInteger(n) && n > 0 ? n : null, pool });
+  return { jenis, materi, materiJudul: materiJudul({ jenis, materi, jlpt: pola }), soal };
+}
+
+// Only answers to questions on this paper are kept.
+function jawabanBersih(jenis, soal, jawaban) {
+  const j = jawaban && typeof jawaban === 'object' ? jawaban : {};
+  const angka = (v) => (Number.isInteger(v) ? v : null);
+  if (jenis === 'kanji') {
+    return Object.fromEntries(soal.map((s) => [s.id, { bacaan: angka(j[s.id]?.bacaan), arti: angka(j[s.id]?.arti) }]));
+  }
+  return Object.fromEntries(soal.flatMap((b) => b.soal).map((s) => [s.id, angka(j[s.id])]));
 }
 
 // Practice: the paper (with its key) lives in the browser and nothing is stored; the server only grades it,
@@ -413,14 +632,15 @@ export function nilaiLatihanTes(jenis, soal, jawaban) {
   }
 }
 
-function ringkasanSesiUntukPeserta(sesi) {
-  const info = cariMateri(sesi.jenis, sesi.materi);
+function ringkasanSesiUntukPeserta(sesi, tambahan) {
+  const pool = poolSesi(sesi, tambahan);
+  const total = pool ? pool.length : cariMateri(sesi.jenis, sesi.materi)?.jumlah ?? null;
   return {
     kode: sesi.kode,
     jenis: sesi.jenis,
     materi: sesi.materi,
-    materiJudul: info?.judul || sesi.materi,
-    jumlah: sesi.jumlahSoal ?? info?.jumlah ?? null,
+    materiJudul: materiJudul(sesi),
+    jumlah: sesi.jumlahSoal && total !== null ? Math.min(sesi.jumlahSoal, total) : total,
     namaUjian: sesi.namaUjian,
     tanggalUjian: sesi.tanggalUjian,
     namaKelas: sesi.namaKelas,
@@ -442,31 +662,32 @@ async function sesiUntukPeserta(pesertaId, kodeInput) {
 export async function cekKodeTes(pesertaId, kodeInput) {
   await ensureInitialized();
   const { sesi, percobaan } = await sesiUntukPeserta(pesertaId, kodeInput);
-  return { ...ringkasanSesiUntukPeserta(sesi), sudahDimulai: Boolean(percobaan) };
+  return { ...ringkasanSesiUntukPeserta(sesi, await tambahanUntuk(sesi)), sudahDimulai: Boolean(percobaan) };
 }
 
 export async function mulaiTes(pesertaId, kodeInput) {
   await ensureInitialized();
   const { sesi, percobaan } = await sesiUntukPeserta(pesertaId, kodeInput);
+  const tambahan = await tambahanUntuk(sesi);
   const p =
     percobaan ||
-    (await insertPercobaan(sesi.id, pesertaId, buatSoalTes({ jenis: sesi.jenis, materi: sesi.materi, jumlah: sesi.jumlahSoal })));
+    (await insertPercobaan(
+      sesi.id,
+      pesertaId,
+      buatSoalTes({
+        jenis: sesi.jenis,
+        materi: sesi.materi,
+        jumlah: sesi.jumlahSoal,
+        pool: poolSesi(sesi, tambahan),
+        kanjiBoleh: kanjiBolehSesi(sesi),
+      })
+    ));
   return {
     percobaanId: p.id,
     mulaiAt: p.mulaiAt,
-    sesi: ringkasanSesiUntukPeserta(sesi),
+    sesi: ringkasanSesiUntukPeserta(sesi, tambahan),
     soal: soalTanpaKunci(sesi.jenis, p.soal),
   };
-}
-
-// Only answers to questions on this paper are kept.
-function jawabanBersih(jenis, soal, jawaban) {
-  const j = jawaban && typeof jawaban === 'object' ? jawaban : {};
-  const angka = (v) => (Number.isInteger(v) ? v : null);
-  if (jenis === 'kanji') {
-    return Object.fromEntries(soal.map((s) => [s.id, { bacaan: angka(j[s.id]?.bacaan), arti: angka(j[s.id]?.arti) }]));
-  }
-  return Object.fromEntries(soal.flatMap((b) => b.soal).map((s) => [s.id, angka(j[s.id])]));
 }
 
 export async function selesaiTes(pesertaId, percobaanIdRaw, jawaban) {
@@ -481,7 +702,7 @@ export async function selesaiTes(pesertaId, percobaanIdRaw, jawaban) {
   const hasil = nilaiTes(sesi.jenis, p.soal, bersih);
   if (!(await finishPercobaan(p.id, { jawaban: bersih, skor: hasil.skor, hasil }))) throw new Error('TES_SUDAH_DIKERJAKAN');
 
-  const info = ringkasanSesiUntukPeserta(sesi);
+  const info = ringkasanSesiUntukPeserta(sesi, await tambahanUntuk(sesi));
   try {
     await upsertNilaiUjian(
       {

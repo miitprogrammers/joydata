@@ -32,16 +32,25 @@ function kanjiItems(materi) {
   return items;
 }
 
-function dokkaiBacaan(materi) {
+// Sentence-pattern level of a dokkai passage. L1-L5 is the passage length and type; this is its grammar,
+// vocabulary and kanji. The fixed bank is N5; N4 and N3 passages come from approved AI codes.
+export const JLPT_DOKKAI = ['N5', 'N4', 'N3'];
+
+/**
+ * Dokkai passages of a material at one sentence-pattern level: for N5 the fixed bank plus the approved AI passages,
+ * for N4/N3 only approved AI passages (tambahan: [{ ...passage, level, jlpt }]).
+ */
+export function poolDokkai(materi, tambahan = [], jlpt = 'N5') {
   const levels = materi === 'SEMUA' ? DOKKAI_LEVEL : DOKKAI_LEVEL.filter((l) => l.kode === materi);
-  return levels.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode })));
+  const bank = jlpt === 'N5' ? levels.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode, jlpt: 'N5' }))) : [];
+  return [...bank, ...tambahan.filter((b) => (b.jlpt || 'N5') === jlpt && (materi === 'SEMUA' || b.level === materi))];
 }
 
 /**
  * What can be tested, in display order. `jumlah` = questions in the whole material (kanji: words; dokkai: passages,
  * each with its questions), `saranNamaUjian` = the exam code proposed for Rekap Nilai Ujian.
  */
-export function daftarMateriTes() {
+export function daftarMateriTes(tambahanDokkai = []) {
   const kanji = [
     { kode: 'DASAR', judul: 'Dasar (80 kanji)', jumlah: KANJI_DASAR.length, saranNamaUjian: 'KJ-DASAR' },
     ...Object.entries(KANJI_VOLUME).map(([kode, items]) => ({
@@ -52,27 +61,27 @@ export function daftarMateriTes() {
     })),
     { kode: 'SEMUA', judul: 'Semua Volume', jumlah: kanjiItems('SEMUA').length, saranNamaUjian: 'KJ-ALL' },
   ];
+  const hitung = (kode, jlpt) => {
+    const pool = poolDokkai(kode, tambahanDokkai, jlpt);
+    return { jumlah: pool.length, jumlahSoal: pool.reduce((n, b) => n + b.soal.length, 0) };
+  };
+  // jumlah / jumlahSoal = the N5 pool; perJlpt = the pool at every sentence-pattern level.
+  const itemDokkai = (kode, judul, saranNamaUjian) => ({
+    kode,
+    judul,
+    ...hitung(kode, 'N5'),
+    perJlpt: Object.fromEntries(JLPT_DOKKAI.map((j) => [j, hitung(kode, j)])),
+    saranNamaUjian,
+  });
   const dokkai = [
-    ...DOKKAI_LEVEL.map((l) => ({
-      kode: l.kode,
-      judul: `${l.judul} · ${l.deskripsi}`,
-      jumlah: l.bacaan.length,
-      jumlahSoal: l.bacaan.reduce((n, b) => n + b.soal.length, 0),
-      saranNamaUjian: `DK-${l.kode}`,
-    })),
-    {
-      kode: 'SEMUA',
-      judul: 'Gabungan semua level',
-      jumlah: dokkaiBacaan('SEMUA').length,
-      jumlahSoal: dokkaiBacaan('SEMUA').reduce((n, b) => n + b.soal.length, 0),
-      saranNamaUjian: 'DK-ALL',
-    },
+    ...DOKKAI_LEVEL.map((l) => itemDokkai(l.kode, `${l.judul} · ${l.deskripsi}`, `DK-${l.kode}`)),
+    itemDokkai('SEMUA', 'Gabungan semua level', 'DK-ALL'),
   ];
   return { kanji, dokkai };
 }
 
-export function cariMateri(jenis, materi) {
-  return daftarMateriTes()[jenis]?.find((m) => m.kode === materi) || null;
+export function cariMateri(jenis, materi, tambahanDokkai = []) {
+  return daftarMateriTes(tambahanDokkai)[jenis]?.find((m) => m.kode === materi) || null;
 }
 
 function shuffle(arr, rng) {
@@ -163,9 +172,10 @@ function buatSoalKanji(materi, jumlah, rng) {
   });
 }
 
-function buatSoalDokkai(materi, jumlah, rng) {
-  const bacaan = dokkaiBacaan(materi);
-  const dipilih = shuffle(bacaan, rng).slice(0, jumlah ? Math.min(jumlah, bacaan.length) : bacaan.length);
+function buatSoalDokkai(bacaan, jumlah, rng, kanjiBoleh) {
+  const dipilih = shuffle(bacaan, rng)
+    .slice(0, jumlah ? Math.min(jumlah, bacaan.length) : bacaan.length)
+    .map((b) => (kanjiBoleh ? sederhanakanBacaan(b, kanjiBoleh) : b));
   return dipilih.map((b) => ({
     id: b.id,
     level: b.level,
@@ -182,10 +192,15 @@ function buatSoalDokkai(materi, jumlah, rng) {
   }));
 }
 
-/** A fresh, randomised paper with its answer key. rng = () => [0, 1). */
-export function buatSoalTes({ jenis, materi, jumlah = null }, rng = Math.random) {
+/**
+ * A fresh, randomised paper with its answer key. rng = () => [0, 1). pool = the dokkai passages to draw from
+ * (an AI code's own passages, or the bank with approved AI passages); default = the fixed bank. kanjiBoleh = the
+ * kanji a dokkai paper may show (from the code's kanji volumes); other kanji are written in kana.
+ */
+export function buatSoalTes({ jenis, materi, jumlah = null, pool = null, kanjiBoleh = null }, rng = Math.random) {
   if (!cariMateri(jenis, materi)) throw new Error('INVALID_TES_ONLINE');
-  return jenis === 'kanji' ? buatSoalKanji(materi, jumlah, rng) : buatSoalDokkai(materi, jumlah, rng);
+  if (jenis === 'kanji') return buatSoalKanji(materi, jumlah, rng);
+  return buatSoalDokkai(pool ?? poolDokkai(materi), jumlah, rng, kanjiBoleh);
 }
 
 /** The paper a peserta sees during an official test: no answer key, no translation or explanation. */
@@ -291,16 +306,36 @@ export function normalisasiKodeTes(input) {
   return String(input || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 }
 
-/** Validates what a sensei fills in to open a test code. jumlah = words (kanji) or passages (dokkai); null = all. */
-export function validateSesiTes(input) {
+/**
+ * Validates what a sensei fills in to open a test code. jumlah = words (kanji) or passages (dokkai) per peserta;
+ * null = all. sumber 'ai' = dokkai of one level whose passages an AI writes for this code (reviewed as a draft).
+ * jlpt = the dokkai sentence-pattern level (N5, N4, N3); kanji tests are always N5.
+ */
+export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   const kelasId = Number(input?.kelasId);
   const jenis = String(input?.jenis || '');
   const materi = String(input?.materi || '');
+  const sumber = input?.sumber === 'ai' ? 'ai' : 'bank';
+  const jlpt = input?.jlpt ?? 'N5';
   const tanggalUjian = String(input?.tanggalUjian || '').trim();
   const namaUjian = String(input?.namaUjian || '').trim().toUpperCase();
-  const info = cariMateri(jenis, materi);
+  const info = cariMateri(jenis, materi, tambahanDokkai);
 
   if (!Number.isInteger(kelasId) || kelasId <= 0 || !info) return { ok: false, code: 'INVALID_TES_ONLINE' };
+  if (sumber === 'ai' && (jenis !== 'dokkai' || materi === 'SEMUA')) return { ok: false, code: 'INVALID_TES_ONLINE' };
+  if (!JLPT_DOKKAI.includes(jlpt) || (jenis === 'kanji' && jlpt !== 'N5')) return { ok: false, code: 'INVALID_TES_ONLINE' };
+  // A bank code draws from what exists at that pattern level: N4/N3 only once AI passages have been approved.
+  const ukuranPool = jenis === 'dokkai' ? info.perJlpt[jlpt].jumlah : info.jumlah;
+  // Kanji volumes the dokkai passages may use; all volumes (or a kanji test) = null.
+  let kanjiVolume = null;
+  if (jenis === 'dokkai' && Array.isArray(input?.kanjiVolume)) {
+    kanjiVolume = VOLUME_KANJI.filter((v) => input.kanjiVolume.includes(v));
+    if (!kanjiVolume.length || kanjiVolume.length !== new Set(input.kanjiVolume).size) {
+      return { ok: false, code: 'INVALID_TES_ONLINE' };
+    }
+    if (kanjiVolume.length === VOLUME_KANJI.length) kanjiVolume = null;
+  }
+  if (sumber === 'bank' && ukuranPool === 0) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggalUjian) || !namaUjian || namaUjian.length > 40) {
     return { ok: false, code: 'INVALID_TES_ONLINE' };
   }
@@ -309,7 +344,8 @@ export function validateSesiTes(input) {
   if (input?.jumlahSoal !== null && input?.jumlahSoal !== undefined && String(input.jumlahSoal).trim() !== '') {
     jumlahSoal = Number(input.jumlahSoal);
     if (!Number.isInteger(jumlahSoal) || jumlahSoal < MIN_JUMLAH_SOAL) return { ok: false, code: 'INVALID_TES_ONLINE' };
-    if (jumlahSoal >= info.jumlah) jumlahSoal = null;
+    // An AI code's pool is written later, so its count stays as asked (capped by the pool when drawing).
+    if (sumber === 'bank' && jumlahSoal >= ukuranPool) jumlahSoal = null;
   }
 
   let berlakuSampai = null;
@@ -319,13 +355,124 @@ export function validateSesiTes(input) {
     berlakuSampai = t.toISOString();
   }
 
-  return { ok: true, normalized: { kelasId, jenis, materi, jumlahSoal, tanggalUjian, namaUjian, berlakuSampai } };
+  return {
+    ok: true,
+    normalized: { kelasId, jenis, materi, sumber, jlpt, kanjiVolume, jumlahSoal, tanggalUjian, namaUjian, berlakuSampai },
+  };
 }
 
 /** Why a code cannot be used right now, or null when it can. */
 export function alasanKodeTidakBerlaku(sesi, now = new Date()) {
   if (!sesi) return 'TES_KODE_TIDAK_DITEMUKAN';
+  if (sesi.status === 'draf') return 'TES_KODE_BELUM_AKTIF';
   if (sesi.status !== 'aktif') return 'TES_KODE_DITUTUP';
   if (sesi.berlakuSampai && new Date(sesi.berlakuSampai) <= now) return 'TES_KODE_DITUTUP';
   return null;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// AI-written dokkai passages: what a model returns is only used when it passes these checks.
+
+const KANJI = /[\u3400-\u9FFF\u3005\u3006\u30F6]/;
+const KANA_SAJA = /^[\u3040-\u30FF]+$/;
+const RANGKAIAN_BERFURIGANA = /([\u3400-\u9FFF\u3005\u3006\u30F6]+)\{([^{}]*)\}/g;
+
+// Kanji groups a dokkai code can allow in its passages: the same groups as the kanji test (80 basic kanji and the
+// kanji of each volume's words). The JLPT level of a dokkai code is about grammar only.
+export const VOLUME_KANJI = ['DASAR', ...Object.keys(KANJI_VOLUME)];
+const KANJI_PER_VOLUME = {
+  DASAR: new Set(KANJI_DASAR.map(([k]) => k)),
+  ...Object.fromEntries(
+    Object.entries(KANJI_VOLUME).map(([vol, kata]) => [
+      vol,
+      new Set(kata.flatMap(([w]) => w.match(/[\u3400-\u9FFF\u3005]/g) || [])),
+    ])
+  ),
+};
+
+/** The kanji of a selection of volumes (default: all of them). */
+export function kanjiDariVolume(volume = VOLUME_KANJI) {
+  return new Set(volume.flatMap((v) => [...(KANJI_PER_VOLUME[v] || [])]));
+}
+
+/** Every kanji the peserta study. */
+export const KANJI_DIPELAJARI = kanjiDariVolume();
+
+/**
+ * Every kanji run carries a kana reading right after it (漢字{かんじ}), and braces hold nothing else. A reading
+ * shorter than its kanji run (毎朝六時{ろくじ}) means kanji before it went without furigana.
+ */
+export function furiganaLengkap(teks) {
+  const sisa = String(teks).replace(RANGKAIAN_BERFURIGANA, (_, base, rt) =>
+    KANA_SAJA.test(rt) && rt.length >= [...base].length ? '' : '{'
+  );
+  return !KANJI.test(sisa) && !/[{}]/.test(sisa);
+}
+
+/**
+ * A kanji run with any kanji outside kanjiBoleh is written in its kana reading instead (寮{りょう} → りょう).
+ * `ganti` collects what was replaced, so the explanation can follow the same text.
+ */
+export function sederhanakanKanji(teks, ganti = new Map(), kanjiBoleh = KANJI_DIPELAJARI) {
+  return String(teks).replace(RANGKAIAN_BERFURIGANA, (utuh, base, rt) => {
+    if ([...base].every((c) => kanjiBoleh.has(c))) return utuh;
+    ganti.set(base, rt);
+    return rt;
+  });
+}
+
+function terapkanGanti(teks, ganti) {
+  return [...ganti.keys()]
+    .sort((a, b) => b.length - a.length)
+    .reduce((t, base) => t.split(base).join(ganti.get(base)), teks);
+}
+
+/** A passage with only kanji from kanjiBoleh: title, text and questions in kana where needed, explanations too. */
+export function sederhanakanBacaan(b, kanjiBoleh) {
+  const ganti = new Map();
+  const out = {
+    ...b,
+    judul: sederhanakanKanji(b.judul, ganti, kanjiBoleh),
+    teks: sederhanakanKanji(b.teks, ganti, kanjiBoleh),
+    soal: b.soal.map((x) => ({ ...x, tanya: sederhanakanKanji(x.tanya, ganti, kanjiBoleh) })),
+  };
+  if (!ganti.size) return b;
+  out.soal = out.soal.map((x) => ({ ...x, pembahasan: terapkanGanti(x.pembahasan, ganti) }));
+  return out;
+}
+
+const teksBersih = (v) => (typeof v === 'string' ? v.trim() : '');
+// N4 and N3 passages may run longer than N5 ones.
+const PANJANG_MAKS = { N5: 800, N4: 1200, N3: 1600 };
+
+/**
+ * Checks and normalises one passage written by the AI. Returns { ok: true, bacaan } with ids under `id`
+ * (questions `${id}-1`, …) or { ok: false, alasan }. Kanji outside kanjiBoleh become kana, at every JLPT level.
+ */
+export function validasiBacaanAi(raw, id, { jlpt = 'N5', kanjiBoleh = KANJI_DIPELAJARI } = {}) {
+  const judul = teksBersih(raw?.judul);
+  const teks = teksBersih(raw?.teks);
+  const terjemahan = teksBersih(raw?.terjemahan);
+  if (!judul || judul.length > 60 || teks.length < 20 || teks.length > (PANJANG_MAKS[jlpt] || 800) || terjemahan.length < 10) {
+    return { ok: false, alasan: 'panjang' };
+  }
+  if (!furiganaLengkap(judul) || !furiganaLengkap(teks)) return { ok: false, alasan: 'furigana' };
+
+  const daftar = Array.isArray(raw?.soal) ? raw.soal : [];
+  if (daftar.length < 2 || daftar.length > 3) return { ok: false, alasan: 'jumlah_soal' };
+  const soal = [];
+  for (const [i, s] of daftar.entries()) {
+    const tanya = teksBersih(s?.tanya);
+    const tanyaId = teksBersih(s?.tanyaId);
+    const pembahasan = teksBersih(s?.pembahasan).replace(/\{[^{}]*\}/g, '');
+    const opsi = Array.isArray(s?.opsi) ? s.opsi.map(teksBersih) : [];
+    const benar = s?.benar;
+    if (!tanya || !tanyaId || !pembahasan || !furiganaLengkap(tanya)) return { ok: false, alasan: 'soal' };
+    if (opsi.length !== 3 || opsi.some((o) => !o) || new Set(opsi).size !== 3) return { ok: false, alasan: 'opsi' };
+    if (!Number.isInteger(benar) || benar < 0 || benar > 2) return { ok: false, alasan: 'kunci' };
+    soal.push({ id: `${id}-${i + 1}`, tanya, tanyaId, opsi, benar, pembahasan });
+  }
+  if (new Set(soal.map((x) => x.tanya)).size !== soal.length) return { ok: false, alasan: 'soal' };
+
+  return { ok: true, bacaan: sederhanakanBacaan({ id, judul, teks, terjemahan, soal }, kanjiBoleh) };
 }
