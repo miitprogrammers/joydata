@@ -173,6 +173,37 @@ CREATE TABLE IF NOT EXISTS nilai_mensetsu (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Tes Online (kanji & dokkai di portal peserta): sensei membuka kode untuk satu kelas; peserta yang memasukkan kode
+-- mengerjakan kertas acak miliknya sendiri (soal + kunci disimpan di percobaan), nilainya masuk ke nilai_ujian.
+-- Tanpa kode, tes di portal hanya latihan dan tidak disimpan.
+CREATE TABLE IF NOT EXISTS tes_online_sesi (
+  id SERIAL PRIMARY KEY,
+  kode VARCHAR(12) NOT NULL UNIQUE,
+  kelas_id INTEGER NOT NULL REFERENCES kelas(id) ON DELETE CASCADE,
+  jenis VARCHAR(10) NOT NULL CHECK (jenis IN ('kanji', 'dokkai')),
+  materi VARCHAR(20) NOT NULL,
+  jumlah_soal INTEGER NULL CHECK (jumlah_soal IS NULL OR jumlah_soal > 0),
+  tanggal_ujian DATE NOT NULL,
+  nama_ujian VARCHAR(40) NOT NULL,
+  berlaku_sampai TIMESTAMPTZ NULL,
+  status VARCHAR(10) NOT NULL DEFAULT 'aktif' CHECK (status IN ('aktif', 'ditutup')),
+  dibuat_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS tes_online_percobaan (
+  id SERIAL PRIMARY KEY,
+  sesi_id INTEGER NOT NULL REFERENCES tes_online_sesi(id) ON DELETE CASCADE,
+  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
+  soal JSONB NOT NULL,
+  jawaban JSONB NULL,
+  skor NUMERIC(5,2) NULL,
+  hasil JSONB NULL,
+  mulai_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  selesai_at TIMESTAMPTZ NULL,
+  UNIQUE (sesi_id, peserta_id)
+);
+
 CREATE TABLE IF NOT EXISTS nilai_sikap (
   id SERIAL PRIMARY KEY,
   peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,

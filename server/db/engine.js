@@ -287,6 +287,8 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     nilaiUjian,
     nilaiKaiwa,
     nilaiMensetsu: [],
+    tesOnlineSesi: [],
+    tesOnlinePercobaan: [],
     nilaiSikap,
     absensi,
     sikapKategori,
@@ -305,6 +307,8 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
       nilaiUjian: nilaiUjian.length + 1,
       nilaiKaiwa: nilaiKaiwa.length + 1,
       nilaiMensetsu: 1,
+      tesOnlineSesi: 1,
+      tesOnlinePercobaan: 1,
       nilaiSikap: nilaiSikap.length + 1,
       absensi: absensi.length + 1,
       auditLog: auditLog.length + 1,
@@ -343,6 +347,11 @@ function ensurePhase2Collections(state) {
     state.nilaiMensetsu = [];
     dirty = true;
   }
+  if (!Array.isArray(state.tesOnlineSesi)) {
+    state.tesOnlineSesi = [];
+    state.tesOnlinePercobaan = [];
+    dirty = true;
+  }
   for (const p of SEED_PAGES) {
     if ((state.pages || []).some((existing) => existing.kode === p.kode)) continue;
     const { defaultRoles = [], ...page } = p;
@@ -356,6 +365,8 @@ function ensurePhase2Collections(state) {
   state.seq.nilaiUjian = state.seq.nilaiUjian || (state.nilaiUjian.length + 1);
   state.seq.nilaiKaiwa = state.seq.nilaiKaiwa || ((state.nilaiKaiwa || []).length + 1);
   state.seq.nilaiMensetsu = state.seq.nilaiMensetsu || ((state.nilaiMensetsu || []).length + 1);
+  state.seq.tesOnlineSesi = state.seq.tesOnlineSesi || state.tesOnlineSesi.length + 1;
+  state.seq.tesOnlinePercobaan = state.seq.tesOnlinePercobaan || state.tesOnlinePercobaan.length + 1;
   state.seq.nilaiSikap = state.seq.nilaiSikap || ((state.nilaiSikap || []).length + 1);
   state.seq.absensi = state.seq.absensi || ((state.absensi || []).length + 1);
   state.seq.pushSubscription = state.seq.pushSubscription || ((state.pushSubscriptions || []).length + 1);

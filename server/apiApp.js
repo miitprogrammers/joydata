@@ -96,6 +96,19 @@ import {
   setPesertaPortalAktif,
 } from './db/portalRepo.js';
 import { signPortalToken, requirePeserta } from './middleware/portalAuth.js';
+import {
+  listSesiTes,
+  createSesiTes,
+  updateSesiTes,
+  deleteSesiTes,
+  getHasilSesiTes,
+  getTesPortal,
+  getLatihanTes,
+  nilaiLatihanTes,
+  cekKodeTes,
+  mulaiTes,
+  selesaiTes,
+} from './db/tesOnlineRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
 import { JAPAN_PREFECTURES } from './db/prefectures.js';
@@ -153,6 +166,13 @@ function handleRouteError(res, err) {
     'PORTAL_NO_BIRTH_DATE',
     'INVALID_FORMASI_KELAS',
     'FORMASI_KELAS_BERUBAH',
+    'INVALID_TES_ONLINE',
+    'TES_KODE_TIDAK_DITEMUKAN',
+    'TES_KODE_DITUTUP',
+    'TES_KODE_BEDA_KELAS',
+    'TES_SUDAH_DIKERJAKAN',
+    'TES_PERCOBAAN_TIDAK_ADA',
+    'TES_SESI_SUDAH_ADA_HASIL',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
@@ -291,6 +311,55 @@ export function createApiRouter() {
     }
   });
 
+  // Tes Online di portal: latihan tanpa kode (tidak disimpan); dengan kode dari sensei nilainya masuk Rekap Nilai Ujian.
+  router.get('/portal/tes', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await getTesPortal(req.peserta.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/tes/latihan', requirePeserta(), (req, res) => {
+    try {
+      return res.json(getLatihanTes({ jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah }));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/tes/latihan/nilai', requirePeserta(), (req, res) => {
+    try {
+      return res.json(nilaiLatihanTes(req.body?.jenis, req.body?.soal, req.body?.jawaban));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/tes/kode', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await cekKodeTes(req.peserta.id, req.body?.kode));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/tes/mulai', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await mulaiTes(req.peserta.id, req.body?.kode));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/tes/:id/selesai', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await selesaiTes(req.peserta.id, req.params.id, req.body?.jawaban));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
   // Overview / Dashboard Fase 1
   router.get('/overview', requireAuth, requirePageAccess('dashboard'), async (_req, res) => {
     try {
@@ -312,6 +381,47 @@ export function createApiRouter() {
         errorMessage: syncResult.errorMessage,
         totalStudents: syncResult.students.length,
       });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Tes Online: sensei membuka kode tes untuk satu kelas, lalu memantau hasilnya
+  router.get('/tes-online', requireAuth, requirePageAccess('tes-online'), async (_req, res) => {
+    try {
+      return res.json(await listSesiTes());
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/tes-online', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.status(201).json(await createSesiTes(req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.patch('/tes-online/:id', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await updateSesiTes(req.params.id, req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.delete('/tes-online/:id', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await deleteSesiTes(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/tes-online/:id/hasil', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await getHasilSesiTes(req.params.id));
     } catch (err) {
       return handleRouteError(res, err);
     }
