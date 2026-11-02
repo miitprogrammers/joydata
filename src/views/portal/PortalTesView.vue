@@ -178,11 +178,11 @@ const materiLatihan = computed(() => katalog.value[jenisLatihan.value] || []);
 const pilihanJumlah = computed(() =>
   jenisLatihan.value === 'kanji'
     ? [10, 20, 30, 50].map((n) => ({ value: n, label: String(n) })).concat({ value: 0, label: t('portal.tes.semua') })
-    : [1, 3, 5].map((n) => ({ value: n, label: String(n) })).concat({ value: 0, label: t('portal.tes.semua') })
+    : [1, 3, 5, 10].map((n) => ({ value: n, label: String(n) })).concat({ value: 0, label: t('portal.tes.semua') })
 );
 watch(jenisLatihan, (j) => {
   materiDipilih.value = j === 'kanji' ? 'DASAR' : 'L1';
-  jumlahLatihan.value = j === 'kanji' ? 20 : 0;
+  jumlahLatihan.value = j === 'kanji' ? 20 : 3;
 });
 
 const tersimpanInfo = computed(() =>

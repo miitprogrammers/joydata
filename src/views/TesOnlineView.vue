@@ -327,7 +327,7 @@ watch(
   (jenis, lama) => {
     if (!jenis || jenis === lama || !createOpen.value) return;
     form.value.materi = (katalog.value[jenis] || [])[0]?.kode || null;
-    form.value.jumlahSoal = jenis === 'kanji' ? 20 : '';
+    form.value.jumlahSoal = jenis === 'kanji' ? 20 : 5;
   }
 );
 watch(

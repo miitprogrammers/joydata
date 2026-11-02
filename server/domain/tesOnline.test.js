@@ -34,10 +34,10 @@ test('Tes online catalogue: 80 kanji dasar, five volumes, and the dokkai levels'
   assert.equal(byKode.DASAR, 80);
   assert.equal(byKode.VOL1, 84);
   assert.equal(byKode.SEMUA, 417); // 服 is in VOL4 and VOL5 but asked once
-  assert.equal(dokkai.find((m) => m.kode === 'L1').jumlah, 3);
+  assert.equal(dokkai.find((m) => m.kode === 'L1').jumlah, 10);
   assert.deepEqual(
     dokkai.find((m) => m.kode === 'SEMUA'),
-    { kode: 'SEMUA', judul: 'Gabungan semua level', jumlah: 15, jumlahSoal: 30, saranNamaUjian: 'DK-ALL' }
+    { kode: 'SEMUA', judul: 'Gabungan semua level', jumlah: 50, jumlahSoal: 100, saranNamaUjian: 'DK-ALL' }
   );
 });
 
@@ -125,7 +125,7 @@ test('Grading: kanji reading and meaning are half a point each, dokkai one point
   assert.equal(hasilKanji.benarArti, 1);
   assert.match(catatanHasilTes({ jenis: 'kanji', materiJudul: 'Volume 3', kode: 'ABC234' }, hasilKanji), /Bacaan 2\/2 · Arti 1\/2 · Perlu diulang: /);
 
-  const dokkai = buatSoalTes({ jenis: 'dokkai', materi: 'L1' }, rngDari(5));
+  const dokkai = buatSoalTes({ jenis: 'dokkai', materi: 'L1', jumlah: 3 }, rngDari(5));
   const semuaSoal = dokkai.flatMap((b) => b.soal);
   const jawaban = Object.fromEntries(semuaSoal.map((s, i) => [s.id, i % 2 === 0 ? s.benar : (s.benar + 1) % 3]));
   const hasilDokkai = nilaiTes('dokkai', dokkai, jawaban);
