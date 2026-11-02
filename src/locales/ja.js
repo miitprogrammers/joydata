@@ -35,6 +35,9 @@ export default {
     username: 'ユーザー名',
     password: 'パスワード',
     submit: 'ログイン',
+    masukSebagai: 'ログイン区分',
+    staf: 'スタッフ',
+    peserta: '受講生',
   },
   tags: {
     standar: '学習開始',
@@ -850,7 +853,6 @@ export default {
     passwordHint: '初回ログイン：生年月日を ddmmyy の形式で入力（例：2002年7月14日 → 140702）。',
     submit: 'ログイン',
     loginGagal: 'メールアドレスまたはパスワードが正しくありません。',
-    staffLink: 'スタッフとしてログイン',
     gantiSandiTitle: '新しいパスワードの設定',
     gantiSandiDesc: '現在は初期パスワード（生年月日）のままです。安全のため、先に新しいパスワードを設定してください。',
     gantiSandiDialog: 'パスワード変更',

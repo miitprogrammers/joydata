@@ -35,6 +35,9 @@ export default {
     username: 'Username Staff',
     password: 'Kata Sandi',
     submit: 'Masuk Sistem',
+    masukSebagai: 'Masuk sebagai',
+    staf: 'Staf',
+    peserta: 'Peserta',
   },
   tags: {
     standar: 'Standar (Mulai Belajar)',
@@ -850,7 +853,6 @@ export default {
     passwordHint: 'Login pertama: tanggal lahir Anda dengan format ddmmyy. Contoh: 14 Juli 2002 → 140702.',
     submit: 'Masuk',
     loginGagal: 'Email atau kata sandi tidak sesuai.',
-    staffLink: 'Masuk sebagai staf',
     gantiSandiTitle: 'Buat Kata Sandi Baru',
     gantiSandiDesc: 'Anda masih memakai kata sandi awal (tanggal lahir). Demi keamanan, buat kata sandi baru dulu.',
     gantiSandiDialog: 'Ganti Kata Sandi',

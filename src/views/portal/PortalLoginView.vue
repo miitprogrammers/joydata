@@ -26,6 +26,7 @@
 
     <main class="w-full max-w-md mx-auto my-auto py-8">
       <div class="joy-surface p-7 sm:p-8">
+        <LoginRoleSwitch aktif="peserta" />
         <div class="mb-6">
           <p class="text-xs font-medium text-slate-500 mb-1">
             {{ $t('app.institution') }}
@@ -84,12 +85,6 @@
           </v-btn>
         </form>
       </div>
-
-      <p class="text-center mt-4">
-        <router-link to="/login" class="text-xs text-slate-500 hover:text-slate-800 underline underline-offset-2">
-          {{ $t('portal.staffLink') }}
-        </router-link>
-      </p>
     </main>
 
     <footer class="max-w-5xl w-full mx-auto text-center text-xs text-slate-400">
@@ -105,6 +100,7 @@ import { useI18n } from 'vue-i18n';
 import { useLocale } from 'vuetify';
 import { useAppStore } from '../../stores/appStore.js';
 import { portalRequest, setPortalToken } from '../../services/portalApi.js';
+import LoginRoleSwitch from '../../components/LoginRoleSwitch.vue';
 
 const router = useRouter();
 const { t, te, locale } = useI18n();

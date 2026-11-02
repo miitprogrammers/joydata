@@ -30,6 +30,7 @@
 
     <main class="w-full max-w-md mx-auto my-auto py-8">
       <div class="joy-surface p-7 sm:p-8">
+        <LoginRoleSwitch aktif="staf" />
         <div class="mb-6">
           <p class="text-xs font-medium text-slate-500 mb-1">
             {{ $t('app.institution') }}
@@ -100,6 +101,7 @@ import { useI18n } from 'vue-i18n';
 import { useLocale } from 'vuetify';
 import { useAppStore } from '../stores/appStore.js';
 import PWAInstallButton from '../components/PWAInstallButton.vue';
+import LoginRoleSwitch from '../components/LoginRoleSwitch.vue';
 
 const router = useRouter();
 const route = useRoute();
