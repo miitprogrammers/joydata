@@ -203,7 +203,12 @@ export function buatSoalTes({ jenis, materi, jumlah = null, pool = null, kanjiBo
   return buatSoalDokkai(pool ?? poolDokkai(materi), jumlah, rng, kanjiBoleh);
 }
 
-/** The paper a peserta sees during an official test: no answer key, no translation or explanation. */
+const tanpaFurigana = (s) => String(s || '').replace(/\{[^}]*\}/g, '');
+
+/**
+ * The paper a peserta sees during an official test: no answer key, no translation or explanation, and dokkai text
+ * without furigana (reading the kanji is part of the test; the readings come back with the results).
+ */
 export function soalTanpaKunci(jenis, soal) {
   if (jenis === 'kanji') {
     return soal.map(({ id, kanji, bacaan, arti }) => ({ id, kanji, bacaan: { opsi: bacaan.opsi }, arti: { opsi: arti.opsi } }));
@@ -211,9 +216,9 @@ export function soalTanpaKunci(jenis, soal) {
   return soal.map(({ id, level, judul, teks, soal: daftar }) => ({
     id,
     level,
-    judul,
-    teks,
-    soal: daftar.map(({ id: soalId, tanya, tanyaId, opsi }) => ({ id: soalId, tanya, tanyaId, opsi })),
+    judul: tanpaFurigana(judul),
+    teks: tanpaFurigana(teks),
+    soal: daftar.map(({ id: soalId, tanya, tanyaId, opsi }) => ({ id: soalId, tanya: tanpaFurigana(tanya), tanyaId, opsi })),
   }));
 }
 
@@ -279,7 +284,14 @@ export function nilaiTes(jenis, soal, jawaban = {}) {
   };
 }
 
-const tanpaFurigana = (s) => String(s || '').replace(/\{[^}]*\}/g, '');
+/**
+ * How a Tes Online score is stored in Rekap Nilai Ujian: in the JLPT section it measures (kanji = 文字・語彙,
+ * dokkai = 読解), so the section averages in the rapor and Smart Report include it. With one section filled the
+ * exam average equals the score.
+ */
+export function skorNilaiUjian(jenis, skor) {
+  return jenis === 'kanji' ? { pola: 'variable', nilaiMojiGoi: skor } : { pola: 'variable', nilaiDokkai: skor };
+}
 
 /** One-line note for Rekap Nilai Ujian: what was tested and what to practise again. */
 export function catatanHasilTes({ jenis, materiJudul, kode }, hasil) {

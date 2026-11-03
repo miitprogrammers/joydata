@@ -573,6 +573,7 @@ export default {
     detailModalTitle: 'Detail Rekaman Audit',
   },
   messages: {
+    TES_KODE_UJIAN_DIPAKAI: 'Kode ujian ini sudah dipakai untuk kelas ini di tanggal yang sama; nilainya akan saling menimpa. Pakai kode ujian lain (misalnya tambahkan -2).',
     TES_KODE_BELUM_AKTIF: 'Kode tes ini belum diaktifkan sensei.',
     TES_AI_BELUM_ADA_BACAAN: 'Draf ini belum punya bacaan. Tulis bacaan AI dulu sebelum mengaktifkan kode.',
     TES_SESI_BUKAN_DRAF: 'Kode ini sudah aktif, jadi bacaannya tidak bisa diubah lagi.',

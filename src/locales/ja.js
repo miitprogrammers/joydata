@@ -573,6 +573,7 @@ export default {
     detailModalTitle: '監査ログ詳細データ',
   },
   messages: {
+    TES_KODE_UJIAN_DIPAKAI: 'この試験コードは同じクラス・同じ日付ですでに使われているため、成績が上書きされます。別の試験コードにしてください（例: 末尾に -2）。',
     TES_KODE_BELUM_AKTIF: 'このテストコードはまだ先生が有効にしていません。',
     TES_AI_BELUM_ADA_BACAAN: 'この下書きには文章がありません。有効にする前にAI文章を作成してください。',
     TES_SESI_BUKAN_DRAF: 'このコードは有効化済みのため、文章を変更できません。',

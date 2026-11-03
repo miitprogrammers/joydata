@@ -3,10 +3,6 @@
     <div class="joy-surface px-4 py-3">
       <div class="flex items-center justify-between gap-3 text-xs font-medium text-slate-500">
         <span class="tabular-nums">{{ $t('portal.tes.bacaanKe', { n: index + 1, total: soal.length }) }}</span>
-        <label class="flex items-center gap-1.5 cursor-pointer select-none">
-          <input v-model="furigana" type="checkbox" class="accent-blue-700" />
-          {{ $t('portal.tes.furigana') }}
-        </label>
       </div>
       <div class="mt-2 h-1.5 rounded-full bg-slate-100 overflow-hidden">
         <div class="h-full rounded-full bg-primary transition-all" :style="{ width: `${progres}%` }" />
@@ -14,9 +10,9 @@
     </div>
 
     <section class="joy-surface p-5">
-      <h2 class="text-lg font-bold text-slate-900" lang="ja"><FuriganaText :text="bacaan.judul" :furigana="furigana" /></h2>
-      <p class="mt-3 rounded-xl bg-slate-50 border border-slate-100 p-4 text-lg leading-[2.4] text-slate-900" lang="ja">
-        <FuriganaText :text="bacaan.teks" :furigana="furigana" />
+      <h2 class="text-lg font-bold text-slate-900" lang="ja"><FuriganaText :text="bacaan.judul" :furigana="false" /></h2>
+      <p class="mt-3 rounded-xl bg-slate-50 border border-slate-100 p-4 text-lg leading-[2] text-slate-900" lang="ja">
+        <FuriganaText :text="bacaan.teks" :furigana="false" />
       </p>
       <div v-if="diperiksa && bacaan.terjemahan" class="mt-3">
         <button type="button" class="text-xs font-medium text-blue-700 hover:underline" @click="terjemahanTerbuka = !terjemahanTerbuka">
@@ -27,7 +23,7 @@
     </section>
 
     <section v-for="(s, qi) in bacaan.soal" :key="s.id" class="joy-surface p-5">
-      <p class="text-base font-semibold text-slate-900" lang="ja">{{ qi + 1 }}. <FuriganaText :text="s.tanya" :furigana="furigana" /></p>
+      <p class="text-base font-semibold text-slate-900" lang="ja">{{ qi + 1 }}. <FuriganaText :text="s.tanya" :furigana="false" /></p>
       <p class="text-xs text-slate-500 mt-0.5">{{ s.tanyaId }}</p>
       <div class="mt-3 grid gap-2">
         <button
@@ -79,6 +75,7 @@
 import { ref, computed } from 'vue';
 import FuriganaText from './FuriganaText.vue';
 
+// No furigana while answering, in practice too: reading the kanji is part of the test. The results page shows them.
 const props = defineProps({
   soal: { type: Array, required: true },
   mode: { type: String, default: 'latihan' },
@@ -88,7 +85,6 @@ defineEmits(['selesai']);
 
 const index = ref(0);
 const jawaban = ref({});
-const furigana = ref(true);
 const diperiksa = ref(false);
 const terjemahanTerbuka = ref(false);
 

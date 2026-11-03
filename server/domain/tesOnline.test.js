@@ -6,6 +6,7 @@ import {
   soalTanpaKunci,
   nilaiTes,
   catatanHasilTes,
+  skorNilaiUjian,
   validateSesiTes,
   buatKodeTes,
   normalisasiKodeTes,
@@ -20,6 +21,7 @@ import {
   VOLUME_KANJI,
 } from './tesOnline.js';
 import { KANJI_DASAR } from './bankSoal/kanjiN5.js';
+import { validateAndNormalizeNilaiUjian } from './rules.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
 
 // Small seeded generator so a failing paper can be reproduced.
@@ -107,7 +109,7 @@ test('Dokkai paper shuffles passages and options but keeps every answer key righ
   assert.notEqual(urutan(1), urutan(2));
 });
 
-test('Official paper hides the key, translation and explanation', () => {
+test('Official paper hides the key, translation, explanation and the dokkai furigana', () => {
   const kanji = soalTanpaKunci('kanji', buatSoalTes({ jenis: 'kanji', materi: 'VOL2', jumlah: 3 }, rngDari(1)));
   assert.equal(kanji[0].bacaan.benar, undefined);
   assert.equal(kanji[0].arti.benar, undefined);
@@ -116,6 +118,10 @@ test('Official paper hides the key, translation and explanation', () => {
   assert.equal(dokkai[0].terjemahan, undefined);
   assert.equal(dokkai[0].soal[0].benar, undefined);
   assert.equal(dokkai[0].soal[0].pembahasan, undefined);
+  for (const b of dokkai) {
+    for (const t of [b.judul, b.teks, ...b.soal.map((s) => s.tanya)]) assert.doesNotMatch(t, /[{}]/);
+  }
+  assert.match(dokkai.map((b) => b.teks).join(''), /[㐀-鿿]/); // the kanji themselves stay
 });
 
 test('Grading: kanji reading and meaning are half a point each, dokkai one point per question', () => {
@@ -249,4 +255,15 @@ test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only onc
     true
   );
   assert.equal(alasanKodeTidakBerlaku({ status: 'draf' }), 'TES_KODE_BELUM_AKTIF');
+});
+
+test('Tes Online scores go to their JLPT section: kanji to Moji-Goi, dokkai to Dokkai', () => {
+  const kanji = validateAndNormalizeNilaiUjian({ pesertaId: 1, kelasId: 3, tanggalUjian: '2026-11-03', codeUjian: 'KJ-V1', ...skorNilaiUjian('kanji', 87.5) });
+  assert.equal(kanji.ok, true);
+  assert.deepEqual(
+    [kanji.normalized.pola, kanji.normalized.nilaiTunggal, kanji.normalized.nilaiMojiGoi, kanji.normalized.nilaiDokkai, kanji.normalized.nilaiAvg],
+    ['variable', null, 87.5, null, 87.5]
+  );
+  const dokkai = validateAndNormalizeNilaiUjian({ pesertaId: 1, kelasId: 3, tanggalUjian: '2026-11-03', codeUjian: 'DK-L2', ...skorNilaiUjian('dokkai', 80) });
+  assert.deepEqual([dokkai.normalized.nilaiMojiGoi, dokkai.normalized.nilaiDokkai, dokkai.normalized.nilaiAvg], [null, 80, 80]);
 });

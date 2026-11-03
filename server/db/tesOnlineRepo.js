@@ -21,6 +21,7 @@ import {
   soalTanpaKunci,
   nilaiTes,
   catatanHasilTes,
+  skorNilaiUjian,
   buatKodeTes,
   normalisasiKodeTes,
   validateSesiTes,
@@ -363,6 +364,24 @@ export async function getSesiTes(idRaw) {
   return { ...denganStatus(sesi), bacaan: sesi.bacaan || [] };
 }
 
+// Scores are stored per peserta + class + date + exam code, so a second code (or a paper exam) with the same exam
+// code on the same day would overwrite the first one's scores.
+async function kodeUjianDipakai({ kelasId, tanggalUjian, namaUjian }) {
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `SELECT 1 FROM tes_online_sesi WHERE kelas_id = $1 AND tanggal_ujian = $2 AND UPPER(nama_ujian) = $3
+       UNION ALL
+       SELECT 1 FROM nilai_ujian WHERE kelas_id = $1 AND tanggal_ujian = $2 AND UPPER(nama_ujian) = $3
+       LIMIT 1`,
+      [kelasId, tanggalUjian, namaUjian]
+    );
+    return res.rows.length > 0;
+  }
+  const db = readLocalState();
+  const sama = (r, kode) => Number(r.kelasId) === kelasId && r.tanggalUjian === tanggalUjian && String(kode).toUpperCase() === namaUjian;
+  return db.tesOnlineSesi.some((s) => sama(s, s.namaUjian)) || db.nilaiUjian.some((n) => sama(n, n.codeUjian));
+}
+
 export async function createSesiTes(payload, actor) {
   await ensureInitialized();
   const check = validateSesiTes(payload, { tambahanDokkai: await queryBacaanAi() });
@@ -370,6 +389,7 @@ export async function createSesiTes(payload, actor) {
   const d = check.normalized;
   const kelasData = await listKelas();
   if (!kelasData.items.some((k) => Number(k.id) === d.kelasId)) throw new Error('INVALID_TES_ONLINE');
+  if (await kodeUjianDipakai(d)) throw new Error('TES_KODE_UJIAN_DIPAKAI');
 
   for (let i = 0; i < 8; i++) {
     const kode = buatKodeTes(crypto.randomInt);
@@ -710,8 +730,7 @@ export async function selesaiTes(pesertaId, percobaanIdRaw, jawaban) {
         kelasId: sesi.kelasId,
         tanggalUjian: sesi.tanggalUjian,
         codeUjian: sesi.namaUjian,
-        pola: 'tunggal',
-        nilaiTunggal: hasil.skor,
+        ...skorNilaiUjian(sesi.jenis, hasil.skor),
         catatan: catatanHasilTes({ jenis: sesi.jenis, materiJudul: info.materiJudul, kode: sesi.kode }, hasil),
       },
       { id: sesi.dibuatOlehStaffId, nama: `Tes Online (kode ${sesi.kode})` }

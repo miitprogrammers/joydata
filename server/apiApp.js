@@ -180,6 +180,7 @@ function handleRouteError(res, err) {
     'TES_KODE_BELUM_AKTIF',
     'TES_AI_BELUM_ADA_BACAAN',
     'TES_SESI_BUKAN_DRAF',
+    'TES_KODE_UJIAN_DIPAKAI',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
