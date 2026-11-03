@@ -257,7 +257,7 @@ const props = defineProps<{
 
 const { t, locale } = useI18n();
 
-const BAGIAN = ['mojiGoi', 'bunpou', 'dokkai', 'choukai'];
+const BAGIAN = ['mojiGoi', 'bunpou', 'choukai'];
 
 function fmt(v: number | null | undefined) {
   if (v === null || v === undefined || !Number.isFinite(v)) return '-';

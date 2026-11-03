@@ -131,6 +131,8 @@ CREATE TABLE IF NOT EXISTS nilai_ujian (
   tipe_penilaian VARCHAR(20) NOT NULL CHECK (tipe_penilaian IN ('tunggal', 'variable')),
   nilai_tunggal NUMERIC(5,2) NULL CHECK (nilai_tunggal IS NULL OR (nilai_tunggal >= 0 AND nilai_tunggal <= 100)),
   moji_goi NUMERIC(5,2) NULL CHECK (moji_goi IS NULL OR (moji_goi >= 0 AND moji_goi <= 100)),
+  -- bunpou = bagian Bunpou-Dokkai (JLPT 言語知識（文法）・読解), satu nilai untuk tata bahasa dan membaca.
+  -- dokkai tidak dipakai lagi sejak 2026-11-03 (nilainya dipindah ke bunpou); kolomnya dibiarkan untuk data lama.
   bunpou NUMERIC(5,2) NULL CHECK (bunpou IS NULL OR (bunpou >= 0 AND bunpou <= 100)),
   dokkai NUMERIC(5,2) NULL CHECK (dokkai IS NULL OR (dokkai >= 0 AND dokkai <= 100)),
   choukai NUMERIC(5,2) NULL CHECK (choukai IS NULL OR (choukai >= 0 AND choukai <= 100)),
@@ -379,11 +381,10 @@ SELECT
   CASE
     WHEN nu.tipe_penilaian = 'tunggal' THEN nu.nilai_tunggal
     ELSE ROUND((
-      (COALESCE(nu.moji_goi, 0) + COALESCE(nu.bunpou, 0) + COALESCE(nu.dokkai, 0) + COALESCE(nu.choukai, 0))
+      (COALESCE(nu.moji_goi, 0) + COALESCE(nu.bunpou, nu.dokkai, 0) + COALESCE(nu.choukai, 0))
       / NULLIF(
           (CASE WHEN nu.moji_goi IS NOT NULL THEN 1 ELSE 0 END) +
-          (CASE WHEN nu.bunpou IS NOT NULL THEN 1 ELSE 0 END) +
-          (CASE WHEN nu.dokkai IS NOT NULL THEN 1 ELSE 0 END) +
+          (CASE WHEN COALESCE(nu.bunpou, nu.dokkai) IS NOT NULL THEN 1 ELSE 0 END) +
           (CASE WHEN nu.choukai IS NOT NULL THEN 1 ELSE 0 END),
         0)
     )::numeric, 2)

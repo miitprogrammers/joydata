@@ -205,6 +205,8 @@ test('Academic formulas follow JOYdata specification without drift', () => {
     computeNilaiUjianAvg({ tipePenilaian: 'variable', mojiGoi: 80, bunpou: 70, dokkai: null, choukai: 90 }),
     80
   );
+  // A row from before the Bunpou-Dokkai merge: its dokkai value counts as that one section.
+  assert.equal(computeNilaiUjianAvg({ pola: 'variable', nilaiMojiGoi: 80, nilaiBunpou: null, nilaiDokkai: 90 }), 85);
   assert.equal(computeNilaiUjianAvg({ tipePenilaian: 'tunggal', nilaiTunggal: 87.5 }), 87.5);
 
   const abs = computeAbsensiRasio([
@@ -237,13 +239,18 @@ test('Fase 2 Nilai Ujian validation enforces tunggal vs variable invariants', ()
     nilaiTunggal: 99,
     nilaiMojiGoi: 88,
     nilaiBunpou: 84,
-    nilaiDokkai: 92,
     nilaiChoukai: '',
   });
   assert.equal(partialVar.ok, true);
   assert.equal(partialVar.normalized.nilaiTunggal, null);
   assert.equal(partialVar.normalized.nilaiChoukai, null);
-  assert.equal(partialVar.normalized.nilaiAvg, 88);
+  assert.equal(partialVar.normalized.nilaiAvg, 86);
+
+  // Bunpou-Dokkai is one section: a dokkai score is stored as bunpou, both at once is refused.
+  const base = { pesertaId: 1, kelasId: 1, tanggalUjian: '2026-10-15', codeUjian: 'DK-L2', pola: 'variable' };
+  const dariDokkai = validateAndNormalizeNilaiUjian({ ...base, nilaiDokkai: 90 });
+  assert.deepEqual([dariDokkai.normalized.nilaiBunpou, dariDokkai.normalized.nilaiDokkai, dariDokkai.normalized.nilaiAvg], [90, null, 90]);
+  assert.equal(validateAndNormalizeNilaiUjian({ ...base, nilaiBunpou: 80, nilaiDokkai: 90 }).code, 'INVALID_UJIAN_SCORE');
 
   const tunggal = validateAndNormalizeNilaiUjian({
     pesertaId: 2,

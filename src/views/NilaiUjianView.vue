@@ -184,7 +184,6 @@
                 <th class="px-2.5 py-3 text-right whitespace-nowrap">{{ $t('ujian.colTunggal') }}</th>
                 <th class="px-2.5 py-3 text-right whitespace-nowrap">{{ $t('ujian.colMojiGoi') }}</th>
                 <th class="px-2.5 py-3 text-right whitespace-nowrap">{{ $t('ujian.colBunpou') }}</th>
-                <th class="px-2.5 py-3 text-right whitespace-nowrap">{{ $t('ujian.colDokkai') }}</th>
                 <th class="px-2.5 py-3 text-right whitespace-nowrap">{{ $t('ujian.colChoukai') }}</th>
                 <th class="px-3 py-3 text-right whitespace-nowrap">{{ $t('ujian.colAvg') }}</th>
                 <th class="px-3 py-3 whitespace-nowrap">{{ $t('ujian.colPenilai') }}</th>
@@ -219,9 +218,6 @@
                 </td>
                 <td class="px-2.5 py-2.5 text-right tabular-nums font-mono text-xs text-slate-700">
                   {{ formatScoreCell(row.nilaiBunpou) }}
-                </td>
-                <td class="px-2.5 py-2.5 text-right tabular-nums font-mono text-xs text-slate-700">
-                  {{ formatScoreCell(row.nilaiDokkai) }}
                 </td>
                 <td class="px-2.5 py-2.5 text-right tabular-nums font-mono text-xs text-slate-700">
                   {{ formatScoreCell(row.nilaiChoukai) }}
@@ -420,7 +416,7 @@
 
           <!-- Pola Variable Inputs -->
           <div v-else class="space-y-2">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <v-text-field
                 v-model="form.nilaiMojiGoi"
                 type="number"
@@ -439,17 +435,6 @@
                 max="100"
                 step="0.5"
                 :label="$t('ujian.colBunpou')"
-                variant="outlined"
-                density="comfortable"
-                hide-details="auto"
-              />
-              <v-text-field
-                v-model="form.nilaiDokkai"
-                type="number"
-                min="0"
-                max="100"
-                step="0.5"
-                :label="$t('ujian.colDokkai')"
                 variant="outlined"
                 density="comfortable"
                 hide-details="auto"
@@ -554,7 +539,6 @@ const form = ref({
   nilaiTunggal: '',
   nilaiMojiGoi: '',
   nilaiBunpou: '',
-  nilaiDokkai: '',
   nilaiChoukai: '',
   catatan: '',
 });
@@ -639,7 +623,6 @@ const previewAvg = computed(() => {
   const vals = [
     parseOptionalNumber(form.value.nilaiMojiGoi),
     parseOptionalNumber(form.value.nilaiBunpou),
-    parseOptionalNumber(form.value.nilaiDokkai),
     parseOptionalNumber(form.value.nilaiChoukai),
   ].filter((v) => v !== null);
   if (!vals.length) return null;
@@ -722,7 +705,6 @@ function openCreate(presetStudent = null) {
     nilaiTunggal: '',
     nilaiMojiGoi: '',
     nilaiBunpou: '',
-    nilaiDokkai: '',
     nilaiChoukai: '',
     catatan: '',
   };
@@ -740,7 +722,6 @@ function openEdit(row) {
     nilaiTunggal: row.nilaiTunggal ?? '',
     nilaiMojiGoi: row.nilaiMojiGoi ?? '',
     nilaiBunpou: row.nilaiBunpou ?? '',
-    nilaiDokkai: row.nilaiDokkai ?? '',
     nilaiChoukai: row.nilaiChoukai ?? '',
     catatan: row.catatan || '',
   };
@@ -759,7 +740,6 @@ async function submitForm() {
       nilaiTunggal: form.value.pola === 'tunggal' ? parseOptionalNumber(form.value.nilaiTunggal) : null,
       nilaiMojiGoi: form.value.pola === 'variable' ? parseOptionalNumber(form.value.nilaiMojiGoi) : null,
       nilaiBunpou: form.value.pola === 'variable' ? parseOptionalNumber(form.value.nilaiBunpou) : null,
-      nilaiDokkai: form.value.pola === 'variable' ? parseOptionalNumber(form.value.nilaiDokkai) : null,
       nilaiChoukai: form.value.pola === 'variable' ? parseOptionalNumber(form.value.nilaiChoukai) : null,
       catatan: String(form.value.catatan || '').trim(),
     };

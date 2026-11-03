@@ -60,7 +60,7 @@ import { useI18n } from 'vue-i18n';
 import { usePortalSession, usePortalFormat } from '../../services/portalSession.js';
 import ScoreTrendChart from '../../components/smart-report/ScoreTrendChart.vue';
 
-const BAGIAN = ['mojiGoi', 'bunpou', 'dokkai', 'choukai'];
+const BAGIAN = ['mojiGoi', 'bunpou', 'choukai'];
 
 const { t } = useI18n();
 const { report } = usePortalSession();

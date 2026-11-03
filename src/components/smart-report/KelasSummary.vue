@@ -217,6 +217,6 @@ const trendPoints = computed(() =>
 );
 
 const bagianRows = computed(() =>
-  ['mojiGoi', 'bunpou', 'dokkai', 'choukai'].map((key) => ({ key, value: props.summary.bagian[key] }))
+  ['mojiGoi', 'bunpou', 'choukai'].map((key) => ({ key, value: props.summary.bagian[key] }))
 );
 </script>

@@ -13,8 +13,8 @@ import {
 
 export const BAGIAN_UJIAN = [
   { key: 'mojiGoi', field: 'nilaiMojiGoi' },
+  // Bunpou-Dokkai (文法・読解) is one section, under the key bunpou.
   { key: 'bunpou', field: 'nilaiBunpou' },
-  { key: 'dokkai', field: 'nilaiDokkai' },
   { key: 'choukai', field: 'nilaiChoukai' },
 ];
 
@@ -79,8 +79,7 @@ export function buildPesertaJourney({
         kode: u.codeUjian || '',
         pola: u.pola,
         mojiGoi: optionalNumber(u.nilaiMojiGoi),
-        bunpou: optionalNumber(u.nilaiBunpou),
-        dokkai: optionalNumber(u.nilaiDokkai),
+        bunpou: optionalNumber(u.nilaiBunpou ?? u.nilaiDokkai),
         choukai: optionalNumber(u.nilaiChoukai),
         nilaiTunggal: optionalNumber(u.nilaiTunggal),
         rata,
@@ -437,7 +436,6 @@ export function buildPesertaAiFacts(journey, { nama, programNama, settings }) {
           kode: u.kode,
           mojiGoi: u.mojiGoi,
           bunpou: u.bunpou,
-          dokkai: u.dokkai,
           choukai: u.choukai,
           nilaiTunggal: u.nilaiTunggal,
           rata: u.rata,

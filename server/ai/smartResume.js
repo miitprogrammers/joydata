@@ -5,7 +5,7 @@ import { generateJson, jsonObjectFrom } from './llm.js';
  * in Indonesian and Japanese, through the shared providers in llm.js. Bump PROMPT_VERSION when the prompts
  * change so stored resumes are marked out of date.
  */
-export const PROMPT_VERSION = 1;
+export const PROMPT_VERSION = 2;
 
 const RESPONSE_SCHEMA = {
   type: 'object',
@@ -28,7 +28,7 @@ const ATURAN_UMUM = `Aturan:
 - "id" dan "ja" masing-masing wajib memuat SEMUA paragraf yang diminta, dengan isi yang sama.
 - Di teks Indonesia gunakan koma desimal (81,8), di teks Jepang titik desimal (81.8).
 - "ja" ditulis dalam bahasa Jepang bisnis (です・ます調), bukan terjemahan kata per kata.
-  Istilah: Moji-Goi = 文字・語彙, Bunpou = 文法, Dokkai = 読解, Choukai = 聴解, Kaiwa = 会話,
+  Istilah: Moji-Goi = 文字・語彙, Bunpou-Dokkai (kunci "bunpou") = 文法・読解, Choukai = 聴解, Kaiwa = 会話,
   Mensetsu Renshuu = 面接練習, KKM = 合格基準点.
 - Jawab hanya dengan objek JSON {"id": "...", "ja": "..."}.`;
 
@@ -38,7 +38,7 @@ Data peserta diberikan sebagai JSON tanpa nama.
 
 Isi resume, 2 paragraf:
 1. Kemampuan akademik: rata-rata ujian dan predikatnya terhadap KKM, tren dari awal ke akhir, bagian terkuat dan
-   terlemah (Moji-Goi, Bunpou, Dokkai, Choukai) bila ada, pola kesalahan yang berulang di catatan ujian, hasil kaiwa,
+   terlemah (Moji-Goi, Bunpou-Dokkai, Choukai) bila ada, pola kesalahan yang berulang di catatan ujian, hasil kaiwa,
    dan hasil mensetsu renshuu (latihan wawancara) bila ada.
 2. Sikap dan kehadiran, lalu 1-2 rekomendasi tindak lanjut yang konkret untuk sensei.
 

@@ -285,12 +285,12 @@ export function nilaiTes(jenis, soal, jawaban = {}) {
 }
 
 /**
- * How a Tes Online score is stored in Rekap Nilai Ujian: in the JLPT section it measures (kanji = 文字・語彙,
- * dokkai = 読解), so the section averages in the rapor and Smart Report include it. With one section filled the
- * exam average equals the score.
+ * How a Tes Online score is stored in Rekap Nilai Ujian: in the JLPT section it measures (kanji = Moji-Goi 文字・語彙,
+ * dokkai = Bunpou-Dokkai 文法・読解), so the section averages in the rapor and Smart Report include it. With one
+ * section filled the exam average equals the score.
  */
 export function skorNilaiUjian(jenis, skor) {
-  return jenis === 'kanji' ? { pola: 'variable', nilaiMojiGoi: skor } : { pola: 'variable', nilaiDokkai: skor };
+  return jenis === 'kanji' ? { pola: 'variable', nilaiMojiGoi: skor } : { pola: 'variable', nilaiBunpou: skor };
 }
 
 /** One-line note for Rekap Nilai Ujian: what was tested and what to practise again. */

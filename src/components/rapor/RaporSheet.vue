@@ -358,8 +358,7 @@ const noop = async () => {};
 
 const BAGIAN = [
   { key: 'nilaiMojiGoi', label: 'Moji-Goi' },
-  { key: 'nilaiBunpou', label: 'Bunpou' },
-  { key: 'nilaiDokkai', label: 'Dokkai' },
+  { key: 'nilaiBunpou', label: 'Bunpou-Dokkai' },
   { key: 'nilaiChoukai', label: 'Choukai' },
 ];
 

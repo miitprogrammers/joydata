@@ -85,7 +85,7 @@ export async function loadReportState() {
       query(`SELECT mancation_akun_id AS "mancationAkunId", nama FROM mancation_peserta_cache`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_ujian::text AS "tanggalUjian",
                nama_ujian AS "codeUjian", tipe_penilaian AS "pola", nilai_tunggal::float AS "nilaiTunggal",
-               moji_goi::float AS "nilaiMojiGoi", bunpou::float AS "nilaiBunpou", dokkai::float AS "nilaiDokkai",
+               moji_goi::float AS "nilaiMojiGoi", COALESCE(bunpou, dokkai)::float AS "nilaiBunpou",
                choukai::float AS "nilaiChoukai", catatan
              FROM nilai_ujian`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_sesi::text AS "tanggalKaiwa",

@@ -279,10 +279,11 @@ export function computeNilaiUjianAvg(row) {
   if (pola === 'tunggal') {
     return row.nilaiTunggal != null && row.nilaiTunggal !== '' ? Number(row.nilaiTunggal) : null;
   }
+  // Bunpou-Dokkai is one section (JLPT 言語知識（文法）・読解), stored as bunpou; a dokkai value only exists on rows
+  // from before the merge (2026-11-03).
   const parts = [
     row.nilaiMojiGoi ?? row.mojiGoi,
-    row.nilaiBunpou ?? row.bunpou,
-    row.nilaiDokkai ?? row.dokkai,
+    row.nilaiBunpou ?? row.bunpou ?? row.nilaiDokkai ?? row.dokkai,
     row.nilaiChoukai ?? row.choukai,
   ]
     .filter((v) => v !== null && v !== undefined && v !== '')
@@ -342,14 +343,17 @@ export function validateAndNormalizeNilaiUjian(input) {
   }
 
   const mojiGoi = parseOptionalScore(input.nilaiMojiGoi ?? input.mojiGoi);
-  const bunpou = parseOptionalScore(input.nilaiBunpou ?? input.bunpou);
-  const dokkai = parseOptionalScore(input.nilaiDokkai ?? input.dokkai);
+  const bunpouInput = parseOptionalScore(input.nilaiBunpou ?? input.bunpou);
+  const dokkaiInput = parseOptionalScore(input.nilaiDokkai ?? input.dokkai);
   const choukai = parseOptionalScore(input.nilaiChoukai ?? input.choukai);
 
-  if ([mojiGoi, bunpou, dokkai, choukai].some((v) => Number.isNaN(v))) {
+  if ([mojiGoi, bunpouInput, dokkaiInput, choukai].some((v) => Number.isNaN(v))) {
     return { ok: false, code: 'INVALID_UJIAN_SCORE' };
   }
-  if ([mojiGoi, bunpou, dokkai, choukai].every((v) => v === null)) {
+  // Bunpou-Dokkai is one section: a score sent as dokkai is stored as Bunpou-Dokkai; both at once is ambiguous.
+  if (bunpouInput !== null && dokkaiInput !== null) return { ok: false, code: 'INVALID_UJIAN_SCORE' };
+  const bunpou = bunpouInput ?? dokkaiInput;
+  if ([mojiGoi, bunpou, choukai].every((v) => v === null)) {
     return { ok: false, code: 'EMPTY_VARIABLE_SCORES' };
   }
 
@@ -362,7 +366,7 @@ export function validateAndNormalizeNilaiUjian(input) {
     nilaiTunggal: null,
     nilaiMojiGoi: mojiGoi,
     nilaiBunpou: bunpou,
-    nilaiDokkai: dokkai,
+    nilaiDokkai: null,
     nilaiChoukai: choukai,
     catatan,
   };

@@ -3,7 +3,8 @@
  * from photos of exam papers into the `nilai_ujian` table.
  *
  * Source format: { kelas: { namaKelas, mancationClassId }, nilai: [{ mancationAkunId, nama, namaDiKertas,
- *   codeUjian, tanggalUjian, pola, nilaiTunggal | nilaiMojiGoi/nilaiBunpou/nilaiDokkai/nilaiChoukai, catatan }] }
+ *   codeUjian, tanggalUjian, pola, nilaiTunggal | nilaiMojiGoi/nilaiBunpou/nilaiChoukai, catatan }] }
+ *   nilaiBunpou = Bunpou-Dokkai (one section); a nilaiDokkai value is stored as Bunpou-Dokkai.
  *
  * - Target follows the app engine: Postgres/Supabase when DATABASE_URL is valid & reachable,
  *   otherwise the local store .data/joydata-db.json.
@@ -229,7 +230,7 @@ function report(src, kelasId, ready, missingAkun, staleCount) {
   for (const r of ready) {
     const skor = r.pola === 'tunggal'
       ? r.nilaiTunggal
-      : `MG ${r.nilaiMojiGoi ?? '-'} / B ${r.nilaiBunpou ?? '-'} / D ${r.nilaiDokkai ?? '-'} / C ${r.nilaiChoukai ?? '-'} (avg ${r.nilaiAvg})`;
+      : `MG ${r.nilaiMojiGoi ?? '-'} / BD ${r.nilaiBunpou ?? '-'} / C ${r.nilaiChoukai ?? '-'} (avg ${r.nilaiAvg})`;
     console.log(`    ${r.tanggalUjian}  ${r.codeUjian.padEnd(6)} ${String(r.nama ?? r.akun).padEnd(28)} ${skor}`);
   }
   for (const r of src.superseded) {

@@ -52,7 +52,7 @@ test('Smart Report: journey of one peserta covers every period with configured K
   ]);
   assert.equal(j.kpi.rataUjian, 81.7);
   assert.equal(j.kpi.jumlahLulusUjian, 2);
-  assert.deepEqual(j.ujian.bagian, { mojiGoi: 80, bunpou: 90, dokkai: null, choukai: 70 });
+  assert.deepEqual(j.ujian.bagian, { mojiGoi: 80, bunpou: 90, choukai: 70 });
   assert.deepEqual(j.ujian.tren, { jumlahPembanding: 1, awal: 80, akhir: 92, selisih: 12 });
 
   // July: 4 class sessions (other classes ignored), 2 present. August: 1 of 1.

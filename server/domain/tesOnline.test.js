@@ -257,7 +257,7 @@ test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only onc
   assert.equal(alasanKodeTidakBerlaku({ status: 'draf' }), 'TES_KODE_BELUM_AKTIF');
 });
 
-test('Tes Online scores go to their JLPT section: kanji to Moji-Goi, dokkai to Dokkai', () => {
+test('Tes Online scores go to their JLPT section: kanji to Moji-Goi, dokkai to Bunpou-Dokkai', () => {
   const kanji = validateAndNormalizeNilaiUjian({ pesertaId: 1, kelasId: 3, tanggalUjian: '2026-11-03', codeUjian: 'KJ-V1', ...skorNilaiUjian('kanji', 87.5) });
   assert.equal(kanji.ok, true);
   assert.deepEqual(
@@ -265,5 +265,8 @@ test('Tes Online scores go to their JLPT section: kanji to Moji-Goi, dokkai to D
     ['variable', null, 87.5, null, 87.5]
   );
   const dokkai = validateAndNormalizeNilaiUjian({ pesertaId: 1, kelasId: 3, tanggalUjian: '2026-11-03', codeUjian: 'DK-L2', ...skorNilaiUjian('dokkai', 80) });
-  assert.deepEqual([dokkai.normalized.nilaiMojiGoi, dokkai.normalized.nilaiDokkai, dokkai.normalized.nilaiAvg], [null, 80, 80]);
+  assert.deepEqual(
+    [dokkai.normalized.nilaiMojiGoi, dokkai.normalized.nilaiBunpou, dokkai.normalized.nilaiDokkai, dokkai.normalized.nilaiAvg],
+    [null, 80, null, 80]
+  );
 });
