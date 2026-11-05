@@ -1255,23 +1255,22 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
   // A roster member with no record in this class that month but records in another class was still in that class
   // then (moved by Atur Formasi): they do not count against this class's ratio and show their own total instead.
   const inThisClass = new Set(monthRows.map((r) => Number(r.pesertaId)));
-  const pindahan = new Set(
-    otherClassRows.map((r) => Number(r.pesertaId)).filter((id) => !inThisClass.has(id))
-  );
+  const multiKelas = new Set(otherClassRows.map((r) => Number(r.pesertaId)));
+  const pindahan = new Set([...multiKelas].filter((id) => !inThisClass.has(id)));
   const classRosterIds = classRoster.map((p) => p.id).filter((id) => !pindahan.has(Number(id)));
 
   // Rekap bulanan memakai rumus S = COUNT(DISTINCT tanggalAbsensi) §5 mainIdea.md
   const monthlyCalc = computeClassMonthlyAbsensi(classRosterIds, monthRows);
 
   const studentRecap = classRoster.map((p) => {
-    if (pindahan.has(Number(p.id))) {
+    if (multiKelas.has(Number(p.id))) {
       return {
         pesertaId: p.id,
         mancationAkunId: p.mancationAkunId,
         pesertaNama: p.nama,
         tanggalMasuk: p.tanggalMasuk || null,
         pindahan: true,
-        ...computeAbsensiPesertaLintasKelas(p.id, otherClassRows),
+        ...computeAbsensiPesertaLintasKelas(p.id, [...monthRows, ...otherClassRows], targetKelasId),
       };
     }
     const st = monthlyCalc.studentStats.get(Number(p.id)) || {

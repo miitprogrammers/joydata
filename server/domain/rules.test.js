@@ -487,10 +487,26 @@ test('computeAbsensiPesertaLintasKelas keeps the sessions of the class a peserta
     { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-11-05', status: 'hadir' },
   ];
   const s = computeAbsensiPesertaLintasKelas(1, rows, 2);
-  // old class: 3 sessions (1 attended 2); new class: 2 sessions (attended 0)
-  assert.equal(s.sesiKelas, 5);
+  // old class: only the 2 days they belonged (attended 2); new class: 2 sessions (attended 0)
+  assert.equal(s.sesiKelas, 4);
   assert.equal(s.hadir, 2);
   assert.equal(s.alfa, 1);
-  assert.equal(s.rasioKehadiran, 40);
+  assert.equal(s.rasioKehadiran, 50);
   assert.equal(computeAbsensiPesertaLintasKelas(7, [], null).rasioKehadiran, null);
+});
+
+test('computeAbsensiPesertaLintasKelas counts only the days a peserta belonged to each class', () => {
+  const rows = [
+    { pesertaId: 1, kelasId: 2, tanggalAbsensi: '2026-11-01', status: 'hadir' },
+    { pesertaId: 1, kelasId: 2, tanggalAbsensi: '2026-11-02', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-11-03', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-11-04', status: 'hadir' },
+    { pesertaId: 8, kelasId: 3, tanggalAbsensi: '2026-11-01', status: 'hadir' },
+    { pesertaId: 8, kelasId: 3, tanggalAbsensi: '2026-11-02', status: 'hadir' },
+    { pesertaId: 1, kelasId: 3, tanggalAbsensi: '2026-11-03', status: 'hadir' },
+  ];
+  const s = computeAbsensiPesertaLintasKelas(1, rows, 3);
+  assert.equal(s.sesiKelas, 3);
+  assert.equal(s.hadir, 3);
+  assert.equal(s.rasioKehadiran, 100);
 });

@@ -641,8 +641,21 @@ export function computeAbsensiPesertaLintasKelas(pesertaId, absensiRows, current
   const kelasIds = new Set(rows.filter((r) => Number(r.pesertaId) === pid).map((r) => Number(r.kelasId)));
   if (currentKelasId) kelasIds.add(Number(currentKelasId));
   const total = { hadir: 0, sakit: 0, izin: 0, alfa: 0, sesiKelas: 0 };
+  // Every session writes a row for each member, so a class's sessions outside the days the peserta has rows there
+  // were before they joined or after they left. Once they sat in two classes, only the sessions inside their
+  // membership window of each class count (the current class stays open-ended).
+  const own = rows.filter((r) => Number(r.pesertaId) === pid && r.tanggalAbsensi);
+  const ownKelas = new Set(own.map((r) => Number(r.kelasId)));
+  const dayOf = (r) => String(r.tanggalAbsensi).slice(0, 10);
   for (const kid of kelasIds) {
-    const calc = computeClassMonthlyAbsensi([pid], rows.filter((r) => Number(r.kelasId) === kid));
+    let kelasRows = rows.filter((r) => Number(r.kelasId) === kid);
+    if (ownKelas.size > 1 && ownKelas.has(kid)) {
+      const days = own.filter((r) => Number(r.kelasId) === kid).map(dayOf).sort();
+      const first = days[0];
+      const last = Number(currentKelasId) === kid ? '9999-12-31' : days[days.length - 1];
+      kelasRows = kelasRows.filter((r) => dayOf(r) >= first && dayOf(r) <= last);
+    }
+    const calc = computeClassMonthlyAbsensi([pid], kelasRows);
     const st = calc.studentStats.get(pid);
     total.hadir += st.hadir;
     total.sakit += st.sakit;
