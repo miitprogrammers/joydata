@@ -22,6 +22,7 @@ import {
   computeSikapSummary,
   VALID_ABSENSI_STATUS,
   computeClassMonthlyAbsensi,
+  computeAbsensiPesertaLintasKelas,
 } from '../domain/rules.js';
 import { todayJakarta, isIsoDate, weekOf, addDays, kaiwaRule, kaiwaWeekProgress } from '../domain/kaiwaMingguan.js';
 
@@ -1201,6 +1202,7 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
 
   let monthRows = [];
   let wizardDayRows = [];
+  let otherClassRows = []; // the same month, rows of the roster in OTHER classes (peserta moved by Atur Formasi)
 
   if (targetKelasId) {
     if (getMode() === 'postgres') {
@@ -1222,6 +1224,17 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
       ]);
       monthRows = mRes.rows;
       wizardDayRows = dRes.rows;
+      const rosterIds = lookups.rosterItems.filter((p) => Number(p.kelasId) === targetKelasId).map((p) => Number(p.id));
+      if (rosterIds.length) {
+        otherClassRows = (
+          await getPool().query(
+            `SELECT peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal::text AS "tanggalAbsensi", status
+             FROM absensi
+             WHERE kelas_id <> $1 AND peserta_id = ANY($2::int[]) AND TO_CHAR(tanggal, 'YYYY-MM') = $3`,
+            [targetKelasId, rosterIds, ym]
+          )
+        ).rows;
+      }
     } else {
       const db = readLocalState();
       monthRows = db.absensi.filter(
@@ -1230,18 +1243,37 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
       wizardDayRows = db.absensi.filter(
         (r) => Number(r.kelasId) === targetKelasId && r.tanggalAbsensi === tgl
       );
+      otherClassRows = db.absensi.filter(
+        (r) => Number(r.kelasId) !== targetKelasId && String(r.tanggalAbsensi || '').startsWith(ym)
+      );
     }
   }
 
   const classRoster = targetKelasId
     ? lookups.rosterItems.filter((p) => Number(p.kelasId) === targetKelasId)
     : [];
-  const classRosterIds = classRoster.map((p) => p.id);
+  // A roster member with no record in this class that month but records in another class was still in that class
+  // then (moved by Atur Formasi): they do not count against this class's ratio and show their own total instead.
+  const inThisClass = new Set(monthRows.map((r) => Number(r.pesertaId)));
+  const pindahan = new Set(
+    otherClassRows.map((r) => Number(r.pesertaId)).filter((id) => !inThisClass.has(id))
+  );
+  const classRosterIds = classRoster.map((p) => p.id).filter((id) => !pindahan.has(Number(id)));
 
   // Rekap bulanan memakai rumus S = COUNT(DISTINCT tanggalAbsensi) §5 mainIdea.md
   const monthlyCalc = computeClassMonthlyAbsensi(classRosterIds, monthRows);
 
   const studentRecap = classRoster.map((p) => {
+    if (pindahan.has(Number(p.id))) {
+      return {
+        pesertaId: p.id,
+        mancationAkunId: p.mancationAkunId,
+        pesertaNama: p.nama,
+        tanggalMasuk: p.tanggalMasuk || null,
+        pindahan: true,
+        ...computeAbsensiPesertaLintasKelas(p.id, otherClassRows),
+      };
+    }
     const st = monthlyCalc.studentStats.get(Number(p.id)) || {
       hadir: 0,
       sakit: 0,

@@ -18,6 +18,7 @@ import {
   validateAndNormalizeNilaiSikap,
   computeAbsensiRasio,
   computeClassMonthlyAbsensi,
+  computeAbsensiPesertaLintasKelas,
 } from './rules.js';
 
 test('RBAC: only admin can change peserta statusTag and admin lockout is prevented', () => {
@@ -474,4 +475,22 @@ test('Mensetsu renshuu: graded A / B / C like kaiwa, with the same class metrics
   );
   assert.deepEqual(metrics.distribusi, { A: 1, B: 1, C: 0, belumAda: 1 });
   assert.equal(metrics.rataPoinOrdinal, 2);
+});
+
+test('computeAbsensiPesertaLintasKelas keeps the sessions of the class a peserta moved out of', () => {
+  const rows = [
+    { pesertaId: 1, kelasId: 3, tanggalAbsensi: '2026-11-01', status: 'hadir' },
+    { pesertaId: 1, kelasId: 3, tanggalAbsensi: '2026-11-02', status: 'hadir' },
+    { pesertaId: 9, kelasId: 3, tanggalAbsensi: '2026-11-03', status: 'hadir' },
+    { pesertaId: 1, kelasId: 2, tanggalAbsensi: '2026-11-04', status: 'alfa' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-11-04', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-11-05', status: 'hadir' },
+  ];
+  const s = computeAbsensiPesertaLintasKelas(1, rows, 2);
+  // old class: 3 sessions (1 attended 2); new class: 2 sessions (attended 0)
+  assert.equal(s.sesiKelas, 5);
+  assert.equal(s.hadir, 2);
+  assert.equal(s.alfa, 1);
+  assert.equal(s.rasioKehadiran, 40);
+  assert.equal(computeAbsensiPesertaLintasKelas(7, [], null).rasioKehadiran, null);
 });

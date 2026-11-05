@@ -11,6 +11,7 @@ import {
   getGradeLabel,
   computeSikapSummary,
   computeClassMonthlyAbsensi,
+  computeAbsensiPesertaLintasKelas,
   computeKaiwaMetricsForPeriod,
   computeProgresStudentMetrics,
   validateSettingsPayload,
@@ -481,15 +482,7 @@ export async function getProgresData({ periode, kelasId, tag }) {
 
     const sikapSummary = computeSikapSummary(studentSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
 
-    const studentClassId = student.kelasId;
-    const classAllAbsensi = absensiInPeriod.filter((a) => a.kelasId === studentClassId);
-    const classRoster = activePeserta.filter((p) => p.kelasId === studentClassId).map((p) => p.id);
-    const classCalc = computeClassMonthlyAbsensi(classRoster, classAllAbsensi);
-    const studentAbsensiStat = classCalc.studentStats.get(student.id) || {
-      rasioKehadiran: null,
-      hadir: 0,
-      sesiKelas: classCalc.sesiKelas,
-    };
+    const studentAbsensiStat = computeAbsensiPesertaLintasKelas(student.id, absensiInPeriod, student.kelasId);
 
     const metrics = computeProgresStudentMetrics({
       student,
@@ -599,21 +592,13 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
   const sikapSummary = computeSikapSummary(sikapLogs, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
 
   const classId = student.kelasId;
-  const classAbsensi = (state.absensi || []).filter(
-    (a) => a.kelasId === classId && a.tanggalAbsensi && String(a.tanggalAbsensi).startsWith(activeMonth)
-  );
   const classMembers = (state.peserta || []).filter((p) => p.kelasId === classId && !p.deletedAt);
-  const classRoster = classMembers.map((p) => p.id);
-  const classCalc = computeClassMonthlyAbsensi(classRoster, classAbsensi);
-  const studentAbs = classCalc.studentStats.get(pid) || {
-    hadir: 0,
-    sakit: 0,
-    izin: 0,
-    alfa: 0,
-    sesiKelas: classCalc.sesiKelas,
-    rasioKehadiran: null,
-    rasioKetidakhadiran: null,
-  };
+  // Across every class the peserta sat in this month, so a peserta moved by Atur Formasi keeps the old class's sessions.
+  const studentAbs = computeAbsensiPesertaLintasKelas(
+    pid,
+    (state.absensi || []).filter((a) => a.tanggalAbsensi && String(a.tanggalAbsensi).startsWith(activeMonth)),
+    classId
+  );
 
   const rataBulan = (avgs) =>
     avgs.length > 0 ? Math.round((avgs.reduce((a, b) => a + b, 0) / avgs.length) * 10) / 10 : null;
@@ -622,6 +607,9 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
 
   // Class rank of this month: every classmate's exam average of the month, attendance breaking ties. Kept to the
   // month so the rapor of a past month does not change when later scores come in.
+  const allMonthAbsensi = (state.absensi || []).filter(
+    (a) => a.tanggalAbsensi && String(a.tanggalAbsensi).startsWith(activeMonth)
+  );
   const rankRows = classMembers.map((p) => ({
     pesertaId: p.id,
     nama: nameMap.get(Number(p.mancationAkunId)) || p.nama || '',
@@ -631,7 +619,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
         .map(resolveNilaiAvg)
         .filter((v) => v !== null && Number.isFinite(v))
     ),
-    rasioKehadiran: classCalc.studentStats.get(p.id)?.rasioKehadiran ?? null,
+    rasioKehadiran: computeAbsensiPesertaLintasKelas(p.id, allMonthAbsensi, classId).rasioKehadiran,
   }));
   const ranked = urutkanPeringkat(rankRows, (r) => r.rata);
   const peringkat = classId
@@ -811,10 +799,7 @@ export async function getDashboardChartsData({ periode }) {
     }
 
     if (p.kelasId) {
-      const classAbs = absensiInCurrentMonth.filter((a) => a.kelasId === p.kelasId);
-      const roster = activePeserta.filter((m) => m.kelasId === p.kelasId).map((m) => m.id);
-      const calc = computeClassMonthlyAbsensi(roster, classAbs);
-      const stat = calc.studentStats.get(p.id);
+      const stat = computeAbsensiPesertaLintasKelas(p.id, absensiInCurrentMonth, p.kelasId);
       if (stat && stat.rasioKehadiran !== null && stat.rasioKehadiran < settings.ambang_kehadiran_rendah) {
         studentWatchlistKehadiran.push({
           pesertaId: p.id,

@@ -628,6 +628,38 @@ export function computeClassMonthlyAbsensi(rosterPesertaIds, absensiRows) {
   };
 }
 
+/**
+ * Attendance of ONE peserta across every class they sat in during the rows' period. A peserta who moved class
+ * (Atur Formasi) has sessions in the old and the new class; each class contributes its own S = COUNT(DISTINCT
+ * tanggalAbsensi) and the peserta's hadir there, so nothing from the old class is lost. absensiRows = every
+ * peserta's rows of the period; currentKelasId always counts (a class with sessions but no record = absent).
+ * Same shape as a studentStats entry of computeClassMonthlyAbsensi.
+ */
+export function computeAbsensiPesertaLintasKelas(pesertaId, absensiRows, currentKelasId = null) {
+  const rows = Array.isArray(absensiRows) ? absensiRows : [];
+  const pid = Number(pesertaId);
+  const kelasIds = new Set(rows.filter((r) => Number(r.pesertaId) === pid).map((r) => Number(r.kelasId)));
+  if (currentKelasId) kelasIds.add(Number(currentKelasId));
+  const total = { hadir: 0, sakit: 0, izin: 0, alfa: 0, sesiKelas: 0 };
+  for (const kid of kelasIds) {
+    const calc = computeClassMonthlyAbsensi([pid], rows.filter((r) => Number(r.kelasId) === kid));
+    const st = calc.studentStats.get(pid);
+    total.hadir += st.hadir;
+    total.sakit += st.sakit;
+    total.izin += st.izin;
+    total.alfa += st.alfa;
+    total.sesiKelas += st.sesiKelas;
+  }
+  if (total.sesiKelas === 0) return { ...total, nonHadir: 0, rasioKehadiran: null, rasioKetidakhadiran: null };
+  const nonHadir = Math.max(0, total.sesiKelas - total.hadir);
+  return {
+    ...total,
+    nonHadir,
+    rasioKehadiran: Math.round((total.hadir / total.sesiKelas) * 1000) / 10,
+    rasioKetidakhadiran: Math.round((nonHadir / total.sesiKelas) * 1000) / 10,
+  };
+}
+
 
 
 /**
