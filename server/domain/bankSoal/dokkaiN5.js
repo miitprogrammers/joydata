@@ -1,5 +1,5 @@
-// Bank soal dokkai N5 (Tes Online): 5 level × 10 bacaan × 2 soal. Bacaan 1–3 tiap level disempurnakan dari
-// quiz_dokkai_n5_5_level.html, bacaan 4–10 ditulis baru.
+// Bank soal dokkai N5 (Tes Online): 5 level × 20 bacaan × 2 soal. Bacaan 1–3 tiap level disempurnakan dari
+// quiz_dokkai_n5_5_level.html, bacaan 4–20 ditulis baru (tata bahasa N5, topik sehari-hari dan kerja di Jepang).
 // Furigana ditulis langsung setelah kanjinya: 毎朝{まいあさ} → <ruby>毎朝<rt>まいあさ</rt></ruby>.
 // Pertanyaan dan pilihan jawaban dalam bahasa Jepang (furigana dengan format yang sama). `tanyaId` = terjemahan
 // pertanyaan, hanya tampil di pembahasan setelah tes. `benar` = indeks pilihan yang benar.
@@ -110,6 +110,106 @@ export const DOKKAI_LEVEL = [
           { id: 'L1-10-2', tanya: 'スーパーはどこにありますか。', tanyaId: 'Di mana supermarketnya?', opsi: ['駅{えき}の前{まえ}', '川{かわ}の近{ちか}く', '学校{がっこう}のうしろ'], benar: 0, pembahasan: '駅の前に大きいスーパーがあります = di depan stasiun ada supermarket besar.' },
         ],
       },
+      {
+        id: 'L1-11',
+        judul: '父{ちち}の仕事{しごと}',
+        teks: 'わたしの父{ちち}は医者{いしゃ}です。毎日{まいにち}病院{びょういん}で働{はたら}きます。父{ちち}は魚{さかな}がとても好{す}きです。',
+        terjemahan: 'Ayah saya seorang dokter. Setiap hari ia bekerja di rumah sakit. Ayah sangat suka ikan.',
+        soal: [
+          { id: 'L1-11-1', tanya: 'お父{とう}さんの仕事{しごと}は何{なん}ですか。', tanyaId: 'Apa pekerjaan ayah penulis?', opsi: ['先生{せんせい}', '医者{いしゃ}', '会社員{かいしゃいん}'], benar: 1, pembahasan: 'わたしの父は医者です = ayah saya seorang dokter.' },
+          { id: 'L1-11-2', tanya: 'お父{とう}さんは何{なに}が好{す}きですか。', tanyaId: 'Apa yang disukai ayah?', opsi: ['魚{さかな}', '肉{にく}', 'やさい'], benar: 0, pembahasan: '父は魚がとても好きです = ayah sangat suka ikan.' },
+        ],
+      },
+      {
+        id: 'L1-12',
+        judul: '新{あたら}しい時計{とけい}',
+        teks: 'これは新{あたら}しい時計{とけい}です。母{はは}にもらいました。この時計{とけい}は青{あお}くて、小{ちい}さいです。',
+        terjemahan: 'Ini jam tangan baru. Saya menerimanya dari ibu. Jam ini biru dan kecil.',
+        soal: [
+          { id: 'L1-12-1', tanya: '時計{とけい}はだれにもらいましたか。', tanyaId: 'Dari siapa jam itu diterima?', opsi: ['父{ちち}', '友{とも}だち', '母{はは}'], benar: 2, pembahasan: '母にもらいました = diterima dari ibu.' },
+          { id: 'L1-12-2', tanya: 'どんな時計{とけい}ですか。', tanyaId: 'Jam itu seperti apa?', opsi: ['青{あお}くて、小{ちい}さい時計{とけい}', '白{しろ}くて、大{おお}きい時計{とけい}', '青{あお}くて、大{おお}きい時計{とけい}'], benar: 0, pembahasan: 'この時計は青くて、小さいです = jam ini biru dan kecil.' },
+        ],
+      },
+      {
+        id: 'L1-13',
+        judul: '好{す}きな飲{の}み物{もの}',
+        teks: 'わたしは毎朝{まいあさ}コーヒーを飲{の}みます。でも、夜{よる}はお茶{ちゃ}を飲{の}みます。ジュースはあまり飲{の}みません。',
+        terjemahan: 'Setiap pagi saya minum kopi. Tetapi malam hari saya minum teh. Saya jarang minum jus.',
+        soal: [
+          { id: 'L1-13-1', tanya: '毎朝{まいあさ}何{なに}を飲{の}みますか。', tanyaId: 'Apa yang diminum setiap pagi?', opsi: ['お茶{ちゃ}', 'コーヒー', 'ジュース'], benar: 1, pembahasan: '毎朝コーヒーを飲みます = setiap pagi minum kopi.' },
+          { id: 'L1-13-2', tanya: '夜{よる}は何{なに}を飲{の}みますか。', tanyaId: 'Apa yang diminum pada malam hari?', opsi: ['お茶{ちゃ}', 'コーヒー', '牛乳{ぎゅうにゅう}'], benar: 0, pembahasan: '夜はお茶を飲みます = malam hari minum teh.' },
+        ],
+      },
+      {
+        id: 'L1-14',
+        judul: '兄{あに}と弟{おとうと}',
+        teks: 'わたしには兄{あに}が一人{ひとり}と弟{おとうと}が二人{ふたり}います。兄{あに}は二十五歳{にじゅうごさい}です。弟{おとうと}たちは学生{がくせい}です。',
+        terjemahan: 'Saya punya satu kakak laki-laki dan dua adik laki-laki. Kakak berumur 25 tahun. Adik-adik saya pelajar.',
+        soal: [
+          { id: 'L1-14-1', tanya: '弟{おとうと}は何人{なんにん}いますか。', tanyaId: 'Ada berapa adik laki-laki?', opsi: ['一人{ひとり}', '二人{ふたり}', '三人{さんにん}'], benar: 1, pembahasan: '弟が二人います = punya dua adik laki-laki.' },
+          { id: 'L1-14-2', tanya: 'お兄{にい}さんは何歳{なんさい}ですか。', tanyaId: 'Berapa umur kakak laki-laki?', opsi: ['二十歳{はたち}', '二十二歳{にじゅうにさい}', '二十五歳{にじゅうごさい}'], benar: 2, pembahasan: '兄は二十五歳です = kakak laki-laki berumur 25 tahun.' },
+        ],
+      },
+      {
+        id: 'L1-15',
+        judul: '好{す}きなスポーツ',
+        teks: 'リナさんはテニスが好{す}きです。毎週{まいしゅう}土曜日{どようび}に友{とも}だちとテニスをします。サッカーは好{す}きではありません。',
+        terjemahan: 'Rina suka tenis. Setiap hari Sabtu ia bermain tenis bersama teman. Ia tidak suka sepak bola.',
+        soal: [
+          { id: 'L1-15-1', tanya: 'リナさんは何{なに}が好{す}きですか。', tanyaId: 'Apa yang disukai Rina?', opsi: ['サッカー', 'やきゅう', 'テニス'], benar: 2, pembahasan: 'リナさんはテニスが好きです = Rina suka tenis.' },
+          { id: 'L1-15-2', tanya: 'いつテニスをしますか。', tanyaId: 'Kapan ia bermain tenis?', opsi: ['毎週{まいしゅう}土曜日{どようび}', '毎週{まいしゅう}日曜日{にちようび}', '毎日{まいにち}'], benar: 0, pembahasan: '毎週土曜日に友だちとテニスをします = setiap hari Sabtu bermain tenis bersama teman.' },
+        ],
+      },
+      {
+        id: 'L1-16',
+        judul: '先生{せんせい}の車{くるま}',
+        teks: '山田{やまだ}先生{せんせい}の車{くるま}は白{しろ}いです。とても古{ふる}いですが、きれいです。先生{せんせい}は毎朝{まいあさ}車{くるま}で学校{がっこう}へ来{き}ます。',
+        terjemahan: 'Mobil Guru Yamada berwarna putih. Mobilnya sangat tua, tetapi bersih. Setiap pagi guru datang ke sekolah naik mobil.',
+        soal: [
+          { id: 'L1-16-1', tanya: '先生{せんせい}の車{くるま}は何色{なにいろ}ですか。', tanyaId: 'Mobil guru berwarna apa?', opsi: ['黒{くろ}', '白{しろ}', '赤{あか}'], benar: 1, pembahasan: '山田先生の車は白いです = mobil Guru Yamada putih.' },
+          { id: 'L1-16-2', tanya: '先生{せんせい}の車{くるま}はどうですか。', tanyaId: 'Bagaimana mobil guru itu?', opsi: ['新{あたら}しくて、きれいです', '古{ふる}くて、きたないです', '古{ふる}いですが、きれいです'], benar: 2, pembahasan: 'とても古いですが、きれいです = sangat tua, tetapi bersih.' },
+        ],
+      },
+      {
+        id: 'L1-17',
+        judul: 'わたしの誕生日{たんじょうび}',
+        teks: '今日{きょう}はわたしの誕生日{たんじょうび}です。二十歳{はたち}になりました。夜{よる}、家族{かぞく}とケーキを食{た}べます。',
+        terjemahan: 'Hari ini ulang tahun saya. Saya berumur dua puluh tahun. Malam nanti saya makan kue bersama keluarga.',
+        soal: [
+          { id: 'L1-17-1', tanya: '今日{きょう}は何{なん}の日{ひ}ですか。', tanyaId: 'Hari ini hari apa?', opsi: ['わたしの誕生日{たんじょうび}', '母{はは}の誕生日{たんじょうび}', '学校{がっこう}の休{やす}み'], benar: 0, pembahasan: '今日はわたしの誕生日です = hari ini ulang tahun saya.' },
+          { id: 'L1-17-2', tanya: '夜{よる}、何{なに}をしますか。', tanyaId: 'Apa yang dilakukan malam nanti?', opsi: ['友{とも}だちとレストランへ行{い}きます', '家族{かぞく}とケーキを食{た}べます', '一人{ひとり}でテレビを見{み}ます'], benar: 1, pembahasan: '夜、家族とケーキを食べます = malam hari makan kue bersama keluarga.' },
+        ],
+      },
+      {
+        id: 'L1-18',
+        judul: 'つくえの上{うえ}',
+        teks: 'つくえの上{うえ}に本{ほん}とノートがあります。いすの下{した}にかばんがあります。かばんの中{なか}にさいふがあります。',
+        terjemahan: 'Di atas meja ada buku dan buku tulis. Di bawah kursi ada tas. Di dalam tas ada dompet.',
+        soal: [
+          { id: 'L1-18-1', tanya: 'つくえの上{うえ}に何{なに}がありますか。', tanyaId: 'Apa yang ada di atas meja?', opsi: ['かばん', '本{ほん}とノート', 'さいふ'], benar: 1, pembahasan: 'つくえの上に本とノートがあります = di atas meja ada buku dan buku tulis.' },
+          { id: 'L1-18-2', tanya: 'さいふはどこにありますか。', tanyaId: 'Di mana dompetnya?', opsi: ['つくえの上{うえ}', 'いすの上{うえ}', 'かばんの中{なか}'], benar: 2, pembahasan: 'かばんの中にさいふがあります = di dalam tas ada dompet.' },
+        ],
+      },
+      {
+        id: 'L1-19',
+        judul: '雨{あめ}の日{ひ}',
+        teks: 'きのうは雨{あめ}でした。とても寒{さむ}かったです。わたしは一日{いちにち}うちで本{ほん}を読{よ}みました。',
+        terjemahan: 'Kemarin hujan. Cuacanya sangat dingin. Seharian saya membaca buku di rumah.',
+        soal: [
+          { id: 'L1-19-1', tanya: 'きのうの天気{てんき}はどうでしたか。', tanyaId: 'Bagaimana cuaca kemarin?', opsi: ['雨{あめ}で、寒{さむ}かったです', 'いい天気{てんき}で、暑{あつ}かったです', '雪{ゆき}でした'], benar: 0, pembahasan: 'きのうは雨でした。とても寒かったです = kemarin hujan dan sangat dingin.' },
+          { id: 'L1-19-2', tanya: 'きのう、何{なに}をしましたか。', tanyaId: 'Apa yang dilakukan kemarin?', opsi: ['公園{こうえん}へ行{い}きました', 'うちで本{ほん}を読{よ}みました', '買{か}い物{もの}をしました'], benar: 1, pembahasan: 'わたしは一日うちで本を読みました = seharian membaca buku di rumah.' },
+        ],
+      },
+      {
+        id: 'L1-20',
+        judul: 'わたしの学校{がっこう}',
+        teks: 'わたしの学校{がっこう}は駅{えき}の近{ちか}くにあります。学生{がくせい}は三百人{さんびゃくにん}です。学校{がっこう}の前{まえ}に大{おお}きい木{き}があります。',
+        terjemahan: 'Sekolah saya ada di dekat stasiun. Siswanya 300 orang. Di depan sekolah ada pohon besar.',
+        soal: [
+          { id: 'L1-20-1', tanya: '学校{がっこう}はどこにありますか。', tanyaId: 'Di mana sekolahnya?', opsi: ['駅{えき}の近{ちか}く', '川{かわ}の近{ちか}く', '公園{こうえん}の中{なか}'], benar: 0, pembahasan: 'わたしの学校は駅の近くにあります = sekolah saya ada di dekat stasiun.' },
+          { id: 'L1-20-2', tanya: '学生{がくせい}は何人{なんにん}ですか。', tanyaId: 'Ada berapa siswa?', opsi: ['百人{ひゃくにん}', '三百人{さんびゃくにん}', '三千人{さんぜんにん}'], benar: 1, pembahasan: '学生は三百人です = siswanya 300 orang.' },
+        ],
+      },
     ],
   },
   {
@@ -215,6 +315,106 @@ export const DOKKAI_LEVEL = [
         soal: [
           { id: 'L2-10-1', tanya: 'どうして辞書{じしょ}を買{か}いませんでしたか。', tanyaId: 'Mengapa tokoh tidak membeli kamus?', opsi: ['高{たか}かったからです', '店{みせ}になかったからです', '店{みせ}が休{やす}みだったからです'], benar: 0, pembahasan: '高かったですから = karena mahal.' },
           { id: 'L2-10-2', tanya: '本屋{ほんや}で何{なに}を買{か}いましたか。', tanyaId: 'Apa yang dibeli di toko buku?', opsi: ['辞書{じしょ}', '雑誌{ざっし}を一冊{いっさつ}', '本{ほん}を二冊{にさつ}'], benar: 1, pembahasan: '雑誌を一冊買いました = membeli satu majalah.' },
+        ],
+      },
+      {
+        id: 'L2-11',
+        judul: 'コンビニで',
+        teks: 'けさ、コンビニでおにぎりを二{ふた}つとお茶{ちゃ}を一本{いっぽん}買{か}いました。おにぎりは一{ひと}つ百二十円{ひゃくにじゅうえん}でした。お茶{ちゃ}は百五十円{ひゃくごじゅうえん}でした。',
+        terjemahan: 'Tadi pagi saya membeli dua onigiri dan sebotol teh di minimarket. Onigiri harganya 120 yen per buah. Tehnya 150 yen.',
+        soal: [
+          { id: 'L2-11-1', tanya: 'おにぎりをいくつ買{か}いましたか。', tanyaId: 'Berapa onigiri yang dibeli?', opsi: ['一{ひと}つ', '二{ふた}つ', '三{みっ}つ'], benar: 1, pembahasan: 'おにぎりを二つとお茶を一本買いました = membeli dua onigiri dan sebotol teh.' },
+          { id: 'L2-11-2', tanya: 'お茶{ちゃ}はいくらでしたか。', tanyaId: 'Berapa harga tehnya?', opsi: ['百五十円{ひゃくごじゅうえん}', '百二十円{ひゃくにじゅうえん}', '二百四十円{にひゃくよんじゅうえん}'], benar: 0, pembahasan: 'お茶は百五十円でした = tehnya 150 yen.' },
+        ],
+      },
+      {
+        id: 'L2-12',
+        judul: '会社{かいしゃ}まで',
+        teks: 'わたしは毎朝{まいあさ}七時半{しちじはん}にうちを出{で}ます。駅{えき}まで歩{ある}いて十分{じゅっぷん}です。それから、電車{でんしゃ}に三十分{さんじゅっぷん}乗{の}ります。',
+        terjemahan: 'Setiap pagi saya keluar rumah pukul setengah delapan. Ke stasiun 10 menit jalan kaki. Setelah itu saya naik kereta 30 menit.',
+        soal: [
+          { id: 'L2-12-1', tanya: '何時{なんじ}にうちを出{で}ますか。', tanyaId: 'Pukul berapa keluar rumah?', opsi: ['七時半{しちじはん}', '七時{しちじ}', '八時{はちじ}'], benar: 0, pembahasan: '毎朝七時半にうちを出ます = setiap pagi keluar rumah pukul setengah delapan.' },
+          { id: 'L2-12-2', tanya: '駅{えき}まで何{なに}で行{い}きますか。', tanyaId: 'Ke stasiun naik apa?', opsi: ['自転車{じてんしゃ}で行{い}きます', 'バスで行{い}きます', '歩{ある}いて行{い}きます'], benar: 2, pembahasan: '駅まで歩いて十分です = ke stasiun 10 menit jalan kaki.' },
+        ],
+      },
+      {
+        id: 'L2-13',
+        judul: '駅{えき}の前{まえ}のパン屋{や}',
+        teks: '駅{えき}の前{まえ}に小{ちい}さいパン屋{や}があります。朝{あさ}六時{ろくじ}から夜{よる}八時{はちじ}まで開{あ}いています。わたしはいつもここでメロンパンを買{か}います。メロンパンは一{ひと}つ二百円{にひゃくえん}です。',
+        terjemahan: 'Di depan stasiun ada toko roti kecil. Toko itu buka dari pukul 6 pagi sampai pukul 8 malam. Saya selalu membeli roti melon di sini. Roti melon harganya 200 yen per buah.',
+        soal: [
+          { id: 'L2-13-1', tanya: 'パン屋{や}は何時{なんじ}に閉{し}まりますか。', tanyaId: 'Pukul berapa toko roti tutup?', opsi: ['六時{ろくじ}', '七時{しちじ}', '八時{はちじ}'], benar: 2, pembahasan: '朝六時から夜八時まで開いています = buka dari pukul 6 pagi sampai pukul 8 malam.' },
+          { id: 'L2-13-2', tanya: 'メロンパンはいくらですか。', tanyaId: 'Berapa harga roti melon?', opsi: ['百円{ひゃくえん}', '二百円{にひゃくえん}', '六百円{ろっぴゃくえん}'], benar: 1, pembahasan: 'メロンパンは一つ二百円です = roti melon 200 yen per buah.' },
+        ],
+      },
+      {
+        id: 'L2-14',
+        judul: 'デパートで',
+        teks: '日曜日{にちようび}に友{とも}だちとデパートへ行{い}きました。わたしはくつを買{か}いました。友{とも}だちは赤{あか}いかばんを買{か}いました。それから、デパートのレストランで昼{ひる}ごはんを食{た}べました。',
+        terjemahan: 'Hari Minggu saya pergi ke department store bersama teman. Saya membeli sepatu. Teman saya membeli tas merah. Setelah itu kami makan siang di restoran department store.',
+        soal: [
+          { id: 'L2-14-1', tanya: '友{とも}だちは何{なに}を買{か}いましたか。', tanyaId: 'Apa yang dibeli teman?', opsi: ['くつ', '赤{あか}いかばん', '赤{あか}いくつ'], benar: 1, pembahasan: '友だちは赤いかばんを買いました = teman membeli tas merah.' },
+          { id: 'L2-14-2', tanya: '昼{ひる}ごはんはどこで食{た}べましたか。', tanyaId: 'Di mana mereka makan siang?', opsi: ['デパートのレストラン', '駅{えき}の前{まえ}の店{みせ}', '友{とも}だちのうち'], benar: 0, pembahasan: 'デパートのレストランで昼ごはんを食べました = makan siang di restoran department store.' },
+        ],
+      },
+      {
+        id: 'L2-15',
+        judul: 'バスで病院{びょういん}へ',
+        teks: '母{はは}は毎週{まいしゅう}水曜日{すいようび}に病院{びょういん}へ行{い}きます。うちの前{まえ}から十一番{じゅういちばん}のバスに乗{の}ります。病院{びょういん}まで二十五分{にじゅうごふん}ぐらいかかります。',
+        terjemahan: 'Setiap hari Rabu ibu pergi ke rumah sakit. Ia naik bus nomor 11 dari depan rumah. Ke rumah sakit perlu sekitar 25 menit.',
+        soal: [
+          { id: 'L2-15-1', tanya: 'お母{かあ}さんは何曜日{なんようび}に病院{びょういん}へ行{い}きますか。', tanyaId: 'Hari apa ibu pergi ke rumah sakit?', opsi: ['水曜日{すいようび}', '月曜日{げつようび}', '金曜日{きんようび}'], benar: 0, pembahasan: '母は毎週水曜日に病院へ行きます = setiap hari Rabu ibu pergi ke rumah sakit.' },
+          { id: 'L2-15-2', tanya: '何番{なんばん}のバスに乗{の}りますか。', tanyaId: 'Naik bus nomor berapa?', opsi: ['一番{いちばん}', '十番{じゅうばん}', '十一番{じゅういちばん}'], benar: 2, pembahasan: '十一番のバスに乗ります = naik bus nomor 11.' },
+        ],
+      },
+      {
+        id: 'L2-16',
+        judul: '銀行{ぎんこう}で',
+        teks: 'きのう、銀行{ぎんこう}へ行{い}きました。国{くに}の家族{かぞく}にお金{かね}を送{おく}りました。銀行{ぎんこう}は午後{ごご}三時{さんじ}に閉{し}まりますから、昼休{ひるやす}みに行{い}きました。',
+        terjemahan: 'Kemarin saya pergi ke bank. Saya mengirim uang kepada keluarga di negara asal. Bank tutup pukul 3 sore, jadi saya pergi saat istirahat siang.',
+        soal: [
+          { id: 'L2-16-1', tanya: '銀行{ぎんこう}で何{なに}をしましたか。', tanyaId: 'Apa yang dilakukan di bank?', opsi: ['お金{かね}を送{おく}りました', 'お金{かね}をもらいました', '手紙{てがみ}を出{だ}しました'], benar: 0, pembahasan: '国の家族にお金を送りました = mengirim uang kepada keluarga di negara asal.' },
+          { id: 'L2-16-2', tanya: 'どうして昼休{ひるやす}みに銀行{ぎんこう}へ行{い}きましたか。', tanyaId: 'Mengapa ia pergi ke bank saat istirahat siang?', opsi: ['昼休{ひるやす}みはひまだったからです', '銀行{ぎんこう}が三時{さんじ}に閉{し}まるからです', '家族{かぞく}に電話{でんわ}したからです'], benar: 1, pembahasan: '銀行は午後三時に閉まりますから、昼休みに行きました = bank tutup pukul 3 sore, jadi pergi saat istirahat siang.' },
+        ],
+      },
+      {
+        id: 'L2-17',
+        judul: '八百屋{やおや}で',
+        teks: '八百屋{やおや}でりんごを三{みっ}つとバナナを一{ひと}ふさ買{か}いました。りんごは一{ひと}つ百円{ひゃくえん}で、バナナは二百円{にひゃくえん}でした。全部{ぜんぶ}で五百円{ごひゃくえん}でした。',
+        terjemahan: 'Di toko sayur saya membeli tiga apel dan satu sisir pisang. Apel 100 yen per buah dan pisang 200 yen. Semuanya 500 yen.',
+        soal: [
+          { id: 'L2-17-1', tanya: 'りんごをいくつ買{か}いましたか。', tanyaId: 'Berapa apel yang dibeli?', opsi: ['二{ふた}つ', '三{みっ}つ', '五{いつ}つ'], benar: 1, pembahasan: 'りんごを三つ…買いました = membeli tiga apel.' },
+          { id: 'L2-17-2', tanya: '全部{ぜんぶ}でいくらでしたか。', tanyaId: 'Berapa totalnya?', opsi: ['三百円{さんびゃくえん}', '四百円{よんひゃくえん}', '五百円{ごひゃくえん}'], benar: 2, pembahasan: '全部で五百円でした = semuanya 500 yen.' },
+        ],
+      },
+      {
+        id: 'L2-18',
+        judul: '兄{あに}の朝{あさ}',
+        teks: '兄{あに}は毎朝{まいあさ}六時{ろくじ}に起{お}きて、公園{こうえん}を走{はし}ります。一時間{いちじかん}ぐらい走{はし}ります。それから、シャワーをあびて、会社{かいしゃ}へ行{い}きます。',
+        terjemahan: 'Setiap pagi kakak laki-laki saya bangun pukul enam dan berlari di taman. Ia berlari sekitar satu jam. Setelah itu ia mandi dan pergi ke kantor.',
+        soal: [
+          { id: 'L2-18-1', tanya: 'お兄{にい}さんは毎朝{まいあさ}どこを走{はし}りますか。', tanyaId: 'Di mana kakak berlari setiap pagi?', opsi: ['学校{がっこう}', '公園{こうえん}', '駅{えき}の前{まえ}'], benar: 1, pembahasan: '公園を走ります = berlari di taman.' },
+          { id: 'L2-18-2', tanya: 'どのぐらい走{はし}りますか。', tanyaId: 'Berapa lama ia berlari?', opsi: ['一時間{いちじかん}ぐらい', '三十分{さんじゅっぷん}ぐらい', '二時間{にじかん}ぐらい'], benar: 0, pembahasan: '一時間ぐらい走ります = berlari sekitar satu jam.' },
+        ],
+      },
+      {
+        id: 'L2-19',
+        judul: '映画館{えいがかん}',
+        teks: '土曜日{どようび}に弟{おとうと}と映画館{えいがかん}へ行{い}きました。映画{えいが}は午後{ごご}一時{いちじ}から三時{さんじ}まででした。チケットは一枚{いちまい}千八百円{せんはっぴゃくえん}でした。',
+        terjemahan: 'Hari Sabtu saya pergi ke bioskop bersama adik laki-laki. Filmnya dari pukul 1 sampai pukul 3 siang. Tiketnya 1.800 yen per lembar.',
+        soal: [
+          { id: 'L2-19-1', tanya: '映画{えいが}は何時{なんじ}に終{お}わりましたか。', tanyaId: 'Pukul berapa film selesai?', opsi: ['一時{いちじ}', '二時{にじ}', '三時{さんじ}'], benar: 2, pembahasan: '映画は午後一時から三時まででした = film dari pukul 1 sampai pukul 3 siang.' },
+          { id: 'L2-19-2', tanya: 'チケットは一枚{いちまい}いくらでしたか。', tanyaId: 'Berapa harga satu lembar tiket?', opsi: ['八百円{はっぴゃくえん}', '千八百円{せんはっぴゃくえん}', '三千六百円{さんぜんろっぴゃくえん}'], benar: 1, pembahasan: 'チケットは一枚千八百円でした = tiket 1.800 yen per lembar.' },
+        ],
+      },
+      {
+        id: 'L2-20',
+        judul: '寮{りょう}の食堂{しょくどう}',
+        teks: 'わたしは会社{かいしゃ}の寮{りょう}に住{す}んでいます。寮{りょう}の食堂{しょくどう}の朝{あさ}ごはんは六時{ろくじ}から九時{くじ}までです。晩{ばん}ごはんは六時{ろくじ}から八時{はちじ}までです。一回{いっかい}四百円{よんひゃくえん}です。',
+        terjemahan: 'Saya tinggal di asrama perusahaan. Sarapan di kantin asrama dari pukul 6 sampai pukul 9. Makan malam dari pukul 6 sampai pukul 8. Sekali makan 400 yen.',
+        soal: [
+          { id: 'L2-20-1', tanya: '食堂{しょくどう}の朝{あさ}ごはんは何時{なんじ}までですか。', tanyaId: 'Sarapan di kantin sampai pukul berapa?', opsi: ['六時{ろくじ}', '八時{はちじ}', '九時{くじ}'], benar: 2, pembahasan: '朝ごはんは六時から九時までです = sarapan dari pukul 6 sampai pukul 9.' },
+          { id: 'L2-20-2', tanya: '一回{いっかい}いくらですか。', tanyaId: 'Berapa harga sekali makan?', opsi: ['四百円{よんひゃくえん}', '六百円{ろっぴゃくえん}', '八百円{はっぴゃくえん}'], benar: 0, pembahasan: '一回四百円です = sekali makan 400 yen.' },
         ],
       },
     ],
@@ -324,6 +524,106 @@ export const DOKKAI_LEVEL = [
           { id: 'L3-10-2', tanya: '金曜日{きんようび}はどうなりますか。', tanyaId: 'Apa yang terjadi pada hari Jumat?', opsi: ['まだ休{やす}みです', 'パンがぜんぶ百円{ひゃくえん}安{やす}くなります', '新{あたら}しいパンだけ売{う}ります'], benar: 1, pembahasan: 'パンがぜんぶ百円安くなります = semua roti 100 yen lebih murah.' },
         ],
       },
+      {
+        id: 'L3-11',
+        judul: '工場{こうじょう}のお知{し}らせ',
+        teks: '来週{らいしゅう}の金曜日{きんようび}は工場{こうじょう}をそうじしますから、仕事{しごと}は休{やす}みです。土曜日{どようび}はいつもと同{おな}じです。朝{あさ}八時{はちじ}に来{き}てください。',
+        terjemahan: 'Jumat depan pabrik akan dibersihkan, jadi pekerjaan libur. Hari Sabtu seperti biasa. Silakan datang pukul 8 pagi.',
+        soal: [
+          { id: 'L3-11-1', tanya: 'どうして金曜日{きんようび}は仕事{しごと}が休{やす}みですか。', tanyaId: 'Mengapa hari Jumat pekerjaan libur?', opsi: ['工場{こうじょう}をそうじするからです', '工場{こうじょう}の人{ひと}が旅行{りょこう}に行{い}くからです', '国{くに}の休{やす}みの日{ひ}だからです'], benar: 0, pembahasan: '工場をそうじしますから、仕事は休みです = pabrik dibersihkan, jadi pekerjaan libur.' },
+          { id: 'L3-11-2', tanya: '土曜日{どようび}は何時{なんじ}に来{き}ますか。', tanyaId: 'Hari Sabtu datang pukul berapa?', opsi: ['七時{しちじ}', '八時{はちじ}', '九時{くじ}'], benar: 1, pembahasan: '朝八時に来てください = silakan datang pukul 8 pagi.' },
+        ],
+      },
+      {
+        id: 'L3-12',
+        judul: 'ごみの出{だ}し方{かた}',
+        teks: 'このアパートでは、燃{も}えるごみは火曜日{かようび}と金曜日{きんようび}に出{だ}してください。びんとかんは水曜日{すいようび}です。ごみは朝{あさ}出{だ}してください。夜{よる}は出{だ}さないでください。',
+        terjemahan: 'Di apartemen ini, sampah yang bisa dibakar dibuang hari Selasa dan Jumat. Botol kaca dan kaleng hari Rabu. Buanglah sampah pada pagi hari. Jangan membuang sampah pada malam hari.',
+        soal: [
+          { id: 'L3-12-1', tanya: 'びんとかんは何曜日{なんようび}に出{だ}しますか。', tanyaId: 'Botol kaca dan kaleng dibuang hari apa?', opsi: ['火曜日{かようび}', '水曜日{すいようび}', '金曜日{きんようび}'], benar: 1, pembahasan: 'びんとかんは水曜日です = botol kaca dan kaleng hari Rabu.' },
+          { id: 'L3-12-2', tanya: 'ごみはいつ出{だ}してはいけませんか。', tanyaId: 'Kapan sampah tidak boleh dibuang?', opsi: ['朝{あさ}', '昼{ひる}', '夜{よる}'], benar: 2, pembahasan: '夜は出さないでください = jangan membuang pada malam hari.' },
+        ],
+      },
+      {
+        id: 'L3-13',
+        judul: '雪{ゆき}の朝{あさ}',
+        teks: '今朝{けさ}は雪{ゆき}がたくさん降{ふ}りましたから、バスが二十分{にじゅっぷん}おくれました。わたしは会社{かいしゃ}に電話{でんわ}して、「少{すこ}しおくれます」と言{い}いました。',
+        terjemahan: 'Tadi pagi salju turun banyak, jadi bus terlambat 20 menit. Saya menelepon kantor dan berkata, "Saya akan sedikit terlambat."',
+        soal: [
+          { id: 'L3-13-1', tanya: 'どうしてバスがおくれましたか。', tanyaId: 'Mengapa bus terlambat?', opsi: ['雨{あめ}がたくさん降{ふ}ったからです', '道{みち}がこんでいたからです', '雪{ゆき}がたくさん降{ふ}ったからです'], benar: 2, pembahasan: '雪がたくさん降りましたから、バスが二十分おくれました = salju turun banyak, jadi bus terlambat 20 menit.' },
+          { id: 'L3-13-2', tanya: 'わたしはどうしましたか。', tanyaId: 'Apa yang dilakukan penulis?', opsi: ['会社{かいしゃ}に電話{でんわ}しました', '会社{かいしゃ}を休{やす}みました', 'タクシーで会社{かいしゃ}へ行{い}きました'], benar: 0, pembahasan: '会社に電話して、「少しおくれます」と言いました = menelepon kantor dan berkata akan sedikit terlambat.' },
+        ],
+      },
+      {
+        id: 'L3-14',
+        judul: '教室{きょうしつ}のお知{し}らせ',
+        teks: '来週{らいしゅう}から、日本語{にほんご}の授業{じゅぎょう}は二階{にかい}の教室{きょうしつ}ではありません。三階{さんがい}の大{おお}きい教室{きょうしつ}です。時間{じかん}はいつもと同{おな}じで、午後{ごご}二時{にじ}からです。',
+        terjemahan: 'Mulai minggu depan, pelajaran bahasa Jepang tidak di kelas lantai dua. Pelajaran pindah ke kelas besar di lantai tiga. Jamnya sama seperti biasa, mulai pukul 2 siang.',
+        soal: [
+          { id: 'L3-14-1', tanya: '来週{らいしゅう}から、授業{じゅぎょう}はどこですか。', tanyaId: 'Mulai minggu depan, pelajaran di mana?', opsi: ['二階{にかい}の教室{きょうしつ}', '三階{さんがい}の大{おお}きい教室{きょうしつ}', '三階{さんがい}の小{ちい}さい教室{きょうしつ}'], benar: 1, pembahasan: '三階の大きい教室です = di kelas besar lantai tiga.' },
+          { id: 'L3-14-2', tanya: '授業{じゅぎょう}は何時{なんじ}からですか。', tanyaId: 'Pelajaran mulai pukul berapa?', opsi: ['午後{ごご}二時{にじ}', '午後{ごご}一時{いちじ}', '午後{ごご}三時{さんじ}'], benar: 0, pembahasan: '時間はいつもと同じで、午後二時からです = jamnya sama, mulai pukul 2 siang.' },
+        ],
+      },
+      {
+        id: 'L3-15',
+        judul: '歯医者{はいしゃ}',
+        teks: 'きのうの夜{よる}から歯{は}がいたいです。今日{きょう}は仕事{しごと}を休{やす}んで、歯医者{はいしゃ}へ行{い}きました。歯医者{はいしゃ}さんは「あまいものを食{た}べないでください」と言{い}いました。',
+        terjemahan: 'Sejak kemarin malam gigi saya sakit. Hari ini saya libur kerja dan pergi ke dokter gigi. Dokter gigi berkata, "Jangan makan makanan manis."',
+        soal: [
+          { id: 'L3-15-1', tanya: 'どうして仕事{しごと}を休{やす}みましたか。', tanyaId: 'Mengapa ia libur kerja?', opsi: ['頭{あたま}がいたいからです', 'かぜをひいたからです', '歯{は}がいたいからです'], benar: 2, pembahasan: 'きのうの夜から歯がいたいです = sejak kemarin malam gigi sakit.' },
+          { id: 'L3-15-2', tanya: '歯医者{はいしゃ}さんは何{なん}と言{い}いましたか。', tanyaId: 'Apa kata dokter gigi?', opsi: ['「あまいものを食{た}べないでください」', '「毎日{まいにち}歯{は}をみがいてください」', '「あした、また来{き}てください」'], benar: 0, pembahasan: '歯医者さんは「あまいものを食べないでください」と言いました = dokter gigi berkata jangan makan makanan manis.' },
+        ],
+      },
+      {
+        id: 'L3-16',
+        judul: '図書館{としょかん}の本{ほん}',
+        teks: '図書館{としょかん}で本{ほん}を三冊{さんさつ}借{か}りました。本{ほん}は二週間{にしゅうかん}借{か}りてもいいです。でも、雑誌{ざっし}は借{か}りてはいけません。雑誌{ざっし}は図書館{としょかん}の中{なか}で読{よ}んでください。',
+        terjemahan: 'Saya meminjam tiga buku di perpustakaan. Buku boleh dipinjam selama dua minggu. Tetapi majalah tidak boleh dipinjam. Majalah dibaca di dalam perpustakaan.',
+        soal: [
+          { id: 'L3-16-1', tanya: '本{ほん}はどのぐらい借{か}りてもいいですか。', tanyaId: 'Buku boleh dipinjam berapa lama?', opsi: ['一週間{いっしゅうかん}', '二週間{にしゅうかん}', '三週間{さんしゅうかん}'], benar: 1, pembahasan: '本は二週間借りてもいいです = buku boleh dipinjam dua minggu.' },
+          { id: 'L3-16-2', tanya: '雑誌{ざっし}はどうしますか。', tanyaId: 'Bagaimana dengan majalah?', opsi: ['図書館{としょかん}の中{なか}で読{よ}みます', 'うちで読{よ}みます', '二冊{にさつ}まで借{か}ります'], benar: 0, pembahasan: '雑誌は図書館の中で読んでください = majalah dibaca di dalam perpustakaan.' },
+        ],
+      },
+      {
+        id: 'L3-17',
+        judul: '新{あたら}しいラーメン屋{や}',
+        teks: '駅{えき}の前{まえ}に新{あたら}しいラーメン屋{や}ができました。とてもおいしいですから、いつも人{ひと}がたくさん並{なら}んでいます。わたしはきのう三十分{さんじゅっぷん}待{ま}ちました。',
+        terjemahan: 'Di depan stasiun ada kedai ramen baru. Ramennya sangat enak, jadi selalu banyak orang mengantre. Kemarin saya menunggu 30 menit.',
+        soal: [
+          { id: 'L3-17-1', tanya: 'どうしていつも人{ひと}がたくさん並{なら}んでいますか。', tanyaId: 'Mengapa selalu banyak orang mengantre?', opsi: ['安{やす}いからです', 'おいしいからです', '駅{えき}から近{ちか}いからです'], benar: 1, pembahasan: 'とてもおいしいですから、いつも人がたくさん並んでいます = sangat enak, jadi selalu banyak orang mengantre.' },
+          { id: 'L3-17-2', tanya: 'きのう、わたしはどのぐらい待{ま}ちましたか。', tanyaId: 'Kemarin penulis menunggu berapa lama?', opsi: ['十分{じゅっぷん}', '二十分{にじゅっぷん}', '三十分{さんじゅっぷん}'], benar: 2, pembahasan: 'わたしはきのう三十分待ちました = kemarin saya menunggu 30 menit.' },
+        ],
+      },
+      {
+        id: 'L3-18',
+        judul: '電話{でんわ}のメモ',
+        teks: '田中{たなか}さんへ。十時{じゅうじ}ごろ、木村{きむら}さんから電話{でんわ}がありました。あしたのミーティングは二時{にじ}からではありません。三時{さんじ}からです。木村{きむら}さんに電話{でんわ}をしてください。',
+        terjemahan: 'Untuk Tanaka. Sekitar pukul sepuluh ada telepon dari Kimura. Rapat besok bukan mulai pukul 2, tetapi pukul 3. Silakan telepon Kimura.',
+        soal: [
+          { id: 'L3-18-1', tanya: 'あしたのミーティングは何時{なんじ}からですか。', tanyaId: 'Rapat besok mulai pukul berapa?', opsi: ['二時{にじ}', '三時{さんじ}', '十時{じゅうじ}'], benar: 1, pembahasan: '二時からではありません。三時からです = bukan pukul 2, tetapi pukul 3.' },
+          { id: 'L3-18-2', tanya: '田中{たなか}さんは何{なに}をしますか。', tanyaId: 'Apa yang harus dilakukan Tanaka?', opsi: ['木村{きむら}さんに電話{でんわ}をします', '木村{きむら}さんに会{あ}いに行{い}きます', 'ミーティングを休{やす}みます'], benar: 0, pembahasan: '木村さんに電話をしてください = silakan telepon Kimura.' },
+        ],
+      },
+      {
+        id: 'L3-19',
+        judul: '弟{おとうと}の運動会{うんどうかい}',
+        teks: '弟{おとうと}の学校{がっこう}の運動会{うんどうかい}は今週{こんしゅう}の土曜日{どようび}でした。でも、雨{あめ}が降{ふ}りましたから、来週{らいしゅう}の日曜日{にちようび}になりました。弟{おとうと}は「早{はや}く走{はし}りたい」と言{い}っています。',
+        terjemahan: 'Hari olahraga di sekolah adik laki-laki saya seharusnya Sabtu ini. Tetapi karena hujan, diundur menjadi Minggu depan. Adik berkata, "Aku ingin cepat berlari."',
+        soal: [
+          { id: 'L3-19-1', tanya: '運動会{うんどうかい}はいつになりましたか。', tanyaId: 'Hari olahraga diundur menjadi kapan?', opsi: ['今週{こんしゅう}の土曜日{どようび}', '来週{らいしゅう}の土曜日{どようび}', '来週{らいしゅう}の日曜日{にちようび}'], benar: 2, pembahasan: '来週の日曜日になりました = menjadi hari Minggu depan.' },
+          { id: 'L3-19-2', tanya: 'どうして今週{こんしゅう}の土曜日{どようび}に運動会{うんどうかい}をしませんでしたか。', tanyaId: 'Mengapa hari olahraga tidak diadakan Sabtu ini?', opsi: ['雨{あめ}が降{ふ}ったからです', '先生{せんせい}が病気{びょうき}だったからです', '弟{おとうと}が休{やす}んだからです'], benar: 0, pembahasan: '雨が降りましたから、来週の日曜日になりました = karena hujan, diundur ke Minggu depan.' },
+        ],
+      },
+      {
+        id: 'L3-20',
+        judul: '病院{びょういん}のお知{し}らせ',
+        teks: 'さくら病院{びょういん}のお知{し}らせです。来週{らいしゅう}の月曜日{げつようび}から水曜日{すいようび}まで、病院{びょういん}は休{やす}みです。木曜日{もくようび}から、また朝{あさ}九時{くじ}に開{あ}きます。休{やす}みの日{ひ}は、駅{えき}の前{まえ}のみどり病院{びょういん}へ行{い}ってください。',
+        terjemahan: 'Pengumuman dari Rumah Sakit Sakura. Senin sampai Rabu minggu depan rumah sakit libur. Mulai Kamis buka lagi pukul 9 pagi. Pada hari libur, silakan pergi ke Rumah Sakit Midori di depan stasiun.',
+        soal: [
+          { id: 'L3-20-1', tanya: 'さくら病院{びょういん}はいつからまた開{あ}きますか。', tanyaId: 'Kapan Rumah Sakit Sakura buka lagi?', opsi: ['月曜日{げつようび}', '水曜日{すいようび}', '木曜日{もくようび}'], benar: 2, pembahasan: '木曜日から、また朝九時に開きます = mulai Kamis buka lagi pukul 9 pagi.' },
+          { id: 'L3-20-2', tanya: '休{やす}みの日{ひ}はどこへ行{い}きますか。', tanyaId: 'Pada hari libur pergi ke mana?', opsi: ['さくら病院{びょういん}', '駅{えき}の前{まえ}のみどり病院{びょういん}', '駅{えき}の前{まえ}のくすり屋{や}'], benar: 1, pembahasan: '休みの日は、駅の前のみどり病院へ行ってください = pada hari libur pergi ke Rumah Sakit Midori di depan stasiun.' },
+        ],
+      },
     ],
   },
   {
@@ -431,6 +731,106 @@ export const DOKKAI_LEVEL = [
           { id: 'L4-10-2', tanya: '何{なに}を持{も}っていきますか。', tanyaId: 'Apa yang harus dibawa?', opsi: ['エプロン', '料理{りょうり}の材料{ざいりょう}', 'ほうちょう'], benar: 0, pembahasan: 'エプロンを持ってきてください = harap bawa celemek.' },
         ],
       },
+      {
+        id: 'L4-11',
+        judul: '今週{こんしゅう}の仕事{しごと}',
+        teks: '今週{こんしゅう}、わたしは月曜日{げつようび}から水曜日{すいようび}まで朝{あさ}の仕事{しごと}です。朝{あさ}六時{ろくじ}から午後{ごご}三時{さんじ}まで働{はたら}きます。木曜日{もくようび}と金曜日{きんようび}は夜{よる}の仕事{しごと}で、夜{よる}十時{じゅうじ}からです。土曜日{どようび}は休{やす}みです。',
+        terjemahan: 'Minggu ini saya bekerja sif pagi dari Senin sampai Rabu. Saya bekerja dari pukul 6 pagi sampai pukul 3 sore. Kamis dan Jumat saya sif malam, mulai pukul 10 malam. Hari Sabtu libur.',
+        soal: [
+          { id: 'L4-11-1', tanya: '水曜日{すいようび}は何時{なんじ}から働{はたら}きますか。', tanyaId: 'Hari Rabu mulai bekerja pukul berapa?', opsi: ['朝{あさ}六時{ろくじ}', '午後{ごご}三時{さんじ}', '夜{よる}十時{じゅうじ}'], benar: 0, pembahasan: '月曜日から水曜日まで朝の仕事です。朝六時から午後三時まで働きます = Senin sampai Rabu sif pagi, pukul 6 pagi sampai 3 sore.' },
+          { id: 'L4-11-2', tanya: '夜{よる}の仕事{しごと}は何曜日{なんようび}ですか。', tanyaId: 'Sif malam hari apa?', opsi: ['月曜日{げつようび}と火曜日{かようび}', '木曜日{もくようび}と金曜日{きんようび}', '金曜日{きんようび}と土曜日{どようび}'], benar: 1, pembahasan: '木曜日と金曜日は夜の仕事で = Kamis dan Jumat sif malam.' },
+        ],
+      },
+      {
+        id: 'L4-12',
+        judul: 'マリアさんのうちへ',
+        teks: '日曜日{にちようび}にマリアさんのうちへ遊{あそ}びに行{い}きます。マリアさんのうちは山田{やまだ}駅{えき}から歩{ある}いて十五分{じゅうごふん}です。わたしは十一時{じゅういちじ}に山田{やまだ}駅{えき}に着{つ}きます。マリアさんは駅{えき}の前{まえ}で待{ま}っています。うちでいっしょに昼{ひる}ごはんを作{つく}ります。',
+        terjemahan: 'Hari Minggu saya akan main ke rumah Maria. Rumah Maria 15 menit jalan kaki dari Stasiun Yamada. Saya tiba di Stasiun Yamada pukul 11. Maria menunggu di depan stasiun. Kami akan memasak makan siang bersama di rumahnya.',
+        soal: [
+          { id: 'L4-12-1', tanya: 'わたしは何時{なんじ}に駅{えき}に着{つ}きますか。', tanyaId: 'Pukul berapa penulis tiba di stasiun?', opsi: ['十時{じゅうじ}', '十一時{じゅういちじ}十五分{じゅうごふん}', '十一時{じゅういちじ}'], benar: 2, pembahasan: 'わたしは十一時に山田駅に着きます = saya tiba di Stasiun Yamada pukul 11.' },
+          { id: 'L4-12-2', tanya: 'マリアさんのうちで何{なに}をしますか。', tanyaId: 'Apa yang dilakukan di rumah Maria?', opsi: ['昼{ひる}ごはんを作{つく}ります', '映画{えいが}を見{み}ます', '昼{ひる}ごはんを食{た}べに出{で}かけます'], benar: 0, pembahasan: 'うちでいっしょに昼ごはんを作ります = memasak makan siang bersama di rumah.' },
+        ],
+      },
+      {
+        id: 'L4-13',
+        judul: '会社{かいしゃ}の旅行{りょこう}',
+        teks: '来月{らいげつ}の十五日{じゅうごにち}に会社{かいしゃ}の旅行{りょこう}があります。朝{あさ}七時{しちじ}に会社{かいしゃ}の前{まえ}からバスで出{で}ます。昼{ひる}は山{やま}の上{うえ}のレストランで食{た}べます。旅行{りょこう}のお金{かね}はいりません。夜{よる}八時{はちじ}ごろ会社{かいしゃ}に帰{かえ}ります。',
+        terjemahan: 'Tanggal 15 bulan depan ada wisata perusahaan. Bus berangkat pukul 7 pagi dari depan kantor. Siang hari makan di restoran di atas gunung. Tidak perlu membayar biaya wisata. Sekitar pukul 8 malam kembali ke kantor.',
+        soal: [
+          { id: 'L4-13-1', tanya: 'バスは何時{なんじ}に、どこから出{で}ますか。', tanyaId: 'Bus berangkat pukul berapa dan dari mana?', opsi: ['七時{しちじ}に駅{えき}の前{まえ}から', '八時{はちじ}に会社{かいしゃ}の前{まえ}から', '七時{しちじ}に会社{かいしゃ}の前{まえ}から'], benar: 2, pembahasan: '朝七時に会社の前からバスで出ます = bus berangkat pukul 7 pagi dari depan kantor.' },
+          { id: 'L4-13-2', tanya: '昼{ひる}ごはんはどこで食{た}べますか。', tanyaId: 'Makan siang di mana?', opsi: ['バスの中{なか}', '山{やま}の上{うえ}のレストラン', '会社{かいしゃ}の食堂{しょくどう}'], benar: 1, pembahasan: '昼は山の上のレストランで食べます = siang makan di restoran di atas gunung.' },
+        ],
+      },
+      {
+        id: 'L4-14',
+        judul: '日本語{にほんご}のテスト',
+        teks: '来週{らいしゅう}の水曜日{すいようび}に日本語{にほんご}のテストがあります。テストは九時{くじ}から十一時{じゅういちじ}までです。九時{くじ}より前{まえ}に教室{きょうしつ}に入{はい}ってください。テストの時{とき}、辞書{じしょ}を使{つか}ってはいけません。えんぴつを二本{にほん}持{も}ってきてください。',
+        terjemahan: 'Rabu depan ada ujian bahasa Jepang. Ujian dari pukul 9 sampai pukul 11. Masuklah ke kelas sebelum pukul 9. Saat ujian tidak boleh memakai kamus. Bawalah dua pensil.',
+        soal: [
+          { id: 'L4-14-1', tanya: 'テストの時{とき}、何{なに}をしてはいけませんか。', tanyaId: 'Saat ujian, apa yang tidak boleh dilakukan?', opsi: ['えんぴつを使{つか}うこと', '辞書{じしょ}を使{つか}うこと', '教室{きょうしつ}に入{はい}ること'], benar: 1, pembahasan: 'テストの時、辞書を使ってはいけません = saat ujian tidak boleh memakai kamus.' },
+          { id: 'L4-14-2', tanya: 'えんぴつを何本{なんぼん}持{も}っていきますか。', tanyaId: 'Berapa pensil yang dibawa?', opsi: ['二本{にほん}', '一本{いっぽん}', '三本{さんぼん}'], benar: 0, pembahasan: 'えんぴつを二本持ってきてください = bawalah dua pensil.' },
+        ],
+      },
+      {
+        id: 'L4-15',
+        judul: '姉{あね}の結婚式{けっこんしき}',
+        teks: '来月{らいげつ}の三日{みっか}は姉{あね}の結婚式{けっこんしき}です。結婚式{けっこんしき}はジャカルタのホテルで、午前{ごぜん}十時{じゅうじ}からです。わたしは一日{ついたち}に日本{にほん}を出{で}て、国{くに}へ帰{かえ}ります。六日{むいか}にまた日本{にほん}へ来{き}ます。',
+        terjemahan: 'Tanggal 3 bulan depan adalah hari pernikahan kakak perempuan saya. Pernikahannya di sebuah hotel di Jakarta, mulai pukul 10 pagi. Saya berangkat dari Jepang tanggal 1 dan pulang ke negara asal. Tanggal 6 saya kembali ke Jepang.',
+        soal: [
+          { id: 'L4-15-1', tanya: '結婚式{けっこんしき}はいつですか。', tanyaId: 'Kapan pernikahannya?', opsi: ['来月{らいげつ}の一日{ついたち}', '来月{らいげつ}の六日{むいか}', '来月{らいげつ}の三日{みっか}'], benar: 2, pembahasan: '来月の三日は姉の結婚式です = tanggal 3 bulan depan pernikahan kakak.' },
+          { id: 'L4-15-2', tanya: 'わたしはいつ日本{にほん}を出{で}ますか。', tanyaId: 'Kapan penulis berangkat dari Jepang?', opsi: ['来月{らいげつ}の三日{みっか}', '来月{らいげつ}の六日{むいか}', '来月{らいげつ}の一日{ついたち}'], benar: 2, pembahasan: 'わたしは一日に日本を出て = saya berangkat dari Jepang tanggal 1.' },
+        ],
+      },
+      {
+        id: 'L4-16',
+        judul: 'スポーツセンター',
+        teks: '町{まち}のスポーツセンターは火曜日{かようび}から日曜日{にちようび}まで開{あ}いています。月曜日{げつようび}は休{やす}みです。時間{じかん}は朝{あさ}九時{くじ}から夜{よる}九時{くじ}までです。大人{おとな}は一回{いっかい}三百円{さんびゃくえん}、子{こ}どもは百円{ひゃくえん}です。',
+        terjemahan: 'Pusat olahraga kota buka dari Selasa sampai Minggu. Hari Senin libur. Jam bukanya dari pukul 9 pagi sampai pukul 9 malam. Orang dewasa 300 yen sekali masuk, anak-anak 100 yen.',
+        soal: [
+          { id: 'L4-16-1', tanya: 'スポーツセンターが休{やす}みの日{ひ}はいつですか。', tanyaId: 'Kapan pusat olahraga libur?', opsi: ['月曜日{げつようび}', '火曜日{かようび}', '日曜日{にちようび}'], benar: 0, pembahasan: '月曜日は休みです = hari Senin libur.' },
+          { id: 'L4-16-2', tanya: '大人{おとな}一人{ひとり}と子{こ}ども一人{ひとり}で、いくらですか。', tanyaId: 'Satu orang dewasa dan satu anak, berapa totalnya?', opsi: ['三百円{さんびゃくえん}', '四百円{よんひゃくえん}', '六百円{ろっぴゃくえん}'], benar: 1, pembahasan: '大人は一回三百円、子どもは百円です = dewasa 300 yen, anak 100 yen (jumlahnya 400 yen).' },
+        ],
+      },
+      {
+        id: 'L4-17',
+        judul: '夏休{なつやす}みの予定{よてい}',
+        teks: '夏休{なつやす}みは八月{はちがつ}十日{とおか}から十六日{じゅうろくにち}までです。十日{とおか}から十二日{じゅうににち}まで、友{とも}だちと北海道{ほっかいどう}へ行{い}きます。十三日{じゅうさんにち}からはうちでゆっくり休{やす}みます。十六日{じゅうろくにち}に部屋{へや}のそうじをします。',
+        terjemahan: 'Libur musim panas dari tanggal 10 sampai 16 Agustus. Tanggal 10 sampai 12 saya pergi ke Hokkaido bersama teman. Mulai tanggal 13 saya beristirahat santai di rumah. Tanggal 16 saya membersihkan kamar.',
+        soal: [
+          { id: 'L4-17-1', tanya: '北海道{ほっかいどう}へ行{い}くのは何日{なんにち}から何日{なんにち}までですか。', tanyaId: 'Ke Hokkaido dari tanggal berapa sampai tanggal berapa?', opsi: ['十日{とおか}から十二日{じゅうににち}まで', '十日{とおか}から十六日{じゅうろくにち}まで', '十三日{じゅうさんにち}から十六日{じゅうろくにち}まで'], benar: 0, pembahasan: '十日から十二日まで、友だちと北海道へ行きます = tanggal 10 sampai 12 pergi ke Hokkaido bersama teman.' },
+          { id: 'L4-17-2', tanya: '十六日{じゅうろくにち}に何{なに}をしますか。', tanyaId: 'Apa yang dilakukan tanggal 16?', opsi: ['北海道{ほっかいどう}へ行{い}きます', '部屋{へや}のそうじをします', 'うちでゆっくり休{やす}みます'], benar: 1, pembahasan: '十六日に部屋のそうじをします = tanggal 16 membersihkan kamar.' },
+        ],
+      },
+      {
+        id: 'L4-18',
+        judul: 'カレーの作{つく}り方{かた}',
+        teks: 'カレーの作{つく}り方{かた}です。はじめに、肉{にく}とやさいを小{ちい}さく切{き}ります。それから、なべで肉{にく}を五分{ごふん}ぐらい焼{や}きます。やさいと水{みず}を入{い}れて、二十分{にじゅっぷん}ぐらい待{ま}ちます。そして、カレーのルーを入{い}れます。',
+        terjemahan: 'Cara membuat kari. Pertama, potong kecil daging dan sayuran. Setelah itu, panggang daging di panci sekitar 5 menit. Masukkan sayuran dan air, lalu tunggu sekitar 20 menit. Kemudian masukkan bumbu kari.',
+        soal: [
+          { id: 'L4-18-1', tanya: 'はじめに何{なに}をしますか。', tanyaId: 'Apa yang dilakukan pertama kali?', opsi: ['肉{にく}を焼{や}きます', '肉{にく}とやさいを小{ちい}さく切{き}ります', '水{みず}を入{い}れます'], benar: 1, pembahasan: 'はじめに、肉とやさいを小さく切ります = pertama, potong kecil daging dan sayuran.' },
+          { id: 'L4-18-2', tanya: '肉{にく}は何分{なんぷん}ぐらい焼{や}きますか。', tanyaId: 'Daging dipanggang berapa menit?', opsi: ['二十分{にじゅっぷん}', '二十五分{にじゅうごふん}', '五分{ごふん}'], benar: 2, pembahasan: 'なべで肉を五分ぐらい焼きます = panggang daging di panci sekitar 5 menit.' },
+        ],
+      },
+      {
+        id: 'L4-19',
+        judul: '寮{りょう}のおふろ',
+        teks: '寮{りょう}のおふろは一階{いっかい}にあります。男{おとこ}の人{ひと}は午後{ごご}五時{ごじ}から八時{はちじ}まで、女{おんな}の人{ひと}は八時{はちじ}から十一時{じゅういちじ}まで入{はい}ってもいいです。おふろの中{なか}でせんたくをしないでください。タオルは部屋{へや}から持{も}ってきてください。',
+        terjemahan: 'Kamar mandi asrama ada di lantai satu. Laki-laki boleh mandi pukul 5 sampai 8 malam, perempuan pukul 8 sampai 11 malam. Jangan mencuci pakaian di kamar mandi. Bawalah handuk dari kamar.',
+        soal: [
+          { id: 'L4-19-1', tanya: '女{おんな}の人{ひと}は何時{なんじ}からおふろに入{はい}ってもいいですか。', tanyaId: 'Perempuan boleh mandi mulai pukul berapa?', opsi: ['五時{ごじ}', '八時{はちじ}', '十一時{じゅういちじ}'], benar: 1, pembahasan: '女の人は八時から十一時まで入ってもいいです = perempuan boleh mandi pukul 8 sampai 11.' },
+          { id: 'L4-19-2', tanya: 'おふろの中{なか}で何{なに}をしてはいけませんか。', tanyaId: 'Apa yang tidak boleh dilakukan di kamar mandi?', opsi: ['シャワーをあびること', 'タオルを使{つか}うこと', 'せんたくをすること'], benar: 2, pembahasan: 'おふろの中でせんたくをしないでください = jangan mencuci pakaian di kamar mandi.' },
+        ],
+      },
+      {
+        id: 'L4-20',
+        judul: '本屋{ほんや}のアルバイト',
+        teks: 'さくら本屋{ほんや}のお知{し}らせです。アルバイトの人{ひと}がほしいです。時間{じかん}は午後{ごご}五時{ごじ}から九時{くじ}までで、一週間{いっしゅうかん}に三日{みっか}です。一時間{いちじかん}千百円{せんひゃくえん}です。店{みせ}の人{ひと}に話{はな}してください。',
+        terjemahan: 'Pengumuman dari Toko Buku Sakura. Kami mencari pekerja paruh waktu. Jam kerjanya pukul 5 sampai 9 malam, tiga hari dalam seminggu. Upahnya 1.100 yen per jam. Silakan bicara dengan pegawai toko.',
+        soal: [
+          { id: 'L4-20-1', tanya: 'アルバイトは一週間{いっしゅうかん}に何日{なんにち}ですか。', tanyaId: 'Kerja paruh waktunya berapa hari seminggu?', opsi: ['二日{ふつか}', '三日{みっか}', '五日{いつか}'], benar: 1, pembahasan: '一週間に三日です = tiga hari dalam seminggu.' },
+          { id: 'L4-20-2', tanya: '一時間{いちじかん}いくらですか。', tanyaId: 'Berapa upah per jam?', opsi: ['千百円{せんひゃくえん}', '千円{せんえん}', '千五百円{せんごひゃくえん}'], benar: 0, pembahasan: '一時間千百円です = 1.100 yen per jam.' },
+        ],
+      },
     ],
   },
   {
@@ -536,6 +936,106 @@ export const DOKKAI_LEVEL = [
         soal: [
           { id: 'L5-10-1', tanya: 'どうして毎日{まいにち}日本語{にほんご}を勉強{べんきょう}していますか。', tanyaId: 'Mengapa ia belajar bahasa Jepang setiap hari?', opsi: ['日本{にほん}で働{はたら}きたいからです', '日本{にほん}のドラマが好{す}きだからです', '来週{らいしゅう}試験{しけん}があるからです'], benar: 0, pembahasan: '日本で働きたいですから = karena ingin bekerja di Jepang.' },
           { id: 'L5-10-2', tanya: '夜{よる}は何{なに}をしますか。', tanyaId: 'Apa yang dilakukan pada malam hari?', opsi: ['新{あたら}しい言葉{ことば}を覚{おぼ}えます', '日本{にほん}のドラマを見{み}ます', '試験{しけん}を受{う}けます'], benar: 1, pembahasan: '夜は日本のドラマを見ます = malam hari menonton drama Jepang.' },
+        ],
+      },
+      {
+        id: 'L5-11',
+        judul: '母{はは}への手紙{てがみ}',
+        teks: 'お母{かあ}さん、お元気{げんき}ですか。わたしは元気{げんき}です。日本{にほん}に来{き}て、三{さん}か月{げつ}になりました。仕事{しごと}は工場{こうじょう}で、少{すこ}し大変{たいへん}ですが、会社{かいしゃ}の人{ひと}はみんなやさしいです。毎晩{まいばん}、寮{りょう}で日本語{にほんご}を勉強{べんきょう}しています。来年{らいねん}の三月{さんがつ}に一度{いちど}国{くに}へ帰{かえ}ります。',
+        terjemahan: 'Ibu, apa kabar? Saya baik-baik saja. Sudah tiga bulan sejak saya datang ke Jepang. Saya bekerja di pabrik; pekerjaannya agak berat, tetapi semua orang di perusahaan baik hati. Setiap malam saya belajar bahasa Jepang di asrama. Bulan Maret tahun depan saya pulang sekali ke negara asal.',
+        soal: [
+          { id: 'L5-11-1', tanya: 'この人{ひと}は日本{にほん}に来{き}て、どのぐらいになりましたか。', tanyaId: 'Sudah berapa lama orang ini di Jepang?', opsi: ['三{さん}か月{げつ}', '一{いっ}か月{げつ}', '一年{いちねん}'], benar: 0, pembahasan: '日本に来て、三か月になりました = sudah tiga bulan sejak datang ke Jepang.' },
+          { id: 'L5-11-2', tanya: 'この人{ひと}の仕事{しごと}はどうですか。', tanyaId: 'Bagaimana pekerjaan orang ini?', opsi: ['仕事{しごと}はかんたんですが、さびしいです', '仕事{しごと}が大変{たいへん}ですから、国{くに}へ帰{かえ}りたいです', '仕事{しごと}は少{すこ}し大変{たいへん}ですが、会社{かいしゃ}の人{ひと}がやさしいです'], benar: 2, pembahasan: '少し大変ですが、会社の人はみんなやさしいです = agak berat, tetapi semua orang di perusahaan baik hati.' },
+        ],
+      },
+      {
+        id: 'L5-12',
+        judul: '先輩{せんぱい}からのメール',
+        teks: 'アディさん、来週{らいしゅう}から夜{よる}の仕事{しごと}になりますね。夜{よる}の仕事{しごと}は十時{じゅうじ}から朝{あさ}七時{しちじ}までです。夜{よる}は工場{こうじょう}がとても寒{さむ}いですから、あたたかい服{ふく}を着{き}てきてください。晩{ばん}ごはんは十時{じゅうじ}の前{まえ}に食{た}べてください。休{やす}みは二時{にじ}から三時{さんじ}までの一時間{いちじかん}です。わからないことは、わたしに聞{き}いてください。佐藤{さとう}',
+        terjemahan: 'Adi, mulai minggu depan kamu masuk sif malam, ya. Sif malam dari pukul 10 malam sampai pukul 7 pagi. Pada malam hari pabrik sangat dingin, jadi pakailah baju hangat. Makan malamlah sebelum pukul 10. Istirahatnya satu jam, dari pukul 2 sampai pukul 3. Kalau ada yang tidak dimengerti, tanyakan kepada saya. Sato',
+        soal: [
+          { id: 'L5-12-1', tanya: '夜{よる}の仕事{しごと}の休{やす}みは何時{なんじ}からですか。', tanyaId: 'Istirahat sif malam mulai pukul berapa?', opsi: ['二時{にじ}', '十時{じゅうじ}', '三時{さんじ}'], benar: 0, pembahasan: '休みは二時から三時までの一時間です = istirahat satu jam, dari pukul 2 sampai pukul 3.' },
+          { id: 'L5-12-2', tanya: 'どうしてあたたかい服{ふく}を着{き}ていきますか。', tanyaId: 'Mengapa harus memakai baju hangat?', opsi: ['外{そと}で仕事{しごと}をするからです', '夜{よる}の工場{こうじょう}はとても寒{さむ}いからです', '仕事{しごと}が朝{あさ}七時{しちじ}までだからです'], benar: 1, pembahasan: '夜は工場がとても寒いですから、あたたかい服を着てきてください = malam hari pabrik sangat dingin, jadi pakailah baju hangat.' },
+        ],
+      },
+      {
+        id: 'L5-13',
+        judul: 'はじめての給料{きゅうりょう}',
+        teks: '先週{せんしゅう}、はじめて日本{にほん}の会社{かいしゃ}から給料{きゅうりょう}をもらいました。とてもうれしかったです。半分{はんぶん}は国{くに}の家族{かぞく}に送{おく}りました。少{すこ}しは銀行{ぎんこう}に入{い}れました。それから、弟{おとうと}に新{あたら}しいサッカーのくつを買{か}いました。弟{おとうと}は来月{らいげつ}、サッカーの試合{しあい}に出{で}ます。',
+        terjemahan: 'Minggu lalu untuk pertama kalinya saya menerima gaji dari perusahaan Jepang. Saya sangat senang. Separuhnya saya kirim kepada keluarga di negara asal. Sedikit saya simpan di bank. Lalu saya membelikan sepatu sepak bola baru untuk adik laki-laki. Bulan depan adik akan ikut pertandingan sepak bola.',
+        soal: [
+          { id: 'L5-13-1', tanya: '給料{きゅうりょう}の半分{はんぶん}をどうしましたか。', tanyaId: 'Separuh gaji digunakan untuk apa?', opsi: ['銀行{ぎんこう}に入{い}れました', '家族{かぞく}に送{おく}りました', 'くつを買{か}いました'], benar: 1, pembahasan: '半分は国の家族に送りました = separuhnya dikirim kepada keluarga di negara asal.' },
+          { id: 'L5-13-2', tanya: 'どうして弟{おとうと}にサッカーのくつを買{か}いましたか。', tanyaId: 'Mengapa ia membelikan sepatu sepak bola untuk adik?', opsi: ['弟{おとうと}が来月{らいげつ}サッカーの試合{しあい}に出{で}るからです', '弟{おとうと}の誕生日{たんじょうび}だからです', '弟{おとうと}が日本{にほん}へ来{く}るからです'], benar: 0, pembahasan: '弟は来月、サッカーの試合に出ます = bulan depan adik ikut pertandingan sepak bola (karena itu dibelikan sepatu).' },
+        ],
+      },
+      {
+        id: 'L5-14',
+        judul: 'はじめての電車{でんしゃ}',
+        teks: 'きのう、はじめて一人{ひとり}で電車{でんしゃ}に乗{の}りました。駅{えき}はとても大{おお}きくて、人{ひと}がたくさんいました。きっぷの買{か}い方{かた}がわかりませんでしたから、駅員{えきいん}さんに聞{き}きました。電車{でんしゃ}の中{なか}では少{すこ}し寝{ね}ました。起{お}きた時{とき}、もう会社{かいしゃ}の駅{えき}の三{みっ}つ先{さき}の駅{えき}でした。ですから、会社{かいしゃ}に三十分{さんじゅっぷん}おくれました。',
+        terjemahan: 'Kemarin untuk pertama kalinya saya naik kereta sendirian. Stasiunnya sangat besar dan banyak orang. Saya tidak tahu cara membeli tiket, jadi saya bertanya kepada petugas stasiun. Di dalam kereta saya tidur sebentar. Saat bangun, kereta sudah tiga stasiun melewati stasiun kantor saya. Karena itu saya terlambat 30 menit ke kantor.',
+        soal: [
+          { id: 'L5-14-1', tanya: 'どうして駅員{えきいん}さんに聞{き}きましたか。', tanyaId: 'Mengapa ia bertanya kepada petugas stasiun?', opsi: ['駅{えき}が大{おお}きかったからです', '電車{でんしゃ}がおくれたからです', 'きっぷの買{か}い方{かた}がわからなかったからです'], benar: 2, pembahasan: 'きっぷの買い方がわかりませんでしたから、駅員さんに聞きました = tidak tahu cara membeli tiket, jadi bertanya kepada petugas.' },
+          { id: 'L5-14-2', tanya: 'どうして会社{かいしゃ}におくれましたか。', tanyaId: 'Mengapa ia terlambat ke kantor?', opsi: ['電車{でんしゃ}の中{なか}で寝{ね}て、会社{かいしゃ}の駅{えき}で降{お}りなかったからです', 'きっぷを買{か}うのに時間{じかん}がかかったからです', '電車{でんしゃ}が来{き}なかったからです'], benar: 0, pembahasan: '起きた時、もう会社の駅の三つ先の駅でした = saat bangun sudah tiga stasiun melewati stasiun kantor.' },
+        ],
+      },
+      {
+        id: 'L5-15',
+        judul: 'はじめての花見{はなみ}',
+        teks: '先週{せんしゅう}の土曜日{どようび}、会社{かいしゃ}の人{ひと}たちと公園{こうえん}へ花見{はなみ}に行{い}きました。公園{こうえん}にはさくらの木{き}がたくさんあって、とてもきれいでした。わたしたちは朝{あさ}早{はや}く行{い}って、大{おお}きい木{き}の下{した}にすわりました。そこでお弁当{べんとう}を食{た}べて、歌{うた}を歌{うた}いました。インドネシアにはさくらがありませんから、わたしははじめて見{み}ました。来年{らいねん}もまた行{い}きたいです。',
+        terjemahan: 'Sabtu lalu saya pergi melihat bunga sakura ke taman bersama orang-orang kantor. Di taman ada banyak pohon sakura dan sangat indah. Kami datang pagi-pagi dan duduk di bawah pohon besar. Di sana kami makan bekal dan bernyanyi. Di Indonesia tidak ada sakura, jadi itu pertama kalinya saya melihatnya. Tahun depan saya ingin pergi lagi.',
+        soal: [
+          { id: 'L5-15-1', tanya: '公園{こうえん}で何{なに}をしましたか。', tanyaId: 'Apa yang dilakukan di taman?', opsi: ['お弁当{べんとう}を食{た}べて、歌{うた}を歌{うた}いました', 'さくらの木{き}を買{か}いました', '会社{かいしゃ}の人{ひと}とテニスをしました'], benar: 0, pembahasan: 'そこでお弁当を食べて、歌を歌いました = di sana makan bekal dan bernyanyi.' },
+          { id: 'L5-15-2', tanya: 'どうして「わたし」ははじめてさくらを見{み}ましたか。', tanyaId: 'Mengapa penulis baru pertama kali melihat sakura?', opsi: ['いつも仕事{しごと}がいそがしかったからです', 'インドネシアにはさくらがないからです', 'さくらがきらいだったからです'], benar: 1, pembahasan: 'インドネシアにはさくらがありませんから、わたしははじめて見ました = di Indonesia tidak ada sakura, jadi baru pertama kali melihat.' },
+        ],
+      },
+      {
+        id: 'L5-16',
+        judul: 'ユミさんへのメール',
+        teks: 'ユミさん、こんにちは。今週{こんしゅう}の土曜日{どようび}、いっしょに買{か}い物{もの}に行{い}く約束{やくそく}をしましたね。でも、ごめんなさい。土曜日{どようび}は会社{かいしゃ}で仕事{しごと}をします。日曜日{にちようび}はどうですか。日曜日{にちようび}は一日{いちにち}ひまです。駅{えき}の前{まえ}で十時{じゅうじ}に会{あ}いませんか。返事{へんじ}を待{ま}っています。サリ',
+        terjemahan: 'Yumi, halo. Kita sudah berjanji pergi belanja bersama Sabtu ini, ya. Tetapi maaf, hari Sabtu saya bekerja di kantor. Bagaimana kalau hari Minggu? Hari Minggu saya bebas seharian. Bagaimana kalau bertemu di depan stasiun pukul 10? Saya menunggu balasanmu. Sari',
+        soal: [
+          { id: 'L5-16-1', tanya: 'サリさんは土曜日{どようび}、何{なに}をしますか。', tanyaId: 'Apa yang dilakukan Sari hari Sabtu?', opsi: ['ユミさんと買{か}い物{もの}に行{い}きます', 'うちで休{やす}みます', '会社{かいしゃ}で仕事{しごと}をします'], benar: 2, pembahasan: '土曜日は会社で仕事をします = hari Sabtu bekerja di kantor.' },
+          { id: 'L5-16-2', tanya: 'サリさんはユミさんに何{なに}を聞{き}いていますか。', tanyaId: 'Apa yang ditanyakan Sari kepada Yumi?', opsi: ['日曜日{にちようび}に会{あ}ってもいいか', '土曜日{どようび}に何時{なんじ}に会{あ}うか', 'どこで買{か}い物{もの}をするか'], benar: 0, pembahasan: '日曜日はどうですか。…十時に会いませんか = bagaimana kalau hari Minggu, bertemu pukul 10.' },
+        ],
+      },
+      {
+        id: 'L5-17',
+        judul: 'コンビニのアルバイト',
+        teks: 'リンさんは大学{だいがく}の近{ちか}くのコンビニでアルバイトをしています。毎週{まいしゅう}火曜日{かようび}と木曜日{もくようび}の夜{よる}、六時{ろくじ}から十時{じゅうじ}まで働{はたら}きます。はじめは日本語{にほんご}がよくわかりませんでしたから、大変{たいへん}でした。でも、店長{てんちょう}さんやほかの人{ひと}がゆっくり話{はな}しましたから、今{いま}は大丈夫{だいじょうぶ}です。お客{きゃく}さんと話{はな}すのはとても楽{たの}しいです。日本語{にほんご}も前{まえ}より上手{じょうず}になりました。',
+        terjemahan: 'Lin bekerja paruh waktu di minimarket dekat kampus. Setiap Selasa dan Kamis malam ia bekerja dari pukul 6 sampai pukul 10. Awalnya ia kurang mengerti bahasa Jepang, jadi terasa berat. Tetapi manajer dan orang lain berbicara pelan-pelan, jadi sekarang ia baik-baik saja. Berbicara dengan pelanggan sangat menyenangkan. Bahasa Jepangnya juga lebih lancar daripada dulu.',
+        soal: [
+          { id: 'L5-17-1', tanya: 'リンさんは一週間{いっしゅうかん}に何日{なんにち}働{はたら}きますか。', tanyaId: 'Lin bekerja berapa hari seminggu?', opsi: ['四日{よっか}', '二日{ふつか}', '一日{いちにち}'], benar: 1, pembahasan: '毎週火曜日と木曜日の夜…働きます = bekerja setiap Selasa dan Kamis malam (dua hari).' },
+          { id: 'L5-17-2', tanya: 'リンさんは今{いま}、アルバイトをどう思{おも}っていますか。', tanyaId: 'Bagaimana perasaan Lin tentang kerja paruh waktunya sekarang?', opsi: ['楽{たの}しいです', '大変{たいへん}ですから、やめたいです', 'あまりおもしろくないです'], benar: 0, pembahasan: 'お客さんと話すのはとても楽しいです = berbicara dengan pelanggan sangat menyenangkan.' },
+        ],
+      },
+      {
+        id: 'L5-18',
+        judul: 'わたしのおじいさん',
+        teks: 'わたしのおじいさんは七十五歳{ななじゅうごさい}です。でも、とても元気{げんき}です。毎朝{まいあさ}五時{ごじ}に起{お}きて、犬{いぬ}と一時間{いちじかん}ぐらい散歩{さんぽ}します。昼{ひる}はうちの前{まえ}の小{ちい}さい畑{はたけ}でトマトやなすを作{つく}ります。夜{よる}は九時{くじ}に寝{ね}ます。お医者{いしゃ}さんは「おじいさんは若{わか}い人{ひと}より元気{げんき}ですね」と言{い}いました。',
+        terjemahan: 'Kakek saya berumur 75 tahun. Tetapi ia sangat sehat. Setiap pagi ia bangun pukul 5 dan berjalan-jalan dengan anjing sekitar satu jam. Siang hari ia menanam tomat dan terung di kebun kecil di depan rumah. Malam hari ia tidur pukul 9. Dokter berkata, "Kakek lebih sehat daripada orang muda, ya."',
+        soal: [
+          { id: 'L5-18-1', tanya: 'おじいさんは毎朝{まいあさ}何{なに}をしますか。', tanyaId: 'Apa yang dilakukan kakek setiap pagi?', opsi: ['犬{いぬ}と散歩{さんぽ}します', 'やさいを買{か}いに行{い}きます', '病院{びょういん}へ行{い}きます'], benar: 0, pembahasan: '毎朝五時に起きて、犬と一時間ぐらい散歩します = setiap pagi bangun pukul 5 dan berjalan-jalan dengan anjing sekitar satu jam.' },
+          { id: 'L5-18-2', tanya: 'お医者{いしゃ}さんは、おじいさんをどう思{おも}っていますか。', tanyaId: 'Bagaimana pendapat dokter tentang kakek?', opsi: ['あまり元気{げんき}ではありません', 'とても元気{げんき}です', 'もっと運動{うんどう}をしてください'], benar: 1, pembahasan: 'おじいさんは若い人より元気ですね = kakek lebih sehat daripada orang muda.' },
+        ],
+      },
+      {
+        id: 'L5-19',
+        judul: '寮{りょう}のお知{し}らせ',
+        teks: '寮{りょう}のみなさんへ。あしたの朝{あさ}は雪{ゆき}がたくさん降{ふ}ります。道{みち}があぶないですから、自転車{じてんしゃ}に乗{の}らないでください。会社{かいしゃ}のバスは、いつもより三十分{さんじゅっぷん}早{はや}く、朝{あさ}七時{しちじ}に寮{りょう}の前{まえ}から出{で}ます。バスに乗{の}る人{ひと}は、六時{ろくじ}五十分{ごじゅっぷん}に寮{りょう}の前{まえ}に来{き}てください。寮{りょう}の山田{やまだ}',
+        terjemahan: 'Kepada seluruh penghuni asrama. Besok pagi salju akan turun banyak. Jalan berbahaya, jadi jangan naik sepeda. Bus perusahaan berangkat 30 menit lebih awal dari biasanya, pukul 7 pagi dari depan asrama. Yang naik bus, datanglah ke depan asrama pukul 6.50. Yamada, pengurus asrama',
+        soal: [
+          { id: 'L5-19-1', tanya: 'あした、会社{かいしゃ}のバスは何時{なんじ}に出{で}ますか。', tanyaId: 'Besok bus perusahaan berangkat pukul berapa?', opsi: ['六時{ろくじ}五十分{ごじゅっぷん}', '七時{しちじ}', '七時半{しちじはん}'], benar: 1, pembahasan: '朝七時に寮の前から出ます = berangkat pukul 7 pagi dari depan asrama.' },
+          { id: 'L5-19-2', tanya: 'いつもは、会社{かいしゃ}のバスは何時{なんじ}に出{で}ますか。', tanyaId: 'Biasanya bus perusahaan berangkat pukul berapa?', opsi: ['六時半{ろくじはん}', '七時{しちじ}', '七時半{しちじはん}'], benar: 2, pembahasan: 'いつもより三十分早く、朝七時に…出ます = 30 menit lebih awal dari biasanya, yaitu pukul 7 (jadi biasanya pukul 7.30).' },
+        ],
+      },
+      {
+        id: 'L5-20',
+        judul: 'わたしのゆめ',
+        teks: 'わたしは今{いま}、インドネシアで日本語{にほんご}を勉強{べんきょう}しています。来年{らいねん}から日本{にほん}の工場{こうじょう}で三年{さんねん}働{はたら}きます。日本{にほん}で働{はたら}いて、国{くに}の家族{かぞく}にお金{かね}を送{おく}りたいです。三年後{さんねんご}に国{くに}へ帰{かえ}って、小{ちい}さいレストランを始{はじ}めたいです。インドネシアの料理{りょうり}と日本{にほん}の料理{りょうり}を作{つく}る店{みせ}です。ですから、日本{にほん}にいる時{とき}、日本{にほん}の料理{りょうり}もたくさん習{なら}いたいです。',
+        terjemahan: 'Sekarang saya belajar bahasa Jepang di Indonesia. Mulai tahun depan saya akan bekerja tiga tahun di sebuah pabrik di Jepang. Saya ingin bekerja di Jepang dan mengirim uang kepada keluarga di negara asal. Tiga tahun kemudian saya ingin pulang dan membuka restoran kecil. Restoran yang membuat masakan Indonesia dan masakan Jepang. Karena itu, selama di Jepang saya juga ingin banyak belajar masakan Jepang.',
+        soal: [
+          { id: 'L5-20-1', tanya: 'この人{ひと}は日本{にほん}で何年{なんねん}働{はたら}きますか。', tanyaId: 'Berapa tahun orang ini akan bekerja di Jepang?', opsi: ['一年{いちねん}', '二年{にねん}', '三年{さんねん}'], benar: 2, pembahasan: '日本の工場で三年働きます = bekerja tiga tahun di pabrik di Jepang.' },
+          { id: 'L5-20-2', tanya: 'どうして日本{にほん}の料理{りょうり}を習{なら}いたいですか。', tanyaId: 'Mengapa ia ingin belajar masakan Jepang?', opsi: ['日本{にほん}の料理{りょうり}が一番{いちばん}好{す}きだからです', '国{くに}で日本{にほん}の料理{りょうり}も作{つく}る店{みせ}を始{はじ}めたいからです', '日本{にほん}のレストランで働{はたら}きたいからです'], benar: 1, pembahasan: 'インドネシアの料理と日本の料理を作る店です。ですから…日本の料理もたくさん習いたいです = restorannya akan membuat masakan Indonesia dan Jepang, karena itu ingin belajar masakan Jepang.' },
         ],
       },
     ],
