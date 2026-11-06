@@ -616,6 +616,7 @@ export default {
     EMPTY_ABSENSI_ENTRIES: 'クラスの受講生リストが空です。',
     VALIDATION_ERROR: '必須入力項目を確認してください。',
     GENERIC_ERROR: '処理中にエラーが発生しました。',
+    NETWORK_ERROR: 'サーバーに接続できません。インターネット接続を確認して、もう一度お試しください。',
     ROLE_NOT_ALLOWED: 'このロールではこの操作を実行できません。',
     SMART_REPORT_NO_DATA: 'このクラスにはまだ受講生がいません。',
     AI_NOT_CONFIGURED: 'サーバーにAIのAPIキー（GEMINI_API_KEY または OPENROUTER_API_KEY）が設定されていません。',

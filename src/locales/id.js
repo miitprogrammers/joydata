@@ -616,6 +616,7 @@ export default {
     EMPTY_ABSENSI_ENTRIES: 'Daftar peserta absensi kelas masih kosong.',
     VALIDATION_ERROR: 'Mohon periksa kembali isian formulir yang wajib diisi.',
     GENERIC_ERROR: 'Terjadi kendala saat memproses permintaan.',
+    NETWORK_ERROR: 'Tidak bisa terhubung ke server. Periksa koneksi internet, lalu coba lagi.',
     ROLE_NOT_ALLOWED: 'Role Anda tidak diizinkan melakukan aksi ini.',
     SMART_REPORT_NO_DATA: 'Kelas ini belum punya peserta.',
     AI_NOT_CONFIGURED: 'Kunci API AI belum diatur di server (GEMINI_API_KEY atau OPENROUTER_API_KEY).',

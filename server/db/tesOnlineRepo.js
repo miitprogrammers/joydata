@@ -411,7 +411,6 @@ async function sesiDrafAi(idRaw) {
 }
 
 const MAKS_BACAAN_AI_PER_PERMINTAAN = 8;
-const tanpaFurigana = (s) => String(s || '').replace(/\{[^{}]*\}/g, '');
 
 /** Asks the AI for new passages for a draft code; only passages that pass validasiBacaanAi are added. */
 export async function tambahBacaanAi(idRaw, payload, actor) {

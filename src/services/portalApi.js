@@ -17,14 +17,21 @@ export async function portalRequest(path, options = {}) {
   pendingRequests.value++;
   try {
     const token = getPortalToken();
-    const res = await fetch(`/api/portal${path}`, {
-      ...options,
-      headers: {
-        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      },
-      body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body,
-    });
+    let res;
+    try {
+      res = await fetch(`/api/portal${path}`, {
+        ...options,
+        headers: {
+          ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: options.body && typeof options.body !== 'string' ? JSON.stringify(options.body) : options.body,
+      });
+    } catch {
+      const err = new Error('NETWORK_ERROR');
+      err.code = 'NETWORK_ERROR';
+      throw err;
+    }
     let payload = null;
     try {
       payload = await res.json();
