@@ -15,6 +15,7 @@ import {
   PANJANG_KODE,
   poolDokkai,
   validasiBacaanAi,
+  opsiBahasaJepang,
   furiganaLengkap,
   sederhanakanKanji,
   kanjiDariVolume,
@@ -119,7 +120,12 @@ test('Official paper hides the key, translation, explanation and the dokkai furi
   assert.equal(dokkai[0].soal[0].benar, undefined);
   assert.equal(dokkai[0].soal[0].pembahasan, undefined);
   for (const b of dokkai) {
-    for (const t of [b.judul, b.teks, ...b.soal.map((s) => s.tanya)]) assert.doesNotMatch(t, /[{}]/);
+    for (const t of [b.judul, b.teks, ...b.soal.flatMap((s) => [s.tanya, ...s.opsi])]) assert.doesNotMatch(t, /[{}]/);
+    // Japanese only while answering: no Indonesian question, no Latin option.
+    for (const s of b.soal) {
+      assert.equal(s.tanyaId, undefined);
+      for (const o of s.opsi) assert.doesNotMatch(o, /[A-Za-z]{2,}/);
+    }
   }
   assert.match(dokkai.map((b) => b.teks).join(''), /[㐀-鿿]/); // the kanji themselves stay
 });
@@ -176,8 +182,8 @@ const bacaanAi = () => ({
   teks: 'わたしは会社{かいしゃ}の寮{りょう}に住{す}んでいます。ごみは毎朝{まいあさ}捨{す}てます。',
   terjemahan: 'Saya tinggal di asrama perusahaan. Sampah dibuang setiap pagi.',
   soal: [
-    { tanya: 'どこに住{す}んでいますか。', tanyaId: 'Di mana ia tinggal?', opsi: ['Asrama perusahaan', 'Hotel', 'Rumah teman'], benar: 0, pembahasan: 'わたしは会社の寮に住んでいます = tinggal di asrama perusahaan' },
-    { tanya: 'いつごみを捨{す}てますか。', tanyaId: 'Kapan sampah dibuang?', opsi: ['Setiap malam', 'Setiap pagi', 'Hari Minggu'], benar: 1, pembahasan: 'ごみは毎朝捨てます = setiap pagi' },
+    { tanya: 'どこに住{す}んでいますか。', tanyaId: 'Di mana ia tinggal?', opsi: ['会社{かいしゃ}の寮{りょう}', 'ホテル', '友{とも}だちの家{いえ}'], benar: 0, pembahasan: 'わたしは会社の寮に住んでいます = tinggal di asrama perusahaan' },
+    { tanya: 'いつごみを捨{す}てますか。', tanyaId: 'Kapan sampah dibuang?', opsi: ['毎晩{まいばん}', '毎朝{まいあさ}', '日曜日{にちようび}'], benar: 1, pembahasan: 'ごみは毎朝捨てます = setiap pagi' },
   ],
 });
 
@@ -197,7 +203,11 @@ test('AI passages: every kanji needs furigana, two or three questions with three
   };
   assert.equal(rusak((b) => { b.teks = '会社の寮に住んでいます。わたしは毎朝起きます。'; }), 'furigana');
   assert.equal(rusak((b) => { b.soal = b.soal.slice(0, 1); }), 'jumlah_soal');
-  assert.equal(rusak((b) => { b.soal[0].opsi = ['A', 'A', 'B']; }), 'opsi');
+  assert.equal(rusak((b) => { b.soal[0].opsi = ['ホテル', 'ホテル', 'バス']; }), 'opsi');
+  // Options are Japanese like the passage, never Indonesian, with furigana on every kanji.
+  assert.equal(rusak((b) => { b.soal[0].opsi = ['Asrama perusahaan', 'Hotel', 'Rumah teman']; }), 'opsi_bahasa');
+  assert.equal(rusak((b) => { b.soal[0].opsi = ['会社の寮', 'ホテル', '友{とも}だちの家{いえ}']; }), 'opsi_bahasa');
+  assert.equal(opsiBahasaJepang('Aの店{みせ}'), true);
   assert.equal(rusak((b) => { b.soal[1].benar = 3; }), 'kunci');
   assert.equal(rusak((b) => { b.soal[1].tanya = b.soal[0].tanya; }), 'soal');
 });
@@ -213,6 +223,7 @@ test('Kanji outside the chosen volumes become kana, in the text, the questions a
     const { bacaan } = validasiBacaanAi(bacaanAi(), 'AI7-1', { jlpt, kanjiBoleh: hanyaDasar });
     assert.equal(bacaan.teks, 'わたしはかいしゃのりょうにすんでいます。ごみはまいあさすてます。');
     assert.equal(bacaan.soal[1].tanya, 'いつごみをすてますか。');
+    assert.deepEqual(bacaan.soal[0].opsi, ['かいしゃのりょう', 'ホテル', '友{とも}だちのいえ']);
     assert.equal(bacaan.soal[0].pembahasan, 'わたしはかいしゃのりょうにすんでいます = tinggal di asrama perusahaan');
   }
 

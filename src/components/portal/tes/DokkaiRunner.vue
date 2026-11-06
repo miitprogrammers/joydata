@@ -24,7 +24,6 @@
 
     <section v-for="(s, qi) in bacaan.soal" :key="s.id" class="joy-surface p-5">
       <p class="text-base font-semibold text-slate-900" lang="ja">{{ qi + 1 }}. <FuriganaText :text="s.tanya" :furigana="false" /></p>
-      <p class="text-xs text-slate-500 mt-0.5">{{ s.tanyaId }}</p>
       <div class="mt-3 grid gap-2">
         <button
           v-for="(opt, oi) in s.opsi"
@@ -36,7 +35,7 @@
           @click="jawaban = { ...jawaban, [s.id]: oi }"
         >
           <span class="w-6 h-6 shrink-0 rounded-full bg-white/70 border border-slate-200 text-xs font-semibold flex items-center justify-center">{{ 'ABC'[oi] }}</span>
-          <span>{{ opt }}</span>
+          <span lang="ja"><FuriganaText :text="opt" :furigana="false" /></span>
         </button>
       </div>
       <p v-if="diperiksa" class="mt-2 rounded-lg px-3 py-2 text-xs" :class="jawaban[s.id] === s.benar ? 'bg-emerald-50 text-emerald-900' : 'bg-red-50 text-red-900'">
@@ -76,6 +75,7 @@ import { ref, computed } from 'vue';
 import FuriganaText from './FuriganaText.vue';
 
 // No furigana while answering, in practice too: reading the kanji is part of the test. The results page shows them.
+// Questions and options are Japanese only while answering; the Indonesian question is on the results page.
 const props = defineProps({
   soal: { type: Array, required: true },
   mode: { type: String, default: 'latihan' },

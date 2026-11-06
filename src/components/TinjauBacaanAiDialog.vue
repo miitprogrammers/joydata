@@ -64,7 +64,7 @@
                 :class="oi === s.benar ? 'bg-emerald-50 text-emerald-900' : 'text-slate-700'"
               >
                 <span class="w-5 text-xs font-semibold text-slate-500">{{ 'ABC'[oi] }}</span>
-                <span class="flex-1">{{ o }}</span>
+                <span class="flex-1" lang="ja"><FuriganaText :text="o" :furigana="furigana" /></span>
                 <span v-if="oi === s.benar" class="text-[11px] font-semibold text-emerald-700">{{ $t('tesOnline.ai.kunci') }}</span>
                 <button
                   v-else

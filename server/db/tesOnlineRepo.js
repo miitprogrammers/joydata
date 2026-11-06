@@ -28,6 +28,7 @@ import {
   alasanKodeTidakBerlaku,
   validasiBacaanAi,
   kanjiDariVolume,
+  tanpaFurigana,
 } from '../domain/tesOnline.js';
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -543,7 +544,7 @@ function ringkasHasil(sesi, hasil) {
   const salah =
     sesi.jenis === 'kanji'
       ? hasil.detail.filter((d) => !d.bacaanOk || !d.artiOk).map((d) => `${d.kanji} ${d.bacaanBenar} · ${d.artiBenar}`)
-      : hasil.detail.filter((d) => !d.ok).map((d) => `${d.tanyaId} → ${d.jawabanBenar}`);
+      : hasil.detail.filter((d) => !d.ok).map((d) => `${d.tanyaId} → ${tanpaFurigana(d.jawabanBenar)}`);
   return {
     total: hasil.total,
     benar: hasil.benar,

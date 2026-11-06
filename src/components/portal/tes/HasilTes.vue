@@ -59,8 +59,8 @@
           <p class="text-xs text-slate-500">{{ d.tanyaId }}</p>
           <p :class="d.ok ? 'text-emerald-800' : 'text-red-700'">
             <v-icon :icon="d.ok ? 'mdi-check' : 'mdi-close'" size="14" />
-            {{ d.jawabanDipilih ?? '—' }}
-            <template v-if="!d.ok"> → <span class="font-semibold text-slate-900">{{ d.jawabanBenar }}</span></template>
+            <span lang="ja"><FuriganaText v-if="d.jawabanDipilih" :text="d.jawabanDipilih" /><template v-else>—</template></span>
+            <template v-if="!d.ok"> → <span class="font-semibold text-slate-900" lang="ja"><FuriganaText :text="d.jawabanBenar" /></span></template>
           </p>
           <p class="text-xs text-slate-600 bg-slate-50 rounded px-2 py-1.5" lang="ja">{{ d.pembahasan }}</p>
         </li>

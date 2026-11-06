@@ -66,11 +66,17 @@ Aturan bahasa Jepang:
 Aturan soal:
 - Setiap bacaan punya tepat 2 soal.
 - "tanya": pertanyaan dalam bahasa Jepang dengan furigana, memakai pola kalimat yang sama dengan bacaan.
-  "tanyaId": terjemahan pertanyaan dalam bahasa Indonesia.
-- "opsi": tepat 3 pilihan jawaban dalam bahasa Indonesia, pendek dan sejajar. Tepat SATU yang benar menurut bacaan;
-  dua lainnya masuk akal tetapi jelas salah menurut bacaan (misalnya hari, jam, tempat, atau benda lain yang juga
-  disebut di bacaan). Pilihan yang benar harus persis sesuai isi bacaan, jangan digabung dengan hal lain
-  (kalau yang baru adalah mesinnya, jangan tulis "pabriknya baru").
+  "tanyaId": terjemahan pertanyaan dalam bahasa Indonesia (hanya ditampilkan di pembahasan setelah tes).
+- "opsi": tepat 3 pilihan jawaban dalam BAHASA JEPANG, seperti soal dokkai JLPT. JANGAN PERNAH menulis pilihan
+  dalam bahasa Indonesia atau huruf Latin (salah: "Pukul enam", "Ke taman", "Bus"; benar: 六時{ろくじ}, 公園{こうえん},
+  バス). Aturan kanji dan furigana sama dengan bacaan: kanji hanya dari "kanjiBoleh" dan setiap kanji diberi
+  furigana 漢字{かんじ}. Pilihan pendek dan sejajar bentuknya (semua kata benda, atau semua kalimat ～ます/～からです),
+  memakai kata dan pola kalimat setingkat bacaan. Tepat SATU yang benar menurut bacaan; dua lainnya masuk akal
+  tetapi jelas salah menurut bacaan (misalnya hari, jam, tempat, atau benda lain yang juga disebut di bacaan).
+  Pilihan yang benar harus persis sesuai isi bacaan, jangan digabung dengan hal lain
+  (kalau yang baru adalah mesinnya, jangan tulis 工場{こうじょう}が新{あたら}しいです).
+  Contoh: tanya 何時{なんじ}に起{お}きますか。 → opsi ["五時{ごじ}", "六時{ろくじ}", "七時{しちじ}"];
+  tanya どうして休{やす}みましたか。 → opsi ["頭{あたま}がいたかったからです", "雨{あめ}が降{ふ}ったからです", "用事{ようじ}があったからです"].
 - "benar": indeks pilihan yang benar (0, 1, atau 2). Variasikan posisinya.
 - Jawaban harus bisa ditemukan atau disimpulkan langsung dari bacaan. Jangan bertanya tentang hal yang tidak disebut.
 - "pembahasan": kutip kalimat Jepang dari bacaan yang menjadi kunci (tanpa furigana), lalu " = " dan artinya dalam

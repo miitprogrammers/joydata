@@ -203,11 +203,12 @@ export function buatSoalTes({ jenis, materi, jumlah = null, pool = null, kanjiBo
   return buatSoalDokkai(pool ?? poolDokkai(materi), jumlah, rng, kanjiBoleh);
 }
 
-const tanpaFurigana = (s) => String(s || '').replace(/\{[^}]*\}/g, '');
+export const tanpaFurigana = (s) => String(s || '').replace(/\{[^}]*\}/g, '');
 
 /**
  * The paper a peserta sees during an official test: no answer key, no translation or explanation, and dokkai text
- * without furigana (reading the kanji is part of the test; the readings come back with the results).
+ * without furigana (reading the kanji is part of the test; the readings come back with the results). Questions and
+ * options are Japanese only: the Indonesian question (tanyaId) comes back with the results.
  */
 export function soalTanpaKunci(jenis, soal) {
   if (jenis === 'kanji') {
@@ -218,7 +219,7 @@ export function soalTanpaKunci(jenis, soal) {
     level,
     judul: tanpaFurigana(judul),
     teks: tanpaFurigana(teks),
-    soal: daftar.map(({ id: soalId, tanya, tanyaId, opsi }) => ({ id: soalId, tanya: tanpaFurigana(tanya), tanyaId, opsi })),
+    soal: daftar.map(({ id: soalId, tanya, opsi }) => ({ id: soalId, tanya: tanpaFurigana(tanya), opsi: opsi.map(tanpaFurigana) })),
   }));
 }
 
@@ -306,7 +307,7 @@ export function catatanHasilTes({ jenis, materiJudul, kode }, hasil) {
     ].join(' · ');
   }
   const salah = hasil.detail.filter((d) => !d.ok);
-  const daftar = salah.slice(0, 8).map((d) => `${tanpaFurigana(d.judul)}: ${d.tanyaId} → ${d.jawabanBenar}`);
+  const daftar = salah.slice(0, 8).map((d) => `${tanpaFurigana(d.judul)}: ${d.tanyaId} → ${tanpaFurigana(d.jawabanBenar)}`);
   return [awal, `Benar ${hasil.benar}/${hasil.total}`, daftar.length ? `Perlu diulang: ${daftar.join('; ')}` : 'Semua benar'].join(' · ');
 }
 
@@ -439,14 +440,18 @@ function terapkanGanti(teks, ganti) {
     .reduce((t, base) => t.split(base).join(ganti.get(base)), teks);
 }
 
-/** A passage with only kanji from kanjiBoleh: title, text and questions in kana where needed, explanations too. */
+/** A passage with only kanji from kanjiBoleh: title, text, questions and options in kana where needed, explanations too. */
 export function sederhanakanBacaan(b, kanjiBoleh) {
   const ganti = new Map();
   const out = {
     ...b,
     judul: sederhanakanKanji(b.judul, ganti, kanjiBoleh),
     teks: sederhanakanKanji(b.teks, ganti, kanjiBoleh),
-    soal: b.soal.map((x) => ({ ...x, tanya: sederhanakanKanji(x.tanya, ganti, kanjiBoleh) })),
+    soal: b.soal.map((x) => ({
+      ...x,
+      tanya: sederhanakanKanji(x.tanya, ganti, kanjiBoleh),
+      opsi: x.opsi.map((o) => sederhanakanKanji(o, ganti, kanjiBoleh)),
+    })),
   };
   if (!ganti.size) return b;
   out.soal = out.soal.map((x) => ({ ...x, pembahasan: terapkanGanti(x.pembahasan, ganti) }));
@@ -454,6 +459,16 @@ export function sederhanakanBacaan(b, kanjiBoleh) {
 }
 
 const teksBersih = (v) => (typeof v === 'string' ? v.trim() : '');
+const ADA_TEKS_JEPANG = /[\u3040-\u30FF\u3400-\u9FFF]/;
+
+/**
+ * An answer option is Japanese, never Indonesian: it holds kana or kanji, no Latin word (a single letter like the
+ * "A" of Aの店 is fine), and furigana on every kanji like the passage.
+ */
+export function opsiBahasaJepang(opsi) {
+  const polos = tanpaFurigana(opsi);
+  return ADA_TEKS_JEPANG.test(polos) && !/[A-Za-z]{2,}/.test(polos) && furiganaLengkap(opsi);
+}
 // N4 and N3 passages may run longer than N5 ones.
 const PANJANG_MAKS = { N5: 800, N4: 1200, N3: 1600 };
 
@@ -480,7 +495,8 @@ export function validasiBacaanAi(raw, id, { jlpt = 'N5', kanjiBoleh = KANJI_DIPE
     const opsi = Array.isArray(s?.opsi) ? s.opsi.map(teksBersih) : [];
     const benar = s?.benar;
     if (!tanya || !tanyaId || !pembahasan || !furiganaLengkap(tanya)) return { ok: false, alasan: 'soal' };
-    if (opsi.length !== 3 || opsi.some((o) => !o) || new Set(opsi).size !== 3) return { ok: false, alasan: 'opsi' };
+    if (opsi.length !== 3 || opsi.some((o) => !o) || new Set(opsi.map(tanpaFurigana)).size !== 3) return { ok: false, alasan: 'opsi' };
+    if (!opsi.every(opsiBahasaJepang)) return { ok: false, alasan: 'opsi_bahasa' };
     if (!Number.isInteger(benar) || benar < 0 || benar > 2) return { ok: false, alasan: 'kunci' };
     soal.push({ id: `${id}-${i + 1}`, tanya, tanyaId, opsi, benar, pembahasan });
   }
