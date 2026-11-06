@@ -10,110 +10,119 @@
       </v-btn>
     </div>
 
-    <div class="joy-surface p-4 grid grid-cols-1 sm:grid-cols-12 gap-3">
-      <div class="sm:col-span-4">
-        <v-select
-          v-model="filterKelasId"
-          :items="kelasFilterOptions"
-          item-title="label"
-          item-value="value"
-          :label="$t('tesOnline.filterKelas')"
-          variant="outlined"
-          density="compact"
-          hide-details
-        />
-      </div>
-      <div class="sm:col-span-4">
-        <v-select
-          v-model="filterStatus"
-          :items="statusFilterOptions"
-          item-title="label"
-          item-value="value"
-          :label="$t('tesOnline.filterStatus')"
-          variant="outlined"
-          density="compact"
-          hide-details
-        />
-      </div>
-    </div>
+    <v-tabs v-model="tab" color="primary" density="compact" class="border-b border-slate-200">
+      <v-tab value="kode" class="text-none text-sm font-medium" prepend-icon="mdi-form-textbox-password">{{ $t('tesOnline.tabKode') }}</v-tab>
+      <v-tab value="bank" class="text-none text-sm font-medium" prepend-icon="mdi-book-open-page-variant-outline">{{ $t('tesOnline.tabBank') }}</v-tab>
+    </v-tabs>
 
-    <div class="joy-surface overflow-hidden">
-      <div v-if="loading" class="p-6"><v-skeleton-loader type="table-row-divider@4" /></div>
-      <div v-else-if="!displayedItems.length" class="p-8 text-center text-sm text-slate-500">{{ $t('tesOnline.kosong') }}</div>
-      <div v-else class="overflow-x-auto">
-        <table class="w-full text-left border-collapse joy-table">
-          <thead>
-            <tr>
-              <th class="px-5 py-3">{{ $t('tesOnline.colKode') }}</th>
-              <th class="px-4 py-3">{{ $t('tesOnline.colMateri') }}</th>
-              <th class="px-4 py-3">{{ $t('tesOnline.colNilai') }}</th>
-              <th class="px-4 py-3">{{ $t('tesOnline.colStatus') }}</th>
-              <th class="px-4 py-3 text-right">{{ $t('tesOnline.colProgres') }}</th>
-              <th class="px-5 py-3 text-right">{{ $t('app.actions') }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="s in displayedItems" :key="s.id">
-              <td class="px-5 py-2.5 whitespace-nowrap">
-                <div class="flex items-center gap-1">
-                  <span class="font-mono text-base font-bold tracking-widest text-slate-900">{{ s.kode }}</span>
-                  <v-btn icon="mdi-content-copy" size="x-small" variant="text" :aria-label="$t('tesOnline.salinKode', { kode: s.kode })" @click="salin(s.kode)" />
-                </div>
-                <div class="text-xs text-slate-500">{{ s.namaKelas }}</div>
-              </td>
-              <td class="px-4 py-2.5">
-                <div class="font-medium text-slate-900 flex flex-wrap items-center gap-1.5">
-                  {{ s.jenis === 'kanji' ? 'Kanji' : 'Dokkai' }} · {{ s.materiJudul }}
-                  <span v-if="s.sumber === 'ai'" class="rounded px-1.5 py-0.5 text-[10px] font-bold bg-violet-100 text-violet-800">AI</span>
-                </div>
-                <div class="text-xs text-slate-500">
-                  {{ jumlahLabel(s) }}
-                  <template v-if="s.jenis === 'dokkai' && s.kanjiVolume"> · {{ $t('tesOnline.ai.kanjiDari', { volume: volumeLabel(s.kanjiVolume) }) }}</template>
-                </div>
-              </td>
-              <td class="px-4 py-2.5 whitespace-nowrap">
-                <div class="font-medium text-slate-900">{{ s.namaUjian }}</div>
-                <div class="text-xs text-slate-500 tabular-nums">{{ s.tanggalUjian }}</div>
-              </td>
-              <td class="px-4 py-2.5 whitespace-nowrap">
-                <span class="text-xs font-semibold" :class="statusClass(s)">{{ statusLabel(s) }}</span>
-                <div v-if="s.berlakuSampai && s.status !== 'draf'" class="text-[11px] text-slate-500 tabular-nums">
-                  {{ $t('tesOnline.sampai', { waktu: waktuPendek(s.berlakuSampai) }) }}
-                </div>
-                <div v-if="s.status === 'draf'" class="text-[11px] text-slate-500">{{ $t('tesOnline.ai.nBacaan', { n: s.jumlahBacaanAi }) }}</div>
-              </td>
-              <td class="px-4 py-2.5 text-right tabular-nums whitespace-nowrap">
-                <div class="font-medium text-slate-900">{{ s.jumlahSelesai }}/{{ s.jumlahPeserta }}</div>
-                <div class="text-xs text-slate-500">
-                  <template v-if="s.rataSkor !== null">{{ $t('tesOnline.rata', { nilai: s.rataSkor }) }}</template>
-                  <template v-if="s.jumlahBerjalan"> · {{ $t('tesOnline.berjalan', { n: s.jumlahBerjalan }) }}</template>
-                </div>
-              </td>
-              <td class="px-5 py-2.5 text-right whitespace-nowrap">
-                <template v-if="s.status === 'draf'">
-                  <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openTinjau(s.id, 0)">{{ $t('tesOnline.ai.tinjauBtn') }}</v-btn>
-                </template>
-                <template v-else>
-                  <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openHasil(s)">{{ $t('tesOnline.hasilBtn') }}</v-btn>
-                  <v-btn size="x-small" variant="text" class="text-none" :loading="busyId === s.id" @click="toggleStatus(s)">
-                    {{ s.status === 'aktif' && s.bisaDipakai ? $t('tesOnline.tutupBtn') : $t('tesOnline.bukaBtn') }}
-                  </v-btn>
-                </template>
-                <v-btn
-                  v-if="!s.jumlahSelesai"
-                  icon="mdi-trash-can-outline"
-                  size="x-small"
-                  variant="text"
-                  color="error"
-                  :aria-label="`${$t('app.delete')} ${s.kode}`"
-                  @click="hapus(s)"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <BankSoalTes v-if="tab === 'bank'" :katalog="katalog" :jlpt-options="jlptOptions" :volume-kanji="volumeKanji" />
+
+    <template v-else>
+      <div class="joy-surface p-4 grid grid-cols-1 sm:grid-cols-12 gap-3">
+        <div class="sm:col-span-4">
+          <v-select
+            v-model="filterKelasId"
+            :items="kelasFilterOptions"
+            item-title="label"
+            item-value="value"
+            :label="$t('tesOnline.filterKelas')"
+            variant="outlined"
+            density="compact"
+            hide-details
+          />
+        </div>
+        <div class="sm:col-span-4">
+          <v-select
+            v-model="filterStatus"
+            :items="statusFilterOptions"
+            item-title="label"
+            item-value="value"
+            :label="$t('tesOnline.filterStatus')"
+            variant="outlined"
+            density="compact"
+            hide-details
+          />
+        </div>
       </div>
-    </div>
+
+      <div class="joy-surface overflow-hidden">
+        <div v-if="loading" class="p-6"><v-skeleton-loader type="table-row-divider@4" /></div>
+        <div v-else-if="!displayedItems.length" class="p-8 text-center text-sm text-slate-500">{{ $t('tesOnline.kosong') }}</div>
+        <div v-else class="overflow-x-auto">
+          <table class="w-full text-left border-collapse joy-table">
+            <thead>
+              <tr>
+                <th class="px-5 py-3">{{ $t('tesOnline.colKode') }}</th>
+                <th class="px-4 py-3">{{ $t('tesOnline.colMateri') }}</th>
+                <th class="px-4 py-3">{{ $t('tesOnline.colNilai') }}</th>
+                <th class="px-4 py-3">{{ $t('tesOnline.colStatus') }}</th>
+                <th class="px-4 py-3 text-right">{{ $t('tesOnline.colProgres') }}</th>
+                <th class="px-5 py-3 text-right">{{ $t('app.actions') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="s in displayedItems" :key="s.id">
+                <td class="px-5 py-2.5 whitespace-nowrap">
+                  <div class="flex items-center gap-1">
+                    <span class="font-mono text-base font-bold tracking-widest text-slate-900">{{ s.kode }}</span>
+                    <v-btn icon="mdi-content-copy" size="x-small" variant="text" :aria-label="$t('tesOnline.salinKode', { kode: s.kode })" @click="salin(s.kode)" />
+                  </div>
+                  <div class="text-xs text-slate-500">{{ s.namaKelas }}</div>
+                </td>
+                <td class="px-4 py-2.5">
+                  <div class="font-medium text-slate-900 flex flex-wrap items-center gap-1.5">
+                    {{ s.jenis === 'kanji' ? 'Kanji' : 'Dokkai' }} · {{ s.materiJudul }}
+                    <span v-if="s.sumber === 'ai'" class="rounded px-1.5 py-0.5 text-[10px] font-bold bg-violet-100 text-violet-800">AI</span>
+                  </div>
+                  <div class="text-xs text-slate-500">
+                    {{ jumlahLabel(s) }}
+                    <template v-if="s.jenis === 'dokkai' && s.kanjiVolume"> · {{ $t('tesOnline.ai.kanjiDari', { volume: volumeLabel(s.kanjiVolume) }) }}</template>
+                  </div>
+                </td>
+                <td class="px-4 py-2.5 whitespace-nowrap">
+                  <div class="font-medium text-slate-900">{{ s.namaUjian }}</div>
+                  <div class="text-xs text-slate-500 tabular-nums">{{ s.tanggalUjian }}</div>
+                </td>
+                <td class="px-4 py-2.5 whitespace-nowrap">
+                  <span class="text-xs font-semibold" :class="statusClass(s)">{{ statusLabel(s) }}</span>
+                  <div v-if="s.berlakuSampai && s.status !== 'draf'" class="text-[11px] text-slate-500 tabular-nums">
+                    {{ $t('tesOnline.sampai', { waktu: waktuPendek(s.berlakuSampai) }) }}
+                  </div>
+                  <div v-if="s.status === 'draf'" class="text-[11px] text-slate-500">{{ $t('tesOnline.ai.nBacaan', { n: s.jumlahBacaanAi }) }}</div>
+                </td>
+                <td class="px-4 py-2.5 text-right tabular-nums whitespace-nowrap">
+                  <div class="font-medium text-slate-900">{{ s.jumlahSelesai }}/{{ s.jumlahPeserta }}</div>
+                  <div class="text-xs text-slate-500">
+                    <template v-if="s.rataSkor !== null">{{ $t('tesOnline.rata', { nilai: s.rataSkor }) }}</template>
+                    <template v-if="s.jumlahBerjalan"> · {{ $t('tesOnline.berjalan', { n: s.jumlahBerjalan }) }}</template>
+                  </div>
+                </td>
+                <td class="px-5 py-2.5 text-right whitespace-nowrap">
+                  <template v-if="s.status === 'draf'">
+                    <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openTinjau(s.id, 0)">{{ $t('tesOnline.ai.tinjauBtn') }}</v-btn>
+                  </template>
+                  <template v-else>
+                    <v-btn size="x-small" variant="tonal" color="primary" class="text-none mr-1" @click="openHasil(s)">{{ $t('tesOnline.hasilBtn') }}</v-btn>
+                    <v-btn size="x-small" variant="text" class="text-none" :loading="busyId === s.id" @click="toggleStatus(s)">
+                      {{ s.status === 'aktif' && s.bisaDipakai ? $t('tesOnline.tutupBtn') : $t('tesOnline.bukaBtn') }}
+                    </v-btn>
+                  </template>
+                  <v-btn
+                    v-if="!s.jumlahSelesai"
+                    icon="mdi-trash-can-outline"
+                    size="x-small"
+                    variant="text"
+                    color="error"
+                    :aria-label="`${$t('app.delete')} ${s.kode}`"
+                    @click="hapus(s)"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </template>
 
     <!-- Open a code -->
     <v-dialog v-model="createOpen" max-width="640" scrollable>
@@ -335,10 +344,12 @@ import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import TinjauBacaanAiDialog from '../components/TinjauBacaanAiDialog.vue';
+import BankSoalTes from '../components/BankSoalTes.vue';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
 
+const tab = ref('kode');
 const loading = ref(true);
 const items = ref([]);
 const kelasOptions = ref([]);

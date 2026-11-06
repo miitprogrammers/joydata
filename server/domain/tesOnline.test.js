@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   daftarMateriTes,
+  bankSoalTes,
   buatSoalTes,
   soalTanpaKunci,
   nilaiTes,
@@ -246,6 +247,37 @@ test('Dokkai pools per sentence-pattern level: N5 = bank + approved AI, N4/N3 = 
   assert.deepEqual(poolDokkai('SEMUA', tambahan, 'N4').map((b) => b.id), ['AI1-1', 'AI2-1']);
   assert.equal(poolDokkai('L2', tambahan, 'N3').length, 0);
   assert.deepEqual(daftarMateriTes(tambahan).dokkai.find((m) => m.kode === 'L2').perJlpt.N4, { jumlah: 1, jumlahSoal: 2 });
+});
+
+test('Bank Soal: every question a code draws from, with keys, bank and AI passages, kanji by volume', () => {
+  const dasar = bankSoalTes({ jenis: 'kanji', materi: 'DASAR' });
+  assert.equal(dasar.items.length, 80);
+  assert.ok(dasar.items.every((k) => k.on && k.kun && k.arti));
+  assert.equal(bankSoalTes({ jenis: 'kanji', materi: 'SEMUA' }).items.length, 417);
+  assert.ok(bankSoalTes({ jenis: 'kanji', materi: 'VOL1' }).items.every((k) => k.id.startsWith('VOL1:') && k.bacaan));
+
+  const ai = { ...DOKKAI_LEVEL[1].bacaan[0], id: 'AI9-1', level: 'L2', jlpt: 'N5' };
+  const l2 = bankSoalTes({ jenis: 'dokkai', materi: 'L2' }, [ai]);
+  assert.equal(l2.items.length, 21);
+  assert.equal(l2.items.filter((b) => b.sumber === 'ai').length, 1);
+  assert.ok(l2.items.every((b) => b.soal.every((s) => s.opsi[s.benar])));
+  assert.equal(bankSoalTes({ jenis: 'dokkai', materi: 'L2', jlpt: 'N4' }, [ai]).items.length, 0);
+
+  // Same kana as a code with only the basic kanji would give peserta; all volumes = no change and kanjiVolume null.
+  const hanyaDasar = kanjiDariVolume(['DASAR']);
+  const sederhana = bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: ['DASAR'] });
+  assert.deepEqual(sederhana.kanjiVolume, ['DASAR']);
+  for (const b of sederhana.items) {
+    for (const [, base] of b.teks.matchAll(/([㐀-鿿々]+)\{/g)) for (const c of base) assert.ok(hanyaDasar.has(c), c);
+  }
+  const semuaVol = bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: VOLUME_KANJI });
+  assert.equal(semuaVol.kanjiVolume, null);
+  assert.equal(semuaVol.items[0].teks, DOKKAI_LEVEL[1].bacaan[0].teks);
+
+  assert.throws(() => bankSoalTes({ jenis: 'kanji', materi: 'L2' }), /INVALID_TES_ONLINE/);
+  assert.throws(() => bankSoalTes({ jenis: 'kanji', materi: 'VOL1', jlpt: 'N4' }), /INVALID_TES_ONLINE/);
+  assert.throws(() => bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: [] }), /INVALID_TES_ONLINE/);
+  assert.throws(() => bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: ['VOL9'] }), /INVALID_TES_ONLINE/);
 });
 
 test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only once passages exist, kanji volumes', () => {

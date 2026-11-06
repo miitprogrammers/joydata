@@ -84,6 +84,35 @@ export function cariMateri(jenis, materi, tambahanDokkai = []) {
   return daftarMateriTes(tambahanDokkai)[jenis]?.find((m) => m.kode === materi) || null;
 }
 
+// The kanji volumes a dokkai paper may use: null = all of them, false = not a valid selection.
+function volumeKanjiDipilih(raw) {
+  if (!Array.isArray(raw)) return null;
+  const volume = VOLUME_KANJI.filter((v) => raw.includes(v));
+  if (!volume.length || volume.length !== new Set(raw).size) return false;
+  return volume.length === VOLUME_KANJI.length ? null : volume;
+}
+
+const ID_BACAAN_BANK = new Set(DOKKAI_LEVEL.flatMap((l) => l.bacaan.map((b) => b.id)));
+
+/**
+ * Every question a code with these settings draws from, with its key (staff bank view). Kanji: the words of the
+ * material (服 once in Semua). Dokkai: the passages at that sentence-pattern level, bank and approved AI
+ * (sumber), with kanji outside the chosen volumes in kana as peserta would get them.
+ */
+export function bankSoalTes({ jenis, materi, jlpt = 'N5', kanjiVolume = null }, tambahanDokkai = []) {
+  const volume = jenis === 'dokkai' ? volumeKanjiDipilih(kanjiVolume) : null;
+  if (!cariMateri(jenis, materi) || !JLPT_DOKKAI.includes(jlpt) || (jenis === 'kanji' && jlpt !== 'N5') || volume === false) {
+    throw new Error('INVALID_TES_ONLINE');
+  }
+  if (jenis === 'kanji') return { jenis, materi, jlpt, kanjiVolume: null, items: kanjiItems(materi) };
+  const kanjiBoleh = volume ? kanjiDariVolume(volume) : null;
+  const items = poolDokkai(materi, tambahanDokkai, jlpt).map((b) => ({
+    ...(kanjiBoleh ? sederhanakanBacaan(b, kanjiBoleh) : b),
+    sumber: ID_BACAAN_BANK.has(b.id) ? 'bank' : 'ai',
+  }));
+  return { jenis, materi, jlpt, kanjiVolume: volume, items };
+}
+
 function shuffle(arr, rng) {
   const out = [...arr];
   for (let i = out.length - 1; i > 0; i--) {
@@ -340,14 +369,8 @@ export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   // A bank code draws from what exists at that pattern level: N4/N3 only once AI passages have been approved.
   const ukuranPool = jenis === 'dokkai' ? info.perJlpt[jlpt].jumlah : info.jumlah;
   // Kanji volumes the dokkai passages may use; all volumes (or a kanji test) = null.
-  let kanjiVolume = null;
-  if (jenis === 'dokkai' && Array.isArray(input?.kanjiVolume)) {
-    kanjiVolume = VOLUME_KANJI.filter((v) => input.kanjiVolume.includes(v));
-    if (!kanjiVolume.length || kanjiVolume.length !== new Set(input.kanjiVolume).size) {
-      return { ok: false, code: 'INVALID_TES_ONLINE' };
-    }
-    if (kanjiVolume.length === VOLUME_KANJI.length) kanjiVolume = null;
-  }
+  const kanjiVolume = jenis === 'dokkai' ? volumeKanjiDipilih(input?.kanjiVolume) : null;
+  if (kanjiVolume === false) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (sumber === 'bank' && ukuranPool === 0) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggalUjian) || !namaUjian || namaUjian.length > 40) {
     return { ok: false, code: 'INVALID_TES_ONLINE' };

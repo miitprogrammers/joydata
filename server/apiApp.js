@@ -98,6 +98,8 @@ import {
 import { signPortalToken, requirePeserta } from './middleware/portalAuth.js';
 import {
   listSesiTes,
+  getBankSoalTes,
+  getSimulasiTes,
   getSesiTes,
   createSesiTes,
   tambahBacaanAi,
@@ -425,6 +427,23 @@ export function createApiRouter() {
   router.delete('/tes-online/:id', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
     try {
       return res.json(await deleteSesiTes(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Bank Soal: every question a code with these settings draws from, and a sample paper; before /tes-online/:id.
+  router.get('/tes-online/bank-soal', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await getBankSoalTes(req.query));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/tes-online/simulasi', requireAuth, requirePageAccess('tes-online'), async (req, res) => {
+    try {
+      return res.json(await getSimulasiTes(req.query));
     } catch (err) {
       return handleRouteError(res, err);
     }

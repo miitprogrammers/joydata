@@ -17,6 +17,7 @@ import {
   daftarMateriTes,
   cariMateri,
   poolDokkai,
+  bankSoalTes,
   buatSoalTes,
   soalTanpaKunci,
   nilaiTes,
@@ -355,6 +356,41 @@ export async function listSesiTes() {
     jlptOptions: JLPT_DOKKAI,
     volumeKanji: VOLUME_KANJI,
   };
+}
+
+// Bank Soal: the code settings as query parameters (volume = kanji volumes, comma-separated).
+function pengaturanBankSoal(query) {
+  const jenis = String(query?.jenis || '');
+  return {
+    jenis,
+    materi: String(query?.materi || ''),
+    jlpt: jenis === 'dokkai' ? String(query?.jlpt || 'N5') : 'N5',
+    kanjiVolume: query?.volume ? String(query.volume).split(',') : null,
+  };
+}
+
+/** Every question a code with these settings draws from, with keys (staff Bank Soal). */
+export async function getBankSoalTes(query) {
+  await ensureInitialized();
+  const p = pengaturanBankSoal(query);
+  const bank = bankSoalTes(p, p.jenis === 'dokkai' ? await queryBacaanAi() : []);
+  return { ...bank, materiJudul: materiJudul(bank) };
+}
+
+/** A paper as one peserta would get it from a code with these settings, with its key; nothing is stored. */
+export async function getSimulasiTes(query) {
+  await ensureInitialized();
+  const p = pengaturanBankSoal(query);
+  const bank = bankSoalTes(p, p.jenis === 'dokkai' ? await queryBacaanAi() : []);
+  if (p.jenis === 'dokkai' && !bank.items.length) throw new Error('INVALID_TES_ONLINE');
+  const n = Number(query?.jumlah);
+  const soal = buatSoalTes({
+    jenis: bank.jenis,
+    materi: bank.materi,
+    jumlah: Number.isInteger(n) && n > 0 ? n : null,
+    pool: bank.jenis === 'dokkai' ? bank.items : null,
+  });
+  return { jenis: bank.jenis, materi: bank.materi, jlpt: bank.jlpt, materiJudul: materiJudul(bank), total: bank.items.length, soal };
 }
 
 /** One code with its AI passages and their keys (staff review). */
