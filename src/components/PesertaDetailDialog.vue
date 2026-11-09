@@ -8,7 +8,7 @@
     <v-card v-if="detail" class="rounded-xl">
       <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between gap-4">
         <div class="flex items-center gap-4 min-w-0">
-          <PesertaFoto :src="detail.fotoUrl" :nama="detail.nama" :size="72" portrait buka-penuh />
+          <PesertaFoto :src="detail.fotoUrl" :nama="detail.nama" :size="72" portrait perbesar />
           <div class="min-w-0">
             <div class="text-lg font-semibold text-slate-900 font-display">
               {{ detail.nama }}

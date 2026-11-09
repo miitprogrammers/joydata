@@ -91,7 +91,7 @@
               <td class="px-5 py-2.5 tabular-nums text-slate-600">#{{ p.mancationAkunId }}</td>
               <td class="px-4 py-2.5">
                 <div class="flex items-center gap-3">
-                  <PesertaFoto :src="p.fotoUrl" :nama="p.nama" :size="36" />
+                  <PesertaFoto :src="p.fotoUrl" :nama="p.nama" :size="36" perbesar />
                   <div class="min-w-0">
                     <div class="font-semibold text-slate-900">{{ p.nama }}</div>
                     <div v-if="p.daerahAsal" class="text-xs text-slate-500 truncate max-w-xs">
