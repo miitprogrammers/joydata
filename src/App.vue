@@ -3,7 +3,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useDisplay, useLocale } from 'vuetify';
-import { useAppStore } from './stores/appStore.js';
+import { useAppStore, hasSavedLocale } from './stores/appStore.js';
 import { pendingRequests } from './services/loadingState.js';
 import { preloaderMarkup } from './services/preloaderMarkup.js';
 import PWAInstallButton from './components/PWAInstallButton.vue';
@@ -51,6 +51,18 @@ const currentPageTitle = computed(() => {
 function switchLang(next) {
   appStore.setLocale(next, { locale }, vuetifyLocale);
 }
+
+// The viewer role is the Japanese staff: they start in 日本語 until they pick a language themselves. Not saved,
+// so another account signing in on the same device keeps its own default.
+watch(
+  () => appStore.user?.role?.kode,
+  (kode) => {
+    if (kode === 'viewer' && !hasSavedLocale() && locale.value !== 'ja') {
+      appStore.setLocale('ja', { locale }, vuetifyLocale, { simpan: false });
+    }
+  },
+  { immediate: true }
+);
 
 function handleLogout() {
   appStore.logout();

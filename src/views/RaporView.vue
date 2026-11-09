@@ -115,7 +115,7 @@
         <form class="space-y-3 text-xs" @submit.prevent="savePenempatan">
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Tanggal Lulus Ujian (合格日):
+              {{ $t('rapor.labelTanggalLulus') }}:
             </label>
             <input
               v-model="penempatanForm.tanggalLulusUjian"
@@ -126,7 +126,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Perusahaan Naitei (内定企業名):
+              {{ $t('rapor.labelPerusahaanNaitei') }}:
             </label>
             <input
               v-model="penempatanForm.perusahaanNaitei"
@@ -138,7 +138,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Jenis Pekerjaan (内定した業務):
+              {{ $t('rapor.labelJenisPekerjaan') }}:
             </label>
             <input
               v-model="penempatanForm.jenisPekerjaan"
@@ -150,7 +150,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Lokasi Kerja / Prefektur (勤務地):
+              {{ $t('rapor.labelLokasiPrefektur') }}:
             </label>
             <input
               v-model="penempatanForm.lokasiKerja"
@@ -162,7 +162,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Rencana Mulai Kerja (就業開始予定日):
+              {{ $t('rapor.labelRencanaMulai') }}:
             </label>
             <input
               v-model="penempatanForm.rencanaMulaiKerja"
@@ -173,7 +173,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Pendidikan Terakhir (最終学歴):
+              {{ $t('rapor.labelPendidikanTerakhir') }}:
             </label>
             <input
               v-model="penempatanForm.pendidikanTerakhir"
@@ -185,7 +185,7 @@
 
           <div>
             <label class="block font-semibold text-slate-700 mb-1">
-              Pendidikan Terakhir – Bahasa Jepang (最終学歴・日本語):
+              {{ $t('rapor.labelPendidikanTerakhirJa') }}:
             </label>
             <input
               v-model="penempatanForm.pendidikanTerakhirJa"

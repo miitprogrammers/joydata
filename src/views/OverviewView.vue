@@ -145,7 +145,7 @@
             </div>
           </div>
           <div class="text-[10px] text-slate-500 flex justify-between">
-            <span>Rata-rata Terkini:</span>
+            <span>{{ $t('dashboard.rataTerkini') }}:</span>
             <strong class="font-mono text-slate-800">
               {{ chartsData.trenUjian[chartsData.trenUjian.length - 1]?.rataRata ?? '-' }}
             </strong>
@@ -217,7 +217,7 @@
             <v-icon icon="mdi-account-voice" size="16" class="text-amber-600" />
           </div>
           <div class="text-xs space-y-2">
-            <div class="text-[11px] font-semibold text-slate-500">Grade Kaiwa Terakhir:</div>
+            <div class="text-[11px] font-semibold text-slate-500">{{ $t('dashboard.kaiwaTerakhir') }}:</div>
             <div class="flex items-center justify-between font-mono text-[11px] bg-slate-50 p-1.5 rounded">
               <span class="text-emerald-700 font-bold">A: {{ chartsData.distribusiKaiwa.A }}</span>
               <span class="text-blue-700 font-bold">B: {{ chartsData.distribusiKaiwa.B }}</span>
@@ -231,10 +231,10 @@
                 <span class="text-amber-700 font-bold">C: {{ chartsData.distribusiMensetsu.C }}</span>
               </div>
             </template>
-            <div class="text-[11px] font-semibold text-slate-500 mt-2">Kejadian Sikap:</div>
+            <div class="text-[11px] font-semibold text-slate-500 mt-2">{{ $t('dashboard.kejadianSikap') }}:</div>
             <div class="flex items-center justify-between text-[11px]">
-              <span class="text-emerald-700 font-semibold">+{{ chartsData.sikapSentimen.positif }} Positif</span>
-              <span class="text-red-600 font-semibold">−{{ chartsData.sikapSentimen.negatif }} Negatif</span>
+              <span class="text-emerald-700 font-semibold">+{{ chartsData.sikapSentimen.positif }} {{ $t('dashboard.sikapPositif') }}</span>
+              <span class="text-red-600 font-semibold">−{{ chartsData.sikapSentimen.negatif }} {{ $t('dashboard.sikapNegatif') }}</span>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@
                   :to="`/rapor?pesertaId=${s.pesertaId}&periode=${chartsData.periode}`"
                   class="text-blue-700 hover:underline text-[11px]"
                 >
-                  Rapor
+                  {{ $t('dashboard.linkRapor') }}
                 </router-link>
               </div>
             </div>
@@ -309,7 +309,7 @@
                   :to="`/absensi`"
                   class="text-blue-700 hover:underline text-[11px]"
                 >
-                  Absensi
+                  {{ $t('dashboard.linkAbsensi') }}
                 </router-link>
               </div>
             </div>

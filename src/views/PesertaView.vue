@@ -90,9 +90,14 @@
             <tr v-for="p in items" :key="p.id">
               <td class="px-5 py-2.5 tabular-nums text-slate-600">#{{ p.mancationAkunId }}</td>
               <td class="px-4 py-2.5">
-                <div class="font-semibold text-slate-900">{{ p.nama }}</div>
-                <div v-if="p.daerahAsal" class="text-xs text-slate-500 truncate max-w-xs">
-                  {{ p.daerahAsal }}
+                <div class="flex items-center gap-3">
+                  <PesertaFoto :src="p.fotoUrl" :nama="p.nama" :size="36" />
+                  <div class="min-w-0">
+                    <div class="font-semibold text-slate-900">{{ p.nama }}</div>
+                    <div v-if="p.daerahAsal" class="text-xs text-slate-500 truncate max-w-xs">
+                      {{ p.daerahAsal }}
+                    </div>
+                  </div>
                 </div>
               </td>
               <td class="px-4 py-2.5 font-medium text-slate-800 whitespace-nowrap">
@@ -157,6 +162,7 @@ import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import MancationSyncBanner from '../components/MancationSyncBanner.vue';
 import PesertaDetailDialog from '../components/PesertaDetailDialog.vue';
+import PesertaFoto from '../components/PesertaFoto.vue';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();

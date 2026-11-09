@@ -7,16 +7,19 @@
   >
     <v-card v-if="detail" class="rounded-xl">
       <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between gap-4">
-        <div>
-          <div class="text-lg font-semibold text-slate-900 font-display">
-            {{ detail.nama }}
-          </div>
-          <div class="text-xs text-slate-500 flex items-center gap-2 mt-0.5 tabular-nums">
-            <span>ID #{{ detail.mancationAkunId }}</span>
-            <span aria-hidden="true">·</span>
-            <span>{{ detail.namaKelas || $t(`luarTypes.${detail.keteranganLuarKelas || 'alumni'}`) }}</span>
-            <span aria-hidden="true">·</span>
-            <span class="font-medium text-slate-700">{{ $t(`tags.${detail.statusTag}`) }}</span>
+        <div class="flex items-center gap-4 min-w-0">
+          <PesertaFoto :src="detail.fotoUrl" :nama="detail.nama" :size="72" portrait buka-penuh />
+          <div class="min-w-0">
+            <div class="text-lg font-semibold text-slate-900 font-display">
+              {{ detail.nama }}
+            </div>
+            <div class="text-xs text-slate-500 flex flex-wrap items-center gap-x-2 mt-0.5 tabular-nums">
+              <span>ID #{{ detail.mancationAkunId }}</span>
+              <span aria-hidden="true">·</span>
+              <span>{{ detail.namaKelas || $t(`luarTypes.${detail.keteranganLuarKelas || 'alumni'}`) }}</span>
+              <span aria-hidden="true">·</span>
+              <span class="font-medium text-slate-700">{{ $t(`tags.${detail.statusTag}`) }}</span>
+            </div>
           </div>
         </div>
         <v-btn icon="mdi-close" variant="text" size="small" :aria-label="$t('app.close')" @click="$emit('update:modelValue', false)" />
@@ -351,6 +354,7 @@ import { ref, computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
+import PesertaFoto from './PesertaFoto.vue';
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },

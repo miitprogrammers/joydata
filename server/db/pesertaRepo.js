@@ -16,6 +16,8 @@ import {
   getMancationStatusMeta,
   searchMancationAccounts,
   moveMancationAccounts,
+  mancationFotoUrl,
+  fetchMancationFotoVersi,
 } from './mancation.js';
 import {
   reconcileRosterWithLocalPeserta,
@@ -31,7 +33,7 @@ async function getSnapshotFallbackFromDb() {
     const pool = getPool();
     const [kRes, pRes] = await Promise.all([
       pool.query(`SELECT mancation_class_id AS "mancationClassId", nama_kelas AS "namaKelas", program_studi AS "programStudi", class_stat AS "classStat", synced_at AS "syncedAt" FROM mancation_kelas_cache`),
-      pool.query(`SELECT mancation_akun_id AS "mancationAkunId", mancation_class_id AS "mancationClassId", nama, email, whatsapp, tanggal_lahir::text AS "tanggalLahir", status_pernikahan AS "statusPernikahan", jumlah_anak AS "jumlahAnak", agama, alamat AS "daerahAsal", synced_at AS "syncedAt" FROM mancation_peserta_cache`),
+      pool.query(`SELECT mancation_akun_id AS "mancationAkunId", mancation_class_id AS "mancationClassId", nama, email, whatsapp, tanggal_lahir::text AS "tanggalLahir", status_pernikahan AS "statusPernikahan", jumlah_anak AS "jumlahAnak", agama, alamat AS "daerahAsal", foto_versi::float8 AS "fotoVersi", synced_at AS "syncedAt" FROM mancation_peserta_cache`),
     ]);
     return {
       syncedAt: kRes.rows[0]?.syncedAt || new Date().toISOString(),
@@ -98,14 +100,15 @@ async function writeMancationCache(pool, { classes, students }) {
     if (studentRows.length > 0) {
       await client.query(
         `INSERT INTO mancation_peserta_cache
-          (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, synced_at)
-         VALUES ${valuesWithNow(studentRows.length, 10)}
+          (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, foto_versi, synced_at)
+         VALUES ${valuesWithNow(studentRows.length, 11)}
          ON CONFLICT (mancation_akun_id) DO UPDATE SET
            mancation_class_id = EXCLUDED.mancation_class_id, nama = EXCLUDED.nama,
            email = EXCLUDED.email, whatsapp = EXCLUDED.whatsapp,
            tanggal_lahir = EXCLUDED.tanggal_lahir, status_pernikahan = EXCLUDED.status_pernikahan,
            jumlah_anak = EXCLUDED.jumlah_anak, agama = EXCLUDED.agama,
-           alamat = EXCLUDED.alamat, synced_at = NOW()`,
+           alamat = EXCLUDED.alamat,
+           foto_versi = COALESCE(EXCLUDED.foto_versi, mancation_peserta_cache.foto_versi), synced_at = NOW()`,
         studentRows.flatMap((ms) => [
           ms.mancationAkunId,
           ms.mancationClassId,
@@ -117,6 +120,7 @@ async function writeMancationCache(pool, { classes, students }) {
           ms.jumlahAnak ?? null,
           ms.agama || '',
           ms.daerahAsal || '',
+          ms.fotoVersi || null,
         ])
       );
     }
@@ -137,6 +141,16 @@ async function writeMancationCache(pool, { classes, students }) {
   } finally {
     client.release();
   }
+}
+
+// A live sync rewrites the cache rows of the roster only. Peserta outside it (no class yet, peserta luar) keep an
+// older cache row, so their photo version is read here to show a pas foto uploaded in Mancation since then.
+async function fotoVersiLuarRoster(rosterStudents, pesertaRows) {
+  const diRoster = new Set(rosterStudents.map((s) => Number(s.mancationAkunId)));
+  const akunIds = [...new Set(pesertaRows.map((p) => Number(p.mancationAkunId)))].filter((id) => id > 0 && !diRoster.has(id));
+  if (akunIds.length === 0) return null;
+  const versi = await fetchMancationFotoVersi(akunIds);
+  return versi ? { akunIds, versi } : null;
 }
 
 async function runMancationSync(force) {
@@ -208,6 +222,15 @@ async function runMancationSync(force) {
           leaving.map((p) => p.mancationAkunId),
         ]);
       }
+      const fotoLuar = await fotoVersiLuarRoster(mancationData.students, existingRes.rows);
+      if (fotoLuar) {
+        await pool.query(
+          `UPDATE mancation_peserta_cache c SET foto_versi = v.versi
+           FROM unnest($1::int[], $2::bigint[]) AS v(akun_id, versi)
+           WHERE c.mancation_akun_id = v.akun_id AND c.foto_versi IS DISTINCT FROM v.versi`,
+          [fotoLuar.akunIds, fotoLuar.akunIds.map((id) => fotoLuar.versi.get(id) ?? null)]
+        );
+      }
     }
   } else {
     const db = readLocalState();
@@ -217,6 +240,11 @@ async function runMancationSync(force) {
       const byAkun = new Map(db.mancationPesertaCache.map((s) => [Number(s.mancationAkunId), s]));
       for (const s of mancationData.students) {
         byAkun.set(Number(s.mancationAkunId), { ...s, syncedAt: nowIso });
+      }
+      const fotoLuar = await fotoVersiLuarRoster(mancationData.students, db.peserta);
+      for (const id of fotoLuar?.akunIds || []) {
+        const cached = byAkun.get(id);
+        if (cached) cached.fotoVersi = fotoLuar.versi.get(id) ?? null;
       }
       db.mancationPesertaCache = [...byAkun.values()];
     }
@@ -555,6 +583,7 @@ function mergePesertaWithMancation(pRow, penempatanRow, kelasRow, mancationMap) 
     id: Number(pRow.id),
     mancationAkunId: Number(pRow.mancationAkunId),
     nama: formatPersonName(m?.nama) || `Peserta #${pRow.mancationAkunId}`,
+    fotoUrl: mancationFotoUrl(pRow.mancationAkunId, m?.fotoVersi),
     whatsapp: m?.whatsapp || '',
     kelasId: pRow.kelasId ? Number(pRow.kelasId) : null,
     namaKelas: kelasRow?.namaKelas || '',

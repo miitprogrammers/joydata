@@ -18,9 +18,27 @@ const DEFAULT_SETTINGS = {
   ambang_kehadiran_rendah: 75,
 };
 
+function readSavedLocale() {
+  try {
+    const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(LOCALE_STORAGE_KEY) : null;
+    return saved === 'ja' || saved === 'id' ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+/** True once someone picked a language on this device with the ID / 日本語 switch. */
+export function hasSavedLocale() {
+  return readSavedLocale() !== null;
+}
+
+// Without a choice of their own, a browser set to Japanese starts in 日本語. Japanese staff otherwise read the
+// Indonesian UI through the browser's translator, which turns romaji such as "Mensetsu" into wrong kanji (面雪).
 export function getInitialLocale() {
-  const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(LOCALE_STORAGE_KEY) : null;
-  return saved === 'ja' ? 'ja' : 'id';
+  const saved = readSavedLocale();
+  if (saved) return saved;
+  const langs = typeof navigator !== 'undefined' ? [...(navigator.languages || []), navigator.language] : [];
+  return langs.some((l) => /^ja\b/i.test(String(l || ''))) ? 'ja' : 'id';
 }
 
 export const useAppStore = defineStore('app', () => {
@@ -55,11 +73,16 @@ export const useAppStore = defineStore('app', () => {
     return '/no-access';
   }
 
-  function setLocale(nextLocale, i18nObj, vuetifyLocaleObj) {
+  // simpan = false switches without remembering it, for the automatic choice (the ID / 日本語 switch saves).
+  function setLocale(nextLocale, i18nObj, vuetifyLocaleObj, { simpan = true } = {}) {
     const clean = nextLocale === 'ja' ? 'ja' : 'id';
     locale.value = clean;
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(LOCALE_STORAGE_KEY, clean);
+    if (simpan) {
+      try {
+        localStorage.setItem(LOCALE_STORAGE_KEY, clean);
+      } catch {
+        // private mode / blocked storage: the language still applies to this visit
+      }
     }
     if (typeof document !== 'undefined') {
       document.documentElement.lang = clean;

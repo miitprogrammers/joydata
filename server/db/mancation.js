@@ -89,7 +89,44 @@ function buildDaerahAsal(dp) {
   return parts.join(', ');
 }
 
-function mapMancationStudentRow(akun, dp) {
+// Pas foto uploaded in Mancation: each upload adds a doclist row for the "foto" document (dokumen_sarat.nama_file)
+// and is stored at resources/uploads/doc_{akun}/{akun}_foto.jpeg on the Mancation web app (t_profil.prof_url of cli 9).
+// The newest doclist id is kept as the photo version, so a re-upload gets a new URL instead of a cached old photo.
+const MANCATION_FOTO_BASE_URL = (process.env.MANCATION_FOTO_BASE_URL || 'https://app.mizunosb.com/resources/uploads').replace(/\/+$/, '');
+
+export function mancationFotoUrl(akunId, fotoVersi) {
+  const id = Number(akunId);
+  if (!Number.isInteger(id) || id <= 0 || !fotoVersi) return null;
+  return `${MANCATION_FOTO_BASE_URL}/doc_${id}/${id}_foto.jpeg?v=${Number(fotoVersi)}`;
+}
+
+// Map akun_id → photo version (accounts without a photo are left out), or null when Mancation could not be read.
+async function fetchFotoVersiByAkun(pool, akunIds) {
+  const map = new Map();
+  if (akunIds.length === 0) return map;
+  try {
+    const [rows] = await pool.query(
+      `SELECT dl.akun_id, MAX(dl.id) AS versi
+       FROM doclist dl JOIN dokumen_sarat ds ON ds.id = dl.doc_id AND ds.nama_file = 'foto'
+       WHERE dl.akun_id IN (?) GROUP BY dl.akun_id`,
+      [akunIds]
+    );
+    for (const r of rows) map.set(Number(r.akun_id), Number(r.versi));
+    return map;
+  } catch {
+    return null; // photos are optional: the roster still loads without them
+  }
+}
+
+/** Photo versions of any accounts (also those outside the JOY classes); null when Mancation is unavailable. */
+export async function fetchMancationFotoVersi(akunIds) {
+  const pool = getMysqlPool();
+  if (!pool) return null;
+  const ids = [...new Set(akunIds.map(Number).filter((n) => Number.isInteger(n) && n > 0))];
+  return fetchFotoVersiByAkun(pool, ids);
+}
+
+function mapMancationStudentRow(akun, dp, fotoVersi = null) {
   const akunId = Number(akun.akun_id ?? akun.id);
   const classId = Number(akun.id_kelas ?? 0);
   return {
@@ -104,6 +141,7 @@ function mapMancationStudentRow(akun, dp) {
     jumlahAnak: dp?.anak != null && dp?.anak !== '' ? Number(dp.anak) : null,
     agama: String(dp?.agama_nama ?? '').trim(),
     daerahAsal: buildDaerahAsal(dp),
+    fotoVersi: fotoVersi || null,
     hasDatapeserta: Boolean(dp),
   };
 }
@@ -169,8 +207,9 @@ export async function fetchMancationRoster(classIds = [139, 142, 144], snapshotF
         }
       }
 
+      const fotoByAkun = await fetchFotoVersiByAkun(pool, akunIds);
       students = akunRows.map((akun) =>
-        mapMancationStudentRow(akun, dpByAkun.get(Number(akun.akun_id)))
+        mapMancationStudentRow(akun, dpByAkun.get(Number(akun.akun_id)), fotoByAkun?.get(Number(akun.akun_id)))
       );
     }
 
@@ -225,7 +264,8 @@ export async function lookupMancationAccountById(akunId, snapshotFallback = null
       } catch {
         dp = null;
       }
-      return mapMancationStudentRow(akun, dp);
+      const fotoByAkun = await fetchFotoVersiByAkun(pool, [numericId]);
+      return mapMancationStudentRow(akun, dp, fotoByAkun?.get(numericId));
     } catch {
       // Fallback to snapshot pool below if MySQL query times out
     }

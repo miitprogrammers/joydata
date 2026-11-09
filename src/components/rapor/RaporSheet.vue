@@ -254,31 +254,31 @@
         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
           6. {{ $t('rapor.secPenempatan') }}
         </h3>
-        <span class="text-[10px] text-slate-400">Data 名簿</span>
+        <span class="text-[10px] text-slate-400">{{ $t('rapor.labelDataMeibo') }}</span>
       </div>
       <div class="border border-slate-200 rounded p-3 text-xs grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
         <div class="flex justify-between py-0.5 border-b border-slate-50">
-          <span class="text-slate-600">Tanggal Lulus Ujian (合格日):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelTanggalLulus') }}:</span>
           <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.tanggalLulusUjian || '-' }}</span>
         </div>
         <div class="flex justify-between py-0.5 border-b border-slate-50">
-          <span class="text-slate-600">Perusahaan Naitei (内定企業名):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelPerusahaanNaitei') }}:</span>
           <span class="font-bold text-slate-800">{{ raporData.penempatan.perusahaanNaitei || '-' }}</span>
         </div>
         <div class="flex justify-between py-0.5 border-b border-slate-50">
-          <span class="text-slate-600">Jenis Pekerjaan (内定した業務):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelJenisPekerjaan') }}:</span>
           <span class="text-slate-800">{{ raporData.penempatan.jenisPekerjaan || '-' }}</span>
         </div>
         <div class="flex justify-between py-0.5 border-b border-slate-50">
-          <span class="text-slate-600">Lokasi Kerja (勤務地):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelLokasiKerja') }}:</span>
           <span class="text-slate-800">{{ raporData.penempatan.lokasiKerja || '-' }}</span>
         </div>
         <div class="flex justify-between py-0.5 border-b border-slate-50">
-          <span class="text-slate-600">Rencana Mulai Kerja (就業開始予定日):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelRencanaMulai') }}:</span>
           <span class="font-mono font-medium text-slate-800">{{ raporData.penempatan.rencanaMulaiKerja || '-' }}</span>
         </div>
         <div class="flex justify-between pt-1">
-          <span class="text-slate-600">Pendidikan Terakhir (最終学歴):</span>
+          <span class="text-slate-600">{{ $t('rapor.labelPendidikanTerakhir') }}:</span>
           <span class="text-slate-800 font-medium text-right">
             {{ raporData.penempatan.pendidikanTerakhir || '-' }}
             <span v-if="raporData.penempatan.pendidikanTerakhirJa" class="block font-normal">

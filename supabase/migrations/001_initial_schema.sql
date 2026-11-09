@@ -327,8 +327,12 @@ CREATE TABLE IF NOT EXISTS mancation_peserta_cache (
   berat_kg NUMERIC(5,1) NULL,
   gol_darah VARCHAR(10) NOT NULL DEFAULT '',
   pendidikan_raw VARCHAR(160) NOT NULL DEFAULT '',
+  foto_versi BIGINT NULL,
   synced_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Added later: newest Mancation doclist id of the peserta's pas foto (NULL = no photo), used as the photo URL version.
+ALTER TABLE mancation_peserta_cache ADD COLUMN IF NOT EXISTS foto_versi BIGINT NULL;
 
 -- Smart Report: resume AI (Gemini) per peserta atau per kelas, ID + JA. data_hash = sidik data sumber
 -- saat resume dibuat, untuk menandai resume yang sudah usang setelah nilai berubah.
