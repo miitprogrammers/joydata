@@ -17,7 +17,7 @@ import {
   sedangAktif,
   terapkanDetak,
   statusSesi,
-  awalPeriode,
+  rentangPeriode,
   statistikLatihan,
 } from '../domain/aktivitasLatihan.js';
 
@@ -99,7 +99,7 @@ function sesiView(r) {
   };
 }
 
-async function querySesiLatihan({ id = null, pesertaId = null, percobaanId = null, sejak = null, terbuka = false, limit = null } = {}) {
+async function querySesiLatihan({ id = null, pesertaId = null, percobaanId = null, sejak = null, sebelum = null, terbuka = false, limit = null } = {}) {
   if (getMode() === 'postgres') {
     const where = [];
     const params = [];
@@ -107,6 +107,7 @@ async function querySesiLatihan({ id = null, pesertaId = null, percobaanId = nul
     if (pesertaId !== null) where.push(`peserta_id = $${params.push(pesertaId)}`);
     if (percobaanId !== null) where.push(`percobaan_id = $${params.push(percobaanId)}`);
     if (sejak !== null) where.push(`mulai_at >= $${params.push(sejak)}`);
+    if (sebelum !== null) where.push(`mulai_at < $${params.push(sebelum)}`);
     if (terbuka) where.push(`selesai_at IS NULL AND terakhir_at >= NOW() - ($${params.push(DETIK_AKTIF)}::int * INTERVAL '1 second')`);
     const res = await getPool().query(
       `SELECT ${SESI_KOLOM} FROM latihan_sesi ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
@@ -123,6 +124,7 @@ async function querySesiLatihan({ id = null, pesertaId = null, percobaanId = nul
         (pesertaId === null || s.pesertaId === pesertaId) &&
         (percobaanId === null || s.percobaanId === percobaanId) &&
         (sejak === null || s.mulaiAt >= sejak) &&
+        (sebelum === null || s.mulaiAt < sebelum) &&
         (!terbuka || sedangAktif(s, now))
     )
     .map(sesiView)
@@ -390,7 +392,6 @@ export async function simpanFlashcard(pesertaId, volume, body) {
 // ---------------------------------------------------------------------------------------------------------------
 // Staff: live monitor and practice history (page monitor-latihan).
 
-const PERIODE_HARI = { 7: 7, 30: 30, semua: null };
 
 function denganPeserta(info, pesertaId) {
   return info.get(pesertaId) || { pesertaId, nama: `Peserta #${pesertaId}`, fotoUrl: null, kelasId: null, namaKelas: '' };
@@ -412,23 +413,24 @@ export async function getMonitorLive() {
 }
 
 /**
- * Practice per peserta in a period (7 days, 30 days or all time, WIB), most diligent first. Everyone in a class
+ * Practice per peserta in a period (one chosen day, 7 days, 30 days or all time, WIB), most diligent first. Everyone in a class
  * is listed, also without practice; kelasId = only peserta now in that class.
  */
 export async function getStatistikLatihan(query = {}) {
   await ensureInitialized();
-  const periode = Object.hasOwn(PERIODE_HARI, String(query.periode)) ? String(query.periode) : '7';
+  const { periode, tanggal, dari, sampai } = rentangPeriode(query);
   const kelasId = query.kelasId && query.kelasId !== 'all' ? Number(query.kelasId) : null;
-  const dari = awalPeriode(PERIODE_HARI[periode]);
-  const [sesi, info, kelasData] = await Promise.all([querySesiLatihan({ sejak: dari }), infoPeserta(), listKelas()]);
+  const [sesi, info, kelasData] = await Promise.all([querySesiLatihan({ sejak: dari, sebelum: sampai }), infoPeserta(), listKelas()]);
   const roster = [...info.values()].filter((p) => p.sumber === 'roster' && p.kelasId).map((p) => p.pesertaId);
-  const rows = statistikLatihan(sesi, roster, { dari })
+  const rows = statistikLatihan(sesi, roster, { dari, sampai })
     .map((r) => ({ ...r, ...denganPeserta(info, r.pesertaId) }))
     .filter((r) => !kelasId || r.kelasId === kelasId)
     .map((r, i) => ({ ...r, peringkat: i + 1 }));
   return {
     periode,
+    tanggal,
     dari,
+    sampai,
     items: rows,
     kelasOptions: kelasData.items.map((k) => ({ id: Number(k.id), namaKelas: k.namaKelas, status: k.status })),
   };
@@ -440,11 +442,13 @@ export async function getRiwayatLatihanPeserta(pesertaIdRaw, query = {}) {
   const pesertaId = Number(pesertaIdRaw);
   const info = await infoPeserta([pesertaId]);
   if (!info.has(pesertaId)) throw new Error('NOT_FOUND');
-  const periode = Object.hasOwn(PERIODE_HARI, String(query.periode)) ? String(query.periode) : '7';
-  const dari = awalPeriode(PERIODE_HARI[periode]);
-  const [semua, progres] = await Promise.all([querySesiLatihan({ pesertaId, sejak: dari }), queryProgresPeserta(pesertaId)]);
+  const { periode, tanggal, dari, sampai } = rentangPeriode(query);
+  const [semua, progres] = await Promise.all([
+    querySesiLatihan({ pesertaId, sejak: dari, sebelum: sampai }),
+    queryProgresPeserta(pesertaId),
+  ]);
   const now = new Date();
-  const [ringkasan] = statistikLatihan(semua, [pesertaId], { dari });
+  const [ringkasan] = statistikLatihan(semua, [pesertaId], { dari, sampai });
   const flashcard = progres
     .map((p) => {
       const kartu = kartuVolume(p.volume);
@@ -461,6 +465,7 @@ export async function getRiwayatLatihanPeserta(pesertaIdRaw, query = {}) {
   return {
     peserta: info.get(pesertaId),
     periode,
+    tanggal,
     ringkasan,
     sesi: semua.slice(0, 200).map((s) => ({ ...s, status: statusSesi(s, now) })),
     flashcard,

@@ -26,12 +26,35 @@
           hide-details
         />
       </div>
-      <div v-if="tab === 'riwayat'" class="sm:col-span-8 flex items-center">
+      <div v-if="tab === 'riwayat'" class="sm:col-span-8 flex flex-wrap items-center gap-2">
         <v-btn-toggle v-model="periode" mandatory color="primary" variant="outlined" density="compact">
+          <v-btn value="1" class="text-none">{{ $t('monitorLatihan.periode1') }}</v-btn>
           <v-btn value="7" class="text-none">{{ $t('monitorLatihan.periode7') }}</v-btn>
           <v-btn value="30" class="text-none">{{ $t('monitorLatihan.periode30') }}</v-btn>
           <v-btn value="semua" class="text-none">{{ $t('monitorLatihan.periodeSemua') }}</v-btn>
         </v-btn-toggle>
+        <!-- One day: pick the date, or step a day back / forward (never past today, WIB) -->
+        <div v-if="periode === '1'" class="flex items-center gap-1">
+          <v-btn icon="mdi-chevron-left" variant="text" size="small" :aria-label="$t('monitorLatihan.hariSebelumnya')" @click="geserHari(-1)" />
+          <v-text-field
+            v-model="tanggal"
+            type="date"
+            :max="hariIni()"
+            :aria-label="$t('monitorLatihan.pilihTanggal')"
+            variant="outlined"
+            density="compact"
+            hide-details
+            class="w-40"
+          />
+          <v-btn
+            icon="mdi-chevron-right"
+            variant="text"
+            size="small"
+            :disabled="tanggal >= hariIni()"
+            :aria-label="$t('monitorLatihan.hariBerikutnya')"
+            @click="geserHari(1)"
+          />
+        </div>
       </div>
       <div v-else class="sm:col-span-8 flex items-center gap-2 text-xs text-slate-500">
         <span class="relative flex h-2 w-2">
@@ -109,7 +132,7 @@
               <th class="px-5 py-3 w-12">#</th>
               <th class="px-4 py-3">{{ $t('monitorLatihan.colPeserta') }}</th>
               <th class="px-4 py-3">{{ $t('monitorLatihan.colWaktuAktif') }}</th>
-              <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colHari') }}</th>
+              <th v-if="!satuHari" class="px-4 py-3 text-right">{{ $t('monitorLatihan.colHari') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSesi') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colKartu') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSoal') }}</th>
@@ -139,7 +162,7 @@
                   <span class="text-sm font-semibold tabular-nums" :class="r.detikAktif ? 'text-slate-900' : 'text-slate-400'">{{ durasiJam(r.detikAktif) }}</span>
                 </div>
               </td>
-              <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.hariAktif }}</td>
+              <td v-if="!satuHari" class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.hariAktif }}</td>
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.jumlahSesi }}</td>
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.kartu }}</td>
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.soal }}</td>
@@ -255,6 +278,11 @@ const REFRESH_LIVE_MS = 10_000;
 const tab = ref('live');
 const kelasId = ref('all');
 const periode = ref('7');
+// Today in WIB as YYYY-MM-DD: read each time, so a page left open past midnight moves on.
+const hariIni = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
+// The day shown with period '1'.
+const tanggal = ref(hariIni());
+const satuHari = computed(() => periode.value === '1');
 const kelasOptions = ref([]);
 
 const liveItems = ref([]);
@@ -280,9 +308,26 @@ const kelasFilterOptions = computed(() => [
   ...kelasOptions.value.map((k) => ({ value: k.id, label: k.namaKelas })),
 ]);
 const liveTampil = computed(() => liveItems.value.filter((s) => kelasId.value === 'all' || s.kelasId === kelasId.value));
-const labelPeriode = computed(() =>
-  t(periode.value === '7' ? 'monitorLatihan.periode7' : periode.value === '30' ? 'monitorLatihan.periode30' : 'monitorLatihan.periodeSemua')
-);
+const labelPeriode = computed(() => {
+  if (satuHari.value) {
+    // Noon WIB of the chosen day, so the weekday never slips to the day before or after.
+    const hari = fmt({ weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(`${tanggal.value}T12:00:00+07:00`));
+    return tanggal.value === hariIni() ? `${t('monitorLatihan.hariIni')} · ${hari}` : hari;
+  }
+  return t(periode.value === '7' ? 'monitorLatihan.periode7' : periode.value === '30' ? 'monitorLatihan.periode30' : 'monitorLatihan.periodeSemua');
+});
+
+/** One day back or forward from the chosen date, never past today. */
+function geserHari(n) {
+  const [y, m, d] = tanggal.value.split('-').map(Number);
+  const baru = new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
+  tanggal.value = baru > hariIni() ? hariIni() : baru;
+}
+
+/** The period as query parameters for both history requests. */
+function paramPeriode() {
+  return satuHari.value ? { periode: '1', tanggal: tanggal.value } : { periode: periode.value };
+}
 
 // --- formatting -----------------------------------------------------------------------------------------------------
 
@@ -337,7 +382,8 @@ const kotakRingkasan = computed(() => {
   if (!r) return [];
   return [
     { label: t('monitorLatihan.colWaktuAktif'), nilai: durasiJam(r.detikAktif) },
-    { label: t('monitorLatihan.colHari'), nilai: r.hariAktif },
+    // Within one day the day count is always 0 or 1, so the number of sessions says more.
+    satuHari.value ? { label: t('monitorLatihan.colSesi'), nilai: r.jumlahSesi } : { label: t('monitorLatihan.colHari'), nilai: r.hariAktif },
     { label: t('monitorLatihan.colKartu'), nilai: r.kartu },
     { label: t('monitorLatihan.colSoal'), nilai: r.soal },
   ];
@@ -358,18 +404,23 @@ async function muatLive({ diam = false } = {}) {
   }
 }
 
+// Stepping through days quickly sends several requests; only the newest one may fill the table.
+let muatKe = 0;
+
 async function muatStatistik() {
+  const nomor = ++muatKe;
   statLoading.value = true;
   try {
-    const params = new URLSearchParams({ periode: periode.value, kelasId: String(kelasId.value) });
+    const params = new URLSearchParams({ ...paramPeriode(), kelasId: String(kelasId.value) });
     const res = await apiRequest(`/monitor-latihan/statistik?${params}`);
+    if (nomor !== muatKe) return;
     kelasOptions.value = res.kelasOptions || [];
     // Peserta without practice share the last place.
     statItems.value = (res.items || []).map((r) => ({ ...r, peringkatTampil: r.detikAktif ? r.peringkat : '-' }));
   } catch (err) {
-    notifyError(err);
+    if (nomor === muatKe) notifyError(err);
   } finally {
-    statLoading.value = false;
+    if (nomor === muatKe) statLoading.value = false;
   }
 }
 
@@ -378,7 +429,7 @@ async function bukaPeserta(pesertaId) {
   detailLoading.value = true;
   detail.value = null;
   try {
-    detail.value = await apiRequest(`/monitor-latihan/peserta/${pesertaId}?periode=${periode.value}`);
+    detail.value = await apiRequest(`/monitor-latihan/peserta/${pesertaId}?${new URLSearchParams(paramPeriode())}`);
   } catch (err) {
     notifyError(err);
     detailOpen.value = false;
@@ -402,7 +453,12 @@ watch(tab, (v) => {
   if (v === 'live') muatLive({ diam: Boolean(liveDiperbarui.value) });
   else muatStatistik();
 });
-watch([periode, kelasId], () => {
+// A cleared or typed-ahead date goes back to today (the server does the same). Registered first, so the load
+// below runs once, with the corrected date.
+watch(tanggal, (v) => {
+  if (!v || v > hariIni()) tanggal.value = hariIni();
+});
+watch([periode, kelasId, tanggal], () => {
   if (tab.value === 'riwayat') muatStatistik();
 });
 

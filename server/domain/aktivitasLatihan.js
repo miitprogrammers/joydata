@@ -57,6 +57,29 @@ export function awalPeriode(hari, now = new Date()) {
   return new Date(Date.UTC(y, m - 1, d - (hari - 1)) - 7 * 3600 * 1000).toISOString();
 }
 
+/** Periods of the history tab: '1' = one chosen WIB day, '7' / '30' = the last n days, 'semua' = all time. */
+export const PERIODE_LATIHAN = { 1: 1, 7: 7, 30: 30, semua: null };
+
+/** 00:00 WIB of a YYYY-MM-DD date (plus n days), as an ISO time. */
+function awalHariWib(tanggal, tambahHari = 0) {
+  const [y, m, d] = tanggal.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + tambahHari) - 7 * 3600 * 1000).toISOString();
+}
+
+/**
+ * The time range of a history query: { periode, tanggal, dari, sampai } with sampai exclusive (null = up to now).
+ * Period '1' covers the WIB day `tanggal`; a missing, invalid or future date means today. Unknown periods = 7 days.
+ */
+export function rentangPeriode({ periode, tanggal } = {}, now = new Date()) {
+  const p = Object.hasOwn(PERIODE_LATIHAN, String(periode)) ? String(periode) : '7';
+  if (p !== '1') return { periode: p, tanggal: null, dari: awalPeriode(PERIODE_LATIHAN[p], now), sampai: null };
+  const hariIni = tanggalWib(now);
+  // A date that does not exist (2026-02-30) rolls over in Date.UTC, so it no longer reads back the same.
+  const sah = typeof tanggal === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(tanggal) && tanggalWib(awalHariWib(tanggal)) === tanggal;
+  const hari = sah && tanggal <= hariIni ? tanggal : hariIni;
+  return { periode: p, tanggal: hari, dari: awalHariWib(hari), sampai: awalHariWib(hari, 1) };
+}
+
 function kosong() {
   return {
     detikAktif: 0,
@@ -74,13 +97,15 @@ function kosong() {
 /**
  * Practice per peserta, most diligent first: total active time, then days with practice, then sessions. pesertaIds
  * = everyone who should be listed even without practice (the roster); sessions of others count too.
- * dari = only sessions started from this ISO time.
+ * dari / sampai = only sessions started from dari and before sampai (ISO times; null = no bound).
  */
-export function statistikLatihan(sesiList, pesertaIds = [], { dari = null } = {}) {
+export function statistikLatihan(sesiList, pesertaIds = [], { dari = null, sampai = null } = {}) {
   const per = new Map(pesertaIds.map((id) => [Number(id), kosong()]));
   const batas = dari ? new Date(dari).getTime() : null;
+  const akhir = sampai ? new Date(sampai).getTime() : null;
   for (const s of sesiList) {
-    if (batas !== null && new Date(s.mulaiAt).getTime() < batas) continue;
+    const mulai = new Date(s.mulaiAt).getTime();
+    if ((batas !== null && mulai < batas) || (akhir !== null && mulai >= akhir)) continue;
     const id = Number(s.pesertaId);
     if (!per.has(id)) per.set(id, kosong());
     const p = per.get(id);

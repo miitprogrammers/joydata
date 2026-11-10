@@ -16,6 +16,7 @@ import {
   terapkanDetak,
   statusSesi,
   awalPeriode,
+  rentangPeriode,
   statistikLatihan,
 } from './aktivitasLatihan.js';
 
@@ -129,6 +130,30 @@ test('Periods start at 00:00 WIB', () => {
   // 23:30 UTC on 9 Nov is already 10 Nov in WIB.
   assert.equal(awalPeriode(1, new Date('2026-11-09T23:30:00.000Z')), '2026-11-09T17:00:00.000Z');
   assert.equal(awalPeriode(null), null);
+});
+
+test('One-day period: one whole WIB day, today when the date is missing, invalid or in the future', () => {
+  const now = new Date('2026-11-10T01:00:00.000Z'); // 10 Nov 08:00 WIB
+  const hari = (tanggal) => rentangPeriode({ periode: '1', tanggal }, now);
+  assert.deepEqual(hari('2026-11-08'), {
+    periode: '1',
+    tanggal: '2026-11-08',
+    dari: '2026-11-07T17:00:00.000Z',
+    sampai: '2026-11-08T17:00:00.000Z',
+  });
+  for (const salah of [undefined, '', '2026-11-11', '2026-02-30', '10-11-2026', 'x']) assert.equal(hari(salah).tanggal, '2026-11-10');
+  assert.deepEqual(rentangPeriode({ periode: '30' }, now), { periode: '30', tanggal: null, dari: awalPeriode(30, now), sampai: null });
+  assert.equal(rentangPeriode({ periode: '99' }, now).periode, '7');
+
+  // Only sessions started inside the day count; the roster is still listed.
+  const sesi = (pesertaId, mulaiAt, detikAktif) => ({ pesertaId, jenis: 'kanji', mode: 'latihan', mulaiAt, terakhirAt: mulaiAt, detikAktif, itemSelesai: 1, skor: null });
+  const { dari, sampai } = hari('2026-11-08');
+  const rows = statistikLatihan(
+    [sesi(1, '2026-11-07T16:59:59.000Z', 900), sesi(1, '2026-11-07T17:00:00.000Z', 60), sesi(2, '2026-11-08T16:59:00.000Z', 120), sesi(2, '2026-11-08T17:00:00.000Z', 999)],
+    [1, 2, 3],
+    { dari, sampai }
+  );
+  assert.deepEqual(rows.map((r) => [r.pesertaId, r.detikAktif, r.jumlahSesi]), [[2, 120, 1], [1, 60, 1], [3, 0, 0]]);
 });
 
 test('Most diligent first: active time, then days with practice; everyone on the roster is listed', () => {
