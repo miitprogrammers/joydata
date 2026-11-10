@@ -1203,6 +1203,7 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
   let monthRows = [];
   let wizardDayRows = [];
   let otherClassRows = []; // the same month, rows of the roster in OTHER classes (peserta moved by Atur Formasi)
+  let otherClassDayRows = []; // the wizard date, rows of the roster in OTHER classes (that day they sat there)
 
   if (targetKelasId) {
     if (getMode() === 'postgres') {
@@ -1226,14 +1227,23 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
       wizardDayRows = dRes.rows;
       const rosterIds = lookups.rosterItems.filter((p) => Number(p.kelasId) === targetKelasId).map((p) => Number(p.id));
       if (rosterIds.length) {
-        otherClassRows = (
-          await getPool().query(
+        const [oRes, odRes] = await Promise.all([
+          getPool().query(
             `SELECT peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal::text AS "tanggalAbsensi", status
              FROM absensi
              WHERE kelas_id <> $1 AND peserta_id = ANY($2::int[]) AND TO_CHAR(tanggal, 'YYYY-MM') = $3`,
             [targetKelasId, rosterIds, ym]
-          )
-        ).rows;
+          ),
+          getPool().query(
+            `SELECT peserta_id AS "pesertaId", kelas_id AS "kelasId", status, keterangan AS "description"
+             FROM absensi
+             WHERE kelas_id <> $1 AND peserta_id = ANY($2::int[]) AND tanggal = $3
+             ORDER BY updated_at DESC, id DESC`,
+            [targetKelasId, rosterIds, tgl]
+          ),
+        ]);
+        otherClassRows = oRes.rows;
+        otherClassDayRows = odRes.rows;
       }
     } else {
       const db = readLocalState();
@@ -1246,6 +1256,9 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
       otherClassRows = db.absensi.filter(
         (r) => Number(r.kelasId) !== targetKelasId && String(r.tanggalAbsensi || '').startsWith(ym)
       );
+      otherClassDayRows = otherClassRows
+        .filter((r) => r.tanggalAbsensi === tgl)
+        .sort((a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')));
     }
   }
 
@@ -1293,17 +1306,27 @@ export async function getAbsensiPageData({ periode, kelasId, tanggalWizard } = {
   });
 
   // Wizard harian: default 'hadir' bila sesi tanggal tersebut belum diisi!
+  // A peserta who sat in another class that day (before Atur Formasi moved them) shows that record, and saving
+  // updates it there (submitAbsensiWizard): one attendance per peserta per day, never a second row here.
   const dayByPeserta = new Map(wizardDayRows.map((r) => [Number(r.pesertaId), r]));
+  const otherDayByPeserta = new Map();
+  for (const r of otherClassDayRows) {
+    if (!otherDayByPeserta.has(Number(r.pesertaId))) otherDayByPeserta.set(Number(r.pesertaId), r);
+  }
+  const namaKelasOf = new Map(lookups.kelasOptions.map((k) => [Number(k.id), k.namaKelas]));
   const alreadyRecorded = wizardDayRows.length > 0;
 
   const wizardRows = classRoster.map((p) => {
-    const saved = dayByPeserta.get(Number(p.id));
+    const own = dayByPeserta.get(Number(p.id));
+    const lain = own ? null : otherDayByPeserta.get(Number(p.id));
+    const saved = own || lain;
     return {
       pesertaId: p.id,
       mancationAkunId: p.mancationAkunId,
       pesertaNama: p.nama,
       status: saved ? saved.status : 'hadir',
       description: saved ? saved.description || '' : '',
+      kelasLain: lain ? namaKelasOf.get(Number(lain.kelasId)) || `#${lain.kelasId}` : null,
     };
   });
 
@@ -1353,11 +1376,29 @@ export async function submitAbsensiWizard(payload, actor) {
     return { pesertaId, status, description };
   });
 
+  // One attendance per peserta per day: a record that already exists that day is updated where it is, also when
+  // it belongs to the class the peserta sat in before Atur Formasi moved them (history stays with that class).
+  // Only a peserta without any record that day gets a new row in this class.
   if (getMode() === 'postgres') {
     const client = await getPool().connect();
+    let diKelasLain = 0;
     try {
       await client.query('BEGIN');
       for (const item of normalizedEntries) {
+        const ubah = await client.query(
+          `UPDATE absensi
+           SET status = $1, keterangan = $2, diinput_oleh_staff_id = $3, updated_at = NOW()
+           WHERE id = (
+             SELECT id FROM absensi WHERE peserta_id = $4 AND tanggal = $5
+             ORDER BY (kelas_id = $6) DESC, updated_at DESC, id DESC LIMIT 1
+           )
+           RETURNING kelas_id AS "kelasId"`,
+          [item.status, item.description, actor?.id || null, item.pesertaId, tanggalAbsensi, kelasId]
+        );
+        if (ubah.rowCount) {
+          if (Number(ubah.rows[0].kelasId) !== kelasId) diKelasLain += 1;
+          continue;
+        }
         await client.query(
           `INSERT INTO absensi (peserta_id, kelas_id, tanggal, status, keterangan, diinput_oleh_staff_id, updated_at)
            VALUES ($1, $2, $3, $4, $5, $6, NOW())
@@ -1383,6 +1424,7 @@ export async function submitAbsensiWizard(payload, actor) {
             totalPeserta: normalizedEntries.length,
             hadir: normalizedEntries.filter((x) => x.status === 'hadir').length,
             nonHadir: normalizedEntries.filter((x) => x.status !== 'hadir').length,
+            ...(diKelasLain ? { diKelasLain } : {}),
           }),
         ]
       );
@@ -1398,13 +1440,13 @@ export async function submitAbsensiWizard(payload, actor) {
 
   const db = readLocalState();
   const nowIso = new Date().toISOString();
+  let diKelasLain = 0;
   for (const item of normalizedEntries) {
-    const existing = db.absensi.find(
-      (r) =>
-        Number(r.pesertaId) === item.pesertaId &&
-        Number(r.kelasId) === kelasId &&
-        r.tanggalAbsensi === tanggalAbsensi
-    );
+    const hariItu = db.absensi
+      .filter((r) => Number(r.pesertaId) === item.pesertaId && r.tanggalAbsensi === tanggalAbsensi)
+      .sort((a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')) || b.id - a.id);
+    const existing = hariItu.find((r) => Number(r.kelasId) === kelasId) || hariItu[0];
+    if (existing && Number(existing.kelasId) !== kelasId) diKelasLain += 1;
     if (existing) {
       existing.status = item.status;
       existing.description = item.description;
@@ -1430,6 +1472,7 @@ export async function submitAbsensiWizard(payload, actor) {
     totalPeserta: normalizedEntries.length,
     hadir: normalizedEntries.filter((x) => x.status === 'hadir').length,
     nonHadir: normalizedEntries.filter((x) => x.status !== 'hadir').length,
+    ...(diKelasLain ? { diKelasLain } : {}),
   });
   saveLocalState();
   return { savedCount: normalizedEntries.length, kelasId, tanggalAbsensi };

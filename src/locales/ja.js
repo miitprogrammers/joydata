@@ -618,6 +618,7 @@ export default {
     statusNewDefault: '新規入力 — 全員「出席」が初期選択されています。',
     markAllHadirBtn: '全員を出席にする',
     submitWizardBtn: 'クラスの出席を保存',
+    tercatatDiKelas: 'この日は{kelas}で記録済み。変更はそちらに保存されます',
     hadir: '出席',
     izin: '許可欠席',
     sakit: '病欠',

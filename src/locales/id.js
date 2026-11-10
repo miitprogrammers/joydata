@@ -620,6 +620,7 @@ export default {
     statusNewDefault: 'Sesi baru — seluruh peserta otomatis diatur default Hadir.',
     markAllHadirBtn: 'Set Semua Hadir',
     submitWizardBtn: 'Simpan Absensi Kelas',
+    tercatatDiKelas: 'Hari itu tercatat di {kelas}; perubahan disimpan di sana',
     hadir: 'Hadir',
     izin: 'Izin',
     sakit: 'Sakit',

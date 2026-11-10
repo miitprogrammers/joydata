@@ -187,6 +187,10 @@
                   <span v-if="row.mancationAkunId" class="ml-2 text-xs text-slate-400 font-mono tabular-nums">
                     #{{ row.mancationAkunId }}
                   </span>
+                  <!-- That day the peserta sat in another class: saving updates that record, not a new one here -->
+                  <p v-if="row.kelasLain" class="text-[11px] text-amber-700 mt-0.5 flex items-center gap-1">
+                    <v-icon icon="mdi-swap-horizontal" size="12" />{{ $t('absensi.tercatatDiKelas', { kelas: row.kelasLain }) }}
+                  </p>
                 </td>
                 <td class="px-4 py-2.5 whitespace-nowrap">
                   <div class="inline-flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg">
