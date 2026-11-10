@@ -816,7 +816,7 @@ export default {
   },
   smartReport: {
     title: 'スマートレポート',
-    subtitle: '最初の記録から最新までの受講生の成績推移とAI要約',
+    subtitle: '最初の記録から最新までの受講生の成績推移と総評',
     modePeserta: '受講生別',
     modeKelas: 'クラス一括',
     pilihKelas: 'クラス選択',
@@ -851,7 +851,7 @@ export default {
     resumeSimpan: '所見を保存',
     resumeMembuat: 'Geminiが所見を作成中です...',
     resumeUsang: 'この所見の作成後に成績・メモ・設定が変更されました。最新データに合わせて再作成してください。',
-    resumeSumberAi: 'AI（{model}）が{tanggal}に作成。共有前に内容をご確認ください。',
+    resumeDibuat: '{tanggal}に作成。',
     resumeDiedit: '{nama}が{tanggal}に編集。',
     resumeManual: '{nama}が{tanggal}に手動で作成。',
     resumeDiperbarui: '更新日：{tanggal}',

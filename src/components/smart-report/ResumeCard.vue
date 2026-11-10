@@ -2,7 +2,7 @@
   <section class="sr-resume space-y-2" :class="{ 'no-print': !resume }">
     <div class="flex items-center justify-between gap-2 border-b border-slate-200 pb-1.5">
       <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-        <v-icon icon="mdi-creation-outline" size="14" class="text-blue-800" />
+        <v-icon icon="mdi-clipboard-text-outline" size="14" class="text-blue-800" />
         {{ title }}
       </h3>
       <div v-if="canWrite && !editing" class="no-print flex items-center gap-1.5">
@@ -74,9 +74,7 @@
         <span v-if="resume.tanggal">{{ $t('smartReport.resumeDiperbarui', { tanggal: formatDate(resume.tanggal) }) }}</span>
       </div>
       <div v-else class="no-print text-[10px] text-slate-400 italic">
-        <span v-if="resume.dibuatAt">
-          {{ $t('smartReport.resumeSumberAi', { model: resume.model || 'Gemini', tanggal: formatDate(resume.dibuatAt) }) }}
-        </span>
+        <span v-if="resume.dibuatAt">{{ $t('smartReport.resumeDibuat', { tanggal: formatDate(resume.dibuatAt) }) }}</span>
         <span v-if="resume.dieditAt">
           {{
             resume.dibuatAt
@@ -115,7 +113,7 @@ const props = defineProps<{
   title: string;
   resume: SmartResume | null;
   canWrite: boolean;
-  // Only the text and its date (peserta portal, rapor): no AI model, editor or outdated warning.
+  // Only the text and its date (peserta portal, rapor): no editor or outdated warning.
   dateOnly?: boolean;
   // Set by the parent while it writes this resume as part of a bulk run.
   busy?: boolean;

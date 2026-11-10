@@ -538,6 +538,19 @@ export function restoreAliases(text, aliases) {
   return String(text || '').replace(/\bP\d{2,3}\b/g, (alias) => aliases.get(alias)?.nama || alias);
 }
 
+/**
+ * At most `maks` paragraphs (separated by a blank line): every paragraph after the last allowed one is folded
+ * into it, so a model that writes one paragraph too many never breaks the length the report promises.
+ */
+export function batasiParagraf(teks, maks, penyambung = ' ') {
+  const paragraf = String(teks || '')
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (paragraf.length <= maks) return paragraf.join('\n\n');
+  return [...paragraf.slice(0, maks - 1), paragraf.slice(maks - 1).join(penyambung)].join('\n\n');
+}
+
 export function hashFacts(facts, version) {
   return createHash('sha256').update(`${version}:${JSON.stringify(facts)}`).digest('hex');
 }

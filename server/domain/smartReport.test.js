@@ -10,6 +10,7 @@ import {
   hashFacts,
   catatanUntukPeserta,
   urutkanPeringkat,
+  batasiParagraf,
 } from './smartReport.js';
 
 const settings = {
@@ -184,4 +185,11 @@ test('catatanUntukPeserta keeps the useful part of a mixed bracket and drops che
     catatanUntukPeserta('Choukai: 4 5/6. Moji-Goi no. 7 dua jawaban dihitamkan (② dan ④) = 0, pemeriksa membenarkan; Choukai no. 7 kosong. Lembar difoto pudar, dibaca dengan peningkatan kontras. Kuat: hobi fotografi.'),
     'Choukai: 4 5/6. Choukai no. 7 kosong. Kuat: hobi fotografi.'
   );
+});
+
+test('batasiParagraf keeps at most the allowed paragraphs and folds the rest into the last one', () => {
+  assert.equal(batasiParagraf('Satu.\n\nDua.', 2), 'Satu.\n\nDua.');
+  assert.equal(batasiParagraf('  Satu.\n \n\nDua.\n\nTiga.  ', 2), 'Satu.\n\nDua. Tiga.');
+  assert.equal(batasiParagraf('一。\n\n二。\n\n三。', 2, ''), '一。\n\n二。三。');
+  assert.equal(batasiParagraf('Hanya satu.', 2), 'Hanya satu.');
 });

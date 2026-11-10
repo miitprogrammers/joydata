@@ -241,7 +241,7 @@ async function pesertaReport(ctx, student, journey, resumeRow, peringkat = null)
       ...kaiwaCardRekap(journey.kaiwa.daftar, { rule, tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null }),
       senseiWajibNama: staffNama(ctx, rule.senseiWajibId),
     },
-    resume: toResumeView(resumeRow, hashFacts(pesertaFacts(ctx, student, journey), PROMPT_VERSION)),
+    resume: toResumeView(resumeRow, hashFacts(pesertaFacts(ctx, student, journey), PROMPT_VERSION.peserta)),
   };
 }
 
@@ -293,7 +293,7 @@ export async function getSmartReportKelas({ kelasId }) {
     settings: ctx.settings,
     kelas,
     ringkasan: summary,
-    resume: toResumeView(kelasResume, hashFacts(facts, PROMPT_VERSION)),
+    resume: toResumeView(kelasResume, hashFacts(facts, PROMPT_VERSION.kelas)),
     peserta: await Promise.all(
       urut.map((m) =>
         pesertaReport(ctx, m.student, m.journey, pesertaResumes.get(m.pesertaId) || null, peringkatDari(summary, m.pesertaId))
@@ -503,7 +503,7 @@ export async function generateSmartResume({ scope, id, actor }) {
   const { facts, aliases, kosong } = resumeFacts(ctx, scope, refId);
   if (kosong) throw new Error('SMART_REPORT_NO_DATA');
 
-  const dataHash = hashFacts(facts, PROMPT_VERSION);
+  const dataHash = hashFacts(facts, PROMPT_VERSION[scope]);
   const generated = await writeResume(scope, facts);
   const teksId = aliases ? restoreAliases(generated.teksId, aliases) : generated.teksId;
   const teksJa = aliases ? restoreAliases(generated.teksJa, aliases) : generated.teksJa;
@@ -526,7 +526,7 @@ export async function updateSmartResume({ scope, id, teksId, teksJa, actor }) {
   }
 
   const ctx = createContext(await loadReportState());
-  const currentHash = hashFacts(resumeFacts(ctx, scope, refId).facts, PROMPT_VERSION);
+  const currentHash = hashFacts(resumeFacts(ctx, scope, refId).facts, PROMPT_VERSION[scope]);
   const existing = await readResume(scope, refId);
 
   await storeResume(scope, refId, {
