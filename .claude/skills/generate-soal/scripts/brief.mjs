@@ -7,11 +7,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { argumen, bacaRencana, dirKerja, levelDipilih } from './_umum.mjs';
+import { argumen, bacaRencana, dirKerja, idBacaan, jlptRencana, levelDipilih, tingkat } from './_umum.mjs';
 
 const arg = argumen();
 const kerja = dirKerja(arg);
 const rencana = bacaRencana(kerja);
+const jlpt = jlptRencana(rencana);
+const adaModul = tingkat(jlpt).modul;
 const SKILL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const posix = (p) => p.replace(/\\/g, '/');
 
@@ -26,7 +28,20 @@ const templat = (nama) => {
   const t = fs.readFileSync(path.join(SKILL, 'references', nama), 'utf8');
   return t.slice(t.indexOf('\n---') + 4).trim(); // the brief is everything after the first --- line
 };
-const isi = (t, nilai) => {
+// {{#MODUL}}…{{/MODUL}} stays only for a level with a bunpou module, {{#TANPAMODUL}}…{{/TANPAMODUL}} only without.
+const blok = (t, nama, pakai) => {
+  const [buka, tutup] = [`{{#${nama}}}`, `{{/${nama}}}`];
+  let hasil = t;
+  for (let a = hasil.indexOf(buka); a >= 0; a = hasil.indexOf(buka)) {
+    const z = hasil.indexOf(tutup, a);
+    if (z < 0) throw new Error(`blok ${buka} tidak ditutup`);
+    const dalam = hasil.slice(a + buka.length, z).replace(/^\n/, '');
+    hasil = hasil.slice(0, a) + (pakai ? dalam : '') + hasil.slice(z + tutup.length).replace(/^\n/, '');
+  }
+  return hasil;
+};
+const isi = (templatnya, nilai) => {
+  const t = blok(blok(templatnya, 'MODUL', adaModul), 'TANPAMODUL', !adaModul);
   const hasil = t.replace(/\{\{([A-Z]+)\}\}/g, (m, k) => (k in nilai ? String(nilai[k]) : m));
   const sisa = hasil.match(/\{\{[A-Z]+\}\}/);
   if (sisa) throw new Error(`placeholder ${sisa[0]} tidak terisi`);
@@ -38,13 +53,13 @@ const simpan = (nama, teks) => {
   fs.writeFileSync(path.join(dirPrompt, nama), teks);
   console.log(`prompt/${nama}`);
 };
-const dasar = { KERJA: posix(kerja), SKILL: posix(SKILL) };
+const dasar = { KERJA: posix(kerja), SKILL: posix(SKILL), JLPT: jlpt };
 
 if (arg.penulis) {
   const t = templat('brief-generator.md');
   for (const level of levelDipilih(arg, rencana)) {
     const rc = rencana.level[level];
-    simpan(`gen-${level}.md`, isi(t, { ...dasar, LEVEL: level, JUMLAH: rc.jumlah, DESKRIPSI: rc.deskripsi, MULAI: rc.mulai, AKHIR: rc.mulai + rc.jumlah - 1 }));
+    simpan(`gen-${level}.md`, isi(t, { ...dasar, LEVEL: level, JUMLAH: rc.jumlah, DESKRIPSI: rc.deskripsi, IDAWAL: idBacaan(jlpt, level, rc.mulai), IDAKHIR: idBacaan(jlpt, level, rc.mulai + rc.jumlah - 1) }));
   }
 } else if (arg.ulang) {
   if (!fs.existsSync(path.join(kerja, 'blind', 'ulang.json'))) {

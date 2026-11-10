@@ -5,21 +5,29 @@
 //   node buta.mjs --kerja <folder> --ulang --id L2-31,L4-40   also sends these to a second reviewer (use it
 //                                               when a reviewer's blind answer looks like the reviewer's mistake)
 // <level>.json holds what a peserta sees (no key, no translation). <level>-audit.json holds the Indonesian
-// parts, opened by the reviewer only after their answers are on disk. <level>-furigana-baru.json lists the
+// parts and, at a level with a bunpou module, the patterns the passage claims to practise; the reviewer opens
+// it only after their answers are on disk. <level>-furigana-baru.json lists the
 // readings the bank never used, so a reviewer needs nothing outside blind/ (gate/ and gen/ stay closed to them).
 import fs from 'fs';
 import path from 'path';
-import { argumen, bacaRencana, dirKerja, levelDipilih, periksaGate, periksaTinjauan, sidik } from './_umum.mjs';
+import { argumen, bacaRencana, dirKerja, jlptRencana, levelDipilih, muatBunpou, periksaGate, periksaTinjauan, sidik, tingkat } from './_umum.mjs';
 
 const arg = argumen();
 const kerja = dirKerja(arg);
 const rencana = bacaRencana(kerja);
+const jlpt = jlptRencana(rencana);
+const bunpou = tingkat(jlpt).modul ? await muatBunpou() : null;
+const namaPola = (n) => {
+  const p = bunpou.cariPolaBunpou(jlpt, n);
+  return { nomor: n, pola: p?.pola, arti: p?.arti };
+};
 
 const buta = (b) => ({ id: b.id, sidik: sidik(b), judul: b.judul, teks: b.teks, soal: b.soal.map((s) => ({ id: s.id, tanya: s.tanya, opsi: s.opsi })) });
 const audit = (b) => ({
   id: b.id,
   sidik: sidik(b),
   terjemahan: b.terjemahan,
+  ...(bunpou ? { bunpou: b.bunpou.map(namaPola) } : {}),
   soal: b.soal.map((s) => ({ id: s.id, tanyaId: s.tanyaId, pembahasan: s.pembahasan })),
 });
 const tulis = (nama, daftar, furiganaBaru) => {

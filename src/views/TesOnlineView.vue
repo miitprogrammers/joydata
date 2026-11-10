@@ -409,8 +409,12 @@ const displayedItems = computed(() =>
   })
 );
 
+// A dokkai level is named after what its bank practises at the chosen pattern level (judulPerJlpt, N4).
 const materiOptions = computed(() =>
-  (katalog.value[form.value.jenis] || []).map((m) => ({ ...m, label: m.judul }))
+  (katalog.value[form.value.jenis] || []).map((m) => ({
+    ...m,
+    label: (form.value.jenis === 'dokkai' && m.judulPerJlpt?.[form.value.jlpt]) || m.judul,
+  }))
 );
 const materiAktif = computed(() => materiOptions.value.find((m) => m.kode === form.value.materi));
 // Passages a bank dokkai code can draw from at the chosen sentence-pattern level.

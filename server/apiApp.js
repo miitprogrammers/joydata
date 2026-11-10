@@ -124,6 +124,7 @@ import {
   getStatistikLatihan,
   getRiwayatLatihanPeserta,
 } from './db/latihanRepo.js';
+import { listNilaiFisik, createNilaiFisik, updateNilaiFisik, deleteNilaiFisik } from './db/fisikRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
 import { JAPAN_PREFECTURES } from './db/prefectures.js';
@@ -193,6 +194,11 @@ function handleRouteError(res, err) {
     'TES_SESI_BUKAN_DRAF',
     'TES_KODE_UJIAN_DIPAKAI',
     'INVALID_FLASHCARD',
+    'INVALID_NILAI_FISIK',
+    'FISIK_JENIS_KELAMIN_KOSONG',
+    'FISIK_KOSONG',
+    'FISIK_SUDAH_ADA',
+    'INVALID_EVALUASI_FISIK',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
@@ -345,7 +351,7 @@ export function createApiRouter() {
     try {
       return res.json(
         await getLatihanTes(
-          { jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah, jlpt: req.query.jlpt },
+          { jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah, jlpt: req.query.jlpt, volume: req.query.volume },
           req.peserta.id
         )
       );
@@ -1040,6 +1046,41 @@ export function createApiRouter() {
   router.delete('/mensetsu/:id', requireAuth, requirePageAccess('rekap-mensetsu'), async (req, res) => {
     try {
       return res.json(await deleteNilaiMensetsu(req.params.id, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Evaluasi Fisik: push-up, plank, sit-up, bolak-balik membawa karung; one test per peserta per date.
+  router.get('/evaluasi-fisik', requireAuth, requirePageAccess('evaluasi-fisik'), async (req, res) => {
+    try {
+      return res.json(
+        await listNilaiFisik({ periode: req.query.periode, kelasId: req.query.kelasId, search: req.query.search })
+      );
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/evaluasi-fisik', requireAuth, requirePageAccess('evaluasi-fisik'), async (req, res) => {
+    try {
+      return res.status(201).json(await createNilaiFisik(req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.patch('/evaluasi-fisik/:id', requireAuth, requirePageAccess('evaluasi-fisik'), async (req, res) => {
+    try {
+      return res.json(await updateNilaiFisik(req.params.id, req.body || {}, req.user));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.delete('/evaluasi-fisik/:id', requireAuth, requirePageAccess('evaluasi-fisik'), async (req, res) => {
+    try {
+      return res.json(await deleteNilaiFisik(req.params.id, req.user));
     } catch (err) {
       return handleRouteError(res, err);
     }

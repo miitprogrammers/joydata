@@ -10,7 +10,7 @@
         <v-select
           v-model="materi"
           :items="materiOptions"
-          item-title="judul"
+          item-title="label"
           item-value="kode"
           :label="jenis === 'kanji' ? $t('tesOnline.materi') : $t('tesOnline.levelBacaan')"
           variant="outlined"
@@ -191,6 +191,18 @@
             <span v-if="b.sumber === 'ai'" class="rounded px-1.5 py-0.5 text-[10px] font-bold bg-violet-100 text-violet-800">AI</span>
             <span class="text-[11px] text-slate-400 font-mono">{{ b.id }}</span>
           </div>
+          <div v-if="polaBacaan(b).length" class="mt-1.5 flex flex-wrap items-center gap-1.5">
+            <span class="text-[11px] text-slate-500">{{ $t('tesOnline.bank.bunpou') }}</span>
+            <span
+              v-for="p in polaBacaan(b)"
+              :key="p.nomor"
+              class="rounded border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[11px] text-sky-900"
+              :title="p.arti"
+              lang="ja"
+            >
+              <span class="font-semibold tabular-nums">{{ p.nomor }}</span> {{ p.pola }}
+            </span>
+          </div>
           <p class="mt-2 rounded-lg bg-slate-50 border border-slate-100 p-3 text-base leading-[2.3] text-slate-900" lang="ja">
             <FuriganaText :text="b.teks" :furigana="furigana" />
           </p>
@@ -259,8 +271,14 @@ let permintaan = 0;
 const kunciPengaturan = computed(() => JSON.stringify([jenis.value, materi.value, jlpt.value, kanjiVolume.value, mode.value]));
 const data = computed(() => (hasil.value?.kunci === kunciPengaturan.value ? hasil.value.res : null));
 
-const materiOptions = computed(() => props.katalog[jenis.value] || []);
+// A dokkai level is named after what its bank practises at the chosen pattern level (judulPerJlpt, N4).
+const materiOptions = computed(() =>
+  (props.katalog[jenis.value] || []).map((m) => ({ ...m, label: (jenis.value === 'dokkai' && m.judulPerJlpt?.[jlpt.value]) || m.judul }))
+);
 const materiAktif = computed(() => materiOptions.value.find((m) => m.kode === materi.value));
+// The bunpou module patterns a bank passage practises (N4 bank; AI passages and drawn papers carry none).
+const polaPerNomor = computed(() => new Map((data.value?.polaBunpou || []).map((p) => [p.nomor, p])));
+const polaBacaan = (b) => (b.bunpou || []).map((n) => polaPerNomor.value.get(n)).filter(Boolean);
 const jlptChoices = computed(() =>
   props.jlptOptions.map((j) => {
     const n = materiAktif.value?.perJlpt?.[j]?.jumlah ?? 0;

@@ -251,11 +251,23 @@
       </div>
     </div>
 
-    <!-- Section 6: Data Penempatan 名簿 -->
+    <!-- Section 6: Evaluasi Fisik, the latest test of the month -->
+    <div class="space-y-2">
+      <div class="border-b border-slate-200 pb-1.5">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">6. {{ $t('fisik.judul') }}</h3>
+      </div>
+      <StatFisik
+        :tes="raporData.fisik?.terakhir || null"
+        :jumlah-tes="raporData.fisik?.jumlahTes || 0"
+        :kosong="$t('fisik.belumAdaTesBulanIni')"
+      />
+    </div>
+
+    <!-- Section 7: Data Penempatan 名簿 -->
     <div class="space-y-2">
       <div class="border-b border-slate-200 pb-1.5 flex items-center justify-between">
         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">
-          6. {{ $t('rapor.secPenempatan') }}
+          7. {{ $t('rapor.secPenempatan') }}
         </h3>
         <span class="text-[10px] text-slate-400">{{ $t('rapor.labelDataMeibo') }}</span>
       </div>
@@ -337,6 +349,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ResumeCard from '../smart-report/ResumeCard.vue';
+import StatFisik from '../smart-report/StatFisik.vue';
 import StatGrade from '../smart-report/StatGrade.vue';
 import StatSikap from '../smart-report/StatSikap.vue';
 import StatusLegend from '../smart-report/StatusLegend.vue';

@@ -34,7 +34,8 @@ function todayIsoDate() {
   return new Date().toISOString().slice(0, 10);
 }
 
-async function loadAcademicLookups() {
+// Also used by fisikRepo (Evaluasi Fisik), so every input page reads the roster the same way.
+export async function loadAcademicLookups() {
   const [pesertaData, kelasData, staffItems, kategoriItems] = await Promise.all([
     listPeserta({ sumber: 'roster' }),
     listKelas(),

@@ -33,7 +33,7 @@ async function getSnapshotFallbackFromDb() {
     const pool = getPool();
     const [kRes, pRes] = await Promise.all([
       pool.query(`SELECT mancation_class_id AS "mancationClassId", nama_kelas AS "namaKelas", program_studi AS "programStudi", class_stat AS "classStat", synced_at AS "syncedAt" FROM mancation_kelas_cache`),
-      pool.query(`SELECT mancation_akun_id AS "mancationAkunId", mancation_class_id AS "mancationClassId", nama, email, whatsapp, tanggal_lahir::text AS "tanggalLahir", status_pernikahan AS "statusPernikahan", jumlah_anak AS "jumlahAnak", agama, alamat AS "daerahAsal", foto_versi::float8 AS "fotoVersi", synced_at AS "syncedAt" FROM mancation_peserta_cache`),
+      pool.query(`SELECT mancation_akun_id AS "mancationAkunId", mancation_class_id AS "mancationClassId", nama, email, whatsapp, tanggal_lahir::text AS "tanggalLahir", status_pernikahan AS "statusPernikahan", jumlah_anak AS "jumlahAnak", agama, alamat AS "daerahAsal", gender AS "jenisKelamin", foto_versi::float8 AS "fotoVersi", synced_at AS "syncedAt" FROM mancation_peserta_cache`),
     ]);
     return {
       syncedAt: kRes.rows[0]?.syncedAt || new Date().toISOString(),
@@ -100,15 +100,16 @@ async function writeMancationCache(pool, { classes, students }) {
     if (studentRows.length > 0) {
       await client.query(
         `INSERT INTO mancation_peserta_cache
-          (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, foto_versi, synced_at)
-         VALUES ${valuesWithNow(studentRows.length, 11)}
+          (mancation_akun_id, mancation_class_id, nama, email, whatsapp, tanggal_lahir, status_pernikahan, jumlah_anak, agama, alamat, foto_versi, gender, synced_at)
+         VALUES ${valuesWithNow(studentRows.length, 12)}
          ON CONFLICT (mancation_akun_id) DO UPDATE SET
            mancation_class_id = EXCLUDED.mancation_class_id, nama = EXCLUDED.nama,
            email = EXCLUDED.email, whatsapp = EXCLUDED.whatsapp,
            tanggal_lahir = EXCLUDED.tanggal_lahir, status_pernikahan = EXCLUDED.status_pernikahan,
            jumlah_anak = EXCLUDED.jumlah_anak, agama = EXCLUDED.agama,
            alamat = EXCLUDED.alamat,
-           foto_versi = COALESCE(EXCLUDED.foto_versi, mancation_peserta_cache.foto_versi), synced_at = NOW()`,
+           foto_versi = COALESCE(EXCLUDED.foto_versi, mancation_peserta_cache.foto_versi),
+           gender = COALESCE(NULLIF(EXCLUDED.gender, ''), mancation_peserta_cache.gender), synced_at = NOW()`,
         studentRows.flatMap((ms) => [
           ms.mancationAkunId,
           ms.mancationClassId,
@@ -121,6 +122,7 @@ async function writeMancationCache(pool, { classes, students }) {
           ms.agama || '',
           ms.daerahAsal || '',
           ms.fotoVersi || null,
+          ms.jenisKelamin || '',
         ])
       );
     }
@@ -597,6 +599,8 @@ function mergePesertaWithMancation(pRow, penempatanRow, kelasRow, mancationMap) 
     jumlahAnak: m?.jumlahAnak != null ? m.jumlahAnak : pRow.jumlahAnakLokal ?? null,
     agama: m?.agama || pRow.agamaLokal || '',
     daerahAsal: m?.daerahAsal || pRow.daerahAsalLokal || '',
+    // L / P from Mancation (t_datapeserta.data_kelamin); empty when Mancation has none.
+    jenisKelamin: m?.jenisKelamin || '',
     tanggalLahirLokal: pRow.tanggalLahirLokal || null,
     statusPernikahanLokal: pRow.statusPernikahanLokal || '',
     jumlahAnakLokal: pRow.jumlahAnakLokal ?? null,

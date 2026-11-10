@@ -25,6 +25,7 @@ import { formatPersonName } from '../domain/nameFormat.js';
 import { mancationFotoUrl } from './mancation.js';
 import { urutkanPeringkat } from '../domain/smartReport.js';
 import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
+import { DEFAULT_EVALUASI_FISIK, ringkasFisik } from '../domain/evaluasiFisik.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 import { listStaff } from './authStaffRepo.js';
 
@@ -42,6 +43,8 @@ export const DEFAULT_SETTINGS = {
   kaiwa_target_mingguan: DEFAULT_KAIWA_TARGET,
   kaiwa_sensei_wajib_id: null,
   kaiwa_berlaku_mulai: '2026-10-26',
+  // Evaluasi Fisik: benchmarks per gender, weights, KKM and track length (domain/evaluasiFisik.js).
+  evaluasi_fisik: DEFAULT_EVALUASI_FISIK,
 };
 
 export function getStudentNameMap(state) {
@@ -82,7 +85,7 @@ export async function loadReportState() {
   if (getMode() !== 'postgres') return readLocalState();
 
   const query = (sql) => getPool().query(sql).then((res) => res.rows);
-  const [kelas, peserta, staff, programs, sikapKategori, mancationPesertaCache, nilaiUjian, nilaiKaiwa, nilaiMensetsu, nilaiSikap, absensi] =
+  const [kelas, peserta, staff, programs, sikapKategori, mancationPesertaCache, nilaiUjian, nilaiKaiwa, nilaiMensetsu, nilaiSikap, absensi, nilaiFisik] =
     await Promise.all([
       query(`SELECT id, nama_kelas AS "namaKelas", program_id AS "programId", tanggal_start::text AS "tanggalStart",
                description, mancation_class_id AS "mancationClassId", sensei_id AS "senseiId", status,
@@ -112,6 +115,10 @@ export async function loadReportState() {
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal::text AS "tanggalAbsensi",
                status, keterangan AS "description", diinput_oleh_staff_id AS "penilaiId"
              FROM absensi`),
+      query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal::text AS tanggal, jenis_kelamin AS "jenisKelamin",
+               push_up AS "pushUp", plank_detik AS "plankDetik", sit_up AS "sitUp",
+               karung_bolak_balik::float AS "karungBolakBalik", lintasan_m::float AS "lintasanM", catatan
+             FROM nilai_fisik`),
     ]);
 
   return {
@@ -127,6 +134,7 @@ export async function loadReportState() {
     nilaiMensetsu,
     nilaiSikap,
     absensi,
+    nilaiFisik,
   };
 }
 
@@ -199,6 +207,7 @@ export async function updateSystemSettings(payload, actor) {
     kaiwa_target_mingguan: dataLama.kaiwa_target_mingguan,
     kaiwa_sensei_wajib_id: dataLama.kaiwa_sensei_wajib_id,
     kaiwa_berlaku_mulai: dataLama.kaiwa_berlaku_mulai,
+    evaluasi_fisik: dataLama.evaluasi_fisik,
     ...val.normalized,
   };
   if (dataBaru.kaiwa_sensei_wajib_id !== dataLama.kaiwa_sensei_wajib_id && dataBaru.kaiwa_sensei_wajib_id !== null) {
@@ -575,6 +584,12 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     .filter((m) => m.pesertaId === pid && m.tanggalMensetsu && String(m.tanggalMensetsu).startsWith(activeMonth))
     .sort((a, b) => String(b.tanggalMensetsu).localeCompare(String(a.tanggalMensetsu)) || b.id - a.id);
 
+  // Evaluasi Fisik of this month: the latest test shows, with how many tests the month had.
+  const fisikBulan = ringkasFisik(
+    (state.nilaiFisik || []).filter((f) => f.pesertaId === pid && f.tanggal && String(f.tanggal).startsWith(activeMonth)),
+    settings
+  );
+
   // Kaiwa Card weeks of this month (a week belongs to the month of its Monday).
   const rule = kaiwaRule(settings);
   const kaiwaCard = {
@@ -683,6 +698,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
     kaiwaList,
     kaiwaCard,
     mensetsuList,
+    fisik: { terakhir: fisikBulan.terakhir, jumlahTes: fisikBulan.daftar.length },
     sikapData: {
       basis: settings.sikap_basis,
       kkm: settings.kkm_sikap,

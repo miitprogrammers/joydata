@@ -1,10 +1,11 @@
 import { generateJson, jsonObjectFrom } from './llm.js';
 import { KANJI_DIPELAJARI } from '../domain/tesOnline.js';
+import { MIN_FOKUS_BACAAN, MODUL_BUNPOU, polaBunpouLevel } from '../domain/bunpou.js';
 
 /**
- * Writes new dokkai passages for one Tes Online code. Only the level, sentence-pattern level, allowed kanji and topic
- * hints go to the model, never peserta data. What comes back is raw: domain/tesOnline.js validasiBacaanAi checks every passage,
- * and a sensei reviews the set before the code can be used.
+ * Writes new dokkai passages for one Tes Online code. Only the level, sentence-pattern level, allowed kanji, topic
+ * hints and (N4) the bunpou module's patterns go to the model, never peserta data. What comes back is raw:
+ * domain/tesOnline.js validasiBacaanAi checks every passage, and a sensei reviews the set before the code can be used.
  */
 
 // Everyday topics close to the peserta's life now and later in Japan; each request draws a few at random.
@@ -35,18 +36,46 @@ const PANDUAN_JLPT = {
 - JANGAN memakai tata bahasa di atas N5, antara lain: ～なければなりません, ～ので, ～てしまう, ～ようになる,
   ～ことができる, ～つもり, ～そうです, bentuk potensial, pasif, kausatif, dan keigo.
 - Kosakata di atas N5 (misalnya 規則, 家賃, 安心, 不便) diganti dengan kata N5 yang sederhana.`,
+  // Which N4 patterns a passage practises is not listed here: panduanModul adds them per dokkai level from the module.
   N4: `Pola kalimat JLPT N4:
-- Tata bahasa dan kosakata sampai N4; gunakan beberapa pola khas N4, misalnya ～ので, ～なければなりません,
-  ～てしまう, ～ようになる, ～ことができる, ～つもりです, ～そうです, ～たら, ～ば, bentuk potensial, pasif,
-  dan keigo sederhana. Gaya です・ます.
-- JANGAN memakai tata bahasa N3 ke atas (misalnya ～わけ, ～はず, ～によって, ～として, ～ばかり).
+- Tata bahasa dan kosakata sampai N4, gaya です・ます.
+- JANGAN memakai tata bahasa N3 ke atas (misalnya ～わけ, ～によって, ～として, ～にとって, ～ようにする, ～べき,
+  ～うちに, ～たびに, kausatif-pasif ～させられる).
 - Bacaan boleh sekitar 1,5 kali lebih panjang dari panduan level.`,
+  // The N3 examples leave out what the N4 module already teaches (～ことになる, ～はずだ, ～ばかり, ～ために).
   N3: `Pola kalimat JLPT N3:
-- Tata bahasa dan kosakata sampai N3; gunakan beberapa pola khas N3, misalnya ～ようにする, ～ことになる,
-  ～わけではない, ～はずです, ～ばかり, ～によって, ～について, ～として, ～ために, kausatif-pasif.
+- Tata bahasa dan kosakata sampai N3; gunakan beberapa pola khas N3, misalnya ～ようにする, ～わけではない,
+  ～によって, ～として, ～にとって, ～に対して, ～うちに, ～たびに, ～おかげで, kausatif-pasif.
 - Gaya です・ます, atau gaya biasa (だ・である) untuk teks seperti artikel atau catatan.
 - Bacaan boleh sekitar 2 kali lebih panjang dari panduan level.`,
 };
+
+// A pattern level with a bunpou module (N4) spreads its patterns over the dokkai levels (domain/bunpou.js), the
+// same spread the fixed bank follows: a code for "L3 · N4" practises the L3 patterns whether its passages come
+// from the bank or from here. AI passages are not tagged with pattern numbers; the sensei reviews them instead.
+function panduanModul(jlpt, level) {
+  const kelompok = polaBunpouLevel(jlpt, level);
+  if (!kelompok) return '';
+  const nama = (pola) => pola.map((p) => p.pola).join(' · ');
+  return [
+    '',
+    `Modul bunpou ${jlpt} JOYdata ("${MODUL_BUNPOU[jlpt].judul}"), level ${level}:`,
+    '- Pola fokus level ini (nomor modul. pola = arti; contoh):',
+    ...kelompok.fokus.map((p) => `  ${p.nomor}. ${p.pola} = ${p.arti}; ${p.contoh[0].jp}`),
+    `- Setiap bacaan memakai minimal ${MIN_FOKUS_BACAAN} pola fokus, dengan bentuk dan arti seperti di daftar, muncul dengan wajar di`,
+    '  teks. Tiap bacaan memakai pasangan pola fokus yang berbeda. Contoh modul banyak yang berbentuk biasa; bacaan tetap です・ます.',
+    '- Minimal satu dari dua soal hanya terjawab benar oleh peserta yang paham pola fokus itu. Yang ditanyakan tetap isi',
+    '  bacaan, bukan istilah tata bahasa.',
+    '- Jenis teks di panduan level boleh disesuaikan supaya pola fokus muncul dengan wajar.',
+    kelompok.boleh.length ? `- Pola level sebelumnya, boleh dipakai: ${nama(kelompok.boleh)}.` : null,
+    kelompok.nanti.length ? `- Pola level berikutnya, JANGAN dipakai di bacaan, pertanyaan, maupun pilihan: ${nama(kelompok.nanti)}.` : null,
+  ].filter((baris) => baris !== null).join('\n');
+}
+
+/** The grammar guidance sent to the model for one pattern level and dokkai level; null when either is unknown. */
+export function panduanPolaDokkai(jlpt, level) {
+  return PANDUAN_JLPT[jlpt] && PANDUAN_LEVEL[level] ? PANDUAN_JLPT[jlpt] + panduanModul(jlpt, level) : null;
+}
 
 const SISTEM = `Anda guru bahasa Jepang di sebuah LPK di Indonesia. Peserta adalah orang dewasa Indonesia yang belajar bahasa
 Jepang untuk bekerja di Jepang. Tulis bacaan dokkai (membaca) BARU beserta soal pilihan ganda, sesuai "panduanLevel"
@@ -146,7 +175,8 @@ export async function tulisBacaanDokkai(
   { level, jlpt = 'N5', jumlah, hindariJudul = [], kanjiBoleh = KANJI_DIPELAJARI },
   rng = Math.random
 ) {
-  if (!PANDUAN_LEVEL[level] || !PANDUAN_JLPT[jlpt]) throw new Error('INVALID_TES_ONLINE');
+  const panduanPola = panduanPolaDokkai(jlpt, level);
+  if (!panduanPola) throw new Error('INVALID_TES_ONLINE');
   const topik = acak(TOPIK_DOKKAI, rng);
   const ukuran = [];
   for (let sisa = jumlah; sisa > 0; sisa -= PER_PERMINTAAN) ukuran.push(Math.min(PER_PERMINTAAN, sisa));
@@ -162,7 +192,7 @@ export async function tulisBacaanDokkai(
         level,
         panduanLevel: PANDUAN_LEVEL[level],
         pola: jlpt,
-        panduanPola: PANDUAN_JLPT[jlpt],
+        panduanPola,
         jumlahBacaan: n,
         topik: topikIni,
         hindariJudul,

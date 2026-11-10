@@ -1,17 +1,21 @@
-// Step 5: write the new passages into server/domain/bankSoal/dokkaiN5.js — only when both gates pass.
+// Step 5: write the new passages into the bank file of the plan's JLPT (dokkaiN5.js, dokkaiN4.js) — only when
+// both gates pass.
 //   node inject.mjs --kerja <folder> --uji     dry run: re-checks everything, writes nothing
 //   node inject.mjs --kerja <folder>           writes the bank file
 // It re-runs gate 1 and gate 2 itself, so a passage edited after its review can never slip in.
 import fs from 'fs';
 import path from 'path';
-import { FILE_BANK, ROOT, argumen, bacaRencana, dirKerja, muatBank, periksaGate, periksaTinjauan } from './_umum.mjs';
+import { ROOT, argumen, bacaRencana, dirKerja, fileBank, jlptRencana, kanonik, muatBank, periksaGate, periksaTinjauan, tingkat } from './_umum.mjs';
 
 const arg = argumen();
 const kerja = dirKerja(arg);
 const rencana = bacaRencana(kerja);
 const levels = Object.keys(rencana.level);
+const jlpt = jlptRencana(rencana);
+const FILE_BANK = fileBank(jlpt);
+const namaFile = path.basename(FILE_BANK);
 
-const bankLama = await muatBank();
+const bankLama = await muatBank(jlpt);
 const masalah = [];
 const baru = {};
 for (const level of levels) {
@@ -32,7 +36,7 @@ for (const level of levels) {
     masalah.push(`${level}: ${tahan.length} bacaan belum lolos tinjauan (${tahan.map((h) => `${h.id} ${h.status}`).join(', ')}) — node banding.mjs --kerja …`);
     continue;
   }
-  baru[level] = g.daftar;
+  baru[level] = g.daftar.map(kanonik);
 }
 if (masalah.length) {
   console.log('INJECT DITOLAK — gate belum lolos:');
@@ -47,6 +51,7 @@ const tulisBacaan = (b) =>
     '      {',
     `        id: ${q(b.id)},`,
     `        judul: ${q(b.judul)},`,
+    ...(b.bunpou ? [`        bunpou: [${b.bunpou.join(', ')}],`] : []),
     `        teks: ${q(b.teks)},`,
     `        terjemahan: ${q(b.terjemahan)},`,
     '        soal: [',
@@ -69,7 +74,9 @@ for (const level of levels) {
   }
   // The level block ends at the first "    ],\n  }," after its header: passages are indented deeper than that.
   const tutup = teks.indexOf('\n    ],\n  },', awal);
-  if (tutup < 0 || !teks.slice(awal, tutup).endsWith('      },')) {
+  // …and holds passages up to there, or nothing yet (a bank that is being filled for the first time).
+  const blokLevel = tutup < 0 ? '' : teks.slice(awal, tutup);
+  if (!blokLevel.endsWith('      },') && !blokLevel.endsWith('\n    bacaan: [')) {
     console.log(`INJECT DITOLAK — akhir blok ${level} tidak berbentuk seperti yang diharapkan; sisipkan manual atau perbaiki skrip.`);
     process.exit(1);
   }
@@ -95,12 +102,12 @@ fs.writeFileSync(FILE_BANK, hasil);
 // Read the file back as the app does; anything that differs from what was reviewed → restore the old file.
 let salah = '';
 try {
-  const bankBaru = await muatBank();
+  const bankBaru = await muatBank(jlpt);
   for (const level of levels) {
     const lv = bankBaru.find((l) => l.kode === level);
     const rc = rencana.level[level];
     const ekor = lv.bacaan.slice(rc.mulai - 1);
-    if (JSON.stringify(ekor) !== JSON.stringify(baru[level])) salah = `${level}: isi yang tertulis berbeda dari naskah yang ditinjau`;
+    if (JSON.stringify(ekor.map(kanonik)) !== JSON.stringify(baru[level])) salah = `${level}: isi yang tertulis berbeda dari naskah yang ditinjau`;
     const lama = bankLama.find((l) => l.kode === level).bacaan;
     if (JSON.stringify(lv.bacaan.slice(0, rc.mulai - 1)) !== JSON.stringify(lama)) salah = `${level}: bacaan lama ikut berubah`;
   }
@@ -109,8 +116,8 @@ try {
     console.log(`INJECT SELESAI: +${tambahan} bacaan / +${tambahan * 2} soal → ${path.relative(ROOT, FILE_BANK)}`);
     console.log(`Bank sekarang: ${h.bacaan} bacaan / ${h.soal} soal (${Object.entries(h.perLevel).map(([k, n]) => `${k} ${n}`).join(', ')}).`);
     console.log('Lanjutkan:');
-    console.log('  1. Perbarui komentar kepala dokkaiN5.js (jumlah bacaan per level).');
-    console.log(`  2. npm test — tes yang gagal menunjukkan angka lama di server/domain/tesOnline.test.js: jumlah per level, total ${h.bacaan} bacaan, ${h.soal} soal, perJlpt, dan pool "bank + 1 bacaan AI" (jumlah per level + 1).`);
+    console.log(`  1. Perbarui komentar kepala ${namaFile} (jumlah bacaan per level).`);
+    console.log(`  2. npm test — tes yang gagal menunjukkan angka lama ${jlpt} di server/domain/tesOnline.test.js: jumlah per level, total ${h.bacaan} bacaan, ${h.soal} soal, perJlpt, dan pool "bank + 1 bacaan AI" (jumlah per level + 1)${tingkat(jlpt).modul ? '; server/domain/bunpou.test.js memeriksa tag pola dan cakupan modul' : ''}.`);
     console.log('  3. npm test lagi sampai lolos semua.');
   }
 } catch (e) {

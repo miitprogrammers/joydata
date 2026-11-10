@@ -7,6 +7,7 @@
 import { KANJI_DASAR, KANJI_VOLUME, BACAAN_LAIN } from './bankSoal/kanjiN5.js';
 import { KANJI_VOLUME_N4, BACAAN_LAIN_N4 } from './bankSoal/kanjiN4.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
+import { DOKKAI_N4_LEVEL } from './bankSoal/dokkaiN4.js';
 
 export const JENIS_TES = ['kanji', 'dokkai'];
 const JUMLAH_OPSI_KANJI = 4;
@@ -55,16 +56,21 @@ export function kanjiItems(materi) {
 }
 
 // Sentence-pattern level of a dokkai passage. L1-L5 is the passage length and type; this is its grammar,
-// vocabulary and kanji. The fixed bank is N5; N4 and N3 passages come from approved AI codes.
+// vocabulary and kanji. N5 and N4 have a fixed bank; N3 passages come from approved AI codes only.
 export const JLPT_DOKKAI = ['N5', 'N4', 'N3'];
 
+// The fixed bank of each sentence-pattern level, with the same level codes (L1-L5). The N4 bank follows the bunpou
+// module (bankSoal/bunpouN4.js, rules in domain/bunpou.js): each of its levels practises its own group of patterns,
+// so an N4 level has its own description, and its passages carry `bunpou` (module numbers, staff bank view only).
+const BANK_DOKKAI = { N5: DOKKAI_LEVEL, N4: DOKKAI_N4_LEVEL };
+
 /**
- * Dokkai passages of a material at one sentence-pattern level: for N5 the fixed bank plus the approved AI passages,
- * for N4/N3 only approved AI passages (tambahan: [{ ...passage, level, jlpt }]).
+ * Dokkai passages of a material at one sentence-pattern level: the fixed bank of that level (N5, N4) plus the
+ * approved AI passages (tambahan: [{ ...passage, level, jlpt }]); for N3 only the latter.
  */
 export function poolDokkai(materi, tambahan = [], jlpt = 'N5') {
-  const levels = materi === 'SEMUA' ? DOKKAI_LEVEL : DOKKAI_LEVEL.filter((l) => l.kode === materi);
-  const bank = jlpt === 'N5' ? levels.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode, jlpt: 'N5' }))) : [];
+  const levels = (BANK_DOKKAI[jlpt] || []).filter((l) => materi === 'SEMUA' || l.kode === materi);
+  const bank = levels.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode, jlpt })));
   return [...bank, ...tambahan.filter((b) => (b.jlpt || 'N5') === jlpt && (materi === 'SEMUA' || b.level === materi))];
 }
 
@@ -96,10 +102,17 @@ export function daftarMateriTes(tambahanDokkai = []) {
     const pool = poolDokkai(kode, tambahanDokkai, jlpt);
     return { jumlah: pool.length, jumlahSoal: pool.reduce((n, b) => n + b.soal.length, 0) };
   };
-  // jumlah / jumlahSoal = the N5 pool; perJlpt = the pool at every sentence-pattern level.
+  // What a level is called at a pattern level whose bank describes it differently (N4: its group of patterns).
+  const judulLevel = (kode, jlpt) => {
+    const l = jlpt === 'N5' ? null : BANK_DOKKAI[jlpt]?.find((x) => x.kode === kode);
+    return l ? `${l.judul} · ${l.deskripsi}` : null;
+  };
+  // jumlah / jumlahSoal = the N5 pool; perJlpt = the pool at every sentence-pattern level; judulPerJlpt = the
+  // level's own title at the pattern levels that have one (absent = judul applies).
   const itemDokkai = (kode, judul, saranNamaUjian) => ({
     kode,
     judul,
+    judulPerJlpt: Object.fromEntries(JLPT_DOKKAI.map((j) => [j, judulLevel(kode, j)]).filter(([, v]) => v)),
     ...hitung(kode, 'N5'),
     perJlpt: Object.fromEntries(JLPT_DOKKAI.map((j) => [j, hitung(kode, j)])),
     saranNamaUjian,
@@ -113,6 +126,14 @@ export function daftarMateriTes(tambahanDokkai = []) {
 
 export function cariMateri(jenis, materi, tambahanDokkai = []) {
   return daftarMateriTes(tambahanDokkai)[jenis]?.find((m) => m.kode === materi) || null;
+}
+
+/** The title of a material as a code shows it: a dokkai level under its N4 name at N4, and the pattern level after it. */
+export function judulMateriTes({ jenis, materi, jlpt = 'N5' }) {
+  const info = cariMateri(jenis, materi);
+  if (!info) return String(materi ?? '');
+  if (jenis !== 'dokkai' || jlpt === 'N5') return info.judul;
+  return `${info.judulPerJlpt?.[jlpt] || info.judul} · ${jlpt}`;
 }
 
 /**
@@ -132,7 +153,7 @@ function volumeKanjiDipilih(raw, jlpt = 'N5') {
   return volume.length === standar.length && standar.every((v) => volume.includes(v)) ? null : volume;
 }
 
-const ID_BACAAN_BANK = new Set(DOKKAI_LEVEL.flatMap((l) => l.bacaan.map((b) => b.id)));
+const ID_BACAAN_BANK = new Set(Object.values(BANK_DOKKAI).flatMap((levels) => levels.flatMap((l) => l.bacaan.map((b) => b.id))));
 
 /**
  * Every question a code with these settings draws from, with its key (staff bank view). Kanji: the words of the
@@ -406,7 +427,7 @@ export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   const jlpt = jenis === 'kanji' ? info.jlpt : input?.jlpt ?? 'N5';
   if (sumber === 'ai' && (jenis !== 'dokkai' || materi === 'SEMUA')) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (!JLPT_DOKKAI.includes(jlpt)) return { ok: false, code: 'INVALID_TES_ONLINE' };
-  // A bank code draws from what exists at that pattern level: N4/N3 only once AI passages have been approved.
+  // A bank code draws from what exists at that pattern level: N3 only once AI passages have been approved.
   const ukuranPool = jenis === 'dokkai' ? info.perJlpt[jlpt].jumlah : info.jumlah;
   // Kanji volumes the dokkai passages may use; all volumes (or a kanji test) = null.
   const kanjiVolume = jenis === 'dokkai' ? volumeKanjiDipilih(input?.kanjiVolume, jlpt) : null;

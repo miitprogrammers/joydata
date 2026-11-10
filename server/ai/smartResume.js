@@ -62,6 +62,8 @@ Aspek yang wajib ditinjau (yang datanya ada):
 - Mensetsu renshuu (latihan wawancara): grade dan catatan sesinya.
 - Sikap: skor bulanan terhadap KKM dan kejadian positif atau negatif yang menonjol.
 - Kehadiran: rasio hadir serta jumlah sakit, izin, dan alfa.
+- Evaluasi fisik: Nilai Fisik terhadap KKM fisik, item terkuat dan terlemah (push-up dan sit-up 2 menit, plank,
+  bolak-balik membawa karung 5 menit), dan perkembangannya antar tes.
 
 Cara mereview:
 - Nilai, jangan sekadar mengulang angka. Katakan apa arti angka itu bagi kesiapan peserta, apakah sudah memenuhi
@@ -73,8 +75,8 @@ Cara mereview:
 
 Susunan, tepat 2 paragraf (tidak boleh lebih):
 1. Review kemampuan bahasa Jepang: ujian per bagian beserta pola kesalahannya, kaiwa, dan mensetsu renshuu.
-2. Review sikap dan kehadiran, lalu kesimpulan tentang kesiapan peserta secara keseluruhan dan 1-2 tindak lanjut
-   konkret untuk sensei.
+2. Review sikap, kehadiran, dan evaluasi fisik, lalu kesimpulan tentang kesiapan peserta secara keseluruhan dan 1-2
+   tindak lanjut konkret untuk sensei.
 
 Sebut peserta sebagai "peserta" di teks Indonesia dan "本受講生" di teks Jepang.
 Panjang total kedua paragraf: "id" 130-190 kata, "ja" 350-480 karakter. Batas atas ini wajib dipatuhi: pilih
@@ -83,7 +85,8 @@ temuan yang paling penting dan jangan mengulang hal yang sama di dua tempat.
 Aturan:
 - Gunakan hanya fakta dari data JSON. Jangan menambah angka, tanggal, nama, atau kejadian yang tidak ada di data.
 - Angka boleh dibulatkan ke satu desimal. Selalu bandingkan nilai dengan KKM dan batas predikat di "aturan".
-- Nilai ujian dan skor sikap adalah skor 0-100, bukan persen: tulis tanpa tanda %. Persen hanya untuk kehadiran.
+- Nilai ujian, skor sikap, dan nilai fisik adalah skor 0-100, bukan persen: tulis tanpa tanda %. Persen hanya untuk
+  kehadiran.
 - Aspek yang datanya kosong cukup disebut belum ada data; jangan ditebak.
 - Catatan ujian: sebut hanya pola yang muncul di lebih dari satu ujian atau yang masih muncul di ujian terakhir.
   Satu hal tidak boleh disebut sebagai kekuatan sekaligus kelemahan. Abaikan catatan teknis input data
@@ -92,7 +95,8 @@ Aturan:
   Mensetsu Renshuu) dan gunakan koma desimal (81,8).
 - "ja" ditulis dalam bahasa Jepang bisnis (です・ます調), bukan terjemahan kata per kata, dengan titik desimal (81.8).
   Istilah: Moji-Goi = 文字・語彙, Bunpou-Dokkai (kunci "bunpou") = 文法・読解, Choukai = 聴解, Kaiwa = 会話,
-  Mensetsu Renshuu = 面接練習, KKM = 合格基準点.
+  Mensetsu Renshuu = 面接練習, KKM = 合格基準点, Evaluasi Fisik = 体力評価, push-up = 腕立て伏せ,
+  sit-up = 上体起こし, plank = プランク, bolak-balik membawa karung = 袋運び往復.
 - "id" dan "ja" masing-masing berupa daftar berisi tepat 2 paragraf dengan isi yang sama di kedua bahasa.
   Setiap paragraf teks polos tanpa markdown, poin, judul, atau baris baru.
 - Jawab hanya dengan objek JSON {"id": ["paragraf 1", "paragraf 2"], "ja": ["第1段落", "第2段落"]}.`;

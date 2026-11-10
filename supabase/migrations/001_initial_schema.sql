@@ -175,6 +175,29 @@ CREATE TABLE IF NOT EXISTS nilai_mensetsu (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Evaluasi Fisik: hasil mentah satu tes per peserta per tanggal (push-up & sit-up 2 menit, plank terlama dalam detik,
+-- bolak-balik membawa satu karung 5 menit: laki-laki 20 kg, perempuan 10 kg, kelipatan 0,5). Jenis kelamin dan
+-- panjang lintasan disimpan seperti saat tes; nilai 0-100 dihitung saat dibaca dari patokan di settings
+-- 'evaluasi_fisik' (domain/evaluasiFisik.js), jadi patokan yang dikalibrasi ulang berlaku juga untuk tes lama.
+CREATE TABLE IF NOT EXISTS nilai_fisik (
+  id SERIAL PRIMARY KEY,
+  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
+  kelas_id INTEGER NULL REFERENCES kelas(id) ON DELETE SET NULL,
+  tanggal DATE NOT NULL,
+  jenis_kelamin CHAR(1) NOT NULL CHECK (jenis_kelamin IN ('L', 'P')),
+  push_up INTEGER NULL CHECK (push_up >= 0),
+  plank_detik INTEGER NULL CHECK (plank_detik >= 0),
+  sit_up INTEGER NULL CHECK (sit_up >= 0),
+  karung_bolak_balik NUMERIC(5,1) NULL CHECK (karung_bolak_balik >= 0),
+  lintasan_m NUMERIC(5,1) NOT NULL DEFAULT 10 CHECK (lintasan_m > 0),
+  catatan TEXT NOT NULL DEFAULT '',
+  diinput_oleh_staff_id INTEGER NULL REFERENCES staff(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  UNIQUE (peserta_id, tanggal)
+);
+CREATE INDEX IF NOT EXISTS idx_nilai_fisik_tanggal ON nilai_fisik (tanggal);
+
 -- Tes Online (kanji & dokkai di portal peserta): sensei membuka kode untuk satu kelas; peserta yang memasukkan kode
 -- mengerjakan kertas acak miliknya sendiri (soal + kunci disimpan di percobaan), nilainya masuk ke nilai_ujian.
 -- Tanpa kode, tes di portal hanya latihan dan tidak disimpan.

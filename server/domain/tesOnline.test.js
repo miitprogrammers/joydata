@@ -50,7 +50,7 @@ test('Tes online catalogue: 80 kanji dasar, five volumes, and the dokkai levels'
   const semua = dokkai.find((m) => m.kode === 'SEMUA');
   assert.equal(semua.jumlah, 225);
   assert.equal(semua.jumlahSoal, 450);
-  assert.deepEqual(semua.perJlpt, { N5: { jumlah: 225, jumlahSoal: 450 }, N4: { jumlah: 0, jumlahSoal: 0 }, N3: { jumlah: 0, jumlahSoal: 0 } });
+  assert.deepEqual(semua.perJlpt, { N5: { jumlah: 225, jumlahSoal: 450 }, N4: { jumlah: 125, jumlahSoal: 250 }, N3: { jumlah: 0, jumlahSoal: 0 } });
 });
 
 test('Kanji N4: five volumes from the Excel, own exam codes, and the test takes the level of its material', () => {
@@ -284,17 +284,20 @@ test('Kanji outside the chosen volumes become kana, in the text, the questions a
   }
 });
 
-test('Dokkai pools per sentence-pattern level: N5 = bank + approved AI, N4/N3 = approved AI only', () => {
+test('Dokkai pools per sentence-pattern level: N5 and N4 = bank + approved AI, N3 = approved AI only', () => {
   const tambahan = [
     { id: 'AI1-1', level: 'L2', jlpt: 'N4', soal: [{}, {}] },
     { id: 'AI1-2', level: 'L2', jlpt: 'N5', soal: [{}, {}] },
     { id: 'AI2-1', level: 'L3', jlpt: 'N4', soal: [{}, {}] },
   ];
   assert.equal(poolDokkai('L2', tambahan).length, 46);
-  assert.deepEqual(poolDokkai('L2', tambahan, 'N4').map((b) => b.id), ['AI1-1']);
-  assert.deepEqual(poolDokkai('SEMUA', tambahan, 'N4').map((b) => b.id), ['AI1-1', 'AI2-1']);
+  const bankN4L2 = Array.from({ length: 25 }, (_, i) => `N4L2-${i + 1}`);
+  assert.deepEqual(poolDokkai('L2', tambahan, 'N4').map((b) => b.id), [...bankN4L2, 'AI1-1']);
+  const semuaN4 = poolDokkai('SEMUA', tambahan, 'N4').map((b) => b.id);
+  assert.equal(semuaN4.length, 127);
+  assert.ok(semuaN4.includes('AI1-1') && semuaN4.includes('AI2-1') && semuaN4.filter((id) => id.startsWith('N4L')).length === 125);
   assert.equal(poolDokkai('L2', tambahan, 'N3').length, 0);
-  assert.deepEqual(daftarMateriTes(tambahan).dokkai.find((m) => m.kode === 'L2').perJlpt.N4, { jumlah: 1, jumlahSoal: 2 });
+  assert.deepEqual(daftarMateriTes(tambahan).dokkai.find((m) => m.kode === 'L2').perJlpt.N4, { jumlah: 26, jumlahSoal: 52 });
 });
 
 test('Bank Soal: every question a code draws from, with keys, bank and AI passages, kanji by volume', () => {
@@ -309,7 +312,10 @@ test('Bank Soal: every question a code draws from, with keys, bank and AI passag
   assert.equal(l2.items.length, 46);
   assert.equal(l2.items.filter((b) => b.sumber === 'ai').length, 1);
   assert.ok(l2.items.every((b) => b.soal.every((s) => s.opsi[s.benar])));
-  assert.equal(bankSoalTes({ jenis: 'dokkai', materi: 'L2', jlpt: 'N4' }, [ai]).items.length, 0);
+  // The N4 bank has its own passages; an N5 AI passage does not join them.
+  const n4l2 = bankSoalTes({ jenis: 'dokkai', materi: 'L2', jlpt: 'N4' }, [ai]);
+  assert.equal(n4l2.items.length, 25);
+  assert.ok(n4l2.items.every((b) => b.id.startsWith('N4L2-') && b.soal.every((q) => q.opsi[q.benar])));
 
   // Same kana as a code with only the basic kanji would give peserta; all volumes = no change and kanjiVolume null.
   const hanyaDasar = kanjiDariVolume(['DASAR']);
@@ -330,7 +336,7 @@ test('Bank Soal: every question a code draws from, with keys, bank and AI passag
   assert.throws(() => bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: ['VOL9'] }), /INVALID_TES_ONLINE/);
 });
 
-test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only once passages exist, kanji volumes', () => {
+test('Opening a dokkai code: AI only for one level, N4 from its bank, N3 only once passages exist, kanji volumes', () => {
   const dasar = { kelasId: 3, jenis: 'dokkai', materi: 'L2', tanggalUjian: '2026-11-05', namaUjian: 'DK-L2' };
   const ai = validateSesiTes({ ...dasar, sumber: 'ai', jlpt: 'N4', jumlahSoal: 5, kanjiVolume: ['VOL1', 'DASAR'] });
   assert.equal(ai.ok, true);
@@ -347,6 +353,9 @@ test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only onc
   assert.equal(validateSesiTes({ ...dasar, kanjiVolume: [] }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ ...dasar, sumber: 'ai', materi: 'SEMUA' }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ ...dasar, jenis: 'kanji', materi: 'VOL1', sumber: 'ai' }).code, 'INVALID_TES_ONLINE');
+  const bankN4 = validateSesiTes({ ...dasar, jlpt: 'N4' });
+  assert.equal(bankN4.ok, true);
+  assert.equal(bankN4.normalized.jlpt, 'N4');
   assert.equal(validateSesiTes({ ...dasar, jlpt: 'N3' }).code, 'INVALID_TES_ONLINE');
   assert.equal(
     validateSesiTes({ ...dasar, jlpt: 'N3' }, { tambahanDokkai: [{ id: 'AI1-1', level: 'L2', jlpt: 'N3', soal: [{}, {}] }] }).ok,

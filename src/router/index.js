@@ -19,6 +19,7 @@ import KaiwaMingguanView from '../views/KaiwaMingguanView.vue';
 import NilaiMensetsuView from '../views/NilaiMensetsuView.vue';
 import TesOnlineView from '../views/TesOnlineView.vue';
 import MonitorLatihanView from '../views/MonitorLatihanView.vue';
+import EvaluasiFisikView from '../views/EvaluasiFisikView.vue';
 import NilaiSikapView from '../views/NilaiSikapView.vue';
 import AbsensiView from '../views/AbsensiView.vue';
 import AuditLogView from '../views/AuditLogView.vue';
@@ -191,6 +192,7 @@ const routes = [
   { path: '/mensetsu', name: 'rekap-mensetsu', component: NilaiMensetsuView, meta: { pageKode: 'rekap-mensetsu' } },
   { path: '/tes-online', name: 'tes-online', component: TesOnlineView, meta: { pageKode: 'tes-online' } },
   { path: '/monitor-latihan', name: 'monitor-latihan', component: MonitorLatihanView, meta: { pageKode: 'monitor-latihan' } },
+  { path: '/evaluasi-fisik', name: 'evaluasi-fisik', component: EvaluasiFisikView, meta: { pageKode: 'evaluasi-fisik' } },
   { path: '/nilai-sikap', name: 'rekap-nilai-sikap', component: NilaiSikapView, meta: { pageKode: 'rekap-nilai-sikap' } },
   { path: '/absensi', name: 'rekap-absensi', component: AbsensiView, meta: { pageKode: 'rekap-absensi' } },
   { path: '/config/audit-log', name: 'riwayat-aktivitas', component: AuditLogView, meta: { pageKode: 'riwayat-aktivitas' } },

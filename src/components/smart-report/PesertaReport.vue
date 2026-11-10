@@ -210,6 +210,41 @@
       </div>
     </div>
 
+    <!-- 6. Evaluasi Fisik: the latest test, and how Nilai Fisik moved over every test -->
+    <div class="grid grid-cols-2 gap-5 sr-keep">
+      <div class="space-y-1.5">
+        <h3 class="sr-section-title">6. {{ $t('fisik.judul') }}</h3>
+        <StatFisik :tes="report.fisik?.terakhir || null" />
+      </div>
+      <div v-if="(report.fisik?.daftar || []).length > 1" class="space-y-1.5">
+        <h3 class="sr-section-title">{{ $t('fisik.perkembangan') }}</h3>
+        <table class="w-full border-collapse text-[11px]">
+          <thead>
+            <tr class="text-[10px] uppercase tracking-wide text-slate-400">
+              <th class="text-left font-semibold py-0.5">{{ $t('fisik.colTanggal') }}</th>
+              <th class="text-right font-semibold py-0.5">{{ $t('fisik.singkatPushUp') }}</th>
+              <th class="text-right font-semibold py-0.5">{{ $t('fisik.singkatPlank') }}</th>
+              <th class="text-right font-semibold py-0.5">{{ $t('fisik.singkatSitUp') }}</th>
+              <th class="text-right font-semibold py-0.5">{{ $t('fisik.singkatKarung') }}</th>
+              <th class="text-right font-semibold py-0.5">{{ $t('fisik.nilaiFisik') }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="f in report.fisik.daftar" :key="f.id" class="border-t border-slate-100">
+              <td class="py-1 font-mono tabular-nums text-slate-600">{{ f.tanggal }}</td>
+              <td class="py-1 text-right font-mono tabular-nums">{{ f.pushUp ?? '-' }}</td>
+              <td class="py-1 text-right font-mono tabular-nums">{{ formatDetik(f.plankDetik) }}</td>
+              <td class="py-1 text-right font-mono tabular-nums">{{ f.sitUp ?? '-' }}</td>
+              <td class="py-1 text-right font-mono tabular-nums">{{ f.karungBolakBalik ?? '-' }}</td>
+              <td class="py-1 text-right font-mono tabular-nums font-bold text-slate-900">
+                {{ f.nilaiFisik ?? '-' }}<span v-if="f.predikat" class="ml-1 font-normal text-slate-500">{{ f.predikat }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <!-- One overall review of every score -->
     <ResumeCard
       :title="$t('laporan.reviewJudul')"
@@ -241,6 +276,8 @@ import ResumeCard from './ResumeCard.vue';
 import ScoreTrendChart from './ScoreTrendChart.vue';
 import StatGrade from './StatGrade.vue';
 import StatSikap from './StatSikap.vue';
+import StatFisik from './StatFisik.vue';
+import { formatDetik } from '@/server/domain/evaluasiFisik.js';
 import StatusLegend from './StatusLegend.vue';
 import PeringkatCell from './PeringkatCell.vue';
 import PesertaFoto from '../PesertaFoto.vue';

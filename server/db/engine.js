@@ -287,6 +287,7 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     nilaiUjian,
     nilaiKaiwa,
     nilaiMensetsu: [],
+    nilaiFisik: [],
     tesOnlineSesi: [],
     tesOnlinePercobaan: [],
     dokkaiBacaanAi: [],
@@ -310,6 +311,7 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
       nilaiUjian: nilaiUjian.length + 1,
       nilaiKaiwa: nilaiKaiwa.length + 1,
       nilaiMensetsu: 1,
+      nilaiFisik: 1,
       tesOnlineSesi: 1,
       tesOnlinePercobaan: 1,
       latihanSesi: 1,
@@ -351,6 +353,10 @@ function ensurePhase2Collections(state) {
     state.nilaiMensetsu = [];
     dirty = true;
   }
+  if (!Array.isArray(state.nilaiFisik)) {
+    state.nilaiFisik = [];
+    dirty = true;
+  }
   if (!Array.isArray(state.tesOnlineSesi)) {
     state.tesOnlineSesi = [];
     state.tesOnlinePercobaan = [];
@@ -378,6 +384,7 @@ function ensurePhase2Collections(state) {
   state.seq.nilaiUjian = state.seq.nilaiUjian || (state.nilaiUjian.length + 1);
   state.seq.nilaiKaiwa = state.seq.nilaiKaiwa || ((state.nilaiKaiwa || []).length + 1);
   state.seq.nilaiMensetsu = state.seq.nilaiMensetsu || ((state.nilaiMensetsu || []).length + 1);
+  state.seq.nilaiFisik = state.seq.nilaiFisik || ((state.nilaiFisik || []).length + 1);
   state.seq.tesOnlineSesi = state.seq.tesOnlineSesi || state.tesOnlineSesi.length + 1;
   state.seq.tesOnlinePercobaan = state.seq.tesOnlinePercobaan || state.tesOnlinePercobaan.length + 1;
   state.seq.latihanSesi = state.seq.latihanSesi || state.latihanSesi.length + 1;

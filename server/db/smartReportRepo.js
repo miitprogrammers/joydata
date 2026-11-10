@@ -82,6 +82,7 @@ function journeyOf(ctx, student) {
     mensetsuRows: ctx.state.nilaiMensetsu || [],
     sikapRows: ctx.sikapRows,
     absensiRows: ctx.state.absensi || [],
+    fisikRows: ctx.state.nilaiFisik || [],
     settings: ctx.settings,
   });
 }

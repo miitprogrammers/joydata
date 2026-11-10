@@ -101,6 +101,31 @@
             <v-btn v-for="j in jlptOptions" :key="j" :value="j" class="text-none" :disabled="!adaBacaanPola(j)">{{ j }}</v-btn>
           </v-btn-toggle>
         </div>
+        <!-- Kanji volumes, as the sensei picks them when opening a dokkai code -->
+        <div v-if="jenisLatihan === 'dokkai' && grupVolume.length" class="mt-3">
+          <p class="text-xs text-slate-500">{{ $t('tesOnline.kanjiBacaan') }} · {{ $t('tesOnline.kanjiBacaanHint') }}</p>
+          <div v-for="g in grupVolume" :key="g.jlpt" class="mt-1.5 flex flex-wrap items-center gap-1.5">
+            <button
+              type="button"
+              class="w-10 rounded-lg border px-1.5 py-1 text-xs font-bold transition-colors"
+              :class="g.volume.every((v) => kanjiVolume.includes(v)) ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 bg-white text-slate-700 hover:border-blue-300'"
+              @click="pilihLevelVolume(g.volume)"
+            >
+              {{ g.jlpt }}
+            </button>
+            <button
+              v-for="v in g.volume"
+              :key="v"
+              type="button"
+              class="rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors"
+              :class="kanjiVolume.includes(v) ? 'border-blue-600 bg-blue-50 text-blue-800' : 'border-slate-200 bg-white text-slate-500 hover:border-blue-300'"
+              @click="pilihVolume(v)"
+            >
+              {{ labelVolume(v) }}
+            </button>
+          </div>
+          <p v-if="!kanjiVolume.length" class="mt-1 text-xs text-red-600">{{ $t('tesOnline.kanjiMinimal') }}</p>
+        </div>
         <div class="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
           <button
             v-for="m in materiLatihan"
@@ -111,7 +136,7 @@
             :disabled="jumlahMateri(m) === 0"
             @click="materiDipilih = m.kode"
           >
-            <span class="block text-sm font-semibold text-slate-900">{{ m.judulPendek || m.judul }}</span>
+            <span class="block text-sm font-semibold text-slate-900">{{ judulMateri(m) }}</span>
             <span class="block text-[11px] text-slate-500 mt-0.5">
               {{ $t(jenisLatihan === 'kanji' ? 'portal.tes.nKata' : 'portal.tes.nBacaan', { n: jumlahMateri(m) }) }}
             </span>
@@ -129,7 +154,15 @@
             hide-details
             style="max-width: 200px"
           />
-          <v-btn color="primary" variant="flat" class="text-none" height="48" :disabled="!materiDipilih" :loading="memuatLatihan" @click="mulaiLatihan">
+          <v-btn
+            color="primary"
+            variant="flat"
+            class="text-none"
+            height="48"
+            :disabled="!materiDipilih || (jenisLatihan === 'dokkai' && !kanjiVolume.length)"
+            :loading="memuatLatihan"
+            @click="mulaiLatihan"
+          >
             {{ $t('portal.tes.mulaiLatihan') }}
           </v-btn>
         </div>
@@ -165,6 +198,7 @@ import KanjiRunner from '../../components/portal/tes/KanjiRunner.vue';
 import DokkaiRunner from '../../components/portal/tes/DokkaiRunner.vue';
 import HasilTes from '../../components/portal/tes/HasilTes.vue';
 import { useDetakAktivitas } from '../../services/aktivitasLatihan.js';
+import { jlptVolume, labelVolumeKanji } from '../../utils/volumeKanji.js';
 
 const { t } = useI18n();
 const router = useRouter();
@@ -217,12 +251,34 @@ const jenisLatihan = ref('kanji');
 const materiDipilih = ref('DASAR');
 const jumlahLatihan = ref(20);
 const memuatLatihan = ref(false);
-// Dokkai sentence-pattern level: N5 is the fixed bank, N4/N3 exist once sensei have approved AI passages.
+// Dokkai sentence-pattern level: N5 and N4 have a fixed bank, N3 exists once sensei have approved AI passages.
 const jlptOptions = ref(['N5']);
 const jlptLatihan = ref('N5');
 // Kanji level: N5 (Dasar, Vol 1-5) or N4 (Vol 1-5).
 const jlptKanjiOptions = ref(['N5']);
 const levelKanji = ref('N5');
+// Kanji a dokkai paper shows (others in kana), as on a code: each pattern level starts from its own default
+// (N5 → the N5 volumes, N4/N3 → N5 and N4).
+const volumeKanji = ref([]);
+const volumeKanjiDefault = ref({});
+const kanjiVolume = ref([]);
+const volumeAwal = (jlpt) => [...(volumeKanjiDefault.value[jlpt] || volumeKanji.value)];
+const grupVolume = computed(() =>
+  [...new Set(volumeKanji.value.map(jlptVolume))].map((jlpt) => ({ jlpt, volume: volumeKanji.value.filter((v) => jlptVolume(v) === jlpt) }))
+);
+// Within a level's row: "Dasar", "Vol 3".
+const labelVolume = (v) => labelVolumeKanji(v, t).replace(/^N\d\s+/, '');
+// Kept in the catalogue order, so the same choice is always the same request.
+const urutVolume = (daftar) => volumeKanji.value.filter((v) => daftar.includes(v));
+function pilihVolume(v) {
+  kanjiVolume.value = kanjiVolume.value.includes(v) ? kanjiVolume.value.filter((x) => x !== v) : urutVolume([...kanjiVolume.value, v]);
+}
+function pilihLevelVolume(volume) {
+  const semuaDipilih = volume.every((v) => kanjiVolume.value.includes(v));
+  kanjiVolume.value = semuaDipilih
+    ? kanjiVolume.value.filter((v) => !volume.includes(v))
+    : urutVolume([...kanjiVolume.value, ...volume]);
+}
 
 const materiLatihan = computed(() => {
   const semua = katalog.value[jenisLatihan.value] || [];
@@ -236,11 +292,17 @@ function jumlahMateri(m) {
   return jenisLatihan.value === 'dokkai' ? m.perJlpt?.[jlptLatihan.value]?.jumlah ?? m.jumlah : m.jumlah;
 }
 
+// A dokkai level is named after what its bank practises at the chosen pattern level (judulPerJlpt, N4).
+function judulMateri(m) {
+  return (jenisLatihan.value === 'dokkai' && m.judulPerJlpt?.[jlptLatihan.value]) || m.judulPendek || m.judul;
+}
+
 function adaBacaanPola(jlpt) {
   return katalog.value.dokkai.some((m) => (m.perJlpt?.[jlpt]?.jumlah ?? 0) > 0);
 }
 
-watch(jlptLatihan, () => {
+watch(jlptLatihan, (j) => {
+  kanjiVolume.value = volumeAwal(j);
   const sekarang = materiLatihan.value.find((m) => m.kode === materiDipilih.value);
   if (!sekarang || jumlahMateri(sekarang) === 0) materiDipilih.value = materiLatihan.value.find((m) => jumlahMateri(m) > 0)?.kode ?? null;
 });
@@ -251,6 +313,7 @@ const pilihanJumlah = computed(() =>
 );
 watch(jenisLatihan, (j) => {
   jlptLatihan.value = 'N5';
+  kanjiVolume.value = volumeAwal('N5');
   levelKanji.value = 'N5';
   materiDipilih.value = j === 'kanji' ? 'DASAR' : 'L1';
   jumlahLatihan.value = j === 'kanji' ? 20 : 3;
@@ -273,6 +336,10 @@ async function muat() {
     katalog.value = res.materi;
     jlptOptions.value = res.jlptOptions || ['N5'];
     jlptKanjiOptions.value = res.jlptKanji || ['N5'];
+    volumeKanji.value = res.volumeKanji || [];
+    volumeKanjiDefault.value = res.volumeKanjiDefault || {};
+    // A reload after an official test keeps what the peserta picked.
+    if (!kanjiVolume.value.length) kanjiVolume.value = volumeAwal(jlptLatihan.value);
     riwayat.value = res.riwayat;
   } catch (err) {
     gagal(err);
@@ -295,7 +362,10 @@ async function mulaiLatihan() {
   memuatLatihan.value = true;
   try {
     const params = new URLSearchParams({ jenis: jenisLatihan.value, materi: materiDipilih.value, jumlah: String(jumlahLatihan.value || '') });
-    if (jenisLatihan.value === 'dokkai') params.set('jlpt', jlptLatihan.value);
+    if (jenisLatihan.value === 'dokkai') {
+      params.set('jlpt', jlptLatihan.value);
+      params.set('volume', kanjiVolume.value.join(','));
+    }
     const res = await portalRequest(`/tes/latihan?${params}`);
     resmi.value = null;
     await aktivitas.berhenti();

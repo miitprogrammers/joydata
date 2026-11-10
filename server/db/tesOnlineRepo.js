@@ -19,6 +19,7 @@ import {
   volumeKanjiDefault,
   daftarMateriTes,
   cariMateri,
+  judulMateriTes,
   poolDokkai,
   bankSoalTes,
   buatSoalTes,
@@ -34,6 +35,7 @@ import {
   kanjiDariVolume,
   tanpaFurigana,
 } from '../domain/tesOnline.js';
+import { ringkasanPolaBunpou } from '../domain/bunpou.js';
 
 // ---------------------------------------------------------------------------------------------------------------
 // Data access (Postgres or the local store); everything below works on the same plain objects.
@@ -304,10 +306,7 @@ async function insertBacaanAi(bacaan, { level, jlpt, sesiId }, actor) {
 // ---------------------------------------------------------------------------------------------------------------
 // What a code tests: material title, its passage pool and the kanji its passages may show.
 
-function materiJudul(sesi) {
-  const judul = cariMateri(sesi.jenis, sesi.materi)?.judul || sesi.materi;
-  return sesi.jenis === 'dokkai' && sesi.jlpt !== 'N5' ? `${judul} · ${sesi.jlpt}` : judul;
-}
+const materiJudul = (sesi) => judulMateriTes(sesi);
 
 const kanjiBolehSesi = (sesi) => (sesi.kanjiVolume ? kanjiDariVolume(sesi.kanjiVolume) : null);
 
@@ -374,12 +373,15 @@ function pengaturanBankSoal(query) {
   };
 }
 
-/** Every question a code with these settings draws from, with keys (staff Bank Soal). */
+/**
+ * Every question a code with these settings draws from, with keys (staff Bank Soal). polaBunpou = the bunpou
+ * module's patterns of that pattern level, to name the numbers in a bank passage's `bunpou` ([] without a module).
+ */
 export async function getBankSoalTes(query) {
   await ensureInitialized();
   const p = pengaturanBankSoal(query);
   const bank = bankSoalTes(p, p.jenis === 'dokkai' ? await queryBacaanAi() : []);
-  return { ...bank, materiJudul: materiJudul(bank) };
+  return { ...bank, materiJudul: materiJudul(bank), polaBunpou: bank.jenis === 'dokkai' ? ringkasanPolaBunpou(bank.jlpt) : [] };
 }
 
 /** A paper as one peserta would get it from a code with these settings, with its key; nothing is stored. */
@@ -656,7 +658,15 @@ export async function getTesPortal(pesertaId) {
       };
     })
     .sort((a, b) => b.selesaiAt.localeCompare(a.selesaiAt));
-  return { materi: daftarMateriTes(tambahan), jlptOptions: JLPT_DOKKAI, jlptKanji: JLPT_KANJI, riwayat };
+  return {
+    materi: daftarMateriTes(tambahan),
+    jlptOptions: JLPT_DOKKAI,
+    jlptKanji: JLPT_KANJI,
+    // Dokkai practice picks its kanji volumes the way a sensei does when opening a code.
+    volumeKanji: VOLUME_KANJI,
+    volumeKanjiDefault: Object.fromEntries(JLPT_DOKKAI.map((j) => [j, volumeKanjiDefault(j)])),
+    riwayat,
+  };
 }
 
 // Questions on a paper: kanji words, or the questions of every dokkai passage.
@@ -672,13 +682,20 @@ async function tanpaGagal(fn, cadangan = null) {
   }
 }
 
-/** A practice paper (with its key) for a peserta; it opens a practice session for the monitor (aktivitasId). */
-export async function getLatihanTes({ jenis, materi, jumlah, jlpt }, pesertaId = null) {
+/**
+ * A practice paper (with its key) for a peserta; it opens a practice session for the monitor (aktivitasId).
+ * volume = the kanji volumes of a dokkai paper (comma-separated, absent = the pattern level's default): the
+ * passages come out as from a bank code with these settings, kanji outside the volumes in kana.
+ */
+export async function getLatihanTes({ jenis, materi, jumlah, jlpt, volume }, pesertaId = null) {
   await ensureInitialized();
   const info = cariMateri(jenis, materi);
   const pola = jenis === 'dokkai' ? jlpt || 'N5' : 'N5';
   if (!info || !JLPT_DOKKAI.includes(pola)) throw new Error('INVALID_TES_ONLINE');
-  const pool = jenis === 'dokkai' ? poolDokkai(materi, await queryBacaanAi(), pola) : null;
+  const pool =
+    jenis === 'dokkai'
+      ? bankSoalTes({ jenis, materi, jlpt: pola, kanjiVolume: volume ? String(volume).split(',') : null }, await queryBacaanAi()).items
+      : null;
   if (pool && !pool.length) throw new Error('INVALID_TES_ONLINE');
   const n = Number(jumlah);
   const soal = buatSoalTes({ jenis, materi, jumlah: Number.isInteger(n) && n > 0 ? n : null, pool });

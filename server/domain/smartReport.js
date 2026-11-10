@@ -5,6 +5,7 @@ import {
   computeSikapSummary,
   computeClassMonthlyAbsensi,
 } from './rules.js';
+import { ringkasFisik } from './evaluasiFisik.js';
 
 /**
  * Smart Report: rekap seluruh perjalanan nilai peserta (semua periode) dan ringkasan kelas,
@@ -64,6 +65,7 @@ export function buildPesertaJourney({
   mensetsuRows = [],
   sikapRows = [],
   absensiRows = [],
+  fisikRows = [],
   settings,
 }) {
   const pid = Number(pesertaId);
@@ -258,6 +260,11 @@ export function buildPesertaJourney({
     sikap: { daftar: sikapDaftar },
     absensi: absensiTotal,
     bulanan,
+    // Evaluasi Fisik: every test scored with the current benchmarks, oldest first (not part of the data range).
+    fisik: ringkasFisik(
+      fisikRows.filter((f) => Number(f.pesertaId) === pid),
+      settings
+    ),
   };
 }
 
@@ -483,6 +490,29 @@ export function buildPesertaAiFacts(journey, { nama, programNama, settings }) {
       total: journey.absensi,
       bulanan: journey.bulanan.filter((b) => b.absensi.sesi > 0).map((b) => ({ periode: b.periode, ...b.absensi })),
     },
+    // Only with tests: a review written before Evaluasi Fisik existed keeps its fingerprint.
+    ...(journey.fisik?.daftar?.length
+      ? {
+          fisik: {
+            kkm: journey.fisik.terakhir.kkm,
+            bebanKarungKg: journey.fisik.terakhir.bebanKg,
+            daftar: journey.fisik.daftar.map((f) =>
+              compact({
+                tanggal: f.tanggal,
+                pushUp2Menit: f.pushUp,
+                plankDetik: f.plankDetik,
+                sitUp2Menit: f.sitUp,
+                karungBolakBalik5Menit: f.karungBolakBalik,
+                nilai: Object.fromEntries(Object.entries(f.items).map(([k, v]) => [k, v.nilai])),
+                nilaiFisik: f.nilaiFisik,
+                predikat: f.predikat,
+                lulusKkm: f.lulusKkm,
+                catatan: scrub(f.catatan),
+              })
+            ),
+          },
+        }
+      : {}),
   };
 }
 

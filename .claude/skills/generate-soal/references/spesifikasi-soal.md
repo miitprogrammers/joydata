@@ -1,8 +1,14 @@
 # Spesifikasi soal dokkai (bank JOYdata)
 
-Pembaca soal ini adalah calon pemagang Indonesia yang sedang belajar bahasa Jepang tingkat N5 dan akan bekerja
-di Jepang. Soal dipakai untuk tes bernilai, jadi satu furigana salah atau satu soal berjawaban ganda langsung
-merugikan peserta. Semua aturan di bawah berasal dari bank yang sudah ada dan dari keputusan pemilik aplikasi.
+Pembaca soal ini adalah calon pemagang Indonesia yang sedang belajar bahasa Jepang (N5, lalu N4) dan akan
+bekerja di Jepang. Soal dipakai untuk tes bernilai, jadi satu furigana salah atau satu soal berjawaban ganda
+langsung merugikan peserta. Semua aturan di bawah berasal dari bank yang sudah ada dan dari keputusan pemilik
+aplikasi.
+
+File ini berisi aturan yang sama untuk semua tingkat pola kalimat. Yang berbeda per tingkat — tata bahasa yang
+boleh dipakai, panjang dan ciri tiap level, kanji, dan (untuk N4) pola modul bunpou — ada di file tingkatnya:
+[tingkat-N5.md](tingkat-N5.md) atau [tingkat-N4.md](tingkat-N4.md). Baca keduanya: file ini dan file tingkat
+yang sedang dikerjakan.
 
 ## 1. Bentuk data
 
@@ -21,7 +27,9 @@ Satu file per level, `gen/<level>.json`, berisi array bacaan. Field harus tepat 
 }
 ```
 
-- `id` berurutan mulai dari nomor di `rencana.json`; id soal = id bacaan + `-1` / `-2`. Tiap bacaan tepat 2 soal.
+- `id` berurutan mulai dari nomor di `rencana.json`: `L2-21` di bank N5, `N4L2-21` di bank N4. Id soal = id
+  bacaan + `-1` / `-2`. Tiap bacaan tepat 2 soal.
+- Bank N4 menambah satu field, `bunpou` (nomor pola modul yang dipakai bacaan) — lihat tingkat-N4.md.
 - `tanya` dan ketiga `opsi` bahasa Jepang dengan furigana. `benar` = indeks (0, 1, 2) pilihan yang benar.
 - `tanyaId` = terjemahan Indonesia dari `tanya`, diakhiri `?`. Hanya tampil di pembahasan setelah tes.
 - `pembahasan` = **kutipan persis dari bacaan, tanpa furigana** + ` = ` + artinya dalam bahasa Indonesia.
@@ -52,43 +60,10 @@ Format: bacaan kana di dalam `{}` **tepat setelah rangkaian kanjinya**; okurigan
 - Angka ditulis dengan kanji (`六時{ろくじ}`, `三百円{さんびゃくえん}`), bukan angka Arab. Tidak ada huruf Latin.
   Kata serapan dan nama orang asing dengan katakana; nama Jepang boleh kanji + furigana (`山田{やまだ}さん`).
 - Kurung `{}` hanya untuk furigana. `pembahasan`, `tanyaId`, dan `terjemahan` tidak memuat `{}`.
-- Kanji apa pun boleh asal berfurigana: aplikasi mengubah kanji di luar volume pilihan sensei menjadi kana saat
-  tes dibuat. Tetapi kosakatanya tetap harus N5 — kata sulit lebih baik diganti kata lain, bukan ditulis kana.
+- Kanji mana yang boleh tinggal sebagai kanji berbeda per tingkat (lihat file tingkat). Di tingkat mana pun,
+  kata yang terlalu sulit lebih baik diganti kata lain, bukan sekadar ditulis kana.
 
-## 3. Tata bahasa: N5 saja
-
-Gaya です・ます di seluruh bacaan dan pertanyaan.
-
-Boleh: ～ます／ません／ました／ませんでした · です／でした／ではありません · kata sifat い／な (lampau, negatif, ～くて／～で) ·
-～ています · ～てください · ～ないでください · ～てもいいです · ～てはいけません · ～てから · ～て、～ · ～たい ·
-～ましょう／～ませんか · ～から (alasan) · ～が (tetapi) · でも／それから／そして／ですから · ～とき · ～まえに／～あとで ·
-～たり～たりします · ～より／～のほうが／いちばん · ～くなります／～になります · あげます／もらいます (kata kerja saja) ·
-～と言{い}いました · あります／います · から…まで · kata keterangan waktu dan frekuensi (いつも、よく、ときどき、あまり、ぜんぜん) ·
-kata kerja bentuk kamus + の／こと (`話{はな}すのは楽{たの}しいです`) dan penjelas kata benda pendek (`日本{にほん}の料理{りょうり}を作{つく}る店{みせ}`) hanya di L5.
-
-Tidak boleh: ～なければなりません · ～ので · ～のに · ～てしまう · ～ようになる／～ようにする · ～ことができる dan bentuk potensial ·
-～つもり · ～そうです (kabar/kesan) · ～たら · ～ば · ～なら · ～かもしれません · ～はずです · ～ために · ～てあげる／くれる／もらう ·
-bentuk pasif, kausatif, perintah, volisional biasa (行こう) · keigo (いらっしゃいます、おります、～でございます) · bentuk biasa di akhir kalimat.
-
-Gate memberi PERINGATAN bila menemukan pola ini. Peringatan bisa keliru (`くだもので`, `そうですか`), jadi baca
-tiap peringatan: kalau memang pola terlarang, tulis ulang kalimatnya.
-
-## 4. Ciri tiap level
-
-Panjang dihitung dari teks tanpa furigana; gate menolak yang di luar batas. Contoh gaya ada di `contoh-<level>.json`.
-
-| Level | Panjang | Kalimat | Isi bacaan | Jenis pertanyaan |
-|---|---|---|---|---|
-| L1 Kalimat sangat dasar | 30–58 | 3–4 | Kalimat pendek tentang diri, benda, keluarga, kegiatan sederhana. Satu informasi per kalimat. | Dua-duanya mencari satu fakta yang tertulis langsung (siapa, apa, di mana, kapan, berapa). |
-| L2 Rutinitas & tempat | 45–85 | 3–4 | Rutinitas, letak tempat, belanja: ada jam, harga, jumlah, atau posisi. | Fakta langsung tentang angka, waktu, tempat. Pengecoh diambil dari angka/tempat lain yang masuk akal. |
-| L3 Informasi & alasan sederhana | 50–95 | 3–5 | Pengumuman, catatan, ajakan, penjelasan pendek dengan alasan (～から) atau permintaan (～てください). | Satu soal fakta; satu soal "mengapa" atau "apa yang harus/tidak boleh dilakukan". |
-| L4 Jadwal & detail bacaan | 60–115 | 4–6 | Jadwal, urutan kegiatan, perbandingan, beberapa angka sekaligus. | Satu soal detail; satu soal yang menggabungkan dua detail (urutan, lama waktu, jumlah harga, mana yang lebih …). |
-| L5 Bacaan lebih panjang & simpulan | 90–165 | 5–8 | Surat, email, catatan harian, cerita pendek, pengumuman agak panjang. | Soal 1 detail; soal 2 simpulan sederhana: jawabannya tidak tertulis persis, tetapi pasti dari satu–dua kalimat. |
-
-Level naik karena bacaannya lebih panjang dan pertanyaannya lebih menuntut, bukan karena tata bahasanya naik
-ke N4. L5 tetap N5.
-
-## 5. Mutu pertanyaan
+## 3. Mutu pertanyaan
 
 Peninjau independen akan menjawab tiap soal **tanpa melihat kunci**. Kalau jawabannya berbeda dari kunci,
 bacaan itu diblokir. Jadi tulis soal yang jawabannya hanya satu dan bisa dibuktikan dari teks:
@@ -114,7 +89,7 @@ tidak boleh dipakai saat tes?" → kamus), pengetahuan umum (selisih jam Jepang�
 yang sudah jelas dari dunia nyata (bus lebih murah tetapi lebih lama daripada shinkansen). Obatnya: tanyakan
 angka atau detail yang hanya ada di teks itu, atau jadikan hitungan dari dua angka di teks.
 
-## 6. Topik
+## 4. Topik
 
 - Jangan mengulang judul atau cerita di `judul-terpakai.txt`; gate menolak judul yang sama dan memberi
   peringatan bila teks mirip lebih dari 50% dengan bacaan lain.

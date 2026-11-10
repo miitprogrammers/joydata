@@ -4,6 +4,7 @@
  */
 
 import { normalizeKaiwaRuleSettings } from './kaiwaMingguan.js';
+import { normalizeEvaluasiFisikSettings } from './evaluasiFisik.js';
 
 export const VALID_STATUS_TAGS = ['standar', 'berkembang', 'siap_interview'];
 export const VALID_KETERANGAN_LUAR = ['keluar', 'alumni', 'cuti'];
@@ -721,6 +722,14 @@ export function validateSettingsPayload(input) {
     kaiwa = checked.normalized;
   }
 
+  // Evaluasi Fisik benchmarks, weights, KKM and track length; also kept as stored when a client leaves them out.
+  let fisik = {};
+  if (input?.evaluasi_fisik !== undefined) {
+    const checked = normalizeEvaluasiFisikSettings(input.evaluasi_fisik);
+    if (!checked.ok) return checked;
+    fisik = { evaluasi_fisik: checked.normalized };
+  }
+
   return {
     ok: true,
     normalized: {
@@ -732,6 +741,7 @@ export function validateSettingsPayload(input) {
       rentang_tren_bulan: Number(input?.rentang_tren_bulan ?? 12),
       periode_default: String(input?.periode_default || 'auto'),
       ...kaiwa,
+      ...fisik,
     },
   };
 }

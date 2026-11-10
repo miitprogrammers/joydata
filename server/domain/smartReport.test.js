@@ -193,3 +193,27 @@ test('batasiParagraf keeps at most the allowed paragraphs and folds the rest int
   assert.equal(batasiParagraf('一。\n\n二。\n\n三。', 2, ''), '一。\n\n二。三。');
   assert.equal(batasiParagraf('Hanya satu.', 2), 'Hanya satu.');
 });
+
+test('Evaluasi Fisik reaches the AI facts only with tests, so older reviews keep their fingerprint', () => {
+  const tanpa = buildPesertaJourney({ pesertaId: 1, kelasId: 3, ujianRows, absensiRows, settings });
+  const factsTanpa = buildPesertaAiFacts(tanpa, { nama: 'Budi', settings });
+  assert.equal('fisik' in factsTanpa, false);
+  assert.deepEqual(tanpa.fisik, { daftar: [], terakhir: null });
+
+  const fisikRows = [
+    { id: 1, pesertaId: 1, tanggal: '2026-08-07', jenisKelamin: 'L', pushUp: 45, plankDetik: 150, sitUp: 55, karungBolakBalik: 13, lintasanM: 10, catatan: 'Budi kuat' },
+    { id: 2, pesertaId: 2, tanggal: '2026-08-07', jenisKelamin: 'P', pushUp: 10 },
+  ];
+  const dengan = buildPesertaJourney({ pesertaId: 1, kelasId: 3, ujianRows, absensiRows, fisikRows, settings });
+  assert.equal(dengan.fisik.daftar.length, 1);
+  assert.equal(dengan.fisik.terakhir.nilaiFisik, 81.3);
+  // The physical test does not stretch the data range or the attendance window.
+  assert.deepEqual(dengan.rentang, tanpa.rentang);
+  const facts = buildPesertaAiFacts(dengan, { nama: 'Budi', settings });
+  assert.equal(facts.fisik.daftar[0].nilaiFisik, 81.3);
+  assert.equal(facts.fisik.kkm, 60);
+  assert.equal(facts.fisik.bebanKarungKg, 20);
+  assert.equal(JSON.stringify(facts).includes('Budi'), false);
+  const { fisik: _fisik, ...sisa } = facts;
+  assert.equal(hashFacts(sisa, 3), hashFacts(factsTanpa, 3));
+});

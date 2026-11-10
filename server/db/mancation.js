@@ -73,6 +73,9 @@ const DATAPESERTA_SELECT = `
   LEFT JOIN kota kt ON kt.id = dp.data_kota
   LEFT JOIN provinsi pv ON pv.id = dp.data_prof`;
 
+// t_datapeserta.data_kelamin follows t_jk: 1 = Laki-laki, 2 = Perempuan (Evaluasi Fisik needs it).
+const JENIS_KELAMIN = { 1: 'L', 2: 'P' };
+
 // status_pernikahan has no lookup table in mancation; the codes follow the KTP marital status order.
 const STATUS_PERNIKAHAN = {
   0: 'Belum Menikah',
@@ -141,6 +144,7 @@ function mapMancationStudentRow(akun, dp, fotoVersi = null) {
     jumlahAnak: dp?.anak != null && dp?.anak !== '' ? Number(dp.anak) : null,
     agama: String(dp?.agama_nama ?? '').trim(),
     daerahAsal: buildDaerahAsal(dp),
+    jenisKelamin: JENIS_KELAMIN[Number(dp?.data_kelamin)] || '',
     fotoVersi: fotoVersi || null,
     hasDatapeserta: Boolean(dp),
   };

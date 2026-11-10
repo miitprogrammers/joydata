@@ -257,6 +257,77 @@
             </div>
           </div>
         </div>
+
+        <!-- Card 5: Evaluasi Fisik (benchmarks, weights, KKM, sack track) -->
+        <div class="joy-surface p-6 space-y-4">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-base font-bold text-slate-900 font-display">5. {{ $t('pengaturan.secFisik') }}</h2>
+            <p class="text-xs text-slate-500 mt-0.5">{{ $t('pengaturan.secFisikDesc') }}</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label for="set-fisik-lintasan" class="block font-semibold text-slate-700 mb-1">{{ $t('pengaturan.fisikLintasan') }}:</label>
+              <input
+                id="set-fisik-lintasan"
+                v-model.number="form.evaluasi_fisik.lintasanM"
+                type="number"
+                min="1"
+                max="100"
+                step="0.5"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">{{ $t('pengaturan.fisikLintasanHelp') }}</span>
+            </div>
+            <div>
+              <label for="set-fisik-kkm" class="block font-semibold text-slate-700 mb-1">{{ $t('pengaturan.fisikKkm') }}:</label>
+              <input
+                id="set-fisik-kkm"
+                v-model.number="form.evaluasi_fisik.kkm"
+                type="number"
+                min="0"
+                max="100"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">{{ $t('pengaturan.fisikKkmHelp') }}</span>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="text-[11px] text-slate-500">
+                  <th class="py-2 pr-3 font-semibold">{{ $t('fisik.colItem') }}</th>
+                  <th class="py-2 px-2 font-semibold whitespace-nowrap" colspan="2">{{ $t('fisik.colLaki') }} ({{ $t('pengaturan.fisikMinimal') }} → {{ $t('pengaturan.fisikTarget') }})</th>
+                  <th class="py-2 px-2 font-semibold whitespace-nowrap" colspan="2">{{ $t('fisik.colPerempuan') }} ({{ $t('pengaturan.fisikMinimal') }} → {{ $t('pengaturan.fisikTarget') }})</th>
+                  <th class="py-2 pl-2 font-semibold whitespace-nowrap">{{ $t('pengaturan.fisikBobot') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="k in ITEM_FISIK" :key="k" class="border-t border-slate-100">
+                  <td class="py-2 pr-3">
+                    <p class="font-medium text-slate-800">{{ $t(`fisik.${k}`) }}</p>
+                    <p class="text-[11px] text-slate-500">{{ $t(`fisik.satuan.${k}`) }}</p>
+                  </td>
+                  <template v-for="g in ['L', 'P']" :key="g">
+                    <td class="py-2 px-1">
+                      <input v-model.number="form.evaluasi_fisik.patokan[k][g].minimal" type="number" min="0" :aria-label="`${k} ${g} minimal`" class="joy-input w-20 p-2 font-mono text-xs" />
+                    </td>
+                    <td class="py-2 px-1">
+                      <input v-model.number="form.evaluasi_fisik.patokan[k][g].target" type="number" min="0" :aria-label="`${k} ${g} target`" class="joy-input w-20 p-2 font-mono text-xs" />
+                    </td>
+                  </template>
+                  <td class="py-2 pl-2">
+                    <input v-model.number="form.evaluasi_fisik.bobot[k]" type="number" min="0" max="100" :aria-label="`${k} bobot`" class="joy-input w-16 p-2 font-mono text-xs" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-[11px]" :class="totalBobotFisik === 100 ? 'text-slate-500' : 'text-red-600 font-semibold'">
+            {{ $t('pengaturan.fisikBobotTotal', { n: totalBobotFisik }) }}
+          </div>
+        </div>
       </template>
     </div>
   </div>
@@ -267,6 +338,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../stores/appStore.js';
 import { apiRequest } from '../services/api.js';
+import { ITEM_FISIK, aturanFisik } from '@/server/domain/evaluasiFisik.js';
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -292,7 +364,13 @@ const form = ref({
   kaiwa_target_mingguan: 4,
   kaiwa_sensei_wajib_id: null as number | null,
   kaiwa_berlaku_mulai: '' as string | null,
+  // Evaluasi Fisik: every value filled (missing ones from the defaults), so the inputs always have a target.
+  evaluasi_fisik: aturanFisik({}) as any,
 });
+
+const totalBobotFisik = computed(() =>
+  ITEM_FISIK.reduce((n: number, k: string) => n + (Number(form.value.evaluasi_fisik.bobot[k]) || 0), 0)
+);
 
 // Active staff for the required kaiwa sensei; settings are admin-only and admins always keep Crud Staff.
 const staffOptions = ref<{ id: number; nama: string }[]>([]);
@@ -327,6 +405,7 @@ async function loadSettings() {
       kaiwa_target_mingguan: data.kaiwa_target_mingguan ?? 4,
       kaiwa_sensei_wajib_id: data.kaiwa_sensei_wajib_id ?? null,
       kaiwa_berlaku_mulai: data.kaiwa_berlaku_mulai ?? '',
+      evaluasi_fisik: aturanFisik(data),
     };
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal memuat pengaturan', 'error');
@@ -345,11 +424,13 @@ async function saveSettings() {
     form.value = {
       ...form.value,
       ...updated,
+      evaluasi_fisik: aturanFisik(updated),
     };
     appStore.setSettings(updated);
     appStore.notify(t('pengaturan.berhasilDisimpan'), 'success');
   } catch (err: any) {
-    appStore.notify(err.message || 'Gagal menyimpan pengaturan', 'error');
+    const key = `messages.${err.code}`;
+    appStore.notify(t(key) !== key ? t(key) : err.message || 'Gagal menyimpan pengaturan', 'error');
   } finally {
     saving.value = false;
   }
@@ -365,6 +446,7 @@ async function confirmReset() {
     form.value = {
       ...form.value,
       ...reset,
+      evaluasi_fisik: aturanFisik(reset),
     };
     appStore.setSettings(reset);
     appStore.notify(t('pengaturan.berhasilDireset'), 'success');
