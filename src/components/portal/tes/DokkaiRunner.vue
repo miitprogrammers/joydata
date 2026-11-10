@@ -71,7 +71,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import FuriganaText from './FuriganaText.vue';
 
 // No furigana while answering, in practice too: reading the kanji is part of the test. The results page shows them.
@@ -81,7 +81,8 @@ const props = defineProps({
   mode: { type: String, default: 'latihan' },
   mengirim: { type: Boolean, default: false },
 });
-defineEmits(['selesai']);
+// progres { posisi, itemSelesai }: for the live practice monitor
+const emit = defineEmits(['selesai', 'progres']);
 
 const index = ref(0);
 const jawaban = ref({});
@@ -93,6 +94,15 @@ const semuaSoal = computed(() => props.soal.flatMap((b) => b.soal));
 const bacaanTerjawab = computed(() => bacaan.value.soal.every((s) => Number.isInteger(jawaban.value[s.id])));
 const semuaTerjawab = computed(() => semuaSoal.value.every((s) => Number.isInteger(jawaban.value[s.id])));
 const progres = computed(() => (semuaSoal.value.filter((s) => Number.isInteger(jawaban.value[s.id])).length / semuaSoal.value.length) * 100);
+
+watch(
+  [index, jawaban],
+  () => {
+    const itemSelesai = semuaSoal.value.filter((s) => Number.isInteger(jawaban.value[s.id])).length;
+    emit('progres', { posisi: index.value + 1, itemSelesai });
+  },
+  { immediate: true }
+);
 
 function kelasOpsi(s, oi) {
   const dipilih = jawaban.value[s.id] === oi;

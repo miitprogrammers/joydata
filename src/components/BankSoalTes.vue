@@ -118,7 +118,7 @@
               </template>
               <th v-else class="px-4 py-2.5">{{ $t('tesOnline.bank.colBacaan') }}</th>
               <th class="px-4 py-2.5">{{ $t('tesOnline.bank.colArti') }}</th>
-              <th v-if="materi === 'SEMUA'" class="px-5 py-2.5">{{ $t('tesOnline.bank.colVolume') }}</th>
+              <th v-if="semuaVolume" class="px-5 py-2.5">{{ $t('tesOnline.bank.colVolume') }}</th>
             </tr>
           </thead>
           <tbody>
@@ -143,7 +143,7 @@
               <td class="px-4 py-2 text-slate-700">
                 <template v-if="kunci">{{ k.arti }}</template><span v-else class="text-slate-300">···</span>
               </td>
-              <td v-if="materi === 'SEMUA'" class="px-5 py-2 text-xs text-slate-500 whitespace-nowrap">Vol {{ k.id.split(':')[0].slice(3) }}</td>
+              <td v-if="semuaVolume" class="px-5 py-2 text-xs text-slate-500 whitespace-nowrap">{{ labelVolumeKanji(k.id.split(':')[0], $t) }}</td>
             </tr>
           </tbody>
         </table>
@@ -227,6 +227,7 @@ import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import FuriganaText from './portal/tes/FuriganaText.vue';
+import { labelVolumeKanji } from '../utils/volumeKanji.js';
 
 // Bank Soal on the Tes Online page: the same settings as opening a code, showing every question that code draws
 // from with its key, or a paper drawn as one peserta would get it (nothing is stored).
@@ -234,6 +235,8 @@ const props = defineProps({
   katalog: { type: Object, default: () => ({ kanji: [], dokkai: [] }) },
   jlptOptions: { type: Array, default: () => ['N5', 'N4', 'N3'] },
   volumeKanji: { type: Array, default: () => [] },
+  // { N5: [...], N4: [...], N3: [...] }: the volumes a dokkai code at that level starts with
+  volumeKanjiDefault: { type: Object, default: () => ({}) },
 });
 
 const { t } = useI18n();
@@ -264,9 +267,10 @@ const jlptChoices = computed(() =>
     return { value: j, label: t('tesOnline.polaBank', { jlpt: j, n }), props: { disabled: n === 0 } };
   })
 );
-const volumeChoices = computed(() =>
-  props.volumeKanji.map((v) => ({ value: v, label: v === 'DASAR' ? t('tesOnline.volDasar') : `Vol ${v.slice(3)}` }))
-);
+const volumeChoices = computed(() => props.volumeKanji.map((v) => ({ value: v, label: labelVolumeKanji(v, t) })));
+const volumeAwal = (j) => [...(props.volumeKanjiDefault[j] || props.volumeKanji)];
+// Semua Volume of a level: the table says which volume each word is from.
+const semuaVolume = computed(() => ['SEMUA', 'N4SEMUA'].includes(materi.value));
 const siap = computed(() => Boolean(materi.value) && (jenis.value !== 'dokkai' || kanjiVolume.value.length > 0));
 
 const polos = (s) => String(s || '').replace(/\{[^}]*\}/g, '').toLowerCase();
@@ -341,12 +345,15 @@ watch(
   { immediate: true }
 );
 watch(
-  () => props.volumeKanji,
-  (v) => {
-    if (!kanjiVolume.value.length) kanjiVolume.value = [...v];
+  () => [props.volumeKanji, props.volumeKanjiDefault],
+  () => {
+    if (!kanjiVolume.value.length) kanjiVolume.value = volumeAwal(jlpt.value);
   },
   { immediate: true }
 );
+watch(jlpt, (j, lama) => {
+  if (j !== lama) kanjiVolume.value = volumeAwal(j);
+});
 // A pattern level without passages at this reading level falls back to N5.
 watch(materiAktif, (m) => {
   if (jenis.value === 'dokkai' && !(m?.perJlpt?.[jlpt.value]?.jumlah > 0)) jlpt.value = 'N5';

@@ -10,10 +10,13 @@ import {
 import { listKelas, listPeserta } from './pesertaRepo.js';
 import { upsertNilaiUjian } from './akademikRepo.js';
 import { tulisBacaanDokkai } from '../ai/dokkaiAi.js';
+import { catatLatihanBaru, catatTesResmi, tutupLatihan, tutupTesResmi } from './latihanRepo.js';
 import {
   JENIS_TES,
   JLPT_DOKKAI,
+  JLPT_KANJI,
   VOLUME_KANJI,
+  volumeKanjiDefault,
   daftarMateriTes,
   cariMateri,
   poolDokkai,
@@ -354,7 +357,9 @@ export async function listSesiTes() {
     kelasOptions: kelasData.items.map((k) => ({ id: Number(k.id), namaKelas: k.namaKelas, status: k.status })),
     materi: daftarMateriTes(tambahan),
     jlptOptions: JLPT_DOKKAI,
+    jlptKanji: JLPT_KANJI,
     volumeKanji: VOLUME_KANJI,
+    volumeKanjiDefault: Object.fromEntries(JLPT_DOKKAI.map((j) => [j, volumeKanjiDefault(j)])),
   };
 }
 
@@ -454,7 +459,8 @@ export async function tambahBacaanAi(idRaw, payload, actor) {
   const sesi = await sesiDrafAi(idRaw);
   const jumlah = Math.max(1, Math.min(MAKS_BACAAN_AI_PER_PERMINTAAN, Number(payload?.jumlah) || MAKS_BACAAN_AI_PER_PERMINTAAN));
   const ada = sesi.bacaan || [];
-  const kanjiBoleh = kanjiBolehSesi(sesi) ?? undefined;
+  // No volume choice stored = the level's default volumes (N5 grammar: N5 kanji; N4/N3: N5 and N4 kanji).
+  const kanjiBoleh = kanjiBolehSesi(sesi) ?? kanjiDariVolume(volumeKanjiDefault(sesi.jlpt));
 
   let mentah;
   try {
@@ -650,10 +656,24 @@ export async function getTesPortal(pesertaId) {
       };
     })
     .sort((a, b) => b.selesaiAt.localeCompare(a.selesaiAt));
-  return { materi: daftarMateriTes(tambahan), jlptOptions: JLPT_DOKKAI, riwayat };
+  return { materi: daftarMateriTes(tambahan), jlptOptions: JLPT_DOKKAI, jlptKanji: JLPT_KANJI, riwayat };
 }
 
-export async function getLatihanTes({ jenis, materi, jumlah, jlpt }) {
+// Questions on a paper: kanji words, or the questions of every dokkai passage.
+const jumlahPertanyaan = (jenis, soal) => (jenis === 'kanji' ? soal.length : soal.reduce((n, b) => n + b.soal.length, 0));
+
+// The practice log must never stop a paper: without it the peserta still practises, only the monitor misses it.
+async function tanpaGagal(fn, cadangan = null) {
+  try {
+    return await fn();
+  } catch (err) {
+    console.error('Latihan log:', err.message);
+    return cadangan;
+  }
+}
+
+/** A practice paper (with its key) for a peserta; it opens a practice session for the monitor (aktivitasId). */
+export async function getLatihanTes({ jenis, materi, jumlah, jlpt }, pesertaId = null) {
   await ensureInitialized();
   const info = cariMateri(jenis, materi);
   const pola = jenis === 'dokkai' ? jlpt || 'N5' : 'N5';
@@ -662,7 +682,19 @@ export async function getLatihanTes({ jenis, materi, jumlah, jlpt }) {
   if (pool && !pool.length) throw new Error('INVALID_TES_ONLINE');
   const n = Number(jumlah);
   const soal = buatSoalTes({ jenis, materi, jumlah: Number.isInteger(n) && n > 0 ? n : null, pool });
-  return { jenis, materi, materiJudul: materiJudul({ jenis, materi, jlpt: pola }), soal };
+  const judul = materiJudul({ jenis, materi, jlpt: pola });
+  const aktivitasId = pesertaId
+    ? await tanpaGagal(() =>
+        catatLatihanBaru(pesertaId, {
+          jenis,
+          materi,
+          materiJudul: judul,
+          jlpt: jenis === 'kanji' ? info.jlpt : pola,
+          jumlahItem: jumlahPertanyaan(jenis, soal),
+        })
+      )
+    : null;
+  return { jenis, materi, materiJudul: judul, soal, aktivitasId };
 }
 
 // Only answers to questions on this paper are kept.
@@ -675,17 +707,23 @@ function jawabanBersih(jenis, soal, jawaban) {
   return Object.fromEntries(soal.flatMap((b) => b.soal).map((s) => [s.id, angka(j[s.id])]));
 }
 
-// Practice: the paper (with its key) lives in the browser and nothing is stored; the server only grades it,
-// so practice and official results are counted the same way.
-export function nilaiLatihanTes(jenis, soal, jawaban) {
+// Practice: the paper (with its key) lives in the browser and the answers are not stored; the server grades it,
+// so practice and official results are counted the same way. The score and the time go to the practice session
+// (aktivitasId) for the monitor and the history, never to Rekap Nilai Ujian.
+export async function nilaiLatihanTes(jenis, soal, jawaban, { pesertaId = null, aktivitasId = null, detikAktif = null } = {}) {
   if (!JENIS_TES.includes(jenis) || !Array.isArray(soal) || soal.length === 0 || soal.length > 500) {
     throw new Error('INVALID_TES_ONLINE');
   }
+  let hasil;
   try {
-    return { ...nilaiTes(jenis, soal, jawabanBersih(jenis, soal, jawaban)), jenis };
+    hasil = { ...nilaiTes(jenis, soal, jawabanBersih(jenis, soal, jawaban)), jenis };
   } catch {
     throw new Error('INVALID_TES_ONLINE');
   }
+  if (pesertaId && aktivitasId) {
+    await tanpaGagal(() => tutupLatihan(pesertaId, aktivitasId, { skor: hasil.skor, itemSelesai: hasil.total, detikAktif }));
+  }
+  return hasil;
 }
 
 function ringkasanSesiUntukPeserta(sesi, tambahan) {
@@ -738,11 +776,26 @@ export async function mulaiTes(pesertaId, kodeInput) {
         kanjiBoleh: kanjiBolehSesi(sesi),
       })
     ));
+  const info = ringkasanSesiUntukPeserta(sesi, tambahan);
+  const aktivitas = await tanpaGagal(
+    () =>
+      catatTesResmi(pesertaId, {
+        percobaanId: p.id,
+        jenis: sesi.jenis,
+        materi: sesi.materi,
+        materiJudul: `${info.materiJudul} · ${sesi.namaUjian}`,
+        jlpt: sesi.jlpt,
+        jumlahItem: jumlahPertanyaan(sesi.jenis, p.soal),
+      }),
+    { aktivitasId: null, detikAwal: 0 }
+  );
   return {
     percobaanId: p.id,
     mulaiAt: p.mulaiAt,
-    sesi: ringkasanSesiUntukPeserta(sesi, tambahan),
+    sesi: info,
     soal: soalTanpaKunci(sesi.jenis, p.soal),
+    aktivitasId: aktivitas.aktivitasId,
+    detikAwal: aktivitas.detikAwal,
   };
 }
 
@@ -776,5 +829,6 @@ export async function selesaiTes(pesertaId, percobaanIdRaw, jawaban) {
     await reopenPercobaan(p.id);
     throw err;
   }
+  await tanpaGagal(() => tutupTesResmi(pesertaId, p.id, { skor: hasil.skor, itemSelesai: hasil.total }));
   return { ...hasil, jenis: sesi.jenis, sesi: info, tersimpan: true };
 }

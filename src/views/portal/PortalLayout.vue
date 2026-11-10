@@ -136,6 +136,7 @@ const NAV = [
       { key: 'mensetsu', to: '/portal/mensetsu', icon: 'mdi-account-tie-voice' },
       { key: 'ujian', to: '/portal/ujian', icon: 'mdi-clipboard-text-outline' },
       { key: 'tes', to: '/portal/tes', icon: 'mdi-pencil-box-multiple-outline' },
+      { key: 'flashcard', to: '/portal/flashcard', icon: 'mdi-cards-outline' },
       { key: 'kehadiran', to: '/portal/kehadiran', icon: 'mdi-calendar-check-outline' },
       { key: 'sikap', to: '/portal/sikap', icon: 'mdi-scale-balance' },
     ],

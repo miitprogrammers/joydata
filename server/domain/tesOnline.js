@@ -1,10 +1,11 @@
 /**
- * Tes Online (kanji & dokkai N5) for the peserta portal. Pure rules: the question catalogue, building a randomised
+ * Tes Online (kanji N5/N4 & dokkai) for the peserta portal. Pure rules: the question catalogue, building a randomised
  * test, grading it, and the access codes sensei hand out. Every attempt draws its own questions (subset, order,
  * distractors and option order), so two peserta, or one peserta twice, never get the same paper.
  */
 
 import { KANJI_DASAR, KANJI_VOLUME, BACAAN_LAIN } from './bankSoal/kanjiN5.js';
+import { KANJI_VOLUME_N4, BACAAN_LAIN_N4 } from './bankSoal/kanjiN4.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
 
 export const JENIS_TES = ['kanji', 'dokkai'];
@@ -14,19 +15,40 @@ const MIN_JUMLAH_SOAL = 1;
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 export const PANJANG_KODE = 6;
 
-function kanjiItems(materi) {
+// Kanji levels with word volumes. N5: DASAR (80 single kanji) and VOL1-VOL5; N4: N4VOL1-N4VOL5.
+export const JLPT_KANJI = ['N5', 'N4'];
+const VOLUME_KATA = {
+  ...KANJI_VOLUME,
+  ...Object.fromEntries(Object.entries(KANJI_VOLUME_N4).map(([vol, kata]) => [`N4${vol}`, kata])),
+};
+// "Semua Volume" of each level.
+const SEMUA_LEVEL = { SEMUA: 'N5', N4SEMUA: 'N4' };
+
+/** JLPT level of a kanji material or kanji volume code. */
+export const jlptKanji = (kode) => (String(kode).startsWith('N4') ? 'N4' : 'N5');
+const volumeKataLevel = (jlpt) => Object.keys(VOLUME_KATA).filter((v) => jlptKanji(v) === jlpt);
+/** The number of a volume code: 3 for VOL3 and N4VOL3. */
+export const nomorVolume = (kode) => String(kode).replace(/^(N4)?VOL/, '');
+
+// Other right readings of a word, never offered as a wrong option (明日 あした/あす, 止める とめる/やめる).
+const bacaanLain = (kata) => [...new Set([...(BACAAN_LAIN[kata] || []), ...(BACAAN_LAIN_N4[kata] || [])])];
+
+/**
+ * The words of a kanji material: DASAR, one volume, or SEMUA / N4SEMUA (every volume of that level). Ids are
+ * `${volume}:${word}`; a word in two volumes of one level (服 in N5, 止める in N4) is asked once in Semua.
+ */
+export function kanjiItems(materi) {
   if (materi === 'DASAR') {
     return KANJI_DASAR.map(([kanji, on, kun, arti]) => ({ id: `DASAR:${kanji}`, kanji, on, kun, arti }));
   }
-  const vols = materi === 'SEMUA' ? Object.keys(KANJI_VOLUME) : [materi];
+  const vols = SEMUA_LEVEL[materi] ? volumeKataLevel(SEMUA_LEVEL[materi]) : [materi];
   const seen = new Set();
   const items = [];
   for (const vol of vols) {
-    for (const [kanji, bacaan, arti] of KANJI_VOLUME[vol] || []) {
-      // 服 is in VOL4 and VOL5: one question when both volumes are tested together.
+    for (const [kanji, bacaan, arti] of VOLUME_KATA[vol] || []) {
       if (seen.has(kanji)) continue;
       seen.add(kanji);
-      items.push({ id: `${vol}:${kanji}`, kanji, bacaan, arti, bacaanLain: BACAAN_LAIN[kanji] || [] });
+      items.push({ id: `${vol}:${kanji}`, kanji, bacaan, arti, bacaanLain: bacaanLain(kanji) });
     }
   }
   return items;
@@ -51,16 +73,25 @@ export function poolDokkai(materi, tambahan = [], jlpt = 'N5') {
  * each with its questions), `saranNamaUjian` = the exam code proposed for Rekap Nilai Ujian.
  */
 export function daftarMateriTes(tambahanDokkai = []) {
-  const kanji = [
-    { kode: 'DASAR', judul: 'Dasar (80 kanji)', jumlah: KANJI_DASAR.length, saranNamaUjian: 'KJ-DASAR' },
-    ...Object.entries(KANJI_VOLUME).map(([kode, items]) => ({
-      kode,
-      judul: `Volume ${kode.slice(3)}`,
-      jumlah: items.length,
-      saranNamaUjian: `KJ-V${kode.slice(3)}`,
-    })),
-    { kode: 'SEMUA', judul: 'Semua Volume', jumlah: kanjiItems('SEMUA').length, saranNamaUjian: 'KJ-ALL' },
-  ];
+  // judul carries the level (N5 · Volume 1); judulPendek is for lists already split by level.
+  const materiKanji = (kode, jlpt, judulPendek, saranNamaUjian) => ({
+    kode,
+    jlpt,
+    judul: `${jlpt} · ${judulPendek}`,
+    judulPendek,
+    jumlah: kanjiItems(kode).length,
+    saranNamaUjian,
+  });
+  const kanji = JLPT_KANJI.flatMap((jlpt) => {
+    const awalan = jlpt === 'N5' ? 'KJ-' : `KJ-${jlpt}-`;
+    return [
+      ...(jlpt === 'N5' ? [materiKanji('DASAR', jlpt, 'Dasar (80 kanji)', 'KJ-DASAR')] : []),
+      ...volumeKataLevel(jlpt).map((kode) =>
+        materiKanji(kode, jlpt, `Volume ${nomorVolume(kode)}`, `${awalan}V${nomorVolume(kode)}`)
+      ),
+      materiKanji(jlpt === 'N5' ? 'SEMUA' : `${jlpt}SEMUA`, jlpt, 'Semua Volume', `${awalan}ALL`),
+    ];
+  });
   const hitung = (kode, jlpt) => {
     const pool = poolDokkai(kode, tambahanDokkai, jlpt);
     return { jumlah: pool.length, jumlahSoal: pool.reduce((n, b) => n + b.soal.length, 0) };
@@ -84,12 +115,21 @@ export function cariMateri(jenis, materi, tambahanDokkai = []) {
   return daftarMateriTes(tambahanDokkai)[jenis]?.find((m) => m.kode === materi) || null;
 }
 
-// The kanji volumes a dokkai paper may use: null = all of them, false = not a valid selection.
-function volumeKanjiDipilih(raw) {
+/**
+ * The kanji volumes a dokkai code at this sentence-pattern level starts with: N5 → the N5 volumes, N4/N3 → N5 and
+ * N4. Exactly these is stored as null: bank passages as written, AI passages with the kanji of these volumes.
+ */
+export function volumeKanjiDefault(jlpt = 'N5') {
+  return jlpt === 'N5' ? VOLUME_KANJI.filter((v) => jlptKanji(v) === 'N5') : [...VOLUME_KANJI];
+}
+
+// The kanji volumes a dokkai paper may use: null = the level's default, false = not a valid selection.
+function volumeKanjiDipilih(raw, jlpt = 'N5') {
   if (!Array.isArray(raw)) return null;
   const volume = VOLUME_KANJI.filter((v) => raw.includes(v));
   if (!volume.length || volume.length !== new Set(raw).size) return false;
-  return volume.length === VOLUME_KANJI.length ? null : volume;
+  const standar = volumeKanjiDefault(jlpt);
+  return volume.length === standar.length && standar.every((v) => volume.includes(v)) ? null : volume;
 }
 
 const ID_BACAAN_BANK = new Set(DOKKAI_LEVEL.flatMap((l) => l.bacaan.map((b) => b.id)));
@@ -100,11 +140,11 @@ const ID_BACAAN_BANK = new Set(DOKKAI_LEVEL.flatMap((l) => l.bacaan.map((b) => b
  * (sumber), with kanji outside the chosen volumes in kana as peserta would get them.
  */
 export function bankSoalTes({ jenis, materi, jlpt = 'N5', kanjiVolume = null }, tambahanDokkai = []) {
-  const volume = jenis === 'dokkai' ? volumeKanjiDipilih(kanjiVolume) : null;
-  if (!cariMateri(jenis, materi) || !JLPT_DOKKAI.includes(jlpt) || (jenis === 'kanji' && jlpt !== 'N5') || volume === false) {
-    throw new Error('INVALID_TES_ONLINE');
-  }
-  if (jenis === 'kanji') return { jenis, materi, jlpt, kanjiVolume: null, items: kanjiItems(materi) };
+  const info = cariMateri(jenis, materi);
+  // A kanji material has its own level.
+  if (info && jenis === 'kanji') return { jenis, materi, jlpt: info.jlpt, kanjiVolume: null, items: kanjiItems(materi) };
+  const volume = jenis === 'dokkai' ? volumeKanjiDipilih(kanjiVolume, jlpt) : null;
+  if (!info || !JLPT_DOKKAI.includes(jlpt) || volume === false) throw new Error('INVALID_TES_ONLINE');
   const kanjiBoleh = volume ? kanjiDariVolume(volume) : null;
   const items = poolDokkai(materi, tambahanDokkai, jlpt).map((b) => ({
     ...(kanjiBoleh ? sederhanakanBacaan(b, kanjiBoleh) : b),
@@ -351,25 +391,25 @@ export function normalisasiKodeTes(input) {
 /**
  * Validates what a sensei fills in to open a test code. jumlah = words (kanji) or passages (dokkai) per peserta;
  * null = all. sumber 'ai' = dokkai of one level whose passages an AI writes for this code (reviewed as a draft).
- * jlpt = the dokkai sentence-pattern level (N5, N4, N3); kanji tests are always N5.
+ * jlpt = the dokkai sentence-pattern level (N5, N4, N3); a kanji test takes the level of its material (N5, N4).
  */
 export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   const kelasId = Number(input?.kelasId);
   const jenis = String(input?.jenis || '');
   const materi = String(input?.materi || '');
   const sumber = input?.sumber === 'ai' ? 'ai' : 'bank';
-  const jlpt = input?.jlpt ?? 'N5';
   const tanggalUjian = String(input?.tanggalUjian || '').trim();
   const namaUjian = String(input?.namaUjian || '').trim().toUpperCase();
   const info = cariMateri(jenis, materi, tambahanDokkai);
 
   if (!Number.isInteger(kelasId) || kelasId <= 0 || !info) return { ok: false, code: 'INVALID_TES_ONLINE' };
+  const jlpt = jenis === 'kanji' ? info.jlpt : input?.jlpt ?? 'N5';
   if (sumber === 'ai' && (jenis !== 'dokkai' || materi === 'SEMUA')) return { ok: false, code: 'INVALID_TES_ONLINE' };
-  if (!JLPT_DOKKAI.includes(jlpt) || (jenis === 'kanji' && jlpt !== 'N5')) return { ok: false, code: 'INVALID_TES_ONLINE' };
+  if (!JLPT_DOKKAI.includes(jlpt)) return { ok: false, code: 'INVALID_TES_ONLINE' };
   // A bank code draws from what exists at that pattern level: N4/N3 only once AI passages have been approved.
   const ukuranPool = jenis === 'dokkai' ? info.perJlpt[jlpt].jumlah : info.jumlah;
   // Kanji volumes the dokkai passages may use; all volumes (or a kanji test) = null.
-  const kanjiVolume = jenis === 'dokkai' ? volumeKanjiDipilih(input?.kanjiVolume) : null;
+  const kanjiVolume = jenis === 'dokkai' ? volumeKanjiDipilih(input?.kanjiVolume, jlpt) : null;
   if (kanjiVolume === false) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (sumber === 'bank' && ukuranPool === 0) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(tanggalUjian) || !namaUjian || namaUjian.length > 40) {
@@ -414,12 +454,12 @@ const KANA_SAJA = /^[\u3040-\u30FF]+$/;
 const RANGKAIAN_BERFURIGANA = /([\u3400-\u9FFF\u3005\u3006\u30F6]+)\{([^{}]*)\}/g;
 
 // Kanji groups a dokkai code can allow in its passages: the same groups as the kanji test (80 basic kanji and the
-// kanji of each volume's words). The JLPT level of a dokkai code is about grammar only.
-export const VOLUME_KANJI = ['DASAR', ...Object.keys(KANJI_VOLUME)];
+// kanji of each N5 and N4 volume's words). The JLPT level of a dokkai code is about grammar only.
+export const VOLUME_KANJI = ['DASAR', ...Object.keys(VOLUME_KATA)];
 const KANJI_PER_VOLUME = {
   DASAR: new Set(KANJI_DASAR.map(([k]) => k)),
   ...Object.fromEntries(
-    Object.entries(KANJI_VOLUME).map(([vol, kata]) => [
+    Object.entries(VOLUME_KATA).map(([vol, kata]) => [
       vol,
       new Set(kata.flatMap(([w]) => w.match(/[\u3400-\u9FFF\u3005]/g) || [])),
     ])

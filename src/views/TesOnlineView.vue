@@ -15,7 +15,13 @@
       <v-tab value="bank" class="text-none text-sm font-medium" prepend-icon="mdi-book-open-page-variant-outline">{{ $t('tesOnline.tabBank') }}</v-tab>
     </v-tabs>
 
-    <BankSoalTes v-if="tab === 'bank'" :katalog="katalog" :jlpt-options="jlptOptions" :volume-kanji="volumeKanji" />
+    <BankSoalTes
+      v-if="tab === 'bank'"
+      :katalog="katalog"
+      :jlpt-options="jlptOptions"
+      :volume-kanji="volumeKanji"
+      :volume-kanji-default="volumeKanjiDefault"
+    />
 
     <template v-else>
       <div class="joy-surface p-4 grid grid-cols-1 sm:grid-cols-12 gap-3">
@@ -345,6 +351,7 @@ import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import TinjauBacaanAiDialog from '../components/TinjauBacaanAiDialog.vue';
 import BankSoalTes from '../components/BankSoalTes.vue';
+import { labelVolumeKanji } from '../utils/volumeKanji.js';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
@@ -356,6 +363,8 @@ const kelasOptions = ref([]);
 const katalog = ref({ kanji: [], dokkai: [] });
 const jlptOptions = ref(['N5', 'N4', 'N3']);
 const volumeKanji = ref([]);
+// Kanji volumes a dokkai code starts with, per sentence-pattern level (N5: N5 volumes; N4/N3: N5 and N4).
+const volumeKanjiDefault = ref({});
 const filterKelasId = ref('all');
 const filterStatus = ref('all');
 const busyId = ref(null);
@@ -418,9 +427,8 @@ const jlptChoices = computed(() =>
     };
   })
 );
-const volumeChoices = computed(() =>
-  volumeKanji.value.map((v) => ({ value: v, label: v === 'DASAR' ? t('tesOnline.volDasar') : `Vol ${v.slice(3)}` }))
-);
+const volumeChoices = computed(() => volumeKanji.value.map((v) => ({ value: v, label: labelVolumeKanji(v, t) })));
+const volumeAwal = (jlpt) => [...(volumeKanjiDefault.value[jlpt] || volumeKanji.value)];
 const jumlahHint = computed(() => {
   if (form.value.jenis === 'dokkai' && form.value.sumber === 'ai') return t('tesOnline.jumlahHintAi');
   return t('tesOnline.jumlahHint', { n: form.value.jenis === 'dokkai' ? poolBank.value : materiAktif.value?.jumlah ?? '-' });
@@ -457,6 +465,13 @@ watch(
     if (!namaUjianDiubah.value) form.value.namaUjian = saranNamaUjian();
   }
 );
+// Another sentence-pattern level starts from its own kanji volumes.
+watch(
+  () => form.value.jlpt,
+  (jlpt, lama) => {
+    if (createOpen.value && jlpt && lama && jlpt !== lama) form.value.kanjiVolume = volumeAwal(jlpt);
+  }
+);
 watch(
   () => form.value.sumber,
   (sumber) => {
@@ -472,7 +487,7 @@ function hariIni() {
 
 function volumeLabel(volume) {
   if (!volume) return t('tesOnline.semuaVolume');
-  return volume.map((v) => (v === 'DASAR' ? t('tesOnline.volDasar') : `Vol ${v.slice(3)}`)).join(', ');
+  return volume.map((v) => labelVolumeKanji(v, t)).join(', ');
 }
 
 function jumlahLabel(s) {
@@ -531,6 +546,7 @@ async function loadData() {
     katalog.value = res.materi || { kanji: [], dokkai: [] };
     jlptOptions.value = res.jlptOptions || ['N5', 'N4', 'N3'];
     volumeKanji.value = res.volumeKanji || [];
+    volumeKanjiDefault.value = res.volumeKanjiDefault || {};
   } catch (err) {
     notifyError(err);
   } finally {
@@ -547,7 +563,7 @@ function openCreate() {
     materi: materi?.kode || null,
     sumber: 'bank',
     jlpt: 'N5',
-    kanjiVolume: [...volumeKanji.value],
+    kanjiVolume: volumeAwal('N5'),
     jumlahSoal: 20,
     jumlahAi: 8,
     tanggalUjian: hariIni(),

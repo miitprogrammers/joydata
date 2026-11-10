@@ -19,8 +19,17 @@
         :mulai-at="resmi?.mulaiAt || null"
         :mengirim="mengirim"
         @selesai="selesai"
+        @progres="progresAktivitas = $event"
       />
-      <DokkaiRunner v-else :key="kunciTes" :soal="soal" :mode="mode" :mengirim="mengirim" @selesai="selesai" />
+      <DokkaiRunner
+        v-else
+        :key="kunciTes"
+        :soal="soal"
+        :mode="mode"
+        :mengirim="mengirim"
+        @selesai="selesai"
+        @progres="progresAktivitas = $event"
+      />
     </template>
 
     <HasilTes
@@ -80,6 +89,12 @@
           <v-btn value="kanji" class="text-none">Kanji</v-btn>
           <v-btn value="dokkai" class="text-none">Dokkai</v-btn>
         </v-btn-toggle>
+        <div v-if="jenisLatihan === 'kanji'" class="mt-3 flex flex-wrap items-center gap-2">
+          <span class="text-xs text-slate-500">{{ $t('portal.tes.levelKanji') }}</span>
+          <v-btn-toggle v-model="levelKanji" mandatory color="primary" variant="outlined" density="compact">
+            <v-btn v-for="j in jlptKanjiOptions" :key="j" :value="j" class="text-none">{{ j }}</v-btn>
+          </v-btn-toggle>
+        </div>
         <div v-if="jenisLatihan === 'dokkai'" class="mt-3 flex flex-wrap items-center gap-2">
           <span class="text-xs text-slate-500">{{ $t('portal.tes.polaKalimat') }}</span>
           <v-btn-toggle v-model="jlptLatihan" mandatory color="primary" variant="outlined" density="compact">
@@ -96,7 +111,7 @@
             :disabled="jumlahMateri(m) === 0"
             @click="materiDipilih = m.kode"
           >
-            <span class="block text-sm font-semibold text-slate-900">{{ m.judul }}</span>
+            <span class="block text-sm font-semibold text-slate-900">{{ m.judulPendek || m.judul }}</span>
             <span class="block text-[11px] text-slate-500 mt-0.5">
               {{ $t(jenisLatihan === 'kanji' ? 'portal.tes.nKata' : 'portal.tes.nBacaan', { n: jumlahMateri(m) }) }}
             </span>
@@ -149,6 +164,7 @@ import { useAppStore } from '../../stores/appStore.js';
 import KanjiRunner from '../../components/portal/tes/KanjiRunner.vue';
 import DokkaiRunner from '../../components/portal/tes/DokkaiRunner.vue';
 import HasilTes from '../../components/portal/tes/HasilTes.vue';
+import { useDetakAktivitas } from '../../services/aktivitasLatihan.js';
 
 const { t } = useI18n();
 const router = useRouter();
@@ -171,6 +187,27 @@ const detik = ref(0);
 let mulaiTes = 0;
 const mengirim = ref(false);
 
+// Practice session on the server (live monitor, practice history): signals while a paper is open.
+let aktivitasId = null;
+const progresAktivitas = ref({ posisi: null, itemSelesai: 0 });
+const aktivitas = useDetakAktivitas(({ detikAktif, selesai, keepalive }) =>
+  aktivitasId
+    ? portalRequest(`/aktivitas/${aktivitasId}/detak`, {
+        method: 'POST',
+        // A test with a code stays open when left: the peserta can continue it later.
+        body: { detikAktif, ...progresAktivitas.value, selesai: selesai && mode.value !== 'resmi' },
+        diam: true,
+        keepalive,
+      })
+    : null
+);
+
+function mulaiAktivitas(id, awal = 0) {
+  aktivitasId = id || null;
+  progresAktivitas.value = { posisi: null, itemSelesai: 0 };
+  if (aktivitasId) aktivitas.mulai(awal);
+}
+
 const kodeInput = ref('');
 const sesiKode = ref(null);
 const memeriksaKode = ref(false);
@@ -183,8 +220,17 @@ const memuatLatihan = ref(false);
 // Dokkai sentence-pattern level: N5 is the fixed bank, N4/N3 exist once sensei have approved AI passages.
 const jlptOptions = ref(['N5']);
 const jlptLatihan = ref('N5');
+// Kanji level: N5 (Dasar, Vol 1-5) or N4 (Vol 1-5).
+const jlptKanjiOptions = ref(['N5']);
+const levelKanji = ref('N5');
 
-const materiLatihan = computed(() => katalog.value[jenisLatihan.value] || []);
+const materiLatihan = computed(() => {
+  const semua = katalog.value[jenisLatihan.value] || [];
+  return jenisLatihan.value === 'kanji' ? semua.filter((m) => (m.jlpt || 'N5') === levelKanji.value) : semua;
+});
+watch(levelKanji, () => {
+  materiDipilih.value = materiLatihan.value[0]?.kode ?? null;
+});
 
 function jumlahMateri(m) {
   return jenisLatihan.value === 'dokkai' ? m.perJlpt?.[jlptLatihan.value]?.jumlah ?? m.jumlah : m.jumlah;
@@ -205,6 +251,7 @@ const pilihanJumlah = computed(() =>
 );
 watch(jenisLatihan, (j) => {
   jlptLatihan.value = 'N5';
+  levelKanji.value = 'N5';
   materiDipilih.value = j === 'kanji' ? 'DASAR' : 'L1';
   jumlahLatihan.value = j === 'kanji' ? 20 : 3;
 });
@@ -225,6 +272,7 @@ async function muat() {
     const res = await portalRequest('/tes');
     katalog.value = res.materi;
     jlptOptions.value = res.jlptOptions || ['N5'];
+    jlptKanjiOptions.value = res.jlptKanji || ['N5'];
     riwayat.value = res.riwayat;
   } catch (err) {
     gagal(err);
@@ -250,7 +298,9 @@ async function mulaiLatihan() {
     if (jenisLatihan.value === 'dokkai') params.set('jlpt', jlptLatihan.value);
     const res = await portalRequest(`/tes/latihan?${params}`);
     resmi.value = null;
+    await aktivitas.berhenti();
     mulaiRunner({ jenisTes: res.jenis, modeTes: 'latihan', daftarSoal: res.soal, judul: `${res.jenis === 'kanji' ? 'Kanji' : 'Dokkai'} · ${res.materiJudul}` });
+    mulaiAktivitas(res.aktivitasId);
   } catch (err) {
     gagal(err);
   } finally {
@@ -282,6 +332,7 @@ async function mulaiResmi() {
       judul: `${res.sesi.jenis === 'kanji' ? 'Kanji' : 'Dokkai'} · ${res.sesi.materiJudul}`,
     });
     mulaiTes = new Date(res.mulaiAt).getTime();
+    mulaiAktivitas(res.aktivitasId, res.detikAwal);
   } catch (err) {
     gagal(err);
   } finally {
@@ -292,10 +343,16 @@ async function mulaiResmi() {
 async function selesai(jawaban) {
   mengirim.value = true;
   try {
+    // The last active time first; handing in closes the session on the server.
+    if (mode.value === 'resmi') await aktivitas.kirimSekarang();
     hasil.value =
       mode.value === 'resmi'
         ? await portalRequest(`/tes/${resmi.value.percobaanId}/selesai`, { method: 'POST', body: { jawaban } })
-        : await portalRequest('/tes/latihan/nilai', { method: 'POST', body: { jenis: jenis.value, soal: soal.value, jawaban } });
+        : await portalRequest('/tes/latihan/nilai', {
+            method: 'POST',
+            body: { jenis: jenis.value, soal: soal.value, jawaban, aktivitasId, detikAktif: aktivitas.detikAktif() },
+          });
+    await aktivitas.berhenti({ kirimAkhir: false });
     detik.value = Math.max(0, Math.round((Date.now() - mulaiTes) / 1000));
     tahap.value = 'hasil';
     window.scrollTo({ top: 0 });
@@ -316,6 +373,7 @@ async function selesai(jawaban) {
 function keluarTes() {
   const pesan = mode.value === 'resmi' ? t('portal.tes.konfirmasiKeluarResmi') : t('portal.tes.konfirmasiKeluar');
   if (!window.confirm(pesan)) return;
+  aktivitas.berhenti();
   tahap.value = 'pilih';
 }
 

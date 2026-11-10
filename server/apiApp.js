@@ -115,6 +115,15 @@ import {
   mulaiTes,
   selesaiTes,
 } from './db/tesOnlineRepo.js';
+import {
+  detakAktivitas,
+  getFlashcardPortal,
+  mulaiFlashcard,
+  simpanFlashcard,
+  getMonitorLive,
+  getStatistikLatihan,
+  getRiwayatLatihanPeserta,
+} from './db/latihanRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
 import { JAPAN_PREFECTURES } from './db/prefectures.js';
@@ -183,6 +192,7 @@ function handleRouteError(res, err) {
     'TES_AI_BELUM_ADA_BACAAN',
     'TES_SESI_BUKAN_DRAF',
     'TES_KODE_UJIAN_DIPAKAI',
+    'INVALID_FLASHCARD',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
@@ -334,16 +344,59 @@ export function createApiRouter() {
   router.get('/portal/tes/latihan', requirePeserta(), async (req, res) => {
     try {
       return res.json(
-        await getLatihanTes({ jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah, jlpt: req.query.jlpt })
+        await getLatihanTes(
+          { jenis: req.query.jenis, materi: req.query.materi, jumlah: req.query.jumlah, jlpt: req.query.jlpt },
+          req.peserta.id
+        )
       );
     } catch (err) {
       return handleRouteError(res, err);
     }
   });
 
-  router.post('/portal/tes/latihan/nilai', requirePeserta(), (req, res) => {
+  router.post('/portal/tes/latihan/nilai', requirePeserta(), async (req, res) => {
     try {
-      return res.json(nilaiLatihanTes(req.body?.jenis, req.body?.soal, req.body?.jawaban));
+      return res.json(
+        await nilaiLatihanTes(req.body?.jenis, req.body?.soal, req.body?.jawaban, {
+          pesertaId: req.peserta.id,
+          aktivitasId: req.body?.aktivitasId,
+          detikAktif: req.body?.detikAktif,
+        })
+      );
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Signal from a running practice or test (about every 15 s) for the live monitor and the practice history.
+  router.post('/portal/aktivitas/:id/detak', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await detakAktivitas(req.peserta.id, req.params.id, req.body));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Kanji flashcards: order stored per peserta and volume, slowest cards first.
+  router.get('/portal/flashcard', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await getFlashcardPortal(req.peserta.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/flashcard/:volume/mulai', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await mulaiFlashcard(req.peserta.id, req.params.volume));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/flashcard/:volume/simpan', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await simpanFlashcard(req.peserta.id, req.params.volume, req.body));
     } catch (err) {
       return handleRouteError(res, err);
     }
@@ -368,6 +421,31 @@ export function createApiRouter() {
   router.post('/portal/tes/:id/selesai', requirePeserta(), async (req, res) => {
     try {
       return res.json(await selesaiTes(req.peserta.id, req.params.id, req.body?.jawaban));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Monitor Latihan: who is practising now, and practice per peserta (most diligent first).
+  router.get('/monitor-latihan/live', requireAuth, requirePageAccess('monitor-latihan'), async (_req, res) => {
+    try {
+      return res.json(await getMonitorLive());
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/monitor-latihan/statistik', requireAuth, requirePageAccess('monitor-latihan'), async (req, res) => {
+    try {
+      return res.json(await getStatistikLatihan(req.query));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/monitor-latihan/peserta/:id', requireAuth, requirePageAccess('monitor-latihan'), async (req, res) => {
+    try {
+      return res.json(await getRiwayatLatihanPeserta(req.params.id, req.query));
     } catch (err) {
       return handleRouteError(res, err);
     }

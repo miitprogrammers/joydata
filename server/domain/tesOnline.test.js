@@ -21,6 +21,8 @@ import {
   sederhanakanKanji,
   kanjiDariVolume,
   VOLUME_KANJI,
+  volumeKanjiDefault,
+  kanjiItems,
 } from './tesOnline.js';
 import { KANJI_DASAR } from './bankSoal/kanjiN5.js';
 import { validateAndNormalizeNilaiUjian } from './rules.js';
@@ -49,6 +51,49 @@ test('Tes online catalogue: 80 kanji dasar, five volumes, and the dokkai levels'
   assert.equal(semua.jumlah, 225);
   assert.equal(semua.jumlahSoal, 450);
   assert.deepEqual(semua.perJlpt, { N5: { jumlah: 225, jumlahSoal: 450 }, N4: { jumlah: 0, jumlahSoal: 0 }, N3: { jumlah: 0, jumlahSoal: 0 } });
+});
+
+test('Kanji N4: five volumes from the Excel, own exam codes, and the test takes the level of its material', () => {
+  const { kanji } = daftarMateriTes();
+  const n4 = kanji.filter((m) => m.jlpt === 'N4');
+  assert.deepEqual(
+    n4.map((m) => [m.kode, m.jumlah, m.saranNamaUjian]),
+    [
+      ['N4VOL1', 84, 'KJ-N4-V1'],
+      ['N4VOL2', 84, 'KJ-N4-V2'],
+      ['N4VOL3', 84, 'KJ-N4-V3'],
+      ['N4VOL4', 84, 'KJ-N4-V4'],
+      ['N4VOL5', 56, 'KJ-N4-V5'],
+      ['N4SEMUA', 391, 'KJ-N4-ALL'], // 止める is in Vol 4 and Vol 5 but asked once
+    ]
+  );
+  assert.equal(kanji.find((m) => m.kode === 'VOL1').judul, 'N5 · Volume 1');
+  assert.equal(n4[0].judul, 'N4 · Volume 1');
+  assert.equal(n4[0].judulPendek, 'Volume 1');
+
+  // Readings without する, the second reading of 明日 kept as a right answer.
+  const vol1 = Object.fromEntries(kanjiItems('N4VOL1').map((i) => [i.kanji, i]));
+  assert.equal(vol1['遠慮'].bacaan, 'えんりょ');
+  assert.equal(vol1['明日'].bacaan, 'あす');
+  assert.ok(vol1['明日'].bacaanLain.includes('あした'));
+  for (let seed = 1; seed <= 30; seed++) {
+    for (const s of buatSoalTes({ jenis: 'kanji', materi: 'N4VOL1' }, rngDari(seed))) {
+      if (s.kanji === '明日') assert.ok(!s.bacaan.opsi.includes('あした'));
+      assert.equal(new Set(s.bacaan.opsi).size, 4);
+      assert.equal(new Set(s.arti.opsi).size, 4);
+    }
+  }
+  // 彼 and 彼女 share "pacar" (the Excel's commas became " / "): never offered together.
+  const vol2 = Object.fromEntries(kanjiItems('N4VOL2').map((i) => [i.kanji, i]));
+  assert.equal(vol2['彼'].arti, 'Dia (laki-laki) / pacar');
+  assert.equal(artiBeririsan(vol2['彼'].arti, vol2['彼女'].arti), true);
+
+  const kode = validateSesiTes({ kelasId: 3, jenis: 'kanji', materi: 'N4VOL2', tanggalUjian: '2026-11-10', namaUjian: 'KJ-N4-V2' });
+  assert.equal(kode.ok, true);
+  assert.equal(kode.normalized.jlpt, 'N4');
+  // An N5 material stays N5 whatever the form sends.
+  assert.equal(validateSesiTes({ kelasId: 3, jenis: 'kanji', materi: 'VOL1', jlpt: 'N4', tanggalUjian: '2026-11-10', namaUjian: 'KJ-V1' }).normalized.jlpt, 'N5');
+  assert.equal(bankSoalTes({ jenis: 'kanji', materi: 'N4SEMUA' }).items.length, 391);
 });
 
 test('Kanji paper: random subset per attempt, four distinct options, and the key points at the right answer', () => {
@@ -214,7 +259,10 @@ test('AI passages: every kanji needs furigana, two or three questions with three
 });
 
 test('Kanji outside the chosen volumes become kana, in the text, the questions and the explanations', () => {
-  assert.equal(sederhanakanKanji('寮{りょう}の規則{きそく}は同{おな}じです。'), 'りょうのきそくは同{おな}じです。');
+  const kanjiN5 = kanjiDariVolume(volumeKanjiDefault('N5'));
+  assert.equal(sederhanakanKanji('寮{りょう}の規則{きそく}は同{おな}じです。', new Map(), kanjiN5), 'りょうのきそくは同{おな}じです。');
+  // 規則 is an N4 word: with every volume (the default list) it stays.
+  assert.equal(sederhanakanKanji('寮{りょう}の規則{きそく}は同{おな}じです。'), 'りょうの規則{きそく}は同{おな}じです。');
   const hanyaDasar = kanjiDariVolume(['DASAR']);
   assert.equal(hanyaDasar.size, 80);
   assert.equal(kanjiDariVolume().size, kanjiDariVolume(VOLUME_KANJI).size);
@@ -270,12 +318,14 @@ test('Bank Soal: every question a code draws from, with keys, bank and AI passag
   for (const b of sederhana.items) {
     for (const [, base] of b.teks.matchAll(/([㐀-鿿々]+)\{/g)) for (const c of base) assert.ok(hanyaDasar.has(c), c);
   }
-  const semuaVol = bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: VOLUME_KANJI });
+  // The level's default volumes = no limit: the bank passage as written.
+  const semuaVol = bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: volumeKanjiDefault('N5') });
   assert.equal(semuaVol.kanjiVolume, null);
   assert.equal(semuaVol.items[0].teks, DOKKAI_LEVEL[1].bacaan[0].teks);
+  assert.deepEqual(bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: VOLUME_KANJI }).kanjiVolume, VOLUME_KANJI);
 
   assert.throws(() => bankSoalTes({ jenis: 'kanji', materi: 'L2' }), /INVALID_TES_ONLINE/);
-  assert.throws(() => bankSoalTes({ jenis: 'kanji', materi: 'VOL1', jlpt: 'N4' }), /INVALID_TES_ONLINE/);
+  assert.equal(bankSoalTes({ jenis: 'kanji', materi: 'VOL1', jlpt: 'N4' }).jlpt, 'N5');
   assert.throws(() => bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: [] }), /INVALID_TES_ONLINE/);
   assert.throws(() => bankSoalTes({ jenis: 'dokkai', materi: 'L2', kanjiVolume: ['VOL9'] }), /INVALID_TES_ONLINE/);
 });
@@ -288,7 +338,12 @@ test('Opening a dokkai code: AI only for one level, N4/N3 from the bank only onc
     { sumber: ai.normalized.sumber, jlpt: ai.normalized.jlpt, jumlahSoal: ai.normalized.jumlahSoal, kanjiVolume: ai.normalized.kanjiVolume },
     { sumber: 'ai', jlpt: 'N4', jumlahSoal: 5, kanjiVolume: ['DASAR', 'VOL1'] }
   );
-  assert.equal(validateSesiTes({ ...dasar, kanjiVolume: VOLUME_KANJI }).normalized.kanjiVolume, null);
+  assert.equal(validateSesiTes({ ...dasar, kanjiVolume: volumeKanjiDefault('N5') }).normalized.kanjiVolume, null);
+  // N4/N3 grammar starts with the N5 and N4 kanji; an N4 code with only the N5 volumes keeps that choice.
+  assert.deepEqual(volumeKanjiDefault('N4'), VOLUME_KANJI);
+  const n4 = { ...dasar, sumber: 'ai', jlpt: 'N4' };
+  assert.equal(validateSesiTes({ ...n4, kanjiVolume: VOLUME_KANJI }).normalized.kanjiVolume, null);
+  assert.deepEqual(validateSesiTes({ ...n4, kanjiVolume: volumeKanjiDefault('N5') }).normalized.kanjiVolume, volumeKanjiDefault('N5'));
   assert.equal(validateSesiTes({ ...dasar, kanjiVolume: [] }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ ...dasar, sumber: 'ai', materi: 'SEMUA' }).code, 'INVALID_TES_ONLINE');
   assert.equal(validateSesiTes({ ...dasar, jenis: 'kanji', materi: 'VOL1', sumber: 'ai' }).code, 'INVALID_TES_ONLINE');

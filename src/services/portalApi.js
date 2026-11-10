@@ -12,9 +12,12 @@ export function setPortalToken(token) {
   else localStorage.removeItem(PORTAL_TOKEN_KEY);
 }
 
-/** Calls /api/portal{path}. A 401 clears the stored session; the error carries the API code. */
-export async function portalRequest(path, options = {}) {
-  pendingRequests.value++;
+/**
+ * Calls /api/portal{path}. A 401 clears the stored session; the error carries the API code.
+ * options.diam = a background call (practice signals): no loading bar.
+ */
+export async function portalRequest(path, { diam = false, ...options } = {}) {
+  if (!diam) pendingRequests.value++;
   try {
     const token = getPortalToken();
     let res;
@@ -47,6 +50,6 @@ export async function portalRequest(path, options = {}) {
     }
     return payload;
   } finally {
-    pendingRequests.value--;
+    if (!diam) pendingRequests.value--;
   }
 }

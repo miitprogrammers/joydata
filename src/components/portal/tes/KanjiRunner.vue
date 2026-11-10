@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
@@ -84,7 +84,8 @@ const props = defineProps({
   mulaiAt: { type: String, default: null },
   mengirim: { type: Boolean, default: false },
 });
-const emit = defineEmits(['selesai']);
+// progres { posisi, itemSelesai }: for the live practice monitor
+const emit = defineEmits(['selesai', 'progres']);
 const { t } = useI18n();
 
 const index = ref(0);
@@ -96,6 +97,15 @@ const item = computed(() => props.soal[Math.min(index.value, props.soal.length -
 const jawabanItem = computed(() => jawaban.value[item.value.id] || { bacaan: null, arti: null });
 const opsiAktif = computed(() => (step.value === 'bacaan' ? item.value.bacaan.opsi : item.value.arti.opsi));
 const progres = computed(() => (Object.keys(jawaban.value).filter((id) => jawaban.value[id].arti !== null).length / props.soal.length) * 100);
+
+watch(
+  [index, jawaban],
+  () => {
+    const itemSelesai = Object.values(jawaban.value).filter((j) => j.arti !== null && j.arti !== undefined).length;
+    emit('progres', { posisi: Math.min(index.value + 1, props.soal.length), itemSelesai });
+  },
+  { immediate: true }
+);
 
 function simpan(bagian, i) {
   jawaban.value = { ...jawaban.value, [item.value.id]: { ...jawabanItem.value, [bagian]: i } };

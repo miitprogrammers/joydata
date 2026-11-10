@@ -43,12 +43,13 @@ async function tryRefreshToken() {
   }
 }
 
-export async function apiRequest(path, options = {}) {
-  pendingRequests.value++;
+// options.diam = a background refresh (the live practice monitor): no loading bar.
+export async function apiRequest(path, { diam = false, ...options } = {}) {
+  if (!diam) pendingRequests.value++;
   try {
     return await sendRequest(path, options, true);
   } finally {
-    pendingRequests.value--;
+    if (!diam) pendingRequests.value--;
   }
 }
 

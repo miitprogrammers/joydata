@@ -239,6 +239,46 @@ CREATE TABLE IF NOT EXISTS dokkai_bacaan_ai (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Flashcard kanji peserta, satu baris per peserta per volume (DASAR, VOL1-VOL5 = N5, N4VOL1-N4VOL5 = N4).
+-- acak = urutan acak yang dibuat saat volume pertama kali dibuka (id kartu); waktu = lama tampil tiap kartu (ms) di
+-- putaran terakhirnya; urutan tampil = belum pernah tampil dulu, lalu dari waktu terlama.
+CREATE TABLE IF NOT EXISTS flashcard_progres (
+  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
+  volume VARCHAR(12) NOT NULL,
+  acak JSONB NOT NULL,
+  waktu JSONB NOT NULL DEFAULT '{}'::jsonb,
+  putaran INTEGER NOT NULL DEFAULT 0,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (peserta_id, volume)
+);
+
+-- Sesi latihan peserta (flashcard, latihan kanji/dokkai, tes dengan kode) untuk Monitor Latihan: aplikasi peserta
+-- mengirim sinyal tiap ±15 detik (terakhir_at, detik_aktif = waktu layar aktif, item_selesai = kartu digeser /
+-- soal dijawab). Sesi tanpa sinyal lebih dari 1 menit dianggap tidak berjalan lagi.
+CREATE TABLE IF NOT EXISTS latihan_sesi (
+  id SERIAL PRIMARY KEY,
+  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
+  kelas_id INTEGER NULL REFERENCES kelas(id) ON DELETE SET NULL,
+  jenis VARCHAR(10) NOT NULL CHECK (jenis IN ('flashcard', 'kanji', 'dokkai')),
+  mode VARCHAR(10) NOT NULL DEFAULT 'latihan' CHECK (mode IN ('latihan', 'resmi')),
+  materi VARCHAR(20) NOT NULL,
+  materi_judul VARCHAR(120) NOT NULL,
+  jlpt VARCHAR(2) NULL,
+  percobaan_id INTEGER NULL REFERENCES tes_online_percobaan(id) ON DELETE SET NULL,
+  jumlah_item INTEGER NOT NULL DEFAULT 0,
+  item_selesai INTEGER NOT NULL DEFAULT 0,
+  posisi INTEGER NULL,
+  detik_aktif INTEGER NOT NULL DEFAULT 0,
+  skor NUMERIC(5,2) NULL,
+  mulai_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  terakhir_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  selesai_at TIMESTAMPTZ NULL
+);
+CREATE INDEX IF NOT EXISTS latihan_sesi_terakhir_idx ON latihan_sesi (terakhir_at DESC) WHERE selesai_at IS NULL;
+CREATE INDEX IF NOT EXISTS latihan_sesi_mulai_idx ON latihan_sesi (mulai_at DESC);
+CREATE INDEX IF NOT EXISTS latihan_sesi_peserta_idx ON latihan_sesi (peserta_id, mulai_at DESC);
+CREATE INDEX IF NOT EXISTS latihan_sesi_percobaan_idx ON latihan_sesi (percobaan_id) WHERE percobaan_id IS NOT NULL;
+
 CREATE TABLE IF NOT EXISTS nilai_sikap (
   id SERIAL PRIMARY KEY,
   peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
