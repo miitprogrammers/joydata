@@ -5,35 +5,38 @@
     <ReportHeader :title="$t('smartReport.kopJudulPeserta')" :rentang="report.rentang" :print-date="printDate" />
 
     <!-- Identitas -->
-    <div
-      class="border rounded-lg p-3.5 grid grid-cols-2 gap-3 text-xs"
-      :class="[portal ? 'sm:grid-cols-4 print:grid-cols-4' : 'sm:grid-cols-5 print:grid-cols-5', warnaIdentitas(report.student.statusTag, portal)]"
-    >
-      <div>
-        <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
-        <div class="font-bold text-slate-900 text-sm mt-0.5">{{ report.student.nama }}</div>
-        <div class="text-[10px] text-slate-400 font-mono">ID #{{ report.student.mancationAkunId || report.student.id }}</div>
-      </div>
-      <div>
-        <div class="text-[11px] text-slate-500">{{ $t('common.kelas') }}</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ report.kelas?.namaKelas || '-' }}</div>
-        <div class="text-[10px] text-slate-500">
-          {{ locale === 'ja' ? report.kelas?.programNamaJa : report.kelas?.programNama }}
+    <div class="border rounded-lg p-3.5 flex items-start gap-4 text-xs" :class="warnaIdentitas(report.student.statusTag, portal)">
+      <PesertaFoto :src="report.student.fotoUrl" :nama="report.student.nama" :size="64" portrait eager perbesar />
+      <div
+        class="flex-1 min-w-0 grid grid-cols-2 gap-3"
+        :class="portal ? 'sm:grid-cols-4 print:grid-cols-4' : 'sm:grid-cols-5 print:grid-cols-5'"
+      >
+        <div>
+          <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
+          <div class="font-bold text-slate-900 text-sm mt-0.5">{{ report.student.nama }}</div>
+          <div class="text-[10px] text-slate-400 font-mono">ID #{{ report.student.mancationAkunId || report.student.id }}</div>
         </div>
-      </div>
-      <div>
-        <div class="text-[11px] text-slate-500">{{ $t('smartReport.sensei') }}</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ report.kelas?.senseiNama || '-' }}</div>
-        <div class="text-[10px] text-slate-500">
-          {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || '-' }}
+        <div>
+          <div class="text-[11px] text-slate-500">{{ $t('common.kelas') }}</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ report.kelas?.namaKelas || '-' }}</div>
+          <div class="text-[10px] text-slate-500">
+            {{ locale === 'ja' ? report.kelas?.programNamaJa : report.kelas?.programNama }}
+          </div>
         </div>
+        <div>
+          <div class="text-[11px] text-slate-500">{{ $t('smartReport.sensei') }}</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ report.kelas?.senseiNama || '-' }}</div>
+          <div class="text-[10px] text-slate-500">
+            {{ $t('smartReport.tanggalMasuk') }}: {{ report.student.tanggalMasuk || '-' }}
+          </div>
+        </div>
+        <PeringkatCell :peringkat="report.peringkat" :note="$t('laporan.peringkatSeluruh')" />
+        <div v-if="!portal">
+          <div class="text-[11px] text-slate-500">{{ $t('smartReport.statusTag') }}</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ $t(`tag.${report.student.statusTag}`) }}</div>
+        </div>
+        <StatusLegend v-if="!portal" :status-tag="report.student.statusTag" />
       </div>
-      <PeringkatCell :peringkat="report.peringkat" :note="$t('laporan.peringkatSeluruh')" />
-      <div v-if="!portal">
-        <div class="text-[11px] text-slate-500">{{ $t('smartReport.statusTag') }}</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ $t(`tag.${report.student.statusTag}`) }}</div>
-      </div>
-      <StatusLegend v-if="!portal" :status-tag="report.student.statusTag" />
     </div>
 
     <!-- KPI -->
@@ -240,6 +243,7 @@ import StatGrade from './StatGrade.vue';
 import StatSikap from './StatSikap.vue';
 import StatusLegend from './StatusLegend.vue';
 import PeringkatCell from './PeringkatCell.vue';
+import PesertaFoto from '../PesertaFoto.vue';
 import { bertanda, hitungGrade, warnaIdentitas } from './reportStats.js';
 
 const props = defineProps<{

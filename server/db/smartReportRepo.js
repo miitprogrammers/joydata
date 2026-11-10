@@ -1,5 +1,5 @@
 import { ensureInitialized, getMode, getPool, readLocalState, saveLocalState, appendAudit } from './engine.js';
-import { DEFAULT_SETTINGS, loadReportState, getStudentNameMap, loadPenempatan, getStudentRapor } from './fase3Repo.js';
+import { DEFAULT_SETTINGS, loadReportState, getStudentNameMap, getStudentFotoMap, loadPenempatan, getStudentRapor } from './fase3Repo.js';
 import {
   buildPesertaJourney,
   buildKelasSummary,
@@ -36,6 +36,7 @@ function createContext(state) {
     state,
     settings: { ...DEFAULT_SETTINGS, ...(state.settings || {}) },
     nameMap: getStudentNameMap(state),
+    fotoMap: getStudentFotoMap(state),
     sikapRows: (state.nilaiSikap || []).map((s) => {
       const kat = s.kategoriId ? kategoriMap.get(s.kategoriId) : null;
       return { ...s, kategoriNamaId: kat?.namaId, kategoriNamaJa: kat?.namaJa };
@@ -225,6 +226,7 @@ async function pesertaReport(ctx, student, journey, resumeRow, peringkat = null)
       id: student.id,
       nama: namaPeserta(ctx, student),
       mancationAkunId: student.mancationAkunId,
+      fotoUrl: ctx.fotoMap.get(Number(student.mancationAkunId)) || null,
       statusTag: student.statusTag || 'standar',
       // Follows the class start date unless set by hand (pesertaRepo.tanggalMasukToStore).
       tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,

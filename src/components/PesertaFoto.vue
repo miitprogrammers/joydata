@@ -19,7 +19,7 @@
       v-if="src && !gagal"
       :src="src"
       :alt="bisaPerbesar ? '' : $t('peserta.fotoAlt', { nama })"
-      loading="lazy"
+      :loading="eager ? 'eager' : 'lazy'"
       decoding="async"
       referrerpolicy="no-referrer"
       class="w-full h-full object-cover"
@@ -64,6 +64,8 @@ const props = defineProps({
   portrait: { type: Boolean, default: false },
   // Clicking shows the photo enlarged.
   perbesar: { type: Boolean, default: false },
+  // Load right away instead of when scrolled near: printed reports need the photo before window.print().
+  eager: { type: Boolean, default: false },
 });
 
 const gagal = ref(false);

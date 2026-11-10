@@ -30,50 +30,53 @@
     </div>
 
     <!-- Student & Academic Identity Block -->
-    <div class="border rounded-lg p-4 grid grid-cols-2 sm:grid-cols-5 gap-4 text-xs" :class="warnaIdentitas(raporData.student.statusTag, portal)">
-      <div>
-        <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
-        <div class="font-bold text-slate-900 text-sm mt-0.5">{{ raporData.student.nama }}</div>
-        <div class="text-[10px] text-slate-400 font-mono">ID #{{ raporData.student.mancationAkunId || raporData.student.id }}</div>
-      </div>
-
-      <div>
-        <div class="text-[11px] text-slate-500">{{ $t('common.kelas') }}</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ raporData.kelas?.namaKelas || '-' }}</div>
-        <div class="text-[10px] text-slate-500">{{ raporData.kelas?.programNama || '-' }}</div>
-      </div>
-
-      <div>
-        <div class="text-[11px] text-slate-500">Sensei Pengajar</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ raporData.kelas?.senseiNama || '-' }}</div>
-        <div class="text-[10px] text-slate-500">Cabang JOY</div>
-      </div>
-
-      <PeringkatCell :peringkat="raporData.peringkat" :note="$t('laporan.peringkatBulanIni')" />
-
-      <div v-if="!portal">
-        <div class="text-[11px] text-slate-500">{{ $t('progres.statusTag') }}</div>
-        <div class="mt-0.5">
-          <span
-            class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold"
-            :class="{
-              'bg-slate-200 text-slate-800': raporData.student.statusTag === 'standar',
-              'bg-blue-100 text-blue-800': raporData.student.statusTag === 'berkembang',
-              'bg-emerald-100 text-emerald-900 border border-emerald-300':
-                raporData.student.statusTag === 'siap_interview',
-            }"
-          >
-            <span v-if="raporData.student.statusTag === 'siap_interview'" class="mr-1">🎯</span>
-            {{ $t(`tag.${raporData.student.statusTag}`) }}
-          </span>
+    <div class="border rounded-lg p-4 flex items-start gap-4 text-xs" :class="warnaIdentitas(raporData.student.statusTag, portal)">
+      <PesertaFoto :src="raporData.student.fotoUrl" :nama="raporData.student.nama" :size="64" portrait eager perbesar />
+      <div class="flex-1 min-w-0 grid grid-cols-2 sm:grid-cols-5 gap-4">
+        <div>
+          <div class="text-[11px] text-slate-500">{{ $t('common.namaPeserta') }}</div>
+          <div class="font-bold text-slate-900 text-sm mt-0.5">{{ raporData.student.nama }}</div>
+          <div class="text-[10px] text-slate-400 font-mono">ID #{{ raporData.student.mancationAkunId || raporData.student.id }}</div>
         </div>
-      </div>
-      <div v-else>
-        <div class="text-[11px] text-slate-500">{{ $t('smartReport.tanggalMasuk') }}</div>
-        <div class="font-bold text-slate-800 mt-0.5">{{ raporData.student.tanggalMasuk || '-' }}</div>
-      </div>
 
-      <StatusLegend v-if="!portal" :status-tag="raporData.student.statusTag" />
+        <div>
+          <div class="text-[11px] text-slate-500">{{ $t('common.kelas') }}</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ raporData.kelas?.namaKelas || '-' }}</div>
+          <div class="text-[10px] text-slate-500">{{ raporData.kelas?.programNama || '-' }}</div>
+        </div>
+
+        <div>
+          <div class="text-[11px] text-slate-500">Sensei Pengajar</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ raporData.kelas?.senseiNama || '-' }}</div>
+          <div class="text-[10px] text-slate-500">Cabang JOY</div>
+        </div>
+
+        <PeringkatCell :peringkat="raporData.peringkat" :note="$t('laporan.peringkatBulanIni')" />
+
+        <div v-if="!portal">
+          <div class="text-[11px] text-slate-500">{{ $t('progres.statusTag') }}</div>
+          <div class="mt-0.5">
+            <span
+              class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold"
+              :class="{
+                'bg-slate-200 text-slate-800': raporData.student.statusTag === 'standar',
+                'bg-blue-100 text-blue-800': raporData.student.statusTag === 'berkembang',
+                'bg-emerald-100 text-emerald-900 border border-emerald-300':
+                  raporData.student.statusTag === 'siap_interview',
+              }"
+            >
+              <span v-if="raporData.student.statusTag === 'siap_interview'" class="mr-1">🎯</span>
+              {{ $t(`tag.${raporData.student.statusTag}`) }}
+            </span>
+          </div>
+        </div>
+        <div v-else>
+          <div class="text-[11px] text-slate-500">{{ $t('smartReport.tanggalMasuk') }}</div>
+          <div class="font-bold text-slate-800 mt-0.5">{{ raporData.student.tanggalMasuk || '-' }}</div>
+        </div>
+
+        <StatusLegend v-if="!portal" :status-tag="raporData.student.statusTag" />
+      </div>
     </div>
 
     <!-- KPI Executive Summary Cards -->
@@ -338,6 +341,7 @@ import StatGrade from '../smart-report/StatGrade.vue';
 import StatSikap from '../smart-report/StatSikap.vue';
 import StatusLegend from '../smart-report/StatusLegend.vue';
 import PeringkatCell from '../smart-report/PeringkatCell.vue';
+import PesertaFoto from '../PesertaFoto.vue';
 import { ringkasUjian, bertanda, warnaIdentitas } from '../smart-report/reportStats.js';
 
 // The printable monthly rapor (A4), for staff (RaporView) and for the peserta portal: numbers per section and

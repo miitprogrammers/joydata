@@ -22,6 +22,7 @@ import {
   SEED_MANCATION_OUTSIDE_CANDIDATES,
 } from './seedData.js';
 import { formatPersonName } from '../domain/nameFormat.js';
+import { mancationFotoUrl } from './mancation.js';
 import { urutkanPeringkat } from '../domain/smartReport.js';
 import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
@@ -62,6 +63,16 @@ export function getStudentNameMap(state) {
   return map;
 }
 
+/** mancationAkunId → pas foto URL in Mancation, for peserta whose cached account has a photo. */
+export function getStudentFotoMap(state) {
+  const map = new Map();
+  for (const s of state.mancationPesertaCache || []) {
+    const url = mancationFotoUrl(s.mancationAkunId, s.fotoVersi);
+    if (url) map.set(Number(s.mancationAkunId), url);
+  }
+  return map;
+}
+
 /**
  * Snapshot shaped like the local store for the report computations below. In postgres mode it is read
  * from the database only, so reports never touch the local file (which does not exist on Vercel).
@@ -83,7 +94,7 @@ export async function loadReportState() {
       query(`SELECT id, nama FROM staff`),
       query(`SELECT id, nama_id AS "namaId", nama_ja AS "namaJa" FROM program`),
       query(`SELECT id, nama_id AS "namaId", nama_ja AS "namaJa" FROM sikap_kategori`),
-      query(`SELECT mancation_akun_id AS "mancationAkunId", nama FROM mancation_peserta_cache`),
+      query(`SELECT mancation_akun_id AS "mancationAkunId", nama, foto_versi::float8 AS "fotoVersi" FROM mancation_peserta_cache`),
       query(`SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_ujian::text AS "tanggalUjian",
                nama_ujian AS "codeUjian", tipe_penilaian AS "pola", nilai_tunggal::float AS "nilaiTunggal",
                moji_goi::float AS "nilaiMojiGoi", COALESCE(bunpou, dokkai)::float AS "nilaiBunpou",
@@ -636,6 +647,7 @@ export async function getStudentRapor({ pesertaId, periode, state: loadedState =
       id: student.id,
       nama: resolvedNama,
       mancationAkunId: student.mancationAkunId,
+      fotoUrl: getStudentFotoMap(state).get(Number(student.mancationAkunId)) || null,
       statusTag: student.statusTag || 'standar',
       // Follows the class start date unless set by hand (pesertaRepo.tanggalMasukToStore).
       tanggalMasuk: student.tanggalMasuk || kelas?.tanggalStart || null,
