@@ -632,7 +632,10 @@ export function computeClassMonthlyAbsensi(rosterPesertaIds, absensiRows) {
  * Attendance of ONE peserta across every class they sat in during the rows' period. A peserta who moved class
  * (Atur Formasi) has sessions in the old and the new class; each class contributes its own S = COUNT(DISTINCT
  * tanggalAbsensi) and the peserta's hadir there, so nothing from the old class is lost. absensiRows = every
- * peserta's rows of the period; currentKelasId always counts (a class with sessions but no record = absent).
+ * peserta's rows of the period; currentKelasId always counts (a class with sessions but no record = absent),
+ * except before the peserta joined it: with records in another class that period and none in the current one,
+ * only the current class's sessions after their last record elsewhere count (e.g. October's rapor of a peserta
+ * moved by the November formasi counts the old class only).
  * Same shape as a studentStats entry of computeClassMonthlyAbsensi.
  */
 export function computeAbsensiPesertaLintasKelas(pesertaId, absensiRows, currentKelasId = null) {
@@ -647,9 +650,13 @@ export function computeAbsensiPesertaLintasKelas(pesertaId, absensiRows, current
   const own = rows.filter((r) => Number(r.pesertaId) === pid && r.tanggalAbsensi);
   const ownKelas = new Set(own.map((r) => Number(r.kelasId)));
   const dayOf = (r) => String(r.tanggalAbsensi).slice(0, 10);
+  const lastOwnDay = own.map(dayOf).sort().at(-1);
   for (const kid of kelasIds) {
     let kelasRows = rows.filter((r) => Number(r.kelasId) === kid);
-    if (ownKelas.size > 1 && ownKelas.has(kid)) {
+    if (ownKelas.size > 0 && !ownKelas.has(kid)) {
+      // The current class without a record of theirs: they only belonged to it after leaving the other class.
+      kelasRows = kelasRows.filter((r) => dayOf(r) > lastOwnDay);
+    } else if (ownKelas.size > 1 && ownKelas.has(kid)) {
       const days = own.filter((r) => Number(r.kelasId) === kid).map(dayOf).sort();
       const first = days[0];
       const last = Number(currentKelasId) === kid ? '9999-12-31' : days[days.length - 1];

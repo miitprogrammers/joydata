@@ -510,3 +510,22 @@ test('computeAbsensiPesertaLintasKelas counts only the days a peserta belonged t
   assert.equal(s.hadir, 3);
   assert.equal(s.rasioKehadiran, 100);
 });
+
+test('computeAbsensiPesertaLintasKelas: a month before the move counts the old class only', () => {
+  // October: peserta 1 sat in class 1 (old) every session; class 2 (their class since November) met too.
+  const rows = [
+    { pesertaId: 1, kelasId: 1, tanggalAbsensi: '2026-10-27', status: 'hadir' },
+    { pesertaId: 1, kelasId: 1, tanggalAbsensi: '2026-10-28', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-10-27', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-10-28', status: 'hadir' },
+    { pesertaId: 8, kelasId: 2, tanggalAbsensi: '2026-10-29', status: 'hadir' },
+  ];
+  const s = computeAbsensiPesertaLintasKelas(1, rows, 2);
+  // class 1: 2 sessions, 2 hadir; class 2 only after 28 Oct: 1 session without a record = absent
+  assert.equal(s.sesiKelas, 3);
+  assert.equal(s.hadir, 2);
+  // The same month seen when they never left class 1: nothing from class 2.
+  assert.equal(computeAbsensiPesertaLintasKelas(1, rows.slice(0, 4), 2).rasioKehadiran, 100);
+  // A member with no record at all still counts every session of the current class as absent.
+  assert.equal(computeAbsensiPesertaLintasKelas(5, rows, 2).sesiKelas, 3);
+});
