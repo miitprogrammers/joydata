@@ -44,11 +44,11 @@ test('Tes online catalogue: 80 kanji dasar, five volumes, and the dokkai levels'
   assert.equal(byKode.DASAR, 80);
   assert.equal(byKode.VOL1, 84);
   assert.equal(byKode.SEMUA, 417); // 服 is in VOL4 and VOL5 but asked once
-  assert.equal(dokkai.find((m) => m.kode === 'L1').jumlah, 20);
+  assert.equal(dokkai.find((m) => m.kode === 'L1').jumlah, 45);
   const semua = dokkai.find((m) => m.kode === 'SEMUA');
-  assert.equal(semua.jumlah, 100);
-  assert.equal(semua.jumlahSoal, 200);
-  assert.deepEqual(semua.perJlpt, { N5: { jumlah: 100, jumlahSoal: 200 }, N4: { jumlah: 0, jumlahSoal: 0 }, N3: { jumlah: 0, jumlahSoal: 0 } });
+  assert.equal(semua.jumlah, 225);
+  assert.equal(semua.jumlahSoal, 450);
+  assert.deepEqual(semua.perJlpt, { N5: { jumlah: 225, jumlahSoal: 450 }, N4: { jumlah: 0, jumlahSoal: 0 }, N3: { jumlah: 0, jumlahSoal: 0 } });
 });
 
 test('Kanji paper: random subset per attempt, four distinct options, and the key points at the right answer', () => {
@@ -242,7 +242,7 @@ test('Dokkai pools per sentence-pattern level: N5 = bank + approved AI, N4/N3 = 
     { id: 'AI1-2', level: 'L2', jlpt: 'N5', soal: [{}, {}] },
     { id: 'AI2-1', level: 'L3', jlpt: 'N4', soal: [{}, {}] },
   ];
-  assert.equal(poolDokkai('L2', tambahan).length, 21);
+  assert.equal(poolDokkai('L2', tambahan).length, 46);
   assert.deepEqual(poolDokkai('L2', tambahan, 'N4').map((b) => b.id), ['AI1-1']);
   assert.deepEqual(poolDokkai('SEMUA', tambahan, 'N4').map((b) => b.id), ['AI1-1', 'AI2-1']);
   assert.equal(poolDokkai('L2', tambahan, 'N3').length, 0);
@@ -258,7 +258,7 @@ test('Bank Soal: every question a code draws from, with keys, bank and AI passag
 
   const ai = { ...DOKKAI_LEVEL[1].bacaan[0], id: 'AI9-1', level: 'L2', jlpt: 'N5' };
   const l2 = bankSoalTes({ jenis: 'dokkai', materi: 'L2' }, [ai]);
-  assert.equal(l2.items.length, 21);
+  assert.equal(l2.items.length, 46);
   assert.equal(l2.items.filter((b) => b.sumber === 'ai').length, 1);
   assert.ok(l2.items.every((b) => b.soal.every((s) => s.opsi[s.benar])));
   assert.equal(bankSoalTes({ jenis: 'dokkai', materi: 'L2', jlpt: 'N4' }, [ai]).items.length, 0);
