@@ -1103,6 +1103,13 @@ export default {
     keluar: 'ログアウト',
     keluarPesan: 'この端末で受講生ポータルからログアウトします。再度ログインするにはメールアドレスとパスワードが必要です。',
     sesiBerakhir: 'セッションが終了しました（パスワードの変更・リセットなど）。もう一度ログインしてください。',
+    pemakaian: {
+      hariIni: '今日',
+      kurangSemenit: '1分未満',
+      menit: '{n}分',
+      jamMenit: '{j}時間{m}分',
+      info: '今日のポータル利用時間です（すべての端末の合計）。画面を開いて操作している間だけ数え、90秒以上操作がないと停止します。',
+    },
     halo: 'こんにちは、{nama}さん',
     mulaiBelajar: '{tanggal} 受講開始',
     rataUjian: '筆記試験の平均',

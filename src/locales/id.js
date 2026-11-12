@@ -1105,6 +1105,13 @@ export default {
     keluar: 'Keluar',
     keluarPesan: 'Anda akan keluar dari Portal Peserta di perangkat ini. Untuk masuk lagi, Anda perlu email dan kata sandi.',
     sesiBerakhir: 'Sesi Anda sudah berakhir, misalnya karena kata sandi diubah atau direset admin. Silakan masuk lagi.',
+    pemakaian: {
+      hariIni: 'Hari ini',
+      kurangSemenit: '< 1 mnt',
+      menit: '{n} mnt',
+      jamMenit: '{j} j {m} mnt',
+      info: 'Lama Anda memakai portal hari ini, dari semua perangkat. Waktu hanya dihitung saat halaman terbuka dan dipakai; bila didiamkan lebih dari 90 detik, hitungan berhenti.',
+    },
     halo: 'Halo, {nama}',
     mulaiBelajar: 'Mulai belajar {tanggal}',
     rataUjian: 'Rata-rata Ujian',

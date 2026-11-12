@@ -11,8 +11,9 @@ const INTERAKSI = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'scroll'];
  * kirim({ detikAktif, selesai, keepalive }) sends one signal; it is called every 15 s, when the app goes to the
  * background, and once with selesai when the practice stops (or the page is left).
  * Active = the page visible and used in the last 90 s, so an app left open does not count as practice.
+ * intervalMs = time between signals (portal usage today reports once a minute).
  */
-export function useDetakAktivitas(kirim) {
+export function useDetakAktivitas(kirim, { intervalMs = INTERVAL_DETAK_MS } = {}) {
   let berjalan = false;
   let detik = 0;
   let interaksiTerakhir = 0;
@@ -65,7 +66,7 @@ export function useDetakAktivitas(kirim) {
     catatInteraksi();
     pasang(true);
     tick = setInterval(hitung, 1000);
-    detak = setInterval(() => kirimSekarang(), INTERVAL_DETAK_MS);
+    detak = setInterval(() => kirimSekarang(), intervalMs);
   }
 
   /** Stops counting; kirimAkhir sends the closing signal (selesai = the session ends on the server). */

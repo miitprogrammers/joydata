@@ -124,6 +124,7 @@ import {
   getStatistikLatihan,
   getRiwayatLatihanPeserta,
 } from './db/latihanRepo.js';
+import { laporPemakaianPortal } from './db/pemakaianRepo.js';
 import { listNilaiFisik, createNilaiFisik, updateNilaiFisik, deleteNilaiFisik } from './db/fisikRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
@@ -394,6 +395,15 @@ export function createApiRouter() {
   router.get('/portal/flashcard', requirePeserta(), async (req, res) => {
     try {
       return res.json(await getFlashcardPortal(req.peserta.id));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Portal usage today: the portal reports active seconds about once a minute (detik 0 = only read the total).
+  router.post('/portal/pemakaian', requirePeserta(), async (req, res) => {
+    try {
+      return res.json(await laporPemakaianPortal(req.peserta.id, req.body?.detik));
     } catch (err) {
       return handleRouteError(res, err);
     }
