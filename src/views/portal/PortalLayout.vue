@@ -94,7 +94,7 @@
       <v-app-bar-nav-icon v-if="!isDesktop" :aria-label="$t('portal.bukaMenu')" @click="drawerOpen = !drawerOpen" />
       <div class="text-base font-semibold text-slate-900 font-display mx-2 truncate">{{ pageTitle }}</div>
       <v-spacer />
-      <PemakaianHariIni class="mr-2" />
+      <LatihanHariIni class="mr-2" />
       <LangToggle class="mr-2" />
       <v-menu location="bottom end">
         <template #activator="{ props: menuProps }">
@@ -130,7 +130,7 @@ import { pendingRequests } from '../../services/loadingState.js';
 import { usePortalSession, loadPortalSession, setPortalPeserta, clearPortalSession } from '../../services/portalSession.js';
 import PortalPasswordForm from '../../components/portal/PortalPasswordForm.vue';
 import KonfirmasiKeluarDialog from '../../components/KonfirmasiKeluarDialog.vue';
-import PemakaianHariIni from '../../components/portal/PemakaianHariIni.vue';
+import LatihanHariIni from '../../components/portal/LatihanHariIni.vue';
 
 const NAV = [
   {

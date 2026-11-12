@@ -239,7 +239,7 @@ const aktivitas = useDetakAktivitas(({ detikAktif, selesai, keepalive }) =>
 function mulaiAktivitas(id, awal = 0) {
   aktivitasId = id || null;
   progresAktivitas.value = { posisi: null, itemSelesai: 0 };
-  if (aktivitasId) aktivitas.mulai(awal);
+  if (aktivitasId) aktivitas.mulai(awal, jenis.value);
 }
 
 const kodeInput = ref('');

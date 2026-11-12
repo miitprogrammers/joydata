@@ -293,7 +293,6 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     dokkaiBacaanAi: [],
     flashcardProgres: [],
     latihanSesi: [],
-    pemakaianPortal: [],
     nilaiSikap,
     absensi,
     sikapKategori,
@@ -370,10 +369,6 @@ function ensurePhase2Collections(state) {
   if (!Array.isArray(state.latihanSesi)) {
     state.latihanSesi = [];
     state.flashcardProgres = [];
-    dirty = true;
-  }
-  if (!Array.isArray(state.pemakaianPortal)) {
-    state.pemakaianPortal = [];
     dirty = true;
   }
   for (const p of SEED_PAGES) {

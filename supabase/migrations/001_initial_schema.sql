@@ -302,16 +302,6 @@ CREATE INDEX IF NOT EXISTS latihan_sesi_mulai_idx ON latihan_sesi (mulai_at DESC
 CREATE INDEX IF NOT EXISTS latihan_sesi_peserta_idx ON latihan_sesi (peserta_id, mulai_at DESC);
 CREATE INDEX IF NOT EXISTS latihan_sesi_percobaan_idx ON latihan_sesi (percobaan_id) WHERE percobaan_id IS NOT NULL;
 
--- Waktu aktif peserta di portal per hari (tanggal Jakarta): halaman terlihat dan dipakai dalam 90 detik terakhir.
--- Ditampilkan ke peserta di app bar portal (server/db/pemakaianRepo.js).
-CREATE TABLE IF NOT EXISTS pemakaian_portal (
-  peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,
-  tanggal DATE NOT NULL,
-  detik INTEGER NOT NULL DEFAULT 0 CHECK (detik >= 0),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  PRIMARY KEY (peserta_id, tanggal)
-);
-
 CREATE TABLE IF NOT EXISTS nilai_sikap (
   id SERIAL PRIMARY KEY,
   peserta_id INTEGER NOT NULL REFERENCES peserta(id) ON DELETE CASCADE,

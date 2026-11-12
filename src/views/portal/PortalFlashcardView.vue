@@ -443,7 +443,7 @@ async function buka(kode) {
     ringkasan.value = null;
     window.scrollTo({ top: 0 });
     mulaiWaktuKartu();
-    aktivitas.mulai(0);
+    aktivitas.mulai(0, 'flashcard');
     jamTimer = setInterval(() => {
       sekarang.value = Date.now();
     }, 250);

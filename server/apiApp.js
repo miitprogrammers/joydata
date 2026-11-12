@@ -123,8 +123,8 @@ import {
   getMonitorLive,
   getStatistikLatihan,
   getRiwayatLatihanPeserta,
+  getLatihanHariIni,
 } from './db/latihanRepo.js';
-import { laporPemakaianPortal } from './db/pemakaianRepo.js';
 import { listNilaiFisik, createNilaiFisik, updateNilaiFisik, deleteNilaiFisik } from './db/fisikRepo.js';
 import { createPushNotificationPayload } from './domain/rules.js';
 
@@ -392,18 +392,18 @@ export function createApiRouter() {
   });
 
   // Kanji flashcards: order stored per peserta and volume, slowest cards first.
-  router.get('/portal/flashcard', requirePeserta(), async (req, res) => {
+  // Today's practice time of this peserta, as Monitor Latihan counts it (portal app bar).
+  router.get('/portal/latihan/hari-ini', requirePeserta(), async (req, res) => {
     try {
-      return res.json(await getFlashcardPortal(req.peserta.id));
+      return res.json(await getLatihanHariIni(req.peserta.id));
     } catch (err) {
       return handleRouteError(res, err);
     }
   });
 
-  // Portal usage today: the portal reports active seconds about once a minute (detik 0 = only read the total).
-  router.post('/portal/pemakaian', requirePeserta(), async (req, res) => {
+  router.get('/portal/flashcard', requirePeserta(), async (req, res) => {
     try {
-      return res.json(await laporPemakaianPortal(req.peserta.id, req.body?.detik));
+      return res.json(await getFlashcardPortal(req.peserta.id));
     } catch (err) {
       return handleRouteError(res, err);
     }

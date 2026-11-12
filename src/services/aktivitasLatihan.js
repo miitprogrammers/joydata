@@ -6,20 +6,35 @@ const INTERVAL_DETAK_MS = 15_000;
 const DIAM_MS = 90_000;
 const INTERAKSI = ['pointerdown', 'keydown', 'touchstart', 'wheel', 'scroll'];
 
+// Practice timers running on this device ({ jenis, awal, detikAktif() }), so the portal app bar can show today's
+// practice time going up between signals. When one stops, the listeners hear it once its last signal is answered
+// (they reload the server's figure) and only then does it leave the list, so the shown time never dips.
+const berjalanDiPerangkat = new Set();
+const pendengarBerhenti = new Set();
+
+export function latihanBerjalanDiPerangkat() {
+  return [...berjalanDiPerangkat];
+}
+
+export function onLatihanBerhenti(fn) {
+  pendengarBerhenti.add(fn);
+  return () => pendengarBerhenti.delete(fn);
+}
+
 /**
  * Active practice time and the signal to the server while a practice, test or flashcard deck runs.
  * kirim({ detikAktif, selesai, keepalive }) sends one signal; it is called every 15 s, when the app goes to the
  * background, and once with selesai when the practice stops (or the page is left).
  * Active = the page visible and used in the last 90 s, so an app left open does not count as practice.
- * intervalMs = time between signals (portal usage today reports once a minute).
  */
-export function useDetakAktivitas(kirim, { intervalMs = INTERVAL_DETAK_MS } = {}) {
+export function useDetakAktivitas(kirim) {
   let berjalan = false;
   let detik = 0;
   let interaksiTerakhir = 0;
   let tickAt = 0;
   let tick = null;
   let detak = null;
+  let pelacak = null;
 
   const terlihat = () => typeof document === 'undefined' || document.visibilityState === 'visible';
 
@@ -57,16 +72,21 @@ export function useDetakAktivitas(kirim, { intervalMs = INTERVAL_DETAK_MS } = {}
     window[fn]('pagehide', onPageHide);
   }
 
-  /** Starts counting; awal = active seconds already counted (a test continued later). */
-  function mulai(awal = 0) {
+  /**
+   * Starts counting; awal = active seconds already counted (a test continued later); jenis = flashcard, kanji or
+   * dokkai (for the breakdown of today's practice in the portal app bar).
+   */
+  function mulai(awal = 0, jenis = null) {
     if (berjalan) berhenti({ kirimAkhir: false });
     berjalan = true;
     detik = Number(awal) || 0;
+    pelacak = { jenis, awal: detik, detikAktif };
+    berjalanDiPerangkat.add(pelacak);
     tickAt = Date.now();
     catatInteraksi();
     pasang(true);
     tick = setInterval(hitung, 1000);
-    detak = setInterval(() => kirimSekarang(), intervalMs);
+    detak = setInterval(() => kirimSekarang(), INTERVAL_DETAK_MS);
   }
 
   /** Stops counting; kirimAkhir sends the closing signal (selesai = the session ends on the server). */
@@ -77,7 +97,16 @@ export function useDetakAktivitas(kirim, { intervalMs = INTERVAL_DETAK_MS } = {}
     clearInterval(tick);
     clearInterval(detak);
     pasang(false);
-    return kirimAkhir ? kirimSekarang({ selesai, keepalive }) : Promise.resolve();
+    const selesaiPelacak = pelacak;
+    pelacak = null;
+    // A restart of this timer must not change what the stopped one shows until it leaves the list.
+    const beku = Math.floor(detik);
+    selesaiPelacak.detikAktif = () => beku;
+    const akhir = kirimAkhir ? kirimSekarang({ selesai, keepalive }) : Promise.resolve();
+    akhir
+      .then(() => Promise.allSettled([...pendengarBerhenti].map((fn) => fn())))
+      .finally(() => berjalanDiPerangkat.delete(selesaiPelacak));
+    return akhir;
   }
 
   function detikAktif() {

@@ -436,6 +436,18 @@ export async function getStatistikLatihan(query = {}) {
   };
 }
 
+/**
+ * A peserta's own practice today (WIB), for the portal app bar: the same figures as their row in the Monitor
+ * Latihan ranking for "1 hari" (sessions started today, flashcard + kanji + dokkai, tests included).
+ */
+export async function getLatihanHariIni(pesertaId) {
+  await ensureInitialized();
+  const { tanggal, dari, sampai } = rentangPeriode({ periode: '1' });
+  const sesi = await querySesiLatihan({ pesertaId, sejak: dari, sebelum: sampai });
+  const [r] = statistikLatihan(sesi, [pesertaId], { dari, sampai });
+  return { tanggal, detikAktif: r.detikAktif, perJenis: r.perJenis };
+}
+
 /** One peserta: totals for the period, recent sessions and flashcard progress with the hardest cards. */
 export async function getRiwayatLatihanPeserta(pesertaIdRaw, query = {}) {
   await ensureInitialized();
