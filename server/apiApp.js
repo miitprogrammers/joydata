@@ -258,17 +258,24 @@ export function createApiRouter() {
   });
 
   router.post('/auth/refresh', async (req, res) => {
+    const { refreshToken } = req.body || {};
+    if (!refreshToken) return res.status(401).json({ error: 'MISSING_REFRESH_TOKEN' });
+    let decoded;
     try {
-      const { refreshToken } = req.body || {};
-      if (!refreshToken) return res.status(401).json({ error: 'MISSING_REFRESH_TOKEN' });
-      const decoded = verifyRefreshToken(refreshToken);
-      const profile = await getStaffSessionById(decoded.sub);
-      if (!profile) return res.status(401).json({ error: 'SESSION_INVALID' });
-      const tokens = signTokens(profile);
-      return res.json({ ...tokens, user: profile });
+      decoded = verifyRefreshToken(refreshToken);
     } catch {
       return res.status(401).json({ error: 'INVALID_REFRESH_TOKEN' });
     }
+    // Only a bad token or a missing/inactive account ends the session; a database failure is a 503 the client retries.
+    let profile;
+    try {
+      profile = await getStaffSessionById(decoded.sub);
+    } catch (err) {
+      console.error('auth/refresh: staff session lookup failed', err);
+      return res.status(503).json({ error: 'SERVICE_UNAVAILABLE' });
+    }
+    if (!profile) return res.status(401).json({ error: 'SESSION_INVALID' });
+    return res.json({ ...signTokens(profile), user: profile });
   });
 
   router.get('/auth/me', requireAuth, (req, res) => {

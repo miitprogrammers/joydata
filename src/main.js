@@ -16,7 +16,10 @@ import PwaInstallPrompt from './components/PwaInstallPrompt.vue';
 import { router } from './router/index.js';
 import idMessages from './locales/id.js';
 import jaMessages from './locales/ja.js';
-import { getInitialLocale } from './stores/appStore.js';
+import { getInitialLocale, useAppStore } from './stores/appStore.js';
+import { onSessionExpired } from './services/api.js';
+import { onPortalSessionExpired } from './services/portalApi.js';
+import { clearPortalSession } from './services/portalSession.js';
 
 const initialLocale = getInitialLocale();
 if (typeof document !== 'undefined') {
@@ -70,6 +73,22 @@ app.use(i18n);
 app.use(vuetify);
 app.use(router);
 app.component('PwaInstallPrompt', PwaInstallPrompt);
+
+// The server rejected a session (expired, password reset, account switched off): say so and go to the login
+// page, instead of leaving a screen whose every request fails. Network and server errors never land here.
+onSessionExpired(() => {
+  const appStore = useAppStore();
+  const wasSignedIn = appStore.isAuthenticated;
+  appStore.sessionExpired();
+  appStore.notify(i18n.global.t('messages.SESSION_EXPIRED'), 'warning');
+  if (wasSignedIn && !router.currentRoute.value.meta.public) router.replace('/login');
+});
+onPortalSessionExpired(() => {
+  clearPortalSession();
+  useAppStore().notify(i18n.global.t('portal.sesiBerakhir'), 'warning');
+  const { meta } = router.currentRoute.value;
+  if (meta.portal && !meta.portalPublic) router.replace('/portal/login');
+});
 app.mount('#root');
 
 registerSW({ immediate: true });

@@ -8,6 +8,10 @@ const PORTAL_SECRET =
   process.env.PESERTA_JWT_SECRET ||
   `${process.env.JWT_SECRET || 'joydata-internal-access-secret-key-2026'}:peserta-portal`;
 const PORTAL_AUDIENCE = 'joydata-peserta';
+// Sliding session: a token older than this is swapped for a fresh 7-day one on the next request, sent back in
+// the PORTAL_TOKEN_HEADER response header, so a peserta who keeps using the portal is never signed out by expiry.
+const PERBARUI_SETELAH_DETIK = 24 * 60 * 60;
+export const PORTAL_TOKEN_HEADER = 'X-Portal-Token';
 
 export function signPortalToken(session) {
   return jwt.sign({ sub: session.id, tv: session.versiToken }, PORTAL_SECRET, {
@@ -17,7 +21,7 @@ export function signPortalToken(session) {
 }
 
 /**
- * Lets a logged-in peserta through, as req.peserta. The token stops working once the password is changed or
+ * Lets a logged-in peserta through, as req.peserta, renewing an older token (see PERBARUI_SETELAH_DETIK). The token stops working once the password is changed or
  * reset (versi_token) or the account is switched off. Until the default password is changed only routes with
  * allowPasswordChange pass.
  */
@@ -40,6 +44,9 @@ export function requirePeserta({ allowPasswordChange = false } = {}) {
         return res.status(403).json({ error: 'PORTAL_PASSWORD_CHANGE_REQUIRED' });
       }
       req.peserta = session;
+      if (decoded.iat && Date.now() / 1000 - decoded.iat > PERBARUI_SETELAH_DETIK) {
+        res.set(PORTAL_TOKEN_HEADER, signPortalToken(session));
+      }
       return next();
     } catch (err) {
       return next(err);

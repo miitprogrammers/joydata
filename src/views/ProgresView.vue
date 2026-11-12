@@ -476,7 +476,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../stores/appStore.js';
-import { apiRequest } from '../services/api.js';
+import { apiRequest, apiDownload } from '../services/api.js';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
@@ -591,13 +591,7 @@ async function handleExportCsv() {
     });
     if (selectedKelasId.value) params.set('kelasId', selectedKelasId.value);
 
-    const token = localStorage.getItem('joydata_access_token');
-    const res = await fetch(`/api/export/rekap?${params.toString()}`, {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    });
-    if (!res.ok) throw new Error('Gagal mengekspor data');
-
-    const blob = await res.blob();
+    const blob = await apiDownload(`/export/rekap?${params.toString()}`);
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -608,7 +602,7 @@ async function handleExportCsv() {
     window.URL.revokeObjectURL(url);
     appStore.notify(t('progres.eksporBerhasil'), 'success');
   } catch (err: any) {
-    appStore.notify(err.message || 'Gagal mengekspor CSV', 'error');
+    appStore.notify(t(`messages.${err.code}`) || t('messages.GENERIC_ERROR'), 'error');
   } finally {
     exporting.value = false;
   }

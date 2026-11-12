@@ -43,6 +43,21 @@
           </p>
         </div>
 
+        <v-alert
+          v-if="appStore.restoreFailed"
+          type="warning"
+          variant="tonal"
+          density="compact"
+          class="mb-4 text-sm"
+        >
+          {{ $t('login.sesiTidakTerperiksa') }}
+          <template #append>
+            <v-btn size="small" variant="text" class="text-none" :loading="memeriksa" @click="cobaSesiLagi">
+              {{ $t('login.cobaLagi') }}
+            </v-btn>
+          </template>
+        </v-alert>
+
         <form class="space-y-4" @submit.prevent="onSubmit">
           <v-text-field
             v-model="username"
@@ -114,6 +129,7 @@ const password = ref('');
 const showPassword = ref(false);
 const submitting = ref(false);
 const errorMsg = ref('');
+const memeriksa = ref(false);
 
 function switchLang(next) {
   appStore.setLocale(next, { locale }, vuetifyLocale);
@@ -129,6 +145,16 @@ async function onSubmit() {
     errorMsg.value = t(`messages.${err.code}`) || t('messages.INVALID_CREDENTIALS');
   } finally {
     submitting.value = false;
+  }
+}
+
+// The session check failed on the network or server, so the saved session was kept: check it again.
+async function cobaSesiLagi() {
+  memeriksa.value = true;
+  try {
+    if (await appStore.restoreSession()) router.replace(appStore.firstAllowedRoute());
+  } finally {
+    memeriksa.value = false;
   }
 }
 

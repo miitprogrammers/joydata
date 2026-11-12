@@ -25,7 +25,7 @@
         <p class="text-sm text-slate-600 mt-1 mb-4">{{ $t('portal.gantiSandiDesc') }}</p>
         <PortalPasswordForm @saved="onFirstPasswordSaved" />
       </section>
-      <button type="button" class="mt-4 w-full text-center text-xs text-slate-500 hover:text-slate-800" @click="logout">
+      <button type="button" class="mt-4 w-full text-center text-xs text-slate-500 hover:text-slate-800" @click="konfirmasiKeluar = true">
         {{ $t('portal.keluar') }}
       </button>
     </div>
@@ -81,7 +81,7 @@
           <button
             type="button"
             class="w-full flex items-center gap-2 px-2 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100"
-            @click="logout"
+            @click="konfirmasiKeluar = true"
           >
             <v-icon icon="mdi-logout" size="18" />
             <span>{{ $t('portal.keluar') }}</span>
@@ -103,7 +103,7 @@
           <v-list-item :title="peserta?.nama" :subtitle="peserta?.email" />
           <v-divider />
           <v-list-item prepend-icon="mdi-account-circle-outline" :title="$t('portal.menu.profil')" to="/portal/profil" />
-          <v-list-item prepend-icon="mdi-logout" :title="$t('portal.keluar')" @click="logout" />
+          <v-list-item prepend-icon="mdi-logout" :title="$t('portal.keluar')" @click="konfirmasiKeluar = true" />
         </v-list>
       </v-menu>
       <v-progress-linear :active="pendingRequests > 0" indeterminate absolute location="bottom" color="primary" height="2" />
@@ -115,6 +115,8 @@
       </div>
     </v-main>
   </template>
+
+  <KonfirmasiKeluarDialog v-model="konfirmasiKeluar" :pesan="$t('portal.keluarPesan')" @confirm="logout" />
 </template>
 
 <script setup>
@@ -126,6 +128,7 @@ import { useAppStore } from '../../stores/appStore.js';
 import { pendingRequests } from '../../services/loadingState.js';
 import { usePortalSession, loadPortalSession, setPortalPeserta, clearPortalSession } from '../../services/portalSession.js';
 import PortalPasswordForm from '../../components/portal/PortalPasswordForm.vue';
+import KonfirmasiKeluarDialog from '../../components/KonfirmasiKeluarDialog.vue';
 
 const NAV = [
   {
@@ -222,9 +225,12 @@ function onFirstPasswordSaved(session) {
   load(true);
 }
 
+const konfirmasiKeluar = ref(false);
+
 function logout() {
   clearPortalSession();
   router.replace('/portal/login');
+  appStore.notify(t('app.sudahKeluar'), 'success');
 }
 
 onMounted(() => load());

@@ -44,6 +44,8 @@ export function getInitialLocale() {
 export const useAppStore = defineStore('app', () => {
   const user = ref(null);
   const initialized = ref(false);
+  // The last session check failed on the network or server (tokens kept): LoginView offers to try again.
+  const restoreFailed = ref(false);
   const settings = ref({ ...DEFAULT_SETTINGS });
   const locale = ref(getInitialLocale());
   const toast = ref({
@@ -111,6 +113,7 @@ export const useAppStore = defineStore('app', () => {
     setStoredTokens(data.accessToken, data.refreshToken);
     user.value = data.user;
     initialized.value = true;
+    restoreFailed.value = false;
     await loadSettings();
     return data.user;
   }
@@ -149,12 +152,20 @@ export const useAppStore = defineStore('app', () => {
       const data = await apiRequest('/auth/me');
       user.value = data.user;
       await loadSettings();
-    } catch {
-      clearStoredTokens();
-      user.value = null;
-    } finally {
       initialized.value = true;
+    } catch (err) {
+      user.value = null;
+      if (err.code === 'SESSION_EXPIRED') {
+        // api.js already cleared the tokens and told the user the session ended.
+        initialized.value = true;
+        restoreFailed.value = false;
+      } else {
+        // Offline or the server is down: keep the tokens and check again on the next navigation or reload,
+        // instead of signing the user out over a connection problem.
+        restoreFailed.value = true;
+      }
     }
+    if (user.value) restoreFailed.value = false;
     return user.value;
   }
 
@@ -171,6 +182,15 @@ export const useAppStore = defineStore('app', () => {
   function logout() {
     clearStoredTokens();
     user.value = null;
+    initialized.value = true;
+    restoreFailed.value = false;
+  }
+
+  /** The server rejected the session (api.js has cleared the tokens). */
+  function sessionExpired() {
+    user.value = null;
+    initialized.value = true;
+    restoreFailed.value = false;
   }
 
   return {
@@ -192,7 +212,9 @@ export const useAppStore = defineStore('app', () => {
     notify,
     login,
     restoreSession,
+    restoreFailed,
     refreshSessionProfile,
     logout,
+    sessionExpired,
   };
 });

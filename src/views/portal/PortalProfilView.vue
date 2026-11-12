@@ -32,8 +32,10 @@
 
     <section class="joy-surface p-5 flex items-center justify-between gap-3">
       <p class="text-sm text-slate-700">{{ $t('portal.profil.keluarDesc') }}</p>
-      <v-btn variant="tonal" color="error" class="text-none" prepend-icon="mdi-logout" @click="logout">{{ $t('portal.keluar') }}</v-btn>
+      <v-btn variant="tonal" color="error" class="text-none" prepend-icon="mdi-logout" @click="konfirmasiKeluar = true">{{ $t('portal.keluar') }}</v-btn>
     </section>
+
+    <KonfirmasiKeluarDialog v-model="konfirmasiKeluar" :pesan="$t('portal.keluarPesan')" @confirm="logout" />
   </div>
 </template>
 
@@ -44,6 +46,7 @@ import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../../stores/appStore.js';
 import { usePortalSession, usePortalFormat, setPortalPeserta, clearPortalSession } from '../../services/portalSession.js';
 import PortalPasswordForm from '../../components/portal/PortalPasswordForm.vue';
+import KonfirmasiKeluarDialog from '../../components/KonfirmasiKeluarDialog.vue';
 
 const router = useRouter();
 const { t, locale } = useI18n();
@@ -82,8 +85,11 @@ function onPasswordChanged(session) {
   appStore.notify(t('portal.sandiTersimpan'), 'success');
 }
 
+const konfirmasiKeluar = ref(false);
+
 function logout() {
   clearPortalSession();
   router.replace('/portal/login');
+  appStore.notify(t('app.sudahKeluar'), 'success');
 }
 </script>

@@ -8,18 +8,30 @@ const report = ref(null);
 const loading = ref(false);
 const loadError = ref(false);
 let pending = null;
-// The token the data above was loaded with: a different one (another peserta logging in on this device) reloads.
+// The peserta the data above belongs to: another peserta logging in on this device reloads it. Compared by the
+// token's owner, not the token itself, since the server renews the token while the peserta keeps using the portal.
 let loadedWith = '';
 
+function tokenOwner(token = getPortalToken()) {
+  if (!token) return '';
+  try {
+    const part = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    return String(JSON.parse(atob(part)).sub ?? token);
+  } catch {
+    return token;
+  }
+}
+
 async function fetchSession() {
-  loadedWith = getPortalToken();
+  loadedWith = tokenOwner();
   loading.value = true;
   loadError.value = false;
   try {
     peserta.value = (await portalRequest('/auth/me')).peserta;
     report.value = peserta.value.wajibGantiSandi ? null : await portalRequest('/dashboard');
   } catch (err) {
-    if (err.status === 401) {
+    // portalApi.js has already cleared an ended session; a 401 with a token still stored was a replaced token.
+    if (err.status === 401 && !getPortalToken()) {
       clearPortalSession();
       throw err;
     }
@@ -32,8 +44,8 @@ async function fetchSession() {
 /** Loads the session and report once; force = reload (after a password change, or "try again"). */
 export function loadPortalSession({ force = false } = {}) {
   const loaded = report.value || peserta.value?.wajibGantiSandi;
-  if (!force && loaded && loadedWith === getPortalToken()) return Promise.resolve();
-  if (loadedWith !== getPortalToken()) {
+  if (!force && loaded && loadedWith === tokenOwner()) return Promise.resolve();
+  if (loadedWith !== tokenOwner()) {
     peserta.value = null;
     report.value = null;
   }
@@ -46,7 +58,7 @@ export function loadPortalSession({ force = false } = {}) {
 /** After a password change: the new session, and the rotated token it came with. */
 export function setPortalPeserta(session) {
   peserta.value = session;
-  loadedWith = getPortalToken();
+  loadedWith = tokenOwner();
 }
 
 export function clearPortalSession() {
@@ -56,9 +68,9 @@ export function clearPortalSession() {
   loadedWith = '';
 }
 
-/** For pages with their own requests: an expired session goes back to the login page. */
+/** For pages with their own requests: an ended session (portalApi.js cleared the token) goes back to login. */
 export function isPortalSessionExpired(err, router) {
-  if (err?.status !== 401) return false;
+  if (err?.status !== 401 || getPortalToken()) return false;
   clearPortalSession();
   router.replace('/portal/login');
   return true;

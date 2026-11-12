@@ -8,10 +8,11 @@ import { pendingRequests } from './services/loadingState.js';
 import { preloaderMarkup } from './services/preloaderMarkup.js';
 import PWAInstallButton from './components/PWAInstallButton.vue';
 import PwaInstallPrompt from './components/PwaInstallPrompt.vue';
+import KonfirmasiKeluarDialog from './components/KonfirmasiKeluarDialog.vue';
 
 const route = useRoute();
 const router = useRouter();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const display = useDisplay();
 const vuetifyLocale = useLocale();
 const appStore = useAppStore();
@@ -64,9 +65,12 @@ watch(
   { immediate: true }
 );
 
+const konfirmasiKeluar = ref(false);
+
 function handleLogout() {
   appStore.logout();
   router.replace('/login');
+  appStore.notify(t('app.sudahKeluar'), 'success');
 }
 
 function updateOnline() {
@@ -206,7 +210,7 @@ onUnmounted(() => {
             <button
               type="button"
               class="w-full flex items-center gap-2 px-2 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100"
-              @click="handleLogout"
+              @click="konfirmasiKeluar = true"
             >
               <v-icon icon="mdi-logout" size="18" />
               <span>{{ $t('app.logout') }}</span>
@@ -292,6 +296,8 @@ onUnmounted(() => {
         </v-btn>
       </template>
     </v-snackbar>
+
+    <KonfirmasiKeluarDialog v-model="konfirmasiKeluar" :pesan="$t('app.keluarPesan')" @confirm="handleLogout" />
   </v-app>
 </template>
 

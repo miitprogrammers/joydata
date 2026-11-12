@@ -42,18 +42,25 @@ export async function requireAuth(req, res, next) {
   if (!header.startsWith('Bearer ')) {
     return res.status(401).json({ error: 'UNAUTHORIZED' });
   }
-  const token = header.slice(7).trim();
+  let decoded;
   try {
-    const decoded = jwt.verify(token, ACCESS_SECRET);
-    const freshSession = await getStaffSessionById(decoded.sub);
-    if (!freshSession) {
-      return res.status(401).json({ error: 'SESSION_EXPIRED_OR_INACTIVE' });
-    }
-    req.user = freshSession;
-    return next();
+    decoded = jwt.verify(header.slice(7).trim(), ACCESS_SECRET);
   } catch {
     return res.status(401).json({ error: 'INVALID_TOKEN' });
   }
+  // A database failure is not a bad token: answering 401 here would make the client drop a valid session.
+  let freshSession;
+  try {
+    freshSession = await getStaffSessionById(decoded.sub);
+  } catch (err) {
+    console.error('requireAuth: staff session lookup failed', err);
+    return res.status(503).json({ error: 'SERVICE_UNAVAILABLE' });
+  }
+  if (!freshSession) {
+    return res.status(401).json({ error: 'SESSION_EXPIRED_OR_INACTIVE' });
+  }
+  req.user = freshSession;
+  return next();
 }
 
 /** Allows the request when the role may open any one of the given pages. */
