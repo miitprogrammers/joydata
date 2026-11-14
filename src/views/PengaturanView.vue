@@ -365,6 +365,30 @@
             </div>
           </div>
         </div>
+
+        <!-- Card 7: Nilai Akhir (Progres Peserta) -->
+        <div class="joy-surface p-6 space-y-4">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-base font-bold text-slate-900 font-display">7. {{ $t('pengaturan.secNilaiAkhir') }}</h2>
+            <p class="text-xs text-slate-500 mt-0.5">{{ $t('pengaturan.secNilaiAkhirDesc') }}</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+            <div v-for="k in FAKTOR_NILAI_AKHIR" :key="k">
+              <label :for="`set-na-${k}`" class="block font-semibold text-slate-700 mb-1">{{ $t(`progres.faktor.${k}`) }} (%):</label>
+              <input
+                :id="`set-na-${k}`"
+                v-model.number="form.nilai_akhir.bobot[k]"
+                type="number"
+                min="0"
+                max="100"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+            </div>
+          </div>
+          <div class="text-[11px]" :class="totalBobotNilaiAkhir === 100 ? 'text-slate-500' : 'text-red-600 font-semibold'">
+            {{ $t('pengaturan.nilaiAkhirTotal', { n: totalBobotNilaiAkhir }) }}
+          </div>
+        </div>
       </template>
     </div>
   </div>
@@ -377,6 +401,7 @@ import { useAppStore } from '../stores/appStore.js';
 import { apiRequest } from '../services/api.js';
 import { ITEM_FISIK, aturanFisik } from '@/server/domain/evaluasiFisik.js';
 import { BATAS_TARGET_MENIT, aturanGradeLatihan } from '@/server/domain/gradeLatihan.js';
+import { FAKTOR_NILAI_AKHIR, aturanNilaiAkhir } from '@/server/domain/nilaiAkhir.js';
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -405,7 +430,12 @@ const form = ref({
   // Evaluasi Fisik: every value filled (missing ones from the defaults), so the inputs always have a target.
   evaluasi_fisik: aturanFisik({}) as any,
   grade_latihan: aturanGradeLatihan({}),
+  nilai_akhir: aturanNilaiAkhir({}) as any,
 });
+
+const totalBobotNilaiAkhir = computed(() =>
+  FAKTOR_NILAI_AKHIR.reduce((n: number, k: string) => n + (Number(form.value.nilai_akhir.bobot[k]) || 0), 0)
+);
 
 const totalBobotFisik = computed(() =>
   ITEM_FISIK.reduce((n: number, k: string) => n + (Number(form.value.evaluasi_fisik.bobot[k]) || 0), 0)
@@ -446,6 +476,7 @@ async function loadSettings() {
       kaiwa_berlaku_mulai: data.kaiwa_berlaku_mulai ?? '',
       evaluasi_fisik: aturanFisik(data),
       grade_latihan: aturanGradeLatihan(data),
+      nilai_akhir: aturanNilaiAkhir(data),
     };
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal memuat pengaturan', 'error');
@@ -466,6 +497,7 @@ async function saveSettings() {
       ...updated,
       evaluasi_fisik: aturanFisik(updated),
       grade_latihan: aturanGradeLatihan(updated),
+      nilai_akhir: aturanNilaiAkhir(updated),
     };
     appStore.setSettings(updated);
     appStore.notify(t('pengaturan.berhasilDisimpan'), 'success');
@@ -489,6 +521,7 @@ async function confirmReset() {
       ...reset,
       evaluasi_fisik: aturanFisik(reset),
       grade_latihan: aturanGradeLatihan(reset),
+      nilai_akhir: aturanNilaiAkhir(reset),
     };
     appStore.setSettings(reset);
     appStore.notify(t('pengaturan.berhasilDireset'), 'success');

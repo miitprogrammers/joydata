@@ -201,6 +201,7 @@ function handleRouteError(res, err) {
     'FISIK_SUDAH_ADA',
     'INVALID_EVALUASI_FISIK',
     'INVALID_GRADE_LATIHAN',
+    'INVALID_NILAI_AKHIR',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([
@@ -1192,11 +1193,7 @@ export function createApiRouter() {
   // Fase 3 Endpoints: Progres Peserta (§12 mainIdea.md)
   router.get('/progres', requireAuth, requirePageAccess('progres-peserta'), async (req, res) => {
     try {
-      const data = await getProgresData({
-        periode: req.query.periode,
-        kelasId: req.query.kelasId,
-        tag: req.query.tag,
-      });
+      const data = await getProgresData({ kelasId: req.query.kelasId, tag: req.query.tag });
       return res.json(data);
     } catch (err) {
       return handleRouteError(res, err);

@@ -10,10 +10,7 @@ import {
   computeNilaiUjianAvg,
   getGradeLabel,
   computeSikapSummary,
-  computeClassMonthlyAbsensi,
   computeAbsensiPesertaLintasKelas,
-  computeKaiwaMetricsForPeriod,
-  computeProgresStudentMetrics,
   validateSettingsPayload,
 } from '../domain/rules.js';
 import {
@@ -23,10 +20,19 @@ import {
 } from './seedData.js';
 import { formatPersonName } from '../domain/nameFormat.js';
 import { mancationFotoUrl } from './mancation.js';
-import { urutkanPeringkat } from '../domain/smartReport.js';
-import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
+import { urutkanPeringkat, buildPesertaJourney } from '../domain/smartReport.js';
+import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap, todayJakarta, weekStartOf, addDays } from '../domain/kaiwaMingguan.js';
 import { DEFAULT_EVALUASI_FISIK, ringkasFisik } from '../domain/evaluasiFisik.js';
 import { DEFAULT_GRADE_LATIHAN } from '../domain/gradeLatihan.js';
+import {
+  DEFAULT_NILAI_AKHIR,
+  poinGrade,
+  MIN_FAKTOR,
+  aturanNilaiAkhir,
+  kualitasSesi,
+  faktorKeseluruhan,
+  hitungNilaiAkhir,
+} from '../domain/nilaiAkhir.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 import { listStaff } from './authStaffRepo.js';
 
@@ -48,6 +54,8 @@ export const DEFAULT_SETTINGS = {
   evaluasi_fisik: DEFAULT_EVALUASI_FISIK,
   // Grade Latihan on Monitor Latihan: daily practice target in minutes and the weight of time (domain/gradeLatihan.js).
   grade_latihan: DEFAULT_GRADE_LATIHAN,
+  // Nilai Akhir on Progres Peserta: the weight of every factor (domain/nilaiAkhir.js).
+  nilai_akhir: DEFAULT_NILAI_AKHIR,
 };
 
 export function getStudentNameMap(state) {
@@ -212,6 +220,7 @@ export async function updateSystemSettings(payload, actor) {
     kaiwa_berlaku_mulai: dataLama.kaiwa_berlaku_mulai,
     evaluasi_fisik: dataLama.evaluasi_fisik,
     grade_latihan: dataLama.grade_latihan,
+    nilai_akhir: dataLama.nilai_akhir,
     ...val.normalized,
   };
   if (dataBaru.kaiwa_sensei_wajib_id !== dataLama.kaiwa_sensei_wajib_id && dataBaru.kaiwa_sensei_wajib_id !== null) {
@@ -391,151 +400,144 @@ export async function getReportOptions() {
   };
 }
 
-export async function getProgresData({ periode, kelasId, tag }) {
+/**
+ * Progres Peserta: every peserta's whole journey so far (not one month) — exam average and trend, kualitas kaiwa and
+ * mensetsu from every session, sikap, attendance, Kaiwa Card weeks, Grade Latihan over all time, the latest fisik
+ * test — and their Nilai Akhir (domain/nilaiAkhir.js); per class the means of its members.
+ */
+export async function getProgresData({ kelasId, tag } = {}) {
   const state = await loadReportState();
-  const activeMonth = periode || new Date().toISOString().slice(0, 7);
   const nameMap = getStudentNameMap(state);
+  const settings = { ...DEFAULT_SETTINGS, ...(state.settings || {}) };
+  const batasGrade = settings.batas_grade;
+  const aturan = aturanNilaiAkhir(settings);
+  const rule = kaiwaRule(settings);
+  // Kaiwa Card counts finished weeks only: the running week would count as missed until Sunday.
+  const mingguSelesai = addDays(weekStartOf(todayJakarta()), -1);
+  // Grade Latihan over all time (latihanRepo imports this module, so it is loaded when needed).
+  const { getStatistikLatihan } = await import('./latihanRepo.js');
+  const latihan = await getStatistikLatihan({ periode: 'semua' }).catch(() => null);
+  const latihanMap = new Map((latihan?.items || []).map((r) => [Number(r.pesertaId), r.grade]));
 
   const activeClasses = (state.kelas || []).filter((k) => !k.deletedAt);
-  const activePeserta = (state.peserta || []).filter((p) => !p.deletedAt).map((p) => ({
-    ...p,
-    nama: nameMap.get(Number(p.mancationAkunId)) || p.nama || ('Peserta #' + p.mancationAkunId),
-  }));
-
   const kelasMap = new Map(activeClasses.map((k) => [k.id, k]));
   const staffMap = new Map((state.staff || []).map((s) => [s.id, s]));
-
-  const ujianInPeriod = (state.nilaiUjian || [])
-    .filter((u) => u.tanggalUjian && String(u.tanggalUjian).startsWith(activeMonth))
-    .map((u) => ({
-      ...u,
-      nilaiAvg: resolveNilaiAvg(u),
-    }));
-
-  const kaiwaInPeriod = (state.nilaiKaiwa || []).filter(
-    (k) => k.tanggalKaiwa && String(k.tanggalKaiwa).startsWith(activeMonth)
-  );
-  const mensetsuInPeriod = (state.nilaiMensetsu || []).filter(
-    (m) => m.tanggalMensetsu && String(m.tanggalMensetsu).startsWith(activeMonth)
-  );
-  const sikapInPeriod = (state.nilaiSikap || []).filter(
-    (s) => s.tanggalPenilaian && String(s.tanggalPenilaian).startsWith(activeMonth)
-  );
-  const absensiInPeriod = (state.absensi || []).filter(
-    (a) => a.tanggalAbsensi && String(a.tanggalAbsensi).startsWith(activeMonth)
-  );
-
-  const settings = { ...DEFAULT_SETTINGS, ...(state.settings || {}) };
-
-  const kelasSummaryList = [];
-  for (const k of activeClasses) {
-    const classStudents = activePeserta.filter((p) => p.kelasId === k.id);
-    const studentIds = classStudents.map((p) => p.id);
-
-    const classUjian = ujianInPeriod.filter((u) => u.kelasId === k.id);
-    const classKaiwa = kaiwaInPeriod.filter((c) => c.kelasId === k.id);
-    const classSikap = sikapInPeriod.filter((s) => s.kelasId === k.id);
-    const classAbsensi = absensiInPeriod.filter((a) => a.kelasId === k.id);
-
-    const absensiCalc = computeClassMonthlyAbsensi(studentIds, classAbsensi);
-    const kaiwaCalc = computeKaiwaMetricsForPeriod(studentIds, classKaiwa);
-    const mensetsuCalc = computeKaiwaMetricsForPeriod(
-      studentIds,
-      mensetsuInPeriod.filter((m) => m.kelasId === k.id),
-      'tanggalMensetsu'
-    );
-
-    const validExamAvgs = classUjian
-      .map((u) => (u.nilaiAvg !== null ? Number(u.nilaiAvg) : null))
-      .filter((v) => v !== null);
-    const avgUjian =
-      validExamAvgs.length > 0
-        ? Math.round((validExamAvgs.reduce((a, b) => a + b, 0) / validExamAvgs.length) * 10) / 10
-        : null;
-
-    const tagCounts = { standar: 0, berkembang: 0, siap_interview: 0 };
-    for (const p of classStudents) {
-      const t = p.statusTag || 'standar';
-      if (tagCounts[t] !== undefined) tagCounts[t]++;
-      else tagCounts.standar++;
-    }
-
-    let sumSikap = 0;
-    for (const p of classStudents) {
-      const pSikap = classSikap.filter((s) => s.pesertaId === p.id);
-      const summ = computeSikapSummary(pSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
-      sumSikap += summ.skorAkhir;
-    }
-    const avgSikap = classStudents.length > 0 ? Math.round((sumSikap / classStudents.length) * 10) / 10 : null;
-
-    const sensei = staffMap.get(k.senseiId);
-
-    kelasSummaryList.push({
-      kelasId: k.id,
-      namaKelas: k.namaKelas,
-      senseiNama: sensei?.nama || '-',
-      jumlahPeserta: classStudents.length,
-      tagCounts,
-      rataUjian: avgUjian,
-      rataSikap: avgSikap,
-      rasioKehadiran: absensiCalc.rasioKelas,
-      sesiAbsensi: absensiCalc.sesiKelas,
-      kaiwaDistribusi: kaiwaCalc.distribusi,
-      rataPoinKaiwa: kaiwaCalc.rataPoinOrdinal,
-      totalSesiKaiwa: kaiwaCalc.jumlahSesi,
-      mensetsuDistribusi: mensetsuCalc.distribusi,
-      rataPoinMensetsu: mensetsuCalc.rataPoinOrdinal,
-      totalSesiMensetsu: mensetsuCalc.jumlahSesi,
-    });
+  const kategori = new Map((state.sikapKategori || []).map((k) => [k.id, k]));
+  const sikapRows = (state.nilaiSikap || []).map((s) => ({
+    ...s,
+    kategoriNamaId: kategori.get(s.kategoriId)?.namaId,
+    kategoriNamaJa: kategori.get(s.kategoriId)?.namaJa,
+  }));
+  const kaiwaPerPeserta = new Map();
+  for (const k of state.nilaiKaiwa || []) {
+    if (!k.tanggalKaiwa) continue;
+    if (!kaiwaPerPeserta.has(k.pesertaId)) kaiwaPerPeserta.set(k.pesertaId, []);
+    kaiwaPerPeserta.get(k.pesertaId).push({ tanggal: String(k.tanggalKaiwa).slice(0, 10), senseiId: k.senseiId ?? null });
   }
 
-  let targetStudents = activePeserta;
-  if (kelasId) {
-    const kId = Number(kelasId);
-    targetStudents = targetStudents.filter((p) => p.kelasId === kId);
-  }
-  if (tag) {
-    targetStudents = targetStudents.filter((p) => (p.statusTag || 'standar') === tag);
-  }
-
-  const pesertaList = [];
-  for (const student of targetStudents) {
-    const studentUjian = ujianInPeriod.filter((u) => u.pesertaId === student.id);
-    const studentKaiwa = kaiwaInPeriod.filter((k) => k.pesertaId === student.id);
-    const studentSikap = sikapInPeriod.filter((s) => s.pesertaId === student.id);
-
-    const sikapSummary = computeSikapSummary(studentSikap, settings.sikap_basis, settings.kkm_sikap, settings.batas_grade);
-
-    const studentAbsensiStat = computeAbsensiPesertaLintasKelas(student.id, absensiInPeriod, student.kelasId);
-
-    const metrics = computeProgresStudentMetrics({
-      student,
-      ujianRows: studentUjian,
-      kaiwaRows: studentKaiwa,
-      mensetsuRows: mensetsuInPeriod.filter((m) => m.pesertaId === student.id),
-      sikapSummary,
-      absensiStats: studentAbsensiStat,
-      kkmUjian: settings.kkm_ujian,
-      batasGrade: settings.batas_grade,
+  const semuaPeserta = (state.peserta || [])
+    .filter((p) => !p.deletedAt)
+    .map((student) => {
+      const kelas = student.kelasId ? kelasMap.get(student.kelasId) : null;
+      const anggotaKelas = Boolean(kelas) && (student.sumber || 'roster') === 'roster';
+      const journey = buildPesertaJourney({
+        pesertaId: student.id,
+        kelasId: student.kelasId,
+        ujianRows: state.nilaiUjian || [],
+        kaiwaRows: state.nilaiKaiwa || [],
+        mensetsuRows: state.nilaiMensetsu || [],
+        sikapRows,
+        absensiRows: state.absensi || [],
+        fisikRows: state.nilaiFisik || [],
+        settings,
+      });
+      const faktor = faktorKeseluruhan(journey, {
+        kaiwaCard: anggotaKelas
+          ? kaiwaCardRekap(kaiwaPerPeserta.get(student.id) || [], {
+              rule,
+              tanggalMasuk: student.tanggalMasuk || kelas.tanggalStart || null,
+              hariIni: mingguSelesai,
+            })
+          : null,
+        latihan: anggotaKelas ? latihanMap.get(Number(student.id)) || null : null,
+        batasGrade,
+      });
+      const kualitas = (grades) => kualitasSesi(grades, batasGrade);
+      return {
+        pesertaId: Number(student.id),
+        mancationAkunId: Number(student.mancationAkunId),
+        nama: nameMap.get(Number(student.mancationAkunId)) || student.nama || `Peserta #${student.mancationAkunId}`,
+        kelasId: student.kelasId ? Number(student.kelasId) : null,
+        namaKelas: kelas ? kelas.namaKelas : student.sumber === 'manual' ? 'Peserta Luar Kelas' : '-',
+        sumber: student.sumber || 'roster',
+        keteranganLuarKelas: student.keteranganLuarKelas || null,
+        statusTag: student.statusTag || 'standar',
+        isSiapInterview: student.statusTag === 'siap_interview',
+        rataUjian: journey.kpi.rataUjian,
+        predikatUjian: journey.kpi.rataUjian === null ? null : journey.kpi.gradeUjian,
+        lulusKkmUjian: journey.kpi.lulusKkmUjian,
+        jumlahUjian: journey.kpi.jumlahUjian,
+        trenUjian: journey.ujian.tren?.selisih ?? null,
+        kualitasKaiwa: kualitas(journey.kaiwa.daftar.map((k) => k.grade)),
+        kualitasMensetsu: kualitas(journey.mensetsu.daftar.map((m) => m.grade)),
+        skorSikap: journey.kpi.skorSikap,
+        predikatSikap: journey.kpi.skorSikap === null ? null : journey.kpi.predikatSikap,
+        lulusKkmSikap: journey.kpi.lulusKkmSikap,
+        rasioKehadiran: journey.absensi.rasio,
+        hadir: journey.absensi.hadir,
+        sesi: journey.absensi.sesi,
+        kaiwaCard: faktor.kaiwaCard,
+        latihan: faktor.latihan,
+        fisik: faktor.fisik,
+        nilaiAkhir: hitungNilaiAkhir(faktor, aturan, batasGrade),
+      };
     });
 
-    const k = student.kelasId ? kelasMap.get(student.kelasId) : null;
-    pesertaList.push({
-      ...metrics,
-      nama: student.nama,
-      namaKelas: k ? k.namaKelas : (student.sumber === 'manual' ? 'Peserta Luar Kelas' : '-'),
-      sumber: student.sumber || 'roster',
-      keteranganLuarKelas: student.keteranganLuarKelas || null,
-    });
-  }
+  const mean1 = (values) => {
+    const nums = values.filter((v) => v !== null && v !== undefined && Number.isFinite(Number(v)));
+    return nums.length ? Math.round((nums.reduce((a, b) => a + Number(b), 0) / nums.length) * 10) / 10 : null;
+  };
+  const kelasSummaryList = activeClasses
+    .map((k) => {
+      const anggota = semuaPeserta.filter((p) => p.kelasId === k.id);
+      const tagCounts = { standar: 0, berkembang: 0, siap_interview: 0 };
+      for (const p of anggota) tagCounts[tagCounts[p.statusTag] !== undefined ? p.statusTag : 'standar'] += 1;
+      const tambah = (key) =>
+        anggota.reduce(
+          (acc, p) => ({ A: acc.A + p[key].distribusi.A, B: acc.B + p[key].distribusi.B, C: acc.C + p[key].distribusi.C }),
+          { A: 0, B: 0, C: 0 }
+        );
+      const sesi = anggota.reduce((n, p) => n + p.sesi, 0);
+      const hadir = anggota.reduce((n, p) => n + p.hadir, 0);
+      const nilaiAkhirDist = { A: 0, B: 0, C: 0, D: 0 };
+      for (const p of anggota) if (p.nilaiAkhir.grade) nilaiAkhirDist[p.nilaiAkhir.grade] += 1;
+      return {
+        kelasId: k.id,
+        namaKelas: k.namaKelas,
+        senseiNama: staffMap.get(k.senseiId)?.nama || '-',
+        jumlahPeserta: anggota.length,
+        tagCounts,
+        rataUjian: mean1(anggota.map((p) => p.rataUjian)),
+        rataSikap: mean1(anggota.map((p) => p.skorSikap)),
+        rasioKehadiran: sesi > 0 ? Math.round((hadir / sesi) * 1000) / 10 : null,
+        kualitasKaiwa: mean1(anggota.map((p) => p.kualitasKaiwa.nilai)),
+        kaiwaDistribusi: tambah('kualitasKaiwa'),
+        mensetsuDistribusi: tambah('kualitasMensetsu'),
+        nilaiAkhir: { rata: mean1(anggota.map((p) => p.nilaiAkhir.nilai)), distribusi: nilaiAkhirDist },
+      };
+    })
+    // An empty class (left over from a new class formation) has nothing to sum up.
+    .filter((k) => k.jumlahPeserta > 0);
 
-  const kandidatInterviewCount = activePeserta.filter((p) => p.statusTag === 'siap_interview').length;
+  let pesertaList = semuaPeserta;
+  if (kelasId) pesertaList = pesertaList.filter((p) => p.kelasId === Number(kelasId));
+  if (tag) pesertaList = pesertaList.filter((p) => p.statusTag === tag);
 
   return {
-    periode: activeMonth,
     kelasSummary: kelasSummaryList,
     pesertaList,
-    kandidatInterviewCount,
+    kandidatInterviewCount: semuaPeserta.filter((p) => p.statusTag === 'siap_interview').length,
+    aturanNilaiAkhir: { ...aturan, batasGrade, poinGradeSesi: poinGrade(batasGrade), minFaktor: MIN_FAKTOR },
     settings,
   };
 }
@@ -735,22 +737,30 @@ export async function exportAkademikData({ tipe = 'progres', periode, kelasId, l
   }
 
   if (tipe === 'progres') {
-    const data = await getProgresData({ periode: activeMonth, kelasId });
+    // The whole journey of every peserta, as on Progres Peserta (not one month).
+    const data = await getProgresData({ kelasId });
     const headers = isJa
-      ? ['ID', '氏名', 'クラス', '試験平均', '試験判定', '会話直近', '面接練習直近', '態度スコア', '態度判定', '出席率(%)', 'ステータスタグ']
-      : ['ID', 'Nama Peserta', 'Kelas', 'Rata-rata Ujian', 'Predikat Ujian', 'Grade Kaiwa Terakhir', 'Grade Mensetsu Terakhir', 'Skor Sikap', 'Predikat Sikap', 'Rasio Kehadiran (%)', 'Status Tag'];
+      ? ['ID', '氏名', 'クラス', '総合点', '総合評価', '試験平均', '試験判定', '会話の質', '会話回数', '面接練習の質', '面接練習回数', '態度スコア', '出席率(%)', '会話カード達成率(%)', '練習評価点', '体力評価', 'ステータスタグ']
+      : ['ID', 'Nama Peserta', 'Kelas', 'Nilai Akhir', 'Grade Akhir', 'Rata-rata Ujian', 'Predikat Ujian', 'Kualitas Kaiwa', 'Sesi Kaiwa', 'Kualitas Mensetsu', 'Sesi Mensetsu', 'Skor Sikap', 'Rasio Kehadiran (%)', 'Kaiwa Card (%)', 'Nilai Grade Latihan', 'Nilai Fisik', 'Status Tag'];
+    const atau = (v) => (v === null || v === undefined ? '-' : v);
 
     const rows = data.pesertaList.map((p) => [
       p.mancationAkunId || p.pesertaId,
       p.nama,
       p.namaKelas,
-      p.rataUjian !== null ? p.rataUjian : '-',
-      p.predikatUjian || '-',
-      p.gradeKaiwaTerakhir || '-',
-      p.gradeMensetsuTerakhir || '-',
-      p.skorSikap,
-      p.predikatSikap,
-      p.rasioKehadiran !== null ? p.rasioKehadiran + '%' : '-',
+      atau(p.nilaiAkhir.nilai),
+      atau(p.nilaiAkhir.grade),
+      atau(p.rataUjian),
+      atau(p.predikatUjian),
+      p.kualitasKaiwa.nilai === null ? '-' : `${p.kualitasKaiwa.nilai} (${p.kualitasKaiwa.grade})`,
+      p.kualitasKaiwa.jumlah,
+      p.kualitasMensetsu.nilai === null ? '-' : `${p.kualitasMensetsu.nilai} (${p.kualitasMensetsu.grade})`,
+      p.kualitasMensetsu.jumlah,
+      atau(p.skorSikap),
+      atau(p.rasioKehadiran),
+      atau(p.kaiwaCard?.nilai),
+      atau(p.latihan?.nilai),
+      atau(p.fisik?.nilai),
       p.statusTag,
     ]);
 
@@ -759,7 +769,7 @@ export async function exportAkademikData({ tipe = 'progres', periode, kelasId, l
     const csvContent = [headerLine, ...rowLines].join('\n');
 
     return {
-      filename: 'JOYdata-Progres-' + activeMonth + '.csv',
+      filename: 'JOYdata-Progres-' + todayJakarta() + '.csv',
       content: csvContent,
       mimeType: 'text/csv; charset=utf-8',
     };
