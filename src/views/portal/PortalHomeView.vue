@@ -77,6 +77,18 @@
       </ul>
     </section>
 
+    <!-- Latest sikap notes, for the peserta to evaluate themselves -->
+    <section class="joy-surface p-5">
+      <div class="flex items-center justify-between mb-1">
+        <h2 class="text-base font-bold text-slate-900 font-display">{{ $t('portal.sikapCatatan') }}</h2>
+        <router-link v-if="sikapTerbaru.length" to="/portal/sikap" class="text-xs font-semibold text-primary hover:underline">
+          {{ $t('portal.lihatSemuaN', { n: report.sikap.daftar.length }) }}
+        </router-link>
+      </div>
+      <p v-if="!sikapTerbaru.length" class="text-sm text-slate-500 pt-1">{{ $t('portal.sikapKosong', { basis: report.settings.sikap_basis }) }}</p>
+      <CatatanSikapList v-else :items="sikapTerbaru" />
+    </section>
+
     <!-- Documents -->
     <section class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <router-link
@@ -105,6 +117,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { usePortalSession, usePortalFormat } from '../../services/portalSession.js';
 import KaiwaCard from '../../components/portal/KaiwaCard.vue';
+import CatatanSikapList from '../../components/portal/CatatanSikapList.vue';
 
 const DOKUMEN = [
   { key: 'rapor', to: '/portal/rapor', icon: 'mdi-file-certificate-outline' },
@@ -116,4 +129,5 @@ const { report } = usePortalSession();
 const { num, tanggal } = usePortalFormat();
 
 const ujianTerbaru = computed(() => [...(report.value?.ujian.daftar || [])].reverse().slice(0, 3));
+const sikapTerbaru = computed(() => [...(report.value?.sikap.daftar || [])].reverse().slice(0, 3));
 </script>

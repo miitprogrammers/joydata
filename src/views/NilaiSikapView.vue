@@ -397,9 +397,10 @@
             v-model="form.description"
             rows="2"
             :label="$t('sikap.colCatatan')"
+            :hint="$t('sikap.catatanHint')"
+            persistent-hint
             variant="outlined"
             density="comfortable"
-            hide-details="auto"
           />
         </v-card-text>
         <div class="px-6 py-3 border-t border-slate-200 flex justify-end gap-2">

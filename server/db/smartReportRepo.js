@@ -305,8 +305,10 @@ export async function getSmartReportKelas({ kelasId }) {
 
 // ---------------------------------------------------------------------------------------------------------
 // Peserta portal. Everything here is the peserta's own data only, without what is internal to staff: status tag,
-// catatan bebas, free-text sikap notes, absensi notes, staff notes in exam catatan, who typed a record in, and
-// every other peserta's name or score (the ranking is only the peserta's own position and class averages).
+// catatan bebas, absensi notes, staff notes in exam catatan, who typed a record in, and every other peserta's
+// name or score (the ranking is only the peserta's own position and class averages). The sensei's note on each
+// sikap record is not internal: peserta read it on the dashboard to evaluate themselves, and the Nilai Sikap
+// form tells sensei so.
 
 function portalSettings(s) {
   return {
@@ -383,7 +385,7 @@ export async function getPortalReport(pesertaId) {
     kaiwa: { ...journey.kaiwa, daftar: kaiwaDaftar },
     kaiwaCard: portalKaiwaCard(ctx, kaiwaDaftar, tanggalMasuk),
     mensetsu: { ...journey.mensetsu, daftar: portalMensetsuDaftar(ctx, journey.mensetsu.daftar) },
-    sikap: { daftar: journey.sikap.daftar.map(({ keterangan, ...rest }) => rest) },
+    sikap: { daftar: journey.sikap.daftar },
     absensi: journey.absensi,
     bulanan: journey.bulanan,
     tidakHadir: (ctx.state.absensi || [])

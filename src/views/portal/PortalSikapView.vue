@@ -31,33 +31,19 @@
     </section>
 
     <section v-if="catatan.length" class="joy-surface p-5">
-      <h2 class="text-base font-bold text-slate-900 font-display mb-2">{{ $t('portal.sikapCatatanSemua') }}</h2>
-      <ul class="divide-y divide-slate-100">
-        <li v-for="s in catatan" :key="s.id" class="py-2 flex items-center gap-2 text-sm">
-          <v-icon
-            :icon="s.sentiment === 'positif' ? 'mdi-thumb-up-outline' : 'mdi-alert-circle-outline'"
-            :color="s.sentiment === 'positif' ? 'success' : 'warning'"
-            size="16"
-          />
-          <span class="text-slate-800 min-w-0">{{ locale === 'ja' ? s.kategoriNamaJa : s.kategoriNamaId }}</span>
-          <span class="ml-auto shrink-0 tabular-nums text-xs font-semibold" :class="s.sentiment === 'positif' ? 'text-emerald-700' : 'text-red-600'">
-            {{ s.sentiment === 'positif' ? '+' : '−' }}{{ num(s.bobot) }}
-          </span>
-          <span class="w-24 text-right shrink-0 text-xs text-slate-500">{{ tanggal(s.tanggal) }}</span>
-        </li>
-      </ul>
+      <h2 class="text-base font-bold text-slate-900 font-display mb-1">{{ $t('portal.sikapCatatanSemua') }}</h2>
+      <CatatanSikapList :items="catatan" />
     </section>
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
 import { usePortalSession, usePortalFormat } from '../../services/portalSession.js';
+import CatatanSikapList from '../../components/portal/CatatanSikapList.vue';
 
-const { locale } = useI18n();
 const { report } = usePortalSession();
-const { num, tanggal, bulan } = usePortalFormat();
+const { num, bulan } = usePortalFormat();
 
 // Months without any attitude record only carry the basis score, so they are left out.
 const sikapBulan = computed(() => report.value.bulanan.filter((b) => b.sikap.positif + b.sikap.negatif > 0).reverse());

@@ -679,6 +679,7 @@ export default {
     colCatatan: '講師コメント',
     colPenilai: '記録者',
     bobotHint: '正の数値で保存され、区分に応じて＋／−が計算されます。',
+    catatanHint: '受講生は受講生ポータルでこのコメントを読み、自己評価に使います。',
     confirmDelete: 'この態度評価ログを削除しますか？',
   },
   absensi: {
@@ -1268,6 +1269,7 @@ export default {
     },
     ujianTerbaru: '最近の試験',
     lihatSemua: 'すべて見る',
+    lihatSemuaN: 'すべて見る（{n}件）',
     rataKelasPersen: 'クラス平均 {nilai}%',
     sikapPenjelasan: '毎月{basis}点から始まり、良い記録で加点、改善が必要な記録で減点されます。合格基準（KKM）は{kkm}点です。',
     sikapKosong: '態度の記録はまだありません。月の点数は{basis}点のままです。',
