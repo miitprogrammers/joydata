@@ -65,10 +65,10 @@ import {
   getSystemSettings,
   updateSystemSettings,
   resetSystemSettings,
-  getDashboardChartsData,
   exportAkademikData,
   getReportOptions,
 } from './db/fase3Repo.js';
+import { getDashboardData } from './db/dashboardRepo.js';
 import {
   getVapidPublicKey,
   getPushSubscriptionStatus,
@@ -1321,11 +1321,10 @@ export function createApiRouter() {
     }
   });
 
-  // Fase 3 Endpoints: Dashboard Enriched Charts Data (§11 mainIdea.md)
-  router.get('/dashboard/charts', requireAuth, requirePageAccess('dashboard'), async (req, res) => {
+  // Dashboard: today, this month against last month, exams, practice, classes side by side, peserta needing attention
+  router.get('/dashboard/ringkasan', requireAuth, requirePageAccess('dashboard'), async (_req, res) => {
     try {
-      const charts = await getDashboardChartsData({ periode: req.query.periode });
-      return res.json(charts);
+      return res.json(await getDashboardData());
     } catch (err) {
       return handleRouteError(res, err);
     }

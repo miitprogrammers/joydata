@@ -19,6 +19,7 @@ import {
   terapkanDetak,
   statusSesi,
   rentangPeriode,
+  awalPeriode,
   statistikLatihan,
   tanggalWib,
 } from '../domain/aktivitasLatihan.js';
@@ -495,6 +496,32 @@ export async function getLatihanHariIni(pesertaId) {
   const sesi = await querySesiLatihan({ pesertaId, sejak: dari, sebelum: sampai });
   const [r] = statistikLatihan(sesi, [pesertaId], { dari, sampai });
   return { tanggal, detikAktif: r.detikAktif, perJenis: r.perJenis };
+}
+
+/** pesertaId → time of the last signal of a session with active practice (ISO), for everyone who ever practised. */
+async function queryLatihanTerakhir() {
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `SELECT peserta_id AS "pesertaId", MAX(terakhir_at) AS "terakhirAt" FROM latihan_sesi WHERE detik_aktif > 0 GROUP BY peserta_id`
+    );
+    return Object.fromEntries(res.rows.map((r) => [Number(r.pesertaId), iso(r.terakhirAt)]));
+  }
+  const terakhir = {};
+  for (const s of readLocalState().latihanSesi || []) {
+    if (!(s.detikAktif > 0)) continue;
+    if (!terakhir[s.pesertaId] || s.terakhirAt > terakhir[s.pesertaId]) terakhir[s.pesertaId] = s.terakhirAt;
+  }
+  return terakhir;
+}
+
+/**
+ * Practice for the staff dashboard: the sessions started in the last `hari` days (WIB, today included) and each
+ * peserta's last practice ever. The dashboard sums them up (domain/dashboard.js).
+ */
+export async function getAktivitasLatihanDashboard({ hari = 14 } = {}) {
+  await ensureInitialized();
+  const [sesi, terakhir] = await Promise.all([querySesiLatihan({ sejak: awalPeriode(hari) }), queryLatihanTerakhir()]);
+  return { sesi, terakhir };
 }
 
 /** One peserta: totals for the period, recent sessions and flashcard progress with the hardest cards. */
