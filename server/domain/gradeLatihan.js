@@ -56,6 +56,29 @@ export function hariDihitung({ dari = null, mulaiData = null, tanggalMasuk = nul
   return Math.round((utc(sampai) - utc(awal)) / 86_400_000) + 1;
 }
 
+/**
+ * The history rows (server order = ranking by active time, each with `peringkat` and `grade`) in the order chosen
+ * on Monitor Latihan: kolom 'waktu' or 'grade', arah 'turun' = best first or 'naik' = lowest first. Each row gets
+ * `peringkatTampil`, its rank in the chosen column (1 = best) also when the list runs lowest first; peserta
+ * without practice have none ('-'). By grade, equal Nilai share a rank and the more active peserta goes first;
+ * a row without a grade (started after the period) stays at the bottom either way.
+ */
+export function urutkanRiwayatLatihan(items, { kolom = 'waktu', arah = 'turun' } = {}) {
+  const f = arah === 'naik' ? -1 : 1;
+  if (kolom !== 'grade') {
+    const rows = items.map((r) => ({ ...r, peringkatTampil: r.detikAktif ? r.peringkat : '-' }));
+    return f === 1 ? rows : rows.reverse();
+  }
+  const nilai = (r) => r.grade?.nilai ?? null;
+  const dinilai = items.filter((r) => r.detikAktif && nilai(r) !== null).map(nilai).sort((a, b) => b - a);
+  return items
+    .map((r) => ({ ...r, peringkatTampil: r.detikAktif && nilai(r) !== null ? dinilai.indexOf(nilai(r)) + 1 : '-' }))
+    .sort((a, b) => {
+      if (nilai(a) === null || nilai(b) === null) return (nilai(a) === null) - (nilai(b) === null);
+      return f * (nilai(b) - nilai(a)) || f * (a.peringkat - b.peringkat);
+    });
+}
+
 function predikat(nilai, batas) {
   if (nilai >= (batas?.A ?? 90)) return 'A';
   if (nilai >= (batas?.B ?? 75)) return 'B';

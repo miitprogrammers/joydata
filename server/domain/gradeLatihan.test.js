@@ -6,6 +6,7 @@ import {
   normalizeGradeLatihanSettings,
   hariDihitung,
   hitungGradeLatihan,
+  urutkanRiwayatLatihan,
 } from './gradeLatihan.js';
 
 const batas = { A: 90, B: 75, C: 60 };
@@ -74,4 +75,38 @@ test('Settings: defaults fill gaps; Pengaturan accepts whole numbers in range on
   assert.equal(normalizeGradeLatihanSettings({ targetMenitHarian: 60, bobotWaktu: 101 }).ok, false);
   assert.equal(normalizeGradeLatihanSettings({ targetMenitHarian: 60.5, bobotWaktu: 50 }).ok, false);
   assert.equal(normalizeGradeLatihanSettings({ targetMenitHarian: 601, bobotWaktu: 50 }).ok, false);
+});
+
+// Server order = ranking by active time.
+const baris = [
+  { pesertaId: 1, peringkat: 1, detikAktif: 9000, grade: { nilai: 88, grade: 'B' } },
+  { pesertaId: 2, peringkat: 2, detikAktif: 6000, grade: { nilai: 95, grade: 'A' } },
+  { pesertaId: 3, peringkat: 3, detikAktif: 3000, grade: { nilai: 95, grade: 'A' } },
+  { pesertaId: 4, peringkat: 4, detikAktif: 1200, grade: { nilai: 61, grade: 'C' } },
+  { pesertaId: 5, peringkat: 5, detikAktif: 0, grade: { nilai: 0, grade: 'D' } },
+  { pesertaId: 6, peringkat: 6, detikAktif: 0, grade: { nilai: null, grade: null } },
+];
+const ids = (rows) => rows.map((r) => r.pesertaId);
+const ranks = (rows) => rows.map((r) => r.peringkatTampil);
+
+test('Order by active time: the server order, reversed for lowest first, rank stays the time rank', () => {
+  assert.deepEqual(ids(urutkanRiwayatLatihan(baris)), [1, 2, 3, 4, 5, 6]);
+  assert.deepEqual(ranks(urutkanRiwayatLatihan(baris)), [1, 2, 3, 4, '-', '-']);
+  const naik = urutkanRiwayatLatihan(baris, { kolom: 'waktu', arah: 'naik' });
+  assert.deepEqual(ids(naik), [6, 5, 4, 3, 2, 1]);
+  assert.deepEqual(ranks(naik), ['-', '-', 4, 3, 2, 1]);
+});
+
+test('Order by grade: highest Nilai first, equal Nilai share a rank and the more active goes first', () => {
+  const turun = urutkanRiwayatLatihan(baris, { kolom: 'grade', arah: 'turun' });
+  assert.deepEqual(ids(turun), [2, 3, 1, 4, 5, 6]);
+  assert.deepEqual(ranks(turun), [1, 1, 3, 4, '-', '-']);
+});
+
+test('Order by grade, lowest first: reversed with the same ranks, a row without a grade stays last', () => {
+  const naik = urutkanRiwayatLatihan(baris, { kolom: 'grade', arah: 'naik' });
+  assert.deepEqual(ids(naik), [5, 4, 1, 3, 2, 6]);
+  assert.deepEqual(ranks(naik), ['-', 4, 3, 1, 1, '-']);
+  // The rows themselves are not changed.
+  assert.equal(baris[0].peringkatTampil, undefined);
 });

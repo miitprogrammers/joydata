@@ -120,9 +120,9 @@
       </div>
     </div>
 
-    <!-- Practice per peserta, most diligent first -->
+    <!-- Practice per peserta, most diligent (or best grade) first -->
     <div v-else class="joy-surface overflow-hidden">
-      <div class="px-5 py-3 border-b border-slate-200 text-xs text-slate-500">{{ $t('monitorLatihan.urutanInfo') }}</div>
+      <div class="px-5 py-3 border-b border-slate-200 text-xs text-slate-500">{{ teksUrutan }}</div>
       <details v-if="aturanGrade" class="px-5 py-2.5 border-b border-slate-200 text-xs text-slate-600">
         <summary class="cursor-pointer select-none font-semibold text-primary">{{ $t('monitorLatihan.gradeRumusJudul') }}</summary>
         <ul class="mt-2 space-y-1.5 max-w-3xl leading-relaxed">
@@ -137,18 +137,28 @@
             <tr>
               <th class="px-5 py-3 w-12">#</th>
               <th class="px-4 py-3">{{ $t('monitorLatihan.colPeserta') }}</th>
-              <th class="px-4 py-3">{{ $t('monitorLatihan.colWaktuAktif') }}</th>
+              <th class="px-4 py-3" :aria-sort="ariaUrut('waktu')">
+                <button type="button" class="inline-flex items-center gap-1 hover:text-slate-900" :title="$t('monitorLatihan.klikUrut')" @click="urutkan('waktu')">
+                  {{ $t('monitorLatihan.colWaktuAktif') }}
+                  <v-icon :icon="ikonUrut('waktu')" size="14" :class="urutan.kolom === 'waktu' ? 'text-primary' : 'text-slate-300'" />
+                </button>
+              </th>
               <th v-if="!satuHari" class="px-4 py-3 text-right">{{ $t('monitorLatihan.colHari') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSesi') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colKartu') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSoal') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSkor') }}</th>
-              <th class="px-4 py-3">{{ $t('monitorLatihan.colGrade') }}</th>
+              <th class="px-4 py-3" :aria-sort="ariaUrut('grade')">
+                <button type="button" class="inline-flex items-center gap-1 hover:text-slate-900" :title="$t('monitorLatihan.klikUrut')" @click="urutkan('grade')">
+                  {{ $t('monitorLatihan.colGrade') }}
+                  <v-icon :icon="ikonUrut('grade')" size="14" :class="urutan.kolom === 'grade' ? 'text-primary' : 'text-slate-300'" />
+                </button>
+              </th>
               <th class="px-5 py-3 text-right">{{ $t('monitorLatihan.colTerakhir') }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="r in statItems" :key="r.pesertaId" class="cursor-pointer hover:bg-slate-50" @click="bukaPeserta(r.pesertaId)">
+            <tr v-for="r in statTampil" :key="r.pesertaId" class="cursor-pointer hover:bg-slate-50" @click="bukaPeserta(r.pesertaId)">
               <td class="px-5 py-2.5 text-sm font-semibold tabular-nums" :class="r.detikAktif ? 'text-slate-900' : 'text-slate-300'">{{ r.peringkatTampil }}</td>
               <td class="px-4 py-2.5">
                 <div class="flex items-center gap-3 min-w-0">
@@ -292,6 +302,7 @@ import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
 import { useAppStore } from '../stores/appStore.js';
 import PesertaFoto from '../components/PesertaFoto.vue';
+import { urutkanRiwayatLatihan } from '@/server/domain/gradeLatihan.js';
 
 const { t, locale } = useI18n();
 const appStore = useAppStore();
@@ -320,6 +331,20 @@ const statItems = ref([]);
 const statLoading = ref(false);
 // Target, weight, grade bands and the first logged day behind the Grade column (server/domain/gradeLatihan.js).
 const aturanGrade = ref(null);
+
+// Order of the history table: kolom 'waktu' = the server's ranking by active time, 'grade' = by Nilai; arah 'turun'
+// = best first, 'naik' = lowest first. A per-browser convenience, so storage may fail without harm.
+const KUNCI_URUTAN = 'joydata_monitor_latihan_urutan';
+function bacaUrutan() {
+  try {
+    const v = JSON.parse(localStorage.getItem(KUNCI_URUTAN) || 'null');
+    if (['waktu', 'grade'].includes(v?.kolom) && ['turun', 'naik'].includes(v?.arah)) return v;
+  } catch {
+    // no storage: default order
+  }
+  return { kolom: 'waktu', arah: 'turun' };
+}
+const urutan = ref(bacaUrutan());
 
 const detailOpen = ref(false);
 const detailLoading = ref(false);
@@ -403,6 +428,36 @@ const rincianJenis = (r) =>
     `${t('monitorLatihan.jenisDokkai')} ${durasiJam(r.perJenis.dokkai)}`,
   ].join(' · ');
 
+// --- ordering of the history table ---------------------------------------------------------------------------------
+
+/** A sortable header clicked: the same column flips the direction, another column starts best first. */
+function urutkan(kolom) {
+  const { kolom: sekarang, arah } = urutan.value;
+  urutan.value = { kolom, arah: kolom === sekarang && arah === 'turun' ? 'naik' : 'turun' };
+  try {
+    localStorage.setItem(KUNCI_URUTAN, JSON.stringify(urutan.value));
+  } catch {
+    // not remembered, still sorted
+  }
+}
+const ikonUrut = (kolom) =>
+  urutan.value.kolom !== kolom ? 'mdi-swap-vertical' : urutan.value.arah === 'turun' ? 'mdi-arrow-down' : 'mdi-arrow-up';
+const ariaUrut = (kolom) => (urutan.value.kolom !== kolom ? 'none' : urutan.value.arah === 'turun' ? 'descending' : 'ascending');
+
+// The rows in the chosen order, # = rank in the chosen column (server/domain/gradeLatihan.js).
+const statTampil = computed(() => urutkanRiwayatLatihan(statItems.value, urutan.value));
+
+const teksUrutan = computed(() =>
+  [
+    t(urutan.value.kolom === 'grade' ? 'monitorLatihan.urutanGrade' : 'monitorLatihan.urutanWaktu'),
+    urutan.value.arah === 'naik' ? t('monitorLatihan.urutanTerendah') : '',
+    t('monitorLatihan.klikUrut'),
+    t('monitorLatihan.riwayatSejak'),
+  ]
+    .filter(Boolean)
+    .join(' ')
+);
+
 // --- Grade Latihan ---------------------------------------------------------------------------------------------------
 
 const satuDesimal = (v) =>
@@ -485,7 +540,7 @@ async function muatStatistik() {
     if (nomor !== muatKe) return;
     kelasOptions.value = res.kelasOptions || [];
     // Peserta without practice share the last place.
-    statItems.value = (res.items || []).map((r) => ({ ...r, peringkatTampil: r.detikAktif ? r.peringkat : '-' }));
+    statItems.value = res.items || [];
     aturanGrade.value = res.aturanGrade || null;
   } catch (err) {
     if (nomor === muatKe) notifyError(err);

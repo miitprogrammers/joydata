@@ -149,8 +149,11 @@ export default {
     diperbarui: 'Diperbarui otomatis · {jam}',
     liveKosong: 'Belum ada peserta yang sedang latihan.',
     riwayatKosong: 'Belum ada peserta di kelas ini.',
-    urutanInfo:
-      'Urutan: total waktu latihan aktif (layar menyala dan dipakai), lalu jumlah hari latihan. Riwayat tercatat sejak fitur ini aktif.',
+    urutanWaktu: 'Urutan: total waktu latihan aktif (layar menyala dan dipakai), lalu jumlah hari latihan.',
+    urutanGrade: 'Urutan: nilai grade, lalu waktu latihan aktif.',
+    urutanTerendah: 'Dari yang terendah.',
+    klikUrut: 'Klik judul kolom Waktu aktif atau Grade untuk mengurutkan, klik lagi untuk membalik.',
+    riwayatSejak: 'Riwayat tercatat sejak fitur ini aktif.',
     colPeserta: 'Peserta',
     colAktivitas: 'Aktivitas',
     colProgres: 'Progres',
