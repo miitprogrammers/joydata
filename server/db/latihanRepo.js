@@ -1,5 +1,6 @@
 import { ensureInitialized, getMode, getPool, readLocalState, saveLocalState } from './engine.js';
 import { listKelas } from './pesertaRepo.js';
+import { getSystemSettings } from './fase3Repo.js';
 import { mancationFotoUrl } from './mancation.js';
 import { formatPersonName } from '../domain/nameFormat.js';
 import {
@@ -19,7 +20,9 @@ import {
   statusSesi,
   rentangPeriode,
   statistikLatihan,
+  tanggalWib,
 } from '../domain/aktivitasLatihan.js';
+import { aturanGradeLatihan, hariDihitung, hitungGradeLatihan } from '../domain/gradeLatihan.js';
 
 const iso = (v) => (v ? new Date(v).toISOString() : null);
 
@@ -211,7 +214,7 @@ async function infoPeserta(ids = null) {
   if (getMode() === 'postgres') {
     const res = await getPool().query(
       `SELECT p.id, p.mancation_akun_id AS "akunId", p.kelas_id AS "kelasId", p.sumber, k.nama_kelas AS "namaKelas",
-              c.nama, c.foto_versi::float8 AS "fotoVersi"
+              c.nama, c.foto_versi::float8 AS "fotoVersi", COALESCE(p.tanggal_masuk, k.tanggal_start)::text AS "tanggalMasuk"
        FROM peserta p
        LEFT JOIN kelas k ON k.id = p.kelas_id AND k.deleted_at IS NULL
        LEFT JOIN mancation_peserta_cache c ON c.mancation_akun_id = p.mancation_akun_id
@@ -227,7 +230,16 @@ async function infoPeserta(ids = null) {
       .filter((p) => !pilih || pilih.has(p.id))
       .map((p) => {
         const c = cache.get(Number(p.mancationAkunId));
-        return { id: p.id, akunId: p.mancationAkunId, kelasId: p.kelasId, sumber: p.sumber, namaKelas: kelas.get(p.kelasId)?.namaKelas, nama: c?.nama, fotoVersi: c?.fotoVersi };
+        return {
+          id: p.id,
+          akunId: p.mancationAkunId,
+          kelasId: p.kelasId,
+          sumber: p.sumber,
+          namaKelas: kelas.get(p.kelasId)?.namaKelas,
+          nama: c?.nama,
+          fotoVersi: c?.fotoVersi,
+          tanggalMasuk: p.tanggalMasuk || kelas.get(p.kelasId)?.tanggalStart || null,
+        };
       });
   }
   return new Map(
@@ -240,6 +252,8 @@ async function infoPeserta(ids = null) {
         kelasId: r.kelasId ? Number(r.kelasId) : null,
         namaKelas: r.namaKelas || '',
         sumber: r.sumber,
+        // Start at the LPK (or of the class when it is not filled in): Grade Latihan counts days from here.
+        tanggalMasuk: r.tanggalMasuk ? String(r.tanggalMasuk).slice(0, 10) : null,
       },
     ])
   );
@@ -394,7 +408,33 @@ export async function simpanFlashcard(pesertaId, volume, body) {
 
 
 function denganPeserta(info, pesertaId) {
-  return info.get(pesertaId) || { pesertaId, nama: `Peserta #${pesertaId}`, fotoUrl: null, kelasId: null, namaKelas: '' };
+  return info.get(pesertaId) || { pesertaId, nama: `Peserta #${pesertaId}`, fotoUrl: null, kelasId: null, namaKelas: '', tanggalMasuk: null };
+}
+
+/** The WIB date of the first practice session ever logged (null without any): Grade Latihan never counts days before it. */
+async function mulaiDataLatihan() {
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(`SELECT MIN(mulai_at) AS "mulai" FROM latihan_sesi`);
+    return res.rows[0]?.mulai ? tanggalWib(res.rows[0].mulai) : null;
+  }
+  const mulai = (readLocalState().latihanSesi || []).map((s) => s.mulaiAt).filter(Boolean).sort();
+  return mulai.length ? tanggalWib(mulai[0]) : null;
+}
+
+/**
+ * What the Grade Latihan of a period is computed with (domain/gradeLatihan.js): the rules from Pengaturan, the grade
+ * bands, and per peserta the days they could practise, up to the chosen day or today (WIB).
+ */
+async function dasarGradeLatihan({ tanggal, dari }) {
+  const [settings, mulaiData] = await Promise.all([getSystemSettings(), mulaiDataLatihan()]);
+  const aturan = aturanGradeLatihan(settings);
+  const batasGrade = settings.batas_grade;
+  const rentang = { dari: dari ? tanggalWib(dari) : null, mulaiData, sampai: tanggal || tanggalWib(new Date()) };
+  return {
+    info: { ...aturan, batasGrade, mulaiData },
+    grade: (r, tanggalMasuk) =>
+      hitungGradeLatihan({ detikAktif: r.detikAktif, rataSkor: r.rataSkorLatihan }, hariDihitung({ ...rentang, tanggalMasuk }), aturan, batasGrade),
+  };
 }
 
 /** Everyone practising right now (last signal under a minute old), longest running first. */
@@ -420,10 +460,18 @@ export async function getStatistikLatihan(query = {}) {
   await ensureInitialized();
   const { periode, tanggal, dari, sampai } = rentangPeriode(query);
   const kelasId = query.kelasId && query.kelasId !== 'all' ? Number(query.kelasId) : null;
-  const [sesi, info, kelasData] = await Promise.all([querySesiLatihan({ sejak: dari, sebelum: sampai }), infoPeserta(), listKelas()]);
+  const [sesi, info, kelasData, dasar] = await Promise.all([
+    querySesiLatihan({ sejak: dari, sebelum: sampai }),
+    infoPeserta(),
+    listKelas(),
+    dasarGradeLatihan({ tanggal, dari }),
+  ]);
   const roster = [...info.values()].filter((p) => p.sumber === 'roster' && p.kelasId).map((p) => p.pesertaId);
   const rows = statistikLatihan(sesi, roster, { dari, sampai })
-    .map((r) => ({ ...r, ...denganPeserta(info, r.pesertaId) }))
+    .map((r) => {
+      const p = denganPeserta(info, r.pesertaId);
+      return { ...r, ...p, grade: dasar.grade(r, p.tanggalMasuk) };
+    })
     .filter((r) => !kelasId || r.kelasId === kelasId)
     .map((r, i) => ({ ...r, peringkat: i + 1 }));
   return {
@@ -432,6 +480,7 @@ export async function getStatistikLatihan(query = {}) {
     dari,
     sampai,
     items: rows,
+    aturanGrade: dasar.info,
     kelasOptions: kelasData.items.map((k) => ({ id: Number(k.id), namaKelas: k.namaKelas, status: k.status })),
   };
 }
@@ -455,9 +504,10 @@ export async function getRiwayatLatihanPeserta(pesertaIdRaw, query = {}) {
   const info = await infoPeserta([pesertaId]);
   if (!info.has(pesertaId)) throw new Error('NOT_FOUND');
   const { periode, tanggal, dari, sampai } = rentangPeriode(query);
-  const [semua, progres] = await Promise.all([
+  const [semua, progres, dasar] = await Promise.all([
     querySesiLatihan({ pesertaId, sejak: dari, sebelum: sampai }),
     queryProgresPeserta(pesertaId),
+    dasarGradeLatihan({ tanggal, dari }),
   ]);
   const now = new Date();
   const [ringkasan] = statistikLatihan(semua, [pesertaId], { dari, sampai });
@@ -478,7 +528,8 @@ export async function getRiwayatLatihanPeserta(pesertaIdRaw, query = {}) {
     peserta: info.get(pesertaId),
     periode,
     tanggal,
-    ringkasan,
+    ringkasan: { ...ringkasan, grade: dasar.grade(ringkasan, info.get(pesertaId).tanggalMasuk) },
+    aturanGrade: dasar.info,
     sesi: semua.slice(0, 200).map((s) => ({ ...s, status: statusSesi(s, now) })),
     flashcard,
   };

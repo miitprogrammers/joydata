@@ -26,6 +26,7 @@ import { mancationFotoUrl } from './mancation.js';
 import { urutkanPeringkat } from '../domain/smartReport.js';
 import { DEFAULT_KAIWA_TARGET, kaiwaRule, kaiwaCardRekap } from '../domain/kaiwaMingguan.js';
 import { DEFAULT_EVALUASI_FISIK, ringkasFisik } from '../domain/evaluasiFisik.js';
+import { DEFAULT_GRADE_LATIHAN } from '../domain/gradeLatihan.js';
 import { VAPID_SETTINGS_KEY } from './fase4Repo.js';
 import { listStaff } from './authStaffRepo.js';
 
@@ -45,6 +46,8 @@ export const DEFAULT_SETTINGS = {
   kaiwa_berlaku_mulai: '2026-10-26',
   // Evaluasi Fisik: benchmarks per gender, weights, KKM and track length (domain/evaluasiFisik.js).
   evaluasi_fisik: DEFAULT_EVALUASI_FISIK,
+  // Grade Latihan on Monitor Latihan: daily practice target in minutes and the weight of time (domain/gradeLatihan.js).
+  grade_latihan: DEFAULT_GRADE_LATIHAN,
 };
 
 export function getStudentNameMap(state) {
@@ -208,6 +211,7 @@ export async function updateSystemSettings(payload, actor) {
     kaiwa_sensei_wajib_id: dataLama.kaiwa_sensei_wajib_id,
     kaiwa_berlaku_mulai: dataLama.kaiwa_berlaku_mulai,
     evaluasi_fisik: dataLama.evaluasi_fisik,
+    grade_latihan: dataLama.grade_latihan,
     ...val.normalized,
   };
   if (dataBaru.kaiwa_sensei_wajib_id !== dataLama.kaiwa_sensei_wajib_id && dataBaru.kaiwa_sensei_wajib_id !== null) {

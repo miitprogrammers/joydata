@@ -5,6 +5,7 @@
 
 import { normalizeKaiwaRuleSettings } from './kaiwaMingguan.js';
 import { normalizeEvaluasiFisikSettings } from './evaluasiFisik.js';
+import { normalizeGradeLatihanSettings } from './gradeLatihan.js';
 
 export const VALID_STATUS_TAGS = ['standar', 'berkembang', 'siap_interview'];
 export const VALID_KETERANGAN_LUAR = ['keluar', 'alumni', 'cuti'];
@@ -730,6 +731,14 @@ export function validateSettingsPayload(input) {
     fisik = { evaluasi_fisik: checked.normalized };
   }
 
+  // Grade Latihan target and weight; kept as stored when a client leaves them out.
+  let gradeLatihan = {};
+  if (input?.grade_latihan !== undefined) {
+    const checked = normalizeGradeLatihanSettings(input.grade_latihan);
+    if (!checked.ok) return checked;
+    gradeLatihan = { grade_latihan: checked.normalized };
+  }
+
   return {
     ok: true,
     normalized: {
@@ -742,6 +751,7 @@ export function validateSettingsPayload(input) {
       periode_default: String(input?.periode_default || 'auto'),
       ...kaiwa,
       ...fisik,
+      ...gradeLatihan,
     },
   };
 }

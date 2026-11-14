@@ -200,6 +200,7 @@ function handleRouteError(res, err) {
     'FISIK_KOSONG',
     'FISIK_SUDAH_ADA',
     'INVALID_EVALUASI_FISIK',
+    'INVALID_GRADE_LATIHAN',
   ]);
   // The AI service (Gemini / OpenRouter) is missing, refused or failed: not the client's fault, worth retrying later.
   const serviceCodes = new Set([

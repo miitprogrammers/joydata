@@ -123,6 +123,12 @@
     <!-- Practice per peserta, most diligent first -->
     <div v-else class="joy-surface overflow-hidden">
       <div class="px-5 py-3 border-b border-slate-200 text-xs text-slate-500">{{ $t('monitorLatihan.urutanInfo') }}</div>
+      <details v-if="aturanGrade" class="px-5 py-2.5 border-b border-slate-200 text-xs text-slate-600">
+        <summary class="cursor-pointer select-none font-semibold text-primary">{{ $t('monitorLatihan.gradeRumusJudul') }}</summary>
+        <ul class="mt-2 space-y-1.5 max-w-3xl leading-relaxed">
+          <li v-for="b in barisRumus" :key="b.label"><span class="font-semibold text-slate-800">{{ b.label }}</span> = {{ b.teks }}</li>
+        </ul>
+      </details>
       <div v-if="statLoading && !statItems.length" class="p-6"><v-skeleton-loader type="table-row-divider@6" /></div>
       <div v-else-if="!statItems.length" class="p-8 text-center text-sm text-slate-500">{{ $t('monitorLatihan.riwayatKosong') }}</div>
       <div v-else class="overflow-x-auto">
@@ -137,6 +143,7 @@
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colKartu') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSoal') }}</th>
               <th class="px-4 py-3 text-right">{{ $t('monitorLatihan.colSkor') }}</th>
+              <th class="px-4 py-3">{{ $t('monitorLatihan.colGrade') }}</th>
               <th class="px-5 py-3 text-right">{{ $t('monitorLatihan.colTerakhir') }}</th>
             </tr>
           </thead>
@@ -166,7 +173,14 @@
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.jumlahSesi }}</td>
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.kartu }}</td>
               <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.soal }}</td>
-              <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ r.rataSkorLatihan === null ? '-' : r.rataSkorLatihan.toFixed(1) }}</td>
+              <td class="px-4 py-2.5 text-right text-sm tabular-nums">{{ satuDesimal(r.rataSkorLatihan) }}</td>
+              <td class="px-4 py-2.5 whitespace-nowrap" :title="r.grade?.grade ? rincianGrade(r.grade) : ''">
+                <span v-if="r.grade?.grade" class="inline-flex items-center gap-1.5">
+                  <span class="w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold" :class="warnaGrade(r.grade.grade)">{{ r.grade.grade }}</span>
+                  <span class="text-xs text-slate-500 tabular-nums">{{ satuDesimal(r.grade.nilai) }}</span>
+                </span>
+                <span v-else class="text-sm text-slate-400">-</span>
+              </td>
               <td class="px-5 py-2.5 text-right text-xs text-slate-500 whitespace-nowrap">{{ r.terakhirAt ? waktuPendek(r.terakhirAt) : $t('monitorLatihan.belumPernah') }}</td>
             </tr>
           </tbody>
@@ -197,6 +211,16 @@
               <div v-for="k in kotakRingkasan" :key="k.label" class="rounded-lg border border-slate-200 px-3 py-2.5">
                 <p class="text-[11px] text-slate-500">{{ k.label }}</p>
                 <p class="text-lg font-bold text-slate-900 tabular-nums">{{ k.nilai }}</p>
+              </div>
+            </div>
+
+            <div v-if="detail.ringkasan.grade?.grade" class="rounded-lg border border-slate-200 px-4 py-3 flex items-center gap-4">
+              <span class="w-11 h-11 rounded-full shrink-0 inline-flex items-center justify-center text-lg font-black" :class="warnaGrade(detail.ringkasan.grade.grade)">
+                {{ detail.ringkasan.grade.grade }}
+              </span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold text-slate-900">{{ $t('monitorLatihan.gradeNilai', { nilai: satuDesimal(detail.ringkasan.grade.nilai) }) }}</p>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">{{ rumusTerisi(detail.ringkasan.grade, detail.aturanGrade) }}</p>
               </div>
             </div>
 
@@ -248,7 +272,7 @@
                       <td class="px-3 py-2 text-right text-xs tabular-nums text-slate-600 whitespace-nowrap">
                         {{ s.jenis === 'flashcard' ? $t('monitorLatihan.nDigeser', { n: s.itemSelesai }) : `${s.itemSelesai}/${s.jumlahItem}` }}
                       </td>
-                      <td class="px-3 py-2 text-right tabular-nums">{{ s.skor === null ? '-' : s.skor.toFixed(1) }}</td>
+                      <td class="px-3 py-2 text-right tabular-nums">{{ satuDesimal(s.skor) }}</td>
                       <td class="px-4 py-2 text-xs whitespace-nowrap" :class="warnaStatus(s.status)">{{ $t(`monitorLatihan.status.${s.status}`) }}</td>
                     </tr>
                   </tbody>
@@ -294,6 +318,8 @@ let jamTimer = null;
 
 const statItems = ref([]);
 const statLoading = ref(false);
+// Target, weight, grade bands and the first logged day behind the Grade column (server/domain/gradeLatihan.js).
+const aturanGrade = ref(null);
 
 const detailOpen = ref(false);
 const detailLoading = ref(false);
@@ -377,6 +403,49 @@ const rincianJenis = (r) =>
     `${t('monitorLatihan.jenisDokkai')} ${durasiJam(r.perJenis.dokkai)}`,
   ].join(' · ');
 
+// --- Grade Latihan ---------------------------------------------------------------------------------------------------
+
+const satuDesimal = (v) =>
+  v === null || v === undefined ? '-' : new Intl.NumberFormat(locale.value === 'ja' ? 'ja-JP' : 'id-ID', { maximumFractionDigits: 1 }).format(v);
+const WARNA_GRADE = { A: 'bg-emerald-100 text-emerald-800', B: 'bg-blue-100 text-blue-800', C: 'bg-amber-100 text-amber-800', D: 'bg-red-100 text-red-700' };
+const warnaGrade = (g) => WARNA_GRADE[g] || 'bg-slate-100 text-slate-600';
+
+/** Hover text of a grade: minutes per day, the two scores and the result. */
+function rincianGrade(g) {
+  return t(g.skorNilai === null ? 'monitorLatihan.gradeRincianTanpaNilai' : 'monitorLatihan.gradeRincian', {
+    menit: satuDesimal(g.menitPerHari),
+    sw: satuDesimal(g.skorWaktu),
+    sn: satuDesimal(g.skorNilai),
+    nilai: satuDesimal(g.nilai),
+  });
+}
+
+/** The formula with one peserta's numbers filled in, for the detail popup. */
+function rumusTerisi(g, a) {
+  const isi = {
+    bw: a.bobotWaktu,
+    bn: 100 - a.bobotWaktu,
+    sw: satuDesimal(g.skorWaktu),
+    sn: satuDesimal(g.skorNilai),
+    menit: satuDesimal(g.menitPerHari),
+    hari: g.hari,
+    target: a.targetMenitHarian,
+  };
+  return t(g.skorNilai === null ? 'monitorLatihan.gradeTerisiTanpaNilai' : 'monitorLatihan.gradeTerisi', isi);
+}
+
+const barisRumus = computed(() => {
+  const a = aturanGrade.value;
+  if (!a) return [];
+  const mulai = a.mulaiData ? fmt({ day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(`${a.mulaiData}T12:00:00+07:00`)) : '-';
+  return [
+    { label: t('monitorLatihan.gradeWaktuLabel'), teks: t('monitorLatihan.gradeWaktuRumus', { target: a.targetMenitHarian, mulai }) },
+    { label: t('monitorLatihan.gradeNilaiLabel'), teks: t('monitorLatihan.gradeNilaiRumus') },
+    { label: t('monitorLatihan.gradeTotalLabel'), teks: t('monitorLatihan.gradeTotalRumus', { bw: a.bobotWaktu, bn: 100 - a.bobotWaktu }) },
+    { label: t('monitorLatihan.colGrade'), teks: t('monitorLatihan.gradeBatasRumus', { a: a.batasGrade?.A ?? 90, b: a.batasGrade?.B ?? 75, c: a.batasGrade?.C ?? 60 }) },
+  ];
+});
+
 const kotakRingkasan = computed(() => {
   const r = detail.value?.ringkasan;
   if (!r) return [];
@@ -417,6 +486,7 @@ async function muatStatistik() {
     kelasOptions.value = res.kelasOptions || [];
     // Peserta without practice share the last place.
     statItems.value = (res.items || []).map((r) => ({ ...r, peringkatTampil: r.detikAktif ? r.peringkat : '-' }));
+    aturanGrade.value = res.aturanGrade || null;
   } catch (err) {
     if (nomor === muatKe) notifyError(err);
   } finally {

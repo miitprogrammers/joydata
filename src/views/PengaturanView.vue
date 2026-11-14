@@ -328,6 +328,43 @@
             {{ $t('pengaturan.fisikBobotTotal', { n: totalBobotFisik }) }}
           </div>
         </div>
+
+        <!-- Card 6: Grade Latihan (Monitor Latihan history) -->
+        <div class="joy-surface p-6 space-y-4">
+          <div class="border-b border-slate-100 pb-3">
+            <h2 class="text-base font-bold text-slate-900 font-display">6. {{ $t('pengaturan.secGradeLatihan') }}</h2>
+            <p class="text-xs text-slate-500 mt-0.5">{{ $t('pengaturan.secGradeLatihanDesc') }}</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label for="set-latihan-target" class="block font-semibold text-slate-700 mb-1">{{ $t('pengaturan.gradeLatihanTarget') }}:</label>
+              <input
+                id="set-latihan-target"
+                v-model.number="form.grade_latihan.targetMenitHarian"
+                type="number"
+                min="1"
+                :max="BATAS_TARGET_MENIT"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">{{ $t('pengaturan.gradeLatihanTargetHelp') }}</span>
+            </div>
+            <div>
+              <label for="set-latihan-bobot" class="block font-semibold text-slate-700 mb-1">{{ $t('pengaturan.gradeLatihanBobot') }}:</label>
+              <input
+                id="set-latihan-bobot"
+                v-model.number="form.grade_latihan.bobotWaktu"
+                type="number"
+                min="0"
+                max="100"
+                class="joy-input w-full p-2.5 font-mono text-xs"
+              />
+              <span class="text-[11px] text-slate-500 mt-1 block">
+                {{ $t('pengaturan.gradeLatihanBobotHelp', { n: 100 - (Number(form.grade_latihan.bobotWaktu) || 0) }) }}
+              </span>
+            </div>
+          </div>
+        </div>
       </template>
     </div>
   </div>
@@ -339,6 +376,7 @@ import { useI18n } from 'vue-i18n';
 import { useAppStore } from '../stores/appStore.js';
 import { apiRequest } from '../services/api.js';
 import { ITEM_FISIK, aturanFisik } from '@/server/domain/evaluasiFisik.js';
+import { BATAS_TARGET_MENIT, aturanGradeLatihan } from '@/server/domain/gradeLatihan.js';
 
 const { t } = useI18n();
 const appStore = useAppStore();
@@ -366,6 +404,7 @@ const form = ref({
   kaiwa_berlaku_mulai: '' as string | null,
   // Evaluasi Fisik: every value filled (missing ones from the defaults), so the inputs always have a target.
   evaluasi_fisik: aturanFisik({}) as any,
+  grade_latihan: aturanGradeLatihan({}),
 });
 
 const totalBobotFisik = computed(() =>
@@ -406,6 +445,7 @@ async function loadSettings() {
       kaiwa_sensei_wajib_id: data.kaiwa_sensei_wajib_id ?? null,
       kaiwa_berlaku_mulai: data.kaiwa_berlaku_mulai ?? '',
       evaluasi_fisik: aturanFisik(data),
+      grade_latihan: aturanGradeLatihan(data),
     };
   } catch (err: any) {
     appStore.notify(err.message || 'Gagal memuat pengaturan', 'error');
@@ -425,6 +465,7 @@ async function saveSettings() {
       ...form.value,
       ...updated,
       evaluasi_fisik: aturanFisik(updated),
+      grade_latihan: aturanGradeLatihan(updated),
     };
     appStore.setSettings(updated);
     appStore.notify(t('pengaturan.berhasilDisimpan'), 'success');
@@ -447,6 +488,7 @@ async function confirmReset() {
       ...form.value,
       ...reset,
       evaluasi_fisik: aturanFisik(reset),
+      grade_latihan: aturanGradeLatihan(reset),
     };
     appStore.setSettings(reset);
     appStore.notify(t('pengaturan.berhasilDireset'), 'success');
