@@ -92,6 +92,7 @@ import {
   authenticatePeserta,
   changePesertaPassword,
   getPortalAccountStatus,
+  requestPesertaPasswordReset,
   resetPesertaPortalPassword,
   setPesertaPortalAktif,
 } from './db/portalRepo.js';
@@ -304,6 +305,19 @@ export function createApiRouter() {
       return res.json({ token: signPortalToken(session), peserta: session });
     } catch (err) {
       if (err.message === 'INVALID_CREDENTIALS') return res.status(401).json({ error: err.message });
+      if (err.message === 'PORTAL_ACCOUNT_LOCKED') return res.status(423).json({ error: err.message });
+      if (err.message === 'PORTAL_DISABLED') return res.status(403).json({ error: err.message });
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Lupa sandi mandiri: email + tanggal lahir, sandi kembali ke sandi awal (ddmmyy) dan wajib diganti saat masuk.
+  router.post('/portal/auth/forgot-password', async (req, res) => {
+    try {
+      const { email, tanggalLahir } = req.body || {};
+      return res.json(await requestPesertaPasswordReset(email, tanggalLahir));
+    } catch (err) {
+      if (err.message === 'INVALID_RESET_DATA') return res.status(400).json({ error: err.message });
       if (err.message === 'PORTAL_ACCOUNT_LOCKED') return res.status(423).json({ error: err.message });
       if (err.message === 'PORTAL_DISABLED') return res.status(403).json({ error: err.message });
       return handleRouteError(res, err);

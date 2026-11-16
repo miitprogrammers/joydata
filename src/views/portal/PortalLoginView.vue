@@ -68,6 +68,16 @@
             @click:append-inner="showPassword = !showPassword"
           />
 
+          <div class="-mt-2 flex justify-end">
+            <button
+              type="button"
+              class="text-xs font-medium text-primary hover:underline"
+              @click="lupaSandiOpen = true"
+            >
+              {{ $t('portal.lupaSandi') }}
+            </button>
+          </div>
+
           <p v-if="errorMsg" class="text-xs font-medium text-red-700" role="alert">
             {{ errorMsg }}
           </p>
@@ -90,6 +100,8 @@
     <footer class="max-w-5xl w-full mx-auto text-center text-xs text-slate-400">
       JOYdata · LPK Mizuno Semangat Bangsa
     </footer>
+
+    <PortalForgotPasswordDialog v-model="lupaSandiOpen" :initial-email="email" @reset="onResetSandi" />
   </div>
 </template>
 
@@ -101,6 +113,7 @@ import { useLocale } from 'vuetify';
 import { useAppStore } from '../../stores/appStore.js';
 import { portalRequest, setPortalToken } from '../../services/portalApi.js';
 import LoginRoleSwitch from '../../components/LoginRoleSwitch.vue';
+import PortalForgotPasswordDialog from '../../components/portal/PortalForgotPasswordDialog.vue';
 
 const router = useRouter();
 const { t, te, locale } = useI18n();
@@ -112,6 +125,13 @@ const password = ref('');
 const showPassword = ref(false);
 const submitting = ref(false);
 const errorMsg = ref('');
+const lupaSandiOpen = ref(false);
+
+function onResetSandi(rawatEmail) {
+  email.value = rawatEmail;
+  password.value = '';
+  errorMsg.value = '';
+}
 
 function switchLang(next) {
   appStore.setLocale(next, { locale }, vuetifyLocale);

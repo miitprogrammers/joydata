@@ -202,6 +202,40 @@ export async function changePesertaPassword(pesertaId, oldPassword, newPassword)
   return toSession(updated);
 }
 
+/**
+ * Self-service forgot password: the peserta proves ownership with the Mancation email and the birth date, then
+ * the password goes back to the birth-date default (ddmmyy) and must be replaced on the next login. Failed
+ * attempts count toward the same 5-attempt/15-minute login lock, so the small birth-date space cannot be brute
+ * forced through this route.
+ */
+export async function requestPesertaPasswordReset(email, tanggalLahir) {
+  await ensureInitialized();
+  const account = await findAccountByEmail(normalizeEmail(email));
+  if (!account) {
+    await bcrypt.compare(String(tanggalLahir || ''), DUMMY_HASH);
+    throw new Error('INVALID_RESET_DATA');
+  }
+  if (account.terkunciSampai && new Date(account.terkunciSampai) > new Date()) throw new Error('PORTAL_ACCOUNT_LOCKED');
+  if (!account.aktif) throw new Error('PORTAL_DISABLED');
+
+  const awal = defaultPortalPassword(account.tanggalLahir);
+  if (awal === null) throw new Error('PORTAL_NO_BIRTH_DATE');
+  if (String(tanggalLahir || '').trim() !== awal) {
+    await recordFailedLogin(account);
+    throw new Error('INVALID_RESET_DATA');
+  }
+
+  await saveAccount(account.pesertaId, {
+    password_hash: null,
+    wajib_ganti_sandi: true,
+    gagal_login: 0,
+    terkunci_sampai: null,
+    versi_token: account.versiToken + 1,
+  });
+  await appendAudit(null, 'LUPA_SANDI_PORTAL', 'peserta', account.pesertaId, { email: account.email });
+  return { ok: true };
+}
+
 /** Staff view of a peserta's portal account (Data Peserta detail). */
 export async function getPortalAccountStatus(pesertaId) {
   await ensureInitialized();
