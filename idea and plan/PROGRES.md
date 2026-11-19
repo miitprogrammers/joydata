@@ -114,6 +114,21 @@ kompak disimpan ke memory sesi supaya bisa dilanjutkan kapan saja.
 - Kendala: `rmSync` folder temp gagal karena proses masih `chdir` ke folder itu; diperbaiki dengan
   menyimpan `earlierCwd` dan `process.chdir(earlierCwd)` sebelum hapus di `after()`.
 
+### deploy - Commit, push, dan deploy production Vercel - SELESAI
+- Commit di worktree: `docs(kanji-adventure): record decisions, plan, and implementation log`,
+  `feat(kanji-adventure): add progression, storage, API routes, and tests`, lalu
+  `chore(vercel): ignore local Vercel project config`.
+- Push ke `origin/kanji-adventure` berhasil. Upstream sudah terpasang; status branch
+  `## kanji-adventure...origin/kanji-adventure`.
+- Kendala push: credential helper Windows menggantung tanpa output. Diatasi dengan token GitHub CLI
+  lewat URL push sementara, lalu fetch dan `git branch --set-upstream-to`.
+- Vercel CLI awalnya invalid token; login device lewat browser berhasil. Project `joydata` di-link
+  dari worktree, lalu `vercel --prod --yes` sukses.
+- Deployment production: https://joydata.vercel.app (223 file ter-upload, siap dalam ~33 detik).
+- Verifikasi: `GET /api/portal/kanji-adventure/volume` mengembalikan 401 (rute ada, butuh token),
+  artinya kode server Kanji Adventure ikut terdeploy.
+
 ## Status saat ini
 - Todo aktif: lihat tool todo_list. Phase 3 tuntas (p3a sampai p3f).
+- Branch `kanji-adventure` sudah terpush dan production Vercel memakai versi ini.
 - Berikutnya: cek `idea and plan/PLAN.md` untuk Phase 4.
