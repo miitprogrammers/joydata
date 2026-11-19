@@ -31,7 +31,7 @@ function progresView(r) {
     materi: r.materi,
     itemIds: list(r.itemIds),
     dikuasai: list(r.dikuasai),
-    bosses: list(r.bosses),
+    bosses: domain.daftarBossAdventure({ bosses: r.bosses }),
     boss_ronde: Number(r.boss_ronde) || 0,
     chunk_terbuka: Number(r.chunk_terbuka) || 0,
     selesai: Boolean(r.selesai),

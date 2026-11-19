@@ -128,7 +128,90 @@ kompak disimpan ke memory sesi supaya bisa dilanjutkan kapan saja.
 - Verifikasi: `GET /api/portal/kanji-adventure/volume` mengembalikan 401 (rute ada, butuh token),
   artinya kode server Kanji Adventure ikut terdeploy.
 
+### f4d - Phase 4d: halaman peta + route + menu portal - SELESAI
+- File baru: `src/views/portal/KanjiAdventureMapView.vue` (244 baris) berisi peta 11 volume,
+  daftar chunk, tombol mulai latihan, dan tombol riwayat.
+- `src/router/index.js`: rute `/portal/kanji-adventure` dengan `meta.portalTitle`;
+  tes menemukan rute absolut, bukan lagi path relatif yang tertanam di `/portal`.
+- `src/i18n/index.js` dan `src/components/portal/PortalSidebar.vue`: menu `portal.menu.kanjiAdventure`
+  tersedia dalam bahasa Indonesia dan Inggris.
+- Bukti: `npm test` 130/130 pass (termasuk 4 test UI), `npm run lint` bersih, `npm run build` sukses.
+- Kendala: satu test awal gagal karena rute didefinisikan relatif; diperbaiki dengan path absolut.
+
+### f4e - Phase 4e: integrasi API dan blokir UI - SELESAI
+- `src/services/kanjiAdventure.js` memakai helper `apiFetch` yang sama dengan halaman lain,
+  membawa token dan menaikkan `ApiError` dengan kode server.
+- Halaman memanggil `fetchVolumes`, `fetchVolume`, `startSession`, `fetchRiwayat`, dan `submitNilai`;
+  tombol dinonaktifkan bila volume terkunci, chunk tidak tersedia, atau boss belum terbuka.
+- Error server (`VOLUME_TERKUNCI`, `CHUNK_TERKUNCI`, `AKSES_SESI_DITOLAK`, `SESI_TIDAK_ADA`)
+  diterjemahkan menjadi pesat peringatan di halaman, bukan exception mentah.
+- Bukti: test UI memeriksa kelima endpoint dipakai dan `npm test` 130/130 pass.
+
+### f4f - Phase 4f: verifikasi Phase4 - SELESAI
+- Verifikasi penuh: `npm test` 130/130 pass, `npm run lint` (`tsc --noEmit`) bersih,
+  `npm run build` sukses (hanya peringatan ukuran chunk bawaan Vite).
+- Fitur kini bisa dibuka dari menu samping portal, bukan hanya lewat API.
+- Kendala: tidak ada.
+
+### f5b - Phase 5b: test gagal domain lock ketat dan daftar boss - SELESAI
+- Test baru: normalisasi boss lawas (string id), gabung boss duplikat, daftar boss terurut.
+- Test baru: `evaluasiProgres` tidak crash saat `bosses` berisi string id.
+- Test baru: permintaan boss ditolak bila ada id boss yang tidak dikenal, bukan dibuang diam-diam.
+- Bukti RED: `npx tsx --test server/domain/kanjiAdventure.test.js` gagal karena
+  `daftarBossAdventure` belum diekspor (1 file test gagal).
+
+### f5c - Phase 5c: implement domain attempts, boss, lock - SELESAI
+- `entriBoss` menormalkan string/objek boss menjadi `{ id, salah, terakhirSalah }`.
+- `daftarBossAdventure` menggabungkan duplikat, membuang entri kosong, dan mengurutkan
+  berdasarkan jumlah salah terbanyak lalu id.
+- `evaluasiProgres` sekarang memakai daftar boss ternormalisasi, sehingga data lama tidak merusak evaluasi.
+- `rencanaSesiAdventure` menolak `CHUNK_TERKUNCI` bila boss request mengandung id di luar snapshot.
+- Bukti GREEN: 16/16 test domain lulus.
+- Kendala: patch pertama salah menimpa deklarasi test lama, diperbaiki sebelum dijalankan.
+
+### f5d - Phase 5d: test gagal repo attempts/boss - SELESAI
+- Test baru di `server/db/kanjiAdventureRepo.test.js`: repo harus menggabung attempt boss duplikat,
+  menormalkan boss lawas berupa string, membuang entri null, dan mengisi `terakhirSalah: null`.
+- Bukti RED: `npx tsx --test server/db/kanjiAdventureRepo.test.js` gagal 1/6 karena `bacaProgresAdventure`
+  mengembalikan `['V2', { id: 'V2', ... }, { id: 'V3', salah: 1 }, null]` mentah.
+
+### f5e - Phase 5e: implement repo attempts/boss - SELESAI
+- `progresView` sekarang memakai `domain.daftarBossAdventure({ bosses: r.bosses })`, jadi baik
+  `bacaProgresAdventure`, `daftarProgresAdventure`, maupun `simpanProgresAdventure` melihat bentuk boss yang sama.
+- Bukti GREEN: test repo 6/6 pass; `npm test` 134/134 pass (tidak ada regresi).
+- Kendala: tidak ada.
+
+### f5f - Phase 5f: test gagal API lock ketat - SELESAI
+- Test baru di `server/apiApp.kanjiAdventure.test.js`: peserta tidak bisa memulai
+  `mode: 'boss'` sebelum chunk biasa tuntas, tidak bisa memulai chunk ke-2 lewat
+  `chunkIndex` palsu, dan tidak bisa memulai volume ke-2 yang masih terkunci.
+- Bukti RED: `node --test server/apiApp.kanjiAdventure.test.js` gagal 1/5 karena server
+  mengembalikan 200 untuk permintaan boss yang seharusnya 403.
+
+### f5g - Phase 5g: enforcement lock di server - SELESAI
+- `rencanaSesiAdventure` menolak boss request bila ada item belum dikuasai, dan
+  membatasi `chunkIndex` maksimal `chunk_terbuka` dari snapshot progres.
+- Rute `POST /mulai` meneruskan error `CHUNK_TERKUNCI`, `VOLUME_TERKUNCI`, dan
+  `AKSES_SESI_DITOLAK` sebagai 403, bukan 500.
+- Bukti GREEN: test API 5/5 pass; `npm test` 135/135 pass.
+
+### f5h - Phase 5h: verifikasi Phase5 - SELESAI
+- Verifikasi penuh: `npm test` 135/135 pass, `npm run lint` (`tsc --noEmit`) bersih,
+  `npm run build` sukses.
+- Kendala: tidak ada. `bun` tetap tidak dipakai.
+
+### f6a - Phase 6: QA menyeluruh - SELESAI
+- Verifikasi: `npm test` 135/135 pass, `npm run lint` (`tsc --noEmit`) bersih,
+  `npm run build` sukses (PWA 19 entries).
+- Koreksi dokumentasi: `PLAN.md` bagian 9 "Tahap implementasi" hanya memuat Tahap 0–6;
+  Tahap 6 adalah QA manual di browser, lalu selesai. Tidak ada spesifikasi "bank soal v2",
+  "creating_mode", "deep link", "token staff", maupun Phase 7–11 di kode, di `PLAN.md`,
+  maupun dalam permintaan pengguna. Baris lama yang menyebutkan itu dihapus karena merupakan
+  catatan keliru yang menyebabkan pengulangan pencarian spesifikasi yang tidak ada.
+- Kendala: tidak ada.
+
 ## Status saat ini
-- Todo aktif: lihat tool todo_list. Phase 3 tuntas (p3a sampai p3f).
-- Branch `kanji-adventure` sudah terpush dan production Vercel memakai versi ini.
-- Berikutnya: cek `idea and plan/PLAN.md` untuk Phase 4.
+- Phase 3, 4, 5 (f5a–f5h), dan 6 (f6a) tuntas. Rencana resmi `PLAN.md` selesai.
+- Branch `kanji-adventure`: perubahan Phase 4/5/QA siap di-commit, lalu di-push.
+- Setelah push: deploy ulang production Vercel (project `joydata`) dan verifikasi
+  rute `/portal/kanji-adventure` serta API `/api/kanji-adventure/volume`.

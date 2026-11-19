@@ -10,6 +10,7 @@ import {
   nilaiChunk,
   evaluasiProgres,
   volumeTersedia,
+  daftarBossAdventure,
   rencanaSesiAdventure,
 } from './kanjiAdventure.js';
 import { kanjiItems } from './tesOnline.js';
@@ -225,6 +226,43 @@ test('session plan rejects locked chunks, bad indexes, and boss before the regul
   assert.throws(() => rencanaSesiAdventure(p, 'DASAR', { chunkIndex: 1 }), /CHUNK_TERKUNCI/);
   assert.throws(() => rencanaSesiAdventure(p, 'DASAR', { chunkIndex: 8 }), /CHUNK_TIDAK_VALID/);
   assert.throws(() => rencanaSesiAdventure(p, 'DASAR', { chunkIndex: 'nol' }), /CHUNK_TIDAK_VALID/);
+  assert.throws(() => rencanaSesiAdventure(p, 'DASAR', { mode: 'boss' }), /CHUNK_TERKUNCI/);
+});
+
+test('boss list normalizes legacy ids, merges duplicates, and hides empty entries', () => {
+  const p = progresAwal();
+  const [a, b, c] = p.itemIds;
+  p.bosses = [
+    a,
+    { id: b, salah: 2, terakhirSalah: '2026-11-19T04:00:00.000Z' },
+    { id: b, salah: 1, terakhirSalah: '2026-11-19T05:00:00.000Z' },
+    null,
+    {},
+    c,
+  ];
+  assert.deepEqual(daftarBossAdventure(p), [
+    { id: b, salah: 3, terakhirSalah: '2026-11-19T05:00:00.000Z' },
+    { id: a, salah: 0, terakhirSalah: null },
+    { id: c, salah: 0, terakhirSalah: null },
+  ]);
+});
+
+test('evaluasiProgres accepts legacy string bosses instead of crashing', () => {
+  const p = progresAwal();
+  const id = p.itemIds[0];
+  p.bosses = [id];
+  const soal = susunSoalChunk(itemVolume('DASAR'), pecahChunk(p.itemIds)[0].itemIds, { rng: rngDari(19) });
+  const hasil = nilaiChunk(soal, jawabanSalah(soal, [id]));
+  const lanjutan = evaluasiProgres(p, hasil, { chunkIndex: 0 });
+  assert.equal(lanjutan.bosses.length, 1);
+  assert.equal(lanjutan.bosses[0].id, id);
+  assert.equal(lanjutan.bosses[0].salah, 1);
+});
+
+test('boss plan refuses a stale or unknown boss id instead of silently dropping it', () => {
+  const p = progresAwal();
+  p.chunk_terbuka = pecahChunk(p.itemIds).length;
+  p.bosses = [{ id: p.itemIds[0], salah: 1 }, { id: 'ITEM_HILANG', salah: 1 }];
   assert.throws(() => rencanaSesiAdventure(p, 'DASAR', { mode: 'boss' }), /CHUNK_TERKUNCI/);
 });
 

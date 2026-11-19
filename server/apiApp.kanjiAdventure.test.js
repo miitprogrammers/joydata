@@ -169,3 +169,43 @@ test('p3e: sensei melihat progres, grade, dan status kunci setiap volume', async
   assert.ok(res.data.ringkasan.grade);
   assert.equal(res.data.sesiAdventure.length, 1);
 });
+
+test('f5f: server menolak nilai bila chunk sesi sudah dikunci ulang', async () => {
+  const mulai = await call('POST', '/portal/kanji-adventure/mulai', { materi: 'DASAR', chunkIndex: 1 });
+  assert.equal(mulai.status, 200);
+
+  const progres = db.kanjiAdventureProgres.find(
+    (p) => Number(p.pesertaId) === Number(uid) && p.materi === 'DASAR',
+  );
+  assert.ok(progres, 'progres DASAR harus ada di local state');
+  const terbukaAwal = progres.chunk_terbuka;
+  const riwayatAwal = (progres.riwayat || []).length;
+  progres.chunk_terbuka = 0;
+  engine.saveLocalState();
+
+  const jawaban = Object.fromEntries(
+    mulai.data.soal.map((q) => [q.id, { bacaan: q.bacaan.benar, arti: q.arti.benar }]),
+  );
+  try {
+    const nilai = await call('POST', '/portal/kanji-adventure/nilai', {
+      sesiId: mulai.data.sesiId,
+      jawaban,
+      detikAktif: 60,
+    });
+    assert.equal(nilai.status, 403);
+    assert.equal(nilai.data.error, 'CHUNK_TERKUNCI');
+
+    const riwayat = await call('GET', '/portal/kanji-adventure/riwayat');
+    const progresSesudah = riwayat.data.progres.find((p) => p.materi === 'DASAR');
+    assert.equal(progresSesudah.chunk_terbuka, 0);
+
+    const progresTersimpan = engine.readLocalState().kanjiAdventureProgres.find(
+      (p) => Number(p.pesertaId) === Number(uid) && p.materi === 'DASAR',
+    );
+    assert.equal((progresTersimpan.riwayat || []).length, riwayatAwal);
+  } finally {
+    progres.chunk_terbuka = terbukaAwal;
+    engine.saveLocalState();
+    await call('POST', '/portal/kanji-adventure/detak', { sesiId: mulai.data.sesiId, selesai: true });
+  }
+});

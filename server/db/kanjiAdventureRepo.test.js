@@ -43,6 +43,31 @@ test('simpanProgresAdventure memperbarui field dan dibaca kembali', async () => 
   assert.equal(baca.boss_ronde, 2);
 });
 
+test('repo menggabung attempt boss duplikat dan menormalkan boss lawas saat dibaca', async () => {
+  await repo.simpanProgresAdventure(7, 'VOL1', {
+    itemIds: ['V1', 'V2', 'V3'],
+    dikuasai: ['V1'],
+    bosses: [
+      'V2',
+      { id: 'V2', salah: 2, terakhirSalah: '2026-11-20T00:00:00.000Z' },
+      { id: 'V3', salah: 1 },
+      null,
+    ],
+    boss_ronde: 4,
+    chunk_terbuka: 3,
+    selesai: false,
+    perlu_perhatian: false,
+    riwayat: [],
+  });
+
+  const baca = await repo.bacaProgresAdventure(7, 'VOL1');
+  assert.deepEqual(baca.bosses, [
+    { id: 'V2', salah: 2, terakhirSalah: '2026-11-20T00:00:00.000Z' },
+    { id: 'V3', salah: 1, terakhirSalah: null },
+  ]);
+  assert.equal(baca.boss_ronde, 4);
+});
+
 test('daftarProgresAdventure mengurutkan sesuai URUTAN_VOLUME', async () => {
   await repo.pastikanProgresAdventure(1, 'N4VOL1', ['N1']);
   const semua = await repo.daftarProgresAdventure(1);

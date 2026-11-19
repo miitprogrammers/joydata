@@ -60,6 +60,40 @@ export function nilaiChunk(soal, jawaban) {
   };
 }
 
+function entriBoss(b) {
+  if (typeof b === 'string') return { id: b, salah: 0, terakhirSalah: null };
+  if (!b || typeof b !== 'object' || typeof b.id !== 'string') return null;
+  const salah = Number(b.salah);
+  return {
+    id: b.id,
+    salah: Number.isFinite(salah) && salah > 0 ? Math.floor(salah) : 0,
+    terakhirSalah: typeof b.terakhirSalah === 'string' ? b.terakhirSalah : null,
+  };
+}
+
+/**
+ * Boss list from any saved shape: older sessions stored plain id strings.
+ * Duplicate ids are merged so the count reflects every failed attempt.
+ */
+export function daftarBossAdventure(progres) {
+  const gabungan = new Map();
+  for (const mentah of progres?.bosses || []) {
+    const boss = entriBoss(mentah);
+    if (!boss) continue;
+    const sebelumnya = gabungan.get(boss.id);
+    if (!sebelumnya) {
+      gabungan.set(boss.id, boss);
+      continue;
+    }
+    gabungan.set(boss.id, {
+      id: boss.id,
+      salah: sebelumnya.salah + boss.salah,
+      terakhirSalah: [sebelumnya.terakhirSalah, boss.terakhirSalah].filter(Boolean).sort().at(-1) || null,
+    });
+  }
+  return [...gabungan.values()].sort((a, b) => b.salah - a.salah || a.id.localeCompare(b.id));
+}
+
 /**
  * Fold one graded session into the saved progress. Pure: neither argument is mutated.
  * `opsi.chunkIndex` is -1 for a boss round, otherwise the regular chunk that was played.
@@ -77,7 +111,7 @@ export function evaluasiProgres(progres, hasil, {
   const chunkSekarang = chunkIndex >= 0 ? chunks[chunkIndex] : null;
   const chunkLulus = Boolean(chunkSekarang) && chunkSekarang.itemIds.every((id) => dikuasai.includes(id));
 
-  let bosses = [...(progres.bosses || [])];
+  let bosses = daftarBossAdventure(progres);
   for (const id of hasil.itemSalah) {
     const ada = bosses.find((b) => b.id === id);
     bosses = ada
@@ -130,13 +164,11 @@ export function rencanaSesiAdventure(progres, materi, input = {}) {
 
   if (mintaBoss) {
     const regularTuntas = chunks.length > 0 && terbuka >= chunks.length;
-    const bosses = Array.isArray(progres?.bosses)
-      ? progres.bosses.map((b) => (typeof b === 'string' ? b : b?.id)).filter(Boolean)
-      : [];
+    const bosses = daftarBossAdventure(progres).map((b) => b.id);
     if (!regularTuntas || bosses.length === 0) throw new Error('CHUNK_TERKUNCI');
     const byId = new Map(itemVolume(materi).map((item) => [item.id, item]));
-    const items = bosses.map((id) => byId.get(id)).filter(Boolean);
-    if (!items.length) throw new Error('CHUNK_TERKUNCI');
+    if (bosses.some((id) => !byId.has(id))) throw new Error('CHUNK_TERKUNCI');
+    const items = bosses.map((id) => byId.get(id));
     return {
       mode: 'boss',
       chunkIndex: -1,

@@ -142,6 +142,7 @@ const NAV = [
       { key: 'ujian', to: '/portal/ujian', icon: 'mdi-clipboard-text-outline' },
       { key: 'tes', to: '/portal/tes', icon: 'mdi-pencil-box-multiple-outline' },
       { key: 'flashcard', to: '/portal/flashcard', icon: 'mdi-cards-outline' },
+      { key: 'kanjiAdventure', to: '/portal/kanji-adventure', icon: 'mdi-sword-cross' },
       { key: 'kehadiran', to: '/portal/kehadiran', icon: 'mdi-calendar-check-outline' },
       { key: 'sikap', to: '/portal/sikap', icon: 'mdi-scale-balance' },
     ],

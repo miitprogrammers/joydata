@@ -653,6 +653,16 @@ export function createApiRouter() {
       const hasil = kanjiAdventure.nilaiChunk(sesi.soal, jawaban);
       const progres = await bacaProgresAdventure(req.peserta.id, sesi.materi);
       if (!progres) throw new Error('SESI_TIDAK_ADA');
+
+      // f5g: re-check the gate at grading time. A session opened earlier must not be able to
+      // unlock a chunk/volume that the server has since locked again.
+      const semuaProgres = await daftarProgresAdventure(req.peserta.id);
+      if (!kanjiAdventure.volumeTersedia(semuaProgres, sesi.materi)) throw new Error('VOLUME_TERKUNCI');
+      kanjiAdventure.rencanaSesiAdventure(progres, sesi.materi, {
+        mode: sesi.mode,
+        chunkIndex: sesi.chunkIndex,
+      });
+
       const progresBaru = kanjiAdventure.evaluasiProgres(progres, hasil, {
         chunkIndex: sesi.chunkIndex,
         sekarang: new Date().toISOString(),
