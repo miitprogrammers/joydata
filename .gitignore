@@ -17,3 +17,4 @@ coverage/
 /scripts/gen-absensi-*.mjs
 /docs/Panduan-JOYdata-Manajemen.pdf
 
+.vercel
