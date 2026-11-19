@@ -8,6 +8,7 @@ coverage/
 !.env.example
 .data/
 .playwright-cli/
+.worktree/
 
 # Participant data and private working files (this repository is public)
 /_chat.txt
