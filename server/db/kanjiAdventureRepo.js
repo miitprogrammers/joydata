@@ -9,8 +9,12 @@ import * as domain from '../domain/kanjiAdventure.js';
 
 const KOLOM = `peserta_id AS "pesertaId", materi, item_ids AS "itemIds", dikuasai, bosses,
   boss_ronde, chunk_terbuka, selesai, perlu_perhatian, riwayat, updated_at AS "updatedAt"`;
+const KOLOM_SESI = `id, peserta_id AS "pesertaId", materi, mode, chunk_index AS "chunkIndex", ronde,
+  aktivitas_id AS "aktivitasId", item_ids AS "itemIds", soal,
+  dibuat_pada AS "dibuatPada", kedaluwarsa_pada AS "kedaluwarsaPada"`;
 const MAKS_RIWAYAT = domain.MAKS_RIWAYAT ?? 20;
 const URUTAN_VOLUME = domain.URUTAN_VOLUME ?? [];
+const SESI_ADVENTURE_MAX_MS = 30 * 60 * 1000;
 
 const list = (v) => (Array.isArray(v) ? [...v] : []);
 const iso = (v) => (v ? new Date(v).toISOString() : null);
@@ -45,6 +49,27 @@ function urutanMateri(a, b) {
   const ia = URUTAN_VOLUME.indexOf(a.materi);
   const ib = URUTAN_VOLUME.indexOf(b.materi);
   return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib);
+}
+
+function sesiView(r) {
+  if (!r) return null;
+  return {
+    id: r.id,
+    pesertaId: Number(r.pesertaId),
+    materi: r.materi,
+    mode: r.mode,
+    chunkIndex: Number(r.chunkIndex),
+    ronde: Number(r.ronde) || 1,
+    aktivitasId: r.aktivitasId == null ? null : Number(r.aktivitasId),
+    itemIds: list(r.itemIds),
+    soal: Array.isArray(r.soal) ? r.soal : [],
+    dibuatPada: iso(r.dibuatPada),
+    kedaluwarsaPada: iso(r.kedaluwarsaPada),
+  };
+}
+
+function masihBerlaku(sesi, sekarang = Date.now()) {
+  return Boolean(sesi?.kedaluwarsaPada) && new Date(sesi.kedaluwarsaPada).getTime() > sekarang;
 }
 
 export async function bacaProgresAdventure(pesertaId, materi) {
@@ -163,4 +188,103 @@ export async function tambahSesiAdventure(pesertaId, { materi, judul, jlpt = nul
     }),
     null,
   );
+}
+
+/**
+ * The paper handed to one peserta, stored so grading survives a restart or another server instance.
+ * The answer key stays on the server; only this row carries it.
+ */
+export async function simpanSesiAdventure({
+  id,
+  pesertaId,
+  materi,
+  mode,
+  chunkIndex,
+  ronde = 1,
+  aktivitasId = null,
+  itemIds = [],
+  soal = [],
+  kedaluwarsaPada = null,
+}) {
+  await ensureInitialized();
+  return tanpaGagal(async () => {
+    const data = sesiView({
+      id,
+      pesertaId,
+      materi,
+      mode,
+      chunkIndex,
+      ronde,
+      aktivitasId,
+      itemIds,
+      soal,
+      dibuatPada: new Date().toISOString(),
+      kedaluwarsaPada: kedaluwarsaPada || new Date(Date.now() + SESI_ADVENTURE_MAX_MS).toISOString(),
+    });
+    if (getMode() === 'postgres') {
+      await getPool().query(`DELETE FROM kanji_adventure_sesi WHERE kedaluwarsa_pada < NOW()`);
+      await getPool().query(
+        `INSERT INTO kanji_adventure_sesi
+           (id, peserta_id, materi, mode, chunk_index, ronde, aktivitas_id, item_ids, soal, kedaluwarsa_pada)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+        [data.id, data.pesertaId, data.materi, data.mode, data.chunkIndex, data.ronde,
+          data.aktivitasId, JSON.stringify(data.itemIds), JSON.stringify(data.soal), data.kedaluwarsaPada],
+      );
+      return data;
+    }
+    const db = readLocalState();
+    db.kanjiAdventureSesi ||= [];
+    const sekarang = Date.now();
+    db.kanjiAdventureSesi = db.kanjiAdventureSesi.filter(
+      (s) => masihBerlaku(sesiView(s), sekarang),
+    );
+    db.kanjiAdventureSesi.push(data);
+    saveLocalState();
+    return data;
+  }, null);
+}
+
+export async function bacaSesiAdventure(id, pesertaId, { sekarang = Date.now() } = {}) {
+  await ensureInitialized();
+  return tanpaGagal(async () => {
+    let sesi;
+    if (getMode() === 'postgres') {
+      const { rows } = await getPool().query(
+        `SELECT ${KOLOM_SESI} FROM kanji_adventure_sesi
+         WHERE id = $1 AND peserta_id = $2 AND kedaluwarsa_pada > NOW()`,
+        [id, pesertaId],
+      );
+      sesi = sesiView(rows[0]);
+    } else {
+      const baris = (readLocalState().kanjiAdventureSesi || []).find(
+        (s) => s.id === id && Number(s.pesertaId) === Number(pesertaId),
+      );
+      sesi = sesiView(baris);
+    }
+    if (!sesi) return null;
+    if (!masihBerlaku(sesi, sekarang)) {
+      await hapusSesiAdventure(sesi.id, pesertaId);
+      return null;
+    }
+    return sesi;
+  }, null);
+}
+
+export async function hapusSesiAdventure(id, pesertaId = null) {
+  await ensureInitialized();
+  return tanpaGagal(async () => {
+    if (getMode() === 'postgres') {
+      const params = pesertaId == null ? [id] : [id, pesertaId];
+      const filter = pesertaId == null ? 'id = $1' : 'id = $1 AND peserta_id = $2';
+      await getPool().query(`DELETE FROM kanji_adventure_sesi WHERE ${filter}`, params);
+      return true;
+    }
+    const db = readLocalState();
+    const sebelum = (db.kanjiAdventureSesi || []).length;
+    db.kanjiAdventureSesi = (db.kanjiAdventureSesi || []).filter(
+      (s) => s.id !== id || (pesertaId != null && Number(s.pesertaId) !== Number(pesertaId)),
+    );
+    if (db.kanjiAdventureSesi.length !== sebelum) saveLocalState();
+    return db.kanjiAdventureSesi.length !== sebelum;
+  }, false);
 }

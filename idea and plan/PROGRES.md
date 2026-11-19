@@ -248,3 +248,39 @@ kompak disimpan ke memory sesi supaya bisa dilanjutkan kapan saja.
   `npm run build` sukses (PWA 19 entries).
 - Kendala: verifikasi f6b hanya mengecek hash aset dan status rute, bukan alur data setelah
   login, sehingga bug ini lolos. Kini pengecekan sampai ke URL akhir yang dipanggil browser.
+
+### f6d - Review pasca-deploy: runner, layout, sesi, dan monitor - SELESAI
+- Bug fungsional: peta lama menulis `kanjiAdventureSesi` ke `sessionStorage` lalu pindah ke
+  `/portal/tes`, tetapi `PortalTesView` tidak pernah membaca kunci itu. Latihan adventure
+  karena itu tidak bisa dijalankan dari UI. Sekarang peta menjalankan `KanjiRunner` langsung,
+  mengirim `/detak` dan `/nilai`, menampilkan hasil, lalu kembali ke peta. Tidak ada lagi
+  `sessionStorage` atau lompatan ke halaman Tes.
+- Bug server: sesi/soal disimpan di `Map` dalam memori. Di Vercel (serverless, banyak instance,
+  cold start) `POST /nilai` bisa kehilangan soal. Sesi sekarang disimpan di tabel
+  `kanji_adventure_sesi` (migrasi `003`), dengan pemilik, masa berlaku 30 menit, dan
+  penghapusan setelah dinilai. Migrasi 002/003 kini diterapkan otomatis saat inisialisasi
+  Postgres; sebelumnya hanya `001` yang dijalankan sehingga tabel progres tidak dibuat di
+  deployment baru.
+- Bug desain progres: persentase volume memakai `chunk_terbuka`, sehingga bisa 100% padahal
+  boss belum tuntas. Sekarang persen = kanji dikuasai / total kanji, dan 100% hanya saat
+  volume benar-benar selesai. Langkah yang sudah selesai juga bisa diulang (sebelumnya tombol
+  "Ulangi" selalu nonaktif).
+- Hasil satu ronde tidak lagi dipakai untuk menyimpulkan kelengkapan langkah. Server mengirim
+  `chunkTuntas`, `sisa`, `detail` jawaban, `mode`, dan `ronde`, sehingga siswa yang menuntaskan
+  langkah lewat gabungan beberapa percobaan tidak diberi pesan "belum benar".
+- Layout: `KanjiAdventureMapView.vue` yang memakai `v-container`, grid Vuetify, dan lebar
+  1100px diganti `PortalKanjiAdventureView.vue` dengan pola portal lain: `space-y-4`,
+  `joy-surface`, grid Tailwind 1/2 kolom, `v-btn` kecil, skeleton, dan kartu volume per level.
+  Rute dibuat relatif seperti fitur portal lain.
+- Sensei: detail Monitor Latihan sekarang memuat panel Kanji Adventure (progres langkah,
+  kanji dikuasai, boss + hitungan salah, ronde, dan tanda perlu perhatian). Klien monitor
+  memakai token staff dan path `/monitor-latihan/...`, bukan `/api/portal/portal/...`; query
+  `riwayat`/monitor juga benar-benar dikirim sebagai query string (sebelumnya objek `query`
+  diabaikan `portalApi`).
+- Riwayat di peta sekarang memakai bentuk asli `sesi` latihan (`materiJudul`, `mulaiAt`,
+  `detikAktif`, `skor`), bukan field yang tidak ada.
+- i18n: pesan `VOLUME_TERKUNCI`, `CHUNK_TERKUNCI`, `SESI_TIDAK_ADA`, `INVALID_ADVENTURE_MATERI`,
+  dan kunci hasil/monitor ditambahkan di `id.js` dan `ja.js`.
+- Verifikasi: `npm test` 141/141 pass, `npm run lint` (`tsc --noEmit`) bersih, dan
+  `npm run build` sukses. Migrasi `003` akan diterapkan otomatis pada deploy berikutnya;
+  sesi lama di memori (jika ada) cukup kedaluwarsa, tidak perlu dibersihkan manual.

@@ -44,7 +44,10 @@ export function susunSoalChunk(items, itemIds, { mode = 'reguler', rng = Math.ra
 /** Grade a chunk with the same rules as the official kanji test (half a point per reading and meaning). */
 export function nilaiChunk(soal, jawaban) {
   const hasil = nilaiTes('kanji', soal, jawaban);
+  // The whole graded row is kept (kanji, chosen and correct answers) so the result screen can explain a miss,
+  // while itemId/benar stay the stable fields progress is built from.
   const detail = hasil.detail.map((d) => ({
+    ...d,
     itemId: d.id,
     bacaanOk: d.bacaanOk,
     artiOk: d.artiOk,
@@ -127,6 +130,9 @@ export function evaluasiProgres(progres, hasil, {
   const semuaRegulerTuntas = chunkTerbuka >= chunks.length;
   const bossRonde = chunkIndex < 0 ? (progres.boss_ronde || 0) + 1 : progres.boss_ronde || 0;
   const selesai = semuaRegulerTuntas && bosses.length === 0;
+  // Whether the played step is now fully mastered across all attempts. A single session can be imperfect while
+  // the chunk as a whole is complete, so the result screen must not decide from this session's score alone.
+  const chunkTuntas = chunkIndex < 0 ? bosses.length === 0 : chunkLulus;
 
   return {
     ...progres,
@@ -134,6 +140,7 @@ export function evaluasiProgres(progres, hasil, {
     bosses,
     boss_ronde: bossRonde,
     chunk_terbuka: chunkTerbuka,
+    chunk_tuntas: chunkTuntas,
     selesai,
     perlu_perhatian: bossRonde >= AMBANG_PERHATIAN || bosses.some((b) => b.salah >= AMBANG_PERHATIAN),
     riwayat: [

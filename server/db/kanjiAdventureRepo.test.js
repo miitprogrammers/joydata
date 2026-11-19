@@ -81,3 +81,45 @@ test('tambahSesiAdventure mencatat latihan practice', async () => {
   });
   assert.ok(aktivitasId, 'aktivitasId harus terisi');
 });
+
+test('sesi adventure disimpan, hanya bisa dibaca pemiliknya, lalu dihapus', async () => {
+  const kedaluwarsaPada = new Date(Date.now() + 60_000).toISOString();
+  const tersimpan = await repo.simpanSesiAdventure({
+    id: 'sesi-repo-1',
+    pesertaId: 1,
+    materi: 'DASAR',
+    mode: 'reguler',
+    chunkIndex: 0,
+    ronde: 1,
+    aktivitasId: 123,
+    itemIds: ['D1', 'D2'],
+    soal: [{ id: 'D1', bacaan: { benar: 'x' }, arti: { benar: 'y' } }],
+    kedaluwarsaPada,
+  });
+  assert.ok(tersimpan, 'sesi harus tersimpan di state lokal');
+  assert.equal(tersimpan.mode, 'reguler');
+
+  const baca = await repo.bacaSesiAdventure('sesi-repo-1', 1);
+  assert.equal(baca.chunkIndex, 0);
+  assert.equal(baca.aktivitasId, 123);
+  assert.deepEqual(baca.itemIds, ['D1', 'D2']);
+  assert.equal(baca.soal.length, 1);
+  assert.equal(await repo.bacaSesiAdventure('sesi-repo-1', 2), null);
+
+  await repo.hapusSesiAdventure('sesi-repo-1', 1);
+  assert.equal(await repo.bacaSesiAdventure('sesi-repo-1', 1), null);
+});
+
+test('sesi adventure yang kedaluwarsa dianggap tidak ada', async () => {
+  await repo.simpanSesiAdventure({
+    id: 'sesi-repo-lewat',
+    pesertaId: 1,
+    materi: 'DASAR',
+    mode: 'reguler',
+    chunkIndex: 0,
+    itemIds: ['D1'],
+    soal: [{ id: 'D1' }],
+    kedaluwarsaPada: new Date(Date.now() - 60_000).toISOString(),
+  });
+  assert.equal(await repo.bacaSesiAdventure('sesi-repo-lewat', 1), null);
+});

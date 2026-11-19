@@ -24,10 +24,11 @@ test('statusChunk dan statusBoss memakai status dari server', () => {
   assert.equal(statusBoss({ status: 'terkunci' }), 'terkunci');
 });
 
-test('bisaMulaiChunk menolak volume terkunci dan chunk bukan tersedia', () => {
+test('bisaMulaiChunk menolak volume terkunci, tetapi langkah selesai boleh diulang', () => {
   assert.equal(bisaMulaiChunk({ terkunci: false }, { status: 'tersedia' }), true);
   assert.equal(bisaMulaiChunk({ terkunci: true }, { status: 'tersedia' }), false);
-  assert.equal(bisaMulaiChunk({ terkunci: false }, { status: 'selesai' }), false);
+  assert.equal(bisaMulaiChunk({ terkunci: false }, { status: 'selesai' }), true);
+  assert.equal(bisaMulaiChunk({ terkunci: false }, { status: 'terkunci' }), false);
 });
 
 test('bisaMulaiBoss hanya terbuka bila volume terbuka dan boss tersedia', () => {
@@ -43,19 +44,21 @@ test('i18nStatusKey memetakan status ke kunci tampilan', () => {
   assert.equal(i18nStatusKey('selesai', 'volume'), 'portal.kanjiAdventure.volumeSelesai');
 });
 
-test('ringkasProgresAdventure membulatkan persentase dan menjaga batas 0-100', () => {
+test('ringkasProgresAdventure memakai kanji dikuasai dan menyisakan 100% untuk volume selesai', () => {
   assert.deepEqual(ringkasProgresAdventure({ chunk_terbuka: 2, chunkCount: 8, dikuasai: 15, bosses: 0 }), {
     selesai: false,
     persen: 25,
     dikuasai: 15,
     bosses: 0,
   });
-  assert.equal(ringkasProgresAdventure({ chunk_terbuka: 99, chunkCount: 8 }).persen, 100);
+  assert.equal(ringkasProgresAdventure({ dikuasai: 15, bosses: 0 }, { jumlah: 80 }).persen, 19);
+  assert.equal(ringkasProgresAdventure({ chunk_terbuka: 99, chunkCount: 8 }).persen, 99);
   assert.equal(ringkasProgresAdventure({ chunk_terbuka: 2, chunkCount: 0 }).persen, 0);
+  assert.equal(ringkasProgresAdventure({ selesai: true, chunk_terbuka: 8, chunkCount: 8 }).persen, 100);
   assert.equal(ringkasProgresAdventure({ selesai: true, chunk_terbuka: 8, chunkCount: 8 }).selesai, true);
 });
 
-test('klien adventure memanggil endpoint portal dengan method dan body yang benar', async () => {
+test('klien adventure memanggil endpoint portal dengan method, body, dan query yang benar', async () => {
   const dipanggil = [];
   const request = async (path, opsi) => {
     dipanggil.push({ path, opsi });
@@ -75,7 +78,22 @@ test('klien adventure memanggil endpoint portal dengan method dan body yang bena
       path: '/kanji-adventure/mulai',
       opsi: { method: 'POST', body: { materi: 'N5', mode: 'chunk', chunkIndex: 2 } },
     },
-    { path: '/kanji-adventure/riwayat', opsi: { query: { dari: '2026-01-01' } } },
+    { path: '/kanji-adventure/riwayat?dari=2026-01-01', opsi: {} },
+  ]);
+});
+
+test('endpoint sensei memakai jalur staff /monitor-latihan, bukan /api/portal', async () => {
+  const staff = [];
+  const request = async () => ({ ok: true });
+  const requestStaff = async (path, opsi) => {
+    staff.push({ path, opsi });
+    return { ok: true, path };
+  };
+  const klien = buatKlienAdventure({ request, requestStaff });
+
+  await klien.monitorPeserta(7, { periode: '7' });
+  assert.deepEqual(staff, [
+    { path: '/monitor-latihan/kanji-adventure/peserta/7?periode=7', opsi: {} },
   ]);
 });
 

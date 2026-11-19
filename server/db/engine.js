@@ -293,6 +293,7 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     dokkaiBacaanAi: [],
     flashcardProgres: [],
     kanjiAdventureProgres: [],
+    kanjiAdventureSesi: [],
     latihanSesi: [],
     nilaiSikap,
     absensi,
@@ -376,6 +377,10 @@ function ensurePhase2Collections(state) {
     state.kanjiAdventureProgres = [];
     dirty = true;
   }
+  if (!Array.isArray(state.kanjiAdventureSesi)) {
+    state.kanjiAdventureSesi = [];
+    dirty = true;
+  }
   for (const p of SEED_PAGES) {
     if ((state.pages || []).some((existing) => existing.kode === p.kode)) continue;
     const { defaultRoles = [], ...page } = p;
@@ -430,9 +435,19 @@ export function saveLocalState() {
 }
 
 async function initPostgresSchemaAndSeed(pool) {
-  const sqlPath = path.resolve(process.cwd(), 'supabase', 'migrations', '001_initial_schema.sql');
+  const migrationsDir = path.resolve(process.cwd(), 'supabase', 'migrations');
+  const sqlPath = path.join(migrationsDir, '001_initial_schema.sql');
   const ddl = fs.readFileSync(sqlPath, 'utf8');
   await pool.query(ddl);
+
+  // Later migrations are additive and idempotent (CREATE ... IF NOT EXISTS). Running them on every cold start
+  // keeps a deployed database in step with this checkout instead of needing a manual SQL step after a deploy.
+  const tambahan = fs.readdirSync(migrationsDir)
+    .filter((file) => file.endsWith('.sql') && file !== '001_initial_schema.sql')
+    .sort();
+  for (const file of tambahan) {
+    await pool.query(fs.readFileSync(path.join(migrationsDir, file), 'utf8'));
+  }
 
   for (const r of SEED_ROLES) {
     await pool.query(

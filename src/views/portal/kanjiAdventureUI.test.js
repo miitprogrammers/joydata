@@ -10,13 +10,14 @@ const blokAdventure = (rel) => {
   const isi = baca(rel);
   const mulai = isi.indexOf('kanjiAdventure: {');
   assert.notEqual(mulai, -1, `${rel} harus punya blok kanjiAdventure`);
-  return isi.slice(mulai, mulai + 900);
+  return isi.slice(mulai, mulai + 1400);
 };
 
-test('rute portal kanji adventure terdaftar', () => {
+test('rute portal kanji adventure terdaftar dan mengikuti pola rute portal lain', () => {
   const router = baca('src/router/index.js');
-  assert.match(router, /path: '\/portal\/kanji-adventure'/);
-  assert.match(router, /KanjiAdventureMapView/);
+  assert.match(router, /path: 'kanji-adventure'/);
+  assert.match(router, /PortalKanjiAdventureView/);
+  assert.doesNotMatch(router, /path: '\/portal\/kanji-adventure'/);
 });
 
 test('menu samping portal memuat tautan kanji adventure', () => {
@@ -34,11 +35,31 @@ test('terjemahan menu dan judul adventure ada di dua bahasa', () => {
   assert.match(blokAdventure('src/locales/ja.js'), /judul:/);
 });
 
-test('halaman peta memakai semua endpoint adventure yang dibutuhkan', () => {
-  const halaman = baca('src/views/portal/KanjiAdventureMapView.vue');
+test('halaman adventure memakai layout portal dan menjalankan latihan tanpa sessionStorage', () => {
+  const halaman = baca('src/views/portal/PortalKanjiAdventureView.vue');
+  assert.match(halaman, /joy-surface/);
+  assert.doesNotMatch(halaman, /<v-container/);
+  assert.match(halaman, /KanjiRunner/);
+  assert.doesNotMatch(halaman, /sessionStorage|kanjiAdventureSesi/);
+});
+
+test('halaman adventure memakai semua endpoint yang dibutuhkan', () => {
+  const halaman = baca('src/views/portal/PortalKanjiAdventureView.vue');
   assert.match(halaman, /buatKlienAdventure/);
   assert.match(halaman, /\.daftarVolume\(/);
   assert.match(halaman, /\.bacaVolume\(/);
   assert.match(halaman, /\.mulai\(/);
+  assert.match(halaman, /\.nilai\(/);
+  assert.match(halaman, /\.detak\(/);
   assert.match(halaman, /\.riwayat\(/);
+});
+
+test('monitor latihan memuat panel adventure dan boss dari endpoint staff', () => {
+  const monitor = baca('src/views/MonitorLatihanView.vue');
+  assert.match(monitor, /buatKlienAdventure/);
+  assert.match(monitor, /monitorPeserta/);
+  assert.match(monitor, /monitorLatihan\.adventureJudul/);
+  assert.match(monitor, /boss\.items/);
+  assert.match(baca('src/locales/id.js'), /VOLUME_TERKUNCI:/);
+  assert.match(baca('src/locales/ja.js'), /VOLUME_TERKUNCI:/);
 });

@@ -123,6 +123,7 @@ test('a failed chunk opens a boss entry and does not advance the chunk', () => {
     id: itemSalah, salah: 1, terakhirSalah: waktu,
   });
   assert.equal(next.selesai, false);
+  assert.equal(next.chunk_tuntas, false);
   assert.equal(p.bosses.length, 0); // pure
   assert.equal(p.dikuasai.length, 0);
 });
@@ -145,6 +146,7 @@ test('mastered items leave the boss list and the chunk advances', () => {
   assert.equal(kedua.dikuasai.length, 10);
   assert.deepEqual(kedua.bosses, []);
   assert.equal(kedua.chunk_terbuka, 1);
+  assert.equal(kedua.chunk_tuntas, true);
   assert.equal(kedua.selesai, false);
 });
 

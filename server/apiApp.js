@@ -121,9 +121,12 @@ import { cariMateri, jlptKanji } from './domain/tesOnline.js';
 import * as kanjiAdventure from './domain/kanjiAdventure.js';
 import {
   bacaProgresAdventure,
+  bacaSesiAdventure,
   daftarProgresAdventure,
+  hapusSesiAdventure,
   pastikanProgresAdventure,
   simpanProgresAdventure,
+  simpanSesiAdventure,
   tambahSesiAdventure,
 } from './db/kanjiAdventureRepo.js';
 import {
@@ -226,6 +229,7 @@ function handleRouteError(res, err) {
     'AI_FAILED',
     'MANCATION_UNAVAILABLE',
     'TES_AI_GAGAL',
+    'GAGAL_SESI_ADVENTURE',
   ]);
   if (code === 'NOT_FOUND' || code === 'SESI_TIDAK_ADA') {
     return res.status(404).json({ error: code });
@@ -245,9 +249,11 @@ function handleRouteError(res, err) {
 
 function infoVolumeAdventure(materi) {
   const info = cariMateri('kanji', materi);
+  const judul = info?.judul ?? String(materi);
   return {
     materi,
-    judul: info?.judul ?? String(materi),
+    judul,
+    judulPendek: info?.judulPendek ?? judul.replace(/^N\d · /, ''),
     jlpt: info?.jlpt ?? jlptKanji(materi),
     jumlah: info?.jumlah ?? kanjiAdventure.itemVolume(materi).length,
   };
@@ -263,7 +269,7 @@ function ringkasanProgresAdventure(progres) {
   };
 }
 
-function petaChunkAdventure(materi, progres) {
+function petaChunkAdventure(materi, progres, { terkunci = false } = {}) {
   const itemIds = progres?.itemIds?.length
     ? progres.itemIds
     : kanjiAdventure.itemVolume(materi).map((item) => item.id);
@@ -274,16 +280,32 @@ function petaChunkAdventure(materi, progres) {
     return {
       index,
       jumlah: ids.length,
-      status: selesai ? 'selesai' : index <= chunkTerbuka ? 'tersedia' : 'terkunci',
+      dikuasai: ids.filter((id) => dikuasai.has(id)).length,
+      status: terkunci ? 'terkunci' : selesai ? 'selesai' : index <= chunkTerbuka ? 'tersedia' : 'terkunci',
     };
   });
   const regularTuntas = chunkTerbuka >= chunks.length;
-  const jumlahBoss = Array.isArray(progres?.bosses) ? progres.bosses.length : 0;
+  const bosses = kanjiAdventure.daftarBossAdventure(progres);
+  const itemById = new Map(kanjiAdventure.itemVolume(materi).map((item) => [item.id, item]));
+  const statusBoss = terkunci
+    ? 'terkunci'
+    : progres?.selesai
+      ? 'selesai'
+      : regularTuntas && bosses.length > 0
+        ? 'tersedia'
+        : regularTuntas
+          ? 'selesai'
+          : 'terkunci';
   return {
     chunks,
     boss: {
-      status: progres?.selesai ? 'selesai' : regularTuntas ? 'tersedia' : 'terkunci',
-      jumlah: jumlahBoss,
+      status: statusBoss,
+      jumlah: bosses.length,
+      items: bosses.map((b) => ({
+        id: b.id,
+        kanji: itemById.get(b.id)?.kanji ?? b.id.split(':').slice(1).join(':'),
+        salah: b.salah,
+      })),
     },
   };
 }
@@ -291,11 +313,6 @@ function petaChunkAdventure(materi, progres) {
 export function createApiRouter() {
   const router = express.Router();
   router.use(express.json({ limit: '1mb' }));
-
-  // Kanji Adventure sessions live in memory only: a token maps to the exact paper handed to the peserta.
-  // p3d (/nilai) reads the same soal from here, so the client never has to send the answer key back.
-  const sesiAdventureAktif = new Map();
-  const SESI_ADVENTURE_MAX_MS = 30 * 60 * 1000;
 
   // Health & Public Reference
   router.get('/health', (_req, res) => {
@@ -541,10 +558,11 @@ export function createApiRouter() {
         const itemIds = progres?.itemIds?.length
           ? progres.itemIds
           : kanjiAdventure.itemVolume(materi).map((item) => item.id);
+        const info = infoVolumeAdventure(materi);
         return {
-          ...infoVolumeAdventure(materi),
+          ...info,
           chunkCount: kanjiAdventure.pecahChunk(itemIds).length,
-          progres: ringkasanProgresAdventure(progres),
+          progres: ringkasanProgresAdventure(progres, info),
           terkunci: !kanjiAdventure.volumeTersedia(semuaProgres, materi),
         };
       }));
@@ -557,10 +575,15 @@ export function createApiRouter() {
     try {
       const { materi } = req.params;
       if (!kanjiAdventure.URUTAN_VOLUME.includes(materi)) throw new Error('NOT_FOUND');
-      const progres = await bacaProgresAdventure(req.peserta.id, materi);
+      const [progres, semuaProgres] = await Promise.all([
+        bacaProgresAdventure(req.peserta.id, materi),
+        daftarProgresAdventure(req.peserta.id),
+      ]);
+      const terkunci = !kanjiAdventure.volumeTersedia(semuaProgres, materi);
       return res.json({
         ...infoVolumeAdventure(materi),
-        ...petaChunkAdventure(materi, progres),
+        terkunci,
+        ...petaChunkAdventure(materi, progres, { terkunci }),
       });
     } catch (err) {
       return handleRouteError(res, err);
@@ -589,21 +612,23 @@ export function createApiRouter() {
       });
       if (!aktivitasId) throw new Error('GAGAL_SESI_ADVENTURE');
 
-      for (const [id, sesiLama] of sesiAdventureAktif) {
-        if (Date.now() - sesiLama.dibuatAt > SESI_ADVENTURE_MAX_MS) sesiAdventureAktif.delete(id);
-      }
       const sesiId = randomUUID();
-      sesiAdventureAktif.set(sesiId, {
+      const sesi = await simpanSesiAdventure({
+        id: sesiId,
         pesertaId: req.peserta.id,
         materi,
         mode: rencana.mode,
         chunkIndex: rencana.chunkIndex,
         ronde: rencana.ronde,
+        aktivitasId,
         itemIds: rencana.itemIds,
         soal: rencana.soal,
-        aktivitasId,
-        dibuatAt: Date.now(),
       });
+      if (!sesi) {
+        // Do not leave an open practice session behind when the paper could not be stored.
+        await tutupLatihan(req.peserta.id, aktivitasId, { skor: 0, itemSelesai: 0, detikAktif: 0 });
+        throw new Error('GAGAL_SESI_ADVENTURE');
+      }
 
       return res.json({
         sesiId,
@@ -621,34 +646,27 @@ export function createApiRouter() {
   router.post('/portal/kanji-adventure/detak', requirePeserta(), async (req, res) => {
     try {
       const { sesiId } = req.body || {};
-      const sesi = typeof sesiId === 'string' ? sesiAdventureAktif.get(sesiId) : null;
+      const sesi = typeof sesiId === 'string' ? await bacaSesiAdventure(sesiId, req.peserta.id) : null;
       if (!sesi) throw new Error('SESI_TIDAK_ADA');
-      if (sesi.pesertaId !== req.peserta.id) throw new Error('AKSES_SESI_DITOLAK');
-      if (Date.now() - sesi.dibuatAt > SESI_ADVENTURE_MAX_MS) {
-        sesiAdventureAktif.delete(sesiId);
-        throw new Error('SESI_TIDAK_ADA');
-      }
       const hasil = await detakAktivitas(req.peserta.id, sesi.aktivitasId, req.body || {});
-      if (!hasil?.ok) throw new Error('AKSES_SESI_DITOLAK');
-      if (req.body?.selesai) sesiAdventureAktif.delete(sesiId);
+      if (!hasil?.ok) {
+        await hapusSesiAdventure(sesiId, req.peserta.id);
+        throw new Error('AKSES_SESI_DITOLAK');
+      }
+      if (req.body?.selesai) await hapusSesiAdventure(sesiId, req.peserta.id);
       return res.json({ ok: true, aktivitasId: sesi.aktivitasId });
     } catch (err) {
       return handleRouteError(res, err);
     }
   });
 
-  // p3d: hand in the paper. The answer key comes from the in-memory session, never from the client. The closed
+  // p3d: hand in the paper. The answer key comes from the stored session, never from the client. The closed
   // session stays mode 'latihan': it feeds rataSkorLatihan/grade but is not part of the rapor.
   router.post('/portal/kanji-adventure/nilai', requirePeserta(), async (req, res) => {
     try {
       const { sesiId, jawaban } = req.body || {};
-      const sesi = typeof sesiId === 'string' ? sesiAdventureAktif.get(sesiId) : null;
+      const sesi = typeof sesiId === 'string' ? await bacaSesiAdventure(sesiId, req.peserta.id) : null;
       if (!sesi) throw new Error('SESI_TIDAK_ADA');
-      if (sesi.pesertaId !== req.peserta.id) throw new Error('AKSES_SESI_DITOLAK');
-      if (Date.now() - sesi.dibuatAt > SESI_ADVENTURE_MAX_MS) {
-        sesiAdventureAktif.delete(sesiId);
-        throw new Error('SESI_TIDAK_ADA');
-      }
 
       const hasil = kanjiAdventure.nilaiChunk(sesi.soal, jawaban);
       const progres = await bacaProgresAdventure(req.peserta.id, sesi.materi);
@@ -667,30 +685,48 @@ export function createApiRouter() {
         chunkIndex: sesi.chunkIndex,
         sekarang: new Date().toISOString(),
       });
-      await simpanProgresAdventure(req.peserta.id, sesi.materi, progresBaru);
+      const tersimpan = await simpanProgresAdventure(req.peserta.id, sesi.materi, progresBaru);
+      if (!tersimpan) throw new Error('GAGAL_SESI_ADVENTURE');
 
-      const detak = await detakAktivitas(req.peserta.id, sesi.aktivitasId, {
+      // The progress is safe now. Closing the practice session must not block showing the result, so a
+      // session already closed elsewhere or a transient error here is tolerated; tutupLatihan is a no-op
+      // for a closed session.
+      await detakAktivitas(req.peserta.id, sesi.aktivitasId, {
         detikAktif: req.body?.detikAktif,
-      });
-      if (!detak?.ok) throw new Error('AKSES_SESI_DITOLAK');
+      }).catch(() => {});
       await tutupLatihan(req.peserta.id, sesi.aktivitasId, {
         skor: hasil.skor,
         itemSelesai: hasil.total,
         detikAktif: req.body?.detikAktif,
-      });
-      sesiAdventureAktif.delete(sesiId);
+      }).catch(() => {});
+      await hapusSesiAdventure(sesiId, req.peserta.id);
 
-      const riwayat = await getRiwayatLatihanPeserta(req.peserta.id);
-      const bossSebelum = (progres.bosses || []).length;
+      let grade = null;
+      try {
+        const riwayat = await getRiwayatLatihanPeserta(req.peserta.id);
+        grade = riwayat.ringkasan?.grade ?? null;
+      } catch {
+        // The grade is a bonus on this screen; the saved progress is what matters.
+      }
+      const bossSebelum = new Set((progres.bosses || []).map((b) => b.id));
+      const sisa = sesi.mode === 'boss'
+        ? (progresBaru.bosses || []).length
+        : (sesi.itemIds || []).filter((id) => !(progresBaru.dikuasai || []).includes(id)).length;
       return res.json({
+        mode: sesi.mode,
+        chunkIndex: sesi.chunkIndex,
+        ronde: sesi.ronde,
         benar: hasil.benar,
         total: hasil.total,
         lulus: hasil.lulus,
         skor: hasil.skor,
-        bossesBaru: Math.max(0, (progresBaru.bosses || []).length - bossSebelum),
+        detail: hasil.detail,
+        chunkTuntas: Boolean(progresBaru.chunk_tuntas),
+        sisa,
+        bossesBaru: (progresBaru.bosses || []).filter((b) => !bossSebelum.has(b.id)).length,
         nextChunk: progresBaru.chunk_terbuka,
         selesai: progresBaru.selesai,
-        grade: riwayat.ringkasan?.grade ?? null,
+        grade,
         progres: ringkasanProgresAdventure(progresBaru),
         boss: petaChunkAdventure(sesi.materi, progresBaru).boss,
       });
@@ -708,11 +744,14 @@ export function createApiRouter() {
         getRiwayatLatihanPeserta(req.peserta.id, req.query),
       ]);
       return res.json({
-        progres: semuaProgres.map((p) => ({
-          materi: p.materi,
-          judul: infoVolumeAdventure(p.materi).judul,
-          ...ringkasanProgresAdventure(p),
-        })),
+        progres: semuaProgres.map((p) => {
+          const info = infoVolumeAdventure(p.materi);
+          return {
+            materi: p.materi,
+            judul: info.judul,
+            ...ringkasanProgresAdventure(p, info),
+          };
+        }),
         ringkasan: riwayat.ringkasan,
         sesiAdventure: riwayat.sesi.filter((s) => s.materi === 'adventure'),
       });
@@ -741,12 +780,14 @@ export function createApiRouter() {
           aturanGrade: riwayat.aturanGrade,
           volume: kanjiAdventure.URUTAN_VOLUME.map((materi) => {
             const progres = progresPerMateri.get(materi) || null;
+            const info = infoVolumeAdventure(materi);
+            const terkunci = !kanjiAdventure.volumeTersedia(semuaProgres, materi);
             return {
               materi,
-              ...infoVolumeAdventure(materi),
-              ...ringkasanProgresAdventure(progres),
-              ...petaChunkAdventure(materi, progres),
-              terkunci: !kanjiAdventure.volumeTersedia(semuaProgres, materi),
+              ...info,
+              ...ringkasanProgresAdventure(progres, info),
+              ...petaChunkAdventure(materi, progres, { terkunci }),
+              terkunci,
             };
           }),
           sesiAdventure: riwayat.sesi.filter((s) => s.materi === 'adventure'),

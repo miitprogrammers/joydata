@@ -1,5 +1,7 @@
-// Tampilan murni untuk peta Kanji Adventure. Tidak ada fetch, Vue, atau jam di sini supaya mudah di-test.
+// Helper tampilan murni untuk peta Kanji Adventure (tanpa Vue atau jam) plus klien API fitur.
 // Status selalu berasal dari server; helper ini hanya menerjemahkan bentuk respons ke bentuk tampilan.
+import { portalRequest } from './portalApi.js';
+import { apiRequest } from './api.js';
 
 const STATUS_VALID = ['selesai', 'tersedia', 'terkunci'];
 
@@ -18,9 +20,9 @@ export function statusBoss(boss) {
   return STATUS_VALID.includes(boss?.status) ? boss.status : 'terkunci';
 }
 
-/** Tombol mulai hanya aktif kalau volume tidak terkunci DAN petaknya memang tersedia. */
+/** Tombol mulai aktif untuk langkah yang tersedia; langkah selesai boleh diulang. */
 export function bisaMulaiChunk(volume, chunk) {
-  return Boolean(volume && !volume.terkunci && statusChunk(chunk) === 'tersedia');
+  return Boolean(volume && !volume.terkunci && ['tersedia', 'selesai'].includes(statusChunk(chunk)));
 }
 
 export function bisaMulaiBoss(volume, boss) {
@@ -38,15 +40,24 @@ export function i18nStatusKey(status, jenis) {
   return `portal.kanjiAdventure.${kunci}`;
 }
 
-/** Ringkasan progres untuk kartu volume: persentase chunk dibuka, bukan jumlah kanji. */
+/**
+ * Ringkasan kartu volume. Persentasenya adalah kanji yang sudah dikuasai dari seluruh volume; 100% hanya
+ * saat volume benar-benar selesai (boss tuntas), bukan saat semua langkah reguler baru terbuka.
+ */
 export function ringkasProgresAdventure(progres = {}, volume = {}) {
   const chunkCount = Number(volume.chunkCount ?? progres.chunkCount ?? 0);
   const terbuka = Number(progres.chunk_terbuka ?? 0);
-  const persen = chunkCount > 0 ? Math.max(0, Math.min(100, Math.round((terbuka / chunkCount) * 100))) : 0;
+  const dikuasai = Number(progres.dikuasai ?? 0);
+  const jumlah = Number(volume.jumlah ?? progres.jumlah ?? 0);
+  const selesai = Boolean(progres.selesai);
+  let persen = 0;
+  if (selesai) persen = 100;
+  else if (jumlah > 0) persen = Math.min(99, Math.max(0, Math.round((dikuasai / jumlah) * 100)));
+  else if (chunkCount > 0) persen = Math.min(99, Math.max(0, Math.round((terbuka / chunkCount) * 100)));
   return {
-    selesai: Boolean(progres.selesai),
+    selesai,
     persen,
-    dikuasai: Number(progres.dikuasai ?? 0),
+    dikuasai,
     bosses: Number(progres.bosses ?? 0),
   };
 }
@@ -56,19 +67,24 @@ export function ringkasProgresAdventure(progres = {}, volume = {}) {
 // dan berujung pada GENERIC_ERROR di halaman peta.
 const DASAR = '/kanji-adventure';
 
-// Request bawaan di-import saat dipakai, bukan saat modul dimuat, supaya helper tetap bisa
-// di-test di Node tanpa localStorage. Halaman Vue memakai request ini secara default.
-async function requestPortal(path, opsi) {
-  const modul = await import('./portalApi.js');
-  return modul.portalRequest(path, opsi);
+function denganQuery(path, query) {
+  if (!query || typeof query !== 'object') return path;
+  const params = new URLSearchParams();
+  for (const [kunci, nilai] of Object.entries(query)) {
+    if (nilai === undefined || nilai === null || nilai === '') continue;
+    params.set(kunci, String(nilai));
+  }
+  const qs = params.toString();
+  return qs ? `${path}?${qs}` : path;
 }
 
 /**
- * Klien API Kanji Adventure. Terima `request` injectable supaya mudah di-test;
+ * Klien API Kanji Adventure. Terima `request`/`requestStaff` injectable supaya mudah di-test;
  * di aplikasi cukup `buatKlienAdventure()` tanpa argumen.
  */
-export function buatKlienAdventure({ request = requestPortal } = {}) {
+export function buatKlienAdventure({ request = portalRequest, requestStaff = apiRequest } = {}) {
   const kirim = (path, opsi = {}) => request(path, opsi);
+  const mintaStaff = (path, opsi = {}) => requestStaff(path, opsi);
 
   return {
     daftarVolume: () => kirim(`${DASAR}/volume`, {}),
@@ -87,10 +103,8 @@ export function buatKlienAdventure({ request = requestPortal } = {}) {
       method: 'POST',
       body: { sesiId, jawaban, ...payload },
     }),
-    riwayat: (query) => (query && Object.keys(query).length ? kirim(`${DASAR}/riwayat`, { query }) : kirim(`${DASAR}/riwayat`, {})),
-    monitorPeserta: (pesertaId, query) => {
-      const path = `/monitor-latihan/kanji-adventure/peserta/${encodeURIComponent(pesertaId)}`;
-      return query && Object.keys(query).length ? kirim(path, { query }) : kirim(path, {});
-    },
+    riwayat: (query) => kirim(denganQuery(`${DASAR}/riwayat`, query), {}),
+    monitorPeserta: (pesertaId, query) =>
+      mintaStaff(denganQuery(`/monitor-latihan/kanji-adventure/peserta/${encodeURIComponent(pesertaId)}`, query), {}),
   };
 }

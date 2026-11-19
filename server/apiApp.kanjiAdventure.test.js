@@ -124,6 +124,7 @@ test('p3d/p3e: alur sesi dinilai, session token habis, riwayat dan grade muncul'
   assert.equal(mulai.status, 200);
   assert.ok(mulai.data.sesiId);
   assert.ok(mulai.data.soal.length > 0);
+  assert.equal(engine.readLocalState().kanjiAdventureSesi.length, 1);
 
   const detak = await call('POST', '/portal/kanji-adventure/detak', {
     sesiId: mulai.data.sesiId,
@@ -145,7 +146,11 @@ test('p3d/p3e: alur sesi dinilai, session token habis, riwayat dan grade muncul'
   assert.equal(nilai.data.skor, 100);
   assert.equal(nilai.data.lulus, true);
   assert.equal(nilai.data.nextChunk, 1);
+  assert.equal(nilai.data.chunkTuntas, true);
+  assert.equal(nilai.data.sisa, 0);
+  assert.equal(nilai.data.detail.length, mulai.data.soal.length);
   assert.ok(nilai.data.grade && nilai.data.grade.nilai >= 0);
+  assert.equal(engine.readLocalState().kanjiAdventureSesi.length, 0);
 
   const pakaiLagi = await call('POST', '/portal/kanji-adventure/nilai', { sesiId: mulai.data.sesiId, jawaban });
   assert.equal(pakaiLagi.status, 404);
@@ -165,6 +170,10 @@ test('p3e: sensei melihat progres, grade, dan status kunci setiap volume', async
   assert.equal(res.data.volume.length, 11);
   assert.equal(res.data.volume[0].materi, 'DASAR');
   assert.equal(res.data.volume[0].chunk_terbuka, 1);
+  assert.equal(res.data.volume[0].chunks[0].status, 'selesai');
+  assert.equal(res.data.volume[0].chunks[0].dikuasai, res.data.volume[0].chunks[0].jumlah);
+  assert.equal(res.data.volume[0].boss.status, 'terkunci');
+  assert.equal(res.data.volume[0].boss.jumlah, 0);
   assert.equal(res.data.volume[1].terkunci, true);
   assert.ok(res.data.ringkasan.grade);
   assert.equal(res.data.sesiAdventure.length, 1);
