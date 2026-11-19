@@ -212,6 +212,20 @@ kompak disimpan ke memory sesi supaya bisa dilanjutkan kapan saja.
 
 ## Status saat ini
 - Phase 3, 4, 5 (f5a–f5h), dan 6 (f6a) tuntas. Rencana resmi `PLAN.md` selesai.
-- Branch `kanji-adventure`: perubahan Phase 4/5/QA siap di-commit, lalu di-push.
-- Setelah push: deploy ulang production Vercel (project `joydata`) dan verifikasi
-  rute `/portal/kanji-adventure` serta API `/api/kanji-adventure/volume`.
+
+### f6b - Push, deploy, dan verifikasi produksi - SELESAI
+- Commit `88d4df4` (`feat(kanji-adventure): add portal map UI, sensei service, i18n and locks`)
+  berhasil di-push ke `origin/kanji-adventure`; working tree bersih.
+- Kendala push: credential helper global `helper-selector` menggantung saat HTTPS push.
+  Atasi dengan mereset helper (`git -c credential.helper=`) sebelum helper one-off
+  yang mengambil token dari `gh auth token`.
+- Deploy production Vercel project `joydata` sukses, deployment `joydata-oalwkewbm`
+  berstatus Ready.
+- Verifikasi produksi: hash aset `index-B5b2BXgk.js` dan `index-Cvy8nxtQ.css` di
+  `https://joydata.vercel.app/portal/kanji-adventure` sama persis dengan `dist/` lokal,
+  jadi production memakai kode terbaru. Rute SPA termuat. Endpoint
+  `/api/portal/kanji-adventure/volume` balas `{"error":"UNAUTHORIZED"}`, artinya rute
+  server hidup dan proteksi auth berjalan. Catatan: path lama
+  `/api/kanji-adventure/volume` tidak ada dan kini dikoreksi.
+- Kendala: tidak ada yang tersisa. Fitur bisa diakses di
+  `https://joydata.vercel.app/portal/kanji-adventure`.
