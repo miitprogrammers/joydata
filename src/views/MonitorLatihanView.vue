@@ -256,6 +256,46 @@
               </div>
             </div>
 
+            <div v-if="adventureLoading && !adventure" class="py-2"><v-skeleton-loader type="paragraph@1" /></div>
+            <div v-else-if="adventure">
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <p class="text-sm font-semibold text-slate-900">{{ $t('monitorLatihan.adventureJudul') }}</p>
+                <p v-if="adventureBelumMulai" class="text-[11px] text-slate-500">{{ $t('monitorLatihan.adventureBelumMulai', { n: adventureBelumMulai }) }}</p>
+              </div>
+              <p v-if="!adventureTampil.length" class="text-sm text-slate-500">{{ $t('monitorLatihan.adventureKosong') }}</p>
+              <div v-else class="space-y-2">
+                <div v-for="v in adventureTampil" :key="v.materi" class="rounded-lg border border-slate-200 px-3 py-2.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <div class="min-w-0">
+                      <p class="text-sm font-semibold text-slate-900 truncate">{{ v.judulPendek || v.judul }}</p>
+                      <p class="text-[11px] text-slate-500 tabular-nums">
+                        {{ $t('monitorLatihan.adventureProgres', { a: Math.min(v.chunk_terbuka || 0, v.chunks?.length || 0), b: v.chunks?.length || 0 }) }}
+                        · {{ $t('monitorLatihan.adventureDikuasai', { d: v.dikuasai || 0, n: v.jumlah }) }}
+                      </p>
+                    </div>
+                    <span class="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold" :class="kelasAdventure(v)">{{ labelAdventure(v) }}</span>
+                  </div>
+                  <div class="mt-1.5 h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                    <div class="h-full rounded-full" :class="v.selesai ? 'bg-emerald-500' : 'bg-primary'" :style="{ width: `${persenAdventure(v)}%` }" />
+                  </div>
+                  <div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] text-slate-500 tabular-nums">
+                    <span v-if="v.boss?.jumlah">{{ $t('monitorLatihan.adventureBoss', { n: v.boss.jumlah }) }}</span>
+                    <span v-if="v.boss_ronde">{{ $t('monitorLatihan.adventureRonde', { n: v.boss_ronde }) }}</span>
+                    <span v-if="v.perlu_perhatian" class="font-semibold text-amber-700">{{ $t('monitorLatihan.adventurePerhatian') }}</span>
+                  </div>
+                  <div v-if="v.boss?.items?.length" class="mt-1 flex flex-wrap gap-1">
+                    <span
+                      v-for="b in v.boss.items"
+                      :key="b.id"
+                      class="rounded bg-amber-50 px-1.5 py-0.5 text-xs font-semibold text-amber-900"
+                      lang="ja"
+                      :title="`${b.salah}×`"
+                    >{{ b.kanji }}<span v-if="b.salah > 1" class="ml-0.5 text-[10px] font-normal tabular-nums">×{{ b.salah }}</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div>
               <p class="text-sm font-semibold text-slate-900 mb-2">{{ $t('monitorLatihan.sesiJudul') }}</p>
               <p v-if="!detail.sesi.length" class="text-sm text-slate-500">{{ $t('monitorLatihan.sesiKosong') }}</p>
@@ -300,6 +340,7 @@
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { apiRequest } from '../services/api.js';
+import { buatKlienAdventure } from '../services/kanjiAdventure.js';
 import { useAppStore } from '../stores/appStore.js';
 import PesertaFoto from '../components/PesertaFoto.vue';
 import { urutkanRiwayatLatihan } from '@/server/domain/gradeLatihan.js';
@@ -349,6 +390,42 @@ const urutan = ref(bacaUrutan());
 const detailOpen = ref(false);
 const detailLoading = ref(false);
 const detail = ref(null);
+
+// Kanji Adventure summary is loaded separately so a missing/old table never blocks the practice detail.
+const klienAdventure = buatKlienAdventure();
+const adventure = ref(null);
+const adventureLoading = ref(false);
+let muatAdventureKe = 0;
+
+const adventureTampil = computed(() =>
+  (adventure.value?.volume || []).filter(
+    (v) => !v.terkunci || v.selesai || v.dikuasai > 0 || v.boss?.jumlah > 0 || v.perlu_perhatian,
+  ),
+);
+const adventureBelumMulai = computed(() =>
+  (adventure.value?.volume || []).filter((v) => v.terkunci && !v.selesai && !v.dikuasai).length,
+);
+
+function persenAdventure(v) {
+  if (v.selesai) return 100;
+  const total = Number(v.jumlah) || 0;
+  const dikuasai = Number(v.dikuasai) || 0;
+  if (total > 0) return Math.min(99, Math.max(0, Math.round((dikuasai / total) * 100)));
+  const chunks = Number(v.chunks?.length) || 0;
+  return chunks > 0 ? Math.min(99, Math.round(((Number(v.chunk_terbuka) || 0) / chunks) * 100)) : 0;
+}
+
+function labelAdventure(v) {
+  if (v.selesai) return t('monitorLatihan.adventureSelesai');
+  if (v.terkunci) return t('monitorLatihan.adventureTerkunci');
+  return t('monitorLatihan.adventureTerbuka');
+}
+
+function kelasAdventure(v) {
+  if (v.selesai) return 'bg-emerald-100 text-emerald-800';
+  if (v.terkunci) return 'bg-slate-100 text-slate-500';
+  return 'bg-blue-50 text-blue-800';
+}
 
 function notifyError(err) {
   appStore.notify(t(`messages.${err.code}`) || t('messages.GENERIC_ERROR'), 'error');
@@ -549,10 +626,25 @@ async function muatStatistik() {
   }
 }
 
+async function muatAdventure(pesertaId) {
+  const nomor = ++muatAdventureKe;
+  adventure.value = null;
+  adventureLoading.value = true;
+  try {
+    const res = await klienAdventure.monitorPeserta(pesertaId, paramPeriode());
+    if (nomor === muatAdventureKe) adventure.value = res;
+  } catch {
+    if (nomor === muatAdventureKe) adventure.value = null;
+  } finally {
+    if (nomor === muatAdventureKe) adventureLoading.value = false;
+  }
+}
+
 async function bukaPeserta(pesertaId) {
   detailOpen.value = true;
   detailLoading.value = true;
   detail.value = null;
+  muatAdventure(pesertaId);
   try {
     detail.value = await apiRequest(`/monitor-latihan/peserta/${pesertaId}?${new URLSearchParams(paramPeriode())}`);
   } catch (err) {
