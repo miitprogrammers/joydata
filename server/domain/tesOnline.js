@@ -229,6 +229,15 @@ function opsiAcak(benar, pengecoh, rng) {
 function buatSoalKanji(materi, jumlah, rng) {
   const items = kanjiItems(materi);
   const dipilih = shuffle(items, rng).slice(0, jumlah ? Math.min(jumlah, items.length) : items.length);
+  return susunSoalKanjiDariItems(items, dipilih, rng);
+}
+
+/**
+ * Build one question per chosen item with the exact same shape as the random paper. `items` is the whole
+ * material (source of distractors); `dipilih` is the ordered subset to ask. Exported so a saved chunk
+ * snapshot can be rendered again without reshuffling or changing the source data.
+ */
+export function susunSoalKanjiDariItems(items, dipilih, rng) {
   const semuaArti = items.map((i) => i.arti);
 
   return dipilih.map((item) => {
