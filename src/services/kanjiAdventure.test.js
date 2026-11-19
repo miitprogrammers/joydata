@@ -63,18 +63,61 @@ test('klien adventure memanggil endpoint portal dengan method dan body yang bena
   };
   const klien = buatKlienAdventure({ request });
 
-  assert.deepEqual(await klien.daftarVolume(), { ok: true, path: '/portal/kanji-adventure/volume' });
+  assert.deepEqual(await klien.daftarVolume(), { ok: true, path: '/kanji-adventure/volume' });
   await klien.bacaVolume('N5');
   await klien.mulai({ materi: 'N5', mode: 'chunk', chunkIndex: 2 });
   await klien.riwayat({ dari: '2026-01-01' });
 
   assert.deepEqual(dipanggil, [
-    { path: '/portal/kanji-adventure/volume', opsi: {} },
-    { path: '/portal/kanji-adventure/volume/N5', opsi: {} },
+    { path: '/kanji-adventure/volume', opsi: {} },
+    { path: '/kanji-adventure/volume/N5', opsi: {} },
     {
-      path: '/portal/kanji-adventure/mulai',
+      path: '/kanji-adventure/mulai',
       opsi: { method: 'POST', body: { materi: 'N5', mode: 'chunk', chunkIndex: 2 } },
     },
-    { path: '/portal/kanji-adventure/riwayat', opsi: { query: { dari: '2026-01-01' } } },
+    { path: '/kanji-adventure/riwayat', opsi: { query: { dari: '2026-01-01' } } },
   ]);
+});
+
+test('URL akhir klien adventure tidak boleh dobel /portal', async () => {
+  // Meniru server nyata: rute yang benar butuh token (UNAUTHORIZED), path dobel
+  // dijawab Express dengan HTML 404 sehingga portalApi menghasilkan GENERIC_ERROR.
+  const fetchAsli = globalThis.fetch;
+  const storageAsli = globalThis.localStorage;
+  const diminta = [];
+  globalThis.localStorage = { getItem: () => '', setItem() {}, removeItem() {} };
+  globalThis.fetch = async (url) => {
+    diminta.push(url);
+    if (url === '/api/portal/kanji-adventure/volume') {
+      return {
+        ok: false,
+        status: 401,
+        headers: { get: () => null },
+        json: async () => ({ error: 'UNAUTHORIZED' }),
+      };
+    }
+    return {
+      ok: false,
+      status: 404,
+      headers: { get: () => null },
+      json: async () => {
+        throw new Error('bukan JSON');
+      },
+    };
+  };
+
+  try {
+    const klien = buatKlienAdventure();
+    let err = null;
+    try {
+      await klien.daftarVolume();
+    } catch (e) {
+      err = e;
+    }
+    assert.deepEqual(diminta, ['/api/portal/kanji-adventure/volume']);
+    assert.equal(err?.code, 'UNAUTHORIZED');
+  } finally {
+    globalThis.fetch = fetchAsli;
+    globalThis.localStorage = storageAsli;
+  }
 });

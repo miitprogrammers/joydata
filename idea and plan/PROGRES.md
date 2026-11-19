@@ -229,3 +229,22 @@ kompak disimpan ke memory sesi supaya bisa dilanjutkan kapan saja.
   `/api/kanji-adventure/volume` tidak ada dan kini dikoreksi.
 - Kendala: tidak ada yang tersisa. Fitur bisa diakses di
   `https://joydata.vercel.app/portal/kanji-adventure`.
+
+### f6c - Perbaikan GENERIC_ERROR pada peta adventure (dari laporan screenshot) - SELESAI
+- Laporan user: screenshot `dashboard_20261119_181204_30a8fd6a_IMG_7319.jpg` menunjukkan
+  halaman portal termuat, tetapi panel peta adventure gagal dengan `Status: GENERIC_ERROR`.
+- Root cause: `src/services/kanjiAdventure.js` memakai `DASAR = '/portal/kanji-adventure'`,
+  padahal `src/services/portalApi.js` sudah menambahkan awalan `/api/portal`. URL akhir yang
+  dikirim browser menjadi `/api/portal/portal/kanji-adventure/volume` (dobel `/portal`).
+  Server menjawab 404 berisi HTML (`Cannot GET ...`), `portalApi.js` gagal melakukan
+  `res.json()`, payload menjadi null, lalu melempar `code: 'GENERIC_ERROR'`.
+- Bukti produksi: `vercel curl /api/portal/portal/kanji-adventure/volume` -> 404 HTML,
+  sedangkan `vercel curl /api/portal/kanji-adventure/volume` -> `{"error":"UNAUTHORIZED"}`.
+- TDD: test baru `URL akhir klien adventure tidak boleh dobel /portal` di
+  `src/services/kanjiAdventure.test.js` awalnya gagal dengan URL aktual
+  `/api/portal/portal/kanji-adventure/volume`, lalu hijau setelah `DASAR` diubah menjadi
+  `/kanji-adventure`. Assertion lama yang mengunci path keliru ikut diperbarui.
+- Verifikasi: `npm test` 136/136 pass, `npm run lint` (`tsc --noEmit`) bersih,
+  `npm run build` sukses (PWA 19 entries).
+- Kendala: verifikasi f6b hanya mengecek hash aset dan status rute, bukan alur data setelah
+  login, sehingga bug ini lolos. Kini pengecekan sampai ke URL akhir yang dipanggil browser.

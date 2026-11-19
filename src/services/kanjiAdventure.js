@@ -51,7 +51,10 @@ export function ringkasProgresAdventure(progres = {}, volume = {}) {
   };
 }
 
-const DASAR = '/portal/kanji-adventure';
+// portalApi sudah menambahkan awalan /api/portal, jadi path di sini TANPA /portal.
+// Menulis /portal/kanji-adventure di sini menghasilkan /api/portal/portal/... yang 404 HTML
+// dan berujung pada GENERIC_ERROR di halaman peta.
+const DASAR = '/kanji-adventure';
 
 // Request bawaan di-import saat dipakai, bukan saat modul dimuat, supaya helper tetap bisa
 // di-test di Node tanpa localStorage. Halaman Vue memakai request ini secara default.
