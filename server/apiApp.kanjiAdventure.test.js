@@ -167,7 +167,8 @@ test('p3e: sensei melihat progres, grade, dan status kunci setiap volume', async
   const res = await call('GET', `/monitor-latihan/kanji-adventure/peserta/${uid}`, undefined, staffToken);
   assert.equal(res.status, 200);
   assert.equal(res.data.peserta.pesertaId, uid);
-  assert.equal(res.data.volume.length, 11);
+  assert.equal(res.data.volume.length, 16);
+  assert.equal(res.data.volume.at(-1).materi, 'N3VOL5');
   assert.equal(res.data.volume[0].materi, 'DASAR');
   assert.equal(res.data.volume[0].chunk_terbuka, 1);
   assert.equal(res.data.volume[0].chunks[0].status, 'selesai');

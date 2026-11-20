@@ -363,7 +363,7 @@ const kelasOptions = ref([]);
 const katalog = ref({ kanji: [], dokkai: [] });
 const jlptOptions = ref(['N5', 'N4', 'N3']);
 const volumeKanji = ref([]);
-// Kanji volumes a dokkai code starts with, per sentence-pattern level (N5: N5 volumes; N4/N3: N5 and N4).
+// Kanji volumes a dokkai code starts with, per sentence-pattern level (cumulative: N5; N5+N4; N5+N4+N3).
 const volumeKanjiDefault = ref({});
 const filterKelasId = ref('all');
 const filterStatus = ref('all');
@@ -434,8 +434,10 @@ const jlptChoices = computed(() =>
 const volumeChoices = computed(() => volumeKanji.value.map((v) => ({ value: v, label: labelVolumeKanji(v, t) })));
 const volumeAwal = (jlpt) => [...(volumeKanjiDefault.value[jlpt] || volumeKanji.value)];
 const jumlahHint = computed(() => {
-  if (form.value.jenis === 'dokkai' && form.value.sumber === 'ai') return t('tesOnline.jumlahHintAi');
-  return t('tesOnline.jumlahHint', { n: form.value.jenis === 'dokkai' ? poolBank.value : materiAktif.value?.jumlah ?? '-' });
+  // Scored dokkai codes: with three options, ten questions still leave room to pass by guessing (KB 11 § D6).
+  const saran = form.value.jenis === 'dokkai' ? ` · ${t('tesOnline.saranJumlahDokkai')}` : '';
+  if (form.value.jenis === 'dokkai' && form.value.sumber === 'ai') return t('tesOnline.jumlahHintAi') + saran;
+  return t('tesOnline.jumlahHint', { n: form.value.jenis === 'dokkai' ? poolBank.value : materiAktif.value?.jumlah ?? '-' }) + saran;
 });
 const formValid = computed(
   () =>
@@ -457,7 +459,7 @@ watch(
   (jenis, lama) => {
     if (!jenis || jenis === lama || !createOpen.value) return;
     form.value.materi = (katalog.value[jenis] || [])[0]?.kode || null;
-    form.value.jumlahSoal = jenis === 'kanji' ? 20 : 5;
+    form.value.jumlahSoal = jenis === 'kanji' ? 20 : 8;
     form.value.sumber = 'bank';
     form.value.jlpt = 'N5';
   }

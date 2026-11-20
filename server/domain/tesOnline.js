@@ -1,13 +1,15 @@
 /**
- * Tes Online (kanji N5/N4 & dokkai) for the peserta portal. Pure rules: the question catalogue, building a randomised
+ * Tes Online (kanji N5/N4/N3 & dokkai) for the peserta portal. Pure rules: the question catalogue, building a randomised
  * test, grading it, and the access codes sensei hand out. Every attempt draws its own questions (subset, order,
  * distractors and option order), so two peserta, or one peserta twice, never get the same paper.
  */
 
 import { KANJI_DASAR, KANJI_VOLUME, BACAAN_LAIN } from './bankSoal/kanjiN5.js';
 import { KANJI_VOLUME_N4, BACAAN_LAIN_N4 } from './bankSoal/kanjiN4.js';
+import { KANJI_VOLUME_N3, BACAAN_LAIN_N3 } from './bankSoal/kanjiN3.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
 import { DOKKAI_N4_LEVEL } from './bankSoal/dokkaiN4.js';
+import { DOKKAI_N3_LEVEL } from './bankSoal/dokkaiN3.js';
 
 export const JENIS_TES = ['kanji', 'dokkai'];
 const JUMLAH_OPSI_KANJI = 4;
@@ -16,26 +18,31 @@ const MIN_JUMLAH_SOAL = 1;
 const HURUF_KODE = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
 export const PANJANG_KODE = 6;
 
-// Kanji levels with word volumes. N5: DASAR (80 single kanji) and VOL1-VOL5; N4: N4VOL1-N4VOL5.
-export const JLPT_KANJI = ['N5', 'N4'];
+// Kanji levels with word volumes. N5: DASAR (80 single kanji) and VOL1-VOL5; N4: N4VOL1-N4VOL5; N3: N3VOL1-N3VOL5.
+export const JLPT_KANJI = ['N5', 'N4', 'N3'];
 const VOLUME_KATA = {
   ...KANJI_VOLUME,
   ...Object.fromEntries(Object.entries(KANJI_VOLUME_N4).map(([vol, kata]) => [`N4${vol}`, kata])),
+  ...Object.fromEntries(Object.entries(KANJI_VOLUME_N3).map(([vol, kata]) => [`N3${vol}`, kata])),
 };
 // "Semua Volume" of each level.
-const SEMUA_LEVEL = { SEMUA: 'N5', N4SEMUA: 'N4' };
+const SEMUA_LEVEL = { SEMUA: 'N5', N4SEMUA: 'N4', N3SEMUA: 'N3' };
 
 /** JLPT level of a kanji material or kanji volume code. */
-export const jlptKanji = (kode) => (String(kode).startsWith('N4') ? 'N4' : 'N5');
+export const jlptKanji = (kode) => /^N[34]/.exec(String(kode))?.[0] ?? 'N5';
+// Kanji levels in study order: a dokkai code at a level uses the volumes up to that level.
+const URUT_JLPT_KANJI = ['N5', 'N4', 'N3'];
 const volumeKataLevel = (jlpt) => Object.keys(VOLUME_KATA).filter((v) => jlptKanji(v) === jlpt);
-/** The number of a volume code: 3 for VOL3 and N4VOL3. */
-export const nomorVolume = (kode) => String(kode).replace(/^(N4)?VOL/, '');
+/** The number of a volume code: 3 for VOL3, N4VOL3 and N3VOL3. */
+export const nomorVolume = (kode) => String(kode).replace(/^(N[34])?VOL/, '');
 
 // Other right readings of a word, never offered as a wrong option (明日 あした/あす, 止める とめる/やめる).
-const bacaanLain = (kata) => [...new Set([...(BACAAN_LAIN[kata] || []), ...(BACAAN_LAIN_N4[kata] || [])])];
+const bacaanLain = (kata) => [
+  ...new Set([...(BACAAN_LAIN[kata] || []), ...(BACAAN_LAIN_N4[kata] || []), ...(BACAAN_LAIN_N3[kata] || [])]),
+];
 
 /**
- * The words of a kanji material: DASAR, one volume, or SEMUA / N4SEMUA (every volume of that level). Ids are
+ * The words of a kanji material: DASAR, one volume, or SEMUA / N4SEMUA / N3SEMUA (every volume of that level). Ids are
  * `${volume}:${word}`; a word in two volumes of one level (服 in N5, 止める in N4) is asked once in Semua.
  */
 export function kanjiItems(materi) {
@@ -56,17 +63,18 @@ export function kanjiItems(materi) {
 }
 
 // Sentence-pattern level of a dokkai passage. L1-L5 is the passage length and type; this is its grammar,
-// vocabulary and kanji. N5 and N4 have a fixed bank; N3 passages come from approved AI codes only.
+// vocabulary and kanji. Each level has a fixed bank; approved AI passages join it.
 export const JLPT_DOKKAI = ['N5', 'N4', 'N3'];
 
 // The fixed bank of each sentence-pattern level, with the same level codes (L1-L5). The N4 bank follows the bunpou
 // module (bankSoal/bunpouN4.js, rules in domain/bunpou.js): each of its levels practises its own group of patterns,
 // so an N4 level has its own description, and its passages carry `bunpou` (module numbers, staff bank view only).
-const BANK_DOKKAI = { N5: DOKKAI_LEVEL, N4: DOKKAI_N4_LEVEL };
+// The N3 levels follow the kinds of text of the official N3 reading section (短文, 中文, 長文), with their own descriptions.
+const BANK_DOKKAI = { N5: DOKKAI_LEVEL, N4: DOKKAI_N4_LEVEL, N3: DOKKAI_N3_LEVEL };
 
 /**
- * Dokkai passages of a material at one sentence-pattern level: the fixed bank of that level (N5, N4) plus the
- * approved AI passages (tambahan: [{ ...passage, level, jlpt }]); for N3 only the latter.
+ * Dokkai passages of a material at one sentence-pattern level: the fixed bank of that level plus the approved AI
+ * passages (tambahan: [{ ...passage, level, jlpt }]).
  */
 export function poolDokkai(materi, tambahan = [], jlpt = 'N5') {
   const levels = (BANK_DOKKAI[jlpt] || []).filter((l) => materi === 'SEMUA' || l.kode === materi);
@@ -137,11 +145,13 @@ export function judulMateriTes({ jenis, materi, jlpt = 'N5' }) {
 }
 
 /**
- * The kanji volumes a dokkai code at this sentence-pattern level starts with: N5 → the N5 volumes, N4/N3 → N5 and
- * N4. Exactly these is stored as null: bank passages as written, AI passages with the kanji of these volumes.
+ * The kanji volumes a dokkai code at this sentence-pattern level starts with, cumulative: N5 → the N5 volumes,
+ * N4 → N5 and N4, N3 → N5, N4 and N3. Exactly these is stored as null: bank passages as written, AI passages with
+ * the kanji of these volumes. Cumulative, so a new N3 volume never reaches an N4 code that kept the default.
  */
 export function volumeKanjiDefault(jlpt = 'N5') {
-  return jlpt === 'N5' ? VOLUME_KANJI.filter((v) => jlptKanji(v) === 'N5') : [...VOLUME_KANJI];
+  const batas = Math.max(0, URUT_JLPT_KANJI.indexOf(jlpt));
+  return VOLUME_KANJI.filter((v) => URUT_JLPT_KANJI.indexOf(jlptKanji(v)) <= batas);
 }
 
 // The kanji volumes a dokkai paper may use: null = the level's default, false = not a valid selection.
@@ -421,7 +431,7 @@ export function normalisasiKodeTes(input) {
 /**
  * Validates what a sensei fills in to open a test code. jumlah = words (kanji) or passages (dokkai) per peserta;
  * null = all. sumber 'ai' = dokkai of one level whose passages an AI writes for this code (reviewed as a draft).
- * jlpt = the dokkai sentence-pattern level (N5, N4, N3); a kanji test takes the level of its material (N5, N4).
+ * jlpt = the dokkai sentence-pattern level (N5, N4, N3); a kanji test takes the level of its material (N5, N4, N3).
  */
 export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   const kelasId = Number(input?.kelasId);
@@ -436,7 +446,7 @@ export function validateSesiTes(input, { tambahanDokkai = [] } = {}) {
   const jlpt = jenis === 'kanji' ? info.jlpt : input?.jlpt ?? 'N5';
   if (sumber === 'ai' && (jenis !== 'dokkai' || materi === 'SEMUA')) return { ok: false, code: 'INVALID_TES_ONLINE' };
   if (!JLPT_DOKKAI.includes(jlpt)) return { ok: false, code: 'INVALID_TES_ONLINE' };
-  // A bank code draws from what exists at that pattern level: N3 only once AI passages have been approved.
+  // A bank code draws from what exists at that pattern level (its bank and the approved AI passages).
   const ukuranPool = jenis === 'dokkai' ? info.perJlpt[jlpt].jumlah : info.jumlah;
   // Kanji volumes the dokkai passages may use; all volumes (or a kanji test) = null.
   const kanjiVolume = jenis === 'dokkai' ? volumeKanjiDipilih(input?.kanjiVolume, jlpt) : null;
@@ -504,6 +514,9 @@ export function kanjiDariVolume(volume = VOLUME_KANJI) {
 /** Every kanji the peserta study. */
 export const KANJI_DIPELAJARI = kanjiDariVolume();
 
+/** The kanji a passage at this sentence-pattern level may use by default: the volumes up to that level. */
+export const kanjiTingkat = (jlpt = 'N5') => kanjiDariVolume(volumeKanjiDefault(jlpt));
+
 /**
  * Every kanji run carries a kana reading right after it (漢字{かんじ}), and braces hold nothing else. A reading
  * shorter than its kanji run (毎朝六時{ろくじ}) means kanji before it went without furigana.
@@ -552,7 +565,24 @@ export function sederhanakanBacaan(b, kanjiBoleh) {
 }
 
 const teksBersih = (v) => (typeof v === 'string' ? v.trim() : '');
+// Line breaks belong in the passage text only (memo, email, notice lines); everything else is one line.
+const satuBaris = (v) => teksBersih(v).replace(/\s*\n\s*/g, ' ');
+const teksBergaris = (v) => teksBersih(v).replace(/\r\n?/g, '\n').replace(/[ \t\u3000]*\n[ \t\u3000]*/g, '\n').replace(/\n{3,}/g, '\n\n');
 const ADA_TEKS_JEPANG = /[\u3040-\u30FF\u3400-\u9FFF]/;
+const KANJI_RUN = '[\\u3400-\\u9FFF\\u3005\\u3006\\u30F6]';
+
+/**
+ * Repairs two furigana slips the models make, before the strict check: okurigana inside the reading's reach
+ * (\u60AA\u3044{\u308F\u308B\u3044} \u2192 \u60AA{\u308F\u308B}\u3044, \u304A\u66F8\u304D{\u304B\u304D} \u2192 \u304A\u66F8{\u304B}\u304D) and braces after kana or katakana (\u30AB\u30FC\u30C9{\u304B\u30FC\u3069} \u2192 \u30AB\u30FC\u30C9).
+ * Only shapes that have one right reading are touched; anything else is left for furiganaLengkap to reject.
+ */
+export function perbaikiFurigana(teks) {
+  return String(teks)
+    .replace(new RegExp(`(${KANJI_RUN}+)([\\u3040-\\u309F]+)\\{([\\u3040-\\u309F]+)\\}`, 'g'), (utuh, kanji, oku, baca) =>
+      baca.length > oku.length && baca.endsWith(oku) ? `${kanji}{${baca.slice(0, -oku.length)}}${oku}` : utuh
+    )
+    .replace(new RegExp(`(^|[^\\u3400-\\u9FFF\\u3005\\u3006\\u30F6}])\\{[\\u3040-\\u30FF]*\\}`, 'g'), '$1');
+}
 
 /**
  * An answer option is Japanese, never Indonesian: it holds kana or kanji, no Latin word (a single letter like the
@@ -569,10 +599,10 @@ const PANJANG_MAKS = { N5: 800, N4: 1200, N3: 1600 };
  * Checks and normalises one passage written by the AI. Returns { ok: true, bacaan } with ids under `id`
  * (questions `${id}-1`, …) or { ok: false, alasan }. Kanji outside kanjiBoleh become kana, at every JLPT level.
  */
-export function validasiBacaanAi(raw, id, { jlpt = 'N5', kanjiBoleh = KANJI_DIPELAJARI } = {}) {
-  const judul = teksBersih(raw?.judul);
-  const teks = teksBersih(raw?.teks);
-  const terjemahan = teksBersih(raw?.terjemahan);
+export function validasiBacaanAi(raw, id, { jlpt = 'N5', kanjiBoleh = kanjiTingkat(jlpt) } = {}) {
+  const judul = perbaikiFurigana(satuBaris(raw?.judul));
+  const teks = perbaikiFurigana(teksBergaris(raw?.teks));
+  const terjemahan = satuBaris(raw?.terjemahan);
   if (!judul || judul.length > 60 || teks.length < 20 || teks.length > (PANJANG_MAKS[jlpt] || 800) || terjemahan.length < 10) {
     return { ok: false, alasan: 'panjang' };
   }
@@ -582,10 +612,10 @@ export function validasiBacaanAi(raw, id, { jlpt = 'N5', kanjiBoleh = KANJI_DIPE
   if (daftar.length < 2 || daftar.length > 3) return { ok: false, alasan: 'jumlah_soal' };
   const soal = [];
   for (const [i, s] of daftar.entries()) {
-    const tanya = teksBersih(s?.tanya);
-    const tanyaId = teksBersih(s?.tanyaId);
-    const pembahasan = teksBersih(s?.pembahasan).replace(/\{[^{}]*\}/g, '');
-    const opsi = Array.isArray(s?.opsi) ? s.opsi.map(teksBersih) : [];
+    const tanya = perbaikiFurigana(satuBaris(s?.tanya));
+    const tanyaId = satuBaris(s?.tanyaId);
+    const pembahasan = satuBaris(s?.pembahasan).replace(/\{[^{}]*\}/g, '');
+    const opsi = Array.isArray(s?.opsi) ? s.opsi.map((o) => perbaikiFurigana(satuBaris(o))) : [];
     const benar = s?.benar;
     if (!tanya || !tanyaId || !pembahasan || !furiganaLengkap(tanya)) return { ok: false, alasan: 'soal' };
     if (opsi.length !== 3 || opsi.some((o) => !o) || new Set(opsi.map(tanpaFurigana)).size !== 3) return { ok: false, alasan: 'opsi' };
