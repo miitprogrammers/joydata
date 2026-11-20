@@ -40,8 +40,11 @@ const blok = (t, nama, pakai) => {
   }
   return hasil;
 };
+// {{#RAPIKAN}} = the bank keeps only studied kanji (N4, N3); {{#REVISI}} / {{#TAMBAH}} = revision or new passages.
+const revisi = rencana.mode === 'revisi';
 const isi = (templatnya, nilai) => {
-  const t = blok(blok(templatnya, 'MODUL', adaModul), 'TANPAMODUL', !adaModul);
+  let t = blok(blok(templatnya, 'MODUL', adaModul), 'TANPAMODUL', !adaModul);
+  t = blok(blok(blok(t, 'RAPIKAN', tingkat(jlpt).kanjiVolume), 'REVISI', revisi), 'TAMBAH', !revisi);
   const hasil = t.replace(/\{\{([A-Z]+)\}\}/g, (m, k) => (k in nilai ? String(nilai[k]) : m));
   const sisa = hasil.match(/\{\{[A-Z]+\}\}/);
   if (sisa) throw new Error(`placeholder ${sisa[0]} tidak terisi`);
@@ -59,7 +62,24 @@ if (arg.penulis) {
   const t = templat('brief-generator.md');
   for (const level of levelDipilih(arg, rencana)) {
     const rc = rencana.level[level];
-    simpan(`gen-${level}.md`, isi(t, { ...dasar, LEVEL: level, JUMLAH: rc.jumlah, DESKRIPSI: rc.deskripsi, IDAWAL: idBacaan(jlpt, level, rc.mulai), IDAKHIR: idBacaan(jlpt, level, rc.mulai + rc.jumlah - 1) }));
+    const ids = revisi ? rc.ids : null;
+    simpan(`gen-${level}.md`, isi(t, {
+      ...dasar,
+      LEVEL: level,
+      JUMLAH: rc.jumlah,
+      DESKRIPSI: rc.deskripsi,
+      IDAWAL: revisi ? ids[0] : idBacaan(jlpt, level, rc.mulai),
+      IDAKHIR: revisi ? ids[ids.length - 1] : idBacaan(jlpt, level, rc.mulai + rc.jumlah - 1),
+      ALASAN: revisi
+        ? ids
+            .map((id) => {
+              const r = rc.rincian?.[id] || {};
+              const sebab = (rc.alasan?.[id] || []).map((a) => (r[a]?.length ? `${a} (${r[a].join('; ')})` : a));
+              return `- \`${id}\`: ${sebab.join(', ')}`;
+            })
+            .join('\n')
+        : '',
+    }));
   }
 } else if (arg.ulang) {
   if (!fs.existsSync(path.join(kerja, 'blind', 'ulang.json'))) {

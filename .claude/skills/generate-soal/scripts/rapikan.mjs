@@ -1,8 +1,9 @@
-// Step 2b (levels with a bunpou module only): write the kanji peserta have not studied in kana.
+// Step 2b (levels whose bank keeps only studied kanji: N4, N3): write the kanji peserta have not studied in kana.
 //   node rapikan.mjs --kerja <folder> [L1 …]
 // Rewrites gen/<level>.json with the app's own sederhanakanBacaan: a kanji run with any kanji outside the kanji
-// volumes becomes its reading (寮{りょう} → りょう), in the title, text, questions, options and the quotes of the
-// explanations. Fields come back in bank order. Run it before gate.mjs; the gate rejects what is left.
+// volumes up to this level (N4: N5+N4, N3: N5+N4+N3) becomes its reading (寮{りょう} → りょう), in the title, text,
+// questions, options and the quotes of the explanations. Fields come back in bank order. Run it before gate.mjs;
+// the gate rejects what is left.
 import fs from 'fs';
 import { argumen, bacaGen, bacaRencana, dirKerja, jlptRencana, kanonik, levelDipilih, muatValidator, tingkat } from './_umum.mjs';
 
@@ -10,11 +11,12 @@ const arg = argumen();
 const kerja = dirKerja(arg);
 const rencana = bacaRencana(kerja);
 const jlpt = jlptRencana(rencana);
-if (!tingkat(jlpt).modul) {
+if (!tingkat(jlpt).kanjiVolume) {
   console.log(`Bank ${jlpt} menerima kanji apa pun (volume diterapkan saat tes dibuat) — tidak ada yang dirapikan.`);
   process.exit(0);
 }
-const { sederhanakanBacaan, KANJI_DIPELAJARI } = await muatValidator();
+const { sederhanakanBacaan, kanjiDariVolume, volumeKanjiDefault } = await muatValidator();
+const KANJI_DIPELAJARI = kanjiDariVolume(volumeKanjiDefault(jlpt));
 let gagal = false;
 
 for (const level of levelDipilih(arg, rencana)) {

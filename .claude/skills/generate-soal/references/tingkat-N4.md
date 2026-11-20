@@ -1,6 +1,8 @@
 # Tingkat N4 — modul bunpou, kanji, tata bahasa, dan ciri level
 
 Pelengkap [spesifikasi-soal.md](spesifikasi-soal.md) untuk bank N4 (`server/domain/bankSoal/dokkaiN4.js`, id `N4L1-21`).
+Sumber aturan: `docs/kb-dokkai/17-aturan-final.md` § 4. Kelas N4 memakai **Minna no Nihongo Bab 26–50** bersama modul
+bunpou; peserta sudah belajar Bab 1–25 di tahap N5.
 
 Bank N4 mengikuti modul bunpou resmi JOYdata, "111 Bunpo N4" (104 pola; datanya di
 `server/domain/bankSoal/bunpouN4.js`). Tiap pola modul menjadi **pola fokus** di satu level dokkai, jadi level
@@ -58,11 +60,13 @@ Gaya です・ます di narasi, pertanyaan, dan pilihan.
 
 Boleh:
 
-1. Semua pola N5 (daftar "Boleh" di [tingkat-N5.md](tingkat-N5.md)).
+1. Semua pola Minna Bab 1–50 (`docs/kb-dokkai/15-tata-bahasa-minna.md`) — **kecuali** pola modul dari level berikutnya
+   (urutan level modul tetap berlaku walau polanya sudah diajarkan di Minna II).
 2. Pola modul dari level ini (fokus) dan dari level sebelumnya.
-3. Seperlunya, pola N4 umum yang tidak ada di modul, supaya kalimatnya wajar: penjelas kata benda
-   (`きのう買{か}った本{ほん}`), ～とき, ～ながら, ～てしまう, ～はじめる／おわる, ～あいだ(に), ～について, ～という N,
-   ～しか～ない, ～でしょう. Pola ini pendukung saja: jangan menjadi inti soal.
+3. Sebagai pendukung (jangan menjadi inti soal): あまり～ない, 全然～ない, きっと, ぜひ, など, なかなか～ない, そんなに, ～場合は,
+   ～が必要, ～予定だ, ～ようだ, それに, それでも, ～たばかり, **～ようにする** (Minna Bab 36), ～てすみません, ～て (sebab),
+   ～のに (tujuan), ～たらいいですか, 急に, さっき, やっと, ～そうだ "katanya" (mulai L4), penjelas kata benda, ～とき,
+   ～ながら, ～てしまう, ～はじめる／おわる, ～あいだ(に), ～について, ～という N, ～しか～ない, ～でしょう.
 
 Tidak boleh:
 
@@ -70,8 +74,10 @@ Tidak boleh:
   ～てあげる／くれる／もらう, pasif, dan kausatif sebelum L4; keigo sebelum L5 (kecuali お～ください, おります,
   ～でございます yang masuk L4). `ください`, `いただきます` sebelum makan, dan `ございます` dalam salam bukan keigo
   yang dimaksud — itu kosakata N5.
-- Pola N3 ke atas: ～わけ, ～によって, ～として, ～にとって, ～ようにする, ～べき, ～うちに, ～たびに, ～おかげで／せいで,
-  ～だけでなく, ～さえ, ～に対して／に関して／に比べて, kausatif-pasif (～させられる), ～っぽい／がち／ぎみ.
+- Pola di luar Minna dan modul: ～わけ, ～によって (sampai dicek di Minna Bab 37), ～として, ～にとって, ～べき, ～うちに, ～たびに,
+  ～おかげで／せいで, ～だけでなく, ～さえ, ～に対して／に関して／に比べて, kausatif-pasif (～させられる), ～っぽい／がち／ぎみ,
+  ～はずがない, ～おきに, ～続ける, ～出す (mulai), ～ということ, ～ように／～ような ("seperti"), ～ではないか, ～がる. Partikel
+  lisan かしら, かい, かな, って hanya di dalam kutipan.
 - Bentuk biasa di akhir kalimat narasi. Pola yang memang berbentuk biasa — V な (larangan), 命令形, ～だろう,
   ～のだ／んだ — ditaruh di dalam kutipan `「…」`, tulisan papan atau rambu, atau ucapan/pikiran yang dikutip
   (～と言{い}いました, ～と書{か}いてあります, ～と思{おも}いました). ～んです dan ～でしょう boleh di narasi. Bacaan L3–L5
@@ -80,6 +86,13 @@ Tidak boleh:
 
 Gate memberi PERINGATAN bila menemukan pola N3 atau pola level berikutnya. Peringatan bisa keliru (`いただきます`,
 `みたいです` yang berarti "ingin melihat"), jadi baca tiap peringatan.
+
+## Kosakata dan angka
+
+- Kosakata Minna Bab 1–50 (`docs/kb-dokkai/16-kosakata-minna.md`), termasuk kata kerja yang di N5 dilarang: 工場, ごみ,
+  給料, 規則, 安全. 先輩, 作業, 機械 (di luar Minna) boleh seperlunya dengan konteks jelas. Gate memberi PERINGATAN untuk
+  kata yang tidak ada di Minna.
+- Angka Arab seperti di [spesifikasi-soal.md](spesifikasi-soal.md) (gate: angka kanji + satuan = ERROR).
 
 ## Ciri tiap level
 
@@ -91,7 +104,7 @@ Panjang dihitung dari teks tanpa furigana, sesudah dirapikan; gate menolak yang 
 | L2 Syarat, keharusan, alasan | 65–130 | 4–6 | Rutinitas kerja atau asrama, persiapan, tenggat, kewajiban, sebab-akibat, saran. | Satu fakta; satu "mengapa", "apa yang harus / tidak perlu dilakukan", atau "kalau …, bagaimana". |
 | L3 Keputusan, dugaan, pengandaian | 75–145 | 4–7 | Pengumuman, memo, pesan, catatan: keputusan, ketetapan, perkiraan, larangan dan perintah di papan. | Satu fakta; satu yang memisahkan yang pasti dari yang baru dugaan, keputusan sendiri dari ketetapan, atau syarat dari akibatnya. |
 | L4 Pasif, kausatif, beri-terima | 90–175 | 5–8 | Cerita dengan dua–tiga tokoh: siapa melakukan apa untuk siapa, kejadian yang menimpa seseorang, kabar dari orang lain, pengumuman sopan. | Satu detail; satu "siapa yang melakukan / menerima / disuruh" atau gabungan dua detail. |
-| L5 Keigo | 135–250 | 6–10 | Email atau surat kepada atasan atau guru, pengumuman toko/hotel/perusahaan, percakapan dengan tamu, perkenalan diri resmi. | Soal 1 detail yang menuntut paham kata hormat (siapa yang datang, siapa yang melihat); soal 2 simpulan sederhana dari satu–dua kalimat. |
+| L5 Keigo | **250–450** | **10–20** | Email atau surat kepada atasan atau guru, pengumuman toko/hotel/perusahaan, percakapan dengan tamu, perkenalan diri resmi; **sebagian bacaan 情報検索** (selebaran toko/hotel/kantor dalam keigo, satu butir per baris — spesifikasi-soal.md butir 12). | Soal 1 detail yang menuntut paham kata hormat (siapa yang datang, siapa yang melihat); soal 2 simpulan sederhana dari satu–dua kalimat. |
 
 ## Soal yang menguji pola
 

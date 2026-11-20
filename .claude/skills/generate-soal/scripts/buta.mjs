@@ -10,7 +10,7 @@
 // readings the bank never used, so a reviewer needs nothing outside blind/ (gate/ and gen/ stay closed to them).
 import fs from 'fs';
 import path from 'path';
-import { argumen, bacaRencana, dirKerja, jlptRencana, levelDipilih, muatBunpou, periksaGate, periksaTinjauan, sidik, tingkat } from './_umum.mjs';
+import { argumen, bacaRencana, dirKerja, jlptRencana, levelDipilih, muatBunpou, periksaGate, periksaTinjauan, perluTinjauan, sidik, tingkat } from './_umum.mjs';
 
 const arg = argumen();
 const kerja = dirKerja(arg);
@@ -47,13 +47,16 @@ for (const level of levelDipilih(arg, rencana)) {
     console.log(`${level}: gate mekanis belum lolos (${g.error.length} error) — perbaiki dulu, peninjau tidak membaca naskah yang masih salah format.`);
     process.exit(1);
   }
+  // Revision mode: a passage whose only change is how its numbers are written is not sent to a reviewer.
+  const daftar = perluTinjauan(kerja, level, rencana, g.daftar);
   if (arg.ulang) {
-    const belum = new Set(periksaTinjauan(kerja, level, g.daftar).hasil.filter((h) => h.status === 'BELUM').map((h) => h.id));
-    ulang.push(...g.daftar.filter((b) => belum.has(b.id) || paksa.has(b.id)));
+    const belum = new Set(periksaTinjauan(kerja, level, daftar).hasil.filter((h) => h.status === 'BELUM').map((h) => h.id));
+    ulang.push(...daftar.filter((b) => belum.has(b.id) || paksa.has(b.id)));
     furiganaUlang.push(...g.furiganaBaru);
   } else {
-    tulis(level, g.daftar, g.furiganaBaru);
-    console.log(`${level}: ${g.daftar.length} bacaan → blind/${level}.json (+ blind/${level}-audit.json)`);
+    tulis(level, daftar, g.furiganaBaru);
+    const lewat = g.daftar.length - daftar.length;
+    console.log(`${level}: ${daftar.length} bacaan → blind/${level}.json (+ blind/${level}-audit.json)${lewat ? `; ${lewat} bacaan hanya berubah angka, tidak perlu ditinjau` : ''}`);
   }
 }
 if (arg.ulang) {
