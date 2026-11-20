@@ -288,7 +288,7 @@ const jlptChoices = computed(() =>
 const volumeChoices = computed(() => props.volumeKanji.map((v) => ({ value: v, label: labelVolumeKanji(v, t) })));
 const volumeAwal = (j) => [...(props.volumeKanjiDefault[j] || props.volumeKanji)];
 // Semua Volume of a level: the table says which volume each word is from.
-const semuaVolume = computed(() => ['SEMUA', 'N4SEMUA'].includes(materi.value));
+const semuaVolume = computed(() => ['SEMUA', 'N4SEMUA', 'N3SEMUA'].includes(materi.value));
 const siap = computed(() => Boolean(materi.value) && (jenis.value !== 'dokkai' || kanjiVolume.value.length > 0));
 
 const polos = (s) => String(s || '').replace(/\{[^}]*\}/g, '').toLowerCase();

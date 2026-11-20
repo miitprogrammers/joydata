@@ -33,6 +33,10 @@ const segments = computed(() => {
 </script>
 
 <style scoped>
+/* Memo, email and notice passages keep their lines; titles, questions and options never contain line breaks. */
+.furigana-text {
+  white-space: pre-line;
+}
 .furigana-text rt {
   font-size: 0.55em;
   color: rgb(var(--v-theme-primary));

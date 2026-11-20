@@ -5,27 +5,34 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
+import { POLA_AWAS, kataHindariN5 } from '../../../../server/domain/aturanDokkai.js';
+
+export { kataHindariN5 };
 
 const DIR_SKRIP = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(DIR_SKRIP, '../../../..');
 
 // What differs per sentence-pattern level (JLPT): the bank file and its export, the id prefix (N5 ids are L1-21,
-// N4 ids N4L1-21), and the size of a passage per level (characters without furigana, sentences).
+// N4 ids N4L1-21, N3 ids N3L1-1), and the size of a passage per level (characters without furigana, sentences).
 // modul = the level has a bunpou module (server/domain/bunpou.js): every passage then carries `bunpou`, the module
-// numbers it practises, and keeps only the kanji peserta study (other words in kana) — a paper with the default
-// kanji setting shows bank passages as written, without furigana, so an unstudied kanji would be unreadable.
+// numbers it practises.
+// kanjiVolume = the bank keeps only the kanji peserta study up to this level (other words in kana) — a paper with
+// the default kanji setting shows bank passages as written, without furigana, so an unstudied kanji would be
+// unreadable. N5 bank passages get their volumes at draw time instead.
+// Lengths follow docs/kb-dokkai/17-aturan-final.md (L5 N5 150–250, L5 N4 250–450, N3 = the official N3 types).
 export const TINGKAT = {
   N5: {
     file: 'server/domain/bankSoal/dokkaiN5.js',
     ekspor: 'DOKKAI_LEVEL',
     awalan: '',
     modul: false,
+    kanjiVolume: false,
     batas: {
       L1: { pjg: [30, 58], kal: [3, 4] },
       L2: { pjg: [45, 85], kal: [3, 4] },
       L3: { pjg: [50, 95], kal: [3, 5] },
       L4: { pjg: [60, 115], kal: [4, 6] },
-      L5: { pjg: [90, 165], kal: [5, 8] },
+      L5: { pjg: [150, 250], kal: [8, 14] },
     },
   },
   N4: {
@@ -33,15 +40,32 @@ export const TINGKAT = {
     ekspor: 'DOKKAI_N4_LEVEL',
     awalan: 'N4',
     modul: true,
+    kanjiVolume: true,
     batas: {
       L1: { pjg: [45, 90], kal: [3, 5] },
       L2: { pjg: [65, 130], kal: [4, 6] },
       L3: { pjg: [75, 145], kal: [4, 7] },
       L4: { pjg: [90, 175], kal: [5, 8] },
-      L5: { pjg: [135, 250], kal: [6, 10] },
+      L5: { pjg: [250, 450], kal: [10, 20] },
+    },
+  },
+  N3: {
+    file: 'server/domain/bankSoal/dokkaiN3.js',
+    ekspor: 'DOKKAI_N3_LEVEL',
+    awalan: 'N3',
+    modul: false,
+    kanjiVolume: true,
+    batas: {
+      L1: { pjg: [150, 200], kal: [5, 10] },
+      L2: { pjg: [150, 200], kal: [5, 10] },
+      L3: { pjg: [300, 350], kal: [9, 18] },
+      L4: { pjg: [330, 380], kal: [10, 20] },
+      L5: { pjg: [500, 550], kal: [15, 30] },
     },
   },
 };
+// The L5 ranges before 2026-11-20: a revision that keeps an old L5 passage at its length passes either range.
+const BATAS_LAMA = { N5: { L5: { pjg: [90, 165], kal: [5, 8] } }, N4: { L5: { pjg: [135, 250], kal: [6, 10] } } };
 export function tingkat(jlpt) {
   const t = TINGKAT[jlpt];
   if (!t) {
@@ -55,8 +79,10 @@ export const jlptRencana = (rencana) => rencana.jlpt || 'N5';
 export const fileBank = (jlpt) => path.join(ROOT, tingkat(jlpt).file);
 export const idBacaan = (jlpt, level, n) => `${tingkat(jlpt).awalan}${level}-${n}`;
 
-// The bank file is imported with a cache-buster so a re-run after inject sees the new content.
+// The bank file is imported with a cache-buster so a re-run after inject sees the new content. A level whose bank
+// file does not exist yet (N3 before it is created) counts as an empty bank.
 export async function muatBank(jlpt = 'N5') {
+  if (!fs.existsSync(fileBank(jlpt))) return [];
   const url = `${pathToFileURL(fileBank(jlpt)).href}?t=${Date.now()}`;
   return (await import(url))[tingkat(jlpt).ekspor];
 }
@@ -118,6 +144,39 @@ export function bacaGen(kerja, level) {
   }
 }
 
+/** Revision mode: the bank passages as they were before the revision (asli/<level>.json), by id. */
+export function bacaAsli(kerja, level) {
+  const file = path.join(kerja, 'asli', `${level}.json`);
+  if (!fs.existsSync(file)) return new Map();
+  return new Map(JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, '')).map((b) => [b.id, b]));
+}
+
+// Everything a reader sees, with every number (kanji or Arabic, with its furigana) folded to "#".
+const ANGKA_APA_SAJA = /[0-9\uFF10-\uFF19\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D\u5341\u767E\u5343\u4E07]+(?:\{[^{}]*\})?/g;
+const normalAngka = (b) =>
+  JSON.stringify({
+    judul: polos(b.judul).replace(ANGKA_APA_SAJA, '#'),
+    teks: polos(String(b.teks).replace(ANGKA_APA_SAJA, '#')),
+    soal: b.soal.map((s) => ({
+      tanya: polos(String(s.tanya).replace(ANGKA_APA_SAJA, '#')),
+      opsi: s.opsi.map((o) => polos(String(o).replace(ANGKA_APA_SAJA, '#'))),
+      benar: s.benar,
+      pembahasan: String(s.pembahasan).replace(ANGKA_APA_SAJA, '#'),
+      tanyaId: s.tanyaId,
+    })),
+    terjemahan: b.terjemahan,
+  }).replace(/#+/g, '#');
+
+/**
+ * The passages of a level that need the blind review: all of them, except \u2014 in revision mode \u2014 a passage whose only
+ * change from its original is the way its numbers are written (identical once every number is folded to "#").
+ */
+export function perluTinjauan(kerja, level, rencana, daftar) {
+  if (rencana.mode !== 'revisi') return daftar;
+  const asli = bacaAsli(kerja, level);
+  return daftar.filter((b) => !(asli.has(b.id) && normalAngka(asli.get(b.id)) === normalAngka(b)));
+}
+
 /**
  * Fingerprint of everything a peserta or sensei can see of a passage: a review only counts for the text it read.
  * The pattern tag counts too (the reviewer confirms those patterns are really used); a passage without a tag
@@ -171,53 +230,67 @@ export function kemiripan(a, b) {
   return sama / (A.size + B.size - sama || 1);
 }
 
-// Patterns above N5. A hit is a warning, not an error: the reviewer and the orchestrator decide (ので inside
-// くだもので is fine, そうですか is fine).
-const POLA_DI_ATAS_N5 = [
-  [/なければ|なくては|ないといけ/, '～なければなりません'],
-  [/ので(?!す)/, '～ので (abaikan bila bagian dari kata lain)'],
-  [/[てで]しま[ういっわ]/, '～てしまう'],
-  [/ように(な|し)/, '～ようになる/する'],
-  [/ことができ/, '～ことができる'],
-  [/つもり/, '～つもり'],
-  [/そうです|そうでした/, '～そうです (boleh bila berarti "begitu")'],
-  [/られ(ます|ません|ました|る|て)/, 'bentuk potensial/pasif?'],
-  [/[いきしちにひみりぎじびぴっん]たら|[いきしちにひみりぎじびぴっん]だら|かったら/, '～たら'],
-  [/れば|ければ/, '～ば'],
-  [/かもしれ/, '～かもしれません'],
-  [/はずです/, '～はずです'],
-  [/ために/, '～ために'],
-  [/て(あげ|くれ|もら)|で(あげ|くれ|もら)/, '～てあげる/くれる/もらう'],
-  [/させ(ます|ました|て)/, 'kausatif'],
-  [/いらっしゃ|おります|いたします|くださいませ/, 'keigo'],
-  [/[A-Za-z０-９0-9]/, 'huruf Latin atau angka Arab (bank memakai angka kanji)'],
-];
+// Pattern lists (N5: Minna lessons 26-50; N4: outside Minna and the module, or a harder module level; N3: N2 patterns)
+// live in server/domain/aturanDokkai.js, shared with the app. A hit is a warning: the reviewer and the orchestrator decide.
 
-// N4 passages: patterns above N4, and module patterns that belong to a harder level (third item = the first
-// level where the pattern is fine). Warnings as well: いただきます before a meal is not keigo practice.
-const POLA_AWAS_N4 = [
-  [/わけ(だ|です|では|には|が|に)/, '～わけ (N3)'],
-  [/によって|により|による/, '～によって (N3)'],
-  [/として/, '～として (N3)'],
-  [/にとって/, '～にとって (N3)'],
-  [/ようにし(ます|ません|ました|て|た)/, '～ようにする (N3, tidak ada di modul)'],
-  [/べき/, '～べき (N3)'],
-  [/うちに/, '～うちに (N3)'],
-  [/たびに/, '～たびに (N3)'],
-  [/おかげで|せいで/, '～おかげで／せいで (N3)'],
-  [/だけでなく|ばかりでなく/, '～だけでなく (N3)'],
-  [/さえ/, '～さえ (N3)'],
-  [/に対して|に関して|に比べて|にたいして|にかんして|にくらべて/, '～に対して／に関して／に比べて (N3)'],
-  [/させられ/, 'kausatif-pasif (N3)'],
-  [/っぽい|がち|ぎみ/, '～っぽい／がち／ぎみ (N3)'],
-  [/て(あげ|くれ|もら|や[りるっ])|で(あげ|くれ|もら|や[りるっ])/, '～てあげる／くれる／もらう／やる', 'L4'],
-  [/させ(ます|ません|ました|て|る|ない)/, 'kausatif', 'L4'],
-  [/らしい|みたい/, '～らしい／みたい', 'L4'],
-  [/おります|おりました|ございま/, 'おる／でございます', 'L4'],
-  [/いらっしゃ|おっしゃ|めしあが|ごらん|ぞんじ|はいけん|うかが|まいり|もうし|いたし|さしあげ|いただ[きくけい]|くださ[るっ]|くださいま|なさ[るっ]|なさいま/, 'keigo', 'L5'],
-  [/[A-Za-z０-９0-9]/, 'huruf Latin atau angka Arab (bank memakai angka kanji)'],
-];
-const POLA_AWAS = { N5: POLA_DI_ATAS_N5, N4: POLA_AWAS_N4 };
+// D4: Arabic numerals for times, dates, prices and counts; kanji numerals only in fixed words.
+// 15万円: 万 after Arabic digits is how prices are written, not a kanji numeral.
+const ANGKA_KANJI = /(?<![0-9])[一二三四五六七八九十百千万]+(時間|週間|ページ|か月|時|分|円|人|本|枚|冊|日|月|年|回|階|番|歳|個|台|杯|度|号|名|匹)/g;
+const KATA_ANGKA_TETAP = new Set(['一人', '二人', '一日', '一度', '一番', '十分']);
+export function angkaKanji(teksPolos) {
+  // 一年中 / 一日中 (all year / all day) are words, not counts.
+  const teks = String(teksPolos).replace(/一年中|一日中/g, '');
+  return [...new Set((teks.match(ANGKA_KANJI) || []).filter((m) => !KATA_ANGKA_TETAP.has(m)))];
+}
+
+// D3: N5 vocabulary = Minna no Nihongo lessons 1-25. The word list (3A Corporation's selection) stays in docs/ and is
+// read only by this skill; it never reaches the app. Words to avoid at N5 are errors, other words past lesson 25 warnings.
+// HINDARI_N5 / HINDARI_N5_KANA: server/domain/aturanDokkai.js.
+const NAMA_TEMPAT = /^(東京|京都|大阪|北海道|日本|沖縄|名古屋|横浜|神戸|福岡|広島|奈良)/;
+let petaMinna = null;
+function babMinna() {
+  if (petaMinna) return petaMinna;
+  const file = path.join(ROOT, 'docs/kb-dokkai/data/minna-kosakata.json');
+  petaMinna = new Map();
+  if (!fs.existsSync(file)) return petaMinna;
+  for (const w of JSON.parse(fs.readFileSync(file, 'utf8'))) {
+    for (const r of String(w.kanji || '').replace(/［[^］]*］/g, '').match(/[㐀-鿿々]+/g) || []) {
+      if (!petaMinna.has(r) || petaMinna.get(r) > w.bab) petaMinna.set(r, w.bab);
+    }
+  }
+  return petaMinna;
+}
+function babRangkaian(run) {
+  const peta = babMinna();
+  if (peta.has(run)) return peta.get(run);
+  // A run that is no single word: split it into Minna words, the lesson of the last-taught part counts.
+  const dp = Array(run.length + 1).fill(null);
+  dp[0] = 0;
+  for (let i = 0; i < run.length; i++) {
+    if (dp[i] === null) continue;
+    for (let j = i + 1; j <= run.length; j++) {
+      const bab = peta.get(run.slice(i, j));
+      if (bab !== undefined && (dp[j] === null || Math.max(dp[i], bab) < dp[j])) dp[j] = Math.max(dp[i], bab);
+    }
+  }
+  return dp[run.length];
+}
+/** Words of a passage (runs of 2+ kanji, text without furigana) past `babMaks`, or not in Minna at all. */
+export function kataDiLuarMinna(teksPolos, babMaks) {
+  if (!babMinna().size) return [];
+  const hasil = [];
+  for (const m of String(teksPolos).matchAll(/[㐀-鿿々]{2,}/g)) {
+    // After an Arabic number the first kanji is its counter (3冊借りました): the word starts after it.
+    const run = /[0-9]/.test(teksPolos[m.index - 1] || '') ? m[0].slice(1) : m[0];
+    if (run.length < 2) continue;
+    const sesudah = teksPolos.slice(m.index + m[0].length, m.index + m[0].length + 2);
+    if (sesudah === 'さん' || /[一二三四五六七八九十百千万何毎]/.test(run) || NAMA_TEMPAT.test(run)) continue;
+    const bab = babRangkaian(run);
+    if (bab === null || bab > babMaks) hasil.push(bab === null ? `${run} (tidak ada di Minna)` : `${run} (Bab ${bab})`);
+  }
+  return [...new Set(hasil)];
+}
+
 const LEVEL_URUT = ['L1', 'L2', 'L3', 'L4', 'L5'];
 const KANJI_SATU = /[㐀-鿿々]/g;
 const ARTI_TAG = {
@@ -238,16 +311,22 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
   const jlpt = jlptRencana(rencana);
   const cfg = tingkat(jlpt);
   const batas = cfg.batas[level];
-  const { validasiBacaanAi, KANJI_DIPELAJARI } = await muatValidator();
+  const { validasiBacaanAi, kanjiDariVolume, volumeKanjiDefault, perbaikiFurigana } = await muatValidator();
+  // The kanji a bank passage of this level may keep: the volumes up to this level (N4: N5+N4; N3: N5+N4+N3).
+  const kanjiTingkat = kanjiDariVolume(volumeKanjiDefault(jlpt));
   const { alasanTagBunpou } = cfg.modul ? await muatBunpou() : {};
   const bank = await muatBank(jlpt);
-  const bankBacaan = bank.flatMap((l) => l.bacaan);
+  // Revision mode (siapkan.mjs --revisi): the passages replace bank passages with the same ids.
+  const revisi = rencana.mode === 'revisi';
+  const idRevisi = new Set(revisi ? rc.ids : []);
+  const asli = revisi ? bacaAsli(kerja, level) : new Map();
+  const bankBacaan = bank.flatMap((l) => l.bacaan).filter((b) => !idRevisi.has(b.id));
   const judulBank = new Set(bankBacaan.map((b) => bunyi(b.judul)));
   // Readings are the same at every level, so every bank vouches for them.
   const semuaBank = (await muatSemuaBank()).flatMap((l) => l.bacaan);
   const refBaca = petaFurigana(semuaBank);
   // A title of another level's bank is not forbidden (a test never mixes pattern levels) but worth a look.
-  const idBank = new Set(bankBacaan.map((b) => b.id));
+  const idBank = new Set(bank.flatMap((l) => l.bacaan).map((b) => b.id));
   const judulBankLain = new Map(semuaBank.filter((b) => !idBank.has(b.id)).map((b) => [bunyi(b.judul), b.id]));
   const fieldBacaan = cfg.modul ? 'bunpou,id,judul,soal,teks,terjemahan' : 'id,judul,soal,teks,terjemahan';
 
@@ -260,7 +339,8 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
   if (gen.galat) return { level, error: [{ id: level, pesan: `${gen.file}: ${gen.galat}` }], peringatan, furiganaBaru: [], kunci: [0, 0, 0], daftar: [] };
   const daftar = Array.isArray(gen.data) ? gen.data : [];
   if (!Array.isArray(gen.data)) err(level, 'file harus berisi array bacaan');
-  if (daftar.length !== rc.jumlah) err(level, `jumlah bacaan ${daftar.length}, seharusnya ${rc.jumlah}`);
+  const jumlahHarus = revisi ? rc.ids.length : rc.jumlah;
+  if (daftar.length !== jumlahHarus) err(level, `jumlah bacaan ${daftar.length}, seharusnya ${jumlahHarus}`);
 
   // Titles of the other new levels count too: one test can mix levels.
   const judulLevelLain = new Map();
@@ -276,7 +356,7 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
   const hitungTanya = new Map();
 
   daftar.forEach((b, i) => {
-    const idHarus = idBacaan(jlpt, level, rc.mulai + i);
+    const idHarus = revisi ? rc.ids[i] : idBacaan(jlpt, level, rc.mulai + i);
     const id = b?.id || `#${i + 1}`;
     if (b?.id !== idHarus) err(id, `id seharusnya ${idHarus}`);
     const field = Object.keys(b || {}).sort().join();
@@ -299,14 +379,30 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
       return;
     }
     if (b.soal.length !== 2) err(id, `harus tepat 2 soal (ada ${b.soal.length})`);
+    // The app repairs two furigana slips and folds line breaks for AI passages; a bank passage is written as it
+    // will be shown, so it has to be right already.
+    for (const t of semuaTeks(b)) {
+      if (perbaikiFurigana(t) !== t) err(id, `furigana perlu dibetulkan: "${String(t).slice(0, 40)}…" (okurigana di luar kurung, tanpa {} setelah kana)`);
+      // The kana written before the kanji repeated inside its reading: か月{かげつ} shows as かかげつ, お茶{おちゃ} as おおちゃ.
+      // Only when the rest is a known reading of that kanji: お送{おく}りする and か乾{かわ}く are right.
+      for (const m of String(t).matchAll(/([おごか])([㐀-鿿々]+)\{([^{}]*)\}/g)) {
+        if (m[3].startsWith(m[1]) && refBaca.get(m[2])?.has(m[3].slice(1))) err(id, `furigana ${m[0]} mengulang "${m[1]}" yang sudah ditulis di depannya (mis. か月{げつ}, お茶{ちゃ})`);
+      }
+    }
+    for (const t of [b.judul, ...b.soal.flatMap((s) => [s.tanya, ...s.opsi])]) {
+      if (/\n/.test(t)) err(id, 'baris baru hanya boleh di teks bacaan, tidak di judul, pertanyaan, atau pilihan');
+    }
 
     if (cfg.modul) {
       const alasan = alasanTagBunpou(jlpt, level, b.bunpou);
-      const tugas = rc.pola?.[i] || [];
+      // A revision keeps the passage's own tags; only a new passage has to carry the two patterns assigned to it.
+      const tugas = revisi ? [] : rc.pola?.[i] || [];
       const kurang = alasan ? [] : tugas.filter((n) => !b.bunpou.includes(n));
       if (alasan) err(id, `tag bunpou tidak sah — ${ARTI_TAG[alasan] || alasan}`);
       else if (kurang.length) err(id, `bunpou harus memuat pola yang ditugaskan ke bacaan ini (${tugas.join(' + ')}); belum ada: ${kurang.join(', ')}`);
-      const luar = [...new Set(semuaTeks(b).flatMap((x) => String(x).match(KANJI_SATU) || []))].filter((c) => !KANJI_DIPELAJARI.has(c));
+    }
+    if (cfg.kanjiVolume) {
+      const luar = [...new Set(semuaTeks(b).flatMap((x) => String(x).match(KANJI_SATU) || []))].filter((c) => !kanjiTingkat.has(c));
       if (luar.length) err(id, `kanji di luar volume yang dipelajari: ${luar.join('')} — jalankan rapikan.mjs (kata itu ditulis dengan kana)`);
     }
 
@@ -344,12 +440,29 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
     if (judulBankLain.has(judulBunyi)) warn(id, `judul "${judulPolos}" sama bunyinya dengan ${judulBankLain.get(judulBunyi)} di bank tingkat lain`);
     judulBaru.set(judulBunyi, id);
 
-    const kal = (teksPolos.match(/[。？！]/g) || []).length;
-    if (teksPolos.length < batas.pjg[0] || teksPolos.length > batas.pjg[1]) err(id, `panjang teks ${teksPolos.length} huruf (tanpa furigana), batas ${level} ${batas.pjg.join('–')}`);
-    if (kal < batas.kal[0] || kal > batas.kal[1]) err(id, `${kal} kalimat, batas ${level} ${batas.kal.join('–')}`);
+    // A list line (・ or ※ at the start, as in a 情報検索 notice) counts as one sentence.
+    const hitungKalimat = (t) =>
+      (t.match(/[。？！]/g) || []).length + t.split('\n').filter((x) => /^[・※]/.test(x.trim()) && !/[。？！]$/.test(x.trim())).length;
+    const kal = hitungKalimat(teksPolos);
+    const pjg = teksPolos.replace(/\n/g, '').length;
+    // A revised old L5 passage may keep its old length. A revised passage that was already outside the range before
+    // the revision passes as long as it moved no further out: a numeral or word fix is not the place to lengthen it.
+    // rencana.ketat (siapkan.mjs --ketat): the revision brings the passage up to the current range, no allowance.
+    const lama = revisi && !rencana.ketat ? BATAS_LAMA[jlpt]?.[level] : null;
+    const dalam = (r, n) => n >= r[0] && n <= r[1];
+    // (The audit checks each passage as a revision of itself, so it keeps reporting the old faults.)
+    const polosAsli = revisi && !rencana.audit && !rencana.ketat && asli.has(id) ? polos(asli.get(id).teks) : null;
+    const lebar = (r, n) => (n === null ? r : [Math.min(r[0], n), Math.max(r[1], n)]);
+    const pjgAsli = polosAsli === null ? null : polosAsli.replace(/\n/g, '').length;
+    const kalAsli = polosAsli === null ? null : hitungKalimat(polosAsli);
+    const lolosPjg = dalam(lebar(batas.pjg, pjgAsli), pjg) || (lama && dalam(lama.pjg, pjg));
+    const lolosKal = dalam(lebar(batas.kal, kalAsli), kal) || (lama && dalam(lama.kal, kal));
+    if (!lolosPjg) err(id, `panjang teks ${pjg} huruf (tanpa furigana), batas ${level} ${batas.pjg.join('–')}`);
+    if (!lolosKal) err(id, `${kal} kalimat, batas ${level} ${batas.kal.join('–')}`);
     if (!/[a-z]/.test(b.terjemahan) || ADA_JEPANG.test(b.terjemahan)) err(id, 'terjemahan harus bahasa Indonesia');
 
     for (const lama of bankBacaan) {
+      if (lama.id === id) continue;
       const m = kemiripan(teksPolos, polos(lama.teks));
       if (m > 0.5) warn(id, `teks mirip ${Math.round(m * 100)}% dengan ${lama.id} di bank`);
     }
@@ -360,10 +473,30 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
     }
 
     const gabung = semuaTeks(b).map(polos).join(' / ');
+    const gabungAsli = asli.has(id) ? semuaTeks(asli.get(id)).map(polos).join(' / ') : null;
     for (const [re, nama, sejak] of POLA_AWAS[jlpt] || []) {
       if (sejak && LEVEL_URUT.indexOf(level) >= LEVEL_URUT.indexOf(sejak)) continue;
       const m = gabung.match(re);
-      if (m) warn(id, `cek pola ${sejak ? `level ${sejak}` : `di atas ${jlpt}`}: ${nama} → "…${gabung.slice(Math.max(0, m.index - 6), m.index + m[0].length + 4)}…"`);
+      if (!m) continue;
+      const pesan = `cek pola ${sejak ? `level ${sejak}` : `di atas ${jlpt}`}: ${nama} → "…${gabung.slice(Math.max(0, m.index - 6), m.index + m[0].length + 4)}…"`;
+      // A revision whose original had the same hit and still has it did not fix what it was meant to fix.
+      if (gabungAsli !== null && re.test(gabungAsli) && (rc.alasan?.[id] || []).includes('pola')) err(id, `${pesan} — masih ada setelah revisi`);
+      else warn(id, pesan);
+    }
+    const angka = angkaKanji(gabung);
+    if (angka.length) err(id, `angka ditulis dengan angka Arab (6時, 300円), bukan ${angka.join(', ')}`);
+    // One format for amounts of 10000 and more in a passage: a format that only some options use gives them away.
+    if (/[0-9]+万[0-9千百]*円/.test(gabung) && /(?<![0-9])[0-9]{5,}円/.test(gabung)) {
+      err(id, 'jumlah 10000 ke atas ditulis dalam dua format (mis. 2万円 dan 14000円) — pakai satu format di seluruh bacaan');
+    }
+    if (jlpt === 'N5') {
+      const hindari = kataHindariN5(gabung);
+      if (hindari.length) err(id, `kata yang belum diajarkan di Minna Bab 1–25: ${hindari.join(', ')} (17-aturan-final.md § 3)`);
+      const luarMinna = kataDiLuarMinna(gabung, 25);
+      if (luarMinna.length) warn(id, `kata di luar Minna Bab 1–25: ${luarMinna.join(', ')}`);
+    } else if (jlpt === 'N4') {
+      const luarMinna = kataDiLuarMinna(gabung, 50).filter((x) => x.includes('tidak ada'));
+      if (luarMinna.length) warn(id, `kata di luar Minna: ${luarMinna.join(', ')}`);
     }
 
     const lokal = petaFurigana([b]);
@@ -389,7 +522,8 @@ export async function periksaGate(kerja, level, rencana = bacaRencana(kerja)) {
 
   const total = kunci[0] + kunci[1] + kunci[2];
   const rata = total / 3;
-  if (total === rc.jumlah * 2 && total >= 12 && kunci.some((n) => n < rata * 0.75 || n > rata * 1.25)) {
+  // Revised passages keep their keys where they were; the balance check is for new sets.
+  if (!revisi && total === rc.jumlah * 2 && total >= 12 && kunci.some((n) => n < rata * 0.75 || n > rata * 1.25)) {
     err(level, `sebaran kunci ${kunci.join('/')} (indeks 0/1/2) terlalu timpang — tiap indeks ${Math.ceil(rata * 0.75)}–${Math.floor(rata * 1.25)} dari ${total}`);
   }
   for (const [t, n] of hitungTanya) if (n > 3) warn(level, `pertanyaan "${t}" dipakai ${n} kali — variasikan`);

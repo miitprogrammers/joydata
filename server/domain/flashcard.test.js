@@ -31,8 +31,12 @@ function rngDari(seed) {
   };
 }
 
-test('Flashcard volumes: N5 Dasar and Vol 1-5, N4 Vol 1-5, with readings and meanings on the back', () => {
-  assert.deepEqual(VOLUME_FLASHCARD, ['DASAR', 'VOL1', 'VOL2', 'VOL3', 'VOL4', 'VOL5', 'N4VOL1', 'N4VOL2', 'N4VOL3', 'N4VOL4', 'N4VOL5']);
+test('Flashcard volumes: N5 Dasar and Vol 1-5, N4 Vol 1-5, N3 Vol 1-5, with readings and meanings on the back', () => {
+  assert.deepEqual(VOLUME_FLASHCARD, [
+    'DASAR', 'VOL1', 'VOL2', 'VOL3', 'VOL4', 'VOL5',
+    'N4VOL1', 'N4VOL2', 'N4VOL3', 'N4VOL4', 'N4VOL5',
+    'N3VOL1', 'N3VOL2', 'N3VOL3', 'N3VOL4', 'N3VOL5',
+  ]);
   assert.equal(kartuVolume('DASAR').length, 80);
   assert.equal(kartuVolume('N4VOL5').length, 56);
   assert.equal(kartuVolume('SEMUA'), null);
@@ -43,6 +47,11 @@ test('Flashcard volumes: N5 Dasar and Vol 1-5, N4 Vol 1-5, with readings and mea
   assert.equal(asu.bacaan, 'あす');
   assert.deepEqual(asu.bacaanLain, ['あした']);
   assert.equal(judulVolumeFlashcard('N4VOL3'), 'N4 · Volume 3');
+  assert.equal(judulVolumeFlashcard('N3VOL1'), 'N3 · Volume 1');
+  assert.equal(kartuVolume('N3VOL5').length, 73);
+  const kanjiN3 = kartuVolume('N3VOL1').find((k) => k.kanji === '確認');
+  assert.deepEqual([kanjiN3.bacaan, kanjiN3.arti], ['かくにん', 'Konfirmasi / pengecekan']);
+  assert.deepEqual(kartuVolume('N3VOL4').find((k) => k.kanji === '背').bacaanLain, ['せい']);
   assert.equal(judulVolumeFlashcard('DASAR'), 'N5 · Dasar (80 kanji)');
 });
 

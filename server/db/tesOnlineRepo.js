@@ -36,6 +36,7 @@ import {
   tanpaFurigana,
 } from '../domain/tesOnline.js';
 import { ringkasanPolaBunpou } from '../domain/bunpou.js';
+import { peringatanBacaanDokkai } from '../domain/aturanDokkai.js';
 
 // ---------------------------------------------------------------------------------------------------------------
 // Data access (Postgres or the local store); everything below works on the same plain objects.
@@ -405,7 +406,12 @@ export async function getSesiTes(idRaw) {
   await ensureInitialized();
   const [sesi] = await querySesi({ id: Number(idRaw) });
   if (!sesi) throw new Error('NOT_FOUND');
-  return { ...denganStatus(sesi), bacaan: sesi.bacaan || [] };
+  // AI passages carry the KB warnings for the sensei's review (N5 words to avoid, patterns above the level); they are
+  // computed on every read, so a rule change reaches drafts written earlier. Papers never carry them.
+  const bacaan = (sesi.bacaan || []).map((b) =>
+    sesi.sumber === 'ai' ? { ...b, peringatan: peringatanBacaanDokkai(b, sesi.jlpt || 'N5', sesi.materi) } : b
+  );
+  return { ...denganStatus(sesi), bacaan };
 }
 
 // Scores are stored per peserta + class + date + exam code, so a second code (or a paper exam) with the same exam

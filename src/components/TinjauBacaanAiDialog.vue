@@ -46,6 +46,18 @@
               @click="hapus(b)"
             />
           </div>
+          <div v-if="b.peringatan?.length" class="mt-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-900">
+            <div class="font-semibold">{{ $t('tesOnline.ai.peringatanJudul') }}</div>
+            <ul class="mt-1 space-y-0.5 list-disc pl-4">
+              <li v-for="(p, pi) in b.peringatan" :key="pi">
+                <template v-if="p.jenis === 'kata'">{{ $t('tesOnline.ai.peringatanKata', { kata: p.isi }) }}</template>
+                <template v-else>
+                  {{ $t('tesOnline.ai.peringatanPola', { pola: p.isi, jlpt: sesi.jlpt }) }}
+                  <span class="text-amber-700" lang="ja">「…{{ p.contoh }}…」</span>
+                </template>
+              </li>
+            </ul>
+          </div>
           <p class="mt-2 rounded-lg bg-slate-50 border border-slate-100 p-3 text-base leading-[2.3] text-slate-900" lang="ja">
             <FuriganaText :text="b.teks" :furigana="furigana" />
           </p>

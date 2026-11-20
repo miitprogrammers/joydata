@@ -4,7 +4,7 @@
 // exits 1 while any passage is BLOKIR or BELUM.
 import fs from 'fs';
 import path from 'path';
-import { argumen, bacaRencana, dirKerja, levelDipilih, periksaGate, periksaTinjauan } from './_umum.mjs';
+import { argumen, bacaRencana, dirKerja, levelDipilih, periksaGate, periksaTinjauan, perluTinjauan } from './_umum.mjs';
 
 const arg = argumen();
 const kerja = dirKerja(arg);
@@ -19,7 +19,8 @@ for (const level of levelDipilih(arg, rencana)) {
     gagal = true;
     continue;
   }
-  const t = periksaTinjauan(kerja, level, g.daftar);
+  // Revision mode: numbers-only revisions are not reviewed (inject.mjs skips them the same way).
+  const t = periksaTinjauan(kerja, level, perluTinjauan(kerja, level, rencana, g.daftar));
   const n = (s) => t.hasil.filter((h) => h.status === s).length;
   ringkas[level] = t;
   console.log(`\n=== TINJAUAN ${level}: LOLOS ${n('LOLOS')}, BLOKIR ${n('BLOKIR')}, BELUM ${n('BELUM')} (dari ${t.hasil.length}) ===`);

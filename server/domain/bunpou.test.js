@@ -15,7 +15,8 @@ import {
 import { BUNPOU_N4 } from './bankSoal/bunpouN4.js';
 import { DOKKAI_N4_LEVEL } from './bankSoal/dokkaiN4.js';
 import { DOKKAI_LEVEL } from './bankSoal/dokkaiN5.js';
-import { KANJI_DIPELAJARI, bankSoalTes, buatSoalTes, furiganaLengkap, poolDokkai, soalTanpaKunci } from './tesOnline.js';
+import { DOKKAI_N3_LEVEL } from './bankSoal/dokkaiN3.js';
+import { kanjiTingkat, bankSoalTes, buatSoalTes, furiganaLengkap, poolDokkai, soalTanpaKunci } from './tesOnline.js';
 import { panduanPolaDokkai } from '../ai/dokkaiAi.js';
 
 const salin = (v) => JSON.parse(JSON.stringify(v));
@@ -89,18 +90,20 @@ test('Pattern tag of a bank passage: 2-4 unique module numbers, two of its own l
   assert.equal(alasanTagBunpou('N5', 'L2', [20, 45]), 'tanpa_modul');
 });
 
-test('Dokkai N4 bank: 25 passages per level, tagged with module patterns, every pattern practised at its level', () => {
-  assert.deepEqual(DOKKAI_N4_LEVEL.map((l) => [l.kode, l.bacaan.length]), LEVEL_BUNPOU.map((l) => [l, 25]));
+test('Dokkai N4 bank: 25 passages per level (L5 30 with the 情報検索 notices), tagged with module patterns, every pattern practised', () => {
+  assert.deepEqual(DOKKAI_N4_LEVEL.map((l) => [l.kode, l.bacaan.length]), LEVEL_BUNPOU.map((l) => [l, l === 'L5' ? 30 : 25]));
   assert.deepEqual(periksaBankBunpou('N4', DOKKAI_N4_LEVEL), []);
 
   const semua = DOKKAI_N4_LEVEL.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode })));
-  assert.equal(semua.length, 125);
-  assert.equal(semua.reduce((n, b) => n + b.soal.length, 0), 250);
-  assert.equal(new Set(semua.map((b) => b.id)).size, 125);
-  assert.equal(new Set(semua.map((b) => b.judul)).size, 125);
+  assert.equal(semua.length, 130);
+  assert.equal(semua.reduce((n, b) => n + b.soal.length, 0), 260);
+  assert.equal(new Set(semua.map((b) => b.id)).size, 130);
+  assert.equal(new Set(semua.map((b) => b.judul)).size, 130);
   const idN5 = new Set(DOKKAI_LEVEL.flatMap((l) => l.bacaan.map((b) => b.id)));
-  for (const [i, b] of semua.entries()) {
-    assert.equal(b.id, `N4${b.level}-${(i % 25) + 1}`);
+  const nomor = new Map();
+  for (const b of semua) {
+    nomor.set(b.level, (nomor.get(b.level) || 0) + 1);
+    assert.equal(b.id, `N4${b.level}-${nomor.get(b.level)}`);
     assert.ok(!idN5.has(b.id), b.id);
     assert.equal(b.soal.length, 2, b.id);
     for (const [j, s] of b.soal.entries()) {
@@ -112,7 +115,47 @@ test('Dokkai N4 bank: 25 passages per level, tagged with module patterns, every 
     // only kanji from the volumes peserta study may be left.
     for (const teks of [b.judul, b.teks, ...b.soal.flatMap((s) => [s.tanya, ...s.opsi])]) {
       assert.ok(furiganaLengkap(teks), `${b.id}: ${teks}`);
-      for (const c of teks.replace(/\{[^}]*\}/g, '').match(/[㐀-鿿]/g) || []) assert.ok(KANJI_DIPELAJARI.has(c), `${b.id}: ${c}`);
+      for (const c of teks.replace(/\{[^}]*\}/g, '').match(/[㐀-鿿]/g) || []) assert.ok(kanjiTingkat('N4').has(c), `${b.id}: ${c}`);
+    }
+  }
+});
+
+test('Dokkai N3 bank: 25 passages per level, two questions each, only kanji of the volumes up to N3', () => {
+  assert.deepEqual(DOKKAI_N3_LEVEL.map((l) => [l.kode, l.bacaan.length]), ['L1', 'L2', 'L3', 'L4', 'L5'].map((l) => [l, 25]));
+  const semua = DOKKAI_N3_LEVEL.flatMap((l) => l.bacaan.map((b) => ({ ...b, level: l.kode })));
+  assert.equal(semua.reduce((n, b) => n + b.soal.length, 0), 250);
+  assert.equal(new Set(semua.map((b) => b.judul)).size, 125);
+  const idLain = new Set([...DOKKAI_LEVEL, ...DOKKAI_N4_LEVEL].flatMap((l) => l.bacaan.map((b) => b.id)));
+  for (const [i, b] of semua.entries()) {
+    assert.equal(b.id, `N3${b.level}-${(i % 25) + 1}`);
+    assert.ok(!idLain.has(b.id), b.id);
+    assert.equal(b.bunpou, undefined, b.id);
+    assert.equal(b.soal.length, 2, b.id);
+    for (const [j, s] of b.soal.entries()) {
+      assert.equal(s.id, `${b.id}-${j + 1}`);
+      assert.equal(s.opsi.length, 3, s.id);
+      assert.ok(s.opsi[s.benar], s.id);
+    }
+    // As at N4: a code with the default kanji volumes shows the passage as written, without furigana on the paper.
+    for (const teks of [b.judul, b.teks, ...b.soal.flatMap((s) => [s.tanya, ...s.opsi])]) {
+      assert.ok(furiganaLengkap(teks), `${b.id}: ${teks}`);
+      for (const c of teks.replace(/\{[^}]*\}/g, '').match(/[㐀-鿿]/g) || []) assert.ok(kanjiTingkat('N3').has(c), `${b.id}: ${c}`);
+    }
+  }
+  // An N3 paper from the bank: two questions per passage, no key sent.
+  const kertas = buatSoalTes({ jenis: 'dokkai', materi: 'L5', pool: poolDokkai('L5', [], 'N3'), jumlah: 3 }, () => 0.42);
+  assert.equal(kertas.length, 3);
+  assert.ok(kertas.every((b) => b.id.startsWith('N3L5-') && b.soal.length === 2));
+});
+
+test('情報検索 (D7 stage 2): L5 of N5 and N4 holds notices with a frame line and one item per line', () => {
+  for (const [nama, bank] of [['N5', DOKKAI_LEVEL], ['N4', DOKKAI_N4_LEVEL]]) {
+    const info = bank.find((l) => l.kode === 'L5').bacaan.filter((b) => /\n・/.test(b.teks));
+    assert.ok(info.length >= 5, nama);
+    for (const b of info) {
+      const baris = b.teks.split('\n');
+      assert.match(baris[0], /このお知{し}らせがあります。|このお知らせがあります。/, b.id);
+      assert.ok(baris.filter((x) => x.startsWith('・')).length >= 4, b.id);
     }
   }
 });

@@ -251,14 +251,14 @@ const jenisLatihan = ref('kanji');
 const materiDipilih = ref('DASAR');
 const jumlahLatihan = ref(20);
 const memuatLatihan = ref(false);
-// Dokkai sentence-pattern level: N5 and N4 have a fixed bank, N3 exists once sensei have approved AI passages.
+// Dokkai sentence-pattern level (N5, N4, N3); a level with no passages yet (bank or approved AI) is disabled.
 const jlptOptions = ref(['N5']);
 const jlptLatihan = ref('N5');
-// Kanji level: N5 (Dasar, Vol 1-5) or N4 (Vol 1-5).
+// Kanji level: N5 (Dasar, Vol 1-5), N4 (Vol 1-5) or N3 (Vol 1-5).
 const jlptKanjiOptions = ref(['N5']);
 const levelKanji = ref('N5');
 // Kanji a dokkai paper shows (others in kana), as on a code: each pattern level starts from its own default
-// (N5 → the N5 volumes, N4/N3 → N5 and N4).
+// (cumulative: N5 → the N5 volumes, N4 → N5 and N4, N3 → N5, N4 and N3).
 const volumeKanji = ref([]);
 const volumeKanjiDefault = ref({});
 const kanjiVolume = ref([]);

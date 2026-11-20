@@ -3,7 +3,8 @@
 Satu agen menulis satu level. `scripts/brief.mjs --penulis` mengisi `{{…}}` di bawah dari `rencana.json` dan
 menyimpan hasilnya ke `KERJA/prompt/gen-<level>.md`; teks itulah prompt agennya. Bagian di antara
 `{{#MODUL}}…{{/MODUL}}` hanya ikut untuk tingkat yang punya modul bunpou (N4), `{{#TANPAMODUL}}…{{/TANPAMODUL}}`
-hanya untuk yang tidak (N5).
+hanya untuk yang tidak (N5, N3). `{{#RAPIKAN}}` ikut untuk bank yang membatasi kanji ke volume (N4, N3),
+`{{#REVISI}}` untuk folder kerja mode revisi, `{{#TAMBAH}}` untuk bacaan baru.
 
 ---
 
@@ -12,9 +13,23 @@ JOYdata. Pesertanya calon pemagang Indonesia; soal ini dipakai untuk tes bernila
 naskahmu melewati gate mekanis dan lalu dijawab oleh peninjau independen yang tidak melihat kunci — soal yang
 jawabannya tidak tunggal atau furigananya salah akan ditolak, jadi ketelitian lebih penting daripada kecepatan.
 
+{{#TAMBAH}}
 **Tugas:** tulis {{JUMLAH}} bacaan level {{LEVEL}} ("{{DESKRIPSI}}"), masing-masing 2 soal, dengan id
 `{{IDAWAL}}` sampai `{{IDAKHIR}}`. Simpan sebagai array JSON (UTF-8) ke:
+{{/TAMBAH}}
+{{#REVISI}}
+**Tugas (revisi):** {{JUMLAH}} bacaan level {{LEVEL}} ("{{DESKRIPSI}}") yang sudah ada di bank harus diperbaiki.
+`{{KERJA}}/asli/{{LEVEL}}.json` berisi bacaan aslinya (jangan diubah); `gen/{{LEVEL}}.json` berisi salinannya — edit
+salinan itu. Id bacaan dan id soal **tetap**. Hilangkan alasan revisi tiap bacaan, dan ubah sesedikit mungkin selain itu
+(kalau kata atau topiknya harus diganti, tulis ulang bacaannya dengan topik lain yang wajar, panjang dan level tetap):
 
+{{ALASAN}}
+
+Arti alasan: `pola` = pola tata bahasa yang belum diajarkan di tingkat ini (lihat file tingkat); `kata` = kata yang
+belum diajarkan (N5: Minna Bab 1–25) — ganti dengan kata Jilid I atau ganti topiknya; `angka` = angka kanji → angka Arab;
+`mutu` = cacat lain (kutipan pembahasan, format, judul kembar) yang disebut gate. Kunci boleh berubah bila soalnya ditulis
+ulang; tetap tepat satu jawaban benar. File:
+{{/REVISI}}
 `{{KERJA}}/gen/{{LEVEL}}.json`
 
 **Baca dulu, seluruhnya:**
@@ -52,15 +67,16 @@ jawabannya tidak tunggal atau furigananya salah akan ditolak, jadi ketelitian le
    `rapikan.mjs` menulis ulang file hasilmu (kata dengan kanji di luar volume yang dipelajari menjadi kana, urutan
    field dirapikan), jadi baca lagi filenya sebelum mengedit. Jalankan keduanya lagi setiap kali kamu mengubah
    file. Perbaiki semua ERROR sampai tertulis `HASIL {{LEVEL}}: LOLOS gate mekanis`.
-4. Baca tiap PERINGATAN: perbaiki yang memang masalah (pola N3 ke atas, pola dari level berikutnya, teks terlalu
-   mirip, pilihan benar terlalu panjang). Yang keliru deteksi boleh dibiarkan, sebutkan di laporanmu.
+4. Baca tiap PERINGATAN: perbaiki yang memang masalah (pola di luar Minna dan modul, pola dari level berikutnya, kata
+   di luar Minna, teks terlalu mirip, pilihan benar terlalu panjang). Yang keliru deteksi boleh dibiarkan, sebutkan di laporanmu.
 {{/MODUL}}
 {{#TANPAMODUL}}
-3. Jalankan gate mekanis:
+3. {{#RAPIKAN}}Rapikan kanji (`node "{{SKILL}}/scripts/rapikan.mjs" --kerja "{{KERJA}}" {{LEVEL}}` — kata dengan kanji di luar volume
+   yang dipelajari menjadi kana; baca lagi filenya sesudahnya), lalu {{/RAPIKAN}}jalankan gate mekanis:
    `node "{{SKILL}}/scripts/gate.mjs" --kerja "{{KERJA}}" {{LEVEL}}`
    Perbaiki semua ERROR, lalu jalankan lagi sampai tertulis `HASIL {{LEVEL}}: LOLOS gate mekanis`.
-4. Baca tiap PERINGATAN: perbaiki yang memang masalah (pola tata bahasa di atas N5, teks terlalu mirip, pilihan
-   benar terlalu panjang). Yang keliru deteksi boleh dibiarkan, sebutkan di laporanmu.
+4. Baca tiap PERINGATAN: perbaiki yang memang masalah (pola tata bahasa yang belum diajarkan di tingkat ini, kata di luar
+   Minna Bab 1–25 untuk N5, teks terlalu mirip, pilihan benar terlalu panjang). Yang keliru deteksi boleh dibiarkan, sebutkan di laporanmu.
 {{/TANPAMODUL}}
 5. Periksa daftar FURIGANA BARU satu per satu: itu kata yang belum pernah dipakai bank, jadi tidak ada yang
    menjamin bacaannya selain kamu. Perhatikan perubahan bunyi pada angka dan penghitung.
