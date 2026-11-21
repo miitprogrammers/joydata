@@ -119,6 +119,7 @@ import {
 } from './db/tesOnlineRepo.js';
 import { cariMateri, jlptKanji } from './domain/tesOnline.js';
 import * as kanjiAdventure from './domain/kanjiAdventure.js';
+import { ringkasanMateri, ambilMateri, kategoriModul } from './domain/materiBunpou/index.js';
 import {
   bacaProgresAdventure,
   bacaSesiAdventure,
@@ -847,6 +848,17 @@ export function createApiRouter() {
     } catch (err) {
       return handleRouteError(res, err);
     }
+  });
+
+  // Materi Bunpou: static grammar lessons for sensei (content lives in code, no DB)
+  router.get('/materi-bunpou', requireAuth, requirePageAccess('materi-bunpou'), (_req, res) => {
+    return res.json({ materi: ringkasanMateri(), kategoriModul: kategoriModul() });
+  });
+
+  router.get('/materi-bunpou/:id', requireAuth, requirePageAccess('materi-bunpou'), (req, res) => {
+    const hasil = ambilMateri(req.params.id);
+    if (!hasil) return res.status(404).json({ error: 'materi_tidak_ditemukan' });
+    return res.json(hasil);
   });
 
   // Tes Online: sensei membuka kode tes untuk satu kelas, lalu memantau hasilnya
