@@ -1,0 +1,3862 @@
+[
+ {
+  "no": 1,
+  "kanji": "政",
+  "on": "セイ",
+  "kun": "まつりごと",
+  "arti": "politics, government",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 2,
+  "kanji": "議",
+  "on": "ギ",
+  "kun": "",
+  "arti": "deliberation, consultation, debate",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 3,
+  "kanji": "民",
+  "on": "ミン",
+  "kun": "たみ",
+  "arti": "people, nation, subjects",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 4,
+  "kanji": "連",
+  "on": "レン",
+  "kun": "つら(なる)、つ(れる)",
+  "arti": "take along, lead, join, connect",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 5,
+  "kanji": "対",
+  "on": "タイ、 ツイ",
+  "kun": "",
+  "arti": "opposite, even, equal, versus, anti-, compare",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 6,
+  "kanji": "部",
+  "on": "ブ",
+  "kun": "",
+  "arti": "section, bureau, dept, class, copy, part, portion",
+  "volume": [
+   "VOL3",
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 7,
+  "kanji": "合",
+  "on": "ゴウ、 ガッ、 カッ",
+  "kun": "あ(う)、あい",
+  "arti": "fit, suit, join, 0.1",
+  "volume": [
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 8,
+  "kanji": "市",
+  "on": "シ",
+  "kun": "いち",
+  "arti": "market, city, town",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 9,
+  "kanji": "内",
+  "on": "ナイ",
+  "kun": "うち",
+  "arti": "inside, within, between, among, house, home",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 10,
+  "kanji": "相",
+  "on": "ソウ、 ショウ",
+  "kun": "あい",
+  "arti": "inter-, mutual, together, each other, minister of state",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 11,
+  "kanji": "定",
+  "on": "テイ、 ジョウ",
+  "kun": "さだ(める)",
+  "arti": "determine, fix, establish, decide",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 12,
+  "kanji": "回",
+  "on": "カイ",
+  "kun": "まわ(す)",
+  "arti": "-times, round, revolve, counter",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 13,
+  "kanji": "選",
+  "on": "セン",
+  "kun": "えら(ぶ)",
+  "arti": "elect, select, choose, prefer",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 14,
+  "kanji": "米",
+  "on": "ベイ、 マイ、 メエトル",
+  "kun": "こめ",
+  "arti": "rice, USA, meter",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 15,
+  "kanji": "実",
+  "on": "ジツ",
+  "kun": "み、みの(る)",
+  "arti": "reality, truth",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 16,
+  "kanji": "関",
+  "on": "カン",
+  "kun": "せき、 かか(わる)",
+  "arti": "connection, barrier, gateway, involve, concerning",
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 17,
+  "kanji": "決",
+  "on": "ケツ",
+  "kun": "き(める)",
+  "arti": "decide, fix, agree upon, appoint",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 18,
+  "kanji": "全",
+  "on": "ゼン",
+  "kun": "まった(く)、 すべ(て)",
+  "arti": "whole, entire, all, complete, fulfill",
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 19,
+  "kanji": "表",
+  "on": "ヒョウ",
+  "kun": "おもて、 あらわ(す)",
+  "arti": "surface, table, chart, diagram",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 20,
+  "kanji": "戦",
+  "on": "セン",
+  "kun": "いくさ、 たたか(う)",
+  "arti": "war, battle, match",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 21,
+  "kanji": "経",
+  "on": "ケイ",
+  "kun": "へ(る)、 た(つ)",
+  "arti": "longitude, pass thru, expire, warp",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 22,
+  "kanji": "最",
+  "on": "サイ",
+  "kun": "もっと(も)",
+  "arti": "utmost, most, extreme",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 23,
+  "kanji": "現",
+  "on": "ゲン",
+  "kun": "あらわ(れる)、 うつ(つ)",
+  "arti": "present, existing, actual",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 24,
+  "kanji": "調",
+  "on": "チョウ",
+  "kun": "しら(べる)、ととの(う)",
+  "arti": "tune, tone, meter, prepare, investigate",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 25,
+  "kanji": "化",
+  "on": "カ、 ケ",
+  "kun": "ば(ける)、 ふ(ける)",
+  "arti": "change, take the form of, influence, enchant, delude, -ization",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 26,
+  "kanji": "当",
+  "on": "トウ",
+  "kun": "あ(たる)",
+  "arti": "hit, right, appropriate",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 27,
+  "kanji": "約",
+  "on": "ヤク",
+  "kun": "つづ(まる)",
+  "arti": "promise, approximately, shrink",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 28,
+  "kanji": "首",
+  "on": "シュ",
+  "kun": "くび",
+  "arti": "neck",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 29,
+  "kanji": "法",
+  "on": "ホウ",
+  "kun": "のり",
+  "arti": "method, law, rule, principle, model, system",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 30,
+  "kanji": "性",
+  "on": "セイ、 ショウ",
+  "kun": "",
+  "arti": "sex, gender, nature",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 31,
+  "kanji": "的",
+  "on": "テキ",
+  "kun": "",
+  "arti": "mark, target, object, adjective ending",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 32,
+  "kanji": "要",
+  "on": "ヨウ",
+  "kun": "い(る)、 かなめ",
+  "arti": "need, main point, essence, pivot",
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 33,
+  "kanji": "制",
+  "on": "セイ",
+  "kun": "",
+  "arti": "system, law, rule",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 34,
+  "kanji": "治",
+  "on": "ジ、チ",
+  "kun": "おさ(める)、なお(る)",
+  "arti": "reign, cure, heal",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 35,
+  "kanji": "務",
+  "on": "ム",
+  "kun": "つと(める)",
+  "arti": "task, duties",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 36,
+  "kanji": "成",
+  "on": "セイ、 ジョウ",
+  "kun": "な(る)",
+  "arti": "turn into, become, get, grow, elapse",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 37,
+  "kanji": "期",
+  "on": "キ、 ゴ",
+  "kun": "",
+  "arti": "period, time, date, term",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 38,
+  "kanji": "取",
+  "on": "シュ",
+  "kun": "と(る)",
+  "arti": "take, fetch",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 39,
+  "kanji": "都",
+  "on": "ト、ツ",
+  "kun": "みやこ",
+  "arti": "metropolis, capital",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 40,
+  "kanji": "和",
+  "on": "ワ、オ",
+  "kun": "やわ(らぐ)、なご(む)",
+  "arti": "harmony, Japanese style, peace",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 41,
+  "kanji": "機",
+  "on": "キ",
+  "kun": "はた",
+  "arti": "machine, airplane, opportunity",
+  "volume": [
+   "VOL4",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 42,
+  "kanji": "平",
+  "on": "ヘイ、ビョウ",
+  "kun": "たい(ら)、ひら",
+  "arti": "even, flat, peace",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 43,
+  "kanji": "加",
+  "on": "カ",
+  "kun": "くわ(える)",
+  "arti": "add, addition, increase, join",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 44,
+  "kanji": "受",
+  "on": "ジュ",
+  "kun": "う(ける)",
+  "arti": "accept, undergo, answer (phone), take",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 45,
+  "kanji": "続",
+  "on": "ゾク",
+  "kun": "つづ(く)",
+  "arti": "continue, series, sequel",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 46,
+  "kanji": "進",
+  "on": "シン",
+  "kun": "すす(む)",
+  "arti": "advance, proceed",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 47,
+  "kanji": "数",
+  "on": "スウ",
+  "kun": "かず、 かぞ(える)",
+  "arti": "number, strength, fate, law, figures",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 48,
+  "kanji": "記",
+  "on": "キ",
+  "kun": "しる(す)",
+  "arti": "scribe, account, narrative",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 49,
+  "kanji": "初",
+  "on": "ショ",
+  "kun": "はじ(め)、はつ",
+  "arti": "first time, beginning",
+  "volume": [
+   "VOL4",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 50,
+  "kanji": "指",
+  "on": "シ",
+  "kun": "ゆび、さ(す)",
+  "arti": "finger, point to, indicate",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 51,
+  "kanji": "権",
+  "on": "ケン",
+  "kun": "",
+  "arti": "authority, power, rights",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 52,
+  "kanji": "支",
+  "on": "シ",
+  "kun": "ささ(える)",
+  "arti": "branch, support, sustain",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 53,
+  "kanji": "産",
+  "on": "サン",
+  "kun": "う(む)、 む(す)",
+  "arti": "products, bear, give birth",
+  "volume": [
+   "N4VOL1",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 54,
+  "kanji": "点",
+  "on": "テン",
+  "kun": "つ(ける)",
+  "arti": "spot, point, mark",
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 55,
+  "kanji": "報",
+  "on": "ホウ",
+  "kun": "むく(いる)",
+  "arti": "report, news, reward",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 56,
+  "kanji": "済",
+  "on": "サイ、セイ",
+  "kun": "す(む)",
+  "arti": "settle, relieve, finish",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 57,
+  "kanji": "活",
+  "on": "カツ",
+  "kun": "",
+  "arti": "living",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 58,
+  "kanji": "原",
+  "on": "ゲン",
+  "kun": "はら",
+  "arti": "original, primitive, field",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 59,
+  "kanji": "共",
+  "on": "キョウ",
+  "kun": "とも",
+  "arti": "together, both, neither",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 60,
+  "kanji": "得",
+  "on": "トク",
+  "kun": "え(る)",
+  "arti": "gain, get, find, earn, acquire, can, may, able to, profit",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 61,
+  "kanji": "解",
+  "on": "カイ、ゲ",
+  "kun": "と(く)、ほど(く)",
+  "arti": "unravel, explanation",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 62,
+  "kanji": "交",
+  "on": "コウ",
+  "kun": "まじ(わる)、 ま(ぜる)、 か(わす)",
+  "arti": "mingle, mixing, association, coming & going",
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 63,
+  "kanji": "資",
+  "on": "シ",
+  "kun": "",
+  "arti": "assets, resources, capital, funds, data, be conducive to",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 64,
+  "kanji": "予",
+  "on": "ヨ、 シャ",
+  "kun": "あらかじ(め)",
+  "arti": "beforehand, previous, myself, I",
+  "volume": [
+   "N4VOL4",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 65,
+  "kanji": "向",
+  "on": "コウ",
+  "kun": "む(く)、むか(い)",
+  "arti": "facing, beyond",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 66,
+  "kanji": "際",
+  "on": "サイ",
+  "kun": "きわ",
+  "arti": "occasion, time",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 67,
+  "kanji": "勝",
+  "on": "ショウ",
+  "kun": "か(つ)、 まさ(る)",
+  "arti": "victory, win",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 68,
+  "kanji": "面",
+  "on": "メン",
+  "kun": "おも、おもて、つら",
+  "arti": "mask, face, features, surface",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 69,
+  "kanji": "告",
+  "on": "コク",
+  "kun": "つ(げる)",
+  "arti": "revelation, inform",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 70,
+  "kanji": "反",
+  "on": "ハン",
+  "kun": "そ(る)",
+  "arti": "anti-",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 71,
+  "kanji": "判",
+  "on": "ハン",
+  "kun": "",
+  "arti": "judgement, signature",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 72,
+  "kanji": "認",
+  "on": "ニン",
+  "kun": "みと(める)、したた(める)",
+  "arti": "acknowledge, witness, recognize",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 73,
+  "kanji": "参",
+  "on": "サン",
+  "kun": "まい(る)",
+  "arti": "going, coming, participate",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 74,
+  "kanji": "利",
+  "on": "リ",
+  "kun": "き(く)",
+  "arti": "profit, advantage, benefit",
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 75,
+  "kanji": "組",
+  "on": "ソ",
+  "kun": "く(む)、くみ",
+  "arti": "association, assemble, unite",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 76,
+  "kanji": "信",
+  "on": "シン",
+  "kun": "",
+  "arti": "faith, truth, trust",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 77,
+  "kanji": "在",
+  "on": "ザイ",
+  "kun": "あ(る)",
+  "arti": "exist, outskirts",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 78,
+  "kanji": "件",
+  "on": "ケン",
+  "kun": "くだん",
+  "arti": "affair, case, matter",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 79,
+  "kanji": "側",
+  "on": "ソク",
+  "kun": "がわ、そば",
+  "arti": "side, lean, oppose",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 80,
+  "kanji": "任",
+  "on": "ニン",
+  "kun": "まか(せる)",
+  "arti": "responsibility, duty",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 81,
+  "kanji": "引",
+  "on": "イン",
+  "kun": "ひ(く)",
+  "arti": "pull, tug, jerk",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 82,
+  "kanji": "求",
+  "on": "キュウ",
+  "kun": "もと(める)",
+  "arti": "request, want, demand",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 83,
+  "kanji": "所",
+  "on": "ショ",
+  "kun": "ところ",
+  "arti": "place, extent",
+  "volume": [
+   "VOL3",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 84,
+  "kanji": "次",
+  "on": "ジ、シ",
+  "kun": "つ(ぐ)、つぎ",
+  "arti": "next, order",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 85,
+  "kanji": "昨",
+  "on": "サク",
+  "kun": "",
+  "arti": "yesterday, previous",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 86,
+  "kanji": "論",
+  "on": "ロン",
+  "kun": "あげつら(う)",
+  "arti": "argument, discourse",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 87,
+  "kanji": "官",
+  "on": "カン",
+  "kun": "",
+  "arti": "bureaucrat, the government, organ",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 88,
+  "kanji": "増",
+  "on": "ゾウ",
+  "kun": "ま(す)、 ふ(える)",
+  "arti": "increase, add",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 89,
+  "kanji": "係",
+  "on": "ケイ",
+  "kun": "かか(る)、かかり",
+  "arti": "person in charge, connection",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 90,
+  "kanji": "感",
+  "on": "カン",
+  "kun": "",
+  "arti": "emotion, feeling, sensation",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 91,
+  "kanji": "情",
+  "on": "ジョウ、セイ",
+  "kun": "なさ(け)",
+  "arti": "feelings, emotion, passion",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 92,
+  "kanji": "投",
+  "on": "トウ",
+  "kun": "な(げる)",
+  "arti": "throw, discard",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 93,
+  "kanji": "示",
+  "on": "ジ、シ",
+  "kun": "しめ(す)",
+  "arti": "show, indicate, display",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 94,
+  "kanji": "変",
+  "on": "ヘン",
+  "kun": "か(わる)",
+  "arti": "unusual, change, strange",
+  "volume": [
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 95,
+  "kanji": "打",
+  "on": "ダ",
+  "kun": "う(つ)、ぶ(つ)",
+  "arti": "strike, hit, knock",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 96,
+  "kanji": "直",
+  "on": "チョク、 ジキ",
+  "kun": "ただ(ちに)、 す(ぐ)",
+  "arti": "straightaway, honesty, frankness, fix, repair",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 97,
+  "kanji": "両",
+  "on": "リョウ",
+  "kun": "",
+  "arti": "both",
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 98,
+  "kanji": "式",
+  "on": "シキ",
+  "kun": "",
+  "arti": "style, ceremony",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 99,
+  "kanji": "確",
+  "on": "カク",
+  "kun": "たし(か)",
+  "arti": "assurance, firm, confirm",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 100,
+  "kanji": "果",
+  "on": "カ",
+  "kun": "は(たす)",
+  "arti": "fruit, reward, carry out, achieve, complete",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 101,
+  "kanji": "容",
+  "on": "ヨウ",
+  "kun": "",
+  "arti": "contain, form",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 102,
+  "kanji": "必",
+  "on": "ヒツ",
+  "kun": "かなら(ず)",
+  "arti": "invariably, certain, inevitable",
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 103,
+  "kanji": "演",
+  "on": "エン",
+  "kun": "",
+  "arti": "performance, act, play, render, stage",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 104,
+  "kanji": "歳",
+  "on": "サイ、セイ",
+  "kun": "",
+  "arti": "age, year-end",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 105,
+  "kanji": "争",
+  "on": "ソウ",
+  "kun": "あらそ(う)",
+  "arti": "contend, dispute, argue",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 106,
+  "kanji": "談",
+  "on": "ダン",
+  "kun": "",
+  "arti": "discuss, talk",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 107,
+  "kanji": "能",
+  "on": "ノウ",
+  "kun": "あた(う)",
+  "arti": "ability, talent, skill, capacity",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 108,
+  "kanji": "位",
+  "on": "イ",
+  "kun": "くらい、 ぐらい",
+  "arti": "rank, grade, about",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 109,
+  "kanji": "置",
+  "on": "チ",
+  "kun": "お(く)",
+  "arti": "placement, put, set, deposit, leave behind",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 110,
+  "kanji": "流",
+  "on": "リュウ、ル",
+  "kun": "なが(れる)",
+  "arti": "current, flow",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 111,
+  "kanji": "格",
+  "on": "カク、コウ、キャク",
+  "kun": "",
+  "arti": "status, rank, capacity",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 112,
+  "kanji": "疑",
+  "on": "ギ",
+  "kun": "うたが(う)",
+  "arti": "doubt, distrust",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 113,
+  "kanji": "過",
+  "on": "カ",
+  "kun": "す(ぎる)、よぎ(る)",
+  "arti": "overdo, exceed, go beyond",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 114,
+  "kanji": "局",
+  "on": "キョク",
+  "kun": "",
+  "arti": "bureau, board, office",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 115,
+  "kanji": "放",
+  "on": "ホウ",
+  "kun": "はな(す)、ほう(る)",
+  "arti": "set free, release",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 116,
+  "kanji": "常",
+  "on": "ジョウ",
+  "kun": "つね",
+  "arti": "usual, ordinary, normal",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 117,
+  "kanji": "状",
+  "on": "ジョウ",
+  "kun": "",
+  "arti": "conditions, form, appearance",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 118,
+  "kanji": "球",
+  "on": "キュウ",
+  "kun": "たま",
+  "arti": "ball, sphere",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 119,
+  "kanji": "職",
+  "on": "ショク",
+  "kun": "",
+  "arti": "post, employment, work",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 120,
+  "kanji": "与",
+  "on": "ヨ",
+  "kun": "あた(える)、 あずか(る)",
+  "arti": "give, award",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 121,
+  "kanji": "供",
+  "on": "キョウ、ク、クウ",
+  "kun": "そな(える)、とも",
+  "arti": "submit, offer, present, accompany",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 122,
+  "kanji": "役",
+  "on": "ヤク、エキ",
+  "kun": "",
+  "arti": "duty, service, role",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 123,
+  "kanji": "構",
+  "on": "コウ",
+  "kun": "かま(う)",
+  "arti": "posture, build, pretend",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 124,
+  "kanji": "割",
+  "on": "カツ",
+  "kun": "わ(る)、わり",
+  "arti": "proportion, divide, cut, separate",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 125,
+  "kanji": "身",
+  "on": "シン",
+  "kun": "み",
+  "arti": "somebody, person",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 126,
+  "kanji": "費",
+  "on": "ヒ",
+  "kun": "つい(やす)",
+  "arti": "expense, consume",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 127,
+  "kanji": "付",
+  "on": "フ",
+  "kun": "つ(ける)",
+  "arti": "adhere, attach, refer to, append",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 128,
+  "kanji": "由",
+  "on": "ユ、ユウ",
+  "kun": "よし、よ(る)",
+  "arti": "wherefore, a reason",
+  "volume": [
+   "N4VOL3",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 129,
+  "kanji": "説",
+  "on": "セツ、 ゼイ",
+  "kun": "と(く)",
+  "arti": "opinion, theory, explanation",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 130,
+  "kanji": "難",
+  "on": "ナン",
+  "kun": "かた(い)、むずか(しい)、 にく(い)",
+  "arti": "difficult, trouble, accident",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 131,
+  "kanji": "優",
+  "on": "ユウ、ウ",
+  "kun": "やさ(しい)、すぐ(れる)",
+  "arti": "tenderness, kind, actor",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 132,
+  "kanji": "夫",
+  "on": "フ、フウ",
+  "kun": "おっと",
+  "arti": "husband, man",
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 133,
+  "kanji": "収",
+  "on": "シュウ",
+  "kun": "おさ(める)",
+  "arti": "income, obtain, reap, pay, supply, store",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 134,
+  "kanji": "断",
+  "on": "ダン",
+  "kun": "た(つ)、 ことわ(る)",
+  "arti": "severance, decline, refuse, apologize",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 135,
+  "kanji": "石",
+  "on": "セキ、シャク、コク",
+  "kun": "いし",
+  "arti": "stone",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 136,
+  "kanji": "違",
+  "on": "イ",
+  "kun": "ちが(う)、たが(う)",
+  "arti": "difference, differ",
+  "volume": [
+   "VOL3",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 137,
+  "kanji": "消",
+  "on": "ショウ",
+  "kun": "き(える)、け(す)",
+  "arti": "extinguish, turn off",
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 138,
+  "kanji": "神",
+  "on": "シン、 ジン",
+  "kun": "かみ",
+  "arti": "gods, mind, soul",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 139,
+  "kanji": "番",
+  "on": "バン",
+  "kun": "つが(い)",
+  "arti": "turn, number in a series",
+  "volume": [
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 140,
+  "kanji": "規",
+  "on": "キ",
+  "kun": "",
+  "arti": "standard, measure",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 141,
+  "kanji": "術",
+  "on": "ジュツ",
+  "kun": "すべ",
+  "arti": "art, technique, skill, means, trick",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 142,
+  "kanji": "備",
+  "on": "ビ",
+  "kun": "そな(える)",
+  "arti": "equip, provision, preparation",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 143,
+  "kanji": "宅",
+  "on": "タク",
+  "kun": "",
+  "arti": "home, house, residence",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 144,
+  "kanji": "害",
+  "on": "ガイ",
+  "kun": "",
+  "arti": "harm, injury",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 145,
+  "kanji": "配",
+  "on": "ハイ",
+  "kun": "くば(る)",
+  "arti": "distribute, spouse",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 146,
+  "kanji": "警",
+  "on": "ケイ",
+  "kun": "",
+  "arti": "admonish, commandment",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 147,
+  "kanji": "育",
+  "on": "イク",
+  "kun": "そだ(つ)、はぐく(む)",
+  "arti": "bring up, grow up, raise",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 148,
+  "kanji": "席",
+  "on": "セキ",
+  "kun": "むしろ",
+  "arti": "seat",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 149,
+  "kanji": "訪",
+  "on": "ホウ",
+  "kun": "おとず(れる)、たず(ねる)",
+  "arti": "call on, visit",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 150,
+  "kanji": "乗",
+  "on": "ジョウ、 ショウ",
+  "kun": "の(る)",
+  "arti": "ride",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 151,
+  "kanji": "残",
+  "on": "ザン",
+  "kun": "のこ(る)",
+  "arti": "remainder, balance",
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 152,
+  "kanji": "想",
+  "on": "ソウ、ソ",
+  "kun": "おも(う)",
+  "arti": "concept, think, idea",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 153,
+  "kanji": "声",
+  "on": "セイ、ショウ",
+  "kun": "こえ",
+  "arti": "voice",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 154,
+  "kanji": "助",
+  "on": "ジョ",
+  "kun": "たす(ける)",
+  "arti": "help, rescue, assist",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 155,
+  "kanji": "労",
+  "on": "ロウ",
+  "kun": "ろう(する)、いたわ(る)、ねぎら(う)",
+  "arti": "labor, thank for",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 156,
+  "kanji": "例",
+  "on": "レイ",
+  "kun": "たと(えば)",
+  "arti": "example",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 157,
+  "kanji": "然",
+  "on": "ゼン、ネン",
+  "kun": "しか、さ",
+  "arti": "sort of thing, if so",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 158,
+  "kanji": "限",
+  "on": "ゲン",
+  "kun": "かぎ(る)",
+  "arti": "limit, restrict",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 159,
+  "kanji": "追",
+  "on": "ツイ",
+  "kun": "お(う)",
+  "arti": "chase, drive away",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 160,
+  "kanji": "商",
+  "on": "ショウ",
+  "kun": "あきな(う)",
+  "arti": "deal; selling; merchant",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 161,
+  "kanji": "葉",
+  "on": "ヨウ",
+  "kun": "は",
+  "arti": "leaf, plane, needle, blade, counter for flat things",
+  "volume": [
+   "VOL3",
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 162,
+  "kanji": "伝",
+  "on": "デン",
+  "kun": "つた(わる)",
+  "arti": "transmit, go along, walk along, follow, report, communicate, legend, tradition",
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 163,
+  "kanji": "働",
+  "on": "ドウ",
+  "kun": "はたら(く)",
+  "arti": "work",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": false
+ },
+ {
+  "no": 164,
+  "kanji": "形",
+  "on": "ケイ、ギョウ",
+  "kun": "かた、かたち、なり",
+  "arti": "shape, form, style",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 165,
+  "kanji": "景",
+  "on": "ケイ、ケ",
+  "kun": "",
+  "arti": "scenery, view",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 166,
+  "kanji": "落",
+  "on": "ラク",
+  "kun": "お(ちる)",
+  "arti": "fall, drop",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 167,
+  "kanji": "好",
+  "on": "コウ",
+  "kun": "この(む)、 す(く)",
+  "arti": "fond, pleasing, like something",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 168,
+  "kanji": "退",
+  "on": "タイ",
+  "kun": "しりぞ(く)、 ひ(く)、 の(ける)、 ど(く)",
+  "arti": "retreat, withdraw, retire, resign, repel, expel, reject",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 169,
+  "kanji": "頭",
+  "on": "トウ、ズ、ト",
+  "kun": "あたま、かしら",
+  "arti": "head",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 170,
+  "kanji": "負",
+  "on": "フ",
+  "kun": "ま(ける)、 お(う)",
+  "arti": "defeat, negative, minus, assume a responsibility",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 171,
+  "kanji": "渡",
+  "on": "ト",
+  "kun": "わた(る)",
+  "arti": "transit, ferry, cross",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 172,
+  "kanji": "失",
+  "on": "シツ",
+  "kun": "うしな(う)、 う(せる)",
+  "arti": "lose, error, fault, disadvantage, loss",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 173,
+  "kanji": "差",
+  "on": "サ",
+  "kun": "さ(す)",
+  "arti": "distinction, difference, variation",
+  "volume": [
+   "VOL2",
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 174,
+  "kanji": "末",
+  "on": "マツ",
+  "kun": "すえ",
+  "arti": "end, close, tip",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 175,
+  "kanji": "守",
+  "on": "シュ、ス",
+  "kun": "まも(る)、もり",
+  "arti": "guard, protect, obey",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 176,
+  "kanji": "若",
+  "on": "ジャク",
+  "kun": "わか(い)、も(し)",
+  "arti": "young",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 177,
+  "kanji": "種",
+  "on": "シュ",
+  "kun": "たね、-ぐさ",
+  "arti": "species, kind, class, seed",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 178,
+  "kanji": "美",
+  "on": "ビ、 ミ",
+  "kun": "うつく(しい)",
+  "arti": "beauty, beautiful",
+  "volume": [
+   "N4VOL1",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 179,
+  "kanji": "命",
+  "on": "メイ、ミョウ",
+  "kun": "いのち",
+  "arti": "fate, command",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 180,
+  "kanji": "福",
+  "on": "フク",
+  "kun": "",
+  "arti": "blessing, fortune, luck, wealth",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 181,
+  "kanji": "望",
+  "on": "ボウ",
+  "kun": "のぞ(む)、 もち",
+  "arti": "ambition, full moon, hope, desire, aspire to, expect",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 182,
+  "kanji": "非",
+  "on": "ヒ",
+  "kun": "あら(ず)",
+  "arti": "un-, mistake, negative",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 183,
+  "kanji": "観",
+  "on": "カン",
+  "kun": "み(る)",
+  "arti": "outlook, appearance, condition",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 184,
+  "kanji": "察",
+  "on": "サツ",
+  "kun": "",
+  "arti": "guess, presume, judge",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 185,
+  "kanji": "段",
+  "on": "ダン",
+  "kun": "",
+  "arti": "grade, steps, stairs",
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 186,
+  "kanji": "横",
+  "on": "オウ",
+  "kun": "よこ",
+  "arti": "sideways, side",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 187,
+  "kanji": "深",
+  "on": "シン",
+  "kun": "ふか(い)",
+  "arti": "deep, heighten",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 188,
+  "kanji": "申",
+  "on": "シン",
+  "kun": "もう(す)、さる",
+  "arti": "have the honor to",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 189,
+  "kanji": "様",
+  "on": "ヨウ",
+  "kun": "さま、さん",
+  "arti": "manner, situation, polite suffix",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 190,
+  "kanji": "財",
+  "on": "ザイ、 サイ、 ゾク",
+  "kun": "",
+  "arti": "property, money, wealth, assets",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 191,
+  "kanji": "港",
+  "on": "コウ",
+  "kun": "みなと",
+  "arti": "harbor, port",
+  "volume": [
+   "N4VOL2",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 192,
+  "kanji": "識",
+  "on": "シキ",
+  "kun": "し(る)",
+  "arti": "know",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 193,
+  "kanji": "呼",
+  "on": "コ",
+  "kun": "よ(ぶ)",
+  "arti": "call, invite",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 194,
+  "kanji": "達",
+  "on": "タツ、 ダ",
+  "kun": "-たち",
+  "arti": "accomplished, reach, arrive, attain",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 195,
+  "kanji": "良",
+  "on": "リョウ",
+  "kun": "よ(い)、い(い)",
+  "arti": "good",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 196,
+  "kanji": "阪",
+  "on": "ハン",
+  "kun": "さか",
+  "arti": "heights, slope",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 197,
+  "kanji": "候",
+  "on": "コウ",
+  "kun": "そうろう",
+  "arti": "climate, season, weather",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 198,
+  "kanji": "程",
+  "on": "テイ",
+  "kun": "ほど",
+  "arti": "extent, degree",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 199,
+  "kanji": "満",
+  "on": "マン",
+  "kun": "み(ちる)",
+  "arti": "full, fullness, enough, satisfy",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 200,
+  "kanji": "敗",
+  "on": "ハイ",
+  "kun": "やぶ(れる)",
+  "arti": "failure, defeat",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 201,
+  "kanji": "値",
+  "on": "チ",
+  "kun": "ね、 あたい",
+  "arti": "price, cost, value",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 202,
+  "kanji": "突",
+  "on": "トツ、カ",
+  "kun": "つ(く)",
+  "arti": "stab, protruding, thrust",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 203,
+  "kanji": "光",
+  "on": "コウ",
+  "kun": "ひか(る)、ひかり",
+  "arti": "ray, light",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 204,
+  "kanji": "路",
+  "on": "ロ、ル",
+  "kun": "みち",
+  "arti": "path, route, road",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 205,
+  "kanji": "科",
+  "on": "カ",
+  "kun": "",
+  "arti": "department, course, section",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 206,
+  "kanji": "積",
+  "on": "セキ",
+  "kun": "つ(む)",
+  "arti": "volume, contents, pile up, stack",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 207,
+  "kanji": "他",
+  "on": "タ",
+  "kun": "ほか",
+  "arti": "other, another",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 208,
+  "kanji": "処",
+  "on": "ショ",
+  "kun": "",
+  "arti": "dispose, manage, deal with",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 209,
+  "kanji": "太",
+  "on": "タイ、タ",
+  "kun": "ふと(い)",
+  "arti": "plump, thick, big around",
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 210,
+  "kanji": "客",
+  "on": "キャク、カク",
+  "kun": "",
+  "arti": "guest, visitor, customer",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 211,
+  "kanji": "否",
+  "on": "ヒ",
+  "kun": "いな、いや",
+  "arti": "negate, no, decline",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 212,
+  "kanji": "師",
+  "on": "シ",
+  "kun": "",
+  "arti": "expert, teacher, master",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 213,
+  "kanji": "登",
+  "on": "トウ、ト",
+  "kun": "のぼ(る)、あ(がる)",
+  "arti": "ascend, climb up",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 214,
+  "kanji": "易",
+  "on": "エキ、 イ",
+  "kun": "やさ(しい)、 やす(い)",
+  "arti": "easy, ready to, simple",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 215,
+  "kanji": "速",
+  "on": "ソク",
+  "kun": "はや(い)",
+  "arti": "quick, fast",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 216,
+  "kanji": "存",
+  "on": "ソン、ゾン",
+  "kun": "",
+  "arti": "exist, be aware of",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 217,
+  "kanji": "飛",
+  "on": "ヒ",
+  "kun": "と(ぶ)",
+  "arti": "fly",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 218,
+  "kanji": "殺",
+  "on": "サツ、サイ",
+  "kun": "ころ(す)",
+  "arti": "kill, murder",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 219,
+  "kanji": "号",
+  "on": "ゴウ",
+  "kun": "",
+  "arti": "number, item",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 220,
+  "kanji": "単",
+  "on": "タン",
+  "kun": "ひとえ",
+  "arti": "simple, single",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 221,
+  "kanji": "座",
+  "on": "ザ",
+  "kun": "すわ(る)",
+  "arti": "squat, seat, sit",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 222,
+  "kanji": "破",
+  "on": "ハ",
+  "kun": "やぶ(る)",
+  "arti": "rip, tear, break",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 223,
+  "kanji": "除",
+  "on": "ジョ、ジ",
+  "kun": "のぞ(く)",
+  "arti": "exclude, remove",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 224,
+  "kanji": "完",
+  "on": "カン",
+  "kun": "",
+  "arti": "perfect, completion",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 225,
+  "kanji": "降",
+  "on": "コウ、 ゴ",
+  "kun": "お(りる)、 ふ(る)",
+  "arti": "descend, precipitate, fall, surrender",
+  "volume": [
+   "VOL2",
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 226,
+  "kanji": "責",
+  "on": "セキ",
+  "kun": "せ(める)",
+  "arti": "blame, condemn",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 227,
+  "kanji": "捕",
+  "on": "ホ",
+  "kun": "と(らえる)、つか(まえる)",
+  "arti": "catch, capture",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 228,
+  "kanji": "危",
+  "on": "キ",
+  "kun": "あぶ(ない)、あや(うい)",
+  "arti": "dangerous, fear, uneasy",
+  "volume": [
+   "VOL1",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 229,
+  "kanji": "給",
+  "on": "キュウ",
+  "kun": "たま(う)、たも(う)",
+  "arti": "salary, wage, gift",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 230,
+  "kanji": "苦",
+  "on": "ク",
+  "kun": "くる(しい)、にが(い)",
+  "arti": "suffering, bitter",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 231,
+  "kanji": "迎",
+  "on": "ゲイ",
+  "kun": "むか(える)",
+  "arti": "welcome, meet, greet",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 232,
+  "kanji": "園",
+  "on": "エン",
+  "kun": "その",
+  "arti": "park, garden, yard",
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 233,
+  "kanji": "具",
+  "on": "グ",
+  "kun": "そな(える)、つぶさ(に)",
+  "arti": "tool, utensil",
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 234,
+  "kanji": "辞",
+  "on": "ジ",
+  "kun": "や(める)",
+  "arti": "resign, word, term",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 235,
+  "kanji": "因",
+  "on": "イン",
+  "kun": "よ(る)、ちな(む)",
+  "arti": "cause, factor, depend on",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 236,
+  "kanji": "馬",
+  "on": "バ",
+  "kun": "うま",
+  "arti": "horse",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 237,
+  "kanji": "愛",
+  "on": "アイ",
+  "kun": "いと(しい)、まな",
+  "arti": "love, affection",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 238,
+  "kanji": "富",
+  "on": "フ、フウ",
+  "kun": "と(む)、 とみ",
+  "arti": "wealth, enrich, abundant",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 239,
+  "kanji": "彼",
+  "on": "ヒ",
+  "kun": "かれ、 かの",
+  "arti": "he, him",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 240,
+  "kanji": "未",
+  "on": "ミ、ビ",
+  "kun": "いま(だ)、ま(だ)",
+  "arti": "un-, not yet",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 241,
+  "kanji": "舞",
+  "on": "ブ",
+  "kun": "ま(う)、まい",
+  "arti": "dance, circle",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 242,
+  "kanji": "亡",
+  "on": "ボウ、モウ",
+  "kun": "な(くなる)",
+  "arti": "deceased, dying",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 243,
+  "kanji": "冷",
+  "on": "レイ",
+  "kun": "つめ(たい)、ひ(える)、さ(める)",
+  "arti": "cool, cold, chill",
+  "volume": [
+   "VOL4",
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 244,
+  "kanji": "適",
+  "on": "テキ",
+  "kun": "かな(う)",
+  "arti": "suitable, occasional, rare",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 245,
+  "kanji": "婦",
+  "on": "フ",
+  "kun": "よめ",
+  "arti": "lady, woman, wife",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 246,
+  "kanji": "寄",
+  "on": "キ",
+  "kun": "よ(る)",
+  "arti": "draw near, gather",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 247,
+  "kanji": "込",
+  "on": "",
+  "kun": "こ(む)",
+  "arti": "crowded, mixture",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 248,
+  "kanji": "顔",
+  "on": "ガン",
+  "kun": "かお",
+  "arti": "face, expression",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 249,
+  "kanji": "類",
+  "on": "ルイ",
+  "kun": "たぐ(い)",
+  "arti": "sort, kind, variety, class, genus",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 250,
+  "kanji": "余",
+  "on": "ヨ",
+  "kun": "あま(る)",
+  "arti": "too much, surplus",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 251,
+  "kanji": "王",
+  "on": "オウ",
+  "kun": "",
+  "arti": "king, rule",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 252,
+  "kanji": "返",
+  "on": "ヘン",
+  "kun": "かえ(す)",
+  "arti": "return, answer",
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 253,
+  "kanji": "妻",
+  "on": "サイ",
+  "kun": "つま",
+  "arti": "wife, spouse",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 254,
+  "kanji": "背",
+  "on": "ハイ",
+  "kun": "せ、せい",
+  "arti": "stature, height, back",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 255,
+  "kanji": "熱",
+  "on": "ネツ",
+  "kun": "あつ(い)",
+  "arti": "heat, fever, passion",
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 256,
+  "kanji": "宿",
+  "on": "シュク",
+  "kun": "やど",
+  "arti": "inn, lodging",
+  "volume": [
+   "VOL3",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 257,
+  "kanji": "薬",
+  "on": "ヤク",
+  "kun": "くすり",
+  "arti": "medicine, chemical",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 258,
+  "kanji": "険",
+  "on": "ケン",
+  "kun": "けわ(しい)",
+  "arti": "precipitous, inaccessible place",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 259,
+  "kanji": "頼",
+  "on": "ライ",
+  "kun": "たの(む)、 たよ(る)",
+  "arti": "trust, request",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 260,
+  "kanji": "覚",
+  "on": "カク",
+  "kun": "おぼ(える)、 さ(ます)",
+  "arti": "memorize, learn, remember, awake",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 261,
+  "kanji": "船",
+  "on": "セン",
+  "kun": "ふね、ふな",
+  "arti": "ship, boat",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 262,
+  "kanji": "途",
+  "on": "ト",
+  "kun": "みち",
+  "arti": "route, way, road",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 263,
+  "kanji": "許",
+  "on": "キョ",
+  "kun": "ゆる(す)",
+  "arti": "permit, approve",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 264,
+  "kanji": "抜",
+  "on": "バツ",
+  "kun": "ぬ(く)",
+  "arti": "slip out, extract, pull out, remove",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 265,
+  "kanji": "便",
+  "on": "ベン、 ビン",
+  "kun": "たよ(り)",
+  "arti": "convenience, facility",
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 266,
+  "kanji": "留",
+  "on": "リュウ、 ル",
+  "kun": "と(まる)、 とど(める)",
+  "arti": "detain, fasten, halt, stop",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 267,
+  "kanji": "罪",
+  "on": "ザイ",
+  "kun": "つみ",
+  "arti": "guilt, sin, crime",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 268,
+  "kanji": "努",
+  "on": "ド",
+  "kun": "つと(める)",
+  "arti": "toil, diligent, as much as possible",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 269,
+  "kanji": "精",
+  "on": "セイ、ショウ",
+  "kun": "しら(げる)",
+  "arti": "refined, ghost, fairy, energy",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 270,
+  "kanji": "散",
+  "on": "サン",
+  "kun": "ち(る)、ばら(ける)",
+  "arti": "scatter, disperse",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 271,
+  "kanji": "静",
+  "on": "セイ、ジョウ",
+  "kun": "しず(か)",
+  "arti": "quiet",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 272,
+  "kanji": "婚",
+  "on": "コン",
+  "kun": "",
+  "arti": "marriage",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 273,
+  "kanji": "喜",
+  "on": "キ",
+  "kun": "よろこ(ぶ)",
+  "arti": "rejoice, take pleasure in",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 274,
+  "kanji": "浮",
+  "on": "フ",
+  "kun": "う(かぶ)",
+  "arti": "float, rise to surface",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 275,
+  "kanji": "絶",
+  "on": "ゼツ",
+  "kun": "た(える)",
+  "arti": "discontinue, unparalleled",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 276,
+  "kanji": "幸",
+  "on": "コウ",
+  "kun": "さいわ(い)、さち、 しあわ(せ)",
+  "arti": "happiness, blessing, fortune",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 277,
+  "kanji": "押",
+  "on": "オウ",
+  "kun": "お(す)",
+  "arti": "push",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 278,
+  "kanji": "倒",
+  "on": "トウ",
+  "kun": "たお(れる)",
+  "arti": "overthrow, fall, collapse",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 279,
+  "kanji": "等",
+  "on": "トウ",
+  "kun": "ひと(しい)、など",
+  "arti": "etc., and so forth",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 280,
+  "kanji": "老",
+  "on": "ロウ",
+  "kun": "お(いる)、ふ(ける)",
+  "arti": "old",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 281,
+  "kanji": "曲",
+  "on": "キョク",
+  "kun": "ま(がる)",
+  "arti": "bend, music, melody",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 282,
+  "kanji": "払",
+  "on": "",
+  "kun": "はら(う)",
+  "arti": "pay",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 283,
+  "kanji": "庭",
+  "on": "テイ",
+  "kun": "にわ",
+  "arti": "courtyard, garden, yard",
+  "volume": [
+   "VOL2",
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 284,
+  "kanji": "徒",
+  "on": "ト",
+  "kun": "いたずら、 あだ",
+  "arti": "on foot, junior, vanity, futility, uselessness",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 285,
+  "kanji": "勤",
+  "on": "キン、ゴン",
+  "kun": "つと(める)",
+  "arti": "diligence, employed, serve",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 286,
+  "kanji": "遅",
+  "on": "チ",
+  "kun": "おく(れる)、 おそ(い)",
+  "arti": "slow, late, back, later",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 287,
+  "kanji": "居",
+  "on": "キョ、コ",
+  "kun": "い(る)、お(る)",
+  "arti": "reside, to be, exist",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 288,
+  "kanji": "雑",
+  "on": "ザツ、ゾウ",
+  "kun": "まじ(る)",
+  "arti": "miscellaneous",
+  "volume": [
+   "VOL3",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 289,
+  "kanji": "招",
+  "on": "ショウ",
+  "kun": "まね(く)",
+  "arti": "invite, summon, engage",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 290,
+  "kanji": "困",
+  "on": "コン",
+  "kun": "こま(る)",
+  "arti": "quandary, become distressed",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 291,
+  "kanji": "欠",
+  "on": "ケツ、ケン",
+  "kun": "か(ける)",
+  "arti": "lack, gap",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 292,
+  "kanji": "更",
+  "on": "コウ",
+  "kun": "さら(に)、ふ(ける)",
+  "arti": "renew, renovate, again",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 293,
+  "kanji": "刻",
+  "on": "コク",
+  "kun": "きざ(む)",
+  "arti": "engrave, cut fine, chop",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 294,
+  "kanji": "賛",
+  "on": "サン",
+  "kun": "",
+  "arti": "approve, praise",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 295,
+  "kanji": "抱",
+  "on": "ホウ",
+  "kun": "だ(く)、いだ(く)、かか(える)",
+  "arti": "embrace, hug",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 296,
+  "kanji": "犯",
+  "on": "ハン",
+  "kun": "おか(す)",
+  "arti": "crime, sin, offense",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 297,
+  "kanji": "恐",
+  "on": "キョウ",
+  "kun": "おそ(れる)、こわ(い)",
+  "arti": "fear, dread",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 298,
+  "kanji": "息",
+  "on": "ムス、ソク",
+  "kun": "いき",
+  "arti": "breath, son, interest (on money)",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 299,
+  "kanji": "遠",
+  "on": "エン",
+  "kun": "とお(い)",
+  "arti": "distant, far",
+  "volume": [
+   "VOL4",
+   "N4VOL1",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 300,
+  "kanji": "戻",
+  "on": "レイ",
+  "kun": "もど(る)",
+  "arti": "re-, return, revert",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 301,
+  "kanji": "願",
+  "on": "ガン",
+  "kun": "ねが(う)",
+  "arti": "petition, request, wish",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 302,
+  "kanji": "絵",
+  "on": "カイ、エ",
+  "kun": "",
+  "arti": "picture, drawing",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 303,
+  "kanji": "越",
+  "on": "エツ",
+  "kun": "こ(す)",
+  "arti": "surpass, cross over, move to, exceed",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 304,
+  "kanji": "欲",
+  "on": "ヨク",
+  "kun": "ほ(しい)",
+  "arti": "longing, greed, passion",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 305,
+  "kanji": "痛",
+  "on": "ツウ",
+  "kun": "いた(い)",
+  "arti": "pain, hurt, damage, bruise",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 306,
+  "kanji": "笑",
+  "on": "ショウ",
+  "kun": "わら(う)、え(む)",
+  "arti": "laugh",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 307,
+  "kanji": "互",
+  "on": "ゴ",
+  "kun": "たが(い)、かたみ(に)",
+  "arti": "mutually, reciprocally, together",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 308,
+  "kanji": "束",
+  "on": "ソク",
+  "kun": "たば、つか",
+  "arti": "bundle, manage",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 309,
+  "kanji": "似",
+  "on": "ジ、ね",
+  "kun": "に(る)",
+  "arti": "becoming, resemble, imitate",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 310,
+  "kanji": "列",
+  "on": "レツ、レ",
+  "kun": "",
+  "arti": "file, row, column",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 311,
+  "kanji": "探",
+  "on": "タン",
+  "kun": "さぐ(る)、さが(す)",
+  "arti": "search, look for",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 312,
+  "kanji": "逃",
+  "on": "トウ",
+  "kun": "に(げる)、のが(す)",
+  "arti": "escape, flee",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 313,
+  "kanji": "遊",
+  "on": "ユウ",
+  "kun": "あそ(ぶ)",
+  "arti": "play",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 314,
+  "kanji": "迷",
+  "on": "メイ",
+  "kun": "まよ(う)",
+  "arti": "astray, be perplexed, in doubt, lost",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 315,
+  "kanji": "夢",
+  "on": "ム",
+  "kun": "ゆめ",
+  "arti": "dream, vision",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 316,
+  "kanji": "君",
+  "on": "クン",
+  "kun": "きみ",
+  "arti": "you, male name suffix",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 317,
+  "kanji": "閉",
+  "on": "ヘイ",
+  "kun": "と(じる)、し(める)",
+  "arti": "closed, shut",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 318,
+  "kanji": "緒",
+  "on": "ショ",
+  "kun": "お",
+  "arti": "beginning, end, cord, strap",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 319,
+  "kanji": "折",
+  "on": "セツ、シャク",
+  "kun": "お(る)、おり",
+  "arti": "fold, break, fracture",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 320,
+  "kanji": "草",
+  "on": "ソウ",
+  "kun": "くさ",
+  "arti": "grass, weeds, herbs",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 321,
+  "kanji": "暮",
+  "on": "ボ",
+  "kun": "く(らす)",
+  "arti": "evening, livelihood",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 322,
+  "kanji": "酒",
+  "on": "シュ",
+  "kun": "さけ、さか-",
+  "arti": "sake, alcohol",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 323,
+  "kanji": "悲",
+  "on": "ヒ",
+  "kun": "かな(しい)",
+  "arti": "grieve, sad",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 324,
+  "kanji": "晴",
+  "on": "セイ",
+  "kun": "は(れる)",
+  "arti": "clear up",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 325,
+  "kanji": "掛",
+  "on": "ケイ",
+  "kun": "か(ける)",
+  "arti": "hang, suspend",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 326,
+  "kanji": "到",
+  "on": "トウ",
+  "kun": "いた(る)",
+  "arti": "arrival, proceed, reach",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 327,
+  "kanji": "寝",
+  "on": "シン",
+  "kun": "ね(る)",
+  "arti": "lie down, sleep, rest",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 328,
+  "kanji": "暗",
+  "on": "アン",
+  "kun": "くら(い)",
+  "arti": "darkness, disappear, shade, informal",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 329,
+  "kanji": "盗",
+  "on": "トウ",
+  "kun": "ぬす(む)",
+  "arti": "steal, rob",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 330,
+  "kanji": "吸",
+  "on": "キュウ",
+  "kun": "す(う)",
+  "arti": "suck, inhale",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 331,
+  "kanji": "陽",
+  "on": "ヨウ",
+  "kun": "ひ",
+  "arti": "sunshine, positive",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 332,
+  "kanji": "御",
+  "on": "ギョ、ゴ",
+  "kun": "おん、お",
+  "arti": "honorable",
+  "volume": [
+   "VOL1",
+   "VOL3",
+   "VOL4",
+   "VOL5",
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 333,
+  "kanji": "歯",
+  "on": "シ",
+  "kun": "は",
+  "arti": "tooth, cog",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 334,
+  "kanji": "忘",
+  "on": "ボウ",
+  "kun": "わす(れる)",
+  "arti": "forget",
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 335,
+  "kanji": "雪",
+  "on": "セツ",
+  "kun": "ゆき",
+  "arti": "snow",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 336,
+  "kanji": "吹",
+  "on": "スイ",
+  "kun": "ふ(く)",
+  "arti": "blow, breathe, puff",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 337,
+  "kanji": "娘",
+  "on": "ジョウ",
+  "kun": "むすめ、こ",
+  "arti": "daughter, girl",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 338,
+  "kanji": "誤",
+  "on": "ゴ",
+  "kun": "あやま(る)",
+  "arti": "mistake",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 339,
+  "kanji": "洗",
+  "on": "セン",
+  "kun": "あら(う)",
+  "arti": "wash",
+  "volume": [
+   "VOL1",
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 340,
+  "kanji": "慣",
+  "on": "カン",
+  "kun": "な(れる)",
+  "arti": "accustomed, get used to",
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 341,
+  "kanji": "礼",
+  "on": "レイ、ライ",
+  "kun": "",
+  "arti": "salute, bow, ceremony, thanks",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 342,
+  "kanji": "窓",
+  "on": "ソウ",
+  "kun": "まど",
+  "arti": "window, pane",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 343,
+  "kanji": "昔",
+  "on": "セキ、シャク",
+  "kun": "むかし",
+  "arti": "once upon a time, old times",
+  "volume": [
+   "N4VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 344,
+  "kanji": "貧",
+  "on": "ヒン、ビン",
+  "kun": "まず(しい)",
+  "arti": "poverty, poor",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 345,
+  "kanji": "怒",
+  "on": "ド",
+  "kun": "いか(る)、 おこ(る)",
+  "arti": "angry, be offended",
+  "volume": [
+   "N4VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 346,
+  "kanji": "泳",
+  "on": "エイ",
+  "kun": "およ(ぐ)",
+  "arti": "swim",
+  "volume": [
+   "VOL2",
+   "N4VOL1",
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 347,
+  "kanji": "祖",
+  "on": "ソ",
+  "kun": "",
+  "arti": "ancestor, pioneer, founder",
+  "volume": [
+   "N4VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 348,
+  "kanji": "杯",
+  "on": "ハイ",
+  "kun": "さかずき",
+  "arti": "glass, cup",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 349,
+  "kanji": "疲",
+  "on": "ヒ",
+  "kun": "つか(れる)",
+  "arti": "exhausted, tire",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 350,
+  "kanji": "皆",
+  "on": "カイ",
+  "kun": "みな、 みんな",
+  "arti": "all, everyone, everybody",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 351,
+  "kanji": "鳴",
+  "on": "メイ",
+  "kun": "な(く)、な(る)",
+  "arti": "chirp, cry, bark",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 352,
+  "kanji": "腹",
+  "on": "フク",
+  "kun": "はら",
+  "arti": "abdomen, belly, stomach",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 353,
+  "kanji": "煙",
+  "on": "エン",
+  "kun": "けむ(る)、けむり",
+  "arti": "smoke",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 354,
+  "kanji": "眠",
+  "on": "ミン",
+  "kun": "ねむ(る)",
+  "arti": "sleep",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 355,
+  "kanji": "怖",
+  "on": "フ",
+  "kun": "こわ(い)、お(じる)",
+  "arti": "dreadful, fearful",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 356,
+  "kanji": "耳",
+  "on": "ジ",
+  "kun": "みみ",
+  "arti": "ear",
+  "volume": [
+   "VOL5"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 357,
+  "kanji": "頂",
+  "on": "チョウ",
+  "kun": "いただ(く)",
+  "arti": "receive, top, summit, peak",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 358,
+  "kanji": "箱",
+  "on": "ソウ",
+  "kun": "はこ",
+  "arti": "box, chest",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 359,
+  "kanji": "晩",
+  "on": "バン",
+  "kun": "",
+  "arti": "nightfall, night",
+  "volume": [
+   "VOL3",
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 360,
+  "kanji": "寒",
+  "on": "カン",
+  "kun": "さむ(い)",
+  "arti": "cold",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 361,
+  "kanji": "髪",
+  "on": "ハツ",
+  "kun": "かみ",
+  "arti": "hair (on the head)",
+  "volume": [
+   "N4VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 362,
+  "kanji": "忙",
+  "on": "ボウ、モウ",
+  "kun": "いそが(しい)",
+  "arti": "busy, occupied",
+  "volume": [
+   "VOL1"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 363,
+  "kanji": "才",
+  "on": "サイ",
+  "kun": "",
+  "arti": "genius, years old",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 364,
+  "kanji": "靴",
+  "on": "カ",
+  "kun": "くつ",
+  "arti": "shoes",
+  "volume": [
+   "VOL2"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 365,
+  "kanji": "恥",
+  "on": "チ",
+  "kun": "はじ、は(ずかしい)",
+  "arti": "shame, dishonor",
+  "volume": [
+   "N4VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 366,
+  "kanji": "偶",
+  "on": "グウ",
+  "kun": "たま",
+  "arti": "accidentally, even number",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 367,
+  "kanji": "偉",
+  "on": "イ",
+  "kun": "えら(い)",
+  "arti": "admirable, greatness",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 368,
+  "kanji": "猫",
+  "on": "ビョウ",
+  "kun": "ねこ",
+  "arti": "cat",
+  "volume": [
+   "VOL4"
+  ],
+  "diRireki": true
+ },
+ {
+  "no": 369,
+  "kanji": "幾",
+  "on": "キ",
+  "kun": "いく(つ)",
+  "arti": "how many, how much, some",
+  "volume": [],
+  "diRireki": true
+ },
+ {
+  "no": 370,
+  "kanji": "誰",
+  "on": "スイ",
+  "kun": "だれ",
+  "arti": "who, someone, somebody",
+  "volume": [
+   "VOL3"
+  ],
+  "diRireki": false
+ }
+]

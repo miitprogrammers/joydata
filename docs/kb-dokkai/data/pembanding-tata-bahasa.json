@@ -1,0 +1,3444 @@
+{
+ "meta": {
+  "dibuat": "2026-11-20",
+  "kunci_minna": "I = 課1–25, II = 課26–50, tidak = tidak ditemukan di S1a/S1b/S1c",
+  "catatan": "Tanos memakai level pra-2010 yang dipetakan ke N5–N1; level Bunpro adalah penetapan Bunpro sendiri. Ketiadaan di S1a/S1b/S1c bukan bukti pola tidak muncul di buku (mis. di catatan tata bahasa)."
+ },
+ "sumber": [
+  {
+   "id": "S1a",
+   "nama": "Japan Foundation (国際交流基金), tabel \"みんなの日本語 文型・表現 ↔ いろどり\" (課1–50), file bertanggal 2021-10-27; edisi Minna tidak dinyatakan",
+   "url": "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+   "status": "OK (PDF diunduh, kolom Minna dipetakan ke 課 lewat posisi baris)"
+  },
+  {
+   "id": "S1b",
+   "nama": "Ehime MIC, \"教科書の学習内容\" — ringkasan per 課 (1–32, 34–39, 41–44, 46–50; 33, 40, 45 tidak tercantum), menyebut 『みんなの日本語初級Ⅰ/Ⅱ 第２版 本冊』",
+   "url": "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf",
+   "status": "OK"
+  },
+  {
+   "id": "S1c",
+   "nama": "MinnaNoDS (vitto4) — kosakata Minna Shokyū I & II per pelajaran, disusun dari 翻訳・文法解説 英語版 ed. 1 & 2; tiap entri punya tag edition",
+   "url": "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml",
+   "status": "OK (repo: https://github.com/vitto4/MinnaNoDS); hanya entri dengan tag ed. 2 yang dipakai"
+  },
+  {
+   "id": "S2-N5",
+   "nama": "Tanos JLPT N5 grammar list (Wayback 2020-07-26; halaman \"Updated: November 21, 2010\")",
+   "url": "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/",
+   "status": "OK via Wayback"
+  },
+  {
+   "id": "S2-N4",
+   "nama": "Tanos JLPT N4 grammar list (Wayback 2020-07-16; non-kumulatif)",
+   "url": "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/",
+   "status": "OK via Wayback"
+  },
+  {
+   "id": "S2-N3",
+   "nama": "Tanos JLPT N3 grammar list (Wayback 2020-08-14)",
+   "url": "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/",
+   "status": "OK via Wayback"
+  },
+  {
+   "id": "S2-N2",
+   "nama": "Tanos JLPT N2 grammar list (Wayback 2020-07-01)",
+   "url": "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/",
+   "status": "OK via Wayback"
+  },
+  {
+   "id": "S3",
+   "nama": "Bunpro — indeks grammar_points (979 butir, level JLPT1–5 dari __NEXT_DATA__); level 8 halaman dicek ulang dari <title>",
+   "url": "https://bunpro.jp/grammar_points",
+   "status": "OK (per butir: https://bunpro.jp/grammar_points/<slug>)"
+  },
+  {
+   "id": "S4",
+   "nama": "日本語能力試験出題基準語彙表 (TSV), dibuat mahasiswa 育達商業技術學院 berdasar『日本語能力試験出題基準【改訂版】』(凡人社 2002), disunting 内山和也; 級別 1–4, 0 = tidak dicontohkan. HANYA KOSAKATA, bukan daftar 文法 3・4級",
+   "url": "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz",
+   "status": "OK sebagian (halaman: https://www7a.biglobe.ne.jp/nifongo/data/noryoku.html)"
+  },
+  {
+   "id": "S5a",
+   "nama": "Genki I/II Grammar Index — St. Olaf College Japanese (edisi Genki tidak dinyatakan)",
+   "url": "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/",
+   "status": "OK"
+  },
+  {
+   "id": "S5b-N5",
+   "nama": "『TRY! 日本語能力試験 N5』(アスク出版) 学習内容",
+   "url": "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf",
+   "status": "OK"
+  },
+  {
+   "id": "S5b-N4",
+   "nama": "『TRY! 日本語能力試験 N4』(アスク出版) 学習内容",
+   "url": "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf",
+   "status": "OK"
+  },
+  {
+   "id": "S5b-N3",
+   "nama": "『TRY! 日本語能力試験 N3』(アスク出版) 学習内容",
+   "url": "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf",
+   "status": "OK"
+  }
+ ],
+ "gagal": [
+  {
+   "sumber": "tanos.co.uk (situs langsung)",
+   "url": "https://www.tanos.co.uk/jlpt/jlpt5/grammar/",
+   "alasan": "DNS: domain tidak punya alamat (curl \"Could not resolve host\", WebFetch ENOTFOUND, nslookup via 8.8.8.8 \"Non-existent domain\"); dipakai salinan Wayback 2020"
+  },
+  {
+   "sumber": "Wayback snapshot Tanos 2025",
+   "url": "https://web.archive.org/web/2025id_/http://www.tanos.co.uk/jlpt/jlpt5/grammar/",
+   "alasan": "HTTP 429 (diblokir sbg bot) lalu HTTP 500 kosong; snapshot 2020 berhasil"
+  },
+  {
+   "sumber": "english.nihongokyoshi-net.com (ringkasan 文型 Minna 初級1/2)",
+   "url": "https://english.nihongokyoshi-net.com/minnano-nihongo-explanation-summary/",
+   "alasan": "HTTP 500 (curl dan WebFetch)"
+  },
+  {
+   "sumber": "vnjpclub.com Minna grammar per lesson",
+   "url": "https://www.vnjpclub.com/en/minna-no-nihongo/lesson-13-grammar.html",
+   "alasan": "isi pelajaran dimuat lewat JavaScript; HTML statis tidak memuat isi tata bahasa"
+  },
+  {
+   "sumber": "3A Network (plus.3anet.co.jp) \"Structure\"",
+   "url": "https://plus.3anet.co.jp/mnc/touser_en/",
+   "alasan": "halaman resmi hanya menjelaskan struktur buku (第2版), tanpa daftar pola per 課"
+  },
+  {
+   "sumber": "Genki Study Resources Grammar Index",
+   "url": "https://sethclydesdale.github.io/genki-study-resources/lessons-3rd/appendix/grammar-index/",
+   "alasan": "halaman diturunkan atas permintaan The Japan Times; diganti indeks St. Olaf"
+  },
+  {
+   "sumber": "出題基準 文法 3・4級 (daftar resmi)",
+   "url": "https://www7a.biglobe.ne.jp/nifongo/data/index.html",
+   "alasan": "tidak ditemukan salinan daring; nifongo hanya punya sampel 文法 1級/2級; makalah core.ac.uk (HTTP 403) dan jwu.repo.nii.ac.jp (HTTP 406) tidak bisa diunduh"
+  },
+  {
+   "sumber": "Bunpro /jlpt/n5",
+   "url": "https://bunpro.jp/jlpt/n5",
+   "alasan": "HTTP 404; diganti indeks /grammar_points"
+  },
+  {
+   "sumber": "PDF \"Translation and Grammar Notes\" di eclass.duth.gr",
+   "url": "https://eclass.duth.gr/modules/document/file.php/TME173/",
+   "alasan": "tidak dipakai: tampak salinan buku berhak cipta"
+  }
+ ],
+ "grup1": [
+  {
+   "pola": "ので",
+   "minna": {
+    "kategori": "II",
+    "bab": 39,
+    "teks": "39 — 【［普通形］ので、～】 [S1a p19]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「ので」 [S2-N5]",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — ので",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (partikel tidak ada di 語彙表; 文法 3・4級 tidak didapat)",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 「-node」 [S5a]",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #5「～ので」 [S5b-N4]",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (39) vs Tanos/Bunpro N5; TRY! menaruhnya di N4."
+  },
+  {
+   "pola": "つもり",
+   "minna": {
+    "kategori": "II",
+    "bab": 31,
+    "teks": "31 — 【V-る/V-ない つもりです】 [S1a p15]; 31課 ～つもりです [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「つもりです」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — つもりだ",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A0"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "つもり = 3級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-10 「-tsumorida」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #66「～つもりだ」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II, TRY! N4, 語彙表 3級 vs Tanos/Bunpro N5."
+  },
+  {
+   "pola": "たことがある",
+   "minna": {
+    "kategori": "I",
+    "bab": 19,
+    "teks": "19 — 【V-た ことがあります】 [S1a p10]; 19課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～たことがある」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — たことがある",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-11 「-kotoga-aru」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #22「～たことがある」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Hanya TRY! yang menaruh di N4."
+  },
+  {
+   "pola": "すぎる",
+   "minna": {
+    "kategori": "II",
+    "bab": 44,
+    "teks": "44 — 【V-/イA-/ナA- すぎます】 [S1a p22]; 44課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～すぎる」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — すぎる",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜過ぎる = 3級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 「-sugiru」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #54「～すぎる」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (44), 語彙表 3級, TRY! N4 vs Tanos/Bunpro N5, Genki I."
+  },
+  {
+   "pola": "ほうがいい",
+   "minna": {
+    "kategori": "II",
+    "bab": 32,
+    "teks": "32 — 【V-た/V-ない ほうがいいです】 [S1a p15]; 32課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～ほうがいい」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — たほうがいい / ないほうがいい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84",
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%BB%E3%81%86%E3%81%8C%E3%81%84%E3%81%84"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (ほう 4級 hanya contoh「〜より〜の方が」)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 「ho ga ii desu」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #20「～ほうがいい」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (32), TRY! N4 vs Tanos/Bunpro N5."
+  },
+  {
+   "pola": "なくてもいい",
+   "minna": {
+    "kategori": "I",
+    "bab": 17,
+    "teks": "17 — 【V-なくてもいいです】 [S1a p9]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～なくてもいい」 [S2-N4]",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — なくてもいい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-17 「-nakutemoiidesu」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #19「～なくてもいい」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I (17) tetapi semua daftar JLPT menaruh di N4; Genki di jilid II."
+  },
+  {
+   "pola": "まだ～ていません",
+   "minna": {
+    "kategori": "II",
+    "bab": 31,
+    "teks": "31 — 【まだV-ていません】 [S1a p15]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「まだ～ていません」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — まだ～ていません",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0-%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "まだ = 4級 (hanya adverbia) [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-9 「mada-te-imasen」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #44「まだ～ていない」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (31) vs semua sumber lain N5 / Genki I."
+  },
+  {
+   "pola": "V方（使い方）",
+   "minna": {
+    "kategori": "I",
+    "bab": 14,
+    "teks": "14 — 【V-かた】〈手段・方法〉 [S1a p8]; kosakata ～方 / 読み方 lesson-14 (ed. 1,2) [S1c]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "— (tidak ada di daftar N5–N2)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/",
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/",
+     "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/",
+     "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — かた",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%9F"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜方「読み方」 = 3級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-23 「-kata」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #4「～方」*方法",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I (14) vs Bunpro/TRY! N4, 語彙表 3級, Genki II."
+  },
+  {
+   "pola": "Nにする（memilih: コーヒーにします）",
+   "minna": {
+    "kategori": "II",
+    "bab": 44,
+    "teks": "44 — 【Nにします】 [S1a p22] (dipasangkan dgn いろどり入門6課「Nにします」)",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N4「～く/～にする」= mengubah, bukan memilih)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — にする (To decide on, To choose, To make something into…)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #74「～にする」*自分で選んで決めた",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (44) & TRY! N4 vs Bunpro N5."
+  },
+  {
+   "pola": "Vに行く（tujuan: 買いに行く）",
+   "minna": {
+    "kategori": "I",
+    "bab": 13,
+    "teks": "13 — 【［場所］へV-/Nに行きます】 [S1a p7]; 13課 ～しに行きます [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～にいく」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — Verb + にいく",
+    "url": [
+     "https://bunpro.jp/grammar_points/verb-%E3%81%AB%E3%81%84%E3%81%8F"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-7 「-ni iku」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #27「～に行きます」*目的",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Semua sepakat: N5 / Minna I."
+  },
+  {
+   "pola": "がほしい",
+   "minna": {
+    "kategori": "I",
+    "bab": 13,
+    "teks": "13 — 【私はNが欲しいです】 [S1a p7]; kosakata 欲しい lesson-13 [S1c]; 13課 ほしいです [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～がほしい」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — がほしい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%BB%E3%81%97%E3%81%84"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "ほしい = 4級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-14 「hoshi」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #10「ほしいです」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I, TRY! N5, 語彙表 4級 vs Tanos/Bunpro N4, Genki II."
+  },
+  {
+   "pola": "んです",
+   "minna": {
+    "kategori": "II",
+    "bab": 26,
+    "teks": "26 — 【～んですか】【～。～んです】 dll. [S1a p13]; 26課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～んです」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — ～んです・のです",
+    "url": [
+     "https://bunpro.jp/grammar_points/-%E3%82%93%E3%81%A7%E3%81%99-%E3%81%AE%E3%81%A7%E3%81%99"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 「-n-desu」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #3「～んです」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (26), TRY! N4 vs Tanos/Bunpro N5."
+  },
+  {
+   "pola": "と思います",
+   "minna": {
+    "kategori": "I",
+    "bab": 21,
+    "teks": "21 — 【［普通形］と思います】〈意見〉 baris 21課; 〈推量〉 baris tanpa label di antara 20/21 [S1a p11]; 21課 ～と思います [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (tidak ada di daftar N5–N2)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/",
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — とおもう",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8A%E3%82%82%E3%81%86"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "思う = 3級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "— (tidak ada entri di indeks)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "— (hanya N4 #59「～って」=と言う・思う 口語; N3 #4 ～だろうと思う)",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf",
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I (21) vs Bunpro N4 dan 語彙表 思う 3級."
+  },
+  {
+   "pola": "あとで（Vたあとで）",
+   "minna": {
+    "kategori": "II",
+    "bab": 34,
+    "teks": "34 — 【V1-た/Nの あとで、V2】 [S1a p16]; 34課 ～あとで [S1b]; (kosakata あとで \"later\" lesson-14 [S1c])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/",
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — あとで",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%A8%E3%81%A7"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "後（あと）= 4級 [S4]",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #36「～たあとで」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Pola Vたあとで: Minna II (34), Bunpro N4 vs TRY! N5 dan 語彙表 後 4級."
+  },
+  {
+   "pola": "なければならない",
+   "minna": {
+    "kategori": "I",
+    "bab": 17,
+    "teks": "17 — 【V-なければなりません】 [S1a p9]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N5 hanya「～なくちゃいけない」)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — なければならない",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 (label「-nakucha-ikemasen」)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #16「～なければならない」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I (17) vs Bunpro/TRY! N4."
+  },
+  {
+   "pola": "なくてはいけない",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (tidak ada di S1a/S1b/S1c; Minna 17 memakai なければなりません)",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～なくちゃいけない」 (bentuk kontraksi)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — なくてはいけない (juga なくてはならない N5)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84",
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (いけない: 級別 0 = tidak dicontohkan)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-12 「-nakucha-ikemasen」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Bunpro tidak konsisten: なくてはいけない N5 tetapi なければならない N4."
+  },
+  {
+   "pola": "klausa relatif / 名詞修飾（見た映画）",
+   "minna": {
+    "kategori": "I",
+    "bab": 22,
+    "teks": "22 — 【S［N］は～】【S［N］をVます】【S［N］が～】〈名詞修飾〉 [S1a p11]; 22課 連体修飾 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/",
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — Verb［た・ている］+ Noun",
+    "url": [
+     "https://bunpro.jp/grammar_points/verb-%E3%81%9F-noun"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-9 \"Qualifying nouns with verbs and adjectives\"; II-15 \"Using sentences to qualify nouns\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #5 (hanya \"名詞・形容詞を使った名詞修飾\")",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna I (22), Bunpro N5; Tanos tidak mendaftar."
+  },
+  {
+   "pola": "Vのが好き/上手",
+   "minna": {
+    "kategori": "II",
+    "bab": 38,
+    "teks": "38 — 【V-る のがイA-/ナA- です】 [S1a p18]; 38課 ～のは・～のが [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～のがすきです」「～のがじょうずです」",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N5 — のがすき, のがじょうず",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%99%E3%81%8D",
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%8C%E3%81%98%E3%82%87%E3%81%86%E3%81%9A"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "好き 4級, 上手 4級 (kosakata saja)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "Genki I-8 \"Verbs as nouns\" (label tidak merinci のが好き)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N5 #26「～が好きです」(N が好き); N4 #27「～の」*文の名詞化",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf",
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Minna II (38) vs Tanos/Bunpro N5."
+  },
+  {
+   "pola": "てある",
+   "minna": {
+    "kategori": "II",
+    "bab": 30,
+    "teks": "30 — 【～に～が V-てあります】 [S1a p14]; 30課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～てある」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — てある",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%82%8B"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-21 「-tearu」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #40「～てある」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Sepakat: N4 / Minna II."
+  },
+  {
+   "pola": "ないで（tanpa melakukan）",
+   "minna": {
+    "kategori": "II",
+    "bab": 34,
+    "teks": "34 — 【V1-て/V1-ないでV2】【V1-ないで、V2】 [S1a p16]; 34課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4「～ないで」 dan N3「～ないで」 (makna tidak dibedakan)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/",
+     "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/"
+    ]
+   },
+   "bunpro": {
+    "teks": "N4 — ないで (Without doing)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7"
+    ]
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-20 「-naide」",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #9「～ないで」*否定の付帯状況・手段",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Sepakat N4 / Minna II; Tanos juga mencantumkan ～ないで di N3."
+  }
+ ],
+ "grup2": [
+  {
+   "pola": "あまり～ない",
+   "minna": {
+    "kategori": "I",
+    "bab": 8,
+    "teks": "8 — ＊新出語彙 あまり〜ないです/じゃありません [S1a p4]; kosakata lesson-08 [S1c]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — あまり～ない",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A-%E3%81%AA%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "あまり = 4級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I & 語彙表 4級 vs Bunpro N4."
+  },
+  {
+   "pola": "後で",
+   "minna": {
+    "kategori": "I",
+    "bab": 14,
+    "teks": "14 — kosakata あとで \"later\" [S1c]; pola Vた/Nの あとで 34 [S1a p16]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml",
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — あとで",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%A8%E3%81%A7"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "後（あと）= 4級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N5 #36「～たあとで」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "場合は",
+   "minna": {
+    "kategori": "II",
+    "bab": 45,
+    "teks": "45 — 【～場合は、～】 [S1a p22]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ばあいは",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%82%E3%81%84%E3%81%AF"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "場合 = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "だけで",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya ～だけ lesson-11 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — だけで",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜だけ = 4級 (bukan だけで)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "出す（～だす）",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya verba 出します lesson-16 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — だす",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%99"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜出す = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #16「～出す」*急に起きる",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N4 vs TRY! N3."
+  },
+  {
+   "pola": "でも（お茶でも）",
+   "minna": {
+    "kategori": "I",
+    "bab": 21,
+    "teks": "21 — kosakata「～でも 飲みませんか」 lesson-21 (ed. 1,2) [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — でも (Or something…)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (でも 4級 = konjungsi \"tetapi\")",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I vs Bunpro N4."
+  },
+  {
+   "pola": "ではないか",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N2「～ではないだろうか」 terkait)",
+    "url": [
+     "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "— (ada じゃないか N4, ようではないか N2)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%8B",
+     "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84%E3%81%8B"
+    ],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "が必要",
+   "minna": {
+    "kategori": "II",
+    "bab": 35,
+    "teks": "35 — kosakata 必要［な］ lesson-35 (juga 40) [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — がひつよう",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "必要 = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "がり（寒がり）",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "がる / がっている",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya kosakata 嫌がります lesson-44 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N4 hanya ～たがる)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — がる",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8C%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜がる = 4級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #14「～がって」*他人の感情",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "語彙表 4級 vs TRY! N3."
+  },
+  {
+   "pola": "はずがない",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya ～はずです 46 [S1a p22])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N4 ～はずです)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — はずがない",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%8C%E3%81%AA%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "はず = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "— (II-19 -hazudesu terkait)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "— (N3 #61 ～はず)",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "必要がある",
+   "minna": {
+    "kategori": "II",
+    "bab": 35,
+    "teks": "35 — kosakata 必要［な］ [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ひつようがある",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%B2%E3%81%A4%E3%82%88%E3%81%86%E3%81%8C%E3%81%82%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "必要 = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "じゃないか",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — じゃないか",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "— (N3 #37 ～じゃない*非難・発見; N4 #48 ～んじゃない？)",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf",
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "かしら",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — かしら",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%97%E3%82%89"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (hanya 頭 1級)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "かい",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — かい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "かな",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya edisi 1:「どう しようかな。」lesson-20 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — かな",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AA"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "から作る",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "— (terkait: でできる・からできる N4)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B-%E3%81%8B%E3%82%89%E3%81%A7%E3%81%8D%E3%82%8B"
+    ],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "作る = 4級 (kosakata)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "きっと",
+   "minna": {
+    "kategori": "I",
+    "bab": 21,
+    "teks": "21 — kosakata [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "きっと = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "頃（ころ/ごろ）",
+   "minna": {
+    "kategori": "I",
+    "bab": 13,
+    "teks": "13 — kosakata ～ごろ [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ごろ",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%94%E3%82%8D"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜頃（ころ//ごろ）= 4級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I & 語彙表 4級 vs Bunpro N4."
+  },
+  {
+   "pola": "ことがある（kadang-kadang）",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya たことがある 19)",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N5 ～たことがある terkait)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N3 — ことがある",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (こと 3級)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #18「～こともある」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "くする",
+   "minna": {
+    "kategori": "II",
+    "bab": 44,
+    "teks": "44 — 【イA-く/ナA-に/Nに します】 [S1a p22]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～く/ ～にする」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — ～にする・～くする",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B-%E3%81%8F%E3%81%99%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-21 \"Adjective + suru\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Sepakat N4 / Minna II."
+  },
+  {
+   "pola": "急に",
+   "minna": {
+    "kategori": "II",
+    "bab": 40,
+    "teks": "40 — kosakata (juga 45) [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "急（に）= 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "または",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "または = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "など",
+   "minna": {
+    "kategori": "I",
+    "bab": 10,
+    "teks": "10 — kosakata「～や ～［など］」 [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — など",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%A9"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜等（など）= 4級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I & 語彙表 4級 vs Bunpro N4."
+  },
+  {
+   "pola": "なかなか～ない",
+   "minna": {
+    "kategori": "I",
+    "bab": 18,
+    "teks": "18 — kosakata なかなか \"not easily (with negatives)\" [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N3「なかなか」; N2「～なかなか～ない」",
+    "url": [
+     "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/",
+     "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/"
+    ],
+    "level": "N3"
+   },
+   "bunpro": {
+    "teks": "N3 — なかなか～ない",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8B%E3%81%AA%E3%81%8B-%E3%81%AA%E3%81%84"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "なかなか = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Selisih terbesar: Minna I (18) vs Tanos N3/N2, Bunpro N3."
+  },
+  {
+   "pola": "なさい",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya ungkapan お帰りなさい lesson-12, なさいます lesson-49 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～なさい」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — なさい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-22 \"Verb stem + nasai\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "に気がつく",
+   "minna": {
+    "kategori": "II",
+    "bab": 34,
+    "teks": "34 — kosakata 気が つきます［忘れ物に～］ (ed. 1,2) [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — にきがつく",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8D%E3%81%8C%E3%81%A4%E3%81%8F"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (気 3級; 気付く 2級)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "に見える",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (見えます lesson-27 = \"terlihat\", makna lain [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — にみえる",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%BF%E3%81%88%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (見える 3級 = \"terlihat\")",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "にする（membuat menjadi）",
+   "minna": {
+    "kategori": "II",
+    "bab": 44,
+    "teks": "44 — 【イA-く/ナA-に/Nに します】 [S1a p22]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～く/ ～にする」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — ～にする・～くする (にする N5 juga mencakup \"make into\")",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B-%E3%81%8F%E3%81%99%E3%82%8B",
+     "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-21 \"Adjective + suru\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "の中で",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (terkait: 12 【N1でN2が一番…】 [S1a p6])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N5 — 「～のなかで～がいちばん～」 (pemakaian superlatif)",
+    "url": [
+     "https://web.archive.org/web/20200726195103/http://www.tanos.co.uk:80/jlpt/jlpt5/grammar/"
+    ],
+    "level": "N5"
+   },
+   "bunpro": {
+    "teks": "N4 — のなかで (N5: のなかで～がいちばん)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7",
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AA%E3%81%8B%E3%81%A7-%E3%81%8C%E3%81%84%E3%81%A1%E3%81%B0%E3%82%93"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "中 = 4級 (kosakata)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "— (N4 #84 ～で…がいちばん)",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "のに（tujuan/kegunaan）",
+   "minna": {
+    "kategori": "II",
+    "bab": 42,
+    "teks": "42 — 【V-る のに/N に～かかります】【～はV-る のに…】〈用途・評価〉 [S1a p21]; 42課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「のに」 (makna tidak dibedakan)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N3 — のに (In order to); のに \"despite\" = N4",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AB",
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AB-despite"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-21 \"-noni\" (makna tidak disebut)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #28「～のに」*用途・評価",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N3 vs Minna II/TRY! N4."
+  },
+  {
+   "pola": "のは～だ",
+   "minna": {
+    "kategori": "II",
+    "bab": 38,
+    "teks": "38 — 【［普通形］のはNです】 [S1a p19]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N3 — のはXの方だ (juga \"のは\" N5: nominalisasi \"The one who…\")",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AFx%E3%81%AE%E6%96%B9%E3%81%A0",
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%AF"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "おきに",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N3 — おきに",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%8D%E3%81%AB"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜置き = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "さっき",
+   "minna": {
+    "kategori": "II",
+    "bab": 34,
+    "teks": "34 — kosakata [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "さっき = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "さすが",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N2 — 「さすがに」",
+    "url": [
+     "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/"
+    ],
+    "level": "N2"
+   },
+   "bunpro": {
+    "teks": "N2 — さすが",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%99%E3%81%8C"
+    ],
+    "level": "N2"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "さすが = 2級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Tanos, Bunpro, 語彙表 semuanya ≥ N3/2級."
+  },
+  {
+   "pola": "そんなに",
+   "minna": {
+    "kategori": "I",
+    "bab": 21,
+    "teks": "21 — kosakata \"not so (with negatives)\" (juga 32) [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — そんなに",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%93%E3%81%AA%E3%81%AB"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "そんなに = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "それでも",
+   "minna": {
+    "kategori": "II",
+    "bab": 45,
+    "teks": "45 — kosakata [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — それでも",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7%E3%82%82"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "それでも = 2級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "語彙表 2級 vs Bunpro N4."
+  },
+  {
+   "pola": "それに",
+   "minna": {
+    "kategori": "II",
+    "bab": 28,
+    "teks": "28 — kosakata [S1c]; 【～し、～し、それに～】 [S1a p14]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml",
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — それに",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AB"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "それに = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "そうだ（kabar/dengar）",
+   "minna": {
+    "kategori": "II",
+    "bab": 47,
+    "teks": "47 — 【［普通形］そうです】（伝聞） [S1a p22]; 47課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「そうです」「～そうです」 (makna tidak dibedakan)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N3 — そうだ (I heard that)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%86%E3%81%A0"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-17 \"-so-desu (I hear)\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #81「～そうだ」*伝聞",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N3 vs Tanos/TRY! N4."
+  },
+  {
+   "pola": "たばかり",
+   "minna": {
+    "kategori": "II",
+    "bab": 46,
+    "teks": "46 — 【V-た ばかりです】 [S1a p22]; 46課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N3 — 「～たばかり」",
+    "url": [
+     "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/"
+    ],
+    "level": "N3"
+   },
+   "bunpro": {
+    "teks": "N4 — たばかり",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— (〜ばかり 3級 = \"kira-kira\")",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #69「～たばかり」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Tanos/TRY! N3 vs Bunpro N4."
+  },
+  {
+   "pola": "他動詞＆自動詞",
+   "minna": {
+    "kategori": "II",
+    "bab": 29,
+    "teks": "29 — 【Nが V-ています】〈自動詞・状態〉 [S1a p14]; 29課 自動詞・他動詞 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — 他動詞・自動詞",
+    "url": [
+     "https://bunpro.jp/grammar_points/transitive-intransitive-verbs"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-18 \"Transitive pairs\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "たがる",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～たがる」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — たがる",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8C%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "たらどう",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～たらどうですか」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — たらどう",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%A9%E3%81%86"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-14 \"-tara-dodesuka\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "たらいいですか",
+   "minna": {
+    "kategori": "II",
+    "bab": 26,
+    "teks": "26 — 【～んですが、［疑問詞］V-たらいいですか】 [S1a p13]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N3 — たらいい・といい (terkait)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%84%E3%81%84-%E3%81%A8%E3%81%84%E3%81%84"
+    ],
+    "level": "N3"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "て/で（sebab）",
+   "minna": {
+    "kategori": "II",
+    "bab": 39,
+    "teks": "39 — 【V-て/V-なくて、～】【Nで、～】【イA-くて…】 [S1a p19]; 39課 理由の「て」 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — Verb[て] + B (…Due to); なくて N4",
+    "url": [
+     "https://bunpro.jp/grammar_points/verb%E3%81%A6-b2",
+     "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N4 #53「～て・～なくて」*理由",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "ていた",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ていた",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "てすみません",
+   "minna": {
+    "kategori": "II",
+    "bab": 39,
+    "teks": "39 — judul 会話「遅れて、すみません」 (di bawah pola て sebab) [S1a p20]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～てすみません」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — てすみません",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-16 \"-te-sumimasen-deshita\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "てよかった",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya ungkapan「［ああ、］よかった。」lesson-29 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4 — 「～てよかった」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — てよかった",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-19 \"-teyokattadesu\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "と言ってもいい",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N2「～と言っても～」 terkait)",
+    "url": [
+     "https://web.archive.org/web/20200701060218/http://www.tanos.co.uk:80/jlpt/jlpt2/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — といってもいい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "ということ",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (terkait: 33【～は～という意味です】 [S1a p15])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "— (N4「～という～」 terkait)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ということ",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #3「～ということ」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N4 vs TRY! N3."
+  },
+  {
+   "pola": "と言われている",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — といわれている",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "と聞いた",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ときいた",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8D%E3%81%84%E3%81%9F"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "続ける（V-続ける）",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (hanya verba 続けます lesson-31 [S1c])",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — つづける",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%A5%E3%81%91%E3%82%8B"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "〜続ける = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "N3 #9「～続ける」",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N4 vs TRY! N3."
+  },
+  {
+   "pola": "って",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "—",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N5 — って (Casual quotation); N3 — って (topik)",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6",
+     "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%A6-slang"
+    ],
+    "level": "N5"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-17 \"-tte\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #59「～って」(と言う・思う); N3 #11, #38",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf",
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Bunpro N5 vs TRY! N4."
+  },
+  {
+   "pola": "は～が…は（kontras）",
+   "minna": {
+    "kategori": "II",
+    "bab": 27,
+    "teks": "27 — 【N1はVますが、N2はVません】〈対比〉 [S1a p14]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "— (N5 #21「～は…が」= struktur lain)",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N5gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "やっと",
+   "minna": {
+    "kategori": "II",
+    "bab": 36,
+    "teks": "36 — kosakata [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "やっと = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "予定だ",
+   "minna": {
+    "kategori": "II",
+    "bab": 31,
+    "teks": "31 — 【V-る/Nの 予定です】 [S1a p15]; 31課 予定です [S1b]; kosakata 予定 lesson-30 [S1c]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — よていだ",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%A6%E3%81%84%E3%81%A0"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "予定 = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "ようだ",
+   "minna": {
+    "kategori": "II",
+    "bab": 47,
+    "teks": "47 — 【［普通形］ようです】 [S1a p22]; 47課 [S1b]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://mic.ehime.jp/MIC/JP/Japanese_class/%E6%95%99%E7%A7%91%E6%9B%B8%E3%81%AE%E5%AD%A6%E7%BF%92%E5%86%85%E5%AE%B9.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "? N4「～よう」 (letaknya tepat sebelum「～おう」 → kemungkinan bentuk volitional; tidak bisa dipastikan)",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/"
+    ],
+    "level": "?"
+   },
+   "bunpro": {
+    "teks": "N4 — ようだ",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A0"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "— ((〜)様 3級)",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "— (II-17 -mitaidesu terkait)",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N4 #47「～ようだ」*推量",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N4gakushukomoku.pdf"
+    ]
+   },
+   "catatan": ""
+  },
+  {
+   "pola": "ように / ような（seperti）",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (36 ように = tujuan, makna lain [S1a p17]; kosakata「～みたいに して ください」lesson-44 [S1c])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "N4「～のような」「～のように」; N3「～のような」「ように」",
+    "url": [
+     "https://web.archive.org/web/20200716035140/http://www.tanos.co.uk:80/jlpt/jlpt4/grammar/",
+     "https://web.archive.org/web/20200814013355/http://www.tanos.co.uk:80/jlpt/jlpt3/grammar/"
+    ],
+    "level": "N4"
+   },
+   "bunpro": {
+    "teks": "N4 — ように・ような; のように・のような",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB-%E3%82%88%E3%81%86%E3%81%AA",
+     "https://bunpro.jp/grammar_points/%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB-%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "Genki II-22 \"-noyona/-noyoni\"",
+    "url": [
+     "https://wp.stolaf.edu/japanese/grammar-index/genki-i-ii-grammar-index/"
+    ]
+   },
+   "try_ask": {
+    "teks": "N3 #42 ～ように*比喩; N3 #27 ～のような*例示",
+    "url": [
+     "https://ask-books.com/wp-content/uploads/files/try/N3gakushukomoku.pdf"
+    ]
+   },
+   "catatan": "Tanos/Bunpro N4 vs TRY! N3."
+  },
+  {
+   "pola": "ぜひ",
+   "minna": {
+    "kategori": "I",
+    "bab": 18,
+    "teks": "18 — kosakata [S1c]",
+    "url": [
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "ぜひ = 2級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I (18) vs 語彙表 2級."
+  },
+  {
+   "pola": "全然～ない",
+   "minna": {
+    "kategori": "I",
+    "bab": 9,
+    "teks": "9 — ＊新出語彙 ぜんぜん〜ません [S1a p4]; kosakata lesson-09 [S1c]",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf",
+     "https://raw.githubusercontent.com/vitto4/minnanods/main/minna-no-ds.yaml"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — ぜんぜん",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%9C%E3%82%93%E3%81%9C%E3%82%93"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "全然 = 3級",
+    "url": [
+     "https://www7a.biglobe.ne.jp/nifongo/data/noryoku.txt.gz"
+    ]
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": "Minna I (9) vs Bunpro N4, 語彙表 3級."
+  },
+  {
+   "pola": "づらい",
+   "minna": {
+    "kategori": "tidak",
+    "bab": null,
+    "teks": "— (terkait: V-にくい 44 [S1a p22])",
+    "url": [
+     "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf"
+    ]
+   },
+   "tanos": {
+    "teks": "—",
+    "url": [],
+    "level": "—"
+   },
+   "bunpro": {
+    "teks": "N4 — づらい",
+    "url": [
+     "https://bunpro.jp/grammar_points/%E3%81%A5%E3%82%89%E3%81%84"
+    ],
+    "level": "N4"
+   },
+   "shutsudai_kijun_goi": {
+    "teks": "—",
+    "url": []
+   },
+   "genki_stolaf": {
+    "teks": "—",
+    "url": []
+   },
+   "try_ask": {
+    "teks": "—",
+    "url": []
+   },
+   "catatan": ""
+  }
+ ],
+ "ringkasan_grup2": {
+  "minna": {
+   "I": 10,
+   "II": 22,
+   "tidak": 30
+  },
+  "tanos": {
+   "—": 47,
+   "N4": 10,
+   "N3": 2,
+   "N5": 1,
+   "N2": 1,
+   "?": 1
+  },
+  "bunpro": {
+   "N4": 43,
+   "—": 10,
+   "N3": 7,
+   "N2": 1,
+   "N5": 1
+  }
+ },
+ "ringkasan_grup1_minna": {
+  "II": 11,
+  "I": 8,
+  "tidak": 1
+ }
+}

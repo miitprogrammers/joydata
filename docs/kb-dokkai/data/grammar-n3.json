@@ -1,0 +1,1458 @@
+[
+ {
+  "no": 1,
+  "romaji": "ageru",
+  "pola": "上げる（あげる）",
+  "arti": "to finish doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/上げる-ageru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 2,
+  "romaji": "amari",
+  "pola": "あまり",
+  "arti": "so much… that",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/あまり-amari-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 3,
+  "romaji": "amari ni mo",
+  "pola": "あまりにも",
+  "arti": "too much; so much… that; excessively ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/あまりにも-amari-ni-mo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 4,
+  "romaji": "au",
+  "pola": "合う（あう）",
+  "arti": "do something together",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/合う-あう-au-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 5,
+  "romaji": "ba ii",
+  "pola": "ばいい",
+  "arti": "should; can; it’d be good if ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ばいい-ba-ii-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 6,
+  "romaji": "ba yokatta",
+  "pola": "ばよかった",
+  "arti": "should have; would have been better if ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ばよかった-ba-yokatta-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 7,
+  "romaji": "ba~hodo",
+  "pola": "ば～ほど",
+  "arti": "the more… the more ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ば～ほど-ba-hodo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 8,
+  "romaji": "ba~noni",
+  "pola": "ば～のに",
+  "arti": "would have; should have; if only ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ば～のに-ba-noni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 9,
+  "romaji": "bakari de",
+  "pola": "ばかりで",
+  "arti": "only; just ~ (negative description)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ばかりで-bakari-de-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 10,
+  "romaji": "bakari denaku",
+  "pola": "ばかりでなく",
+  "arti": "not only... but also; as well as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ばかりでなく-bakari-denaku-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 11,
+  "romaji": "beki da",
+  "pola": "べきだ",
+  "arti": "should do; must do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/べきだ-beki-da-meaning/",
+  "catatan": "Dilarang di N4 (prompt)"
+ },
+ {
+  "no": 12,
+  "romaji": "beki dewa nai",
+  "pola": "べきではない",
+  "arti": "should not do; must not do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/べきではない-beki-dewa-nai-meaning/",
+  "catatan": "Dilarang di N4 (prompt)"
+ },
+ {
+  "no": 13,
+  "romaji": "betsu ni~nai",
+  "pola": "別に～ない（べつに～ない）",
+  "arti": "not really, not particularly",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/別に～ない-betsu-ni-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 14,
+  "romaji": "buri ni",
+  "pola": "ぶりに",
+  "arti": "for the first time in (period of time)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ぶりに-buri-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 15,
+  "romaji": "chuu / juu",
+  "pola": "中（ちゅう）",
+  "arti": "currently; during; at some point; throughout; before the end of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/中-chuu-juu-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 16,
+  "romaji": "dake",
+  "pola": "だけ",
+  "arti": "as much as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だけ-dake-meaning-as-much-as/",
+  "catatan": ""
+ },
+ {
+  "no": 17,
+  "romaji": "dake de naku",
+  "pola": "だけでなく",
+  "arti": "not only… but also ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だけでなく-dake-de-naku-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 18,
+  "romaji": "dakedo",
+  "pola": "だけど",
+  "arti": "but; however; although; regarding ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だけど-dakedo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 19,
+  "romaji": "darake",
+  "pola": "だらけ",
+  "arti": "full of; covered with; a lot of (something undesirable)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だらけ-darake-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 20,
+  "romaji": "donna ni~temo",
+  "pola": "どんなに～ても",
+  "arti": "no matter how (much)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/どんなに～ても-donna-ni-temo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 21,
+  "romaji": "doushitemo",
+  "pola": "どうしても",
+  "arti": "no matter what; at any cost; after all ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/どうしても-doushitemo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 22,
+  "romaji": "furi o suru",
+  "pola": "ふりをする",
+  "arti": "to pretend; to act as if ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ふりをする-furi-o-suru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 23,
+  "romaji": "futo",
+  "pola": "ふと",
+  "arti": "suddenly; accidentally; unexpectedly; unintentionally ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ふと-futo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 24,
+  "romaji": "gachi",
+  "pola": "がち",
+  "arti": "tend to; tendency to; frequently; often; to do something easily",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/がち-gachi-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 25,
+  "romaji": "gatai",
+  "pola": "がたい",
+  "arti": "very difficult to; hard to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/がたい-gatai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 26,
+  "romaji": "gimi",
+  "pola": "気味（ぎみ）",
+  "arti": "-like; -looking; -looked; tending to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/気味-ぎみ-gimi-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 27,
+  "romaji": "goto ni",
+  "pola": "ごとに",
+  "arti": "each; every; at intervals of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ごとに-goto-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 28,
+  "romaji": "hodo",
+  "pola": "ほど",
+  "arti": "degree; extent; bounds; upper limit",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/程-ほど-hodo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 29,
+  "romaji": "hodo~nai",
+  "pola": "ほど～ない",
+  "arti": "is not as… as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ほど～ない-hodo-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 30,
+  "romaji": "ichido ni",
+  "pola": "一度に（いちどに）",
+  "arti": "all at once",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/一度に-ichido-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 31,
+  "romaji": "ikura~temo",
+  "pola": "いくら～ても",
+  "arti": "no matter how ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/いくら～ても-ikura-temo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 32,
+  "romaji": "ippou da",
+  "pola": "一方だ（いっぽうだ）",
+  "arti": "more and more; continue to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/一方だ-ippou-da-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 33,
+  "romaji": "ittai",
+  "pola": "一体（いったい）",
+  "arti": "emphasis; what on earth; what in the world",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/一体-いったい-ittai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 34,
+  "romaji": "janai",
+  "pola": "じゃない",
+  "arti": "maybe; most likely; confirmation of information; express surprise towards listener",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/じゃない-janai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 35,
+  "romaji": "ka nani ka",
+  "pola": "か何か（かなにか）",
+  "arti": "or something ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/か何か-ka-nani-ka-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 36,
+  "romaji": "kakeru",
+  "pola": "かける",
+  "arti": "half-; not yet finished; in the middle of~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/かける-kakeru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 37,
+  "romaji": "kara~ni kakete",
+  "pola": "から〜にかけて",
+  "arti": "through; from [A] to [B]",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/から〜にかけて-kara-ni-kakete-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 38,
+  "romaji": "kawari ni",
+  "pola": "代わりに（かわりに）",
+  "arti": "instead of; as a substitute for​; in exchange for; in return for",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/代わりに-かわりに-kawari-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 39,
+  "romaji": "kekka",
+  "pola": "結果（けっか）",
+  "arti": "as a result of; after ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/た結果-ta-kekka-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 40,
+  "romaji": "kekkyoku",
+  "pola": "結局（けっきょく）",
+  "arti": "after all; eventually; in the end ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/結局は-kekkyoku-wa-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 41,
+  "romaji": "kesshite~nai",
+  "pola": "決して～ない（けっして～ない）",
+  "arti": "never; by no means ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/決して～ない-kesshite-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 42,
+  "romaji": "kirenai",
+  "pola": "切れない（きれない）",
+  "arti": "unable to do; too much to finish/complete",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/切れない-kirenai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 43,
+  "romaji": "kiri",
+  "pola": "きり",
+  "arti": "only; just; since; after ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/きり-kiri-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 44,
+  "romaji": "kiru",
+  "pola": "切る（きる）",
+  "arti": "to do something completely to the end",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/切る-kiru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 45,
+  "romaji": "kke",
+  "pola": "っけ",
+  "arti": "a casual suffix to confirm something you are trying to remember",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/っけ-kke-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 46,
+  "romaji": "komu",
+  "pola": "込む（こむ）",
+  "arti": "to do something for a long time or to move something inside",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/込む-こむ-komu-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 47,
+  "romaji": "koso",
+  "pola": "こそ",
+  "arti": "for sure (emphasize preceding word); precisely; definitely ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/こそ-koso-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 48,
+  "romaji": "koto",
+  "pola": "こと",
+  "arti": "(must) do",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/こと-koto-meaning-must-do/",
+  "catatan": ""
+ },
+ {
+  "no": 49,
+  "romaji": "koto kara",
+  "pola": "ことから",
+  "arti": "from the fact that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ことから-koto-kara-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 50,
+  "romaji": "koto ni natteiru",
+  "pola": "ことになっている",
+  "arti": "expresses a standard, rule or expectation",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ことになっている-koto-ni-natteiru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 51,
+  "romaji": "koto wa nai",
+  "pola": "ことはない",
+  "arti": "there is no need to; (something) never happens; there is no possibility that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ことはない-koto-wa-nai/",
+  "catatan": ""
+ },
+ {
+  "no": 52,
+  "romaji": "koto wa~ga",
+  "pola": "ことは～が",
+  "arti": "although; but ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ことは～が-koto-waga-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 53,
+  "romaji": "kurai / gurai",
+  "pola": "くらい / ぐらい",
+  "arti": "approximately; about; around; to the extent ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/くらい-kurai-ぐらい-gurai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 54,
+  "romaji": "kuse ni",
+  "pola": "くせに",
+  "arti": "and yet; though; in spite of; despite ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/くせに-kuse-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 55,
+  "romaji": "maru de",
+  "pola": "まるで",
+  "arti": "as if; as though; just like ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/まるで-maru-de-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 56,
+  "romaji": "masaka",
+  "pola": "まさか",
+  "arti": "there's no way; that's impossible; you must be joking",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/まさか-masaka-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 57,
+  "romaji": "metta ni~nai",
+  "pola": "めったに～ない",
+  "arti": "hardly; rarely; seldom",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/めったに～ない-metta-ni-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 58,
+  "romaji": "mo~ba~mo",
+  "pola": "も～ば～も",
+  "arti": "and; also; as well; either/or; neither/nor",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/も～ば～も-mobamo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 59,
+  "romaji": "moshika shitara",
+  "pola": "もしかしたら",
+  "arti": "perhaps; maybe; perchance; by any chance ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/もしかしたら-moshika-shitara-もしかすると-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 60,
+  "romaji": "moshimo~tara",
+  "pola": "もしも〜たら",
+  "arti": "if; in the case; supposing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/もしも〜たら-moshimo-tara-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 61,
+  "romaji": "muke",
+  "pola": "向け（むけ）",
+  "arti": "intended for; aimed at ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/向け-muke-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 62,
+  "romaji": "muki",
+  "pola": "向き（むき）",
+  "arti": "suitable for ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/向き-muki-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 63,
+  "romaji": "mushiro",
+  "pola": "むしろ",
+  "arti": "rather; instead; better ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/むしろ-mushiro-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 64,
+  "romaji": "nagara mo",
+  "pola": "ながらも",
+  "arti": "but; although; despite ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ながらも-nagara-mo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 65,
+  "romaji": "nai koto wa nai",
+  "pola": "ないことはない",
+  "arti": "can do; is not impossible to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ないことはない-nai-koto-wa-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 66,
+  "romaji": "naito",
+  "pola": "ないと",
+  "arti": "must do; unless/if you don't ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ないと-naito-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 67,
+  "romaji": "nakanaka",
+  "pola": "なかなか",
+  "arti": "very; quite; pretty; rather; just not ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なかなか-nakanaka-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 68,
+  "romaji": "nanka / nante / nado",
+  "pola": "なんか / なんて / など",
+  "arti": "give examples; show modesty; make light of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なんか-nanka-なんと-nante-など-nado-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 69,
+  "romaji": "naosu",
+  "pola": "直す（なおす）",
+  "arti": "to do something again; to do over",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/直す-なおす-naosu-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 70,
+  "romaji": "naru beku",
+  "pola": "なるべく",
+  "arti": "as much as possible",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なるべく-naru-beku-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 71,
+  "romaji": "nazenara",
+  "pola": "なぜなら",
+  "arti": "because; the reason is; if you want to know why",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なぜなら-nazenara-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 72,
+  "romaji": "ndatte",
+  "pola": "んだって",
+  "arti": "I hear that; heard that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/んだって-n-datte-tte-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 73,
+  "romaji": "ni chigai nai",
+  "pola": "に違いない（にちがいない）",
+  "arti": "I’m sure/ certain; no doubt that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に違いない-ni-chigai-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 74,
+  "romaji": "ni hanshite",
+  "pola": "に反して（にはんして）",
+  "arti": "against; contrary to; in contrast to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に反して-ni-hanshite-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 75,
+  "romaji": "ni kakete",
+  "pola": "にかけて",
+  "arti": "over (a period); through; concerning; regarding ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にかけて-ni-kakete-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 76,
+  "romaji": "ni kan suru / ni kan shite",
+  "pola": "に関する / に関して（にかんする / にかんして）",
+  "arti": "about; regarding; related to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に関する-に関して-ni-kan-suru-ni-kan-shite-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 77,
+  "romaji": "ni kawatte / ni kawari",
+  "pola": "にかわって / にかわり",
+  "arti": "instead of; replacing; on behalf of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にかわって-ni-kawatte-にかわり-ni-kawari-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 78,
+  "romaji": "ni kurabete",
+  "pola": "に比べて（にくらべて）",
+  "arti": "compared to; in comparison to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に比べて-ni-kurabete-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 79,
+  "romaji": "ni nareru",
+  "pola": "に慣れる（になれる）",
+  "arti": "to be used to something",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に慣れる-になれる-ni-nareru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 80,
+  "romaji": "ni oite / ni okeru",
+  "pola": "において / における",
+  "arti": "in; at (place); regarding; as for; in relation to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/において-ni-oite-における-ni-okeru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 81,
+  "romaji": "ni shitagatte",
+  "pola": "にしたがって",
+  "arti": "as; therefore; in accordance with; according to; consequently ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にしたがって-ni-shitagatte-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 82,
+  "romaji": "ni shite mo",
+  "pola": "にしても",
+  "arti": "even if; even though; regardless of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にしても-ni-shite-mo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 83,
+  "romaji": "ni shite wa",
+  "pola": "にしては",
+  "arti": "for; considering it’s (something or someone)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にしては-ni-shite-wa-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 84,
+  "romaji": "ni taishite",
+  "pola": "に対して（にたいして）",
+  "arti": "towards; against; regarding; in contrast with​ ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に対して-にたいして-ni-taishite-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 85,
+  "romaji": "ni totte",
+  "pola": "にとって",
+  "arti": "to; for; concerning; as far as ... is concerned; regarding ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にとって-ni-totte-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 86,
+  "romaji": "ni tsuite",
+  "pola": "について",
+  "arti": "concerning; regarding; about; on ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/について-ni-tsuite-meaning/",
+  "catatan": "⚠️ Spesifikasi bank N4: pendukung (boleh); sampel resmi N4 memakai 本についての相談"
+ },
+ {
+  "no": 87,
+  "romaji": "ni tsurete",
+  "pola": "につれて",
+  "arti": "as; in proportion to; with; as… then ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/につれて-ni-tsurete-につれ-ni-tsure-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 88,
+  "romaji": "ni wa",
+  "pola": "には",
+  "arti": "for the purpose of; in order to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/には-ni-wa-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 89,
+  "romaji": "ni yoru to/ni yoreba",
+  "pola": "によると /によれば",
+  "arti": "according to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/によると-によれば-ni-yoru-to-ni-yoreba-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 90,
+  "romaji": "ni yotte / ni yoru",
+  "pola": "によって / による",
+  "arti": "by means of; due to; owing to; because of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/によって-による-ni-yotte-ni-yoru-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 91,
+  "romaji": "no deshou ka",
+  "pola": "のでしょうか",
+  "arti": "ask a question in a polite way",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/のでしょうか-no-deshou-ka-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 92,
+  "romaji": "o chuushin ni",
+  "pola": "を中心に（をちゅうしんに）",
+  "arti": "focused on; centered on",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/を中心に-o-chuushin-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 93,
+  "romaji": "o hajime",
+  "pola": "をはじめ",
+  "arti": "for example; starting with ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/をはじめとする-o-hajime-to-suru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 94,
+  "romaji": "o komete",
+  "pola": "を込めて（をこめて）",
+  "arti": "filled with; full of",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/を込めて-をこめて-o-komete-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 95,
+  "romaji": "o tsuujite / o tooshite",
+  "pola": "を通じて / を通して（をつうじて / をとおして）",
+  "arti": "through; via; throughout; by ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/を通じて-を通して-o-tsuujite-o-tooshite-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 96,
+  "romaji": "okage de",
+  "pola": "おかげで",
+  "arti": "thanks to; owing to; because of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/おかげで-okage-de-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 97,
+  "romaji": "ppanashi",
+  "pola": "っぱなし",
+  "arti": "leaving (something) on; leaving (something) still in use​",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/っぱなし-ppanashi-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 98,
+  "romaji": "ppoi",
+  "pola": "っぽい",
+  "arti": "seems like; somewhat; -ish; easily does; often does ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/っぽい-ppoi-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 99,
+  "romaji": "sae",
+  "pola": "さえ",
+  "arti": "even; so much as; not even",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/さえ-sae-でさえも-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 100,
+  "romaji": "sae~ba",
+  "pola": "さえ～ば",
+  "arti": "if only; as long as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/さえ～ば-sae-ba-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 101,
+  "romaji": "sai ni",
+  "pola": "際に（さいに）",
+  "arti": "when; at the time of; in the case of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/際に-sai-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 102,
+  "romaji": "saichuu ni",
+  "pola": "最中に（さいちゅうに）",
+  "arti": "while; during; in the middle of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/真っ最中に-まっさいちゅうに-saichuu-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 103,
+  "romaji": "sara ni",
+  "pola": "さらに",
+  "arti": "furthermore; again; more and more ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/さらに-sara-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 104,
+  "romaji": "sate",
+  "pola": "さて",
+  "arti": "conjunction: well; now; then ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/さて-sate-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 105,
+  "romaji": "sei de",
+  "pola": "せいで",
+  "arti": "because of; due to; as a result of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/せいで-sei-de-meaning/",
+  "catatan": "Dilarang di N4 (spesifikasi bank)"
+ },
+ {
+  "no": 106,
+  "romaji": "seizei",
+  "pola": "せいぜい",
+  "arti": "at the most; at best; to the utmost",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/せいぜい-seizei-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 107,
+  "romaji": "shibaraku",
+  "pola": "しばらく",
+  "arti": "for a moment; for a while; for the time being",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/しばらく-shibaraku-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 108,
+  "romaji": "shikanai",
+  "pola": "しかない",
+  "arti": "have no choice but ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/しかない-shika-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 109,
+  "romaji": "sono tame ni",
+  "pola": "そのために",
+  "arti": "hence; for that reason; because of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/その為-そのため-sono-tame-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 110,
+  "romaji": "soretomo",
+  "pola": "それとも",
+  "arti": "or; or else ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/それとも-soretomo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 111,
+  "romaji": "sou mo nai /sou ni nai",
+  "pola": "そうもない /そうにない",
+  "arti": "very unlikely to; showing no signs of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/そうもない-sou-mo-nai-そうにない-sou-ni-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 112,
+  "romaji": "sude ni",
+  "pola": "すでに",
+  "arti": "something has already been done/taken place; is already the case",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/すでに-sude-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 113,
+  "romaji": "sunawachi",
+  "pola": "すなわち",
+  "arti": "in other words; namely ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/即ち-すなわち-sunawachi-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 114,
+  "romaji": "suuryou + wa",
+  "pola": "数量 + は（すうりょう + は）",
+  "arti": "at least ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/数量-は-suuryou-wa-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 115,
+  "romaji": "ta mono da",
+  "pola": "たものだ",
+  "arti": "used to do; would often do",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たものだ-ta-mono-da-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 116,
+  "romaji": "ta totan",
+  "pola": "たとたん",
+  "arti": "as soon as; just as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たとたん-ta-totan-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 117,
+  "romaji": "tabi ni",
+  "pola": "たびに",
+  "arti": "whenever; every time ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たびに-tabi-ni-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 118,
+  "romaji": "tame ni",
+  "pola": "ために",
+  "arti": "for; in order to; for the benefit of; because of; as a result of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ために-tame-ni-meaning/",
+  "catatan": "⚠️ Modul N4 #4 (L3) mengajarkannya; dilarang di N5 (spesifikasi bank)"
+ },
+ {
+  "no": 119,
+  "romaji": "tashika ni",
+  "pola": "確かに（たしかに）",
+  "arti": "surely, certainly ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/確かに-tashika-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 120,
+  "romaji": "tate",
+  "pola": "たて",
+  "arti": "just done; freshly done; newly done",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たて-tate-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 121,
+  "romaji": "tatoe~temo",
+  "pola": "たとえ～ても",
+  "arti": "even if… is the case",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たとえ～ても-tatoe-temo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 122,
+  "romaji": "tatoeba",
+  "pola": "例えば（たとえば）",
+  "arti": "for example; for instance ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/例えば-たとえば-tatoeba-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 123,
+  "romaji": "tatte",
+  "pola": "たって",
+  "arti": "even if; even though; no matter how ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たって-tatte-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 124,
+  "romaji": "te bakari iru",
+  "pola": "てばかりいる",
+  "arti": "only; nothing but ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てばかりいる-te-bakari-iru-meaning/",
+  "catatan": "⚠️ Modul N4 #38 (L4) mengajarkannya"
+ },
+ {
+  "no": 125,
+  "romaji": "te goran",
+  "pola": "てごらん",
+  "arti": "(please) try to; (please) look",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てごらん-te-goran-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 126,
+  "romaji": "te hajimete",
+  "pola": "てはじめて",
+  "arti": "not until; only after [x] did I",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てはじめて-te-hajimete-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 127,
+  "romaji": "te kara de nai to",
+  "pola": "てからでないと",
+  "arti": "must first do; cannot do without first doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てからでないと-te-kara-de-nai-to-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 128,
+  "romaji": "te shou ga nai/te shikata ga nai",
+  "pola": "てしょうがない・てしかたがない",
+  "arti": "can't help but; very; extremely ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てしょうがない-te-shou-ga-nai-て仕方がない-shikata-ga-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 129,
+  "romaji": "te sumu",
+  "pola": "て済む（てすむ）",
+  "arti": "sufficient by; no problem to; resolve by ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/て済む-te-sumu-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 130,
+  "romaji": "te wa ikenai kara",
+  "pola": "てはいけないから",
+  "arti": "in order to not~; to prevent a negative situation",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てはいけないから-te-wa-ikenai-kara-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 131,
+  "romaji": "teiru baai janai",
+  "pola": "ている場合じゃない（ているばあいじゃない）",
+  "arti": "this is no time to be doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ている場合じゃない-teiru-baai-janai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 132,
+  "romaji": "teki",
+  "pola": "的（てき）",
+  "arti": "change noun into na-adjective or adverb",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/的-てき-teki-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 133,
+  "romaji": "temo hajimaranai",
+  "pola": "ても始まらない（てもはじまらない）",
+  "arti": "even if you... it’s no use; there is no point to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ても始まらない-temo-hajimaranai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 134,
+  "romaji": "temo kamawanai",
+  "pola": "ても構わない（てもかまわない）",
+  "arti": "it doesn't matter if ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てもかまわない-temo-kamawanai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 135,
+  "romaji": "temo shou ga nai / temo shikata ga nai",
+  "pola": "てもしょうがない / てもしかたがない",
+  "arti": "there's no point to~; it's no use to~; it cannot be helped",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てもしょうがない・ても仕方がない-temo-shou-ga-nai-temo-shikata-ga-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 136,
+  "romaji": "to ieba",
+  "pola": "と言えば（といえば）",
+  "arti": "speaking of; when you talk of; when you say; if it were the case that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/と言えば-といえば-to-ieba-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 137,
+  "romaji": "to ii / tara ii",
+  "pola": "といい / たらいい",
+  "arti": "it would be nice if; should; I hope ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/といい-to-ii-たらいい-tara-ii-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 138,
+  "romaji": "to ittemo",
+  "pola": "といっても",
+  "arti": "although I say; although one might say ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/といっても-to-ittemo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 139,
+  "romaji": "to iu koto da",
+  "pola": "ということだ",
+  "arti": "I heard; it means that; in other words ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ということだ-to-iu-koto-da-とのことだ-to-no-koto-da-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 140,
+  "romaji": "to iu nowa",
+  "pola": "というのは",
+  "arti": "this means; the meaning of … is; because; that is to say ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/というのは-to-iu-nowa-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 141,
+  "romaji": "to iu to",
+  "pola": "と言うと（というと）",
+  "arti": "speaking of; when you talk of; when you say ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/と言うと-というと-to-iuto-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 142,
+  "romaji": "to iu yori",
+  "pola": "というより",
+  "arti": "rather than ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/というより-to-iu-yori-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 143,
+  "romaji": "to mieru / to miete",
+  "pola": "とみえる / とみえて",
+  "arti": "it seems that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とみえて-miete-とみえる-to-mieru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 144,
+  "romaji": "to sureba / to shitara / to suru to",
+  "pola": "とすれば・としたら・とすると",
+  "arti": "in the case of~; assuming~; if A then B",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とすれば-としたら-とすると-sureba-shitara-suru-to-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 145,
+  "romaji": "to tomo ni",
+  "pola": "と共に（とともに）",
+  "arti": "together with; at the same time as; as well as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/と共に-to-tomo-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 146,
+  "romaji": "tochuu de / tochuu ni",
+  "pola": "途中で/途中に（とちゅうで/とちゅうに）",
+  "arti": "on the way; in the middle of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/途中で-途中に-tochuu-de-tochuu-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 147,
+  "romaji": "tokoro de",
+  "pola": "ところで",
+  "arti": "by the way ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ところで-tokoro-de-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 148,
+  "romaji": "tokoro ga",
+  "pola": "ところが",
+  "arti": "even so; however; even though ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ところが-tokoro-ga-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 149,
+  "romaji": "toori ni",
+  "pola": "とおりに",
+  "arti": "in the same way as; in the way; as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とおりに-toori-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 150,
+  "romaji": "toosu",
+  "pola": "通す（とおす）",
+  "arti": "to do until the end; to continually do; through ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/通す-とおす-toosu-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 151,
+  "romaji": "toshite",
+  "pola": "として",
+  "arti": "as; in the role of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/として-toshite-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 152,
+  "romaji": "totemo~nai",
+  "pola": "とても～ない",
+  "arti": "cannot possibly be; hardly ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とても～ない-totemo-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 153,
+  "romaji": "towa kagiranai",
+  "pola": "とは限らない（とはかぎらない）",
+  "arti": "not necessarily so; is not always true",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とは限らない-towa-kagiranai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 154,
+  "romaji": "tsui",
+  "pola": "つい",
+  "arti": "accidentally; unintentionally; by mistake",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/つい-tsui-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 155,
+  "romaji": "tsui ni",
+  "pola": "ついに",
+  "arti": "finally; at last; in the end ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ついに-tsui-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 156,
+  "romaji": "tsuide ni",
+  "pola": "ついでに",
+  "arti": "while, incidentally, at the same time, on the way ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ついでに-tsuide-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 157,
+  "romaji": "tsumari",
+  "pola": "つまり",
+  "arti": "in other words; in summary; in short ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/つまり-tsumari-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 158,
+  "romaji": "tsumori datta",
+  "pola": "つもりだった",
+  "arti": "I thought I~; I believe I~; was planning to~; was intending to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/つもりだった-tsumori-datta-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 159,
+  "romaji": "tsumori de",
+  "pola": "つもりで",
+  "arti": "with the intention of doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/つもりで-tsumori-de-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 160,
+  "romaji": "uchi ni",
+  "pola": "うちに",
+  "arti": "while; before ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/うちに-uchi-ni-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 161,
+  "romaji": "ue de",
+  "pola": "上で（うえで）",
+  "arti": "upon; after; when; for; in order to",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/上で-うえで-ue-de-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 162,
+  "romaji": "ue ni",
+  "pola": "上に（うえに）",
+  "arti": "as well; besides; in addition to; not only… but also ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/上に-ue-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 163,
+  "romaji": "wa betsu toshite",
+  "pola": "は別として（はべつとして）",
+  "arti": "aside from; apart from; except for; whether or not ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/は別として-wa-betsu-toshite-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 164,
+  "romaji": "wa mochiron",
+  "pola": "はもちろん",
+  "arti": "not to mention; not only ... but also ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/はもちろん-wa-mochiron-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 165,
+  "romaji": "wa~de yuumei",
+  "pola": "は～で有名（は～でゆうめい）",
+  "arti": "famous for ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/は～で有名-wa-de-yuumei-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 166,
+  "romaji": "wake da",
+  "pola": "わけだ",
+  "arti": "for that reason; no wonder; as you’d expect; the fact is; so you mean ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わけだ-wake-da-meaning/",
+  "catatan": "Dilarang di N4 (prompt)"
+ },
+ {
+  "no": 167,
+  "romaji": "wake dewa nai",
+  "pola": "わけではない",
+  "arti": "it doesn’t mean that; it is not the case that; I don’t mean that; it is not true that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わけではない-wake-dewa-nai-わけじゃない-wake-janai-meaning/",
+  "catatan": "Dilarang di N4 (prompt); contoh pola N3 (prompt)"
+ },
+ {
+  "no": 168,
+  "romaji": "wake ga nai",
+  "pola": "わけがない",
+  "arti": "there is no way that; it is impossible to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わけがない-wake-ga-nai-meaning/",
+  "catatan": "Dilarang di N4 (prompt)"
+ },
+ {
+  "no": 169,
+  "romaji": "wake niwa ikanai",
+  "pola": "わけにはいかない",
+  "arti": "must not; cannot afford to; must, have no choice but to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わけにはいかない-wake-niwa-ikanai-meaning/",
+  "catatan": "Dilarang di N4 (prompt)"
+ },
+ {
+  "no": 170,
+  "romaji": "wari ni",
+  "pola": "割に（わりに）",
+  "arti": "considering ~; for ~; despite ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/割に-わりに-wari-ni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 171,
+  "romaji": "wazato",
+  "pola": "わざと",
+  "arti": "on purpose; intentionally ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わざと-wazato-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 172,
+  "romaji": "wazawaza",
+  "pola": "わざわざ",
+  "arti": "to go to the trouble of; to go out of one's way to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/わざわざ-wazawaza-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 173,
+  "romaji": "yorimo",
+  "pola": "よりも",
+  "arti": "in comparison to; rather than; more than ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/よりも-yorimo-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 174,
+  "romaji": "you ga nai",
+  "pola": "ようがない",
+  "arti": "there is no way to; it’s impossible to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ようがない-you-ga-nai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 175,
+  "romaji": "you na ki ga suru",
+  "pola": "ような気がする（ようなきがする）",
+  "arti": "have a feeling that; feels like; seems like; think that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ような気がする-you-na-ki-ga-suru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 176,
+  "romaji": "you ni",
+  "pola": "ように",
+  "arti": "in order to, so that ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ように-you-ni-meaning-in-order-to/",
+  "catatan": ""
+ },
+ {
+  "no": 177,
+  "romaji": "you ni mieru",
+  "pola": "ように見える（ようにみえる）",
+  "arti": "to look; to seem; to appear ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ように見える-you-ni-mieru-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 178,
+  "romaji": "you to shinai",
+  "pola": "ようとしない",
+  "arti": "not try to; not make an effort to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ようとしない-you-to-shinai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 179,
+  "romaji": "you to suru",
+  "pola": "ようとする",
+  "arti": "try to; attempt to; be about to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ようとする-you-to-suru-meaning/",
+  "catatan": "⚠️ Modul N4 #2 (L4) mengajarkannya"
+ },
+ {
+  "no": 180,
+  "romaji": "zuni",
+  "pola": "ずに",
+  "arti": "without doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ずに-zuni-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 181,
+  "romaji": "zuni wa irarenai",
+  "pola": "ずにはいられない",
+  "arti": "can’t help but feel; can’t help but do; must do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ずにはいられない-zu-ni-wa-irarenai-meaning/",
+  "catatan": ""
+ },
+ {
+  "no": 182,
+  "romaji": "zutsu",
+  "pola": "ずつ",
+  "arti": "apiece; each; at a time",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/jlpt-n3-grammar-ずつ-zutsu-meaning/",
+  "catatan": ""
+ }
+]

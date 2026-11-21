@@ -1,0 +1,25 @@
+{
+ "diambil": "2026-11-20",
+ "situs": "https://jlptsensei.com/",
+ "halaman": {
+  "grammar-n5.json": "https://jlptsensei.com/jlpt-n5-grammar-list/ (3 halaman)",
+  "grammar-n4.json": "https://jlptsensei.com/jlpt-n4-grammar-list/ (4 halaman)",
+  "grammar-n3.json": "https://jlptsensei.com/jlpt-n3-grammar-list/ (5 halaman)",
+  "vocab-n5.json": "https://jlptsensei.com/jlpt-n5-vocabulary-list/ (7 halaman)",
+  "vocab-n4.json": "https://jlptsensei.com/jlpt-n4-vocabulary-list/ (6 halaman)",
+  "kanji-n5.json": "https://jlptsensei.com/jlpt-n5-kanji-list/ (1 halaman)",
+  "kanji-n4.json": "https://jlptsensei.com/jlpt-n4-kanji-list/ (2 halaman)",
+  "kanji-n3.json": "https://jlptsensei.com/jlpt-n3-kanji-list/ (4 halaman)",
+  "vocab-n3.json": "https://jlptsensei.com/jlpt-n3-vocabulary-list/ (2 halaman)",
+  "kanji-n3-rireki.json": "https://rirekishobuilder.com/downloads/jlpt-list/kanji_N3.pdf (81 halaman; dari https://rirekishobuilder.com/learn-japanese-kanji/jlpt-n3-kanji-pdf)",
+  "minna-pola.json": "https://yg.jpf.go.jp/wp-content/uploads/2023/11/Sentence-Patterns-Minna-no-Nihongo-and-IRODORI.20211027.pdf (Japan Foundation; kolom Minna, diurai dari koordinat teks)",
+  "minna-kosakata.json": "https://github.com/vitto4/MinnaNoDS (minna-no-ds.yaml v1.1.2; hanya edisi 2; kata + kana + bab, tanpa terjemahan/romaji; isi milik 3A Corporation, internal)",
+  "pembanding-tata-bahasa.json": "riset pembanding 2026-11-20 (Minna/Tanos/Bunpro/TRY!/Genki) — lihat 11-sumber-pembanding.md"
+ },
+ "sampelSoal": [
+  "https://jlptsensei.com/downloads/jlpt-n5-practice-test/ → JLPT-N5-practice-test-reading-section.pdf + correct-answer-sheet.pdf",
+  "https://jlptsensei.com/downloads/jlpt-n4-practice-test/ → JLPT-N4-practice-test-reading-section.pdf + correct-answer-sheet.pdf",
+  "https://jlptsensei.com/downloads/jlpt-n3-practice-test/ → JLPT-N3-Practice-Test-reading-section.pdf + correct-answer-sheet.pdf"
+ ],
+ "anotasi": "arti_id, status, catatan, modulN4 ditambahkan untuk KB ini; field lain apa adanya dari situs."
+}

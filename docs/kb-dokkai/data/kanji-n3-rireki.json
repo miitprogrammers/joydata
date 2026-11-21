@@ -1,0 +1,7533 @@
+[
+ {
+  "no": 1,
+  "kanji": "愛",
+  "on": "アイ",
+  "kun": "いと.しい, お.しむ, かな.しい, まな, め.でる",
+  "arti": "affection, favourite, love",
+  "kosakata": [
+   "愛 → あい → love; affection; care",
+   "愛 → まな → beloved; dear",
+   "美しい → うつくしい → beautiful; pretty; lovely; sweet; pure (heart, friendship, etc.)",
+   "悲しい → かなしい → sad; miserable; unhappy; sorrowful"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "愛（あい） love",
+   "愛（まな） beloved"
+  ]
+ },
+ {
+  "no": 2,
+  "kanji": "薬",
+  "on": "ヤク",
+  "kun": "くすり",
+  "arti": "benefit, chemical, enamel, gunpowder, medicine",
+  "kosakata": [
+   "薬 → くすり → medicine; pharmaceuticals; (legal) drugs; pill; ointment; salve",
+   "薬 → やく → dope; narcotic; drug",
+   "薬局 → やっきょく → pharmacy; drugstore; chemist's (shop)",
+   "薬指 → くすりゆび → ring finger; third finger; fourth finger (esp. in piano-playing)"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "薬（くすり） medicine",
+   "薬（やく） dope"
+  ]
+ },
+ {
+  "no": 3,
+  "kanji": "変",
+  "on": "ヘン",
+  "kun": "か.える, か.わり, か.わる",
+  "arti": "change, strange, unusual",
+  "kosakata": [
+   "変 → へん → strange; odd; peculiar; weird; curious; eccentric; funny; suspicious; fishy",
+   "変わる → かわる → to change; to be transformed; to be altered; to vary",
+   "変える → かえる → to change; to alter; to transform; to convert; to turn; to vary",
+   "変化 → へんか → change; variation; alteration; mutation; transition; transformation; transfiguration; metamorphosis"
+  ],
+  "volume": [
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "変（へん） strange",
+   "変わる（かわる） to change"
+  ]
+ },
+ {
+  "no": 4,
+  "kanji": "更",
+  "on": "コウ",
+  "kun": "さら, さら.に, ふ.かす, ふ.ける",
+  "arti": "again, further, grow late, more and more, night watch, of course, renew, renovate, sit up late",
+  "kosakata": [
+   "更け → ふけ → growing late; latening",
+   "更 → こう → one-fifth of the night (approx. 2 hours)",
+   "新 → さら → new; unused",
+   "交々 → こもごも → alternately; in succession"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "更け（ふけ） growing late",
+   "更（こう） one-fifth of the night (approx. 2 hours)"
+  ]
+ },
+ {
+  "no": 5,
+  "kanji": "最",
+  "on": "サイ, シュ",
+  "kun": "つま, もっと.も",
+  "arti": "extreme, most, utmost",
+  "kosakata": [
+   "最 → さい → the most; the extreme",
+   "最近 → さいきん → recently; lately; these days; nowadays; right now",
+   "最初 → さいしょ → beginning; outset; first; onset",
+   "最後 → さいご → end; conclusion"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "最（さい） the most",
+   "最近（さいきん） recently"
+  ]
+ },
+ {
+  "no": 6,
+  "kanji": "分",
+  "on": "フン, ブ, ブン",
+  "kun": "わ.かつ, わ.かる, わ.かれる, わ.け, わ.ける",
+  "arti": "1%, chances, degree, duty, know, minute of time, one's lot, part, rate, segment, shaku/100, share, understand",
+  "kosakata": [
+   "分 → ぶん → part; portion; share",
+   "分 → ふん → minute (unit of time)",
+   "分 → ぶ → one-tenth; one percent (one-tenth of a wari); 3 mm (one-tenth of a sun); 2.4 mm (one- tenth of a mon, a traditional unit used to measure shoe sizes); 0.1 degree (one-tenth of a do, used to measure body temperature on any temperature scale)",
+   "分析 → ぶんせき → analysis"
+  ],
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL5",
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N5",
+  "contoh": [
+   "分（ぶん） part",
+   "分（ふん） minute (unit of time)"
+  ]
+ },
+ {
+  "no": 7,
+  "kanji": "他",
+  "on": "タ",
+  "kun": "ほか",
+  "arti": "another, other, the others",
+  "kosakata": [
+   "他 → ほか → another place; some other place; somewhere else; outside",
+   "他 → た → other (esp. people and abstract matters)",
+   "他人 → たにん → another person; other people; others",
+   "余所 → よそ → another place; somewhere else; strange parts"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "他（ほか） another place",
+   "他（た） other (esp. people and abstract matters)"
+  ]
+ },
+ {
+  "no": 8,
+  "kanji": "老",
+  "on": "ロウ",
+  "kun": "お.いる, ふ.ける",
+  "arti": "grow old, old age, old man",
+  "kosakata": [
+   "老 → ろう → old age; age; old people; the old; the aged; senior; elder",
+   "老人 → ろうじん → old person; senior citizen; the aged; the elderly",
+   "老い → おい → old age; old person; the old; the aged",
+   "老衰 → ろうすい → senility; senile decay; infirmity (through age)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "老（ろう） old age",
+   "老人（ろうじん） old person"
+  ]
+ },
+ {
+  "no": 9,
+  "kanji": "付",
+  "on": "フ",
+  "kun": "-つ.き, -つ.け, -つ.ける, -つき, -づ.き, -づ.く, -づ.け, -づ.ける,",
+  "arti": "adhere, append, attach, refer to",
+  "kosakata": [
+   "付き → つき → furnished with; including",
+   "付 → づけ → dated (e.g. a letter); date of effect (e.g. a rule change)",
+   "付ける → つける → to attach; to join; to connect; to add; to append; to affix; to stick; to glue; to fasten; to sew on; to apply (ointment); to put against",
+   "付く → つく → to be attached; to be connected with; to adhere; to stick; to cling"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "付き（つき） furnished with",
+   "付（づけ） dated (e.g. a letter)"
+  ]
+ },
+ {
+  "no": 10,
+  "kanji": "歳",
+  "on": "サイ, セイ",
+  "kun": "とし, とせ, よわい",
+  "arti": "age, occasion, opportunity, year-end",
+  "kosakata": [
+   "年 → とし → year",
+   "歳 → さい → ... years old; age (of) ...",
+   "年 → とせ → counter for years",
+   "歳入 → さいにゅう → annual revenue (government); annual income (government); budget receipts"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "歳（さい） ... years old",
+   "歳入（さいにゅう） annual revenue (government)"
+  ]
+ },
+ {
+  "no": 11,
+  "kanji": "決",
+  "on": "ケツ",
+  "kun": "-ぎ.め, き.まる, き.める, さ.く",
+  "arti": "agree upon, appoint, decide, fix",
+  "kosakata": [
+   "決 → けつ → decision; vote",
+   "決して → けっして → (not) ever; (not) by any means; (not) in the least; (not) in any way; (not) at all",
+   "決める → きめる → to decide; to choose; to determine; to make up one's mind; to resolve; to set one's heart on; to settle; to arrange; to set; to appoint; to fix",
+   "決まる → きまる → to be decided; to be settled; to be fixed; to be arranged"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "決（けつ） decision",
+   "決して（けっして） (not) ever"
+  ]
+ },
+ {
+  "no": 12,
+  "kanji": "確",
+  "on": "カク, コウ",
+  "kun": "たし.か, たし.かめる",
+  "arti": "assurance, clear, confirm, evident, firm, hard, solid, tight",
+  "kosakata": [
+   "確か → たしか → sure; certain; positive; definite",
+   "確 → かく → certain; definite",
+   "確率 → かくりつ → probability; likelihood; chances",
+   "確り → しっかり → tightly (holding on); firmly; securely"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "確か（たしか） sure",
+   "確（かく） certain"
+  ]
+ },
+ {
+  "no": 13,
+  "kanji": "番",
+  "on": "バン",
+  "kun": "つが.い",
+  "arti": "number in a series, turn",
+  "kosakata": [
+   "番 → ばん → number (in a series)",
+   "番い → つがい → pair (esp. of mated animals); brace; couple",
+   "番号 → ばんごう → number; series of digits",
+   "番組 → ばんぐみ → program (e.g. TV); programme"
+  ],
+  "volume": [
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "番（ばん） number (in a series)",
+   "番い（つがい） pair (esp. of mated animals)"
+  ]
+ },
+ {
+  "no": 14,
+  "kanji": "調",
+  "on": "チョウ",
+  "kun": "しら.べ, しら.べる, ととの.う, ととの.える",
+  "arti": "exorcise, harmonize, investigate, key (music), mediate, meter, prepare, tone, tune, writing style",
+  "kosakata": [
+   "調 → ちょう → key",
+   "調査 → ちょうさ → investigation; examination; inquiry; enquiry; survey",
+   "調理 → ちょうり → cooking; food preparation",
+   "調停 → ちょうてい → arbitration; conciliation; mediation"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "調（ちょう） key",
+   "調査（ちょうさ） investigation"
+  ]
+ },
+ {
+  "no": 15,
+  "kanji": "葉",
+  "on": "ヨウ",
+  "kun": "は",
+  "arti": "blade, counter for flat things, fragment, leaf, lobe, needle, piece, plane, spear",
+  "kosakata": [
+   "葉 → は → leaf; blade (of grass); (pine) needle",
+   "葉 → よう → counter for leaves, pieces of paper, etc.",
+   "葉書 → はがき → postcard",
+   "葉っぱ → はっぱ → leaf; blade (of grass); (pine) needle"
+  ],
+  "volume": [
+   "VOL3",
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "葉（は） leaf",
+   "葉（よう） counter for leaves, pieces of paper, etc."
+  ]
+ },
+ {
+  "no": 16,
+  "kanji": "政",
+  "on": "ショウ, セイ",
+  "kun": "まつりごと, まん",
+  "arti": "government, politics",
+  "kosakata": [
+   "政 → まつりごと → rule; government; administration",
+   "政治 → せいじ → politics; government",
+   "政府 → せいふ → government; administration; ministry",
+   "政党 → せいとう → political party"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "政（まつりごと） rule",
+   "政治（せいじ） politics"
+  ]
+ },
+ {
+  "no": 17,
+  "kanji": "議",
+  "on": "ギ",
+  "kun": "",
+  "arti": "consideration, consultation, debate, deliberation",
+  "kosakata": [
+   "議 → ぎ → discussion; deliberation",
+   "議長 → ぎちょう → chair; chairman; chairperson; speaker (of an assembly); president (of a council, senate, etc.)",
+   "議会 → ぎかい → congress; parliament; diet; legislative assembly",
+   "議員 → ぎいん → member of an assembly; member of the Diet; member of parliament; member of Congress"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "議（ぎ） discussion",
+   "議長（ぎちょう） chair"
+  ]
+ },
+ {
+  "no": 18,
+  "kanji": "民",
+  "on": "ミン",
+  "kun": "たみ",
+  "arti": "nation, people, subjects",
+  "kosakata": [
+   "民 → たみ → people; citizens; subjects; folk",
+   "民 → みん → citizen; resident; person",
+   "民族 → みんぞく → people; race; nation; ethnic group; ethnos",
+   "民間 → みんかん → private; non- governmental; non- official; civilian; civil"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "民（たみ） people",
+   "民（みん） citizen"
+  ]
+ },
+ {
+  "no": 19,
+  "kanji": "連",
+  "on": "レン",
+  "kun": "-づ.れ, つ.れる, つら.なる, つら.ねる",
+  "arti": "clique, connect, gang, join, lead, party, take along",
+  "kosakata": [
+   "連 → れん → two reams (of paper); 1000 sheets (of paper)",
+   "連 → むらじ → Muraji (hereditary title; orig. one of the two highest such titles, later demoted to seventh highest of eight)",
+   "連想 → れんそう → association (of ideas); being reminded (of something); suggestion",
+   "連絡 → れんらく → contacting; (making) contact; getting in touch; communication; correspondence; call; message"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "連（れん） two reams (of paper)",
+   "連（むらじ） Muraji (hereditary title"
+  ]
+ },
+ {
+  "no": 20,
+  "kanji": "対",
+  "on": "タイ, ツイ",
+  "kun": "あいて, こた.える, そろ.い, つれあ.い, なら.ぶ, むか.う",
+  "arti": "anti-, compare, equal, even, opposite, versus, vis-a-vis",
+  "kosakata": [
+   "対 → つい → pair; couple; set",
+   "対 → たい → versus; against; vs.; v.",
+   "対象 → たいしょう → target; object (of worship, study, etc.); subject (of taxation, etc.); coverage",
+   "向かう → むかう → to face"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "対（つい） pair",
+   "対（たい） versus"
+  ]
+ },
+ {
+  "no": 21,
+  "kanji": "部",
+  "on": "ブ",
+  "kun": "-べ",
+  "arti": "bureau, class, copy, counter for copies of a newspaper or magazine, dept, part, portion, section",
+  "kosakata": [
+   "部 → ぶ → department (in an organization, company, etc.); division; bureau; faculty",
+   "部 → べ → hereditary occupational group (Yamato period)",
+   "部屋 → へや → room; chamber",
+   "部長 → ぶちょう → head (chief, director) of a section or department"
+  ],
+  "volume": [
+   "VOL3",
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "部（ぶ） department (in an organization, company, etc.)",
+   "部（べ） hereditary occupational group (Yamato period)"
+  ]
+ },
+ {
+  "no": 22,
+  "kanji": "合",
+  "on": "カッ, ガッ, ゴウ",
+  "kun": "-あ.い, -あ.う, -あ.わせる, -あい, あ.い, あ.う, あ.わす, あ.わせる,",
+  "arti": "0.1, fit, join, suit",
+  "kosakata": [
+   "合 → ごう → gō; traditional unit of volume, approx. 180 ml",
+   "合い → あい → between- season wear; spring and autumn clothing; spring and fall clothing",
+   "合図 → あいず → sign; signal; cue",
+   "合同 → ごうどう → combination; union; joining; incorporation; amalgamation; merger; fusion"
+  ],
+  "volume": [
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "合（ごう） gō",
+   "合い（あい） between- season wear"
+  ]
+ },
+ {
+  "no": 23,
+  "kanji": "市",
+  "on": "シ",
+  "kun": "いち",
+  "arti": "city, market, town",
+  "kosakata": [
+   "市 → し → city",
+   "市 → いち → market; fair",
+   "市民 → しみん → citizen (of a country); citizenry",
+   "市街 → しがい → urban areas; the streets; town; city"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "市（し） city",
+   "市（いち） market"
+  ]
+ },
+ {
+  "no": 24,
+  "kanji": "内",
+  "on": "ダイ, ナイ",
+  "kun": "うち",
+  "arti": "among, between, home, house, inside, within",
+  "kosakata": [
+   "内 → うち → inside; within",
+   "内 → ない → within ...; inside ...",
+   "内閣 → ないかく → cabinet (of a government); ministry",
+   "内容 → ないよう → contents; content; substance; matter; detail; import"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "内（うち） inside",
+   "内（ない） within ..."
+  ]
+ },
+ {
+  "no": 25,
+  "kanji": "相",
+  "on": "ショウ, ソウ",
+  "kun": "あい-",
+  "arti": "aspect, councillor, each other, inter-, minister of state, mutual, phase, physiognomy, together",
+  "kosakata": [
+   "相 → あい → together; mutually; fellow",
+   "相 → しょう → minister (of a government department)",
+   "性 → さが → one's nature; one's destiny",
+   "相 → そう → aspect; appearance; look"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "相（あい） together",
+   "相（しょう） minister (of a government department)"
+  ]
+ },
+ {
+  "no": 26,
+  "kanji": "定",
+  "on": "ジョウ, テイ",
+  "kun": "さだ.か, さだ.まる, さだ.める",
+  "arti": "decide, determine, establish, fix",
+  "kosakata": [
+   "定 → じょう → certainty; reality; actuality",
+   "定 → さだ → certainly; truly",
+   "定規 → じょうぎ → (measuring) ruler",
+   "定義 → ていぎ → definition"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "定（じょう） certainty",
+   "定（さだ） certainly"
+  ]
+ },
+ {
+  "no": 27,
+  "kanji": "回",
+  "on": "エ, カイ",
+  "kun": "-まわ.し, -まわ.す, -まわ.り, -まわ.る, か.える, まわ.し-, まわ.す, -times, counter",
+  "arti": "for occurrences, game, revolve, round",
+  "kosakata": [
+   "回 → かい → counter for occurrences",
+   "周り → まわり → circumference; girth",
+   "回転 → かいてん → rotation; revolution; turn; spin",
+   "回り道 → まわりみち → detour; circuitous route; diversion"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "回（かい） counter for occurrences",
+   "回転（かいてん） rotation"
+  ]
+ },
+ {
+  "no": 28,
+  "kanji": "選",
+  "on": "セン",
+  "kun": "え.る, えら.ぶ, よ.る",
+  "arti": "choose, elect, prefer, select",
+  "kosakata": [
+   "選 → せん → selection; choice; choosing; picking; election",
+   "選ぶ → えらぶ → to choose; to select; to pick (out)",
+   "選挙 → せんきょ → election",
+   "選手 → せんしゅ → player (of a sport); athlete; team member"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "選（せん） selection",
+   "選ぶ（えらぶ） to choose"
+  ]
+ },
+ {
+  "no": 29,
+  "kanji": "米",
+  "on": "ベイ, マイ, メエトル",
+  "kun": "こめ, よね",
+  "arti": "USA, metre, rice",
+  "kosakata": [
+   "米 → メートル → metre (unit of length); meter",
+   "米 → こめ → (husked grains of) rice",
+   "米 → べい → (United States of) America; USA",
+   "米 → よね → 88 years old"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "米（メートル） metre (unit of length)",
+   "米（こめ） (husked grains of) rice"
+  ]
+ },
+ {
+  "no": 30,
+  "kanji": "実",
+  "on": "シツ, ジツ",
+  "kun": "まこと, み, みち.る, みの, みの.る",
+  "arti": "fruit, nut, reality, seed, truth",
+  "kosakata": [
+   "実 → じつ → truth; reality",
+   "実 → み → fruit; nut",
+   "誠 → まこと → truth; reality; fact",
+   "実 → さね → seed (of a fruit); pit; pip; stone"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "実（じつ） truth",
+   "実（み） fruit"
+  ]
+ },
+ {
+  "no": 31,
+  "kanji": "関",
+  "on": "カン",
+  "kun": "-ぜき, かか.わる, からくり, かんぬき, せき",
+  "arti": "barrier, concerning, connection, gateway, involve",
+  "kosakata": [
+   "関 → せき → barrier; gate",
+   "関 → ぜき → honorific added to names of makuuchi and juryo division wrestlers",
+   "関 → かん → barrier; gate",
+   "関係 → かんけい → relation; relationship; connection"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "関（せき） barrier",
+   "関（ぜき） honorific added to names of makuuchi and juryo division wrestlers"
+  ]
+ },
+ {
+  "no": 32,
+  "kanji": "全",
+  "on": "ゼン",
+  "kun": "すべ.て, まった.く",
+  "arti": "all, complete, entire, fulfill, whole",
+  "kosakata": [
+   "全 → ぜん → all; whole; entire; complete; total; pan-",
+   "全部 → ぜんぶ → all; entire; whole; altogether",
+   "全然 → ぜんぜん → (not) at all; (not) in the slightest",
+   "全員 → ぜんいん → all members; all hands; everyone; everybody; whole crew"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "全（ぜん） all",
+   "全部（ぜんぶ） all"
+  ]
+ },
+ {
+  "no": 33,
+  "kanji": "表",
+  "on": "ヒョウ",
+  "kun": "-おもて, あら.わす, あらわ.す, あらわ.れる, おもて",
+  "arti": "chart, diagram, surface, table",
+  "kosakata": [
+   "表 → おもて → surface",
+   "表 → ひょう → table; chart; list",
+   "表情 → ひょうじょう → facial expression; countenance",
+   "上着 → うわぎ → coat; jacket; outerwear"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "表（おもて） surface",
+   "表（ひょう） table"
+  ]
+ },
+ {
+  "no": 34,
+  "kanji": "戦",
+  "on": "セン",
+  "kun": "いくさ, おのの.く, そよ.ぐ, たたか.う, わなな.く",
+  "arti": "battle, match, war",
+  "kosakata": [
+   "戦 → いくさ → war; battle; campaign; fight",
+   "戦 → せん → war; battle",
+   "戦争 → せんそう → war",
+   "戦闘 → せんとう → battle; fight; combat"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "戦（いくさ） war",
+   "戦（せん） war"
+  ]
+ },
+ {
+  "no": 35,
+  "kanji": "経",
+  "on": "キョウ, キン, ケイ",
+  "kun": "た.つ, たていと, のり, はか.る, へ.る",
+  "arti": "expire, longitude, pass thru, sutra, warp",
+  "kosakata": [
+   "縦 → たて → the vertical; height",
+   "経 → きょう → sutra; Buddhist scriptures",
+   "経 → けい → warp (weaving)",
+   "経 → ふ → to pass; to elapse; to go by"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "経（きょう） sutra",
+   "経（けい） warp (weaving)"
+  ]
+ },
+ {
+  "no": 36,
+  "kanji": "現",
+  "on": "ゲン",
+  "kun": "あらわ.す, あらわ.れる, うつ.つ, うつつ",
+  "arti": "actual, existing, present",
+  "kosakata": [
+   "現 → げん → present (e.g. government, administration); current; existing",
+   "現つ → うつつ → reality; consciousness",
+   "現在 → げんざい → the present; present time; now",
+   "現実 → げんじつ → reality; actuality; hard fact"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "現（げん） present (e.g. government, administration)",
+   "現つ（うつつ） reality"
+  ]
+ },
+ {
+  "no": 37,
+  "kanji": "化",
+  "on": "カ, ケ",
+  "kun": "け.する, ば.かす, ば.ける, ふ.ける-ization,",
+  "arti": "change, delude, enchant, influence, take the form of",
+  "kosakata": [
+   "化 → か → change to ...; becoming ...; making into ...; -ization; -ification",
+   "化学 → かがく → chemistry",
+   "化石 → かせき → fossil",
+   "化粧 → けしょう → make-up; makeup; cosmetics"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "化（か） change to ...",
+   "化学（かがく） chemistry"
+  ]
+ },
+ {
+  "no": 38,
+  "kanji": "当",
+  "on": "トウ",
+  "kun": "あ.たり, あ.たる, あ.て, あ.てる, まさ.に, まさ.にべし",
+  "arti": "appropriate, himself, hit, right",
+  "kosakata": [
+   "将 → はた → or; otherwise",
+   "当 → とう → this; our; the ... in question; the said ...",
+   "当時 → とうじ → at that time; in those days",
+   "当てる → あてる → to hit"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "当（とう） this",
+   "当時（とうじ） at that time"
+  ]
+ },
+ {
+  "no": 39,
+  "kanji": "約",
+  "on": "ヤク",
+  "kun": "つづ.まる, つづ.める, つづま.やか",
+  "arti": "approximately, promise, shrink",
+  "kosakata": [
+   "約 → やく → approximately; about",
+   "約束 → やくそく → promise; agreement; arrangement; one's word; contract; pact",
+   "約数 → やくすう → divisor; factor; measure",
+   "約半分 → やくはんぶん → approximately half"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "約（やく） approximately",
+   "約束（やくそく） promise"
+  ]
+ },
+ {
+  "no": 40,
+  "kanji": "首",
+  "on": "シュ",
+  "kun": "くび",
+  "arti": "counter for songs and poems, neck",
+  "kosakata": [
+   "首 → くび → neck",
+   "頭 → あたま → head",
+   "首級 → しゅきゅう → decapitated head of an enemy",
+   "首 → しゅ → counter for songs and poems"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "首（くび） neck",
+   "首級（しゅきゅう） decapitated head of an enemy"
+  ]
+ },
+ {
+  "no": 41,
+  "kanji": "法",
+  "on": "ハッ, フラン, ホウ, ホッ",
+  "kun": "のり",
+  "arti": "law, method, model, principle, rule, system",
+  "kosakata": [
+   "法 → ほう → law; act; principle",
+   "法 → のり → rule; law; regulation",
+   "法律 → ほうりつ → law",
+   "法則 → ほうそく → law; rule"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "法（ほう） law",
+   "法（のり） rule"
+  ]
+ },
+ {
+  "no": 42,
+  "kanji": "性",
+  "on": "ショウ, セイ",
+  "kun": "さが",
+  "arti": "gender, nature, sex",
+  "kosakata": [
+   "性 → せい → nature (of a person)",
+   "性 → さが → one's nature; one's destiny",
+   "性 → しょう → nature; disposition; temperament; character",
+   "性 → なりくせ → disposition; nature; character"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "性（せい） nature (of a person)",
+   "性（さが） one's nature"
+  ]
+ },
+ {
+  "no": 43,
+  "kanji": "的",
+  "on": "テキ",
+  "kun": "まと",
+  "arti": "adjective ending, bull's eye, mark, object, target",
+  "kosakata": [
+   "的 → てき → -ical; -ive; - al; -ic; -y",
+   "的 → まと → mark; target",
+   "的確 → てきかく → accurate; precise; exact; appropriate; apt; right",
+   "的中 → てきちゅう → hitting the target; striking home"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "的（てき） -ical",
+   "的（まと） mark"
+  ]
+ },
+ {
+  "no": 44,
+  "kanji": "要",
+  "on": "ヨウ",
+  "kun": "い.る, かなめ",
+  "arti": "essence, key to, main point, need, pivot",
+  "kosakata": [
+   "要 → かなめ → pivot",
+   "要 → よう → main point; essential point; important thing",
+   "要る → いる → to be needed; to be necessary; to be required; to be wanted; to need; to want",
+   "要求 → ようきゅう → demand; firm request; requisition; requirement; desire"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "要（かなめ） pivot",
+   "要（よう） main point"
+  ]
+ },
+ {
+  "no": 45,
+  "kanji": "制",
+  "on": "セイ",
+  "kun": "",
+  "arti": "law, rule, system",
+  "kosakata": [
+   "制 → せい → system; organization; organisation; imperial command; laws; regulation; control; government; suppression; restraint; holding back; establishment",
+   "制度 → せいど → system; institution; organization; organisation",
+   "制服 → せいふく → uniform",
+   "制限 → せいげん → restriction; restraint; limitation; limit"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "制（せい） system",
+   "制度（せいど） system"
+  ]
+ },
+ {
+  "no": 46,
+  "kanji": "治",
+  "on": "ジ, チ",
+  "kun": "おさ.まる, おさ.める, なお.す, なお.る",
+  "arti": "be at peace, calm down, conserve, cure, govt, heal, quell, reign, rule, subdue",
+  "kosakata": [
+   "治 → ち → politics; government; administration; rule",
+   "治療 → ちりょう → (medical) treatment; care; therapy; cure; remedy",
+   "直す → なおす → to repair; to mend; to fix; to correct (a mistake, bad habit, etc.); to put right; to restore; to straighten (e.g. a tie); to tidy up (one's hair, make-up, etc.); to revive (one's spirits)",
+   "治る → なおる → to get better; to get well; to recover (from an illness); to be cured; to be restored; to heal"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "治（ち） politics",
+   "治療（ちりょう） (medical) treatment"
+  ]
+ },
+ {
+  "no": 47,
+  "kanji": "務",
+  "on": "ム",
+  "kun": "つと.める",
+  "arti": "duties, task",
+  "kosakata": [
+   "勤める → つとめる → to work (for); to be employed (at); to serve (in)",
+   "勤め → つとめ → service; duty; business; responsibility; task",
+   "務まる → つとまる → to be fit (for a role); to be qualified (for); to be equal (to a task); to be able to fulfill one's duties (as)",
+   "ムショ送り → むしょおく り → being sent to prison"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "務まる（つとまる） to be fit (for a role)"
+  ]
+ },
+ {
+  "no": 48,
+  "kanji": "成",
+  "on": "ジョウ, セイ",
+  "kun": "-な.す, な.す, な.る",
+  "arti": "become, elapse, get, grow, reach, turn into",
+  "kosakata": [
+   "成る → なる → to become; to get; to grow; to turn; to reach; to attain",
+   "成る程 → なるほど → I see; that's right; indeed",
+   "成るべく → なるべく → as (much) as possible; as (much) as one can; wherever practicable; if possible",
+   "成功 → せいこう → success; achievement"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "成る（なる） to become",
+   "成る程（なるほど） I see"
+  ]
+ },
+ {
+  "no": 49,
+  "kanji": "期",
+  "on": "キ, ゴ",
+  "kun": "",
+  "arti": "date, period, term, time",
+  "kosakata": [
+   "期 → き → period; time",
+   "期 → ご → time; moment; limit",
+   "期待 → きたい → expectation; anticipation; hope",
+   "期間 → きかん → period; term; interval"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "期（き） period",
+   "期（ご） time"
+  ]
+ },
+ {
+  "no": 50,
+  "kanji": "取",
+  "on": "シュ",
+  "kun": "-ど.り, と.り, と.り-, と.る, とり",
+  "arti": "fetch, take, take up",
+  "kosakata": [
+   "取り → とり → taking; taker; collecting; collector; remover; removal",
+   "取 → しゅ → appropriation; obtaining",
+   "取り → どり → samurai receiving this much rice as a fee",
+   "取る → とる → to take; to pick up; to grab; to catch; to hold"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "取り（とり） taking",
+   "取（しゅ） appropriation"
+  ]
+ },
+ {
+  "no": 51,
+  "kanji": "都",
+  "on": "ツ, ト",
+  "kun": "みやこ",
+  "arti": "all, capital, everything, metropolis",
+  "kosakata": [
+   "都 → みやこ → capital (esp. Kyoto, Japan's former capital); seat of government",
+   "都 → と → Metropolis (of Tokyo); (Tokyo) Metropolitan District; metropolitan prefecture",
+   "都市 → とし → town; city; municipal; urban",
+   "都合 → つごう → circumstances; condition; convenience"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "都（みやこ） capital (esp. Kyoto, Japan's former capital)",
+   "都（と） Metropolis (of Tokyo)"
+  ]
+ },
+ {
+  "no": 52,
+  "kanji": "和",
+  "on": "オ, カ, ワ",
+  "kun": "あ.える, なご.む, なご.やか, やわ.らぐ, やわ.らげる",
+  "arti": "Japan, Japanese style, harmony, peace, soften",
+  "kosakata": [
+   "和 → わ → sum",
+   "凪 → なぎ → calm (at sea); lull",
+   "柔 → やわ → soft; weak; fragile; poorly built; insubstantial",
+   "閑 → のど → tranquil; calm; quiet; peaceful"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "和（わ） sum"
+  ]
+ },
+ {
+  "no": 53,
+  "kanji": "機",
+  "on": "キ",
+  "kun": "はた",
+  "arti": "airplane, efficacy, loom, machine, mechanism, occasion, opportunity, potency",
+  "kosakata": [
+   "機 → き → chance; opportunity",
+   "機 → はた → loom",
+   "機械 → きかい → machine; mechanism",
+   "機関車 → きかんしゃ → locomotive; engine"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "機（き） chance",
+   "機（はた） loom"
+  ]
+ },
+ {
+  "no": 54,
+  "kanji": "平",
+  "on": "ヒョウ, ビョウ, ヘイ",
+  "kun": "たい.ら, たい.らげる, ひら",
+  "arti": "even, flat, peace",
+  "kosakata": [
+   "平 → ひら → something broad and flat",
+   "平 → だいら → plain; plateau; tableland",
+   "平 → へい → nth year in the Heisei era (1989.1.8-2019.4.30)",
+   "平等 → びょうどう → equality; impartiality; evenness"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "平（ひら） something broad and flat",
+   "平（だいら） plain"
+  ]
+ },
+ {
+  "no": 55,
+  "kanji": "加",
+  "on": "カ",
+  "kun": "くわ.える, くわ.わる",
+  "arti": "Canada, add, addition, include, increase, join",
+  "kosakata": [
+   "加 → か → addition",
+   "加える → くわえる → to add; to add up; to sum up; to append; to annex",
+   "加わる → くわわる → to be added to; to be appended",
+   "加減 → かげん → degree; extent; amount; balance; state; condition"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "加（か） addition",
+   "加える（くわえる） to add"
+  ]
+ },
+ {
+  "no": 56,
+  "kanji": "受",
+  "on": "ジュ",
+  "kun": "-う.け, う.かる, う.ける",
+  "arti": "accept, answer (phone), catch, get, receive, take, undergo",
+  "kosakata": [
+   "受 → じゅ → vedana (sensation)",
+   "受ける → うける → to receive; to get",
+   "受付 → うけつけ → reception (desk); information desk; receptionist; information clerk",
+   "受け取る → うけとる → to receive; to get; to accept"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "受（じゅ） vedana (sensation)",
+   "受ける（うける） to receive"
+  ]
+ },
+ {
+  "no": 57,
+  "kanji": "続",
+  "on": "キョウ, コウ, ショク, ゾク",
+  "kun": "つぐ.ない, つづ.く, つづ.ける",
+  "arti": "continue, sequel, series",
+  "kosakata": [
+   "続 → ぞく → sequel; second series",
+   "続ける → つづける → to continue; to keep up; to keep on",
+   "続く → つづく → to continue; to last; to go on",
+   "続き → つづき → continuation; rest (of the story, work, etc.); next installment; sequel"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "続（ぞく） sequel",
+   "続ける（つづける） to continue"
+  ]
+ },
+ {
+  "no": 58,
+  "kanji": "進",
+  "on": "シン",
+  "kun": "すす.む, すす.める",
+  "arti": "advance, proceed, progress, promote",
+  "kosakata": [
+   "進歩 → しんぽ → progress; advance; improvement; development",
+   "進む → すすむ → to advance; to go forward",
+   "進化 → しんか → evolution",
+   "進学 → しんがく → advancing to the next stage of education; going on to (high school, college, etc.)"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "進歩（しんぽ） progress",
+   "進む（すすむ） to advance"
+  ]
+ },
+ {
+  "no": 59,
+  "kanji": "数",
+  "on": "サク, シュ, ス, スウ, ソク",
+  "kun": "かず, かぞ.える, しばしば, せ.める, わずらわ.しい",
+  "arti": "fate, figures, law, number, strength",
+  "kosakata": [
+   "数 → すう → several; a few; a number of",
+   "数 → かず → number; amount",
+   "屡々 → しばしば → often; again and again; frequently; repeatedly",
+   "数学 → すうがく → mathematics"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "数（すう） several",
+   "数（かず） number"
+  ]
+ },
+ {
+  "no": 60,
+  "kanji": "記",
+  "on": "キ",
+  "kun": "しる.す",
+  "arti": "account, narrative, scribe",
+  "kosakata": [
+   "記 → き → account; history; chronicle; annals; record",
+   "記録 → きろく → record; document; minutes; recording; putting on record; keeping a record (of); writing down",
+   "記憶 → きおく → memory; recollection; remembrance",
+   "記事 → きじ → article; news story; report; account"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "記（き） account",
+   "記録（きろく） record"
+  ]
+ },
+ {
+  "no": 61,
+  "kanji": "初",
+  "on": "ショ",
+  "kun": "-そ.める, -ぞ.め, うい-, はじ.め, はじ.めて, はつ, はつ-",
+  "arti": "beginning, first time",
+  "kosakata": [
+   "初 → はつ → first; new",
+   "ウブ → ウブ → inexperienced (in life experience); unsophisticated; green; wet behind the ears",
+   "初め → ぞめ → first doing of ... (ever, in one's life, in the new year, etc.)",
+   "始め → はじめ → beginning; start; outset; opening"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "初（はつ） first",
+   "初め（ぞめ） first doing of ... (ever, in one's life, in the new year, etc.)"
+  ]
+ },
+ {
+  "no": 62,
+  "kanji": "指",
+  "on": "シ",
+  "kun": "-さ.し, さ.す, ゆび",
+  "arti": "finger, indicate, measure (ruler), play (chess), point to, put into",
+  "kosakata": [
+   "指 → ゆび → finger; toe; digit",
+   "差し → さし → between (e.g. two people); face to face",
+   "指輪 → ゆびわ → (finger) ring",
+   "指導 → しどう → guidance; leadership; instruction; direction; coaching"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "指（ゆび） finger",
+   "指輪（ゆびわ） (finger) ring"
+  ]
+ },
+ {
+  "no": 63,
+  "kanji": "権",
+  "on": "ケン, ゴン",
+  "kun": "おもり, かり, はか.る",
+  "arti": "authority, power, rights",
+  "kosakata": [
+   "権 → けん → right (to do something)",
+   "権利 → けんり → right; privilege",
+   "権力 → けんりょく → (political) power; authority; influence",
+   "権威 → けんい → authority; power; influence; prestige"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "権（けん） right (to do something)",
+   "権利（けんり） right"
+  ]
+ },
+ {
+  "no": 64,
+  "kanji": "支",
+  "on": "シ",
+  "kun": "か.う, ささ.える, つか.える",
+  "arti": "branch, branch radical (no. 65), support, sustain",
+  "kosakata": [
+   "支 → し → China",
+   "支払う → しはらう → to pay",
+   "支払い → しはらい → payment",
+   "支配 → しはい → rule; domination; control"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "支（し） China",
+   "支払う（しはらう） to pay"
+  ]
+ },
+ {
+  "no": 65,
+  "kanji": "産",
+  "on": "サン",
+  "kun": "う.まれる, う.む, うぶ-, む.す",
+  "arti": "bear, childbirth, give birth, native, products, property, yield",
+  "kosakata": [
+   "産 → さん → (giving) birth; childbirth; delivery",
+   "産 → うぶ → birth-",
+   "ウブ → ウブ → inexperienced (in life experience); unsophisticated; green; wet behind the ears",
+   "産業 → さんぎょう → industry"
+  ],
+  "volume": [
+   "N4VOL1",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "産（さん） (giving) birth",
+   "産（うぶ） birth-"
+  ]
+ },
+ {
+  "no": 66,
+  "kanji": "点",
+  "on": "テン",
+  "kun": "さ.す, た.てる, つ.く, つ.ける, とぼ.す, とも.す, ぼち",
+  "arti": "decimal point, mark, point, speck, spot",
+  "kosakata": [
+   "点 → てん → dot; spot; point; speck; mark",
+   "点 → ちょぼ → dot; point; mark",
+   "ぽち → ぽち → dot; point; mark",
+   "点数 → てんすう → marks; points; score; grade; runs (baseball)"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "点（てん） dot",
+   "点（ちょぼ） dot"
+  ]
+ },
+ {
+  "no": 67,
+  "kanji": "報",
+  "on": "ホウ",
+  "kun": "むく.いる",
+  "arti": "news, report, retribution, reward",
+  "kosakata": [
+   "報 → ほう → information; news; report",
+   "報道 → ほうどう → report (of news); reporting; news; information; (media) coverage",
+   "報酬 → ほうしゅう → remuneration; recompense; reward; toll",
+   "知らせる → しらせる → to notify; to advise; to inform"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "報（ほう） information",
+   "報道（ほうどう） report (of news)"
+  ]
+ },
+ {
+  "no": 68,
+  "kanji": "済",
+  "on": "サイ, セイ",
+  "kun": "-す.ます, -ず.み, -ずみ, す.ます, す.まない, す.む, すく.う, な.す,",
+  "arti": "come to an end, excusable, finish, need not, relieve (burden), settle (debt, etc.)",
+  "kosakata": [
+   "済み → ずみ → arranged; taken care of; settled; completed; finished",
+   "済む → すむ → to finish; to end; to be completed; to be resolved",
+   "済みません → すみません → excuse me; pardon me; I'm sorry; I beg your pardon",
+   "済ませる → すませる → to finish; to make an end of; to get through with; to let end"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "済み（ずみ） arranged",
+   "済む（すむ） to finish"
+  ]
+ },
+ {
+  "no": 69,
+  "kanji": "活",
+  "on": "カツ",
+  "kun": "い.かす, い.きる, い.ける",
+  "arti": "being helped, lively, living, resuscitation",
+  "kosakata": [
+   "活 → かつ → living; life",
+   "生きる → いきる → to live; to exist",
+   "活用 → かつよう → practical use; application; making good use of; putting to good use; capitalizing on",
+   "活動 → かつどう → activity (of a person, organization, animal, volcano, etc.); action; operation"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "活（かつ） living",
+   "活用（かつよう） practical use"
+  ]
+ },
+ {
+  "no": 70,
+  "kanji": "原",
+  "on": "ゲン",
+  "kun": "はら",
+  "arti": "field, meadow, original, plain, prairie, primitive, tundra, wilderness",
+  "kosakata": [
+   "原 → はら → field; plain; prairie; tundra; moor; wilderness",
+   "原 → げん → original; primitive; primary; fundamental; proto-",
+   "輩 → ばら → suffixed to words indicating a class of people to create a plural (esp. in impolite contexts)",
+   "原理 → げんり → principle; theory; fundamental truth"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "原（はら） field",
+   "原（げん） original"
+  ]
+ },
+ {
+  "no": 71,
+  "kanji": "共",
+  "on": "キョウ",
+  "kun": "-ども, とも, とも.に",
+  "arti": "alike, all, and, both, neither, together, with",
+  "kosakata": [
+   "共 → とも → together with",
+   "共 → ども → first-person plural (or singular)",
+   "共 → ごと → including ...; with ...; inclusive of; ... and all",
+   "与 → むた → together with ..."
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "共（とも） together with",
+   "共（ども） first-person plural (or singular)"
+  ]
+ },
+ {
+  "no": 72,
+  "kanji": "得",
+  "on": "トク",
+  "kun": "う.る, え.る",
+  "arti": "able to, acquire, advantage, benefit, can, earn, find, gain, get, may, profit",
+  "kosakata": [
+   "得 → とく → profit; advantage; benefit; gain",
+   "得 → う → to get; to acquire; to obtain; to procure; to earn; to win; to gain; to secure; to attain",
+   "得点 → とくてん → scoring; score; points made; marks obtained; goals; runs",
+   "得意 → とくい → satisfaction; pride; triumph; elation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "得（とく） profit",
+   "得（う） to get"
+  ]
+ },
+ {
+  "no": 73,
+  "kanji": "解",
+  "on": "カイ, ゲ",
+  "kun": "さと.る, と.かす, と.く, と.ける, ほど.く, ほど.ける, わか.る",
+  "arti": "absolve, answer, cancel, explain, explanation, key, minute, notes, solve, understanding, undo, unravel, untie",
+  "kosakata": [
+   "解 → かい → solution (of an equation, inequality, etc.); root (e.g. of a polynomial)",
+   "解決 → かいけつ → settlement; solution; resolution",
+   "分かる → わかる → to understand; to comprehend; to grasp; to see; to get; to follow",
+   "解放 → かいほう → release; unleashing; liberation; emancipation; setting free"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "解（かい） solution (of an equation, inequality, etc.)",
+   "解決（かいけつ） settlement"
+  ]
+ },
+ {
+  "no": 74,
+  "kanji": "交",
+  "on": "コウ",
+  "kun": "-か.う, か.わす, かわ.す, こもごも, ま.ざる, ま.じる, ま.ぜる, まじ.える,",
+  "arti": "association, coming & going, mingle, mixing",
+  "kosakata": [
+   "交 → こう → association; fellowship",
+   "交々 → こもごも → alternately; in succession",
+   "交差点 → こうさてん → crossing; intersection",
+   "交番 → こうばん → police box; koban; small neighborhood police station"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "交（こう） association",
+   "交々（こもごも） alternately"
+  ]
+ },
+ {
+  "no": 75,
+  "kanji": "資",
+  "on": "シ",
+  "kun": "",
+  "arti": "assets, be conducive to, capital, contribute to, data, funds, resources",
+  "kosakata": [
+   "資 → し → funds; capital",
+   "資源 → しげん → resources",
+   "資本 → しほん → funds; capital",
+   "資料 → しりょう → material; materials; data; information; documents"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "資（し） funds",
+   "資源（しげん） resources"
+  ]
+ },
+ {
+  "no": 76,
+  "kanji": "予",
+  "on": "シャ, ヨ",
+  "kun": "あらかじ.め",
+  "arti": "I, beforehand, myself, previous",
+  "kosakata": [
+   "余 → よ → other; another; remaining; leftover",
+   "予 → よ → I; me",
+   "予算 → よさん → estimate (of costs); budget",
+   "予定 → よてい → plans; arrangement; schedule; program; programme; expectation; estimate"
+  ],
+  "volume": [
+   "N4VOL4",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "予（よ） I",
+   "予算（よさん） estimate (of costs)"
+  ]
+ },
+ {
+  "no": 77,
+  "kanji": "向",
+  "on": "コウ",
+  "kun": "-む.き, -む.け, む.い, む.かい, む.かう, む.く, む.ける, む.こう,",
+  "arti": "approach, beyond, confront, defy, facing, tend toward, yonder",
+  "kosakata": [
+   "向こう → むこう → opposite side; other side",
+   "向かう → むかう → to face",
+   "向き → むき → direction; orientation; aspect; exposure",
+   "向い → むかい → facing; opposite; across the street; other side"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "向こう（むこう） opposite side",
+   "向かう（むかう） to face"
+  ]
+ },
+ {
+  "no": 78,
+  "kanji": "際",
+  "on": "サイ",
+  "kun": "-ぎわ, きわ",
+  "arti": "adventurous, dangerous, edge, indecent, occasion, side, time, verge, when",
+  "kosakata": [
+   "際 → さい → occasion; time; circumstances; (in) case (of); when",
+   "際 → きわ → edge; brink; verge; side",
+   "際立つ → きわだつ → to be prominent; to be conspicuous; to stand out; to be outstanding; to be remarkable; to be striking; to be notable",
+   "際限 → さいげん → limits; end; bounds"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "際（さい） occasion",
+   "際（きわ） edge"
+  ]
+ },
+ {
+  "no": 79,
+  "kanji": "勝",
+  "on": "ショウ",
+  "kun": "-が.ち, か.つ, かつ, すぐ.れる, まさ.る",
+  "arti": "excel, prevail, victory, win",
+  "kosakata": [
+   "勝 → しょう → win; victory",
+   "勝利 → しょうり → victory; triumph; win; conquest; success",
+   "勝つ → かつ → to win; to gain victory",
+   "勝ち → かち → win; victory"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "勝（しょう） win",
+   "勝利（しょうり） victory"
+  ]
+ },
+ {
+  "no": 80,
+  "kanji": "面",
+  "on": "ベン, メン",
+  "kun": "おも, おもて, つら",
+  "arti": "face, features, mask, surface",
+  "kosakata": [
+   "面 → めん → face",
+   "面 → つら → face; mug",
+   "面 → おもて → face",
+   "面 → づら → looking like a ...; acting as if a ..."
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "面（めん） face",
+   "面（つら） face"
+  ]
+ },
+ {
+  "no": 81,
+  "kanji": "告",
+  "on": "コク",
+  "kun": "つ.げる",
+  "arti": "announce, inform, revelation, tell",
+  "kosakata": [
+   "告げる → つげる → to tell; to inform; to announce",
+   "告白 → こくはく → confession (to a crime, wrongdoing, etc.); admission",
+   "告発 → こくはつ → indictment; prosecution; complaint",
+   "告訴 → こくそ → accusation; complaint; charge; suit; legal action; legal proceedings"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "告げる（つげる） to tell",
+   "告白（こくはく） confession (to a crime, wrongdoing, etc.)"
+  ]
+ },
+ {
+  "no": 82,
+  "kanji": "反",
+  "on": "タン, ハン, ホ, ホン",
+  "kun": "-かえ.る, かえ.す, かえ.る, そ.らす, そ.る",
+  "arti": "anti-",
+  "kosakata": [
+   "反 → はん → anti-",
+   "反 → たん → variable measure of fabric (28.8 cm in width); for kimonos: at least 10 m in length; for haori: at least 7.27 m in length; for other clothes: at least 6.06 m in length",
+   "返す → かえす → to return (something); to restore; to put back",
+   "反省 → はんせい → reflection; reconsideration; introspection; meditation; contemplation"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "反（はん） anti-",
+   "反（たん） variable measure of fabric (28.8 cm in width)"
+  ]
+ },
+ {
+  "no": 83,
+  "kanji": "判",
+  "on": "ハン, バン",
+  "kun": "わか.る",
+  "arti": "judgement, judgment, seal, signature, stamp",
+  "kosakata": [
+   "判 → はん → seal; stamp; monogram signature",
+   "分かる → わかる → to understand; to comprehend; to grasp; to see; to get; to follow",
+   "判決 → はんけつ → judicial decision; judgement; judgment; sentence; decree",
+   "判断 → はんだん → judgment; judgement; decision; conclusion; adjudication"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "判（はん） seal",
+   "判決（はんけつ） judicial decision"
+  ]
+ },
+ {
+  "no": 84,
+  "kanji": "認",
+  "on": "ニン",
+  "kun": "したた.める, みと.める",
+  "arti": "acknowledge, appreciate, believe, discern, recognize, witness",
+  "kosakata": [
+   "認識 → にんしき → recognition; awareness; perception; understanding; knowledge; cognition; cognizance; cognisance",
+   "認める → みとめる → to recognize; to recognise; to observe; to notice",
+   "認証 → にんしょう → certification; attestation; authentication; confirmation",
+   "認可 → にんか → approval; license; licence; permission"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "認識（にんしき） recognition",
+   "認める（みとめる） to recognize"
+  ]
+ },
+ {
+  "no": 85,
+  "kanji": "参",
+  "on": "サン, シン",
+  "kun": "まい-, まい.る, まじわる, みつ",
+  "arti": "be defeated, be madly in love, coming, die, going, nonplussed, participate, take part in, three (in documents), visit, visiting",
+  "kosakata": [
+   "三 → さん → three; 3",
+   "参 → しん → Chinese \"Three Stars\" constellation (one of the 28 mansions)",
+   "参議院 → さんぎいん → House of Councillors (upper house of the National Diet of Japan)",
+   "参る → まいる → to go; to come; to call"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "参（しん） Chinese \"Three Stars\" constellation (one of the 28 mansions)",
+   "参議院（さんぎいん） House of Councillors (upper house of the National Diet of Japan)"
+  ]
+ },
+ {
+  "no": 86,
+  "kanji": "利",
+  "on": "リ",
+  "kun": "き.く",
+  "arti": "advantage, benefit, profit",
+  "kosakata": [
+   "利 → り → advantage; benefit; profit; interest",
+   "利益 → りえき → profit; gains",
+   "利用 → りよう → use; utilization; utilisation; application",
+   "利子 → りし → interest (on a deposit, loan, etc.)"
+  ],
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "利（り） advantage",
+   "利益（りえき） profit"
+  ]
+ },
+ {
+  "no": 87,
+  "kanji": "組",
+  "on": "ソ",
+  "kun": "-ぐみ, く.む, くみ",
+  "arti": "assemble, association, braid, construct, cooperate, grapple, plait, unite",
+  "kosakata": [
+   "組 → くみ → class (of students)",
+   "組合 → くみあい → association; union; guild",
+   "組織 → そしき → organization; organisation; formation",
+   "組む → くむ → to cross (legs or arms); to link (arms)"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "組（くみ） class (of students)",
+   "組合（くみあい） association"
+  ]
+ },
+ {
+  "no": 88,
+  "kanji": "信",
+  "on": "シン",
+  "kun": "",
+  "arti": "faith, fidelity, trust, truth",
+  "kosakata": [
+   "信 → しん → honesty; sincerity; fidelity",
+   "信頼 → しんらい → trust (in); confidence; faith; reliance",
+   "信号 → しんごう → signal; signalling; signaling",
+   "信仰 → しんこう → (religious) faith; belief; creed"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "信（しん） honesty",
+   "信頼（しんらい） trust (in)"
+  ]
+ },
+ {
+  "no": 89,
+  "kanji": "在",
+  "on": "ザイ",
+  "kun": "あ.る",
+  "arti": "exist, located in, outskirts, suburbs",
+  "kosakata": [
+   "在 → ざい → the country; countryside",
+   "有る → ある → to be; to exist; to live",
+   "在庫 → ざいこ → stock; inventory",
+   "在学 → ざいがく → attending (school, college, etc.); being enrolled; being a student"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "在（ざい） the country",
+   "在庫（ざいこ） stock"
+  ]
+ },
+ {
+  "no": 90,
+  "kanji": "件",
+  "on": "ケン",
+  "kun": "くだん",
+  "arti": "affair, case, item, matter",
+  "kosakata": [
+   "件 → けん → matter; affair; case; item; subject",
+   "件 → くだん → the aforementioned; the said; (man, incident, etc.) in question; the above- mentioned; the aforesaid",
+   "件 → くだり → passage; paragraph",
+   "件数 → けんすう → number of cases, incidents, items, messages, accounts, etc."
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "件（けん） matter",
+   "件（くだん） the aforementioned"
+  ]
+ },
+ {
+  "no": 91,
+  "kanji": "側",
+  "on": "ソク",
+  "kun": "かわ, がわ, そば",
+  "arti": "lean, oppose, regret, side",
+  "kosakata": [
+   "側 → がわ → side (of something, or taking someone's side); part",
+   "側 → そば → near; close; beside; vicinity; proximity; besides; while",
+   "傍ら → かたわら → side; edge; beside; besides; nearby",
+   "側 → そく → first principle of the Eight Principles of Yong; tiny dash or speck"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "側（がわ） side (of something, or taking someone's side)",
+   "側（そば） near"
+  ]
+ },
+ {
+  "no": 92,
+  "kanji": "任",
+  "on": "ニン",
+  "kun": "まか.す, まか.せる",
+  "arti": "appoint, duty, entrust to, responsibility, term",
+  "kosakata": [
+   "任 → にん → obligation; duty; charge; responsibility",
+   "任せる → まかせる → to leave (a matter, decision, etc. to someone); to entrust (to someone); to entrust (someone) with",
+   "任命 → にんめい → appointment; nomination; ordination; commission; designation",
+   "任務 → にんむ → duty; function; office; mission; task; role"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "任（にん） obligation",
+   "任せる（まかせる） to leave (a matter, decision, etc. to someone)"
+  ]
+ },
+ {
+  "no": 93,
+  "kanji": "引",
+  "on": "イン",
+  "kun": "ひ.く, ひ.ける",
+  "arti": "admit, install, jerk, pull, quote, refer to, tug",
+  "kosakata": [
+   "引き → びき → -off (price reduction); discount",
+   "引用 → いんよう → quotation; citation; reference",
+   "引く → ひく → to pull; to tug; to lead (e.g. a horse)",
+   "引き分け → ひきわけ → draw (in competition); tie game"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "引き（びき） -off (price reduction)",
+   "引用（いんよう） quotation"
+  ]
+ },
+ {
+  "no": 94,
+  "kanji": "求",
+  "on": "キュウ, グ",
+  "kun": "もと.める",
+  "arti": "demand, request, require, want, wish for",
+  "kosakata": [
+   "求める → もとめる → to want; to wish for",
+   "求人 → きゅうじん → recruiting; job offer; job vacancy",
+   "求職 → きゅうしょく → job hunting; seeking employment",
+   "求婚 → きゅうこん → marriage proposal; courtship"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "求める（もとめる） to want",
+   "求人（きゅうじん） recruiting"
+  ]
+ },
+ {
+  "no": 95,
+  "kanji": "所",
+  "on": "ショ",
+  "kun": "-ところ, とこ, ところ, どころ",
+  "arti": "extent, place",
+  "kosakata": [
+   "所 → ところ → place; spot; scene; site",
+   "所 → しょ → counter for places",
+   "世帯 → せたい → household; home; family; housekeeping",
+   "所謂 → いわゆる → what is called; what you call; what they call; so-called"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "所（ところ） place",
+   "所（しょ） counter for places"
+  ]
+ },
+ {
+  "no": 96,
+  "kanji": "次",
+  "on": "シ, ジ",
+  "kun": "つ.ぐ, つぎ",
+  "arti": "next, order, sequence",
+  "kosakata": [
+   "次 → つぎ → next; following; subsequent",
+   "次 → じ → next",
+   "次第 → しだい → depending on",
+   "次々 → つぎつぎ → in succession; one by one"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "次（つぎ） next",
+   "次（じ） next"
+  ]
+ },
+ {
+  "no": 97,
+  "kanji": "昨",
+  "on": "サク",
+  "kun": "",
+  "arti": "previous, yesterday",
+  "kosakata": [
+   "昨 → さく → last (year); yesterday",
+   "昨日 → きのう → yesterday",
+   "昨夜 → ゆうべ → last night; yesterday evening",
+   "昨年 → さくねん → last year"
+  ],
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "昨（さく） last (year)",
+   "昨日（きのう） yesterday"
+  ]
+ },
+ {
+  "no": 98,
+  "kanji": "論",
+  "on": "ロン",
+  "kun": "あげつら.う",
+  "arti": "argument, discourse",
+  "kosakata": [
+   "論 → ろん → argument; discussion; dispute; controversy; discourse; debate",
+   "論文 → ろんぶん → thesis; essay; treatise; paper; article",
+   "論争 → ろんそう → dispute; controversy; debate; argument; taking issue",
+   "論じる → ろんじる → to discuss; to talk about; to deal with (a topic)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "論（ろん） argument",
+   "論文（ろんぶん） thesis"
+  ]
+ },
+ {
+  "no": 99,
+  "kanji": "官",
+  "on": "カン",
+  "kun": "",
+  "arti": "bureaucrat, organ, the government",
+  "kosakata": [
+   "官 → かん → government; government service; the bureaucracy",
+   "官 → つかさ → office; official",
+   "官庁 → かんちょう → government office; government agency; authorities",
+   "官僚 → かんりょう → bureaucrat; government official; bureaucracy"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "官（かん） government",
+   "官（つかさ） office"
+  ]
+ },
+ {
+  "no": 100,
+  "kanji": "増",
+  "on": "ゾウ",
+  "kun": "ふ.える, ふ.やす, ま.し, ま.す",
+  "arti": "add, augment, gain, increase, promote",
+  "kosakata": [
+   "増 → ぞう → increase",
+   "増える → ふえる → to increase; to multiply",
+   "増加 → ぞうか → increase; rise; growth; addition; increment",
+   "益々 → ますます → increasingly; more and more; decreasingly (when declining); less and less"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "増（ぞう） increase",
+   "増える（ふえる） to increase"
+  ]
+ },
+ {
+  "no": 101,
+  "kanji": "係",
+  "on": "ケイ",
+  "kun": "-がかり, かか.る, かか.わる, かかり",
+  "arti": "concern oneself, connection, duty, person in charge",
+  "kosakata": [
+   "係 → かかり → charge; duty; person in charge; official; clerk",
+   "係 → がかり → charge; duty; person in charge; official; clerk",
+   "関わる → かかわる → to be involved (in); to get involved (in); to concern oneself (with); to take part (in); to interfere (in)",
+   "係員 → かかりいん → person in charge; official; attendant"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "係（かかり） charge",
+   "係（がかり） charge"
+  ]
+ },
+ {
+  "no": 102,
+  "kanji": "感",
+  "on": "カン",
+  "kun": "",
+  "arti": "emotion, feeling, sensation",
+  "kosakata": [
+   "感 → かん → feeling; sensation; emotion; admiration; impression",
+   "感情 → かんじょう → emotion; feeling; feelings; sentiment",
+   "感覚 → かんかく → sense; sensation; feeling; intuition",
+   "感染 → かんせん → infection; contagion; becoming infected"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "感（かん） feeling",
+   "感情（かんじょう） emotion"
+  ]
+ },
+ {
+  "no": 103,
+  "kanji": "情",
+  "on": "ジョウ, セイ",
+  "kun": "なさ.け",
+  "arti": "circumstances, emotion, facts, feelings, passion, sympathy",
+  "kosakata": [
+   "情 → じょう → feelings; emotion; sentiment",
+   "情報 → じょうほう → information; news; report; intelligence",
+   "状況 → じょうきょう → state of affairs; situation; conditions; circumstances",
+   "状態 → じょうたい → state; condition; situation; appearance; circumstances"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "情（じょう） feelings",
+   "情報（じょうほう） information"
+  ]
+ },
+ {
+  "no": 104,
+  "kanji": "投",
+  "on": "トウ",
+  "kun": "-な.げ, な.げる",
+  "arti": "abandon, discard, give up, hurl, invest in, join, launch into, sell at a loss, throw",
+  "kosakata": [
+   "投 → とう → pitching ability",
+   "投票 → とうひょう → voting; ballot; poll; vote",
+   "投資 → とうし → investment",
+   "投げる → なげる → to throw; to hurl; to fling; to toss; to cast"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "投（とう） pitching ability",
+   "投票（とうひょう） voting"
+  ]
+ },
+ {
+  "no": 105,
+  "kanji": "示",
+  "on": "シ, ジ",
+  "kun": "しめ.す",
+  "arti": "display, express, indicate, point out, show",
+  "kosakata": [
+   "示す → しめす → to (take out and) show; to demonstrate; to tell; to exemplify; to make apparent",
+   "示唆 → しさ → suggestion; hint; implication",
+   "示威運動 → じいうんどう → demonstration; parade; show of strength",
+   "示談 → じだん → settlement out of court; private settlement"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "示す（しめす） to (take out and) show",
+   "示唆（しさ） suggestion"
+  ]
+ },
+ {
+  "no": 106,
+  "kanji": "打",
+  "on": "ダ, ダース",
+  "kun": "う.ち-, う.つ, ぶ.つ",
+  "arti": "dozen, hit, knock, pound, strike",
+  "kosakata": [
+   "打 → ダース → dozen",
+   "打 → だ → hitting a ball (with a bat, golf club, etc.); batting; stroke",
+   "打つ → うつ → to hit; to strike; to knock; to beat; to punch; to slap; to tap; to bang; to clap; to pound",
+   "打ち合わせ → うちあわせ → (preparatory) meeting; briefing session; (making) advance arrangements"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "打（ダース） dozen",
+   "打（だ） hitting a ball (with a bat, golf club, etc.)"
+  ]
+ },
+ {
+  "no": 107,
+  "kanji": "直",
+  "on": "ジカ, ジキ, チョク",
+  "kun": "-なお.す, す.ぐ, ただ.ちに, なお.き, なお.す, なお.る",
+  "arti": "fix, frankness, honesty, repair, straightaway",
+  "kosakata": [
+   "値 → あたい → price; cost",
+   "直 → じき → soon; in a moment; before long; shortly",
+   "直 → ちょく → direct",
+   "直 → なお → straight"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "直（じき） soon",
+   "直（ちょく） direct"
+  ]
+ },
+ {
+  "no": 108,
+  "kanji": "両",
+  "on": "リョウ",
+  "kun": "てる, ふたつ",
+  "arti": "both, counter for carriages (e.g., in a train), old Japanese coin, two",
+  "kosakata": [
+   "両 → りょう → both (hands, parents, sides, etc.)",
+   "両 → りゃん → two",
+   "両 → テール → tael (Chinese unit of weight and currency)",
+   "諸 → もろ → both"
+  ],
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "両（りょう） both (hands, parents, sides, etc.)",
+   "両（りゃん） two"
+  ]
+ },
+ {
+  "no": 109,
+  "kanji": "式",
+  "on": "シキ",
+  "kun": "",
+  "arti": "ceremony, expression, form, function, method, rite, style, system",
+  "kosakata": [
+   "式 → しき → way; style; fashion; method; system; form; type",
+   "式典 → しきてん → ceremony; rites",
+   "式服 → しきふく → ceremonial dress",
+   "式場 → しきじょう → ceremonial hall (e.g. wedding, funeral); hall for ceremonies; place of ceremony"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "式（しき） way",
+   "式典（しきてん） ceremony"
+  ]
+ },
+ {
+  "no": 110,
+  "kanji": "果",
+  "on": "カ",
+  "kun": "-は.たす, -は.てる, は.たす, は.て, は.てる, はた.す",
+  "arti": "achieve, carry out, complete, end, finish, fruit, reward, succeed",
+  "kosakata": [
+   "果て → はて → end; extremity; limit",
+   "果 → か → phala (attained state, result)",
+   "捗 → はか → progress",
+   "果たて → はたて → end; limit; extremity"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "果て（はて） end",
+   "果（か） phala (attained state, result)"
+  ]
+ },
+ {
+  "no": 111,
+  "kanji": "容",
+  "on": "ヨウ",
+  "kun": "い.れる",
+  "arti": "contain, form, looks",
+  "kosakata": [
+   "形 → かたち → form; shape; figure",
+   "顔 → かんばせ → countenance; visage",
+   "入れる → いれる → to put in; to let in; to take in; to bring in; to insert; to install (e.g. software); to set (a jewel, etc.); to ink in (e.g. tattoo)",
+   "気質 → きしつ → disposition; temperament; nature; mentality; spirit; character; trait; turn of mind"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": []
+ },
+ {
+  "no": 112,
+  "kanji": "必",
+  "on": "ヒツ",
+  "kun": "かなら.ず",
+  "arti": "certain, inevitable, invariably",
+  "kosakata": [
+   "必 → ひつ → definiteness; certainty",
+   "必要 → ひつよう → necessary; needed; essential; indispensable",
+   "必ず → かならず → always; without exception; necessarily; certainly; without fail; positively; invariably",
+   "必ずしも → かならずしも → (not) always; (not) necessarily; (not) entirely; (not) all"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "必（ひつ） definiteness",
+   "必要（ひつよう） necessary"
+  ]
+ },
+ {
+  "no": 113,
+  "kanji": "演",
+  "on": "エン",
+  "kun": "",
+  "arti": "act, performance, play, render, stage",
+  "kosakata": [
+   "演説 → えんぜつ → speech; address",
+   "演劇 → えんげき → drama; theatre; theater; play",
+   "演出 → えんしゅつ → direction (of a play, film, etc.); production",
+   "演奏 → えんそう → musical performance"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "演説（えんぜつ） speech",
+   "演劇（えんげき） drama"
+  ]
+ },
+ {
+  "no": 114,
+  "kanji": "争",
+  "on": "ソウ",
+  "kun": "あらそ.う, いか.でか",
+  "arti": "argue, contend, dispute",
+  "kosakata": [
+   "争う → あらそう → to compete; to contest; to contend",
+   "争い → あらそい → fight; dispute; feud; conflict; struggle; strife; discord; argument; quarrel; controversy",
+   "争点 → そうてん → point at issue",
+   "争議 → そうぎ → dispute; quarrel; strike"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "争う（あらそう） to compete",
+   "争い（あらそい） fight"
+  ]
+ },
+ {
+  "no": 115,
+  "kanji": "談",
+  "on": "ダン",
+  "kun": "",
+  "arti": "discuss, talk",
+  "kosakata": [
+   "談 → だん → talk; story; conversation",
+   "談話 → だんわ → talk; conversation; dialogue",
+   "談笑 → だんしょう → friendly chat; pleasant chat; lighthearted talk; friendly conversation",
+   "談合 → だんごう → bid rigging; collusion (on contract bidding); (illegal) price-fixing agreement"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "談（だん） talk",
+   "談話（だんわ） talk"
+  ]
+ },
+ {
+  "no": 116,
+  "kanji": "能",
+  "on": "ノウ",
+  "kun": "あた.う, よ.く",
+  "arti": "ability, capacity, skill, talent",
+  "kosakata": [
+   "能 → のう → talent; gift; function",
+   "良く → よく → nicely; properly; well; skillfully; skilfully",
+   "能力 → のうりょく → ability; faculty",
+   "能率 → のうりつ → efficiency"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "能（のう） talent",
+   "能力（のうりょく） ability"
+  ]
+ },
+ {
+  "no": 117,
+  "kanji": "位",
+  "on": "イ",
+  "kun": "くらい, ぐらい",
+  "arti": "about, crown, grade, rank, some, throne",
+  "kosakata": [
+   "位 → くらい → throne; crown; (nobleman's) seat",
+   "位 → い → rank; place (e.g. first place)",
+   "位置 → いち → place; position; location",
+   "位する → くらいする → to rank (as); to occupy (a position)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "位（くらい） throne",
+   "位（い） rank"
+  ]
+ },
+ {
+  "no": 118,
+  "kanji": "置",
+  "on": "チ",
+  "kun": "-お.き, お.く",
+  "arti": "deposit, employ, keep, leave behind, pawn, placement, put, set",
+  "kosakata": [
+   "置く → おく → to put; to place",
+   "置き去り → おきざり → leaving behind; desertion; abandonment",
+   "置き換える → おきかえる → to move (something) to another location; to change the position of; to rearrange",
+   "置き忘れる → おきわすれ る → to leave behind; to misplace; to forget"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "置く（おく） to put",
+   "置き去り（おきざり） leaving behind"
+  ]
+ },
+ {
+  "no": 119,
+  "kanji": "流",
+  "on": "リュウ, ル",
+  "kun": "-なが.す, なが.す, なが.れ, なが.れる",
+  "arti": "a sink, current, flow, forfeit",
+  "kosakata": [
+   "流 → りゅう → way; manner; style; fashion; mode",
+   "流 → る → exile (second most severe of the five ritsuryō punishments)",
+   "旒 → りゅう → counter for flags, banners, etc.",
+   "流れ → ながれ → flow (of a fluid or gas); stream; current"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "流（りゅう） way",
+   "流（る） exile (second most severe of the five ritsuryō punishments)"
+  ]
+ },
+ {
+  "no": 120,
+  "kanji": "格",
+  "on": "カク, キャク, コウ, ゴウ",
+  "kun": "",
+  "arti": "capacity, case (law, grammar), character, rank, status",
+  "kosakata": [
+   "格 → かく → status; position; rank",
+   "格 → きゃく → amendment (to ritsuryō)",
+   "格好 → かっこう → shape; form; figure; posture; pose",
+   "格別 → かくべつ → particular; special; exceptional; especial"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "格（かく） status",
+   "格（きゃく） amendment (to ritsuryō)"
+  ]
+ },
+ {
+  "no": 121,
+  "kanji": "疑",
+  "on": "ギ",
+  "kun": "うたが.う",
+  "arti": "be suspicious, distrust, doubt, question",
+  "kosakata": [
+   "疑 → ぎ → doubt; distrust; suspicion (of)",
+   "疑う → うたがう → to doubt; to distrust; to be suspicious of; to suspect",
+   "疑問 → ぎもん → doubt; question; suspicion; dubiousness",
+   "疑惑 → ぎわく → doubt; misgivings; distrust; suspicion"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "疑（ぎ） doubt",
+   "疑う（うたがう） to doubt"
+  ]
+ },
+ {
+  "no": 122,
+  "kanji": "過",
+  "on": "カ",
+  "kun": "あやま.ち, あやま.つ, す.ぎる, す.ごす, よ.ぎる, よぎ.る",
+  "arti": "error, exceed, go beyond, overdo",
+  "kosakata": [
+   "過 → か → surplus-; excess-; over-",
+   "過去 → かこ → the past; bygone days",
+   "過失 → かしつ → accident (caused by negligence); error; blunder",
+   "過ぎる → すぎる → to pass through; to pass by; to go beyond"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "過（か） surplus-",
+   "過去（かこ） the past"
+  ]
+ },
+ {
+  "no": 123,
+  "kanji": "局",
+  "on": "キョク",
+  "kun": "つぼね",
+  "arti": "affair, board, bureau, conclusion, court lady, her apartment, lady-in-waiting, office",
+  "kosakata": [
+   "局 → きょく → bureau; department",
+   "局 → つぼね → court lady (Heian period); lady-in- waiting",
+   "局長 → きょくちょう → bureau director; office chief",
+   "局面 → きょくめん → position in a game; state of the game"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "局（きょく） bureau",
+   "局（つぼね） court lady (Heian period)"
+  ]
+ },
+ {
+  "no": 124,
+  "kanji": "放",
+  "on": "ホウ",
+  "kun": "-っぱな.し, こ.く, はな.す, はな.つ, はな.れる, ほう.る",
+  "arti": "banish, emit, fire, liberate, release, set free, shoot",
+  "kosakata": [
+   "放送 → ほうそう → broadcasting; broadcast; program; announcement",
+   "放射 → ほうしゃ → radiation; emission",
+   "放す → はなす → to release; to let go; to free; to set free; to let loose; to turn loose",
+   "放棄 → ほうき → abandonment; renouncement; renunciation; resignation; abdication; surrender; relinquishing; waiving; giving up"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "放送（ほうそう） broadcasting",
+   "放射（ほうしゃ） radiation"
+  ]
+ },
+ {
+  "no": 125,
+  "kanji": "常",
+  "on": "ジョウ",
+  "kun": "つね, とこ-",
+  "arti": "always, common, continually, long-lasting, normal, ordinary, regular, usual",
+  "kosakata": [
+   "永久 → えいきゅう → eternity; permanence; perpetuity",
+   "常 → つね → usual state of things",
+   "只 → ただ → ordinary; common; usual",
+   "常 → とこ → constant; unchanging; eternal"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "常（つね） usual state of things",
+   "常（とこ） constant"
+  ]
+ },
+ {
+  "no": 126,
+  "kanji": "状",
+  "on": "ジョウ",
+  "kun": "",
+  "arti": "appearance, circumstances, conditions, form, status quo",
+  "kosakata": [
+   "状 → じょう → form; shape; appearance",
+   "様 → さま → Mr; Mrs; Miss; Ms",
+   "状況 → じょうきょう → state of affairs; situation; conditions; circumstances",
+   "状態 → じょうたい → state; condition; situation; appearance; circumstances"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "状（じょう） form",
+   "状況（じょうきょう） state of affairs"
+  ]
+ },
+ {
+  "no": 127,
+  "kanji": "球",
+  "on": "キュウ",
+  "kun": "たま",
+  "arti": "ball, sphere",
+  "kosakata": [
+   "玉 → たま → ball; sphere; globe; orb",
+   "球 → きゅう → sphere; globe; ball; bulb",
+   "鞠 → まり → ball (for sport, games, etc.)",
+   "球技 → きゅうぎ → ball game (e.g. baseball, tennis, soccer)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "球（きゅう） sphere",
+   "球技（きゅうぎ） ball game (e.g. baseball, tennis, soccer)"
+  ]
+ },
+ {
+  "no": 128,
+  "kanji": "職",
+  "on": "ショク, ソク",
+  "kun": "",
+  "arti": "employment, post, work",
+  "kosakata": [
+   "職 → しょく → job; work; employment; occupation; position",
+   "職 → しき → agency (government department between a ministry and a bureau under the ritsuryō system)",
+   "職業 → しょくぎょう → occupation; profession; job; vocation; trade; calling; business",
+   "職人 → しょくにん → craftsman; artisan; tradesman; worker; workman"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "職（しょく） job",
+   "職（しき） agency (government department between a ministry and a bureau under the ritsuryō system)"
+  ]
+ },
+ {
+  "no": 129,
+  "kanji": "与",
+  "on": "ヨ",
+  "kun": "あずか.る, あた.える, くみ.する, ともに",
+  "arti": "award, bestow, cause, gift, give, godsend, impart, participate in, provide",
+  "kosakata": [
+   "与 → むた → together with ...",
+   "与党 → よとう → ruling party; government party; party in power; government",
+   "与える → あたえる → to give (esp. to someone of lower status); to bestow; to grant; to confer; to present; to award",
+   "与野党 → よやとう → ruling and opposition parties; parties in and out of power"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "与（むた） together with ...",
+   "与党（よとう） ruling party"
+  ]
+ },
+ {
+  "no": 130,
+  "kanji": "供",
+  "on": "キョウ, ク, クウ, グ",
+  "kun": "-ども, そな.える, とも",
+  "arti": "accompany, offer, present, serve (meal), submit",
+  "kosakata": [
+   "供 → とも → companion; follower; attendant; retinue",
+   "供給 → きょうきゅう → supply; provision",
+   "共に → ともに → together; jointly",
+   "供物 → くもつ → offering (e.g. to the gods); votive offering"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "供（とも） companion",
+   "供給（きょうきゅう） supply"
+  ]
+ },
+ {
+  "no": 131,
+  "kanji": "役",
+  "on": "エキ, ヤク",
+  "kun": "",
+  "arti": "campaign, drafted labor, duty, office, role, service, war",
+  "kosakata": [
+   "役 → やく → role; assignment; responsibility; duty; function; job; service",
+   "役 → えき → war; campaign; battle",
+   "役割 → やくわり → part; assigning (allotment of) parts; role; duties",
+   "役所 → やくしょ → government office; public office"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "役（やく） role",
+   "役（えき） war"
+  ]
+ },
+ {
+  "no": 132,
+  "kanji": "構",
+  "on": "コウ",
+  "kun": "かま.う, かま.える",
+  "arti": "appearance, build, posture, set up, stance",
+  "kosakata": [
+   "構え → かまえ → structure; construction; appearance",
+   "梶 → かじ → paper mulberry (Broussonetia papyrifera)",
+   "構う → かまう → to mind; to care about; to be concerned about; to have a regard for",
+   "構成 → こうせい → composition; construction; formation; makeup; structure; organization; organisation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "構え（かまえ） structure",
+   "構う（かまう） to mind"
+  ]
+ },
+ {
+  "no": 133,
+  "kanji": "割",
+  "on": "カツ",
+  "kun": "さ.く, わ.り, わ.る, わ.れる, わり",
+  "arti": "comparatively, cut, divide, proportion, separate, split",
+  "kosakata": [
+   "割り → わり → rate; ratio; proportion",
+   "割合 → わりあい → rate; ratio; percentage; proportion",
+   "割れる → われる → to break; to be smashed",
+   "割る → わる → to divide"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "割り（わり） rate",
+   "割合（わりあい） rate"
+  ]
+ },
+ {
+  "no": 134,
+  "kanji": "身",
+  "on": "シン",
+  "kun": "み",
+  "arti": "one's station in life, person, somebody",
+  "kosakata": [
+   "身 → み → one's body; one's person",
+   "躯 → むくろ → (dead) body; corpse",
+   "体 → からだ → body",
+   "味方 → みかた → friend; ally; supporter"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "身（み） one's body"
+  ]
+ },
+ {
+  "no": 135,
+  "kanji": "費",
+  "on": "ヒ",
+  "kun": "つい.える, つい.やす",
+  "arti": "consume, cost, expense, spend, waste",
+  "kosakata": [
+   "費 → ひ → cost; expense",
+   "直 → あたい → Atai (post-Taika reform hereditary title often given to regional administrators)",
+   "費用 → ひよう → cost; expense",
+   "費やす → ついやす → to spend; to expend; to consume"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "費（ひ） cost",
+   "費用（ひよう） cost"
+  ]
+ },
+ {
+  "no": 136,
+  "kanji": "由",
+  "on": "ユ, ユイ, ユウ",
+  "kun": "よ.る, よし",
+  "arti": "a reason, wherefore",
+  "kosakata": [
+   "由 → よし → reason; significance; cause",
+   "依る → よる → to be due to; to be caused by",
+   "由来 → ゆらい → origin; source; history; derivation",
+   "由緒 → ゆいしょ → history; pedigree; lineage"
+  ],
+  "volume": [
+   "N4VOL3",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "由（よし） reason",
+   "由来（ゆらい） origin"
+  ]
+ },
+ {
+  "no": 137,
+  "kanji": "説",
+  "on": "セツ, ゼイ",
+  "kun": "と.く",
+  "arti": "explanation, opinion, rumor, theory",
+  "kosakata": [
+   "説 → せつ → theory; doctrine",
+   "説明 → せつめい → explanation; exposition; description; account; caption; legend",
+   "説得 → せっとく → persuasion",
+   "説く → とく → to explain; to preach; to advocate"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "説（せつ） theory",
+   "説明（せつめい） explanation"
+  ]
+ },
+ {
+  "no": 138,
+  "kanji": "難",
+  "on": "ナン",
+  "kun": "-がた.い, -にく.い, かた.い, むずか.しい, むつか.しい,",
+  "arti": "accident, defect, difficult, impossible, trouble",
+  "kosakata": [
+   "難 → なん → difficulty; trouble; hardship; shortage",
+   "難しい → むずかしい → difficult; hard; troublesome; complicated; serious (disease, problem, etc.)",
+   "難い → かたい → difficult; hard",
+   "難民 → なんみん → refugee; displaced person"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "難（なん） difficulty",
+   "難しい（むずかしい） difficult"
+  ]
+ },
+ {
+  "no": 139,
+  "kanji": "優",
+  "on": "ウ, ユウ",
+  "kun": "すぐ.れる, まさ.る, やさ.しい",
+  "arti": "actor, excel, gentleness, superiority, surpass, tenderness",
+  "kosakata": [
+   "優 → ゆう → Excellent (grade); A",
+   "優 → やさ → gentle; affectionate",
+   "優勝 → ゆうしょう → overall victory; championship; winning the title",
+   "優しい → やさしい → tender; kind; gentle; graceful; affectionate; amiable"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "優（ゆう） Excellent (grade)",
+   "優（やさ） gentle"
+  ]
+ },
+ {
+  "no": 140,
+  "kanji": "夫",
+  "on": "フ, フウ, ブ",
+  "kun": "おっと, それ",
+  "arti": "husband, man",
+  "kosakata": [
+   "夫 → おっと → husband",
+   "妻 → つま → wife",
+   "妻 → つま → my dear; dear; honey",
+   "雄 → お → male"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "夫（おっと） husband"
+  ]
+ },
+ {
+  "no": 141,
+  "kanji": "収",
+  "on": "シュウ",
+  "kun": "おさ.まる, おさ.める",
+  "arti": "income, obtain, pay, reap, store, supply",
+  "kosakata": [
+   "収入 → しゅうにゅう → income; earnings; revenue; proceeds; takings; receipts",
+   "収穫 → しゅうかく → harvest; crop; ingathering",
+   "収益 → しゅうえき → earnings; proceeds; returns; revenue",
+   "収める → おさめる → to put (into); to put away (in); to put back (in); to keep (in); to store (in); to restore (to its place)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "収入（しゅうにゅう） income",
+   "収穫（しゅうかく） harvest"
+  ]
+ },
+ {
+  "no": 142,
+  "kanji": "断",
+  "on": "ダン",
+  "kun": "ことわ.る, さだ.める, た.つ",
+  "arti": "apologize, cutting, decision, decline, dismiss, judgement, prohibit, refuse, severance, warn",
+  "kosakata": [
+   "断 → だん → decision; judgment; resolution",
+   "断る → ことわる → to refuse; to reject; to dismiss; to turn down; to decline",
+   "断定 → だんてい → conclusion; decision; judgement; declaration",
+   "断水 → だんすい → suspension of water supply; water outage"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "断（だん） decision",
+   "断る（ことわる） to refuse"
+  ]
+ },
+ {
+  "no": 143,
+  "kanji": "石",
+  "on": "コク, シャク, セキ",
+  "kun": "いし",
+  "arti": "stone",
+  "kosakata": [
+   "石 → いし → stone; rock; pebble",
+   "石 → こく → koku; traditional unit of volume, approx. 180.4 litres",
+   "石 → せき → counter for jewels in a watch",
+   "石鹸 → せっけん → soap"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "石（いし） stone",
+   "石（こく） koku"
+  ]
+ },
+ {
+  "no": 144,
+  "kanji": "違",
+  "on": "イ",
+  "kun": "-ちが.える, たが.う, たが.える, ちが.い, ちが.う, ちが.える",
+  "arti": "differ, difference",
+  "kosakata": [
+   "違う → ちがう → to differ (from); to be different; to be distinct; to be unlike; to vary; to disagree (with)",
+   "違い → ちがい → difference; distinction; discrepancy",
+   "違反 → いはん → violation; offense; offence; breach; transgression; infringement; contravention",
+   "違いない → ちがいない → sure; no mistaking it; for certain; without doubt"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "違う（ちがう） to differ (from)",
+   "違い（ちがい） difference"
+  ]
+ },
+ {
+  "no": 145,
+  "kanji": "消",
+  "on": "ショウ",
+  "kun": "き.える, け.す",
+  "arti": "blow out, cancel, extinguish, neutralize, turn off",
+  "kosakata": [
+   "消費 → しょうひ → consumption; expenditure; spending",
+   "消す → けす → to erase; to rub out; to rub off; to cross out; to delete",
+   "消える → きえる → to disappear; to vanish; to go out of sight; to go away; to become lost",
+   "消化 → しょうか → digestion (of food)"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "消費（しょうひ） consumption",
+   "消す（けす） to erase"
+  ]
+ },
+ {
+  "no": 146,
+  "kanji": "神",
+  "on": "シン, ジン",
+  "kun": "かみ, かん-, こう-",
+  "arti": "gods, mind, soul",
+  "kosakata": [
+   "神 → かみ → god; deity; divinity; spirit; kami",
+   "神 → しん → spirit; psyche",
+   "神 → み → soul; spirit; divine spirit",
+   "神 → かむ → divine; godly"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "神（かみ） god",
+   "神（しん） spirit"
+  ]
+ },
+ {
+  "no": 147,
+  "kanji": "規",
+  "on": "キ",
+  "kun": "",
+  "arti": "measure, standard",
+  "kosakata": [
+   "規制 → きせい → regulation; (traffic) policing; control; restriction",
+   "規範 → きはん → model; standard; pattern; norm; criterion; example",
+   "基準 → きじゅん → standard; criterion; norm; benchmark; measure; gauge; basis",
+   "規律 → きりつ → order; observance; discipline"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "規制（きせい） regulation",
+   "規範（きはん） model"
+  ]
+ },
+ {
+  "no": 148,
+  "kanji": "術",
+  "on": "ジュツ",
+  "kun": "すべ",
+  "arti": "art, magic, means, resources, skill, technique, trick",
+  "kosakata": [
+   "術 → じゅつ → art; technique; skill",
+   "術 → すべ → way; method; means",
+   "術中 → じゅっちゅう → trick; trap; stratagem",
+   "術策 → じゅっさく → artifice; intrigue"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "術（じゅつ） art",
+   "術（すべ） way"
+  ]
+ },
+ {
+  "no": 149,
+  "kanji": "備",
+  "on": "ビ",
+  "kun": "そな.える, そな.わる, つぶさ.に",
+  "arti": "equip, preparation, provision",
+  "kosakata": [
+   "備える → そなえる → to furnish with; to equip with; to provide; to install",
+   "備わる → そなわる → to be furnished with; to be provided with; to be equipped with",
+   "備え付ける → そなえつけ る → to provide; to furnish; to equip; to install",
+   "備え → そなえ → preparation; provision; guarding"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "備える（そなえる） to furnish with",
+   "備わる（そなわる） to be furnished with"
+  ]
+ },
+ {
+  "no": 150,
+  "kanji": "宅",
+  "on": "タク",
+  "kun": "",
+  "arti": "home, house, my husband, our house, residence",
+  "kosakata": [
+   "宅 → たく → house; home",
+   "宅配便 → たくはいびん → express home delivery service",
+   "宅急便 → たっきゅうびん → TA-Q-BIN (express home delivery service provided by Yamato Transport)",
+   "宅地 → たくち → building lot; residential land"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "宅（たく） house",
+   "宅配便（たくはいびん） express home delivery service"
+  ]
+ },
+ {
+  "no": 151,
+  "kanji": "害",
+  "on": "ガイ",
+  "kun": "",
+  "arti": "harm, injury",
+  "kosakata": [
+   "害 → がい → injury; harm; evil influence; damage",
+   "損なう → そこなう → to harm; to hurt; to injure; to damage; to spoil; to mar; to ruin",
+   "害する → がいする → to injure; to damage; to harm; to hurt",
+   "害虫 → がいちゅう → harmful insect; noxious insect; pest; vermin"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "害（がい） injury",
+   "害する（がいする） to injure"
+  ]
+ },
+ {
+  "no": 152,
+  "kanji": "配",
+  "on": "ハイ",
+  "kun": "くば.る",
+  "arti": "distribute, exile, rationing, spouse",
+  "kosakata": [
+   "配達 → はいたつ → delivery",
+   "配る → くばる → to distribute; to hand out; to deliver; to deal out; to serve out",
+   "配置 → はいち → arrangement (of resources); deployment; stationing; posting; disposition; configuration; layout",
+   "配布 → はいふ → distribution"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "配達（はいたつ） delivery",
+   "配る（くばる） to distribute"
+  ]
+ },
+ {
+  "no": 153,
+  "kanji": "警",
+  "on": "ケイ",
+  "kun": "いまし.める",
+  "arti": "admonish, commandment",
+  "kosakata": [
+   "警察 → けいさつ → police",
+   "警官 → けいかん → police officer; policeman; constable",
+   "警告 → けいこく → warning; caution; admonition",
+   "警備 → けいび → defense; defence; guard; policing; security"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "警察（けいさつ） police",
+   "警官（けいかん） police officer"
+  ]
+ },
+ {
+  "no": 154,
+  "kanji": "育",
+  "on": "イク",
+  "kun": "そだ.ち, そだ.つ, そだ.てる, はぐく.む",
+  "arti": "bring up, grow up, raise, rear",
+  "kosakata": [
+   "育てる → そだてる → to raise; to rear; to bring up",
+   "育つ → そだつ → to be raised (e.g. child); to be brought up; to grow (up)",
+   "育児 → いくじ → childcare; child-rearing; nursing; upbringing",
+   "育ち → そだち → growth; breeding"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "育てる（そだてる） to raise",
+   "育つ（そだつ） to be raised (e.g. child)"
+  ]
+ },
+ {
+  "no": 155,
+  "kanji": "席",
+  "on": "セキ",
+  "kun": "むしろ",
+  "arti": "mat, occasion, place, seat",
+  "kosakata": [
+   "席 → せき → seat",
+   "筵 → むしろ → woven mat (esp. one made of straw)",
+   "席上 → せきじょう → at the meeting; on the occasion",
+   "席巻 → せっけん → sweeping (over, across); conquering; overwhelming"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "席（せき） seat",
+   "席上（せきじょう） at the meeting"
+  ]
+ },
+ {
+  "no": 156,
+  "kanji": "訪",
+  "on": "ホウ",
+  "kun": "おとず.れる, たず.ねる, と.う",
+  "arti": "call on, look up, offer sympathy, visit",
+  "kosakata": [
+   "訪ねる → たずねる → to visit; to call on; to pay a visit to",
+   "訪問 → ほうもん → call; visit",
+   "問う → とう → to ask; to inquire",
+   "訪れる → おとずれる → to visit; to call on"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "訪ねる（たずねる） to visit",
+   "訪問（ほうもん） call"
+  ]
+ },
+ {
+  "no": 157,
+  "kanji": "乗",
+  "on": "ショウ, ジョウ",
+  "kun": "-の.り, の.せる, の.る",
+  "arti": "board, counter for vehicles, join, mount, multiplication, power, record, ride",
+  "kosakata": [
+   "乗 → じょう → (nth) power",
+   "乗り物 → のりもの → vehicle; conveyance; (means of) transport",
+   "乗る → のる → to get on (train, plane, bus, ship, etc.); to get in; to board; to take; to embark",
+   "乗り換え → のりかえ → transfer (trains, buses, etc.); change; connection"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "乗（じょう） (nth) power",
+   "乗り物（のりもの） vehicle"
+  ]
+ },
+ {
+  "no": 158,
+  "kanji": "残",
+  "on": "サン, ザン",
+  "kun": "そこな.う, のこ.す, のこ.り, のこ.る",
+  "arti": "balance, leftover, remainder",
+  "kosakata": [
+   "残 → ざん → remainder; the rest; what is left",
+   "残念 → ざんねん → regrettable; unfortunate; disappointing; vexing",
+   "残る → のこる → to remain; to be left",
+   "残す → のこす → to leave (behind)"
+  ],
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "残（ざん） remainder",
+   "残念（ざんねん） regrettable"
+  ]
+ },
+ {
+  "no": 159,
+  "kanji": "想",
+  "on": "ソ, ソウ",
+  "kun": "おも.う",
+  "arti": "concept, idea, think, thought",
+  "kosakata": [
+   "想 → そう → conception; idea; thought",
+   "思う → おもう → to think; to consider; to believe; to reckon",
+   "想像 → そうぞう → imagination; supposition; guess",
+   "思い出 → おもいで → memories; recollections; reminiscence"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "想（そう） conception",
+   "想像（そうぞう） imagination"
+  ]
+ },
+ {
+  "no": 160,
+  "kanji": "声",
+  "on": "ショウ, セイ",
+  "kun": "こえ, こわ-",
+  "arti": "voice",
+  "kosakata": [
+   "声 → こえ → voice",
+   "声 → しょう → voice; sound",
+   "声明 → せいめい → declaration; statement; proclamation",
+   "声楽 → せいがく → vocal music"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "声（こえ） voice",
+   "声（しょう） voice"
+  ]
+ },
+ {
+  "no": 161,
+  "kanji": "助",
+  "on": "ジョ",
+  "kun": "す.ける, すけ, たす.かる, たす.ける",
+  "arti": "assist, help, rescue",
+  "kosakata": [
+   "助 → じょ → help; rescue; assistant",
+   "助 → すけ → assistance; help; helper",
+   "助手 → じょしゅ → assistant; helper",
+   "助言 → じょげん → advice; counsel; suggestion; tip; hint"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "助（じょ） help",
+   "助（すけ） assistance"
+  ]
+ },
+ {
+  "no": 162,
+  "kanji": "労",
+  "on": "ロウ",
+  "kun": "いた.ずき, いたわ.る, つか.れる, ねぎら, ねぎら.う, ろう.する",
+  "arti": "labor, reward for, thank for, toil, trouble",
+  "kosakata": [
+   "労 → ろう → labor; labour; toil; trouble; pains; work; effort; striving",
+   "労働 → ろうどう → labor; labour; work",
+   "労力 → ろうりょく → labour; labor; effort; toil; trouble",
+   "労働組合 → ろうどうくみ あい → labor union; labour union; trade union"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "労（ろう） labor",
+   "労働（ろうどう） labor"
+  ]
+ },
+ {
+  "no": 163,
+  "kanji": "例",
+  "on": "レイ",
+  "kun": "たと.える",
+  "arti": "custom, example, precedent, usage",
+  "kosakata": [
+   "例 → れい → example; instance; illustration; case",
+   "例 → ためし → precedent; example",
+   "例えば → たとえば → for example; for instance; e.g.",
+   "例え → たとえ → example"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "例（れい） example",
+   "例（ためし） precedent"
+  ]
+ },
+ {
+  "no": 164,
+  "kanji": "然",
+  "on": "ゼン, ネン",
+  "kun": "さ, しか, しか.し, しか.り",
+  "arti": "if so, in that case, so, sort of thing, well",
+  "kosakata": [
+   "然 → しか → like that; as such",
+   "然 → さ → so; like that; in that way",
+   "然 → ぜん → -like",
+   "然し → しかし → however; but"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "然（しか） like that",
+   "然（さ） so"
+  ]
+ },
+ {
+  "no": 165,
+  "kanji": "限",
+  "on": "ゲン",
+  "kun": "-かぎ.り, かぎ.り, かぎ.る",
+  "arti": "limit, restrict, to best of ability",
+  "kosakata": [
+   "切り → きり → end; finish; place to stop",
+   "限る → かぎる → to restrict; to limit; to confine",
+   "限界 → げんかい → limit; bound",
+   "限度 → げんど → limit; bounds"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "限る（かぎる） to restrict",
+   "限界（げんかい） limit"
+  ]
+ },
+ {
+  "no": 166,
+  "kanji": "追",
+  "on": "ツイ",
+  "kun": "お.う",
+  "arti": "chase, drive away, follow, meanwhile, pursue",
+  "kosakata": [
+   "追いつく → おいつく → to catch up (with); to draw level; to pull even; to reach",
+   "追う → おう → to chase; to run after; to pursue; to follow after",
+   "追加 → ついか → addition; supplement; appending; appendix",
+   "追い越す → おいこす → to pass (e.g. car); to overtake"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "追いつく（おいつく） to catch up (with)",
+   "追う（おう） to chase"
+  ]
+ },
+ {
+  "no": 167,
+  "kanji": "商",
+  "on": "ショウ",
+  "kun": "あきな.う",
+  "arti": "dealing in, make a deal, merchant, selling",
+  "kosakata": [
+   "商 → しょう → quotient",
+   "商人 → しょうにん → merchant; trader; tradesman; dealer; shopkeeper",
+   "商品 → しょうひん → commodity; article of commerce; goods; stock; merchandise",
+   "商業 → しょうぎょう → commerce; trade; business"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "商（しょう） quotient",
+   "商人（しょうにん） merchant"
+  ]
+ },
+ {
+  "no": 168,
+  "kanji": "伝",
+  "on": "テン, デン",
+  "kun": "-づた.い, つた.う, つた.える, つた.わる, つだ.う, つて",
+  "arti": "communicate, follow, go along, legend, report, tradition, transmit, walk along",
+  "kosakata": [
+   "伝 → でん → legend; tradition",
+   "伝 → つて → means of making contact; intermediary; go-between",
+   "伝統 → でんとう → tradition; convention",
+   "伝記 → でんき → biography; life story"
+  ],
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "伝（でん） legend",
+   "伝（つて） means of making contact"
+  ]
+ },
+ {
+  "no": 169,
+  "kanji": "形",
+  "on": "ギョウ, ケイ",
+  "kun": "-がた, かた, かたち, なり",
+  "arti": "form, shape, style",
+  "kosakata": [
+   "形 → かたち → form; shape; figure",
+   "形 → かた → shape; form; style",
+   "形 → なり → style; way; shape; form; appearance; state",
+   "形 → けい → form"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "形（かたち） form",
+   "形（かた） shape"
+  ]
+ },
+ {
+  "no": 170,
+  "kanji": "景",
+  "on": "ケイ",
+  "kun": "",
+  "arti": "scenery, view",
+  "kosakata": [
+   "影 → かげ → shadow; silhouette; figure; shape",
+   "景 → けい → vista; view; scene; scenic view",
+   "景色 → けしき → scenery; scene; landscape",
+   "景気 → けいき → business conditions; the market; economic activity; economic climate"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "景（けい） vista",
+   "景色（けしき） scenery"
+  ]
+ },
+ {
+  "no": 171,
+  "kanji": "落",
+  "on": "ラク",
+  "kun": "お.ち, お.ちる, お.とす",
+  "arti": "come down, drop, fall, hamlet, village",
+  "kosakata": [
+   "落ち → おち → slip; omission",
+   "落ちる → おちる → to fall; to drop; to come down; to crash; to collapse; to cave in; to give way",
+   "落とす → おとす → to drop; to lose; to let fall; to shed (light); to cast (one's gaze); to pour in (liquid); to leave behind",
+   "落ち着く → おちつく → to calm down; to compose oneself; to regain presence of mind; to relax"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "落ち（おち） slip",
+   "落ちる（おちる） to fall"
+  ]
+ },
+ {
+  "no": 172,
+  "kanji": "好",
+  "on": "コウ",
+  "kun": "い.い, この.む, す.く, よ.い",
+  "arti": "fond, like something, pleasing",
+  "kosakata": [
+   "好 → こう → good",
+   "誼 → よしみ → friendship; friendly relations; connection; relation; intimacy",
+   "良い → よい → good; excellent; fine; nice; pleasant; agreeable",
+   "好き → すき → liking; being fond of; to one's liking; to one's taste; preferred; favourite"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "好（こう） good",
+   "好き（すき） liking"
+  ]
+ },
+ {
+  "no": 173,
+  "kanji": "頭",
+  "on": "ズ, ト, トウ",
+  "kun": "-がしら, あたま, かしら, かぶり",
+  "arti": "counter for large animals, head",
+  "kosakata": [
+   "頭 → あたま → head",
+   "頭 → とう → counter for large animals (e.g. head of cattle); counter for insects in a collection; counter for helmets, masks, etc.",
+   "頭 → がしら → top of ...; head of ...",
+   "頭 → かぶし → shape of one's head"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "頭（あたま） head",
+   "頭（とう） counter for large animals (e.g. head of cattle)"
+  ]
+ },
+ {
+  "no": 174,
+  "kanji": "退",
+  "on": "タイ",
+  "kun": "しりぞ.く, しりぞ.ける, ど.く, の.く, の.ける, ひ.く",
+  "arti": "expel, reject, repel, resign, retire, retreat, withdraw",
+  "kosakata": [
+   "退屈 → たいくつ → tedious; boring; dull; uninteresting; tiresome; monotonous",
+   "下がる → さがる → to come down; to go down; to fall; to drop; to sink; to get lower",
+   "退院 → たいいん → leaving hospital; discharge from hospital",
+   "退学 → たいがく → dropping out of school; withdrawal from school"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "退屈（たいくつ） tedious",
+   "退院（たいいん） leaving hospital"
+  ]
+ },
+ {
+  "no": 175,
+  "kanji": "負",
+  "on": "フ",
+  "kun": "お.う, ま.かす, ま.ける-, assume a",
+  "arti": "responsibility, bear, defeat, minus, negative, owe",
+  "kosakata": [
+   "負 → ふ → negative; minus",
+   "笈 → おい → wooden box carried on one's back to store items for a pilgrimage",
+   "負債 → ふさい → debt; liabilities",
+   "負ける → まける → to lose; to be defeated"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "負（ふ） negative",
+   "負債（ふさい） debt"
+  ]
+ },
+ {
+  "no": 176,
+  "kanji": "渡",
+  "on": "ト",
+  "kun": "-わた.る, わた.す, わた.る",
+  "arti": "cross, deliver, diameter, ferry, ford, import, migrate, transit",
+  "kosakata": [
+   "渡す → わたす → to ferry across (e.g. a river); to carry across; to traverse",
+   "渡る → わたる → to cross over; to go across",
+   "渡り鳥 → わたりどり → migratory bird; bird of passage",
+   "渡米 → とべい → going to the United States"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "渡す（わたす） to ferry across (e.g. a river)",
+   "渡る（わたる） to cross over"
+  ]
+ },
+ {
+  "no": 177,
+  "kanji": "失",
+  "on": "シツ",
+  "kun": "う.せる, うしな.う",
+  "arti": "disadvantage, error, fault, lose, loss",
+  "kosakata": [
+   "失 → しつ → loss (of something); disadvantage",
+   "失業 → しつぎょう → unemployment",
+   "無くす → なくす → to lose (something)",
+   "失恋 → しつれん → disappointed love; broken heart; unrequited love; being lovelorn"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "失（しつ） loss (of something)",
+   "失業（しつぎょう） unemployment"
+  ]
+ },
+ {
+  "no": 178,
+  "kanji": "差",
+  "on": "サ",
+  "kun": "さ.し, さ.す",
+  "arti": "balance, difference, discrepancy, distinction, margin, variation",
+  "kosakata": [
+   "差 → さ → difference; variation",
+   "差し → さし → between (e.g. two people); face to face",
+   "差別 → さべつ → distinction; differentiation; discrimination",
+   "差す → さす → to shine"
+  ],
+  "volume": [
+   "VOL2",
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "差（さ） difference",
+   "差し（さし） between (e.g. two people)"
+  ]
+ },
+ {
+  "no": 179,
+  "kanji": "末",
+  "on": "バツ, マツ",
+  "kun": "うら, うれ, すえ",
+  "arti": "close, end, posterity, powder, tip",
+  "kosakata": [
+   "末 → すえ → end; tip; top",
+   "末 → まつ → the end (of)",
+   "末 → うら → top end; tip",
+   "末 → うれ → new shoots; new growth (of a tree)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "末（すえ） end",
+   "末（まつ） the end (of)"
+  ]
+ },
+ {
+  "no": 180,
+  "kanji": "守",
+  "on": "シュ, ス",
+  "kun": "-もり, かみ, まも.り, まも.る, もり",
+  "arti": "defend, guard, obey, protect",
+  "kosakata": [
+   "守り → まもり → protection; defense; defence",
+   "守り → もり → babysitting; babysitter",
+   "守 → かみ → director (of the provincial governors under the ritsuryō system)",
+   "守る → まもる → to protect; to guard; to defend"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "守り（まもり） protection",
+   "守り（もり） babysitting"
+  ]
+ },
+ {
+  "no": 181,
+  "kanji": "若",
+  "on": "ジャク, ニャ, ニャク",
+  "kun": "ごと.し, も.し, も.しくは, も.しくわ, わか-, わか.い",
+  "arti": "if, immature, low number, perhaps, possibly, young",
+  "kosakata": [
+   "若 → わか → youth",
+   "如 → ごと → like...; similar to...",
+   "若い → わかい → young; youthful",
+   "若しも → もしも → if; in case; supposing"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "若（わか） youth",
+   "若い（わかい） young"
+  ]
+ },
+ {
+  "no": 182,
+  "kanji": "種",
+  "on": "シュ",
+  "kun": "-ぐさ, たね",
+  "arti": "class, kind, seed, species, variety",
+  "kosakata": [
+   "種 → たね → seed (e.g. of a plant); pip; kernel; stone (e.g. of a peach)",
+   "種 → しゅ → kind; variety",
+   "種 → くさ → cause; seed; origin",
+   "種類 → しゅるい → variety; kind; type; category"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "種（たね） seed (e.g. of a plant)",
+   "種（しゅ） kind"
+  ]
+ },
+ {
+  "no": 183,
+  "kanji": "美",
+  "on": "ビ, ミ",
+  "kun": "うつく.しい",
+  "arti": "beautiful, beauty",
+  "kosakata": [
+   "美 → び → beauty",
+   "御 → み → august",
+   "美術館 → びじゅつかん → art museum; art gallery",
+   "美味しい → おいしい → good(-tasting); nice; delicious; tasty"
+  ],
+  "volume": [
+   "N4VOL1",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "美（び） beauty",
+   "美術館（びじゅつかん） art museum"
+  ]
+ },
+ {
+  "no": 184,
+  "kanji": "命",
+  "on": "ミョウ, メイ",
+  "kun": "いのち",
+  "arti": "appoint, command, decree, destiny, fate, life",
+  "kosakata": [
+   "命 → いのち → life; life force",
+   "命 → めい → order; command; decree",
+   "御言 → みこと → the spoken words of the emperor or a noble",
+   "尊 → みこと → Lord; Highness"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "命（いのち） life",
+   "命（めい） order"
+  ]
+ },
+ {
+  "no": 185,
+  "kanji": "福",
+  "on": "フク",
+  "kun": "",
+  "arti": "blessing, fortune, luck, wealth",
+  "kosakata": [
+   "福 → ふく → good fortune; happiness; blessing; good luck",
+   "福祉 → ふくし → welfare; well-being; social welfare; social security; social service",
+   "福岡 → ふくおか → Fukuoka (city, prefecture)",
+   "福利 → ふくり → welfare"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "福（ふく） good fortune",
+   "福祉（ふくし） welfare"
+  ]
+ },
+ {
+  "no": 186,
+  "kanji": "望",
+  "on": "ボウ, モウ",
+  "kun": "のぞ.む, もち",
+  "arti": "ambition, aspire to, desire, expect, full moon, hope",
+  "kosakata": [
+   "望 → もち → full moon",
+   "望遠鏡 → ぼうえんきょう → telescope",
+   "望む → のぞむ → to desire; to want; to wish for; to hope for",
+   "望み → のぞみ → wish; desire; hope"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "望（もち） full moon",
+   "望遠鏡（ぼうえんきょう） telescope"
+  ]
+ },
+ {
+  "no": 187,
+  "kanji": "非",
+  "on": "ヒ",
+  "kun": "あら.ず",
+  "arti": "injustice, mistake, negative, non-, un-",
+  "kosakata": [
+   "非 → ひ → fault; error; mistake",
+   "酷い → ひどい → cruel; heartless; hard; harsh; severe",
+   "非常 → ひじょう → emergency",
+   "非難 → ひなん → criticism; blame; censure; attack; reproach"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "非（ひ） fault",
+   "非常（ひじょう） emergency"
+  ]
+ },
+ {
+  "no": 188,
+  "kanji": "観",
+  "on": "カン",
+  "kun": "しめ.す, み.る",
+  "arti": "appearance, condition, look, outlook, view",
+  "kosakata": [
+   "観 → かん → look; appearance",
+   "観客 → かんきゃく → spectator; audience",
+   "観光 → かんこう → sightseeing; tourism",
+   "見る → みる → to see; to look; to watch; to view; to observe"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "観（かん） look",
+   "観客（かんきゃく） spectator"
+  ]
+ },
+ {
+  "no": 189,
+  "kanji": "察",
+  "on": "サツ",
+  "kun": "",
+  "arti": "guess, judge, presume, surmise, understand",
+  "kosakata": [
+   "察 → さつ → cops; police",
+   "察する → さっする → to guess; to sense; to presume; to judge",
+   "察知 → さっち → to sense; to infer; to gather; to pick up on; to get wind of; to perceive",
+   "察し → さっし → consideration; guess; conjecture; judgement"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "察（さつ） cops",
+   "察する（さっする） to guess"
+  ]
+ },
+ {
+  "no": 190,
+  "kanji": "段",
+  "on": "タン, ダン",
+  "kun": "",
+  "arti": "grade, stairs, steps",
+  "kosakata": [
+   "段 → だん → step; stair; rung; (flight of) steps",
+   "反 → たん → variable measure of fabric (28.8 cm in width); for kimonos: at least 10 m in length; for haori: at least 7.27 m in length; for other clothes: at least 6.06 m in length",
+   "段々 → だんだん → gradually; by degrees; little by little; more and more; increasingly",
+   "洋袴 → ズボン → trousers; pants"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "段（だん） step",
+   "段々（だんだん） gradually"
+  ]
+ },
+ {
+  "no": 191,
+  "kanji": "横",
+  "on": "オウ",
+  "kun": "よこ",
+  "arti": "horizontal, perverse, side, sideways, unreasonable, width, woof",
+  "kosakata": [
+   "横 → よこ → horizontal (as opposed to vertical)",
+   "横断 → おうだん → crossing (a road, river, etc.); cutting through (e.g. of a river through a town); cutting across; intersecting (e.g. a railway track)",
+   "横切る → よこぎる → to cross (e.g. road); to traverse",
+   "横断歩道 → おうだんほど う → pedestrian crossing; crosswalk"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "横（よこ） horizontal (as opposed to vertical)",
+   "横断（おうだん） crossing (a road, river, etc.)"
+  ]
+ },
+ {
+  "no": 192,
+  "kanji": "深",
+  "on": "シン",
+  "kun": "-ぶか.い, ふか.い, ふか.まる, ふか.める, み-",
+  "arti": "deep, heighten, intensify, strengthen",
+  "kosakata": [
+   "更け → ふけ → growing late; latening",
+   "御 → み → august",
+   "深夜 → しんや → late at night",
+   "親切 → しんせつ → kind; gentle; considerate; generous; friendly; nice"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "深夜（しんや） late at night"
+  ]
+ },
+ {
+  "no": 193,
+  "kanji": "申",
+  "on": "シン",
+  "kun": "さる, もう.し-, もう.す",
+  "arti": "3-5PM, have the honor to, ninth sign of Chinese zodiac, sign of the monkey",
+  "kosakata": [
+   "申 → さる → the Monkey (ninth sign of the Chinese zodiac)",
+   "申し上げる → もうしあげ る → to say; to tell; to state; to express; to offer; to extend (greetings, congratulations, etc.)",
+   "申す → もうす → to say; to be called",
+   "申し込む → もうしこむ → to apply for; to make an application; to propose (marriage); to offer (mediation); to make an overture (of peace); to challenge; to lodge (objections); to request (an interview); to subscribe for; to book; to reserve"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "申（さる） the Monkey (ninth sign of the Chinese zodiac)",
+   "申し上げる（もうしあげ る） to say"
+  ]
+ },
+ {
+  "no": 194,
+  "kanji": "様",
+  "on": "ショウ, ヨウ",
+  "kun": "さま, さん",
+  "arti": "Esq., manner, polite suffix, situation, way",
+  "kosakata": [
+   "様 → よう → appearing ...; looking ...",
+   "様 → さま → Mr; Mrs; Miss; Ms",
+   "様 → ざま → mess; sorry state; plight; sad sight",
+   "ちゃま → ちゃま → Mr.; Mrs.; Miss"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "様（よう） appearing ...",
+   "様（さま） Mr"
+  ]
+ },
+ {
+  "no": 195,
+  "kanji": "財",
+  "on": "サイ, ザイ, ゾク",
+  "kun": "たから",
+  "arti": "assets, money, property, wealth",
+  "kosakata": [
+   "財 → ざい → fortune; riches",
+   "宝 → たから → treasure",
+   "財布 → さいふ → wallet; purse; coin purse; billfold; pocketbook",
+   "財産 → ざいさん → property; fortune; assets"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "財（ざい） fortune",
+   "財布（さいふ） wallet"
+  ]
+ },
+ {
+  "no": 196,
+  "kanji": "港",
+  "on": "コウ",
+  "kun": "みなと",
+  "arti": "harbor",
+  "kosakata": [
+   "港 → みなと → harbour; harbor; port",
+   "港 → こう → harbour",
+   "港湾 → こうわん → harbour; harbor",
+   "港内 → こうない → inside the harbour; inside the harbor"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "港（みなと） harbour",
+   "港（こう） harbour"
+  ]
+ },
+ {
+  "no": 197,
+  "kanji": "識",
+  "on": "シキ",
+  "kun": "し.る, しる.す",
+  "arti": "discriminating, know, write",
+  "kosakata": [
+   "識 → しき → acquaintanceship",
+   "知る → しる → to know; to be aware (of); to be conscious (of); to learn (of); to find out; to discover",
+   "記す → しるす → to write down; to note down; to jot down; to take a note of",
+   "識別 → しきべつ → distinction; discrimination; discernment; identification"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "識（しき） acquaintanceship",
+   "識別（しきべつ） distinction"
+  ]
+ },
+ {
+  "no": 198,
+  "kanji": "呼",
+  "on": "コ",
+  "kun": "よ.ぶ",
+  "arti": "call, call out to, invite",
+  "kosakata": [
+   "呼吸 → こきゅう → breathing; respiration",
+   "呼ぶ → よぶ → to call out (to); to call; to invoke",
+   "呼び出す → よびだす → to call (someone) to (the door, phone, etc.); to tell (someone) to come; to call up (on the phone); to summon; to page; to invoke (e.g. a spirit)",
+   "呼びかける → よびかける → to call out to; to hail; to address"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "呼吸（こきゅう） breathing",
+   "呼ぶ（よぶ） to call out (to)"
+  ]
+ },
+ {
+  "no": 199,
+  "kanji": "達",
+  "on": "タツ, ダ",
+  "kun": "-たち",
+  "arti": "accomplished, arrive, attain, reach",
+  "kosakata": [
+   "達 → たち → pluralizing suffix (esp. for people and animals; formerly honorific)",
+   "達 → だち → friend",
+   "達する → たっする → to reach; to get to; to arrive at",
+   "達成 → たっせい → achievement; attainment; accomplishment; realization"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "達（たち） pluralizing suffix (esp. for people and animals",
+   "達（だち） friend"
+  ]
+ },
+ {
+  "no": 200,
+  "kanji": "良",
+  "on": "リョウ",
+  "kun": "-い.い, -よ.い, い.い, よ.い",
+  "arti": "good, pleasing, skilled",
+  "kosakata": [
+   "良 → りょう → good (quality, condition, etc.)",
+   "良い → よい → good; excellent; fine; nice; pleasant; agreeable",
+   "良く → よく → nicely; properly; well; skillfully; skilfully",
+   "夫 → おっと → husband"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "良（りょう） good (quality, condition, etc.)",
+   "良い（よい） good"
+  ]
+ },
+ {
+  "no": 201,
+  "kanji": "阪",
+  "on": "ハン",
+  "kun": "さか",
+  "arti": "heights, slope",
+  "kosakata": [
+   "坂 → さか → slope; incline; hill",
+   "阪神 → はんしん → Osaka-Kobe",
+   "阪神大震災 → はんしんだ いしんさい → Great Hanshin Earthquake (1995)",
+   "阪急電鉄 → はんきゅうで んてつ → Hankyu Corporation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "阪神（はんしん） Osaka-Kobe",
+   "阪神大震災（はんしんだ いしんさい） Great Hanshin Earthquake (1995)"
+  ]
+ },
+ {
+  "no": 202,
+  "kanji": "候",
+  "on": "コウ",
+  "kun": "そうろう",
+  "arti": "climate, expect, season, wait for, weather",
+  "kosakata": [
+   "候 → こう → season; weather",
+   "候 → そろ → to be",
+   "候ふ → そうろう → to serve (by a superior's side)",
+   "候補 → こうほ → candidate; contender; prospect; pick; choice; list"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "候（こう） season",
+   "候（そろ） to be"
+  ]
+ },
+ {
+  "no": 203,
+  "kanji": "程",
+  "on": "テイ",
+  "kun": "-ほど, ほど",
+  "arti": "amount, degree, distance, extent, formula, law, limits",
+  "kosakata": [
+   "程 → ほど → extent; degree; measure",
+   "程度 → ていど → degree; amount; grade; standard; of the order of (following a number); about; approximately",
+   "程なく → ほどなく → soon; before long; shortly thereafter",
+   "程に → ほどに → the more ... the more ...; as"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "程（ほど） extent",
+   "程度（ていど） degree"
+  ]
+ },
+ {
+  "no": 204,
+  "kanji": "満",
+  "on": "バン, マン",
+  "kun": "み.たす, み.ちる, み.つ",
+  "arti": "enough, full, fullness, satisfy",
+  "kosakata": [
+   "満 → まん → being full",
+   "満月 → まんげつ → full moon",
+   "満足 → まんぞく → satisfaction; contentment; gratification",
+   "満ちる → みちる → to fill; to become full (of); to be filled (with); to brim (with)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "満（まん） being full",
+   "満月（まんげつ） full moon"
+  ]
+ },
+ {
+  "no": 205,
+  "kanji": "敗",
+  "on": "ハイ",
+  "kun": "やぶ.れる",
+  "arti": "defeat, failure, reversal",
+  "kosakata": [
+   "敗 → はい → loss; defeat",
+   "負ける → まける → to lose; to be defeated",
+   "破る → やぶる → to tear; to rip; to break; to destroy",
+   "敗戦 → はいせん → defeat; lost battle; losing a war"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "敗（はい） loss",
+   "敗戦（はいせん） defeat"
+  ]
+ },
+ {
+  "no": 206,
+  "kanji": "値",
+  "on": "チ",
+  "kun": "あたい, ね",
+  "arti": "cost, price, value",
+  "kosakata": [
+   "値 → あたい → price; cost",
+   "値 → ね → price; cost",
+   "値 → ち → level; value",
+   "値段 → ねだん → price; cost"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "値（あたい） price",
+   "値（ね） price"
+  ]
+ },
+ {
+  "no": 207,
+  "kanji": "突",
+  "on": "カ, トツ",
+  "kun": "つ.く",
+  "arti": "collision, pierce, prick, protruding, stab, sudden, thrust",
+  "kosakata": [
+   "取っ → とっ → very; much",
+   "突然 → とつぜん → abrupt; sudden; unexpected",
+   "突く → つく → to prick; to stab",
+   "突っ込む → つっこむ → to thrust (something) into (something); to cram; to stuff; to shove"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "突然（とつぜん） abrupt",
+   "突く（つく） to prick"
+  ]
+ },
+ {
+  "no": 208,
+  "kanji": "光",
+  "on": "コウ",
+  "kun": "ひか.る, ひかり",
+  "arti": "light, ray",
+  "kosakata": [
+   "光 → ひかり → light",
+   "光線 → こうせん → beam; light ray",
+   "光沢 → こうたく → brilliance; polish; lustre; luster; glossy finish",
+   "光る → ひかる → to shine; to glitter; to be bright"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "光（ひかり） light",
+   "光線（こうせん） beam"
+  ]
+ },
+ {
+  "no": 209,
+  "kanji": "路",
+  "on": "ル, ロ",
+  "kun": "-じ, みち",
+  "arti": "distance, path, road, route",
+  "kosakata": [
+   "道 → みち → road; path; street; lane; passage",
+   "路 → じ → route; road",
+   "路 → ち → way; road",
+   "路地 → ろじ → alley; alleyway; lane"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "路（じ） route",
+   "路（ち） way"
+  ]
+ },
+ {
+  "no": 210,
+  "kanji": "科",
+  "on": "カ",
+  "kun": "",
+  "arti": "course, department, section",
+  "kosakata": [
+   "科 → か → department; section; faculty; school; arm",
+   "品 → しな → article; item; thing; goods; stock",
+   "科 → しな → Japanese linden (Tilia japonica)",
+   "咎 → とが → error; mistake; fault"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "科（か） department",
+   "科（しな） Japanese linden (Tilia japonica)"
+  ]
+ },
+ {
+  "no": 211,
+  "kanji": "積",
+  "on": "セキ",
+  "kun": "-づ.み, つ.む, つ.もり, つ.もる",
+  "arti": "acreage, amass, contents, load, pile up, product (x*y), stack, volume",
+  "kosakata": [
+   "積 → せき → product",
+   "積もり → つもり → intention; plan; purpose; expectation",
+   "積極的 → せっきょくてき → positive; assertive; active; proactive; aggressive",
+   "積もる → つもる → to pile up; to accumulate"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "積（せき） product",
+   "積もり（つもり） intention"
+  ]
+ },
+ {
+  "no": 212,
+  "kanji": "処",
+  "on": "ショ",
+  "kun": "-こ, お.る, ところ",
+  "arti": "act, behave, condemn, deal with, dispose, manage, place, sentence",
+  "kosakata": [
+   "所 → ところ → place; spot; scene; site",
+   "処 → どころ → restaurant; specialist",
+   "処罰 → しょばつ → punishment; penalty",
+   "処理 → しょり → processing; dealing with; treatment; disposition; disposal"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "処（どころ） restaurant",
+   "処罰（しょばつ） punishment"
+  ]
+ },
+ {
+  "no": 213,
+  "kanji": "園",
+  "on": "エン",
+  "kun": "その",
+  "arti": "farm, garden, park, yard",
+  "kosakata": [
+   "園 → えん → garden; orchard; park; plantation",
+   "園 → その → garden; orchard; park",
+   "園芸 → えんげい → horticulture; gardening",
+   "園遊会 → えんゆうかい → garden party"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "園（えん） garden",
+   "園（その） garden"
+  ]
+ },
+ {
+  "no": 214,
+  "kanji": "太",
+  "on": "タ, タイ",
+  "kun": "ふと.い, ふと.る",
+  "arti": "big around, plump, thick",
+  "kosakata": [
+   "太 → ふと → fat; fatty",
+   "太陽 → たいよう → Sun",
+   "太い → ふとい → fat; thick",
+   "太鼓 → たいこ → drum"
+  ],
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "太（ふと） fat",
+   "太陽（たいよう） Sun"
+  ]
+ },
+ {
+  "no": 215,
+  "kanji": "客",
+  "on": "カク, キャク",
+  "kun": "",
+  "arti": "client, customer, guest, visitor",
+  "kosakata": [
+   "客 → きゃく → guest; visitor",
+   "客 → まれびと → visitor from afar",
+   "客賓 → まろうど → visitor from afar; guest",
+   "客席 → きゃくせき → guest seating (e.g. theater, stadium); passenger seat (e.g. taxi)"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "客（きゃく） guest",
+   "客（まれびと） visitor from afar"
+  ]
+ },
+ {
+  "no": 216,
+  "kanji": "否",
+  "on": "ヒ",
+  "kun": "いな, いや",
+  "arti": "decline, deny, negate, no, noes, refuse",
+  "kosakata": [
+   "否 → いや → no",
+   "いいえ → いいえ → no",
+   "否 → いな → no; nay",
+   "否 → ひ → no; the noes"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "否（いや） no",
+   "否（いな） no"
+  ]
+ },
+ {
+  "no": 217,
+  "kanji": "師",
+  "on": "シ",
+  "kun": "いくさ",
+  "arti": "army (incl. counter), exemplar, expert, master, model, teacher, war",
+  "kosakata": [
+   "師 → し → teacher; master; mentor",
+   "師団 → しだん → (army) division",
+   "師弟 → してい → teacher and student",
+   "獅子 → しし → lion"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "師（し） teacher",
+   "師団（しだん） (army) division"
+  ]
+ },
+ {
+  "no": 218,
+  "kanji": "登",
+  "on": "ショウ, チョウ, ト, トウ, ドウ",
+  "kun": "あ.がる, のぼ.る",
+  "arti": "ascend, climb up",
+  "kosakata": [
+   "登山 → とざん → mountain climbing; mountaineering; ascent of a mountain",
+   "上る → のぼる → to ascend; to go up; to climb",
+   "上り → のぼり → ascent; climbing; ascending (path); climb",
+   "登場 → とうじょう → entrance (on the stage); appearance (in a book, film, etc.)"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "登山（とざん） mountain climbing",
+   "登場（とうじょう） entrance (on the stage)"
+  ]
+ },
+ {
+  "no": 219,
+  "kanji": "易",
+  "on": "イ, エキ",
+  "kun": "やさ.しい, やす.い",
+  "arti": "divination, easy, fortune- telling, ready to, simple",
+  "kosakata": [
+   "易 → えき → type of cleromancy divination (described in the Book of Changes) performed with long sticks",
+   "易 → い → easiness",
+   "易しい → やさしい → easy; plain; simple",
+   "易い → やすい → easy"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "易（えき） type of cleromancy divination (described in the Book of Changes) performed with long sticks",
+   "易（い） easiness"
+  ]
+ },
+ {
+  "no": 220,
+  "kanji": "速",
+  "on": "ソク",
+  "kun": "すみ.やか, はや-, はや.い, はや.める",
+  "arti": "fast, quick",
+  "kosakata": [
+   "速 → そく → gear; speed (e.g. 4-speed transmission)",
+   "速度 → そくど → speed; velocity; pace; rate",
+   "早い → はやい → fast; quick; rapid; swift; speedy; brisk; prompt",
+   "早口 → はやくち → fast- talking; rapid talking"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "速（そく） gear",
+   "速度（そくど） speed"
+  ]
+ },
+ {
+  "no": 221,
+  "kanji": "存",
+  "on": "ソン, ゾン",
+  "kun": "あ.る, たも.つ, と.う, ながら.える",
+  "arti": "be aware of, believe, exist, feel, suppose",
+  "kosakata": [
+   "存在 → そんざい → existence; being; presence",
+   "存じる → ぞんじる → to know; to be aware (of); to be acquainted (with)",
+   "存続 → そんぞく → continuance; survival; persistence; retention; duration",
+   "存分 → ぞんぶん → to one's heart's content; as much as one likes; without reserve; freely; to the full"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "存在（そんざい） existence",
+   "存じる（ぞんじる） to know"
+  ]
+ },
+ {
+  "no": 222,
+  "kanji": "飛",
+  "on": "ヒ",
+  "kun": "-と.ばす, と.ばす, と.ぶ",
+  "arti": "fly, scatter, skip (pages)",
+  "kosakata": [
+   "飛 → ひ → rook",
+   "飛行機 → ひこうき → airplane; aeroplane; plane; aircraft",
+   "飛行場 → ひこうじょう → airfield; airport",
+   "飛ぶ → とぶ → to fly; to soar"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "飛（ひ） rook",
+   "飛行機（ひこうき） airplane"
+  ]
+ },
+ {
+  "no": 223,
+  "kanji": "殺",
+  "on": "サイ, サツ, セツ",
+  "kun": "-ごろ.し, あや.める, ころ.す, そ.ぐ",
+  "arti": "butcher, diminish, kill, murder, reduce, slice off, split, spoil",
+  "kosakata": [
+   "殺人 → さつじん → murder; homicide; manslaughter",
+   "殺す → ころす → to kill; to slay; to murder; to slaughter",
+   "殺菌 → さっきん → sterilization; sterilisation; disinfection; pasteurization",
+   "殺し → ころし → murder; killing; murderer"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "殺人（さつじん） murder",
+   "殺す（ころす） to kill"
+  ]
+ },
+ {
+  "no": 224,
+  "kanji": "号",
+  "on": "ゴウ",
+  "kun": "さけ.ぶ, よびな",
+  "arti": "call, item, name, nickname, number, pseudonym, title",
+  "kosakata": [
+   "号 → ごう → number; edition; make; model; issue; part of that group",
+   "号車 → ごうしゃ → suffix for train car numbers",
+   "号室 → ごうしつ → suffix for room numbers; suffix for apartment numbers",
+   "号令 → ごうれい → order (esp. to a number of people); command"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "号（ごう） number",
+   "号車（ごうしゃ） suffix for train car numbers"
+  ]
+ },
+ {
+  "no": 225,
+  "kanji": "単",
+  "on": "タン",
+  "kun": "ひとえ",
+  "arti": "merely, one, simple, single",
+  "kosakata": [
+   "一重 → ひとえ → one layer; single layer",
+   "単 → たん → single; simple",
+   "単位 → たんい → unit; denomination",
+   "単語 → たんご → word; vocabulary"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "単（たん） single",
+   "単位（たんい） unit"
+  ]
+ },
+ {
+  "no": 226,
+  "kanji": "座",
+  "on": "ザ",
+  "kun": "すわ.る",
+  "arti": "cushion, gathering, seat, sit, squat",
+  "kosakata": [
+   "座 → ざ → seat; place",
+   "座席 → ざせき → seat",
+   "座る → すわる → to sit (down); to have a seat; to be seated; to kneel (on the floor)",
+   "座布団 → ざぶとん → zabuton; flat floor cushion used when sitting or kneeling; usu. rectangular"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "座（ざ） seat",
+   "座席（ざせき） seat"
+  ]
+ },
+ {
+  "no": 227,
+  "kanji": "破",
+  "on": "ハ",
+  "kun": "やぶ.る, やぶ.れる, わ.れる",
+  "arti": "break, defeat, destroy, frustrate, rend, rip, tear",
+  "kosakata": [
+   "破 → は → middle section of a song (in gagaku or noh)",
+   "馬鹿 → ばか → idiot; moron; fool",
+   "破壊 → はかい → destruction; disruption",
+   "割れる → われる → to break; to be smashed"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "破（は） middle section of a song (in gagaku or noh)",
+   "破壊（はかい） destruction"
+  ]
+ },
+ {
+  "no": 228,
+  "kanji": "除",
+  "on": "ジ, ジョ",
+  "kun": "-よ.け, のぞ.く",
+  "arti": "abolish, cancel, division (x/3), except, exclude, remove",
+  "kosakata": [
+   "除 → じょ → division",
+   "避ける → さける → to avoid (physical contact with)",
+   "除く → のぞく → to remove; to get rid of; to take away; to eliminate",
+   "除外 → じょがい → exception; exclusion"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "除（じょ） division",
+   "除く（のぞく） to remove"
+  ]
+ },
+ {
+  "no": 229,
+  "kanji": "完",
+  "on": "カン",
+  "kun": "",
+  "arti": "completion, end, perfect",
+  "kosakata": [
+   "完 → かん → The End; Finis",
+   "完全 → かんぜん → perfect; complete",
+   "完成 → かんせい → completion; perfection; accomplishment",
+   "完了 → かんりょう → completion; conclusion"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "完（かん） The End",
+   "完全（かんぜん） perfect"
+  ]
+ },
+ {
+  "no": 230,
+  "kanji": "降",
+  "on": "コウ, ゴ",
+  "kun": "お.りる, お.ろす, くだ.す, くだ.る, ふ.り, ふ.る",
+  "arti": "descend, fall, precipitate, surrender",
+  "kosakata": [
+   "降りる → おりる → to descend (e.g. a mountain); to go down; to come down",
+   "降る → ふる → to fall (of rain, snow, ash, etc.); to come down",
+   "降水 → こうすい → rainfall; precipitation",
+   "下り → くだり → down- train; train heading toward the ending point of its route"
+  ],
+  "volume": [
+   "VOL2",
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "降りる（おりる） to descend (e.g. a mountain)",
+   "降る（ふる） to fall (of rain, snow, ash, etc.)"
+  ]
+ },
+ {
+  "no": 231,
+  "kanji": "責",
+  "on": "セキ",
+  "kun": "せ.める",
+  "arti": "blame, censure, condemn",
+  "kosakata": [
+   "責 → せき → responsibility; duty; obligation",
+   "責任 → せきにん → duty; responsibility (incl. supervision of staff)",
+   "責める → せめる → to condemn; to blame; to criticize; to criticise; to reproach; to accuse",
+   "責務 → せきむ → duty; obligation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "責（せき） responsibility",
+   "責任（せきにん） duty"
+  ]
+ },
+ {
+  "no": 232,
+  "kanji": "捕",
+  "on": "ホ",
+  "kun": "つか.まえる, つか.まる, と.らえる, と.らわれる, と.る, とら.える,",
+  "arti": "capture, catch",
+  "kosakata": [
+   "捕虜 → ほりょ → prisoner (of war); POW; captive",
+   "捕鯨 → ほげい → whaling; whale hunting; whale fishing",
+   "捕まえる → つかまえる → to catch; to capture; to arrest; to seize; to restrain",
+   "捕まる → つかまる → to be caught; to be arrested"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "捕虜（ほりょ） prisoner (of war)",
+   "捕鯨（ほげい） whaling"
+  ]
+ },
+ {
+  "no": 233,
+  "kanji": "危",
+  "on": "キ",
+  "kun": "あぶ.ない, あや.うい, あや.ぶむ",
+  "arti": "dangerous, fear, uneasy",
+  "kosakata": [
+   "危 → き → danger",
+   "危険 → きけん → danger; peril; hazard",
+   "危ない → あぶない → dangerous; risky; hazardous; perilous; precarious",
+   "危機 → きき → crisis; critical situation; emergency; pinch"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "危（き） danger",
+   "危険（きけん） danger"
+  ]
+ },
+ {
+  "no": 234,
+  "kanji": "給",
+  "on": "キュウ",
+  "kun": "-たま.え, たま.う, たも.う",
+  "arti": "allow, bestow on, gift, grant, salary, wage",
+  "kosakata": [
+   "給 → きゅう → wage; recompense",
+   "給与 → きゅうよ → pay; salary; wages",
+   "給食 → きゅうしょく → provision of lunch (e.g. at office, school, etc.); providing a meal; lunch service",
+   "給料 → きゅうりょう → salary; wages; pay"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "給（きゅう） wage",
+   "給与（きゅうよ） pay"
+  ]
+ },
+ {
+  "no": 235,
+  "kanji": "苦",
+  "on": "ク",
+  "kun": "-ぐる.しい, くる.しい, くる.しむ, くる.しめる, にが.い, にが.る",
+  "arti": "feel bitter, hardship, scowl, suffering, trial, worry",
+  "kosakata": [
+   "苦 → く → pain; anguish; suffering; distress; anxiety; worry; trouble; difficulty; hardship",
+   "苦い → にがい → bitter",
+   "苦労 → くろう → trouble; hardship; difficulty; labour; labor; toil; pains",
+   "苦手 → にがて → poor (at); weak (in); not very good (at)"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "苦（く） pain",
+   "苦い（にがい） bitter"
+  ]
+ },
+ {
+  "no": 236,
+  "kanji": "迎",
+  "on": "ゲイ",
+  "kun": "むか.える",
+  "arti": "greet, meet, welcome",
+  "kosakata": [
+   "迎える → むかえる → to go out to meet; to receive; to welcome; to greet; to salute; to hail",
+   "迎え → むかえ → meeting; greeting; welcome",
+   "迎撃 → げいげき → intercept; interception; counter-attack",
+   "迎合 → げいごう → ingratiation; pandering; catering (to); going along with (someone or something); accommodating oneself (e.g. to public opinion)"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "迎える（むかえる） to go out to meet",
+   "迎え（むかえ） meeting"
+  ]
+ },
+ {
+  "no": 237,
+  "kanji": "具",
+  "on": "グ",
+  "kun": "そな.える, つぶさ.に",
+  "arti": "counter for armor, suits, sets of furniture, ingredients, means, possess, tool, utensil",
+  "kosakata": [
+   "具 → ぐ → tool; means",
+   "妻 → つま → wife",
+   "具合 → ぐあい → condition; state",
+   "備える → そなえる → to furnish with; to equip with; to provide; to install"
+  ],
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "具（ぐ） tool",
+   "具合（ぐあい） condition"
+  ]
+ },
+ {
+  "no": 238,
+  "kanji": "辞",
+  "on": "ジ",
+  "kun": "いな.む, や.める",
+  "arti": "expression, resign, term, word",
+  "kosakata": [
+   "言葉 → ことば → language; dialect",
+   "辞 → じ → address (e.g. opening or closing remarks); speech; words",
+   "辞典 → じてん → dictionary; lexicon",
+   "辞書 → じしょ → dictionary; lexicon"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "辞（じ） address (e.g. opening or closing remarks)",
+   "辞典（じてん） dictionary"
+  ]
+ },
+ {
+  "no": 239,
+  "kanji": "因",
+  "on": "イン",
+  "kun": "ちな.む, よ.る",
+  "arti": "be associated with, be limited to, cause, depend on, factor",
+  "kosakata": [
+   "元 → もと → origin; source; beginning",
+   "由 → よし → reason; significance; cause",
+   "因 → いん → cause; factor",
+   "縁 → よすが → something to rely on; aid; clue; way; means"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "因（いん） cause"
+  ]
+ },
+ {
+  "no": 240,
+  "kanji": "馬",
+  "on": "バ",
+  "kun": "うま, うま-, ま",
+  "arti": "horse",
+  "kosakata": [
+   "馬 → うま → horse",
+   "馬鹿 → ばか → idiot; moron; fool",
+   "馬鹿らしい → ばからしい → absurd; foolish; stupid; silly; nonsense; ludicrous; preposterous; laughable; ridiculous",
+   "馬穴 → バケツ → bucket; pail"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "馬（うま） horse",
+   "馬鹿（ばか） idiot"
+  ]
+ },
+ {
+  "no": 241,
+  "kanji": "富",
+  "on": "フ, フウ",
+  "kun": "と.む, とみ",
+  "arti": "abundant, enrich, wealth",
+  "kosakata": [
+   "富 → とみ → riches; wealth; fortune",
+   "富豪 → ふごう → wealthy person; millionaire",
+   "富む → とむ → to be rich in; to abound in; to be abundant in; to be full of",
+   "富裕 → ふゆう → wealthy; rich; affluent"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "富（とみ） riches",
+   "富豪（ふごう） wealthy person"
+  ]
+ },
+ {
+  "no": 242,
+  "kanji": "彼",
+  "on": "ヒ",
+  "kun": "か.の, かの, かれ",
+  "arti": "he, that, the",
+  "kosakata": [
+   "彼 → かれ → he; him",
+   "彼 → あれ → that; that thing",
+   "彼の → かの → that well- known ...; the one and only ...",
+   "彼処 → あそこ → there; over there; that place; yonder; you-know-where"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "彼（かれ） he",
+   "彼（あれ） that"
+  ]
+ },
+ {
+  "no": 243,
+  "kanji": "未",
+  "on": "ビ, ミ",
+  "kun": "いま.だ, ひつじ, ま.だ",
+  "arti": "1-3PM, eighth sign of Chinese zodiac, even now, hitherto, not yet, sign of the ram, still, un-",
+  "kosakata": [
+   "未 → み → not yet; un-",
+   "未 → ひつじ → the Sheep (eighth sign of the Chinese zodiac); the Ram; the Goat",
+   "味噌 → みそ → miso; fermented condiment usu. made from soybeans",
+   "未来 → みらい → (distant) future"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "未（み） not yet",
+   "未（ひつじ） the Sheep (eighth sign of the Chinese zodiac)"
+  ]
+ },
+ {
+  "no": 244,
+  "kanji": "舞",
+  "on": "ブ",
+  "kun": "-ま.う, ま.う, まい",
+  "arti": "circle, dance, flit, wheel",
+  "kosakata": [
+   "舞 → まい → dancing; dance",
+   "舞台 → ぶたい → stage (of a theatre, concert hall, etc.); (stage) performance",
+   "舞う → まう → to dance (orig. a whirling dance)",
+   "舞踏 → ぶとう → dance (esp. Western style); dancing"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "舞（まい） dancing",
+   "舞台（ぶたい） stage (of a theatre, concert hall, etc.)"
+  ]
+ },
+ {
+  "no": 245,
+  "kanji": "亡",
+  "on": "ボウ, モウ",
+  "kun": "な.い, な.き-, ほろ.びる, ほろ.ぶ, ほろ.ぼす",
+  "arti": "deceased, dying, perish, the late",
+  "kosakata": [
+   "亡 → ぼう → death",
+   "無くす → なくす → to lose (something)",
+   "亡くなる → なくなる → to die; to pass away",
+   "失う → うしなう → to lose"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "亡（ぼう） death",
+   "亡くなる（なくなる） to die"
+  ]
+ },
+ {
+  "no": 246,
+  "kanji": "冷",
+  "on": "レイ",
+  "kun": "さ.ます, さ.める, つめ.たい, ひ.える, ひ.や, ひ.やかす, ひ.やす, ひ.ややか",
+  "arti": "chill, cold (beer, person), cool",
+  "kosakata": [
+   "冷や → ひや → cold water",
+   "冷 → れい → refrigerator",
+   "冷蔵庫 → れいぞうこ → refrigerator; fridge",
+   "冷たい → つめたい → cold (to the touch); chilly; icy; freezing"
+  ],
+  "volume": [
+   "VOL4",
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "冷や（ひや） cold water",
+   "冷（れい） refrigerator"
+  ]
+ },
+ {
+  "no": 247,
+  "kanji": "適",
+  "on": "テキ",
+  "kun": "かな.う",
+  "arti": "capable, occasional, qualified, rare, suitable",
+  "kosakata": [
+   "偶々 → たまたま → by chance; by accident; accidentally; happen to (be, do); unexpectedly; casually",
+   "偶 → たま → occasional; infrequent; rare",
+   "適当 → てきとう → suitable; proper; appropriate; adequate; fit; fair",
+   "偶に → たまに → occasionally; once in a while; now and then"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "適当（てきとう） suitable"
+  ]
+ },
+ {
+  "no": 248,
+  "kanji": "婦",
+  "on": "フ",
+  "kun": "よめ",
+  "arti": "bride, lady, wife, woman",
+  "kosakata": [
+   "嫁 → よめ → bride",
+   "婦 → ふ → married woman",
+   "婦人 → ふじん → woman; lady; adult female",
+   "婦人科 → ふじんか → gynecology department"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "婦（ふ） married woman",
+   "婦人（ふじん） woman"
+  ]
+ },
+ {
+  "no": 249,
+  "kanji": "寄",
+  "on": "キ",
+  "kun": "-よ.り, よ.せる, よ.る",
+  "arti": "bring near, collect, draw near, forward, gather, send, stop in",
+  "kosakata": [
+   "寄付 → きふ → contribution; donation",
+   "寄る → よる → to approach; to draw near; to come near; to be close to",
+   "寄せる → よせる → to come near; to let someone approach",
+   "寄越す → よこす → to send; to forward"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "寄付（きふ） contribution",
+   "寄る（よる） to approach"
+  ]
+ },
+ {
+  "no": 250,
+  "kanji": "込",
+  "on": "",
+  "kun": "-こ.み, -こ.む, こ.み, こ.む, こ.める",
+  "arti": "(kokuji), crowded, in bulk, included, mixture",
+  "kosakata": [
+   "込み → こみ → including ...; inclusive of ...",
+   "込む → こむ → to be crowded; to be packed; to be congested; to be thronged (with)",
+   "込める → こめる → to load (a gun, etc.); to charge",
+   "こみ上げる → こみあげる → to well up (of tears, anger, joy, etc.); to surge up (within oneself); to rise; to fill one's heart; to overcome one"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "込み（こみ） including ...",
+   "込む（こむ） to be crowded"
+  ]
+ },
+ {
+  "no": 251,
+  "kanji": "顔",
+  "on": "ガン",
+  "kun": "かお",
+  "arti": "expression, face",
+  "kosakata": [
+   "顔 → かお → face; visage",
+   "顔 → かんばせ → countenance; visage",
+   "顔つき → かおつき → (outward) looks; features; face; countenance; expression",
+   "顔色 → かおいろ → complexion; one's colour; one's color"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "顔（かお） face",
+   "顔（かんばせ） countenance"
+  ]
+ },
+ {
+  "no": 252,
+  "kanji": "類",
+  "on": "ルイ",
+  "kun": "たぐ.い",
+  "arti": "class, genus, kind, sort, variety",
+  "kosakata": [
+   "類 → るい → kind; sort; type; class; genus; order; family",
+   "類い → たぐい → kind; sort; type",
+   "類似 → るいじ → resemblance; similarity; likeness; analogy",
+   "類推 → るいすい → analogy"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "類（るい） kind",
+   "類い（たぐい） kind"
+  ]
+ },
+ {
+  "no": 253,
+  "kanji": "余",
+  "on": "ヨ",
+  "kun": "あま.す, あま.り, あま.る, あんま.り",
+  "arti": "myself, other, remainder, surplus, too much",
+  "kosakata": [
+   "余 → よ → other; another; remaining; leftover",
+   "余り → あまり → remainder; remnant; rest; balance; surplus; remains (of a meal); leftovers",
+   "余裕 → よゆう → surplus; margin; leeway; room; space; time; allowance; flexibility; scope",
+   "余分 → よぶん → extra; excess; surplus"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "余（よ） other",
+   "余り（あまり） remainder"
+  ]
+ },
+ {
+  "no": 254,
+  "kanji": "王",
+  "on": "-ノウ, オウ",
+  "kun": "",
+  "arti": "king, magnate, rule",
+  "kosakata": [
+   "王 → おう → king; ruler; sovereign; monarch",
+   "大君 → おおきみ → emperor",
+   "王様 → おうさま → king",
+   "王子 → おうじ → prince"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "王（おう） king",
+   "王様（おうさま） king"
+  ]
+ },
+ {
+  "no": 255,
+  "kanji": "返",
+  "on": "ヘン",
+  "kun": "-かえ.す, -かえ.る, かえ.す, かえ.る",
+  "arti": "answer, fade, repay, return",
+  "kosakata": [
+   "遍 → へん → number of times",
+   "返 → へん → reply; answer",
+   "返す → かえす → to return (something); to restore; to put back",
+   "返事 → へんじ → reply; answer; response"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "返（へん） reply",
+   "返す（かえす） to return (something)"
+  ]
+ },
+ {
+  "no": 256,
+  "kanji": "妻",
+  "on": "サイ",
+  "kun": "つま",
+  "arti": "spouse, wife",
+  "kosakata": [
+   "妻 → つま → wife",
+   "妻 → つま → my dear; dear; honey",
+   "端 → つま → edge; tip; end",
+   "妻 → さい → one's wife"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "妻（つま） wife",
+   "妻（つま） my dear"
+  ]
+ },
+ {
+  "no": 257,
+  "kanji": "背",
+  "on": "ハイ",
+  "kun": "せ, せい, そむ.く, そむ.ける",
+  "arti": "back, behind, defy, disobey, go back on, height, rebel, stature",
+  "kosakata": [
+   "背 → せ → back",
+   "背 → せい → height; stature",
+   "背 → そびら → back (of the body)",
+   "背広 → せびろ → business suit"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "背（せ） back",
+   "背（せい） height"
+  ]
+ },
+ {
+  "no": 258,
+  "kanji": "熱",
+  "on": "ネツ",
+  "kun": "あつ.い",
+  "arti": "fever, heat, mania, passion, temperature",
+  "kosakata": [
+   "熱 → ねつ → heat",
+   "熱 → ねち → fever",
+   "熱帯 → ねったい → tropics",
+   "熱い → あつい → hot (to the touch)"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "熱（ねつ） heat",
+   "熱（ねち） fever"
+  ]
+ },
+ {
+  "no": 259,
+  "kanji": "宿",
+  "on": "シュク",
+  "kun": "やど, やど.す, やど.る",
+  "arti": "be pregnant, dwell, dwelling, home, inn, lodge, lodging, relay station",
+  "kosakata": [
+   "宿 → やど → lodging; inn; hotel",
+   "宿 → しゅく → lodging",
+   "夙 → しゅく → outcasts common around the Kyoto region from the Kamakura period to the Edo period",
+   "宿題 → しゅくだい → homework; assignment"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "宿（やど） lodging",
+   "宿（しゅく） lodging"
+  ]
+ },
+ {
+  "no": 260,
+  "kanji": "険",
+  "on": "ケン",
+  "kun": "けわ.しい",
+  "arti": "impregnable position, inaccessible place, precipitous, sharp eyes, steep place",
+  "kosakata": [
+   "嵯峨 → さが → precipitous",
+   "険 → けん → steepness; steep place",
+   "険しい → けわしい → precipitous; rugged; inaccessible; impregnable; steep",
+   "険悪 → けんあく → dangerous; perilous; threatening; stormy; volatile; tense; critical; serious"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "険（けん） steepness",
+   "険しい（けわしい） precipitous"
+  ]
+ },
+ {
+  "no": 261,
+  "kanji": "頼",
+  "on": "ライ",
+  "kun": "たの.む, たの.もしい, たよ.る",
+  "arti": "request, trust",
+  "kosakata": [
+   "頼む → たのむ → to request; to beg; to ask",
+   "頼る → たよる → to rely on; to depend on; to count on; to turn to (for help)",
+   "頼もしい → たのもしい → reliable; dependable; trustworthy; reassuring",
+   "頼み → たのみ → request; favor; favour"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "頼む（たのむ） to request",
+   "頼る（たよる） to rely on"
+  ]
+ },
+ {
+  "no": 262,
+  "kanji": "覚",
+  "on": "カク",
+  "kun": "おぼ.える, さ.ます, さ.める, さと.る",
+  "arti": "awake, learn, memorize, remember, sober up",
+  "kosakata": [
+   "覚 → さとり → Satori; folklore monster that can read minds",
+   "覚える → おぼえる → to memorize; to memorise; to commit to memory; to learn by heart; to bear in mind; to remember",
+   "覚悟 → かくご → readiness; (mental) preparedness",
+   "覚める → さめる → to wake; to wake up"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "覚（さとり） Satori",
+   "覚える（おぼえる） to memorize"
+  ]
+ },
+ {
+  "no": 263,
+  "kanji": "船",
+  "on": "セン",
+  "kun": "ふな-, ふね",
+  "arti": "boat, ship",
+  "kosakata": [
+   "船 → ふね → ship; boat; watercraft; vessel; seaplane",
+   "船 → せん → ship; boat; vessel",
+   "船舶 → せんぱく → vessel; ship; shipping; seacraft",
+   "船員 → せんいん → sailor; seaman; seafarer"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "船（ふね） ship",
+   "船（せん） ship"
+  ]
+ },
+ {
+  "no": 264,
+  "kanji": "途",
+  "on": "ト",
+  "kun": "みち",
+  "arti": "road, route, way",
+  "kosakata": [
+   "道 → みち → road; path; street; lane; passage",
+   "途 → と → way; route",
+   "途中 → とちゅう → on the way; en route",
+   "途端 → とたん → just (now, at the moment, etc.); just as; in the act of; as soon as; at the moment that"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "途（と） way",
+   "途中（とちゅう） on the way"
+  ]
+ },
+ {
+  "no": 265,
+  "kanji": "許",
+  "on": "キョ",
+  "kun": "もと, ゆる.す",
+  "arti": "approve, permit",
+  "kosakata": [
+   "許り → ばかり → only; merely; nothing but; no more than",
+   "下 → もと → under (guidance, supervision, rules, the law, etc.)",
+   "許し → ばかし → approximately; about",
+   "許す → ゆるす → to permit; to allow; to approve; to consent to"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "許り（ばかり） only",
+   "許し（ばかし） approximately"
+  ]
+ },
+ {
+  "no": 266,
+  "kanji": "抜",
+  "on": "ハイ, ハツ, バツ",
+  "kun": "-ぬ.く, ぬ.かす, ぬ.かる, ぬ.き, ぬ.く, ぬ.ける",
+  "arti": "extract, omit, pilfer, pull out, quote, remove, slip out",
+  "kosakata": [
+   "抜く → ぬく → to pull out; to draw out; to extract; to unplug; to weed",
+   "抜ける → ぬける → to come out; to fall out; to be omitted; to be missing; to escape; to come loose",
+   "抜け出す → ぬけだす → to slip out; to sneak away; to break free; to get through (a difficult situation)",
+   "抜かす → ぬかす → to omit; to leave out; to skip"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "抜く（ぬく） to pull out",
+   "抜ける（ぬける） to come out"
+  ]
+ },
+ {
+  "no": 267,
+  "kanji": "便",
+  "on": "ビン, ベン",
+  "kun": "たよ.り",
+  "arti": "chance, convenience, excrement, facility, feces, letter",
+  "kosakata": [
+   "便 → びん → flight (e.g. airline flight); trip (e.g. train trip); service",
+   "便 → べん → convenience; service; facility; accommodation",
+   "縁 → よすが → something to rely on; aid; clue; way; means",
+   "便利 → べんり → convenient; handy; useful"
+  ],
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "便（びん） flight (e.g. airline flight)",
+   "便（べん） convenience"
+  ]
+ },
+ {
+  "no": 268,
+  "kanji": "留",
+  "on": "リュウ, ル",
+  "kun": "と.まる, と.める, とど.まる, とど.める, るうぶる",
+  "arti": "detain, fasten, halt, stop",
+  "kosakata": [
+   "留 → りゅう → stationary point",
+   "留 → ルーブル → ruble (Russian currency); rouble",
+   "留学 → りゅうがく → studying abroad",
+   "止まる → とまる → to stop (moving); to come to a stop"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "留（りゅう） stationary point",
+   "留（ルーブル） ruble (Russian currency)"
+  ]
+ },
+ {
+  "no": 269,
+  "kanji": "罪",
+  "on": "ザイ",
+  "kun": "つみ",
+  "arti": "blame, crime, fault, guilt, offense, sin",
+  "kosakata": [
+   "罪 → つみ → crime; sin; wrongdoing; indiscretion",
+   "罪 → ざい → crime",
+   "罪人 → ざいにん → criminal; lawbreaker; wrongdoer; offender",
+   "罪悪 → ざいあく → crime; sin; vice"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "罪（つみ） crime",
+   "罪（ざい） crime"
+  ]
+ },
+ {
+  "no": 270,
+  "kanji": "努",
+  "on": "ド",
+  "kun": "つと.める",
+  "arti": "as much as possible, diligent, toil",
+  "kosakata": [
+   "努 → ど → third principle of the Eight Principles of Yong; downward stroke",
+   "努 → ゆめ → never; by no means",
+   "努力 → どりょく → effort; exertion; endeavour; endeavor; hard work; striving",
+   "努める → つとめる → to endeavor (to do); to endeavour; to try hard; to work hard; to strive; to make an effort; to exert oneself; to devote oneself; to be committed (to doing)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "努（ど） third principle of the Eight Principles of Yong",
+   "努（ゆめ） never"
+  ]
+ },
+ {
+  "no": 271,
+  "kanji": "精",
+  "on": "ショウ, セイ",
+  "kun": "くわ.しい, しら.げる",
+  "arti": "energy, excellence, fairy, ghost, purity, refined, semen, skill, vitality",
+  "kosakata": [
+   "精 → せい → spirit; sprite; nymph",
+   "精神 → せいしん → mind; spirit; soul; heart; ethos",
+   "詳しい → くわしい → detailed; full; minute",
+   "精々 → せいぜい → at the most; at best"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "精（せい） spirit",
+   "精神（せいしん） mind"
+  ]
+ },
+ {
+  "no": 272,
+  "kanji": "散",
+  "on": "サン",
+  "kun": "-ち.らす, ち.らかす, ち.らかる, ち.らす, ち.らばる, ち.る, ばら,",
+  "arti": "disperse, scatter, spend, squander",
+  "kosakata": [
+   "散 → ばら → loose articles (not packaged with other things); bulk items; individual items",
+   "散歩 → さんぽ → walk; stroll",
+   "散らかる → ちらかる → to be in disorder; to lie scattered around",
+   "散らかす → ちらかす → to scatter around; to leave untidy; to make a mess"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "散（ばら） loose articles (not packaged with other things)",
+   "散歩（さんぽ） walk"
+  ]
+ },
+ {
+  "no": 273,
+  "kanji": "静",
+  "on": "ジョウ, セイ",
+  "kun": "しず-, しず.か, しず.まる, しず.める",
+  "arti": "quiet",
+  "kosakata": [
+   "静 → しず → quiet; calm; still",
+   "静 → せい → stillness",
+   "静か → しずか → quiet; silent",
+   "静まる → しずまる → to become quiet; to quiet down; to quieten down"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "静（しず） quiet",
+   "静（せい） stillness"
+  ]
+ },
+ {
+  "no": 274,
+  "kanji": "婚",
+  "on": "コン",
+  "kun": "",
+  "arti": "marriage",
+  "kosakata": [
+   "婚 → こん → marriage",
+   "婚 → くながい → sexual intercourse",
+   "夜這い → よばい → creeping at night into a woman's bedroom; stealing into a girl's bedroom at night to make love; sneaking visit",
+   "婚約 → こんやく → engagement; betrothal"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "婚（こん） marriage",
+   "婚（くながい） sexual intercourse"
+  ]
+ },
+ {
+  "no": 275,
+  "kanji": "喜",
+  "on": "キ",
+  "kun": "よろこ.ばす, よろこ.ぶ",
+  "arti": "rejoice, take pleasure in",
+  "kosakata": [
+   "喜ぶ → よろこぶ → to be delighted; to be glad; to be pleased; to rejoice",
+   "喜劇 → きげき → comedy",
+   "喜び → よろこび → joy; delight; rapture; pleasure; gratification; rejoicing; congratulations; felicitations",
+   "喜ばす → よろこばす → to delight; to please; to make (someone) happy; to give pleasure (to)"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "喜ぶ（よろこぶ） to be delighted",
+   "喜劇（きげき） comedy"
+  ]
+ },
+ {
+  "no": 276,
+  "kanji": "浮",
+  "on": "フ",
+  "kun": "う.かぶ, う.かべる, う.かれる, う.く",
+  "arti": "float, floating, rise to surface",
+  "kosakata": [
+   "浮力 → ふりょく → buoyancy; floating power",
+   "浮かべる → うかべる → to float; to set afloat; to launch",
+   "浮かぶ → うかぶ → to float; to be suspended",
+   "浮く → うく → to float"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "浮力（ふりょく） buoyancy",
+   "浮かべる（うかべる） to float"
+  ]
+ },
+ {
+  "no": 277,
+  "kanji": "絶",
+  "on": "ゼツ",
+  "kun": "た.える, た.つ, た.やす",
+  "arti": "abstain, be beyond, cut off, discontinue, interrupt, peerless, sever, suppress, unparalleled, without match",
+  "kosakata": [
+   "絶 → ぜつ → starting field which contains the November and/or December 20-point card",
+   "絶滅 → ぜつめつ → extinction; extermination",
+   "絶対 → ぜったい → absolutely; definitely; unconditionally",
+   "絶版 → ぜっぱん → out of print"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "絶（ぜつ） starting field which contains the November and/or December 20-point card",
+   "絶滅（ぜつめつ） extinction"
+  ]
+ },
+ {
+  "no": 278,
+  "kanji": "幸",
+  "on": "コウ",
+  "kun": "さいわ.い, さち, しあわ.せ",
+  "arti": "blessing, fortune, happiness",
+  "kosakata": [
+   "幸 → さち → good luck; fortune; happiness",
+   "幸福 → こうふく → happiness; well-being; joy; welfare; blessedness",
+   "幸せ → しあわせ → happiness; good fortune; luck; blessing",
+   "幸運 → こううん → good luck; fortune"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "幸（さち） good luck",
+   "幸福（こうふく） happiness"
+  ]
+ },
+ {
+  "no": 279,
+  "kanji": "押",
+  "on": "オウ",
+  "kun": "お.さえる, お.し-, お.す, お.っ-, おさ.える",
+  "arti": "attach, check, do in spite of, press, push, seal, seize, shove, stop, subdue, weight",
+  "kosakata": [
+   "押入れ → おしいれ → closet (built into the wall, usu. with sliding doors); (built-in) wardrobe",
+   "押す → おす → to push; to thrust; to shove",
+   "押さえる → おさえる → to pin down; to hold down; to press down; to hold in place; to hold steady",
+   "押し込む → おしこむ → to push into; to cram into; to stuff into; to crowd into"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "押入れ（おしいれ） closet (built into the wall, usu. with sliding doors)",
+   "押す（おす） to push"
+  ]
+ },
+ {
+  "no": 280,
+  "kanji": "倒",
+  "on": "トウ",
+  "kun": "-だお.れ, さかさ, さかさま, さかしま, たお.す, たお.れる",
+  "arti": "break down, collapse, drop, fall, overthrow",
+  "kosakata": [
+   "逆さま → さかさま → inverted; upside down; reversed; back to front; wrong way round",
+   "逆しま → さかしま → reverse; inversion; upside down",
+   "逆 → さか → inverse; reverse",
+   "倒れる → たおれる → to fall (over, down); to collapse; to take a fall; to topple"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "倒れる（たおれる） to fall (over, down)"
+  ]
+ },
+ {
+  "no": 281,
+  "kanji": "等",
+  "on": "トウ",
+  "kun": "-ら, など, ひと.しい",
+  "arti": "and so forth, class (first), equal, etc., quality, similar",
+  "kosakata": [
+   "等 → など → et cetera; etc.; and the like; and so forth",
+   "等 → ら → pluralizing suffix",
+   "等 → とう → class; order; rank",
+   "等しい → ひとしい → equal; identical; the same"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "等（など） et cetera",
+   "等（ら） pluralizing suffix"
+  ]
+ },
+ {
+  "no": 282,
+  "kanji": "曲",
+  "on": "キョク",
+  "kun": "くま, ま.がる, ま.げる",
+  "arti": "bend, composition, crooked, curve, fault, injustice, lean, melody, music, perverse, pleasure",
+  "kosakata": [
+   "曲 → きょく → composition; piece of music; song; track (on a record)",
+   "隈 → くま → corner; nook; recess",
+   "曲 → くせ → long segment of a noh play forming its musical highlight",
+   "禍 → まが → wickedness; evil; calamity; disaster"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "曲（きょく） composition",
+   "曲（くせ） long segment of a noh play forming its musical highlight"
+  ]
+ },
+ {
+  "no": 283,
+  "kanji": "払",
+  "on": "ヒツ, フツ, ホツ",
+  "kun": "-はら.い, -ばら.い, はら.う",
+  "arti": "banish, clear out, dispose of, pay, prune",
+  "kosakata": [
+   "払う → はらう → to pay (e.g. money, bill)",
+   "払い戻す → はらいもどす → to repay; to pay back; to refund; to reimburse",
+   "払い込む → はらいこむ → to deposit; to pay in",
+   "払い → はらい → payment; bill; account"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "払う（はらう） to pay (e.g. money, bill)",
+   "払い戻す（はらいもどす） to repay"
+  ]
+ },
+ {
+  "no": 284,
+  "kanji": "庭",
+  "on": "テイ",
+  "kun": "にわ",
+  "arti": "courtyard, garden, yard",
+  "kosakata": [
+   "庭 → にわ → garden; yard; courtyard",
+   "庭園 → ていえん → garden; park",
+   "庭木 → にわき → garden tree",
+   "庭師 → にわし → gardener"
+  ],
+  "volume": [
+   "VOL2",
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "庭（にわ） garden",
+   "庭園（ていえん） garden"
+  ]
+ },
+ {
+  "no": 285,
+  "kanji": "徒",
+  "on": "ト",
+  "kun": "あだ, いたずら",
+  "arti": "emptiness, ephemeral thing, futility, gang, junior, on foot, party, people, set, uselessness, vanity",
+  "kosakata": [
+   "無駄 → むだ → futility; waste; uselessness; pointlessness; idleness",
+   "只 → ただ → ordinary; common; usual",
+   "徒 → いたずら → useless; vain; aimless; idle",
+   "徒 → あだ → vain; futile; transient; frivolous"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "徒（いたずら） useless",
+   "徒（あだ） vain"
+  ]
+ },
+ {
+  "no": 286,
+  "kanji": "勤",
+  "on": "キン, ゴン",
+  "kun": "-づと.め, いそ.しむ, つと.まる, つと.める",
+  "arti": "become employed, diligence, serve",
+  "kosakata": [
+   "勤める → つとめる → to work (for); to be employed (at); to serve (in)",
+   "勤め → つとめ → service; duty; business; responsibility; task",
+   "勤勉 → きんべん → diligent; hard-working; industrious",
+   "勤務 → きんむ → service; duty; work"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "勤める（つとめる） to work (for)",
+   "勤め（つとめ） service"
+  ]
+ },
+ {
+  "no": 287,
+  "kanji": "遅",
+  "on": "チ",
+  "kun": "おく.らす, おく.れる, おそ.い",
+  "arti": "back, late, later, slow",
+  "kosakata": [
+   "遅い → おそい → slow",
+   "遅れる → おくれる → to be late; to be delayed; to fall behind schedule; to be overdue",
+   "遅刻 → ちこく → lateness; tardiness; arriving late",
+   "遅れ → おくれ → delay; lag; postponement; falling behind"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "遅い（おそい） slow",
+   "遅れる（おくれる） to be late"
+  ]
+ },
+ {
+  "no": 288,
+  "kanji": "居",
+  "on": "キョ, コ",
+  "kun": "-い, い.る, お.る",
+  "arti": "exist, live with, reside, to be",
+  "kosakata": [
+   "居 → きょ → residence",
+   "居 → い → being (somewhere)",
+   "居間 → いま → living room (Western style); sitting room",
+   "居る → いる → to be (of animate objects); to exist"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "居（きょ） residence",
+   "居（い） being (somewhere)"
+  ]
+ },
+ {
+  "no": 289,
+  "kanji": "雑",
+  "on": "ザツ, ゾウ",
+  "kun": "まじ.える, まじ.る",
+  "arti": "miscellaneous",
+  "kosakata": [
+   "雑 → ざつ → rough; crude; sloppy; messy",
+   "雑 → ぞう → miscellany (classification of Japanese poetry unrelated to the seasons or to love)",
+   "雑誌 → ざっし → magazine; journal; periodical",
+   "雑音 → ざつおん → noise (usu. unpleasant)"
+  ],
+  "volume": [
+   "VOL3",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "雑（ざつ） rough",
+   "雑（ぞう） miscellany (classification of Japanese poetry unrelated to the seasons or to love)"
+  ]
+ },
+ {
+  "no": 290,
+  "kanji": "招",
+  "on": "ショウ",
+  "kun": "まね.く",
+  "arti": "beckon, engage, invite, summon",
+  "kosakata": [
+   "呼ぶ → よぶ → to call out (to); to call; to invoke",
+   "招待 → しょうたい → invitation",
+   "招く → まねく → to invite; to ask",
+   "招き → まねき → invitation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "招待（しょうたい） invitation",
+   "招く（まねく） to invite"
+  ]
+ },
+ {
+  "no": 291,
+  "kanji": "困",
+  "on": "コン",
+  "kun": "こま.る",
+  "arti": "annoyed, become distressed, quandary",
+  "kosakata": [
+   "困る → こまる → to be troubled; to have difficulty; to be in a fix; to be at a loss; to be stumped; to be embarrassed",
+   "困難 → こんなん → difficulty; hardship; trouble; distress",
+   "困惑 → こんわく → bewilderment; perplexity; embarrassment; discomfiture; bafflement",
+   "困り果てる → こまりはて る → to be at a complete loss; to be without recourse; to be completely stymied; to have absolutely no idea what to do"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "困る（こまる） to be troubled",
+   "困難（こんなん） difficulty"
+  ]
+ },
+ {
+  "no": 292,
+  "kanji": "欠",
+  "on": "ケツ, ケン",
+  "kun": "か.く, か.ける",
+  "arti": "fail, gap, lack, yawning radical (no. 76)",
+  "kosakata": [
+   "欠伸 → あくび → yawn; yawning",
+   "欠 → けつ → lack; deficiency; vacancy",
+   "欠点 → けってん → fault; defect; flaw; weak point; weakness; shortcoming; drawback",
+   "欠席 → けっせき → absence; non-attendance"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "欠伸（あくび） yawn",
+   "欠（けつ） lack"
+  ]
+ },
+ {
+  "no": 293,
+  "kanji": "刻",
+  "on": "コク",
+  "kun": "きざ.み, きざ.む",
+  "arti": "carving, chop, cut fine, engrave, hash, mince, time",
+  "kosakata": [
+   "時 → とき → time; hour; moment",
+   "刻 → こく → period of time (usu. a period of approx. two hours corresponding to one of the signs of the Chinese zodiac)",
+   "刻 → きざ → scratch",
+   "刻む → きざむ → to mince; to cut fine; to chop up; to hash; to shred"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "刻（こく） period of time (usu. a period of approx. two hours corresponding to one of the signs of the Chinese zodiac)",
+   "刻（きざ） scratch"
+  ]
+ },
+ {
+  "no": 294,
+  "kanji": "賛",
+  "on": "サン",
+  "kun": "たす.ける, たた.える",
+  "arti": "agree with, approve, assist, praise, title or inscription on picture",
+  "kosakata": [
+   "賛 → さん → praise; tribute",
+   "賛成 → さんせい → approval; agreement; support; favour; favor",
+   "賛美 → さんび → praise; glorification; extolment",
+   "賛辞 → さんじ → eulogy; compliment"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "賛（さん） praise",
+   "賛成（さんせい） approval"
+  ]
+ },
+ {
+  "no": 295,
+  "kanji": "抱",
+  "on": "ホウ",
+  "kun": "いだ.く, かか.える, だ.く",
+  "arti": "embrace, hold in arms, hug",
+  "kosakata": [
+   "抱える → かかえる → to hold in one's arms; to carry in one's arms; to carry under one's arm; to hold (one's head) in one's hands",
+   "抱きしめる → だきしめる → to hug (someone) tight; to embrace; to give (someone) a tight hug; to cuddle",
+   "抱負 → ほうふ → aspiration; ambition; plan; hopes; wishes",
+   "抱く → いだく → to hold in one's arms (e.g. a baby); to embrace; to hug"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "抱える（かかえる） to hold in one's arms",
+   "抱きしめる（だきしめる） to hug (someone) tight"
+  ]
+ },
+ {
+  "no": 296,
+  "kanji": "犯",
+  "on": "ハン, ボン",
+  "kun": "おか.す",
+  "arti": "crime, offense, sin",
+  "kosakata": [
+   "犯 → はん → perpetrators of (some) crime; (some type of) crime",
+   "犯罪 → はんざい → crime; offence; offense",
+   "犯人 → はんにん → offender; criminal; culprit",
+   "犯す → おかす → to commit (e.g. crime); to perpetrate; to make (e.g. mistake)"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "犯（はん） perpetrators of (some) crime",
+   "犯罪（はんざい） crime"
+  ]
+ },
+ {
+  "no": 297,
+  "kanji": "恐",
+  "on": "キョウ",
+  "kun": "おそ.る, おそ.れる, おそ.ろしい, こわ.い, こわ.がる",
+  "arti": "awe, dread, fear",
+  "kosakata": [
+   "怖 → こわ → frightening; terrifying",
+   "畏 → かしこ → yours sincerely; respectfully yours",
+   "恐怖 → きょうふ → fear; dread; dismay; terror; horror; scare; panic",
+   "怖い → こわい → scary; frightening; eerie; dreadful"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "恐怖（きょうふ） fear"
+  ]
+ },
+ {
+  "no": 298,
+  "kanji": "息",
+  "on": "ソク",
+  "kun": "いき",
+  "arti": "breath, coming to an end, interest (on money), nuture, respiration, rest, son",
+  "kosakata": [
+   "息 → いき → breath; breathing",
+   "息子 → むすこ → son",
+   "息 → そく → son",
+   "意気込む → いきごむ → to be enthusiastic (about); to be eager (to do); to be keen; to be intent (on); to be determined"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "息（いき） breath",
+   "息子（むすこ） son"
+  ]
+ },
+ {
+  "no": 299,
+  "kanji": "遠",
+  "on": "エン, オン",
+  "kun": "とお.い",
+  "arti": "distant, far",
+  "kosakata": [
+   "遠 → とお → distant",
+   "遠い → とおい → far; distant; far away; a long way off; in the distance",
+   "遠慮 → えんりょ → reserve; constraint; restraint; modesty; diffidence; hesitation; holding back; discretion; tact; thoughtfulness",
+   "遠く → とおく → far away; distant place; a (great) distance; a long way off; afar"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL1",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "遠（とお） distant",
+   "遠い（とおい） far"
+  ]
+ },
+ {
+  "no": 300,
+  "kanji": "戻",
+  "on": "レイ",
+  "kun": "もど.す, もど.る",
+  "arti": "go backwards, re-, restore, resume, return, revert",
+  "kosakata": [
+   "戻る → もどる → to turn back (e.g. half-way)",
+   "戻す → もどす → to put back; to return; to give back; to restore (to a previous state, e.g. defrosting, reconstituting, reconciling); to turn back (e.g. clock hand)",
+   "戻ってくる → もどってく る → to come back",
+   "悖る → もとる → to go against; to act contrary to; to run counter to; to deviate from"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "戻る（もどる） to turn back (e.g. half-way)",
+   "戻す（もどす） to put back"
+  ]
+ },
+ {
+  "no": 301,
+  "kanji": "願",
+  "on": "ガン",
+  "kun": "-ねがい, ねが.う",
+  "arti": "hope, petition, request, vow, wish",
+  "kosakata": [
+   "願い → ねがい → desire; wish; hope",
+   "願 → がん → prayer; wish; vow",
+   "願う → ねがう → to desire; to wish; to hope",
+   "願書 → がんしょ → (written) application; written request; petition"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "願い（ねがい） desire",
+   "願（がん） prayer"
+  ]
+ },
+ {
+  "no": 302,
+  "kanji": "絵",
+  "on": "エ, カイ",
+  "kun": "",
+  "arti": "drawing, painting, picture, sketch",
+  "kosakata": [
+   "絵 → え → picture; drawing; painting; sketch",
+   "絵画 → かいが → painting; picture",
+   "絵の具 → えのぐ → paint; coloring materials; colors; colours",
+   "絵本 → えほん → picture book"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "絵（え） picture",
+   "絵画（かいが） painting"
+  ]
+ },
+ {
+  "no": 303,
+  "kanji": "越",
+  "on": "エツ, オツ",
+  "kun": "-こ.す, -ご.え, -ご.し, こ.える, こ.す",
+  "arti": "Vietnam, cross over, exceed, move to, surpass",
+  "kosakata": [
+   "越 → えつ → Yue (kingdom in ancient China; 6th century-334 BCE)",
+   "越える → こえる → to cross over; to cross; to pass through; to pass over (out of); to go beyond; to go past",
+   "越す → こす → to cross over (e.g. mountain); to go across",
+   "越幾斯 → エキス → extract (of plants, meat, etc.); essence; concentrate; concentrated stock"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "越（えつ） Yue (kingdom in ancient China",
+   "越える（こえる） to cross over"
+  ]
+ },
+ {
+  "no": 304,
+  "kanji": "欲",
+  "on": "ヨク",
+  "kun": "ほ.しい, ほっ.する",
+  "arti": "covetousness, craving, desire, greed, longing, passion",
+  "kosakata": [
+   "欲 → よく → greed; craving; desire; appetite; hunger; avarice; wants",
+   "欲しい → ほしい → wanting (to have); desiring; wishing for",
+   "欲張り → よくばり → greed; avarice; covetousness; greedy person",
+   "欲望 → よくぼう → desire; appetite; lust"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "欲（よく） greed",
+   "欲しい（ほしい） wanting (to have)"
+  ]
+ },
+ {
+  "no": 305,
+  "kanji": "痛",
+  "on": "ツウ",
+  "kun": "いた.い, いた.ましい, いた.む, いた.める",
+  "arti": "bruise, damage, hurt, pain",
+  "kosakata": [
+   "痛 → いた → ouch; ow; that hurt",
+   "痛 → つう → pain; ache; - algia",
+   "痛み → いたみ → pain; ache; soreness; grief; distress",
+   "痛い → いたい → painful; sore"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "痛（いた） ouch",
+   "痛（つう） pain"
+  ]
+ },
+ {
+  "no": 306,
+  "kanji": "笑",
+  "on": "ショウ",
+  "kun": "え.む, わら.う",
+  "arti": "laugh",
+  "kosakata": [
+   "笑い → わらい → laugh; laughter",
+   "笑 → わら → LOL; haha",
+   "笑う → わらう → to laugh",
+   "笑顔 → えがお → smiling face; smile"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "笑い（わらい） laugh",
+   "笑（わら） LOL"
+  ]
+ },
+ {
+  "no": 307,
+  "kanji": "互",
+  "on": "ゴ",
+  "kun": "かたみ.に, たが.い",
+  "arti": "mutually, reciprocally, together",
+  "kosakata": [
+   "互い → たがい → each other; one another",
+   "互いに → たがいに → mutually; with each other; reciprocally; together",
+   "互角 → ごかく → equal (in ability); even; evenly matched; well-matched; on par (with)",
+   "互い違い → たがいちがい → alternate; alternation"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "互い（たがい） each other",
+   "互いに（たがいに） mutually"
+  ]
+ },
+ {
+  "no": 308,
+  "kanji": "束",
+  "on": "ソク",
+  "kun": "たば, たば.ねる, つか, つか.ねる",
+  "arti": "bundle, control, govern, manage, ream, sheaf, tie in bundles",
+  "kosakata": [
+   "束 → たば → bundle; bunch; sheaf",
+   "束 → そく → lattice",
+   "束 → つか → strut; short vertical post",
+   "つかの間 → つかのま → moment; brief space of time"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "束（たば） bundle",
+   "束（そく） lattice"
+  ]
+ },
+ {
+  "no": 309,
+  "kanji": "似",
+  "on": "ジ",
+  "kun": "に.る, ひ.る",
+  "arti": "becoming, counterfeit, imitate, resemble, suitable",
+  "kosakata": [
+   "似 → に → looking like (someone); taking after (either of one's parents)",
+   "似る → にる → to resemble; to look like; to be like; to be alike; to be similar; to take after",
+   "似合う → にあう → to suit; to match; to become; to be like",
+   "似通う → にかよう → to resemble closely"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "似（に） looking like (someone)",
+   "似る（にる） to resemble"
+  ]
+ },
+ {
+  "no": 310,
+  "kanji": "列",
+  "on": "レ, レツ",
+  "kun": "",
+  "arti": "column, file, rank, row, tier",
+  "kosakata": [
+   "列 → れつ → row; line; file; column; queue; rank; procession",
+   "列車 → れっしゃ → train; railway train",
+   "並ぶ → ならぶ → to line up; to stand in a line",
+   "列島 → れっとう → archipelago; chain of islands"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "列（れつ） row",
+   "列車（れっしゃ） train"
+  ]
+ },
+ {
+  "no": 311,
+  "kanji": "探",
+  "on": "タン",
+  "kun": "さが.す, さぐ.る",
+  "arti": "grope, look for, search",
+  "kosakata": [
+   "探す → さがす → to search for; to look for; to hunt for; to seek",
+   "探検 → たんけん → exploration; expedition",
+   "探る → さぐる → to feel around for; to fumble for; to grope for; to search for; to look for",
+   "探偵 → たんてい → detective; investigator; sleuth"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "探す（さがす） to search for",
+   "探検（たんけん） exploration"
+  ]
+ },
+ {
+  "no": 312,
+  "kanji": "逃",
+  "on": "トウ",
+  "kun": "に.がす, に.げる, のが.す, のが.れる",
+  "arti": "escape, evade, flee, set free, shirk",
+  "kosakata": [
+   "逃げる → にげる → to run away; to flee; to get away (e.g. from danger); to escape; to break out; to leave (e.g. one's spouse); to take cover",
+   "逃がす → にがす → to set free; to let go; to release",
+   "逃れる → のがれる → to escape",
+   "逃亡 → とうぼう → escape; flight; running away; elopement; fleeing"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "逃げる（にげる） to run away",
+   "逃がす（にがす） to set free"
+  ]
+ },
+ {
+  "no": 313,
+  "kanji": "遊",
+  "on": "ユ, ユウ",
+  "kun": "あそ.ばす, あそ.ぶ",
+  "arti": "play",
+  "kosakata": [
+   "遊び → あそび → play; playing; game",
+   "遊園地 → ゆうえんち → amusement park",
+   "遊ぶ → あそぶ → to play (games, sports); to enjoy oneself; to have a good time",
+   "遊び場 → あそびば → playground; play space"
+  ],
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "遊び（あそび） play",
+   "遊園地（ゆうえんち） amusement park"
+  ]
+ },
+ {
+  "no": 314,
+  "kanji": "迷",
+  "on": "メイ",
+  "kun": "まよ.う",
+  "arti": "astray, be perplexed, err, illusion, in doubt, lost",
+  "kosakata": [
+   "迷信 → めいしん → superstition; superstitious belief",
+   "迷惑 → めいわく → trouble; bother; annoyance; nuisance; inconvenience",
+   "迷子 → まいご → lost child; lost person; stray child; missing child",
+   "迷路 → めいろ → maze; labyrinth"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "迷信（めいしん） superstition",
+   "迷惑（めいわく） trouble"
+  ]
+ },
+ {
+  "no": 315,
+  "kanji": "夢",
+  "on": "ボウ, ム",
+  "kun": "くら.い, ゆめ, ゆめ.みる",
+  "arti": "dream, illusion, vision",
+  "kosakata": [
+   "夢 → ゆめ → dream",
+   "夢中 → むちゅう → absorbed in; immersed in; crazy about; obsessed with; devoted to",
+   "夢物語 → ゆめものがたり → account of a dream",
+   "夢想 → むそう → dream; vision; reverie"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "夢（ゆめ） dream",
+   "夢中（むちゅう） absorbed in"
+  ]
+ },
+ {
+  "no": 316,
+  "kanji": "君",
+  "on": "クン",
+  "kun": "-ぎみ, きみ",
+  "arti": "male name suffix, mister, ruler, you",
+  "kosakata": [
+   "君 → きみ → you; buddy; pal",
+   "君 → くん → Mr; master; boy",
+   "君 → きんじ → you",
+   "君 → ぎみ → suffix appended to someone else's family members"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "君（きみ） you",
+   "君（くん） Mr"
+  ]
+ },
+ {
+  "no": 317,
+  "kanji": "閉",
+  "on": "ヘイ",
+  "kun": "し.まる, し.める, た.てる, と.ざす, と.じる",
+  "arti": "closed, shut",
+  "kosakata": [
+   "閉める → しめる → to close; to shut",
+   "閉まる → しまる → to be shut; to close; to be closed",
+   "締め切り → しめきり → deadline; closing; cut-off",
+   "閉会 → へいかい → closure (of a ceremony, event, meeting, etc.)"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "閉める（しめる） to close",
+   "閉まる（しまる） to be shut"
+  ]
+ },
+ {
+  "no": 318,
+  "kanji": "緒",
+  "on": "ショ, チョ",
+  "kun": "いとぐち, お",
+  "arti": "beginning, cord, end, inception, mental or emotional state, strap, thong",
+  "kosakata": [
+   "糸口 → いとぐち → beginning; start; first step",
+   "緒 → お → cord; strap; thong",
+   "緒 → しょ → beginning; inception",
+   "緒戦 → しょせん → beginning of hostilities; beginning of competition"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "緒（お） cord",
+   "緒（しょ） beginning"
+  ]
+ },
+ {
+  "no": 319,
+  "kanji": "折",
+  "on": "シャク, セツ",
+  "kun": "-お.り, お.り, お.る, お.れる, おり",
+  "arti": "bend, break, fold, fracture, submit, yield",
+  "kosakata": [
+   "折 → おり → opportunity; chance; occasion; time",
+   "折る → おる → to break; to fracture; to break off; to snap off; to pick (e.g. flowers)",
+   "折れる → おれる → to break; to be broken; to snap; to fracture",
+   "折角 → せっかく → with trouble; at great pains"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "折（おり） opportunity",
+   "折る（おる） to break"
+  ]
+ },
+ {
+  "no": 320,
+  "kanji": "草",
+  "on": "ソウ",
+  "kun": "-ぐさ, くさ, くさ-",
+  "arti": "draft, grass, herbs, pasture, weeds, write",
+  "kosakata": [
+   "草 → くさ → grass; weed; herb; thatch",
+   "草 → そう → draft; rough copy",
+   "壮 → そう → vibrancy; strength; bravery; manliness",
+   "草花 → くさばな → flower; flowering plant"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "草（くさ） grass",
+   "草（そう） draft"
+  ]
+ },
+ {
+  "no": 321,
+  "kanji": "暮",
+  "on": "ボ",
+  "kun": "く.らす, く.れる",
+  "arti": "evening, livelihood, make a living, season's end, spend time, twilight",
+  "kosakata": [
+   "暮れ → くれ → sunset; sundown; nightfall; dusk",
+   "暮れる → くれる → to get dark; to grow dark",
+   "暮らし → くらし → (way of) life; living; livelihood; life circumstances",
+   "暮らす → くらす → to live; to get along"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "暮れ（くれ） sunset",
+   "暮れる（くれる） to get dark"
+  ]
+ },
+ {
+  "no": 322,
+  "kanji": "酒",
+  "on": "シュ",
+  "kun": "さか-, さけ",
+  "arti": "alcohol, sake",
+  "kosakata": [
+   "酒 → さけ → alcohol; sake",
+   "酒 → しゅ → alcohol; (alcoholic) drink; liqueur",
+   "酒 → ささ → alcohol; sake",
+   "酒 → さか → alcohol; sake"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "酒（さけ） alcohol",
+   "酒（しゅ） alcohol"
+  ]
+ },
+ {
+  "no": 323,
+  "kanji": "悲",
+  "on": "ヒ",
+  "kun": "かな.しい, かな.しむ",
+  "arti": "deplore, grieve, regret, sad",
+  "kosakata": [
+   "悲 → ひ → karuna (compassion)",
+   "悲しい → かなしい → sad; miserable; unhappy; sorrowful",
+   "悲しむ → かなしむ → to be sad; to mourn for; to regret",
+   "悲劇 → ひげき → tragedy; tragic drama; tragic play"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "悲（ひ） karuna (compassion)",
+   "悲しい（かなしい） sad"
+  ]
+ },
+ {
+  "no": 324,
+  "kanji": "晴",
+  "on": "セイ",
+  "kun": "-ば.れ, は.らす, は.れ, は.れ-, は.れる",
+  "arti": "clear up",
+  "kosakata": [
+   "晴れ → はれ → clear weather; fine weather",
+   "晴れる → はれる → to clear up; to clear away; to be sunny; to stop raining",
+   "晴天 → せいてん → fine weather (i.e. little or no clouds); fair weather; clear weather; clear sky; fair skies",
+   "晴れ着 → はれぎ → (one's) Sunday best; (one's) best clothes; glad rags"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "晴れ（はれ） clear weather",
+   "晴れる（はれる） to clear up"
+  ]
+ },
+ {
+  "no": 325,
+  "kanji": "掛",
+  "on": "カイ, ケイ",
+  "kun": "-か.かる, -か.け, -か.ける, -が.かり, -が.かる, -が.け, -がかり, か.かり,",
+  "arti": "arrive at, depend, hang, pour, suspend, tax",
+  "kosakata": [
+   "掛け → かけ → credit",
+   "掛け → がけ → -clad",
+   "係 → がかり → charge; duty; person in charge; official; clerk",
+   "掛ける → かける → to hang up (e.g. a coat, a picture on the wall); to let hang; to suspend (from); to hoist (e.g. sail); to raise (e.g. flag)"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "掛け（かけ） credit",
+   "掛け（がけ） -clad"
+  ]
+ },
+ {
+  "no": 326,
+  "kanji": "到",
+  "on": "トウ",
+  "kun": "いた.る",
+  "arti": "arrival, attain, proceed, reach, result in",
+  "kosakata": [
+   "到頭 → とうとう → finally; at last; in the end; ultimately",
+   "到着 → とうちゃく → arrival",
+   "至る → いたる → to arrive at (e.g. a decision); to reach (a stage); to attain",
+   "到達 → とうたつ → reaching; attaining; arrival"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "到頭（とうとう） finally",
+   "到着（とうちゃく） arrival"
+  ]
+ },
+ {
+  "no": 327,
+  "kanji": "寝",
+  "on": "シン",
+  "kun": "い.ぬ, ね.かす, ね.る, みたまや, や.める",
+  "arti": "bed, lie down, remain unsold, rest, sleep",
+  "kosakata": [
+   "寝 → ね → sleep",
+   "寝 → ぬ → to lie down; to go to bed; to go to sleep",
+   "寝る → ねる → to sleep (lying down)",
+   "寝坊 → ねぼう → sleeping in late; oversleeping"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "寝（ね） sleep",
+   "寝（ぬ） to lie down"
+  ]
+ },
+ {
+  "no": 328,
+  "kanji": "暗",
+  "on": "アン",
+  "kun": "くら.い, くら.む, くれ.る",
+  "arti": "be blinded, darkness, disappear, grow dark, informal, shade",
+  "kosakata": [
+   "暗 → あん → darkness",
+   "暗記 → あんき → memorization; memorisation; learning by heart",
+   "暗い → くらい → dark; gloomy; murky",
+   "暮れる → くれる → to get dark; to grow dark"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "暗（あん） darkness",
+   "暗記（あんき） memorization"
+  ]
+ },
+ {
+  "no": 329,
+  "kanji": "盗",
+  "on": "トウ",
+  "kun": "ぬす.み, ぬす.む",
+  "arti": "pilfer, rob, steal",
+  "kosakata": [
+   "盗む → ぬすむ → to steal",
+   "盗難 → とうなん → theft; robbery",
+   "盗み → ぬすみ → stealing; theft",
+   "盗賊 → とうぞく → thief; robber; burglar; bandit"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "盗む（ぬすむ） to steal",
+   "盗難（とうなん） theft"
+  ]
+ },
+ {
+  "no": 330,
+  "kanji": "吸",
+  "on": "キュウ",
+  "kun": "す.う",
+  "arti": "imbibe, inhale, sip, suck",
+  "kosakata": [
+   "吸収 → きゅうしゅう → absorption; suction; attraction",
+   "吸う → すう → to smoke; to breathe in; to inhale",
+   "吸血鬼 → きゅうけつき → vampire; bloodsucker",
+   "吸い込む → すいこむ → to inhale; to breathe in; to suck up; to soak up; to absorb"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "吸収（きゅうしゅう） absorption",
+   "吸う（すう） to smoke"
+  ]
+ },
+ {
+  "no": 331,
+  "kanji": "陽",
+  "on": "ヨウ",
+  "kun": "ひ",
+  "arti": "daytime, heaven, male, positive, sunshine, yang principle",
+  "kosakata": [
+   "日 → ひ → day; days",
+   "陽 → ひ → sun; sunshine; sunlight",
+   "陽 → よう → (the) positive",
+   "日焼け → ひやけ → sunburn; suntan; tan"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "陽（ひ） sun",
+   "陽（よう） (the) positive"
+  ]
+ },
+ {
+  "no": 332,
+  "kanji": "御",
+  "on": "ギョ, ゴ",
+  "kun": "お-, おん-, み-",
+  "arti": "govern, honorable, manipulate",
+  "kosakata": [
+   "御 → ご → honorific/polite/humble prefix",
+   "御 → お → honorific/polite/humble prefix",
+   "御 → ぎょ → honorific affix",
+   "御 → み → august"
+  ],
+  "volume": [
+   "VOL1",
+   "VOL3",
+   "VOL4",
+   "VOL5",
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "御（ご） honorific/polite/humble prefix",
+   "御（お） honorific/polite/humble prefix"
+  ]
+ },
+ {
+  "no": 333,
+  "kanji": "歯",
+  "on": "シ",
+  "kun": "は, よわ.い, よわい, よわい.する",
+  "arti": "cog, tooth",
+  "kosakata": [
+   "歯 → は → tooth; teeth",
+   "齢 → よわい → (one's) age",
+   "歯 → し → tooth",
+   "歯磨き → はみがき → dental brushing; brushing one's teeth"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "歯（は） tooth",
+   "歯（し） tooth"
+  ]
+ },
+ {
+  "no": 334,
+  "kanji": "忘",
+  "on": "ボウ",
+  "kun": "わす.れる",
+  "arti": "forget",
+  "kosakata": [
+   "忘れ物 → わすれもの → lost article; thing left behind",
+   "忘年会 → ぼうねんかい → year-end party; \"forget- the-year\" party; bōnenkai",
+   "忘れる → わすれる → to forget; to leave carelessly; to be forgetful of; to forget about; to forget (an article)",
+   "忘れ去る → わすれさる → to forget completely; to leave behind"
+  ],
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "忘れ物（わすれもの） lost article",
+   "忘年会（ぼうねんかい） year-end party"
+  ]
+ },
+ {
+  "no": 335,
+  "kanji": "雪",
+  "on": "セツ",
+  "kun": "ゆき",
+  "arti": "snow",
+  "kosakata": [
+   "雪 → ゆき → snow; snowfall",
+   "雪崩 → なだれ → avalanche; snowslide",
+   "雪国 → ゆきぐに → snow country; snowy region",
+   "雪だるま → ゆきだるま → snowman"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "雪（ゆき） snow",
+   "雪崩（なだれ） avalanche"
+  ]
+ },
+ {
+  "no": 336,
+  "kanji": "吹",
+  "on": "スイ",
+  "kun": "ふ.く",
+  "arti": "blow, breathe, emit, puff, smoke",
+  "kosakata": [
+   "吹っ → ふっ → indicates that the action is done forcefully",
+   "吹く → ふく → to blow (of the wind)",
+   "吹雪 → ふぶき → snow storm; blizzard",
+   "吹き溜まり → ふきだまり → drift (of snow, leaves, etc.)"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "吹っ（ふっ） indicates that the action is done forcefully",
+   "吹く（ふく） to blow (of the wind)"
+  ]
+ },
+ {
+  "no": 337,
+  "kanji": "娘",
+  "on": "ジョウ",
+  "kun": "こ, むすめ",
+  "arti": "daughter, girl",
+  "kosakata": [
+   "娘 → むすめ → daughter",
+   "嬢 → じょう → unmarried woman",
+   "娘婿 → むすめむこ → son-in-law",
+   "娘さん → むすめさん → daughter"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "娘（むすめ） daughter",
+   "娘婿（むすめむこ） son-in-law"
+  ]
+ },
+ {
+  "no": 338,
+  "kanji": "誤",
+  "on": "ゴ",
+  "kun": "-あやま.る, あやま.る",
+  "arti": "do wrong, err, mislead, mistake",
+  "kosakata": [
+   "誤 → ご → mistake; error",
+   "誤り → あやまり → error; mistake; slip; bug",
+   "誤解 → ごかい → misunderstanding",
+   "過ち → あやまち → fault; error; indiscretion; faux pas"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "誤（ご） mistake",
+   "誤り（あやまり） error"
+  ]
+ },
+ {
+  "no": 339,
+  "kanji": "洗",
+  "on": "セン",
+  "kun": "あら.う",
+  "arti": "inquire into, probe, wash",
+  "kosakata": [
+   "洗 → せん → washing machine; (clothes) washer",
+   "澄まし → すまし → primness; putting on airs; prim person",
+   "洗濯 → せんたく → washing; laundry",
+   "洗う → あらう → to wash; to cleanse; to rinse"
+  ],
+  "volume": [
+   "VOL1",
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "洗（せん） washing machine",
+   "洗濯（せんたく） washing"
+  ]
+ },
+ {
+  "no": 340,
+  "kanji": "慣",
+  "on": "カン",
+  "kun": "な.らす, な.れる",
+  "arti": "accustomed, become experienced, get used to",
+  "kosakata": [
+   "慣れる → なれる → to get used to; to grow accustomed to; to become familiar with",
+   "倣う → ならう → to imitate; to follow; to copy; to emulate",
+   "慣習 → かんしゅう → custom; convention; common practice",
+   "慣行 → かんこう → customary practice; habit; traditional event"
+  ],
+  "volume": [
+   "N4VOL3",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "慣れる（なれる） to get used to",
+   "慣習（かんしゅう） custom"
+  ]
+ },
+ {
+  "no": 341,
+  "kanji": "礼",
+  "on": "ライ, レイ",
+  "kun": "",
+  "arti": "bow, ceremony, remuneration, salute, thanks",
+  "kosakata": [
+   "礼 → れい → thanks; gratitude",
+   "礼儀 → れいぎ → manners; courtesy; etiquette",
+   "礼拝 → れいはい → worship (esp. Christian); (church) service",
+   "礼状 → れいじょう → acknowledgment; acknowledgement; letter of thanks"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "礼（れい） thanks",
+   "礼儀（れいぎ） manners"
+  ]
+ },
+ {
+  "no": 342,
+  "kanji": "窓",
+  "on": "ス, ソウ",
+  "kun": "けむだし, てんまど, まど",
+  "arti": "pane, window",
+  "kosakata": [
+   "窓 → まど → window",
+   "窓口 → まどぐち → counter; window; teller window; ticket window",
+   "窓際 → まどぎわ → at the window; by the window; next to the window",
+   "窓側 → まどがわ → window-side; window (seat, e.g. on a plane)"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "窓（まど） window",
+   "窓口（まどぐち） counter"
+  ]
+ },
+ {
+  "no": 343,
+  "kanji": "昔",
+  "on": "シャク, セキ",
+  "kun": "むかし",
+  "arti": "antiquity, old times, once upon a time",
+  "kosakata": [
+   "昔 → むかし → the old days; the past; former times; a long time ago",
+   "昔話 → むかしばなし → old tale; folk tale; legend",
+   "昔々 → むかしむかし → long ago; once upon a time",
+   "昔日 → せきじつ → old days"
+  ],
+  "volume": [
+   "N4VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "昔（むかし） the old days",
+   "昔話（むかしばなし） old tale"
+  ]
+ },
+ {
+  "no": 344,
+  "kanji": "貧",
+  "on": "ヒン, ビン",
+  "kun": "まず.しい",
+  "arti": "poor, poverty",
+  "kosakata": [
+   "貧 → ひん → poverty; penury; want; need",
+   "貧困 → ひんこん → poverty; penury; need; destitution",
+   "貧しい → まずしい → poor; needy",
+   "貧乏 → びんぼう → poverty-stricken; destitute; poor; penurious"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "貧（ひん） poverty",
+   "貧困（ひんこん） poverty"
+  ]
+ },
+ {
+  "no": 345,
+  "kanji": "怒",
+  "on": "ド, ヌ",
+  "kun": "いか.る, おこ.る",
+  "arti": "angry, be offended",
+  "kosakata": [
+   "怒る → おこる → to get angry; to get mad; to lose one's temper",
+   "怒り → いかり → anger; rage; fury; wrath; indignation",
+   "怒鳴る → どなる → to shout (in anger); to yell",
+   "怒らせる → おこらせる → to make (someone) angry; to anger; to offend; to rile up; to provoke (to anger)"
+  ],
+  "volume": [
+   "N4VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "怒る（おこる） to get angry",
+   "怒り（いかり） anger"
+  ]
+ },
+ {
+  "no": 346,
+  "kanji": "泳",
+  "on": "エイ",
+  "kun": "およ.ぐ",
+  "arti": "swim",
+  "kosakata": [
+   "泳ぐ → およぐ → to swim",
+   "泳ぎ → およぎ → swimming",
+   "泳ぎ方 → およぎかた → way of swimming",
+   "泳者 → えいしゃ → a swimmer"
+  ],
+  "volume": [
+   "VOL2",
+   "N4VOL1",
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "泳ぐ（およぐ） to swim",
+   "泳ぎ（およぎ） swimming"
+  ]
+ },
+ {
+  "no": 347,
+  "kanji": "祖",
+  "on": "ソ",
+  "kun": "",
+  "arti": "ancestor, founder, pioneer",
+  "kosakata": [
+   "親 → おや → parent; parents; mother and father",
+   "祖 → そ → ancestor; forefather; progenitor",
+   "祖父 → そふ → grandfather",
+   "祖母 → そぼ → grandmother"
+  ],
+  "volume": [
+   "N4VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "祖（そ） ancestor",
+   "祖父（そふ） grandfather"
+  ]
+ },
+ {
+  "no": 348,
+  "kanji": "杯",
+  "on": "ハイ",
+  "kun": "さかずき",
+  "arti": "counter for cupfuls, glass, toast, wine glass",
+  "kosakata": [
+   "杯 → はい → sake cup; cup for alcoholic beverages",
+   "杯 → さかずき → sake cup; cup for alcoholic beverages",
+   "杯 → はた → counter for cupfuls, bowlfuls, spoonfuls, etc.",
+   "坏 → つき → shallow bowl"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "杯（はい） sake cup",
+   "杯（さかずき） sake cup"
+  ]
+ },
+ {
+  "no": 349,
+  "kanji": "疲",
+  "on": "ヒ",
+  "kun": "-づか.れ, つか.らす, つか.れる",
+  "arti": "exhausted, tire, weary",
+  "kosakata": [
+   "疲れる → つかれる → to get tired; to tire; to get fatigued; to become exhausted; to grow weary",
+   "疲労 → ひろう → fatigue; weariness; exhaustion; tiredness",
+   "疲れ → つかれ → tiredness; fatigue",
+   "疲れ果てる → つかれはて る → to get tired out; to be exhausted"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "疲れる（つかれる） to get tired",
+   "疲労（ひろう） fatigue"
+  ]
+ },
+ {
+  "no": 350,
+  "kanji": "皆",
+  "on": "カイ",
+  "kun": "みな, みんな",
+  "arti": "all, everything",
+  "kosakata": [
+   "皆 → みな → everyone; everybody; all",
+   "皆さん → みなさん → all; everyone; everybody",
+   "皆様 → みなさま → everyone",
+   "皆目 → かいもく → entirely; (not) at all"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "皆（みな） everyone",
+   "皆さん（みなさん） all"
+  ]
+ },
+ {
+  "no": 351,
+  "kanji": "鳴",
+  "on": "メイ",
+  "kun": "な.く, な.らす, な.る",
+  "arti": "bark, chirp, cry, echo, honk, ring, sound",
+  "kosakata": [
+   "鳴く → なく → to make sound (of an animal); to call; to cry; to whine; to sing; to chirp",
+   "鳴る → なる → to sound; to ring; to resound; to echo; to roar; to rumble",
+   "鳴らす → ならす → to ring; to sound; to chime; to beat; to snort (nose); to snap (fingers); to crack (joints)",
+   "鳴き声 → なきごえ → cry (of an animal); call; chirp; song; caw; roar; bark; yelp; meow"
+  ],
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "鳴く（なく） to make sound (of an animal)",
+   "鳴る（なる） to sound"
+  ]
+ },
+ {
+  "no": 352,
+  "kanji": "腹",
+  "on": "フク",
+  "kun": "はら",
+  "arti": "abdomen, belly, stomach",
+  "kosakata": [
+   "腹 → はら → abdomen; belly; stomach",
+   "腹立ち → はらだち → anger",
+   "腹心 → ふくしん → one's confidant; trusted friend; trusted retainer",
+   "腹部 → ふくぶ → abdomen; abdominal region; belly"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "腹（はら） abdomen",
+   "腹立ち（はらだち） anger"
+  ]
+ },
+ {
+  "no": 353,
+  "kanji": "煙",
+  "on": "エン",
+  "kun": "けむ.い, けむ.る, けむり",
+  "arti": "smoke",
+  "kosakata": [
+   "煙 → けむり → smoke; fumes",
+   "煙草 → タバコ → tobacco; cigarette; cigar",
+   "煙突 → えんとつ → chimney; smokestack; funnel (of a ship); stovepipe",
+   "花火 → はなび → fireworks"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "煙（けむり） smoke",
+   "煙草（タバコ） tobacco"
+  ]
+ },
+ {
+  "no": 354,
+  "kanji": "眠",
+  "on": "ミン",
+  "kun": "ねむ.い, ねむ.る",
+  "arti": "die, sleep, sleepy",
+  "kosakata": [
+   "眠る → ねむる → to sleep",
+   "眠い → ねむい → sleepy; drowsy; somnolent",
+   "眠たい → ねむたい → sleepy; drowsy",
+   "眠り → ねむり → sleep; sleeping"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "眠る（ねむる） to sleep",
+   "眠い（ねむい） sleepy"
+  ]
+ },
+ {
+  "no": 355,
+  "kanji": "怖",
+  "on": "フ, ホ",
+  "kun": "お.じる, おそ.れる, こわ.い, こわ.がる",
+  "arti": "be frightened, dreadful, fearful",
+  "kosakata": [
+   "怖 → こわ → frightening; terrifying",
+   "怖い → こわい → scary; frightening; eerie; dreadful",
+   "恐れる → おそれる → to fear; to be afraid of",
+   "恐ろしい → おそろしい → terrible; dreadful; terrifying; frightening"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "怖（こわ） frightening",
+   "怖い（こわい） scary"
+  ]
+ },
+ {
+  "no": 356,
+  "kanji": "耳",
+  "on": "ジ",
+  "kun": "みみ",
+  "arti": "ear",
+  "kosakata": [
+   "耳 → みみ → ear",
+   "耳元 → みみもと → close to the ear",
+   "耳障り → みみざわり → hard (on the ears); offensive (to the ear); rasping; rough; harsh; grating; jarring; cacophonous",
+   "耳より → みみより → welcome (news); inviting; encouraging; tempting; hopeful"
+  ],
+  "volume": [
+   "VOL5"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "耳（みみ） ear",
+   "耳元（みみもと） close to the ear"
+  ]
+ },
+ {
+  "no": 357,
+  "kanji": "頂",
+  "on": "チョウ",
+  "kun": "いただ.く, いただき",
+  "arti": "peak, place on the head, receive, summit, top, top of head",
+  "kosakata": [
+   "頂 → いただき → crown (of head); summit (of mountain); spire",
+   "頂点 → ちょうてん → vertex; apex",
+   "頂上 → ちょうじょう → top; summit; peak",
+   "頂く → いただく → to receive; to get; to accept; to take; to buy"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "頂（いただき） crown (of head)",
+   "頂点（ちょうてん） vertex"
+  ]
+ },
+ {
+  "no": 358,
+  "kanji": "箱",
+  "on": "ソウ",
+  "kun": "はこ",
+  "arti": "bin, box, case, chest, railway car",
+  "kosakata": [
+   "箱 → はこ → box; case; chest; package; pack; crate",
+   "箱舟 → はこぶね → ark (i.e. Noah's)",
+   "箱詰め → はこづめ → packing into a box; boxing (up); thing packed in a box",
+   "箱乗り → はこのり → leaning out of a car or train window"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "箱（はこ） box",
+   "箱舟（はこぶね） ark (i.e. Noah's)"
+  ]
+ },
+ {
+  "no": 359,
+  "kanji": "晩",
+  "on": "バン",
+  "kun": "",
+  "arti": "night, nightfall",
+  "kosakata": [
+   "晩 → ばん → evening; night",
+   "遅い → おそい → slow",
+   "晩御飯 → ばんごはん → dinner; evening meal",
+   "晩年 → ばんねん → one's later years; final years (in life)"
+  ],
+  "volume": [
+   "VOL3",
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "晩（ばん） evening",
+   "晩御飯（ばんごはん） dinner"
+  ]
+ },
+ {
+  "no": 360,
+  "kanji": "寒",
+  "on": "カン",
+  "kun": "さむ.い",
+  "arti": "cold",
+  "kosakata": [
+   "寒 → さむ → cold",
+   "寒 → かん → midwinter; cold season; coldest days of the year",
+   "寒い → さむい → cold (e.g. weather)",
+   "寒気 → さむけ → chill; the shivers; shivering fit"
+  ],
+  "volume": [
+   "VOL3"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "寒（さむ） cold",
+   "寒（かん） midwinter"
+  ]
+ },
+ {
+  "no": 361,
+  "kanji": "髪",
+  "on": "ハツ",
+  "kun": "かみ",
+  "arti": "hair of the head",
+  "kosakata": [
+   "髪 → かみ → hair (on the head)",
+   "髪 → はつ → (a) hair",
+   "髪の毛 → かみのけ → hair (on the head); (a) hair",
+   "髪型 → かみがた → hair style; coiffure; hairdo"
+  ],
+  "volume": [
+   "N4VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "髪（かみ） hair (on the head)",
+   "髪（はつ） (a) hair"
+  ]
+ },
+ {
+  "no": 362,
+  "kanji": "忙",
+  "on": "ボウ, モウ",
+  "kun": "いそが.しい, うれえるさま, おそ.れる, せわ.しい",
+  "arti": "busy, occupied, restless",
+  "kosakata": [
+   "忙しい → いそがしい → busy; occupied; hectic",
+   "忙殺 → ぼうさつ → being extremely busy; being swamped with work",
+   "忙しない → せわしない → restless; fidgety; in a hurry",
+   "忙中閑あり → ぼうちゅう かんあり → there are brief moments of leisure even when at one's busiest"
+  ],
+  "volume": [
+   "VOL1"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "忙しい（いそがしい） busy",
+   "忙殺（ぼうさつ） being extremely busy"
+  ]
+ },
+ {
+  "no": 363,
+  "kanji": "才",
+  "on": "サイ",
+  "kun": "",
+  "arti": "cubic shaku, genius, years old",
+  "kosakata": [
+   "才 → さい → ability; gift; talent; aptitude; genius",
+   "歳 → さい → ... years old; age (of) ...",
+   "才能 → さいのう → talent; ability",
+   "才気 → さいき → wisdom"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "才（さい） ability",
+   "才能（さいのう） talent"
+  ]
+ },
+ {
+  "no": 364,
+  "kanji": "靴",
+  "on": "カ",
+  "kun": "くつ",
+  "arti": "shoes",
+  "kosakata": [
+   "靴 → くつ → shoe; shoes; boots; footwear; footgear",
+   "靴下 → くつした → socks; sock; stockings; stocking",
+   "靴屋 → くつや → shoe store; shoe shop; shoemaker",
+   "靴磨き → くつみがき → shoeshine; shoe polishing"
+  ],
+  "volume": [
+   "VOL2"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "靴（くつ） shoe",
+   "靴下（くつした） socks"
+  ]
+ },
+ {
+  "no": 365,
+  "kanji": "恥",
+  "on": "チ",
+  "kun": "は.じらう, は.じる, は.ずかしい, はじ",
+  "arti": "dishonor, shame",
+  "kosakata": [
+   "恥 → はじ → shame; embarrassment; disgrace",
+   "恥ずかしい → はずかしい → embarrassing; embarrassed; ashamed; humiliated; shy",
+   "恥じる → はじる → to feel ashamed",
+   "恥知らず → はじしらず → shameless; shameless person"
+  ],
+  "volume": [
+   "N4VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "恥（はじ） shame",
+   "恥ずかしい（はずかしい） embarrassing"
+  ]
+ },
+ {
+  "no": 366,
+  "kanji": "偶",
+  "on": "グウ",
+  "kun": "たま",
+  "arti": "accidentally, couple, even number, man & wife, same kind",
+  "kosakata": [
+   "偶々 → たまたま → by chance; by accident; accidentally; happen to (be, do); unexpectedly; casually",
+   "偶 → たま → occasional; infrequent; rare",
+   "偶 → ぐう → even number; even",
+   "偶然 → ぐうぜん → coincidence; chance; accident; fortuity"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "偶々（たまたま） by chance",
+   "偶（たま） occasional"
+  ]
+ },
+ {
+  "no": 367,
+  "kanji": "偉",
+  "on": "イ",
+  "kun": "えら.い",
+  "arti": "admirable, conceited, excellent, famous, greatness, remarkable",
+  "kosakata": [
+   "偉 → えら → tremendous; big; great; terrible",
+   "偉 → い → greatness; excellence; magnificence",
+   "偉大 → いだい → great; grand; magnificent; outstanding; mighty",
+   "偉い → えらい → great; excellent; admirable; commendable; laudable; honorable; wonderful; outstanding; extraordinary"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "偉（えら） tremendous",
+   "偉（い） greatness"
+  ]
+ },
+ {
+  "no": 368,
+  "kanji": "猫",
+  "on": "ビョウ",
+  "kun": "ねこ",
+  "arti": "cat",
+  "kosakata": [
+   "猫 → ねこ → cat (esp. the domestic cat, Felis catus)",
+   "猫 → ねこま → cat",
+   "猫背 → ねこぜ → bent back; hunchback; stoop",
+   "猫舌 → ねこじた → dislike of very hot food or drink; inability to take hot food; cat tongue"
+  ],
+  "volume": [
+   "VOL4"
+  ],
+  "jlptsensei": "N3",
+  "contoh": [
+   "猫（ねこ） cat (esp. the domestic cat, Felis catus)",
+   "猫（ねこま） cat"
+  ]
+ },
+ {
+  "no": 369,
+  "kanji": "幾",
+  "on": "キ",
+  "kun": "いく-, いく.つ, いく.ら",
+  "arti": "how far, how long, how many, how much, several, some",
+  "kosakata": [
+   "幾 → いく → some; several; a few",
+   "殆 → ほとほと → quite; utterly; really; completely",
+   "幾つ → いくつ → how many",
+   "幾ら → いくら → how much"
+  ],
+  "volume": [],
+  "jlptsensei": "N3",
+  "contoh": [
+   "幾（いく） some",
+   "幾つ（いくつ） how many"
+  ]
+ }
+]

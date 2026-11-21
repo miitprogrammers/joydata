@@ -1,0 +1,2258 @@
+[
+ {
+  "halaman": 1,
+  "bab": 0,
+  "label": "はじめに",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "日本語の発音"
+ },
+ {
+  "halaman": 1,
+  "bab": 0,
+  "label": "はじめに",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "教室のことば"
+ },
+ {
+  "halaman": 1,
+  "bab": 0,
+  "label": "はじめに",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "毎日のあいさつと会話表現"
+ },
+ {
+  "halaman": 1,
+  "bab": 0,
+  "label": "はじめに",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "数字"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］はNです】〈名前・身分など〉"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］はNじゃありません】"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］はNですか】"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1のN2】〈所属〉"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］もNです】"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］は～歳です】"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": true,
+  "jenis": "kaiwa",
+  "teks": "【会話】初めまして"
+ },
+ {
+  "halaman": 1,
+  "bab": 1,
+  "label": "第1課",
+  "ambigu": true,
+  "jenis": "catatan",
+  "teks": "（＊応用として）"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【これ/それ/あれはＮです】"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【これ/それ/あれはN1ですか、N2ですか】"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1のN2】〈内容〉"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］のＮ】〈持ち主〉"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【これ/それ/あれは［人］のです】〈所有〉"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【この/その/あのNは［人］のです】〈所有〉"
+ },
+ {
+  "halaman": 2,
+  "bab": 2,
+  "label": "第2課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】これからお世話になります"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ここは［場所］です】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所・物・人］はここ/そこ/あそこです】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［物・人］は［場所］です】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所・物・人］はこちら/そちら/あちらです】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【国/会社はＮです】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1（国名/会社名）のN2［～製の］】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nは～円です】"
+ },
+ {
+  "halaman": 2,
+  "bab": 3,
+  "label": "第3課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】これをください"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～時～分です】"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Ｎは～曜日です】"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Ｎは～時から～時までです】"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～時にVます】"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～時から～時までVます】"
+ },
+ {
+  "halaman": 2,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Vます/ません/ました/ませんでした】"
+ },
+ {
+  "halaman": 3,
+  "bab": 4,
+  "label": "第4課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】そちらは何時までですか"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］へ行きます/来ます/帰ります】"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［乗り物］で行きます/来ます/帰ります】"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］と行きます/来ます/帰ります】"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［日時］に行きます/来ます/帰ります】"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【誕生日は～月～日です】"
+ },
+ {
+  "halaman": 3,
+  "bab": 5,
+  "label": "第5課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】この電車は甲子園へ行きますか"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【NをVます（他動詞）】"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【何をしますか】"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］でVます】"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：いつも、ときどき"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Vませんか】"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Vましょう】"
+ },
+ {
+  "halaman": 3,
+  "bab": 6,
+  "label": "第6課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】いっしょに行きませんか"
+ },
+ {
+  "halaman": 3,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［道具・手段］でVます】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［言語］でVます】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～は［言語］で～です】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【私は［人］に［物］をあげます】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【私は［人］に［物］をもらいました】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【もうVました】"
+ },
+ {
+  "halaman": 4,
+  "bab": 7,
+  "label": "第7課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】いらっしゃい"
+ },
+ {
+  "halaman": 4,
+  "bab": 8,
+  "label": "第8課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ＮはナA-/イA-です】"
+ },
+ {
+  "halaman": 4,
+  "bab": 8,
+  "label": "第8課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ＮはナA-じゃありません/イA-くないです】"
+ },
+ {
+  "halaman": 4,
+  "bab": 8,
+  "label": "第8課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：あまり〜ないです/じゃありません"
+ },
+ {
+  "halaman": 4,
+  "bab": 8,
+  "label": "第8課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はナA-な+Nです/イA-+Nです】"
+ },
+ {
+  "halaman": 4,
+  "bab": 8,
+  "label": "第8課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】そろそろ失礼します"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はNが好きです/嫌いです】"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はNが上手です/下手です】"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はNがわかります】"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：ぜんぜん〜ません"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はNがあります】"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S1から〈理由〉、S2】"
+ },
+ {
+  "halaman": 4,
+  "bab": 9,
+  "label": "第9課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】残念ですが"
+ },
+ {
+  "halaman": 5,
+  "bab": 10,
+  "label": "第10課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］にNがあります】"
+ },
+ {
+  "halaman": 5,
+  "bab": 10,
+  "label": "第10課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］にNがいます】"
+ },
+ {
+  "halaman": 5,
+  "bab": 10,
+  "label": "第10課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］の［位置］にNがあります/います】"
+ },
+ {
+  "halaman": 5,
+  "bab": 10,
+  "label": "第10課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Ｎは［場所］にあります/います】"
+ },
+ {
+  "halaman": 5,
+  "bab": 10,
+  "label": "第10課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ナンプラー、ありますか"
+ },
+ {
+  "halaman": 5,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ひとつ～とお】〈助数詞〉"
+ },
+ {
+  "halaman": 5,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～枚/～台】〈助数詞〉"
+ },
+ {
+  "halaman": 5,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～人】〈助数詞〉"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：兄、姉、弟、妹父・母（第7課）、夫・妻・子ども(第9課)"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［期間］に［～回］】〈頻度〉"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：ぐらい"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［期間］Ｖます】"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～から～まで［時間・期間］かかります】"
+ },
+ {
+  "halaman": 6,
+  "bab": 11,
+  "label": "第11課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】これ、お願いします"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ナA-/Nでした・イA-かったです】"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【ナA-/Nじゃありませんでした・イA-くなかったです】"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1はN2より イA-い/ナA- です】"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1とN2とどちらが イA-い/ナA-ですか。…～の方が イA-い/ナA- です】"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1でN2が一番 イA-い/ナA- です】"
+ },
+ {
+  "halaman": 6,
+  "bab": 12,
+  "label": "第12課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】祇園祭はどうでしたか"
+ },
+ {
+  "halaman": 7,
+  "bab": 13,
+  "label": "第13課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【私はNが欲しいです】"
+ },
+ {
+  "halaman": 7,
+  "bab": 13,
+  "label": "第13課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【私は V-たいです】"
+ },
+ {
+  "halaman": 7,
+  "bab": 13,
+  "label": "第13課",
+  "ambigu": true,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：どこか"
+ },
+ {
+  "halaman": 7,
+  "bab": 13,
+  "label": "第13課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［場所］へV-/Nに行きます】"
+ },
+ {
+  "halaman": 7,
+  "bab": 13,
+  "label": "第13課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】別々にお願いします"
+ },
+ {
+  "halaman": 7,
+  "bab": 14,
+  "label": "第14課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てください】"
+ },
+ {
+  "halaman": 7,
+  "bab": 14,
+  "label": "第14課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ましょうか】"
+ },
+ {
+  "halaman": 8,
+  "bab": 14,
+  "label": "第14課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ています】"
+ },
+ {
+  "halaman": 8,
+  "bab": 14,
+  "label": "第14課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-かた】〈手段・方法〉"
+ },
+ {
+  "halaman": 8,
+  "bab": 14,
+  "label": "第14課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】みどり町までお願いします"
+ },
+ {
+  "halaman": 8,
+  "bab": 15,
+  "label": "第15課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てもいいですか】"
+ },
+ {
+  "halaman": 8,
+  "bab": 15,
+  "label": "第15課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てはいけません】"
+ },
+ {
+  "halaman": 8,
+  "bab": 15,
+  "label": "第15課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ています】〈結果の状態〉〈習慣的行為・職業〉"
+ },
+ {
+  "halaman": 8,
+  "bab": 15,
+  "label": "第15課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ご家族は？"
+ },
+ {
+  "halaman": 8,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-て、V2-て、～】"
+ },
+ {
+  "halaman": 8,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-てから、V2】"
+ },
+ {
+  "halaman": 8,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1はN2がナA-/イA-です】"
+ },
+ {
+  "halaman": 8,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-くて、～・ナA-/Nで、～】"
+ },
+ {
+  "halaman": 9,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：どうやって・乗ります・降ります"
+ },
+ {
+  "halaman": 9,
+  "bab": 16,
+  "label": "第16課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】使い方を教えてください"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ないでください】"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-なければなりません】"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-なくてもいいです】"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～は〈目的語の取り立て〉】"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：持って行きます"
+ },
+ {
+  "halaman": 9,
+  "bab": 17,
+  "label": "第17課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】どうしましたか"
+ },
+ {
+  "halaman": 9,
+  "bab": 18,
+  "label": "第18課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N/V-る ことができます〈能力〉】"
+ },
+ {
+  "halaman": 9,
+  "bab": 18,
+  "label": "第18課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N/V-る ことができます〈状況可能〉】"
+ },
+ {
+  "halaman": 10,
+  "bab": 18,
+  "label": "第18課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【趣味は N/V-る ことです】"
+ },
+ {
+  "halaman": 10,
+  "bab": 18,
+  "label": "第18課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/Nの/［期間］まえに、～】"
+ },
+ {
+  "halaman": 10,
+  "bab": 18,
+  "label": "第18課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】趣味は何ですか"
+ },
+ {
+  "halaman": 10,
+  "bab": 19,
+  "label": "第19課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-た ことがあります】"
+ },
+ {
+  "halaman": 10,
+  "bab": 19,
+  "label": "第19課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V1-たり、V2-たりします】"
+ },
+ {
+  "halaman": 10,
+  "bab": 19,
+  "label": "第19課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊休みの日に何をするかの応用としていつも・ときどき(第6課)、あまり(第8課)、ぜんぜん(第9課)、よく(第22課)、たいてい(第28課)"
+ },
+ {
+  "halaman": 10,
+  "bab": 19,
+  "label": "第19課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-くなります・ナA-/Nになります】"
+ },
+ {
+  "halaman": 10,
+  "bab": 19,
+  "label": "第19課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ダイエットはあしたからします"
+ },
+ {
+  "halaman": 11,
+  "bab": 20,
+  "label": "第20課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【普通体（動詞文）】"
+ },
+ {
+  "halaman": 11,
+  "bab": 20,
+  "label": "第20課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【普通体（い形容詞文）】"
+ },
+ {
+  "halaman": 11,
+  "bab": 20,
+  "label": "第20課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【普通体（な形容詞・名詞文）】"
+ },
+ {
+  "halaman": 11,
+  "bab": 20,
+  "label": "第20課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【後続詞を用いた文の普通体】"
+ },
+ {
+  "halaman": 11,
+  "bab": 20,
+  "label": "第20課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】いっしょに行かない？"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【［普通形］と思います】〈推量〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］と思います】〈意見〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【 S /［普通形］と言います】"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］でしょう？】"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊[イベント]があります"
+ },
+ {
+  "halaman": 11,
+  "bab": 21,
+  "label": "第21課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】わたしもそう思います"
+ },
+ {
+  "halaman": 11,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はS［N（人・物・場所）］です】〈名詞修飾〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S［N（人・物・場所）］は～】〈名詞修飾〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S［N（人・物・場所）］をVます】〈名詞修飾〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S［N（人・物・場所）］が～】〈名詞修飾〉"
+ },
+ {
+  "halaman": 11,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：よく"
+ },
+ {
+  "halaman": 12,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る［N（時間・約束・用事）］があります/ありません】"
+ },
+ {
+  "halaman": 12,
+  "bab": 22,
+  "label": "第22課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】どんな部屋をお探しですか"
+ },
+ {
+  "halaman": 12,
+  "bab": 23,
+  "label": "第23課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-ない とき、～】"
+ },
+ {
+  "halaman": 12,
+  "bab": 23,
+  "label": "第23課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-た とき、～】"
+ },
+ {
+  "halaman": 12,
+  "bab": 23,
+  "label": "第23課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-い/ナA-な/Nの とき、～】"
+ },
+ {
+  "halaman": 12,
+  "bab": 23,
+  "label": "第23課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ると、～】"
+ },
+ {
+  "halaman": 12,
+  "bab": 23,
+  "label": "第23課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】どうやって行きますか"
+ },
+ {
+  "halaman": 12,
+  "bab": 24,
+  "label": "第24課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nをくれます】"
+ },
+ {
+  "halaman": 12,
+  "bab": 24,
+  "label": "第24課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V-てもらいます】"
+ },
+ {
+  "halaman": 12,
+  "bab": 24,
+  "label": "第24課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V-てくれます】"
+ },
+ {
+  "halaman": 12,
+  "bab": 24,
+  "label": "第24課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てあげます】"
+ },
+ {
+  "halaman": 12,
+  "bab": 24,
+  "label": "第24課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】手伝いに行きましょうか"
+ },
+ {
+  "halaman": 12,
+  "bab": 25,
+  "label": "第25課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形過去］ら、～】〈仮定条件〉"
+ },
+ {
+  "halaman": 12,
+  "bab": 25,
+  "label": "第25課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-たら、～】〈確定条件〉"
+ },
+ {
+  "halaman": 12,
+  "bab": 25,
+  "label": "第25課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ても/イA-くても/ナA-・Nでも、～】〈逆説の仮定条件〉"
+ },
+ {
+  "halaman": 12,
+  "bab": 25,
+  "label": "第25課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】いろいろお世話になりました"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～んですか】"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【どうして～んですか…～んです】"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～。～んです】"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～んですが、V-ていただけませんか】"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～んですが、［疑問詞］V-たらいいですか】"
+ },
+ {
+  "halaman": 13,
+  "bab": 26,
+  "label": "第26課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ごみはどこに出したらいいですか"
+ },
+ {
+  "halaman": 13,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nが可能動詞】"
+ },
+ {
+  "halaman": 14,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nが見えます／聞こえます】"
+ },
+ {
+  "halaman": 14,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nができます】"
+ },
+ {
+  "halaman": 14,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【NしかVません】"
+ },
+ {
+  "halaman": 14,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【N1はVますが、N2はVません】〈対比〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 27,
+  "label": "第27課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】何でも作れるんですね"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-ながらV2】"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ています】〈習慣〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：たいてい"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～し、～し、それに～】〈並列描写〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～し、～し、～】〈理由の列挙〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【どうして～んですか…～し、（～し、）～から。】"
+ },
+ {
+  "halaman": 14,
+  "bab": 28,
+  "label": "第28課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】出張も多いし、試験もあるし……"
+ },
+ {
+  "halaman": 14,
+  "bab": 29,
+  "label": "第29課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nが V-ています】〈自動詞・状態〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 29,
+  "label": "第29課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nは V-ています】〈自動詞・状態〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 29,
+  "label": "第29課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てしまいます/ました】〈完了〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 29,
+  "label": "第29課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てしまいました】〈遺憾〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 29,
+  "label": "第29課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】忘れ物をしてしまったんです"
+ },
+ {
+  "halaman": 14,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～に～が V-てあります】〈状態・目的〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～は ～にV-てあります】〈状態・目的〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ておきます】〈準備〉"
+ },
+ {
+  "halaman": 14,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ておきます】〈措置〉"
+ },
+ {
+  "halaman": 15,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ておきます】〈放置〉"
+ },
+ {
+  "halaman": 15,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": true,
+  "jenis": "kaiwa",
+  "teks": "【会話】非常袋を準備しておかないと"
+ },
+ {
+  "halaman": 15,
+  "bab": 30,
+  "label": "第30課",
+  "ambigu": true,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：～とか"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V意向形】"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［V意向形］と思っています】"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【まだV-ていません】"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-ない つもりです】"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/Nの 予定です】"
+ },
+ {
+  "halaman": 15,
+  "bab": 31,
+  "label": "第31課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】料理を習おうと思っています"
+ },
+ {
+  "halaman": 15,
+  "bab": 32,
+  "label": "第32課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-た/V-ない ほうがいいです】"
+ },
+ {
+  "halaman": 15,
+  "bab": 32,
+  "label": "第32課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］でしょう】"
+ },
+ {
+  "halaman": 15,
+  "bab": 32,
+  "label": "第32課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］かもしれません】"
+ },
+ {
+  "halaman": 15,
+  "bab": 32,
+  "label": "第32課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】無理をしないほうがいいですよ"
+ },
+ {
+  "halaman": 15,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V命令形】"
+ },
+ {
+  "halaman": 15,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V禁止形】"
+ },
+ {
+  "halaman": 15,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【「～」と書いてあります/読みます】"
+ },
+ {
+  "halaman": 15,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～は～という意味です】"
+ },
+ {
+  "halaman": 16,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S/［普通形］と言っていました】"
+ },
+ {
+  "halaman": 16,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【S/［普通形］と伝えていただけませんか】"
+ },
+ {
+  "halaman": 16,
+  "bab": 33,
+  "label": "第33課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】これはどういう意味ですか"
+ },
+ {
+  "halaman": 16,
+  "bab": 34,
+  "label": "第34課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-る・V1-た/Nの とおりに、V2】"
+ },
+ {
+  "halaman": 16,
+  "bab": 34,
+  "label": "第34課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-た/Nの あとで、V2】"
+ },
+ {
+  "halaman": 16,
+  "bab": 34,
+  "label": "第34課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-て/V1-ないでV2】"
+ },
+ {
+  "halaman": 16,
+  "bab": 34,
+  "label": "第34課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-ないで、V2】"
+ },
+ {
+  "halaman": 16,
+  "bab": 34,
+  "label": "第34課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】わたしがしたとおりに、してください"
+ },
+ {
+  "halaman": 16,
+  "bab": 35,
+  "label": "第35課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ば/V-なければ、〜】〈仮定条件〉"
+ },
+ {
+  "halaman": 16,
+  "bab": 35,
+  "label": "第35課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-ければ/ナA-なら/Nなら、～】〈仮定条件〉"
+ },
+ {
+  "halaman": 16,
+  "bab": 35,
+  "label": "第35課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［疑問詞］V-ば いいですか】"
+ },
+ {
+  "halaman": 16,
+  "bab": 35,
+  "label": "第35課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nなら、～】〈助言〉"
+ },
+ {
+  "halaman": 16,
+  "bab": 35,
+  "label": "第35課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】どこかいい所、ありませんか"
+ },
+ {
+  "halaman": 17,
+  "bab": 36,
+  "label": "第36課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V1-る/V1-ない ように、V2】"
+ },
+ {
+  "halaman": 17,
+  "bab": 36,
+  "label": "第36課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る ようになります】"
+ },
+ {
+  "halaman": 17,
+  "bab": 36,
+  "label": "第36課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-ない ようにしています】"
+ },
+ {
+  "halaman": 17,
+  "bab": 36,
+  "label": "第36課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-ない ようにしてください】"
+ },
+ {
+  "halaman": 17,
+  "bab": 36,
+  "label": "第36課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】毎日運動するようにしています"
+ },
+ {
+  "halaman": 17,
+  "bab": 37,
+  "label": "第37課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］は～に［～を］V-（ら）れます】"
+ },
+ {
+  "halaman": 17,
+  "bab": 37,
+  "label": "第37課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［人］は～に［所有物］をV-（ら）れます】"
+ },
+ {
+  "halaman": 18,
+  "bab": 37,
+  "label": "第37課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［物/こと］が/はV-（ら）れます】"
+ },
+ {
+  "halaman": 18,
+  "bab": 37,
+  "label": "第37課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】金閣寺は14世紀に建てられました"
+ },
+ {
+  "halaman": 18,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る のはイA-/ナA- です】"
+ },
+ {
+  "halaman": 18,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る のがイA-/ナA- です】"
+ },
+ {
+  "halaman": 18,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る のを忘れました】"
+ },
+ {
+  "halaman": 18,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V［普通形］のを知っています】"
+ },
+ {
+  "halaman": 19,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］のはNです】"
+ },
+ {
+  "halaman": 19,
+  "bab": 38,
+  "label": "第38課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】片づけるのが好きなんです"
+ },
+ {
+  "halaman": 19,
+  "bab": 39,
+  "label": "第39課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【V-て/V-なくて、～】"
+ },
+ {
+  "halaman": 19,
+  "bab": 39,
+  "label": "第39課",
+  "ambigu": true,
+  "jenis": "pola",
+  "teks": "【Nで、～】"
+ },
+ {
+  "halaman": 19,
+  "bab": 39,
+  "label": "第39課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-くて、～/ナA-で、～】"
+ },
+ {
+  "halaman": 19,
+  "bab": 39,
+  "label": "第39課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］ので、～】"
+ },
+ {
+  "halaman": 20,
+  "bab": 39,
+  "label": "第39課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】遅れて、すみません"
+ },
+ {
+  "halaman": 20,
+  "bab": 40,
+  "label": "第40課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【[疑問詞]～か、～】"
+ },
+ {
+  "halaman": 20,
+  "bab": 40,
+  "label": "第40課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～かどうか、～】"
+ },
+ {
+  "halaman": 20,
+  "bab": 40,
+  "label": "第40課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てみます】"
+ },
+ {
+  "halaman": 20,
+  "bab": 40,
+  "label": "第40課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】友達ができたかどうか、心配です"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nをいただきます】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nをくださいます】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nをやります】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-ていただきます】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てくださいます】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てやります】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-てくださいませんか】"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "＊新出語彙：お祝い"
+ },
+ {
+  "halaman": 20,
+  "bab": 41,
+  "label": "第41課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ご結婚おめでとうございます"
+ },
+ {
+  "halaman": 21,
+  "bab": 42,
+  "label": "第42課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/Nの ために、Vます】〈目的〉"
+ },
+ {
+  "halaman": 21,
+  "bab": 42,
+  "label": "第42課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る のに/N に～かかります】"
+ },
+ {
+  "halaman": 21,
+  "bab": 42,
+  "label": "第42課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はV-る のに/N に、～】〈用途・評価〉"
+ },
+ {
+  "halaman": 21,
+  "bab": 42,
+  "label": "第42課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】ボーナスは何に使いますか"
+ },
+ {
+  "halaman": 21,
+  "bab": 43,
+  "label": "第43課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-そうです】〈様態〉"
+ },
+ {
+  "halaman": 21,
+  "bab": 43,
+  "label": "第43課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-/ナA- そうです】〈様態〉"
+ },
+ {
+  "halaman": 21,
+  "bab": 43,
+  "label": "第43課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-て 来ます】"
+ },
+ {
+  "halaman": 21,
+  "bab": 43,
+  "label": "第43課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】毎日楽しそうです"
+ },
+ {
+  "halaman": 22,
+  "bab": 44,
+  "label": "第44課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-/イA-/ナA- すぎます】"
+ },
+ {
+  "halaman": 22,
+  "bab": 44,
+  "label": "第44課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-やすい/にくいです】"
+ },
+ {
+  "halaman": 22,
+  "bab": 44,
+  "label": "第44課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【イA-く/ナA-に/Nに します】"
+ },
+ {
+  "halaman": 22,
+  "bab": 44,
+  "label": "第44課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【Nにします】"
+ },
+ {
+  "halaman": 22,
+  "bab": 44,
+  "label": "第44課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】この写真みたいにしてください"
+ },
+ {
+  "halaman": 22,
+  "bab": 45,
+  "label": "第45課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～場合は、～】"
+ },
+ {
+  "halaman": 22,
+  "bab": 45,
+  "label": "第45課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］のに、～】"
+ },
+ {
+  "halaman": 22,
+  "bab": 45,
+  "label": "第45課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】コースをまちがえた場合は、どうしたらいいですか"
+ },
+ {
+  "halaman": 22,
+  "bab": 46,
+  "label": "第46課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-る/V-ている/V-た ところです】"
+ },
+ {
+  "halaman": 22,
+  "bab": 46,
+  "label": "第46課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V-た ばかりです】"
+ },
+ {
+  "halaman": 22,
+  "bab": 46,
+  "label": "第46課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【～はずです】"
+ },
+ {
+  "halaman": 22,
+  "bab": 46,
+  "label": "第46課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】先週直してもらったばかりなのに、また……"
+ },
+ {
+  "halaman": 22,
+  "bab": 47,
+  "label": "第47課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］そうです】（伝聞）"
+ },
+ {
+  "halaman": 22,
+  "bab": 47,
+  "label": "第47課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【［普通形］ようです】"
+ },
+ {
+  "halaman": 23,
+  "bab": 47,
+  "label": "第47課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】婚約したそうです"
+ },
+ {
+  "halaman": 23,
+  "bab": 48,
+  "label": "第48課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V（さ）せます】〈強制〉"
+ },
+ {
+  "halaman": 23,
+  "bab": 48,
+  "label": "第48課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V（さ）せます】〈容認〉"
+ },
+ {
+  "halaman": 23,
+  "bab": 48,
+  "label": "第48課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V（さ）せていただけませんか】"
+ },
+ {
+  "halaman": 23,
+  "bab": 48,
+  "label": "第48課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】休ませていただけませんか"
+ },
+ {
+  "halaman": 23,
+  "bab": 49,
+  "label": "第49課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【V（ら）れます】〈尊敬〉"
+ },
+ {
+  "halaman": 23,
+  "bab": 49,
+  "label": "第49課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【おVになります】"
+ },
+ {
+  "halaman": 23,
+  "bab": 49,
+  "label": "第49課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【特別な尊敬語】"
+ },
+ {
+  "halaman": 23,
+  "bab": 49,
+  "label": "第49課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【おV/ごN ください】"
+ },
+ {
+  "halaman": 23,
+  "bab": 49,
+  "label": "第49課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】よろしくお伝えください"
+ },
+ {
+  "halaman": 23,
+  "bab": 50,
+  "label": "第50課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【おV/ごN します】"
+ },
+ {
+  "halaman": 23,
+  "bab": 50,
+  "label": "第50課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【特別な謙譲語（目上のための行為）】"
+ },
+ {
+  "halaman": 23,
+  "bab": 50,
+  "label": "第50課",
+  "ambigu": false,
+  "jenis": "pola",
+  "teks": "【特別な謙譲語（自分自身のこと）】"
+ },
+ {
+  "halaman": 23,
+  "bab": 50,
+  "label": "第50課",
+  "ambigu": false,
+  "jenis": "kaiwa",
+  "teks": "【会話】心から感謝いたします"
+ },
+ {
+  "halaman": 24,
+  "bab": 0,
+  "label": "その他",
+  "ambigu": false,
+  "jenis": "catatan",
+  "teks": "「みんなの日本語」と「いろどり」の文型が一致せず、且つ「みんなの日本語」にないもの"
+ }
+]

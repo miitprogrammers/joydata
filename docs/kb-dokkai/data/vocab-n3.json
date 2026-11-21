@@ -1,0 +1,1538 @@
+[
+ {
+  "no": 1,
+  "kata": "明かり",
+  "kana": "あかり",
+  "romaji": "akari",
+  "jenis": "Noun",
+  "arti": "light; illumination; glow; gleam"
+ },
+ {
+  "no": 2,
+  "kata": "明ける",
+  "kana": "あける",
+  "romaji": "akeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to dawn,to become daylight"
+ },
+ {
+  "no": 3,
+  "kata": "明らか",
+  "kana": "あきらか",
+  "romaji": "akiraka",
+  "jenis": "Adjective, な-adjective",
+  "arti": "clear; obvious"
+ },
+ {
+  "no": 4,
+  "kata": "悪魔",
+  "kana": "あくま",
+  "romaji": "akuma",
+  "jenis": "Noun",
+  "arti": "devil; demon; fiend; Satan"
+ },
+ {
+  "no": 5,
+  "kata": "暗記",
+  "kana": "あんき",
+  "romaji": "anki",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "memorization; learning by heart"
+ },
+ {
+  "no": 6,
+  "kata": "新た",
+  "kana": "あらた",
+  "romaji": "arata",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "new; fresh; novel"
+ },
+ {
+  "no": 7,
+  "kata": "有らゆる",
+  "kana": "あらゆる",
+  "romaji": "arayuru",
+  "jenis": "Pre-noun adjectival",
+  "arti": "all; every​"
+ },
+ {
+  "no": 8,
+  "kata": "集まり",
+  "kana": "あつまり",
+  "romaji": "atsumari",
+  "jenis": "Noun",
+  "arti": "gathering; meeting; assembly; collection; attendance"
+ },
+ {
+  "no": 9,
+  "kata": "部分",
+  "kana": "ぶぶん",
+  "romaji": "bubun",
+  "jenis": "Noun",
+  "arti": "portion; section; part"
+ },
+ {
+  "no": 10,
+  "kata": "分",
+  "kana": "ぶん",
+  "romaji": "bun",
+  "jenis": "Noun, Suffix",
+  "arti": "part; segment; share; ration"
+ },
+ {
+  "no": 11,
+  "kata": "文明",
+  "kana": "ぶんめい",
+  "romaji": "bunmei",
+  "jenis": "Noun",
+  "arti": "civilization; culture"
+ },
+ {
+  "no": 12,
+  "kata": "分析",
+  "kana": "ぶんせき",
+  "romaji": "bunseki",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "analysis"
+ },
+ {
+  "no": 13,
+  "kata": "分野",
+  "kana": "ぶんや",
+  "romaji": "bunya",
+  "jenis": "Noun",
+  "arti": "field; sphere; realm; division; branch"
+ },
+ {
+  "no": 14,
+  "kata": "父親",
+  "kana": "ちちおや",
+  "romaji": "chichioya",
+  "jenis": "Noun",
+  "arti": "father"
+ },
+ {
+  "no": 15,
+  "kata": "地平線",
+  "kana": "ちへいせん",
+  "romaji": "chiheisen",
+  "jenis": "Noun",
+  "arti": "horizon (related to land)​"
+ },
+ {
+  "no": 16,
+  "kata": "地位",
+  "kana": "ちい",
+  "romaji": "chii",
+  "jenis": "Noun",
+  "arti": "(social) position; status"
+ },
+ {
+  "no": 17,
+  "kata": "長期",
+  "kana": "ちょうき",
+  "romaji": "chouki",
+  "jenis": "Noun",
+  "arti": "long-term"
+ },
+ {
+  "no": 18,
+  "kata": "中",
+  "kana": "ちゅう",
+  "romaji": "chuu",
+  "jenis": "Noun, Prefix, Suffix",
+  "arti": "during; while; medium; middle"
+ },
+ {
+  "no": 19,
+  "kata": "中学",
+  "kana": "ちゅうがく",
+  "romaji": "chuugaku",
+  "jenis": "Noun",
+  "arti": "junior high school; middle school"
+ },
+ {
+  "no": 20,
+  "kata": "昼食",
+  "kana": "ちゅうしょく",
+  "romaji": "chuushoku",
+  "jenis": "Noun",
+  "arti": "lunch; midday meal"
+ },
+ {
+  "no": 21,
+  "kata": "大部分",
+  "kana": "だいぶぶん",
+  "romaji": "daibubun",
+  "jenis": "Noun",
+  "arti": "most part; greater part; majority"
+ },
+ {
+  "no": 22,
+  "kata": "駄目",
+  "kana": "だめ",
+  "romaji": "dame",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "no good; cannot"
+ },
+ {
+  "no": 23,
+  "kata": "男子",
+  "kana": "だんし",
+  "romaji": "danshi",
+  "jenis": "Noun",
+  "arti": "youth; young man"
+ },
+ {
+  "no": 24,
+  "kata": "出会い",
+  "kana": "であい",
+  "romaji": "deai",
+  "jenis": "Noun",
+  "arti": "meeting; rendezvous; encounter"
+ },
+ {
+  "no": 25,
+  "kata": "出会う",
+  "kana": "であう",
+  "romaji": "deau",
+  "jenis": "Verb",
+  "arti": "to meet (by chance); to come across; to run across; to encounter"
+ },
+ {
+  "no": 26,
+  "kata": "読書",
+  "kana": "どくしょ",
+  "romaji": "dokusho",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "reading"
+ },
+ {
+  "no": 27,
+  "kata": "努力",
+  "kana": "どりょく",
+  "romaji": "doryoku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "effort; exertion; endeavor; hard work; striving"
+ },
+ {
+  "no": 28,
+  "kata": "同一",
+  "kana": "どういつ",
+  "romaji": "douitsu",
+  "jenis": "Adjective, な-adjective",
+  "arti": "identical; same; one and the same; equal"
+ },
+ {
+  "no": 29,
+  "kata": "円",
+  "kana": "えん",
+  "romaji": "en",
+  "jenis": "Noun",
+  "arti": "yen; Japanese monetary unit; circle"
+ },
+ {
+  "no": 30,
+  "kata": "不利",
+  "kana": "ふり",
+  "romaji": "furi",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "disadvantage; handicap; unfavorable position"
+ },
+ {
+  "no": 31,
+  "kata": "不足",
+  "kana": "ふそく",
+  "romaji": "fusoku",
+  "jenis": "Noun, Adjective, な-adjective, Verb, Suru verb",
+  "arti": "insufficiency; shortage; deficiency; lack; dearth"
+ },
+ {
+  "no": 32,
+  "kata": "再び",
+  "kana": "ふたたび",
+  "romaji": "futatabi",
+  "jenis": "Adverb",
+  "arti": "again; once more; a second time"
+ },
+ {
+  "no": 33,
+  "kata": "外交",
+  "kana": "がいこう",
+  "romaji": "gaikou",
+  "jenis": "Noun",
+  "arti": "diplomacy"
+ },
+ {
+  "no": 34,
+  "kata": "外出",
+  "kana": "がいしゅつ",
+  "romaji": "gaishutsu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "going out; outing; leaving (one's home, office, etc.)"
+ },
+ {
+  "no": 35,
+  "kata": "学期",
+  "kana": "がっき",
+  "romaji": "gakki",
+  "jenis": "Noun",
+  "arti": "school term; semester"
+ },
+ {
+  "no": 36,
+  "kata": "学",
+  "kana": "がく",
+  "romaji": "gaku",
+  "jenis": "Noun, Suffix",
+  "arti": "learning; education; study of"
+ },
+ {
+  "no": 37,
+  "kata": "学問",
+  "kana": "がくもん",
+  "romaji": "gakumon",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "scholarship; study; learning"
+ },
+ {
+  "no": 38,
+  "kata": "学者",
+  "kana": "がくしゃ",
+  "romaji": "gakusha",
+  "jenis": "Noun",
+  "arti": "scholar"
+ },
+ {
+  "no": 39,
+  "kata": "学習",
+  "kana": "がくしゅう",
+  "romaji": "gakushuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "study; learning; tutorial"
+ },
+ {
+  "no": 40,
+  "kata": "議長",
+  "kana": "ぎちょう",
+  "romaji": "gichou",
+  "jenis": "Noun",
+  "arti": "chairman; president; moderator"
+ },
+ {
+  "no": 41,
+  "kata": "議会",
+  "kana": "ぎかい",
+  "romaji": "gikai",
+  "jenis": "Noun",
+  "arti": "congress; parliament; diet; legislative assembly"
+ },
+ {
+  "no": 42,
+  "kata": "語学",
+  "kana": "ごがく",
+  "romaji": "gogaku",
+  "jenis": "Noun",
+  "arti": "study of foreign languages; linguistics"
+ },
+ {
+  "no": 43,
+  "kata": "激しい",
+  "kana": "はげしい",
+  "romaji": "hageshii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "violent; extreme; intense"
+ },
+ {
+  "no": 44,
+  "kata": "母親",
+  "kana": "ははおや",
+  "romaji": "hahaoya",
+  "jenis": "Noun",
+  "arti": "mother"
+ },
+ {
+  "no": 45,
+  "kata": "博物館",
+  "kana": "はくぶつかん",
+  "romaji": "hakubutsukan",
+  "jenis": "Noun",
+  "arti": "museum"
+ },
+ {
+  "no": 46,
+  "kata": "販売",
+  "kana": "はんばい",
+  "romaji": "hanbai",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "sales; selling; marketing"
+ },
+ {
+  "no": 47,
+  "kata": "発明",
+  "kana": "はつめい",
+  "romaji": "hatsumei",
+  "jenis": "Noun, Adjective, な-adjective, Verb, Suru verb",
+  "arti": "invention"
+ },
+ {
+  "no": 48,
+  "kata": "外す",
+  "kana": "はずす",
+  "romaji": "hazusu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to remove; to undo; to drop; to miss"
+ },
+ {
+  "no": 49,
+  "kata": "品",
+  "kana": "ひん",
+  "romaji": "hin",
+  "jenis": "Noun",
+  "arti": "elegance, article"
+ },
+ {
+  "no": 50,
+  "kata": "一言",
+  "kana": "ひとこと",
+  "romaji": "hitokoto",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "single word; a few words; brief comment"
+ },
+ {
+  "no": 51,
+  "kata": "一人一人",
+  "kana": "ひとりひとり",
+  "romaji": "hitorihitori",
+  "jenis": "Noun, Suffix",
+  "arti": "one by one; each; one at a time"
+ },
+ {
+  "no": 52,
+  "kata": "本物",
+  "kana": "ほんもの",
+  "romaji": "honmono",
+  "jenis": "Noun",
+  "arti": "genuine article; real thing; real deal​"
+ },
+ {
+  "no": 53,
+  "kata": "本人",
+  "kana": "ほんにん",
+  "romaji": "honnin",
+  "jenis": "Noun",
+  "arti": "the person in question; the person themselves; said person"
+ },
+ {
+  "no": 54,
+  "kata": "一致",
+  "kana": "いっち",
+  "romaji": "icchi",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "agreement; union; match​; coincidence"
+ },
+ {
+  "no": 55,
+  "kata": "一時",
+  "kana": "いちじ",
+  "romaji": "ichiji",
+  "jenis": "Noun",
+  "arti": "one o'clock"
+ },
+ {
+  "no": 56,
+  "kata": "意外",
+  "kana": "いがい",
+  "romaji": "igai",
+  "jenis": "Adjective, な-adjective, Adverb",
+  "arti": "unexpected; surprising"
+ },
+ {
+  "no": 57,
+  "kata": "一家",
+  "kana": "いっか",
+  "romaji": "ikka",
+  "jenis": "Noun",
+  "arti": "a family; a household; a home; one's family; whole family"
+ },
+ {
+  "no": 58,
+  "kata": "今に",
+  "kana": "いまに",
+  "romaji": "imani",
+  "jenis": "Adverb",
+  "arti": "before long; even now"
+ },
+ {
+  "no": 59,
+  "kata": "今にも",
+  "kana": "いまにも",
+  "romaji": "imanimo",
+  "jenis": "Adverb",
+  "arti": "at any moment; at any minute; on the verge of"
+ },
+ {
+  "no": 60,
+  "kata": "一般",
+  "kana": "いっぱん",
+  "romaji": "ippan",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "general; universal; ordinary; average; common"
+ },
+ {
+  "no": 61,
+  "kata": "一方",
+  "kana": "いっぽう",
+  "romaji": "ippou",
+  "jenis": "Noun",
+  "arti": "one (esp. of two); one way; the other direction; although"
+ },
+ {
+  "no": 62,
+  "kata": "一生",
+  "kana": "いっしょう",
+  "romaji": "isshou",
+  "jenis": "Noun",
+  "arti": "whole life; a lifetime; a generation"
+ },
+ {
+  "no": 63,
+  "kata": "一種",
+  "kana": "いっしゅ",
+  "romaji": "isshu",
+  "jenis": "Noun, Adverb",
+  "arti": "species; kind; variety"
+ },
+ {
+  "no": 64,
+  "kata": "一瞬",
+  "kana": "いっしゅん",
+  "romaji": "isshun",
+  "jenis": "Noun",
+  "arti": "instant; moment; for an instant"
+ },
+ {
+  "no": 65,
+  "kata": "一層",
+  "kana": "いっそう",
+  "romaji": "issou",
+  "jenis": "Noun, Adverb",
+  "arti": "much more; still more; all the more; single layer; sooner; preferably​"
+ },
+ {
+  "no": 66,
+  "kata": "一体",
+  "kana": "いったい",
+  "romaji": "ittai",
+  "jenis": "Noun, Adverb",
+  "arti": "(what) the heck; (why) in the world"
+ },
+ {
+  "no": 67,
+  "kata": "所謂",
+  "kana": "いわゆる",
+  "romaji": "iwayuru",
+  "jenis": "Pre-noun adjectival",
+  "arti": "what is called; as it is called; the so-called; so to speak​"
+ },
+ {
+  "no": 68,
+  "kata": "邪魔",
+  "kana": "じゃま",
+  "romaji": "jama",
+  "jenis": "Noun, Adjective, な-adjective, Suru verb",
+  "arti": "hindrance"
+ },
+ {
+  "no": 69,
+  "kata": "化学",
+  "kana": "かがく",
+  "romaji": "kagaku",
+  "jenis": "Noun",
+  "arti": "chemistry"
+ },
+ {
+  "no": 70,
+  "kata": "会",
+  "kana": "かい",
+  "romaji": "kai",
+  "jenis": "Noun, Suffix",
+  "arti": "meeting; assembly; party; association; club"
+ },
+ {
+  "no": 71,
+  "kata": "会員",
+  "kana": "かいいん",
+  "romaji": "kai'in",
+  "jenis": "Noun",
+  "arti": "member"
+ },
+ {
+  "no": 72,
+  "kata": "海外",
+  "kana": "かいがい",
+  "romaji": "kaigai",
+  "jenis": "Noun, Adjective",
+  "arti": "foreign; abroad; overseas"
+ },
+ {
+  "no": 73,
+  "kata": "会合",
+  "kana": "かいごう",
+  "romaji": "kaigou",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "meeting; assembly; gathering; association"
+ },
+ {
+  "no": 74,
+  "kata": "会計",
+  "kana": "かいけい",
+  "romaji": "kaikei",
+  "jenis": "Noun",
+  "arti": "finance; account; treasurer; bill"
+ },
+ {
+  "no": 75,
+  "kata": "開始",
+  "kana": "かいし",
+  "romaji": "kaishi",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "start; commencement; beginning; initiation​"
+ },
+ {
+  "no": 76,
+  "kata": "科目",
+  "kana": "かもく",
+  "romaji": "kamoku",
+  "jenis": "Noun",
+  "arti": "(school) subject; curriculum; course"
+ },
+ {
+  "no": 77,
+  "kata": "権利",
+  "kana": "けんり",
+  "romaji": "kenri",
+  "jenis": "Noun",
+  "arti": "right; privilege"
+ },
+ {
+  "no": 78,
+  "kata": "基本",
+  "kana": "きほん",
+  "romaji": "kihon",
+  "jenis": "Noun",
+  "arti": "basics; fundamentals; basis; foundation"
+ },
+ {
+  "no": 79,
+  "kata": "記事",
+  "kana": "きじ",
+  "romaji": "kiji",
+  "jenis": "Noun",
+  "arti": "article; news story; report; account"
+ },
+ {
+  "no": 80,
+  "kata": "気味",
+  "kana": "きみ",
+  "romaji": "kimi",
+  "jenis": "Noun",
+  "arti": "sensation; feeling​; tendency"
+ },
+ {
+  "no": 81,
+  "kata": "記念",
+  "kana": "きねん",
+  "romaji": "kinen",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "commemoration; celebration; honoring the memory of something"
+ },
+ {
+  "no": 82,
+  "kata": "気に入る",
+  "kana": "きにいる",
+  "romaji": "kiniiru",
+  "jenis": "Verb, Godan verb, Expression",
+  "arti": "to like; to take a liking to"
+ },
+ {
+  "no": 83,
+  "kata": "記入",
+  "kana": "きにゅう",
+  "romaji": "kinyuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "entry; filling in; filling out"
+ },
+ {
+  "no": 84,
+  "kata": "記憶",
+  "kana": "きおく",
+  "romaji": "kioku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "memory; recollection; remembrance"
+ },
+ {
+  "no": 85,
+  "kata": "記者",
+  "kana": "きしゃ",
+  "romaji": "kisha",
+  "jenis": "Noun",
+  "arti": "reporter; journalist"
+ },
+ {
+  "no": 86,
+  "kata": "期待",
+  "kana": "きたい",
+  "romaji": "kitai",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "expectation; anticipation; hope"
+ },
+ {
+  "no": 87,
+  "kata": "国家",
+  "kana": "こっか",
+  "romaji": "kokka",
+  "jenis": "Noun",
+  "arti": "state; country; nation"
+ },
+ {
+  "no": 88,
+  "kata": "国会",
+  "kana": "こっかい",
+  "romaji": "kokkai",
+  "jenis": "Noun",
+  "arti": "National Diet; legislative assembly of Japan; parliament; congress"
+ },
+ {
+  "no": 89,
+  "kata": "国境",
+  "kana": "こっきょう",
+  "romaji": "kokkyou",
+  "jenis": "Noun",
+  "arti": "national border"
+ },
+ {
+  "no": 90,
+  "kata": "国語",
+  "kana": "こくご",
+  "romaji": "kokugo",
+  "jenis": "Noun",
+  "arti": "national language"
+ },
+ {
+  "no": 91,
+  "kata": "国民",
+  "kana": "こくみん",
+  "romaji": "kokumin",
+  "jenis": "Noun",
+  "arti": "people (of a country); nation; citizen; national"
+ },
+ {
+  "no": 92,
+  "kata": "今後",
+  "kana": "こんご",
+  "romaji": "kongo",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "from now on; hereafter"
+ },
+ {
+  "no": 93,
+  "kata": "今回",
+  "kana": "こんかい",
+  "romaji": "konkai",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "now; this time; lately"
+ },
+ {
+  "no": 94,
+  "kata": "今日",
+  "kana": "こんにち",
+  "romaji": "konnichi",
+  "jenis": "Expression",
+  "arti": "today; this day"
+ },
+ {
+  "no": 95,
+  "kata": "転ぶ",
+  "kana": "ころぶ",
+  "romaji": "korobu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to fall down; to fall over"
+ },
+ {
+  "no": 96,
+  "kata": "高速",
+  "kana": "こうそく",
+  "romaji": "kousoku",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "high-speed; rapid; express"
+ },
+ {
+  "no": 97,
+  "kata": "訓練",
+  "kana": "くんれん",
+  "romaji": "kunren",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "training; drill; practice; discipline"
+ },
+ {
+  "no": 98,
+  "kata": "教科書",
+  "kana": "きょうかしょ",
+  "romaji": "kyoukasho",
+  "jenis": "Noun",
+  "arti": "textbook; coursebook; schoolbook"
+ },
+ {
+  "no": 99,
+  "kata": "協力",
+  "kana": "きょうりょく",
+  "romaji": "kyouryoku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "cooperation; collaboration"
+ },
+ {
+  "no": 100,
+  "kata": "強力",
+  "kana": "きょうりょく",
+  "romaji": "kyouryoku",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "powerful; strong"
+ },
+ {
+  "no": 101,
+  "kata": "急激",
+  "kana": "きゅうげき",
+  "romaji": "kyuugeki",
+  "jenis": "Adjective, な-adjective",
+  "arti": "sudden; abrupt; rapid; sharp; drastic; radical"
+ },
+ {
+  "no": 102,
+  "kata": "急に",
+  "kana": "きゅうに",
+  "romaji": "kyuuni",
+  "jenis": "Adverb",
+  "arti": "swiftly; rapidly; quickly; immediately; hastily"
+ },
+ {
+  "no": 103,
+  "kata": "吸収",
+  "kana": "きゅうしゅう",
+  "romaji": "kyuushuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "absorption; suction; attraction"
+ },
+ {
+  "no": 104,
+  "kata": "急速",
+  "kana": "きゅうそく",
+  "romaji": "kyuusoku",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "rapid (e.g. progress)"
+ },
+ {
+  "no": 105,
+  "kata": "真面目",
+  "kana": "まじめ",
+  "romaji": "majime",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "serious; earnest"
+ },
+ {
+  "no": 106,
+  "kata": "真っ赤",
+  "kana": "まっか",
+  "romaji": "makka",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "bright red; deep red; flushed (of face)"
+ },
+ {
+  "no": 107,
+  "kata": "学ぶ",
+  "kana": "まなぶ",
+  "romaji": "manabu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to study (in depth); to learn; to take lessons in"
+ },
+ {
+  "no": 108,
+  "kata": "万一",
+  "kana": "まんいち",
+  "romaji": "manichi",
+  "jenis": "Noun, Adverb",
+  "arti": "emergency; unlikely event​; by some chance; by some possibility"
+ },
+ {
+  "no": 109,
+  "kata": "満足",
+  "kana": "まんぞく",
+  "romaji": "manzoku",
+  "jenis": "Noun, Adjective, な-adjective, Verb, Suru verb",
+  "arti": "satisfaction; contentment;​ sufficient; enough"
+ },
+ {
+  "no": 110,
+  "kata": "明確",
+  "kana": "めいかく",
+  "romaji": "meikaku",
+  "jenis": "Adjective, な-adjective",
+  "arti": "clear; precise; definite; distinct"
+ },
+ {
+  "no": 111,
+  "kata": "飯",
+  "kana": "めし",
+  "romaji": "meshi",
+  "jenis": "Noun",
+  "arti": "cooked rice; meal"
+ },
+ {
+  "no": 112,
+  "kata": "味方",
+  "kana": "みかた",
+  "romaji": "mikata",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "friend; ally; supporter; taking sides with; supporting"
+ },
+ {
+  "no": 113,
+  "kata": "魅力",
+  "kana": "みりょく",
+  "romaji": "miryoku",
+  "jenis": "Noun",
+  "arti": "charm; fascination; glamour; attraction; appeal"
+ },
+ {
+  "no": 114,
+  "kata": "木曜",
+  "kana": "もくよう",
+  "romaji": "mokuyou",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "Thursday"
+ },
+ {
+  "no": 115,
+  "kata": "半ば",
+  "kana": "なかば",
+  "romaji": "nakaba",
+  "jenis": "Noun, Adverbial Noun, Suffix, Adverbial noun",
+  "arti": "middle; half; semi; halfway; partly"
+ },
+ {
+  "no": 116,
+  "kata": "熱心",
+  "kana": "ねっしん",
+  "romaji": "nesshin",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "enthusiastic; eager"
+ },
+ {
+  "no": 117,
+  "kata": "日本",
+  "kana": "にほん",
+  "romaji": "nihon",
+  "jenis": "Noun",
+  "arti": "Japan"
+ },
+ {
+  "no": 118,
+  "kata": "能力",
+  "kana": "のうりょく",
+  "romaji": "nouryoku",
+  "jenis": "Noun",
+  "arti": "ability; faculty"
+ },
+ {
+  "no": 119,
+  "kata": "入場",
+  "kana": "にゅうじょう",
+  "romaji": "nyuujou",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "entrance; admission; entering"
+ },
+ {
+  "no": 120,
+  "kata": "お昼",
+  "kana": "おひる",
+  "romaji": "ohiru",
+  "jenis": "Noun",
+  "arti": "lunch; midday; daytime"
+ },
+ {
+  "no": 121,
+  "kata": "収める",
+  "kana": "おさめる",
+  "romaji": "osameru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to supply; to dedicate; to make an offering; to pay"
+ },
+ {
+  "no": 122,
+  "kata": "連続",
+  "kana": "れんぞく",
+  "romaji": "renzoku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "continuation; succession; series"
+ },
+ {
+  "no": 123,
+  "kata": "利益",
+  "kana": "りえき",
+  "romaji": "rieki",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "profit; gains; benefit"
+ },
+ {
+  "no": 124,
+  "kata": "利口",
+  "kana": "りこう",
+  "romaji": "rikou",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "clever; intelligent; wise; bright; sharp"
+ },
+ {
+  "no": 125,
+  "kata": "留学",
+  "kana": "りゅうがく",
+  "romaji": "ryuugaku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "studying abroad"
+ },
+ {
+  "no": 126,
+  "kata": "作品",
+  "kana": "さくひん",
+  "romaji": "sakuhin",
+  "jenis": "Noun",
+  "arti": "work of art; performance"
+ },
+ {
+  "no": 127,
+  "kata": "左右",
+  "kana": "さゆう",
+  "romaji": "sayuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "left and right"
+ },
+ {
+  "no": 128,
+  "kata": "成長",
+  "kana": "せいちょう",
+  "romaji": "seichou",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "growth; development; growing up; becoming an adult"
+ },
+ {
+  "no": 129,
+  "kata": "製品",
+  "kana": "せいひん",
+  "romaji": "seihin",
+  "jenis": "Noun",
+  "arti": "manufactured goods; finished goods; product"
+ },
+ {
+  "no": 130,
+  "kata": "青年",
+  "kana": "せいねん",
+  "romaji": "seinen",
+  "jenis": "Noun",
+  "arti": "youth; young man"
+ },
+ {
+  "no": 131,
+  "kata": "刺激",
+  "kana": "しげき",
+  "romaji": "shigeki",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "stimulus; impetus; incentive; encouragement; motivation; provocation; excitement; thrill"
+ },
+ {
+  "no": 132,
+  "kata": "資本",
+  "kana": "しほん",
+  "romaji": "shihon",
+  "jenis": "Noun",
+  "arti": "funds; capital"
+ },
+ {
+  "no": 133,
+  "kata": "品",
+  "kana": "しな",
+  "romaji": "shina",
+  "jenis": "Noun",
+  "arti": "article; item; thing; goods; stock; quality"
+ },
+ {
+  "no": 134,
+  "kata": "身長",
+  "kana": "しんちょう",
+  "romaji": "shinchou",
+  "jenis": "Noun",
+  "arti": "body height; stature"
+ },
+ {
+  "no": 135,
+  "kata": "進学",
+  "kana": "しんがく",
+  "romaji": "shingaku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "entering a higher-level school (often university)"
+ },
+ {
+  "no": 136,
+  "kata": "新鮮",
+  "kana": "しんせん",
+  "romaji": "shinsen",
+  "jenis": "Adjective, な-adjective",
+  "arti": "fresh"
+ },
+ {
+  "no": 137,
+  "kata": "支店",
+  "kana": "してん",
+  "romaji": "shiten",
+  "jenis": "Noun",
+  "arti": "branch office; branch store​"
+ },
+ {
+  "no": 138,
+  "kata": "使用",
+  "kana": "しよう",
+  "romaji": "shiyou",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "use; application; employment; utilization."
+ },
+ {
+  "no": 139,
+  "kata": "食品",
+  "kana": "しょくひん",
+  "romaji": "shokuhin",
+  "jenis": "Noun",
+  "arti": "food; food products"
+ },
+ {
+  "no": 140,
+  "kata": "書物",
+  "kana": "しょもつ",
+  "romaji": "shomotsu",
+  "jenis": "Noun",
+  "arti": "book; volume"
+ },
+ {
+  "no": 141,
+  "kata": "書類",
+  "kana": "しょるい",
+  "romaji": "shorui",
+  "jenis": "Noun",
+  "arti": "document; official papers"
+ },
+ {
+  "no": 142,
+  "kata": "書斎",
+  "kana": "しょさい",
+  "romaji": "shosai",
+  "jenis": "Noun",
+  "arti": "study; library; den; home office; reading room"
+ },
+ {
+  "no": 143,
+  "kata": "商売",
+  "kana": "しょうばい",
+  "romaji": "shoubai",
+  "jenis": "Noun",
+  "arti": "trade; business; commerce; transaction; occupation"
+ },
+ {
+  "no": 144,
+  "kata": "奨学金",
+  "kana": "しょうがくきん",
+  "romaji": "shougakukin",
+  "jenis": "Noun",
+  "arti": "scholarship; stipend; student loan"
+ },
+ {
+  "no": 145,
+  "kata": "正午",
+  "kana": "しょうご",
+  "romaji": "shougo",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "midday"
+ },
+ {
+  "no": 146,
+  "kata": "商品",
+  "kana": "しょうひん",
+  "romaji": "shouhin",
+  "jenis": "Noun",
+  "arti": "commodity; article of commerce; goods; stock; merchandise"
+ },
+ {
+  "no": 147,
+  "kata": "少女",
+  "kana": "しょうじょ",
+  "romaji": "shoujo",
+  "jenis": "Noun",
+  "arti": "little girl; maiden; young lady"
+ },
+ {
+  "no": 148,
+  "kata": "証明",
+  "kana": "しょうめい",
+  "romaji": "shoumei",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "proof; verification; certification"
+ },
+ {
+  "no": 149,
+  "kata": "少年",
+  "kana": "しょうねん",
+  "romaji": "shounen",
+  "jenis": "Noun",
+  "arti": "boy; juvenile; young boy; youth; lad"
+ },
+ {
+  "no": 150,
+  "kata": "少々",
+  "kana": "しょうしょう",
+  "romaji": "shoushou",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "just a minute; small quantity"
+ },
+ {
+  "no": 151,
+  "kata": "招待",
+  "kana": "しょうたい",
+  "romaji": "shoutai",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "invitation"
+ },
+ {
+  "no": 152,
+  "kata": "週",
+  "kana": "しゅう",
+  "romaji": "shuu",
+  "jenis": "Noun, Suffix",
+  "arti": "week"
+ },
+ {
+  "no": 153,
+  "kata": "集中",
+  "kana": "しゅうちゅう",
+  "romaji": "shuuchuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "concentration; focusing; centralization; integration"
+ },
+ {
+  "no": 154,
+  "kata": "集団",
+  "kana": "しゅうだん",
+  "romaji": "shuudan",
+  "jenis": "Noun",
+  "arti": "group; mass"
+ },
+ {
+  "no": 155,
+  "kata": "収穫",
+  "kana": "しゅうかく",
+  "romaji": "shuukaku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "harvest; crop; fruits (of one's labors)"
+ },
+ {
+  "no": 156,
+  "kata": "週間",
+  "kana": "しゅうかん",
+  "romaji": "shuukan",
+  "jenis": "Noun",
+  "arti": "week"
+ },
+ {
+  "no": 157,
+  "kata": "週刊",
+  "kana": "しゅうかん",
+  "romaji": "shuukan",
+  "jenis": "Noun",
+  "arti": "weekly publication"
+ },
+ {
+  "no": 158,
+  "kata": "収入",
+  "kana": "しゅうにゅう",
+  "romaji": "shuunyuu",
+  "jenis": "Noun",
+  "arti": "income; receipts; revenue; salary"
+ },
+ {
+  "no": 159,
+  "kata": "速度",
+  "kana": "そくど",
+  "romaji": "sokudo",
+  "jenis": "Noun",
+  "arti": "speed; velocity; pace; rate"
+ },
+ {
+  "no": 160,
+  "kata": "少しも",
+  "kana": "すこしも",
+  "romaji": "sukoshimo",
+  "jenis": "Adverb",
+  "arti": "anything of; not one bit (with negative sentence)"
+ },
+ {
+  "no": 161,
+  "kata": "大半",
+  "kana": "たいはん",
+  "romaji": "taihan",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "majority; more than half; most; largely; mainly"
+ },
+ {
+  "no": 162,
+  "kata": "大会",
+  "kana": "たいかい",
+  "romaji": "taikai",
+  "jenis": "Noun",
+  "arti": "convention; rally; conference; tournament;"
+ },
+ {
+  "no": 163,
+  "kata": "大した",
+  "kana": "たいした",
+  "romaji": "taishita",
+  "jenis": "Pre-noun adjectival",
+  "arti": "considerable; great; important; significant; a big deal"
+ },
+ {
+  "no": 164,
+  "kata": "単なる",
+  "kana": "たんなる",
+  "romaji": "tannaru",
+  "jenis": "Pre-noun adjectival",
+  "arti": "mere; simple; sheer"
+ },
+ {
+  "no": 165,
+  "kata": "多少",
+  "kana": "たしょう",
+  "romaji": "tashou",
+  "jenis": "Noun, Adverb",
+  "arti": "more or less; somewhat; a little; a few; some"
+ },
+ {
+  "no": 166,
+  "kata": "手品",
+  "kana": "てじな",
+  "romaji": "tejina",
+  "jenis": "Noun",
+  "arti": "magic trick; illusion"
+ },
+ {
+  "no": 167,
+  "kata": "哲学",
+  "kana": "てつがく",
+  "romaji": "tetsugaku",
+  "jenis": "Noun",
+  "arti": "philosophy"
+ },
+ {
+  "no": 168,
+  "kata": "徹夜",
+  "kana": "てつや",
+  "romaji": "tetsuya",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "staying up all night"
+ },
+ {
+  "no": 169,
+  "kata": "土地",
+  "kana": "とち",
+  "romaji": "tochi",
+  "jenis": "Noun",
+  "arti": "plot of land; lot; soil"
+ },
+ {
+  "no": 170,
+  "kata": "都会",
+  "kana": "とかい",
+  "romaji": "tokai",
+  "jenis": "Noun",
+  "arti": "(big) city"
+ },
+ {
+  "no": 171,
+  "kata": "取れる",
+  "kana": "とれる",
+  "romaji": "toreru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb, Transitive verb",
+  "arti": "to come off; to be removed; to be obtainable"
+ },
+ {
+  "no": 172,
+  "kata": "取り上げる",
+  "kana": "とりあげる",
+  "romaji": "toriageru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to pick up"
+ },
+ {
+  "no": 173,
+  "kata": "図書",
+  "kana": "としょ",
+  "romaji": "tosho",
+  "jenis": "Noun",
+  "arti": "books"
+ },
+ {
+  "no": 174,
+  "kata": "通学",
+  "kana": "つうがく",
+  "romaji": "tsuugaku",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "commuting to school; school commute"
+ },
+ {
+  "no": 175,
+  "kata": "受け取る",
+  "kana": "うけとる",
+  "romaji": "uketoru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to receive; to understand"
+ },
+ {
+  "no": 176,
+  "kata": "上手い",
+  "kana": "うまい",
+  "romaji": "umai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "skillful; delicious"
+ },
+ {
+  "no": 177,
+  "kata": "運転",
+  "kana": "うんてん",
+  "romaji": "unten",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "operation; driving"
+ },
+ {
+  "no": 178,
+  "kata": "売れる",
+  "kana": "うれる",
+  "romaji": "ureru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to sell (well)"
+ },
+ {
+  "no": 179,
+  "kata": "分ける",
+  "kana": "わける",
+  "romaji": "wakeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to divide; to split; to part; to separate"
+ },
+ {
+  "no": 180,
+  "kata": "悪口",
+  "kana": "わるぐち",
+  "romaji": "waruguchi",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "slander; bad-mouthing; abuse; insult; speaking ill (of)"
+ },
+ {
+  "no": 181,
+  "kata": "夜明け",
+  "kana": "よあけ",
+  "romaji": "yoake",
+  "jenis": "Noun",
+  "arti": "dawn; daybreak"
+ },
+ {
+  "no": 182,
+  "kata": "余分",
+  "kana": "よぶん",
+  "romaji": "yobun",
+  "jenis": "Noun",
+  "arti": "extra; excess; surplus"
+ },
+ {
+  "no": 183,
+  "kata": "読み",
+  "kana": "よみ",
+  "romaji": "yomi",
+  "jenis": "Noun",
+  "arti": "reading (of a kanji, situation, etc)"
+ },
+ {
+  "no": 184,
+  "kata": "夜中",
+  "kana": "よなか",
+  "romaji": "yonaka",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "middle of the night; dead of night"
+ },
+ {
+  "no": 185,
+  "kata": "宜しい",
+  "kana": "よろしい",
+  "romaji": "yoroshii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "(respectful) OK; all right"
+ },
+ {
+  "no": 186,
+  "kata": "唯一",
+  "kana": "ゆいいつ",
+  "romaji": "yuiitsu",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "only; sole; unique"
+ },
+ {
+  "no": 187,
+  "kata": "輸入",
+  "kana": "ゆにゅう",
+  "romaji": "yunyuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "import; importation; introduction"
+ },
+ {
+  "no": 188,
+  "kata": "輸出",
+  "kana": "ゆしゅつ",
+  "romaji": "yushutsu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "export; exportation​"
+ },
+ {
+  "no": 189,
+  "kata": "夕べ",
+  "kana": "ゆうべ",
+  "romaji": "yuube",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "evening / last night; yesterday evening"
+ },
+ {
+  "no": 190,
+  "kata": "有利",
+  "kana": "ゆうり",
+  "romaji": "yuuri",
+  "jenis": "Noun, な-adjective",
+  "arti": "advantageous; favorable; profitable"
+ },
+ {
+  "no": 191,
+  "kata": "全国",
+  "kana": "ぜんこく",
+  "romaji": "zenkoku",
+  "jenis": "Noun",
+  "arti": "the whole country"
+ },
+ {
+  "no": 192,
+  "kata": "随分",
+  "kana": "ずいぶん",
+  "romaji": "zuibun",
+  "jenis": "Adjective, な-adjective, Adverb",
+  "arti": "very; extremely; surprisingly; considerably; awfully"
+ }
+]

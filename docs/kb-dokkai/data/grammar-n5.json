@@ -1,0 +1,968 @@
+[
+ {
+  "no": 1,
+  "romaji": "cha ikenai / ja ikenai",
+  "pola": "ちゃいけない・じゃいけない",
+  "arti": "must not do (spoken Japanese)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ちゃいけない-じゃいけない-cha-ikenai-ja-dame/",
+  "arti_id": "tidak boleh (lisan dari ～てはいけない)",
+  "status": "gaya",
+  "catatan": "Versi sopan ～てはいけません: boleh (spesifikasi bank).",
+  "modulN4": []
+ },
+ {
+  "no": 2,
+  "romaji": "da / desu",
+  "pola": "だ / です",
+  "arti": "to be (am, is, are, were, used to)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だ-da-です-desu-meaning/",
+  "arti_id": "adalah (kopula)",
+  "status": "boleh",
+  "catatan": "です boleh; だ di akhir kalimat = gaya biasa.",
+  "modulN4": []
+ },
+ {
+  "no": 3,
+  "romaji": "dake",
+  "pola": "だけ",
+  "arti": "only; just; as much as ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だけ-dake-meaning/",
+  "arti_id": "hanya, saja",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 4,
+  "romaji": "darou",
+  "pola": "だろう",
+  "arti": "I think; it seems; probably; right?",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/だろう-darou-meaning/",
+  "arti_id": "mungkin; …kan? (bentuk biasa でしょう)",
+  "status": "gaya",
+  "catatan": "Modul N4 menaruh ～だろう di L3.",
+  "modulN4": [
+   27
+  ]
+ },
+ {
+  "no": 5,
+  "romaji": "de",
+  "pola": "で",
+  "arti": "in; at; on; by; with; via ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/で-de-particle-meaning/",
+  "arti_id": "di (tempat kegiatan), dengan (alat), naik (kendaraan)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 6,
+  "romaji": "demo",
+  "pola": "でも",
+  "arti": "but; however; though ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/でも-demo-meaning/",
+  "arti_id": "tetapi (awal kalimat)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 7,
+  "romaji": "deshou",
+  "pola": "でしょう",
+  "arti": "I think; it seems; probably; right?",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/でしょう-deshou-meaning/",
+  "arti_id": "mungkin; …kan? (dugaan, konfirmasi)",
+  "status": "tidak",
+  "catatan": "Spesifikasi N4 membolehkan ～でしょう sebagai pendukung.",
+  "modulN4": []
+ },
+ {
+  "no": 8,
+  "romaji": "donna",
+  "pola": "どんな",
+  "arti": "what kind of; what sort of",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/どんな-donna-meaning/",
+  "arti_id": "… yang bagaimana",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 9,
+  "romaji": "doushite",
+  "pola": "どうして",
+  "arti": "why; for what reason; how",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/どうして-doushite-meaning/",
+  "arti_id": "mengapa",
+  "status": "boleh",
+  "catatan": "Contoh prompt: どうして…からです.",
+  "modulN4": []
+ },
+ {
+  "no": 10,
+  "romaji": "douyatte",
+  "pola": "どうやって",
+  "arti": "how; in what way; by what means​",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/どうやって-douyatte-meaning/",
+  "arti_id": "bagaimana caranya",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 11,
+  "romaji": "ga",
+  "pola": "が",
+  "arti": "subject marker; however; but ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/が-ga-subject-marker-particle/",
+  "arti_id": "penanda subjek; tetapi",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 12,
+  "romaji": "ga arimasu",
+  "pola": "があります",
+  "arti": "there is; is (non-living things)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/があります-ga-arimasu-がある-ga-aru-meaning/",
+  "arti_id": "ada (benda mati)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": [
+   47
+  ]
+ },
+ {
+  "no": 13,
+  "romaji": "ga hoshii",
+  "pola": "がほしい",
+  "arti": "to want something",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/がほしい-ga-hoshii-が欲しい-meaning/",
+  "arti_id": "ingin (memiliki) sesuatu",
+  "status": "tidak",
+  "catatan": "Sampel resmi N5 memakai ほしかったからです.",
+  "modulN4": []
+ },
+ {
+  "no": 14,
+  "romaji": "ga imasu",
+  "pola": "がいます",
+  "arti": "there is; to be; is (living things)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/がいます-ga-imasu-がいる-ga-iru-meaning/",
+  "arti_id": "ada (makhluk hidup)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 15,
+  "romaji": "hou ga ii",
+  "pola": "ほうがいい",
+  "arti": "had better; it'd be better to; should ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/方がいい-ほうがいい-hou-ga-ii-meaning/",
+  "arti_id": "sebaiknya",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   99
+  ]
+ },
+ {
+  "no": 16,
+  "romaji": "i-adjectives",
+  "pola": "い-adjectives",
+  "arti": "i-adjectives",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/japanese-い-adjectives-い形容詞-meaning/",
+  "arti_id": "kata sifat -i",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 17,
+  "romaji": "ichiban",
+  "pola": "一番（いちばん）",
+  "arti": "the most; the best",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/一番-いちばん-ichiban-meaning/",
+  "arti_id": "paling",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 18,
+  "romaji": "issho ni",
+  "pola": "一緒に（いっしょに）",
+  "arti": "together",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/一緒に-いっしょに-issho-ni-meaning/",
+  "arti_id": "bersama-sama",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 19,
+  "romaji": "itsumo",
+  "pola": "いつも",
+  "arti": "always; usually; habitually",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/いつも-itsumo-meaning/",
+  "arti_id": "selalu, biasanya",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 20,
+  "romaji": "janai / dewa nai",
+  "pola": "じゃない・ではない",
+  "arti": "to not be (am not; is not; are not)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/じゃない-janai-ではない-dewa-nai-meaning/",
+  "arti_id": "bukan",
+  "status": "boleh",
+  "catatan": "ではありません boleh; じゃない = lisan.",
+  "modulN4": []
+ },
+ {
+  "no": 21,
+  "romaji": "ka",
+  "pola": "か",
+  "arti": "question particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/か-ka-question-particle-meaning/",
+  "arti_id": "partikel tanya",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 22,
+  "romaji": "ka~ka",
+  "pola": "か～か",
+  "arti": "or",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/か～か-ka-ka-or-meaning/",
+  "arti_id": "… atau …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 23,
+  "romaji": "kara",
+  "pola": "から",
+  "arti": "because; since; from",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/から-kara-meaning/",
+  "arti_id": "karena; dari",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 24,
+  "romaji": "kata",
+  "pola": "方（かた）",
+  "arti": "the way of doing something; how to do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/方-かた-kata-meaning/",
+  "arti_id": "cara melakukan",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   10
+  ]
+ },
+ {
+  "no": 25,
+  "romaji": "kedo",
+  "pola": "けど",
+  "arti": "but; however; although ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/けど-kedo-meaning/",
+  "arti_id": "tetapi (lisan)",
+  "status": "tidak",
+  "catatan": "Lisan; narasi です・ます memakai ～が.",
+  "modulN4": []
+ },
+ {
+  "no": 26,
+  "romaji": "keredo mo",
+  "pola": "けれども",
+  "arti": "but; however; although ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/けれども-keredo-mo-meaning/",
+  "arti_id": "tetapi, walaupun",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 27,
+  "romaji": "mada",
+  "pola": "まだ",
+  "arti": "still; not yet",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/まだ-mada-meaning/",
+  "arti_id": "masih; belum",
+  "status": "tidak",
+  "catatan": "Kata dasar.",
+  "modulN4": []
+ },
+ {
+  "no": 28,
+  "romaji": "mada ~te imasen",
+  "pola": "まだ～ていません",
+  "arti": "have not yet ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/まだ～ていません-mada-te-imasen-meaning/",
+  "arti_id": "belum …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   39
+  ]
+ },
+ {
+  "no": 29,
+  "romaji": "made",
+  "pola": "まで",
+  "arti": "until; as far as; to (an extent); even ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/まで-made-meaning/",
+  "arti_id": "sampai",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 30,
+  "romaji": "mae ni",
+  "pola": "前に（まえに）",
+  "arti": "before; in front of ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/前に-まえに-mae-ni-meaning/",
+  "arti_id": "sebelum; di depan",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 31,
+  "romaji": "masen ka",
+  "pola": "ませんか",
+  "arti": "would you; do you want to; shall we ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ませんか-masen-ka-meaning/",
+  "arti_id": "maukah …? (ajakan)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 32,
+  "romaji": "mashou",
+  "pola": "ましょう",
+  "arti": "let's ~; shall we ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ましょう-mashou-meaning/",
+  "arti_id": "mari …",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 33,
+  "romaji": "mashouka",
+  "pola": "ましょうか",
+  "arti": "shall I ~; used to offer help to the listener",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ましょうか-mashouka-meaning/",
+  "arti_id": "bagaimana kalau saya …? (menawarkan)",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 34,
+  "romaji": "mo",
+  "pola": "も",
+  "arti": "too; also; as well",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/も-mo-particle-meaning/",
+  "arti_id": "juga",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 35,
+  "romaji": "mou",
+  "pola": "もう",
+  "arti": "already; anymore; again; other",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/もう-mou-meaning/",
+  "arti_id": "sudah; lagi",
+  "status": "tidak",
+  "catatan": "Kata dasar.",
+  "modulN4": []
+ },
+ {
+  "no": 36,
+  "romaji": "na-adjectives",
+  "pola": "な-adjectives",
+  "arti": "na-adjectives",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/japanese-な-adjectives-な形容詞-meaning/",
+  "arti_id": "kata sifat -na",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 37,
+  "romaji": "naa",
+  "pola": "なあ",
+  "arti": "sentence ending particle; confirmation; admiration, etc",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なあ-naa-sentence-ending-particle-meaning/",
+  "arti_id": "partikel akhir: kagum (lisan)",
+  "status": "gaya",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 38,
+  "romaji": "naide",
+  "pola": "ないで",
+  "arti": "without doing ~; to do [B] without doing [A]",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ないで-naide-meaning/",
+  "arti_id": "tanpa …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 39,
+  "romaji": "naide kudasai",
+  "pola": "ないでください",
+  "arti": "please don't do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ないでください-naide-kudasai-meaning/",
+  "arti_id": "tolong jangan …",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 40,
+  "romaji": "naito ikenai",
+  "pola": "ないといけない",
+  "arti": "must do; have an obligation to do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ないといけない-naito-ikenai-meaning/",
+  "arti_id": "harus …",
+  "status": "tidak",
+  "catatan": "Padanannya ～なければなりません dilarang di N5.",
+  "modulN4": []
+ },
+ {
+  "no": 41,
+  "romaji": "naku temo ii",
+  "pola": "なくてもいい",
+  "arti": "don't have to",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なくてもいい-naku-temo-ii-meaning/",
+  "arti_id": "tidak perlu …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   22
+  ]
+ },
+ {
+  "no": 42,
+  "romaji": "nakucha",
+  "pola": "なくちゃ",
+  "arti": "must do; need to; gotta do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なくちゃ-ダメ-nakucha-dame-meaning/",
+  "arti_id": "harus … (lisan)",
+  "status": "gaya",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 43,
+  "romaji": "nakute wa ikenai",
+  "pola": "なくてはいけない",
+  "arti": "must do; need to do",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なくてはいけない-nakute-wa-ikenai-meaning/",
+  "arti_id": "harus …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   21
+  ]
+ },
+ {
+  "no": 44,
+  "romaji": "nakute wa naranai",
+  "pola": "なくてはならない",
+  "arti": "must do; need to do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なくてはならない-nakute-wa-naranai-meaning/",
+  "arti_id": "harus …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 45,
+  "romaji": "naru",
+  "pola": "なる",
+  "arti": "to become",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/なる-naru-meaning/",
+  "arti_id": "menjadi",
+  "status": "boleh",
+  "catatan": "～くなります／～になります.",
+  "modulN4": []
+ },
+ {
+  "no": 46,
+  "romaji": "ndesu",
+  "pola": "んです",
+  "arti": "to explain something; show emphasis",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/んです-ndesu-んだ-nda-meaning/",
+  "arti_id": "penjelasan/penekanan (lisan)",
+  "status": "tidak",
+  "catatan": "Sampel resmi N5: いいんですか. Spesifikasi N4: ～んです boleh di narasi.",
+  "modulN4": [
+   103
+  ]
+ },
+ {
+  "no": 47,
+  "romaji": "ne",
+  "pola": "ね",
+  "arti": "isn't it? right? eh?",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ね-ne-particle-meaning/",
+  "arti_id": "…ya? (partikel akhir)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 48,
+  "romaji": "ni",
+  "pola": "に",
+  "arti": "destination particle; in; at; on; to",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に-ni-destination-particle-meaning/",
+  "arti_id": "ke, pada, di (keberadaan, waktu)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 49,
+  "romaji": "ni iku",
+  "pola": "に行く（にいく）",
+  "arti": "go to do ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/しにいく-ni-iku-meaning/",
+  "arti_id": "pergi untuk …",
+  "status": "tidak",
+  "catatan": "Sampel resmi N5: 見に行きました, 買いに行きました, 飲みに行きます.",
+  "modulN4": []
+ },
+ {
+  "no": 50,
+  "romaji": "ni suru",
+  "pola": "にする",
+  "arti": "to decide on",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/にする-ni-suru-meaning/",
+  "arti_id": "memilih/memutuskan (N にします)",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   49
+  ]
+ },
+ {
+  "no": 51,
+  "romaji": "ni/e",
+  "pola": "に/へ",
+  "arti": "to (indicates direction / destination)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/に-へ-ni-e-directional-particle-meaning/",
+  "arti_id": "ke (arah)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 52,
+  "romaji": "no",
+  "pola": "の",
+  "arti": "possessive particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/の-no-possessive-particle-meaning/",
+  "arti_id": "milik; penghubung kata benda",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": [
+   102
+  ]
+ },
+ {
+  "no": 53,
+  "romaji": "no desu",
+  "pola": "のです",
+  "arti": "to explain something; show emphasis",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/のです-no-desu-のだ-noda-meaning/",
+  "arti_id": "penjelasan/penekanan",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   103
+  ]
+ },
+ {
+  "no": 54,
+  "romaji": "no ga heta",
+  "pola": "のが下手（のがへた）",
+  "arti": "to be bad at doing something",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/のが下手-のがへた-no-ga-heta-meaning/",
+  "arti_id": "tidak pandai …",
+  "status": "L5",
+  "catatan": "V kamus + の hanya di L5 (spesifikasi bank).",
+  "modulN4": []
+ },
+ {
+  "no": 55,
+  "romaji": "no ga jouzu",
+  "pola": "のが上手（のがじょうず）",
+  "arti": "to be good at",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/のが上手-no-ga-jouzu-のがじょうずです-meaning/",
+  "arti_id": "pandai …",
+  "status": "L5",
+  "catatan": "Idem.",
+  "modulN4": []
+ },
+ {
+  "no": 56,
+  "romaji": "no ga suki",
+  "pola": "のが好き（のがすき）",
+  "arti": "to like doing something",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/のが好き-no-ga-suki-のがすきです-meaning/",
+  "arti_id": "suka (melakukan) …",
+  "status": "L5",
+  "catatan": "Idem.",
+  "modulN4": []
+ },
+ {
+  "no": 57,
+  "romaji": "no naka de [A] ga ichiban",
+  "pola": "の中で[A]が一番（のなかで[A]がいちばん）",
+  "arti": "out of this group, [A] is best",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/の中でが一番-のなかでがいちばん-no-naka-de-ga-ichiban-meaning/",
+  "arti_id": "di antara …, yang paling … adalah ～",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 58,
+  "romaji": "node",
+  "pola": "ので",
+  "arti": "because of; given that; since ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ので-node-meaning/",
+  "arti_id": "karena (halus, obyektif)",
+  "status": "dilarang",
+  "catatan": "Dilarang di prompt N5 dan spesifikasi bank.",
+  "modulN4": [
+   51
+  ]
+ },
+ {
+  "no": 59,
+  "romaji": "o / go",
+  "pola": "お / ご",
+  "arti": "polite marker; honorific prefix particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/御-お-ご-o-go-polite-marker-particle-meaning/",
+  "arti_id": "awalan sopan",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 60,
+  "romaji": "o / wo",
+  "pola": "を",
+  "arti": "object marker particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/を-wo-object-marker-meaning/",
+  "arti_id": "penanda objek",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 61,
+  "romaji": "o kudasai",
+  "pola": "をください",
+  "arti": "please give me ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/をください-o-kudasai-meaning/",
+  "arti_id": "minta …",
+  "status": "tidak",
+  "catatan": "Ujian internal (文法 no.15) menguji ～を二つください.",
+  "modulN4": []
+ },
+ {
+  "no": 62,
+  "romaji": "shikashi",
+  "pola": "しかし",
+  "arti": "but; however ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/しかし-shikashi-meaning/",
+  "arti_id": "akan tetapi",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 63,
+  "romaji": "sore kara",
+  "pola": "それから",
+  "arti": "and; and then; after that; since then",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/それから-sore-kara-meaning/",
+  "arti_id": "lalu, setelah itu",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 64,
+  "romaji": "soshite",
+  "pola": "そして",
+  "arti": "and; and then; thus; and now ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/そして-soshite-meaning/",
+  "arti_id": "dan, lalu",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 65,
+  "romaji": "sugiru",
+  "pola": "すぎる",
+  "arti": "too much",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/すぎる-sugiru-過ぎる-meaning/",
+  "arti_id": "terlalu",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   93
+  ]
+ },
+ {
+  "no": 66,
+  "romaji": "ta koto ga aru",
+  "pola": "たことがある",
+  "arti": "to have done something before",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たことがある-ta-koto-ga-aru-meaning/",
+  "arti_id": "pernah …",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": [
+   40,
+   41
+  ]
+ },
+ {
+  "no": 67,
+  "romaji": "tai",
+  "pola": "たい",
+  "arti": "want to do something",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たい-tai-meaning/",
+  "arti_id": "ingin (melakukan)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": [
+   1
+  ]
+ },
+ {
+  "no": 68,
+  "romaji": "tari~tari",
+  "pola": "たり～たり",
+  "arti": "do such things as A and B",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/たり～たりする-tari-tari-suru-meaning/",
+  "arti_id": "melakukan … dan … (antara lain)",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 69,
+  "romaji": "te aru",
+  "pola": "てある",
+  "arti": "is/has been done (resulting state)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てある-te-aru-meaning/",
+  "arti_id": "sudah di-… (keadaan hasil)",
+  "status": "tidak",
+  "catatan": "Tidak ada di modul N4 juga.",
+  "modulN4": []
+ },
+ {
+  "no": 70,
+  "romaji": "te iru",
+  "pola": "ている",
+  "arti": "ongoing action or current state",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/ている-te-iru-meaning/",
+  "arti_id": "sedang …; keadaan",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 71,
+  "romaji": "te kara",
+  "pola": "てから",
+  "arti": "after doing ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てから-te-kara-meaning/",
+  "arti_id": "setelah …",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 72,
+  "romaji": "te kudasai",
+  "pola": "てください",
+  "arti": "please do",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てください-te-kudasai-meaning/",
+  "arti_id": "tolong …",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 73,
+  "romaji": "te wa ikenai",
+  "pola": "てはいけない",
+  "arti": "must not; may not; cannot",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てはいけない-te-wa-ikenai-meaning/",
+  "arti_id": "tidak boleh …",
+  "status": "boleh",
+  "catatan": "Disebut di spesifikasi bank, tidak di prompt AI.",
+  "modulN4": [
+   19
+  ]
+ },
+ {
+  "no": 74,
+  "romaji": "temo ii desu",
+  "pola": "てもいいです",
+  "arti": "is OK to ~; is alright to ~; may I ~?",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/てもいいですか-temo-ii-desu-ka-meaning/",
+  "arti_id": "boleh …",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": [
+   18
+  ]
+ },
+ {
+  "no": 75,
+  "romaji": "to",
+  "pola": "と",
+  "arti": "and; with; as; connecting particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/と-to-particle-meaning/",
+  "arti_id": "dan; bersama; (kutipan)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 76,
+  "romaji": "toki",
+  "pola": "とき",
+  "arti": "when; at this time",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/時-とき-toki-meaning/",
+  "arti_id": "ketika, saat",
+  "status": "boleh",
+  "catatan": "Disebut di spesifikasi bank.",
+  "modulN4": []
+ },
+ {
+  "no": 77,
+  "romaji": "totemo",
+  "pola": "とても",
+  "arti": "very; awfully; exceedingly​",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/とても-totemo-meaning/",
+  "arti_id": "sangat",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 78,
+  "romaji": "tsumori",
+  "pola": "つもり",
+  "arti": "plan to ~; intend to ~",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/つもり-tsumori-meaning/",
+  "arti_id": "berniat, berencana",
+  "status": "dilarang",
+  "catatan": "Dilarang di prompt N5 dan spesifikasi bank.",
+  "modulN4": [
+   3
+  ]
+ },
+ {
+  "no": 79,
+  "romaji": "wa - topic marker",
+  "pola": "は",
+  "arti": "topic marker",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/は-wa-topic-marker-meaning/",
+  "arti_id": "penanda topik",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 80,
+  "romaji": "wa ~yori... desu",
+  "pola": "は〜より・・・です",
+  "arti": "[Noun-1] is more ~ than [Noun-2]",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/は〜より-です-wa-yori-desu-meaning/",
+  "arti_id": "A lebih … daripada B",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": [
+   97
+  ]
+ },
+ {
+  "no": 81,
+  "romaji": "wa dou desu ka",
+  "pola": "はどうですか",
+  "arti": "how about; how is",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/はどうですか-wa-dou-desu-ka-meaning/",
+  "arti_id": "bagaimana dengan …?",
+  "status": "tidak",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 82,
+  "romaji": "ya",
+  "pola": "や",
+  "arti": "and; or; connecting particle",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/や-ya-particle-meaning/",
+  "arti_id": "… dan … (dsb.)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 83,
+  "romaji": "yo",
+  "pola": "よ",
+  "arti": "you know; emphasis (ending particle)",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/よ-yo-ending-particle-meaning/",
+  "arti_id": "lho (penegasan)",
+  "status": "dasar",
+  "catatan": "",
+  "modulN4": []
+ },
+ {
+  "no": 84,
+  "romaji": "yori ~hou ga",
+  "pola": "より～ほうが",
+  "arti": "[2] is more than [1]",
+  "url": "https://jlptsensei.com/learn-japanese-grammar/より～のほうが-yori-no-hou-ga-meaning/",
+  "arti_id": "B lebih … daripada A",
+  "status": "boleh",
+  "catatan": "",
+  "modulN4": [
+   98,
+   100
+  ]
+ }
+]

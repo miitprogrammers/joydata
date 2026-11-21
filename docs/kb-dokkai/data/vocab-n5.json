@@ -1,0 +1,5154 @@
+[
+ {
+  "no": 1,
+  "kata": "浴びる",
+  "kana": "あびる",
+  "romaji": "abiru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to bathe, to shower"
+ },
+ {
+  "no": 2,
+  "kata": "危ない",
+  "kana": "あぶない",
+  "romaji": "abunai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "dangerous"
+ },
+ {
+  "no": 3,
+  "kata": "あっち",
+  "kana": "",
+  "romaji": "acchi",
+  "jenis": "Pronoun",
+  "arti": "over there"
+ },
+ {
+  "no": 4,
+  "kata": "あちら",
+  "kana": "",
+  "romaji": "achira",
+  "jenis": "Pronoun",
+  "arti": "there"
+ },
+ {
+  "no": 5,
+  "kata": "上げる",
+  "kana": "あげる",
+  "romaji": "ageru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to raise; to elevate; to give"
+ },
+ {
+  "no": 6,
+  "kata": "赤",
+  "kana": "あか",
+  "romaji": "aka",
+  "jenis": "Noun",
+  "arti": "red; crimson; scarlet​"
+ },
+ {
+  "no": 7,
+  "kata": "赤い",
+  "kana": "あかい",
+  "romaji": "akai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "red; crimson; scarlet​"
+ },
+ {
+  "no": 8,
+  "kata": "明るい",
+  "kana": "あかるい",
+  "romaji": "akarui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "bright; light"
+ },
+ {
+  "no": 9,
+  "kata": "開ける",
+  "kana": "あける",
+  "romaji": "akeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to open (a door, etc.); to unwrap (e.g. parcel, package); to unlock"
+ },
+ {
+  "no": 10,
+  "kata": "秋",
+  "kana": "あき",
+  "romaji": "aki",
+  "jenis": "Noun",
+  "arti": "autumn; fall"
+ },
+ {
+  "no": 11,
+  "kata": "開く",
+  "kana": "あく",
+  "romaji": "aku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to open (e.g. doors, business, etc)"
+ },
+ {
+  "no": 12,
+  "kata": "甘い",
+  "kana": "あまい",
+  "romaji": "amai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "sweet; sweet-tasting; sugary; naive; indulgent"
+ },
+ {
+  "no": 13,
+  "kata": "雨",
+  "kana": "あめ",
+  "romaji": "ame",
+  "jenis": "Noun",
+  "arti": "rain"
+ },
+ {
+  "no": 14,
+  "kata": "飴",
+  "kana": "あめ",
+  "romaji": "ame",
+  "jenis": "Noun",
+  "arti": "candy"
+ },
+ {
+  "no": 15,
+  "kata": "あなた",
+  "kana": "",
+  "romaji": "anata",
+  "jenis": "Pronoun",
+  "arti": "you"
+ },
+ {
+  "no": 16,
+  "kata": "姉",
+  "kana": "あね",
+  "romaji": "ane",
+  "jenis": "Noun",
+  "arti": "older sister; elder sister​"
+ },
+ {
+  "no": 17,
+  "kata": "兄",
+  "kana": "あに",
+  "romaji": "ani",
+  "jenis": "Noun",
+  "arti": "elder brother; older brother​"
+ },
+ {
+  "no": 18,
+  "kata": "あの",
+  "kana": "",
+  "romaji": "ano",
+  "jenis": "Pre-noun adjectival",
+  "arti": "that"
+ },
+ {
+  "no": 19,
+  "kata": "青",
+  "kana": "あお",
+  "romaji": "ao",
+  "jenis": "Noun",
+  "arti": "blue; azure"
+ },
+ {
+  "no": 20,
+  "kata": "青い",
+  "kana": "あおい",
+  "romaji": "aoi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "blue; azure"
+ },
+ {
+  "no": 21,
+  "kata": "アパート",
+  "kana": "",
+  "romaji": "apaato",
+  "jenis": "Noun, Katakana",
+  "arti": "apartment"
+ },
+ {
+  "no": 22,
+  "kata": "洗う",
+  "kana": "あらう",
+  "romaji": "arau",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to wash"
+ },
+ {
+  "no": 23,
+  "kata": "あれ",
+  "kana": "",
+  "romaji": "are",
+  "jenis": "Pronoun",
+  "arti": "that"
+ },
+ {
+  "no": 24,
+  "kata": "ある",
+  "kana": "",
+  "romaji": "aru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to be, to have"
+ },
+ {
+  "no": 25,
+  "kata": "歩く",
+  "kana": "あるく",
+  "romaji": "aruku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to walk"
+ },
+ {
+  "no": 26,
+  "kata": "朝",
+  "kana": "あさ",
+  "romaji": "asa",
+  "jenis": "Noun",
+  "arti": "morning"
+ },
+ {
+  "no": 27,
+  "kata": "朝ご飯",
+  "kana": "あさごはん",
+  "romaji": "asagohan",
+  "jenis": "Noun",
+  "arti": "breakfast"
+ },
+ {
+  "no": 28,
+  "kata": "明後日",
+  "kana": "あさって",
+  "romaji": "asatte",
+  "jenis": "Noun",
+  "arti": "day after tomorrow"
+ },
+ {
+  "no": 29,
+  "kata": "足",
+  "kana": "あし",
+  "romaji": "ashi",
+  "jenis": "Noun",
+  "arti": "foot; leg; paw; arm"
+ },
+ {
+  "no": 30,
+  "kata": "明日",
+  "kana": "あした",
+  "romaji": "ashita",
+  "jenis": "Noun, Temporal noun",
+  "arti": "tomorrow"
+ },
+ {
+  "no": 31,
+  "kata": "遊ぶ",
+  "kana": "あそぶ",
+  "romaji": "asobu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to play; to enjoy oneself"
+ },
+ {
+  "no": 32,
+  "kata": "あそこ",
+  "kana": "",
+  "romaji": "asoko",
+  "jenis": "Pronoun",
+  "arti": "over there"
+ },
+ {
+  "no": 33,
+  "kata": "頭",
+  "kana": "あたま",
+  "romaji": "atama",
+  "jenis": "Noun",
+  "arti": "head"
+ },
+ {
+  "no": 34,
+  "kata": "新しい",
+  "kana": "あたらしい",
+  "romaji": "atarashii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "new; novel; fresh; recent; latest"
+ },
+ {
+  "no": 35,
+  "kata": "暖かい",
+  "kana": "あたたかい",
+  "romaji": "atatakai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "warm"
+ },
+ {
+  "no": 36,
+  "kata": "後",
+  "kana": "あと",
+  "romaji": "ato",
+  "jenis": "Noun",
+  "arti": "behind; after; remainder; left; also"
+ },
+ {
+  "no": 37,
+  "kata": "暑い",
+  "kana": "あつい",
+  "romaji": "atsui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "hot; sultry"
+ },
+ {
+  "no": 38,
+  "kata": "厚い",
+  "kana": "あつい",
+  "romaji": "atsui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "thick"
+ },
+ {
+  "no": 39,
+  "kata": "熱い",
+  "kana": "あつい",
+  "romaji": "atsui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "hot"
+ },
+ {
+  "no": 40,
+  "kata": "会う",
+  "kana": "あう",
+  "romaji": "au",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to meet; to encounter; to see"
+ },
+ {
+  "no": 41,
+  "kata": "晩ご飯",
+  "kana": "ばんごはん",
+  "romaji": "bangohan",
+  "jenis": "Noun",
+  "arti": "dinner; evening meal"
+ },
+ {
+  "no": 42,
+  "kata": "番号",
+  "kana": "ばんごう",
+  "romaji": "bangou",
+  "jenis": "Noun",
+  "arti": "number"
+ },
+ {
+  "no": 43,
+  "kata": "バス",
+  "kana": "",
+  "romaji": "basu",
+  "jenis": "Noun, Katakana",
+  "arti": "bus"
+ },
+ {
+  "no": 44,
+  "kata": "バター",
+  "kana": "",
+  "romaji": "bataa",
+  "jenis": "Noun, Katakana",
+  "arti": "butter​"
+ },
+ {
+  "no": 45,
+  "kata": "ベッド",
+  "kana": "",
+  "romaji": "beddo",
+  "jenis": "Noun, Katakana",
+  "arti": "bed"
+ },
+ {
+  "no": 46,
+  "kata": "勉強",
+  "kana": "べんきょう",
+  "romaji": "benkyou",
+  "jenis": "Noun, Suru verb",
+  "arti": "to study"
+ },
+ {
+  "no": 47,
+  "kata": "便利",
+  "kana": "べんり",
+  "romaji": "benri",
+  "jenis": "な-adjective",
+  "arti": "convenient; handy; useful"
+ },
+ {
+  "no": 48,
+  "kata": "ボールペン",
+  "kana": "",
+  "romaji": "boorupen",
+  "jenis": "Noun, Katakana",
+  "arti": "ball-point pen"
+ },
+ {
+  "no": 49,
+  "kata": "ボタン",
+  "kana": "",
+  "romaji": "botan",
+  "jenis": "Noun, Katakana",
+  "arti": "button"
+ },
+ {
+  "no": 50,
+  "kata": "帽子",
+  "kana": "ぼうし",
+  "romaji": "boushi",
+  "jenis": "Noun",
+  "arti": "hat; cap"
+ },
+ {
+  "no": 51,
+  "kata": "文章",
+  "kana": "ぶんしょう",
+  "romaji": "bunshou",
+  "jenis": "Noun",
+  "arti": "sentence"
+ },
+ {
+  "no": 52,
+  "kata": "豚肉",
+  "kana": "ぶたにく",
+  "romaji": "butaniku",
+  "jenis": "Noun",
+  "arti": "pork"
+ },
+ {
+  "no": 53,
+  "kata": "病院",
+  "kana": "びょういん",
+  "romaji": "byouin",
+  "jenis": "Noun",
+  "arti": "hospital"
+ },
+ {
+  "no": 54,
+  "kata": "病気",
+  "kana": "びょうき",
+  "romaji": "byouki",
+  "jenis": "Noun",
+  "arti": "illness; disease; sickness"
+ },
+ {
+  "no": 55,
+  "kata": "茶色",
+  "kana": "ちゃいろ",
+  "romaji": "chairo",
+  "jenis": "Noun",
+  "arti": "brown"
+ },
+ {
+  "no": 56,
+  "kata": "茶碗",
+  "kana": "ちゃわん",
+  "romaji": "chawan",
+  "jenis": "Noun",
+  "arti": "rice bowl; tea cup; teacup"
+ },
+ {
+  "no": 57,
+  "kata": "父",
+  "kana": "ちち",
+  "romaji": "chichi",
+  "jenis": "Noun",
+  "arti": "father"
+ },
+ {
+  "no": 58,
+  "kata": "違う",
+  "kana": "ちがう",
+  "romaji": "chigau",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to differ"
+ },
+ {
+  "no": 59,
+  "kata": "小さい",
+  "kana": "ちいさい",
+  "romaji": "chiisai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "small; little; tiny"
+ },
+ {
+  "no": 60,
+  "kata": "小さな",
+  "kana": "ちいさな",
+  "romaji": "chiisana",
+  "jenis": "Pre-noun adjectival",
+  "arti": "small; little; tiny​"
+ },
+ {
+  "no": 61,
+  "kata": "近い",
+  "kana": "ちかい",
+  "romaji": "chikai",
+  "jenis": "い-adjective",
+  "arti": "near; close"
+ },
+ {
+  "no": 62,
+  "kata": "地下鉄",
+  "kana": "ちかてつ",
+  "romaji": "chikatetsu",
+  "jenis": "Noun",
+  "arti": "subway; underground train"
+ },
+ {
+  "no": 63,
+  "kata": "地図",
+  "kana": "ちず",
+  "romaji": "chizu",
+  "jenis": "Noun",
+  "arti": "map"
+ },
+ {
+  "no": 64,
+  "kata": "ちょっと",
+  "kana": "",
+  "romaji": "chotto",
+  "jenis": "Adverb",
+  "arti": "a little"
+ },
+ {
+  "no": 65,
+  "kata": "丁度",
+  "kana": "ちょうど",
+  "romaji": "choudo",
+  "jenis": "Adverb",
+  "arti": "exactly"
+ },
+ {
+  "no": 66,
+  "kata": "台所",
+  "kana": "だいどころ",
+  "romaji": "daidokoro",
+  "jenis": "Noun",
+  "arti": "kitchen"
+ },
+ {
+  "no": 67,
+  "kata": "大学",
+  "kana": "だいがく",
+  "romaji": "daigaku",
+  "jenis": "Noun",
+  "arti": "university; college"
+ },
+ {
+  "no": 68,
+  "kata": "大丈夫",
+  "kana": "だいじょうぶ",
+  "romaji": "daijoubu",
+  "jenis": "Adjective, な-adjective, Adverb",
+  "arti": "OK; okay; alright; problem free"
+ },
+ {
+  "no": 69,
+  "kata": "大好き",
+  "kana": "だいすき",
+  "romaji": "daisuki",
+  "jenis": "Adjective, な-adjective",
+  "arti": "love; like; like very much"
+ },
+ {
+  "no": 70,
+  "kata": "だんだん",
+  "kana": "",
+  "romaji": "dandan",
+  "jenis": "Adverb",
+  "arti": "gradually"
+ },
+ {
+  "no": 71,
+  "kata": "誰",
+  "kana": "だれ",
+  "romaji": "dare",
+  "jenis": "Pronoun",
+  "arti": "who"
+ },
+ {
+  "no": 72,
+  "kata": "誰か",
+  "kana": "だれか",
+  "romaji": "dareka",
+  "jenis": "Pronoun",
+  "arti": "someone; somebody"
+ },
+ {
+  "no": 73,
+  "kata": "出す",
+  "kana": "だす",
+  "romaji": "dasu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to take out; to get out; to put out; to reveal"
+ },
+ {
+  "no": 74,
+  "kata": "出口",
+  "kana": "でぐち",
+  "romaji": "deguchi",
+  "jenis": "Noun",
+  "arti": "exit; gateway; way out"
+ },
+ {
+  "no": 75,
+  "kata": "出かける",
+  "kana": "でかける",
+  "romaji": "dekakeru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to go out; to leave; to depart"
+ },
+ {
+  "no": 76,
+  "kata": "電気",
+  "kana": "でんき",
+  "romaji": "denki",
+  "jenis": "Noun",
+  "arti": "electricity"
+ },
+ {
+  "no": 77,
+  "kata": "電車",
+  "kana": "でんしゃ",
+  "romaji": "densha",
+  "jenis": "Noun",
+  "arti": "train; electric train"
+ },
+ {
+  "no": 78,
+  "kata": "電話",
+  "kana": "でんわ",
+  "romaji": "denwa",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "telephone (call / device)l; phone call"
+ },
+ {
+  "no": 79,
+  "kata": "デパート",
+  "kana": "",
+  "romaji": "depaato",
+  "jenis": "Noun, Katakana",
+  "arti": "department store"
+ },
+ {
+  "no": 80,
+  "kata": "出る",
+  "kana": "でる",
+  "romaji": "deru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to leave; to exit; to appear; to go out"
+ },
+ {
+  "no": 81,
+  "kata": "ドア",
+  "kana": "",
+  "romaji": "doa",
+  "jenis": "Noun, Katakana",
+  "arti": "door"
+ },
+ {
+  "no": 82,
+  "kata": "どっち",
+  "kana": "",
+  "romaji": "docchi",
+  "jenis": "Pronoun",
+  "arti": "which; which one"
+ },
+ {
+  "no": 83,
+  "kata": "どちら",
+  "kana": "",
+  "romaji": "dochira",
+  "jenis": "Pronoun",
+  "arti": "which of two"
+ },
+ {
+  "no": 84,
+  "kata": "どこ",
+  "kana": "",
+  "romaji": "doko",
+  "jenis": "Pronoun",
+  "arti": "where; what place​"
+ },
+ {
+  "no": 85,
+  "kata": "どなた",
+  "kana": "",
+  "romaji": "donata",
+  "jenis": "Noun",
+  "arti": "who"
+ },
+ {
+  "no": 86,
+  "kata": "どの",
+  "kana": "",
+  "romaji": "dono",
+  "jenis": "Pre-noun adjectival",
+  "arti": "which"
+ },
+ {
+  "no": 87,
+  "kata": "どれ",
+  "kana": "",
+  "romaji": "dore",
+  "jenis": "Pronoun",
+  "arti": "which (of three or more)​"
+ },
+ {
+  "no": 88,
+  "kata": "どう",
+  "kana": "",
+  "romaji": "dou",
+  "jenis": "Adverb",
+  "arti": "how; in what way; how about​"
+ },
+ {
+  "no": 89,
+  "kata": "動物",
+  "kana": "どうぶつ",
+  "romaji": "doubutsu",
+  "jenis": "Noun",
+  "arti": "animal"
+ },
+ {
+  "no": 90,
+  "kata": "どうも",
+  "kana": "",
+  "romaji": "doumo",
+  "jenis": "Adverb",
+  "arti": "thank you; thanks"
+ },
+ {
+  "no": 91,
+  "kata": "どうぞ",
+  "kana": "",
+  "romaji": "douzo",
+  "jenis": "Adverb",
+  "arti": "please"
+ },
+ {
+  "no": 92,
+  "kata": "土曜日",
+  "kana": "どようび",
+  "romaji": "doyoubi",
+  "jenis": "Noun",
+  "arti": "Saturday"
+ },
+ {
+  "no": 93,
+  "kata": "絵",
+  "kana": "え",
+  "romaji": "e",
+  "jenis": "Noun",
+  "arti": "picture"
+ },
+ {
+  "no": 94,
+  "kata": "ええ",
+  "kana": "",
+  "romaji": "ee",
+  "jenis": "Noun",
+  "arti": "yes; that is correct; right"
+ },
+ {
+  "no": 95,
+  "kata": "映画",
+  "kana": "えいが",
+  "romaji": "eiga",
+  "jenis": "Noun",
+  "arti": "movie; film"
+ },
+ {
+  "no": 96,
+  "kata": "映画館",
+  "kana": "えいがかん",
+  "romaji": "eigakan",
+  "jenis": "Noun",
+  "arti": "movie theater; cinema"
+ },
+ {
+  "no": 97,
+  "kata": "英語",
+  "kana": "えいご",
+  "romaji": "eigo",
+  "jenis": "Noun",
+  "arti": "English language"
+ },
+ {
+  "no": 98,
+  "kata": "駅",
+  "kana": "えき",
+  "romaji": "eki",
+  "jenis": "Noun",
+  "arti": "station"
+ },
+ {
+  "no": 99,
+  "kata": "鉛筆",
+  "kana": "えんぴつ",
+  "romaji": "enpitsu",
+  "jenis": "Noun",
+  "arti": "pencil"
+ },
+ {
+  "no": 100,
+  "kata": "エレベーター",
+  "kana": "",
+  "romaji": "erebeetaa",
+  "jenis": "Noun, Katakana",
+  "arti": "elevator"
+ },
+ {
+  "no": 101,
+  "kata": "フィルム",
+  "kana": "",
+  "romaji": "firumu",
+  "jenis": "Noun, Katakana",
+  "arti": "film"
+ },
+ {
+  "no": 102,
+  "kata": "フォーク",
+  "kana": "",
+  "romaji": "fooku",
+  "jenis": "Noun, Katakana",
+  "arti": "fork"
+ },
+ {
+  "no": 103,
+  "kata": "服",
+  "kana": "ふく",
+  "romaji": "fuku",
+  "jenis": "Noun",
+  "arti": "clothes"
+ },
+ {
+  "no": 104,
+  "kata": "吹く",
+  "kana": "ふく",
+  "romaji": "fuku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to blow (of the wind)"
+ },
+ {
+  "no": 105,
+  "kata": "降る",
+  "kana": "ふる",
+  "romaji": "furu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to fall"
+ },
+ {
+  "no": 106,
+  "kata": "古い",
+  "kana": "ふるい",
+  "romaji": "furui",
+  "jenis": "い-adjective",
+  "arti": "old (not used for people)"
+ },
+ {
+  "no": 107,
+  "kata": "二人",
+  "kana": "ふたり",
+  "romaji": "futari",
+  "jenis": "Noun",
+  "arti": "two people; pair; couple"
+ },
+ {
+  "no": 108,
+  "kata": "二つ",
+  "kana": "ふたつ",
+  "romaji": "futatsu",
+  "jenis": "Noun, Numeric",
+  "arti": "two; 2"
+ },
+ {
+  "no": 109,
+  "kata": "太い",
+  "kana": "ふとい",
+  "romaji": "futoi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "fat; thick"
+ },
+ {
+  "no": 110,
+  "kata": "二日",
+  "kana": "ふつか",
+  "romaji": "futsuka",
+  "jenis": "Noun",
+  "arti": "the second day of the month / 2 days"
+ },
+ {
+  "no": 111,
+  "kata": "封筒",
+  "kana": "ふうとう",
+  "romaji": "fuutou",
+  "jenis": "Noun",
+  "arti": "envelope"
+ },
+ {
+  "no": 112,
+  "kata": "冬",
+  "kana": "ふゆ",
+  "romaji": "fuyu",
+  "jenis": "Noun",
+  "arti": "winter"
+ },
+ {
+  "no": 113,
+  "kata": "外国",
+  "kana": "がいこく",
+  "romaji": "gaikoku",
+  "jenis": "Noun",
+  "arti": "foreign country"
+ },
+ {
+  "no": 114,
+  "kata": "外国人",
+  "kana": "がいこくじん",
+  "romaji": "gaikokujin",
+  "jenis": "Noun",
+  "arti": "foreigner; foreign citizen; foreign national; alien; non-Japanese"
+ },
+ {
+  "no": 115,
+  "kata": "学校",
+  "kana": "がっこう",
+  "romaji": "gakkou",
+  "jenis": "Noun",
+  "arti": "school"
+ },
+ {
+  "no": 116,
+  "kata": "学生",
+  "kana": "がくせい",
+  "romaji": "gakusei",
+  "jenis": "Noun",
+  "arti": "student"
+ },
+ {
+  "no": 117,
+  "kata": "玄関",
+  "kana": "げんかん",
+  "romaji": "genkan",
+  "jenis": "Noun",
+  "arti": "entrance"
+ },
+ {
+  "no": 118,
+  "kata": "元気",
+  "kana": "げんき",
+  "romaji": "genki",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "lively; full of spirit; energetic; healthy"
+ },
+ {
+  "no": 119,
+  "kata": "月曜日",
+  "kana": "げつようび",
+  "romaji": "getsuyoubi",
+  "jenis": "Noun",
+  "arti": "Monday"
+ },
+ {
+  "no": 120,
+  "kata": "銀行",
+  "kana": "ぎんこう",
+  "romaji": "ginkou",
+  "jenis": "Noun",
+  "arti": "bank"
+ },
+ {
+  "no": 121,
+  "kata": "ギター",
+  "kana": "",
+  "romaji": "gitaa",
+  "jenis": "Noun, Katakana",
+  "arti": "guitar"
+ },
+ {
+  "no": 122,
+  "kata": "五",
+  "kana": "ご",
+  "romaji": "go",
+  "jenis": "Noun, Numeric",
+  "arti": "five; 5"
+ },
+ {
+  "no": 123,
+  "kata": "午後",
+  "kana": "ごご",
+  "romaji": "gogo",
+  "jenis": "Noun",
+  "arti": "afternoon; p.m."
+ },
+ {
+  "no": 124,
+  "kata": "ご飯",
+  "kana": "ごはん",
+  "romaji": "gohan",
+  "jenis": "Noun",
+  "arti": "cooked rice, meal"
+ },
+ {
+  "no": 125,
+  "kata": "午前",
+  "kana": "ごぜん",
+  "romaji": "gozen",
+  "jenis": "Noun",
+  "arti": "morning; a.m."
+ },
+ {
+  "no": 126,
+  "kata": "グラム",
+  "kana": "",
+  "romaji": "guramu",
+  "jenis": "Noun, Katakana",
+  "arti": "gram"
+ },
+ {
+  "no": 127,
+  "kata": "牛肉",
+  "kana": "ぎゅうにく",
+  "romaji": "gyuuniku",
+  "jenis": "Noun",
+  "arti": "beef"
+ },
+ {
+  "no": 128,
+  "kata": "牛乳",
+  "kana": "ぎゅうにゅう",
+  "romaji": "gyuunyuu",
+  "jenis": "Noun",
+  "arti": "(cow's) milk"
+ },
+ {
+  "no": 129,
+  "kata": "歯",
+  "kana": "は",
+  "romaji": "ha",
+  "jenis": "Noun",
+  "arti": "tooth"
+ },
+ {
+  "no": 130,
+  "kata": "八",
+  "kana": "はち",
+  "romaji": "hachi",
+  "jenis": "Noun, Numeric",
+  "arti": "eight: 8"
+ },
+ {
+  "no": 131,
+  "kata": "葉書",
+  "kana": "はがき",
+  "romaji": "hagaki",
+  "jenis": "Noun",
+  "arti": "postcard"
+ },
+ {
+  "no": 132,
+  "kata": "母",
+  "kana": "はは",
+  "romaji": "haha",
+  "jenis": "Noun",
+  "arti": "mother"
+ },
+ {
+  "no": 133,
+  "kata": "はい",
+  "kana": "",
+  "romaji": "hai",
+  "jenis": "Noun",
+  "arti": "yes; that is correct​"
+ },
+ {
+  "no": 134,
+  "kata": "入る",
+  "kana": "はいる",
+  "romaji": "hairu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to enter; to go into"
+ },
+ {
+  "no": 135,
+  "kata": "灰皿",
+  "kana": "はいざら",
+  "romaji": "haizara",
+  "jenis": "Noun",
+  "arti": "ashtray"
+ },
+ {
+  "no": 136,
+  "kata": "始まる",
+  "kana": "はじまる",
+  "romaji": "hajimaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to begin"
+ },
+ {
+  "no": 137,
+  "kata": "初めて",
+  "kana": "はじめて",
+  "romaji": "hajimete",
+  "jenis": "Adverb",
+  "arti": "for the first time"
+ },
+ {
+  "no": 138,
+  "kata": "箱",
+  "kana": "はこ",
+  "romaji": "hako",
+  "jenis": "Noun",
+  "arti": "box; crate"
+ },
+ {
+  "no": 139,
+  "kata": "履く",
+  "kana": "はく",
+  "romaji": "haku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to wear, to put on trousers"
+ },
+ {
+  "no": 140,
+  "kata": "半",
+  "kana": "はん",
+  "romaji": "han",
+  "jenis": "Noun",
+  "arti": "half; semi-; half-past"
+ },
+ {
+  "no": 141,
+  "kata": "花",
+  "kana": "はな",
+  "romaji": "hana",
+  "jenis": "Noun",
+  "arti": "flower"
+ },
+ {
+  "no": 142,
+  "kata": "鼻",
+  "kana": "はな",
+  "romaji": "hana",
+  "jenis": "Noun",
+  "arti": "nose"
+ },
+ {
+  "no": 143,
+  "kata": "話",
+  "kana": "はなし",
+  "romaji": "hanashi",
+  "jenis": "Noun",
+  "arti": "talk; speech; chat; conversation​"
+ },
+ {
+  "no": 144,
+  "kata": "話す",
+  "kana": "はなす",
+  "romaji": "hanasu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to speak; to talk; to converse"
+ },
+ {
+  "no": 145,
+  "kata": "半分",
+  "kana": "はんぶん",
+  "romaji": "hanbun",
+  "jenis": "Noun",
+  "arti": "half"
+ },
+ {
+  "no": 146,
+  "kata": "ハンカチ",
+  "kana": "",
+  "romaji": "hankachi",
+  "jenis": "Noun, Katakana",
+  "arti": "handkerchief​"
+ },
+ {
+  "no": 147,
+  "kata": "晴れ",
+  "kana": "はれ",
+  "romaji": "hare",
+  "jenis": "Noun",
+  "arti": "clear weather"
+ },
+ {
+  "no": 148,
+  "kata": "晴れる",
+  "kana": "はれる",
+  "romaji": "hareru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to be sunny"
+ },
+ {
+  "no": 149,
+  "kata": "春",
+  "kana": "はる",
+  "romaji": "haru",
+  "jenis": "Noun",
+  "arti": "spring; springtime"
+ },
+ {
+  "no": 150,
+  "kata": "貼る",
+  "kana": "はる",
+  "romaji": "haru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to stick; to paste"
+ },
+ {
+  "no": 151,
+  "kata": "箸",
+  "kana": "はし",
+  "romaji": "hashi",
+  "jenis": "Noun",
+  "arti": "chopsticks"
+ },
+ {
+  "no": 152,
+  "kata": "橋",
+  "kana": "はし",
+  "romaji": "hashi",
+  "jenis": "Noun",
+  "arti": "bridge"
+ },
+ {
+  "no": 153,
+  "kata": "走る",
+  "kana": "はしる",
+  "romaji": "hashiru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to run"
+ },
+ {
+  "no": 154,
+  "kata": "二十歳",
+  "kana": "はたち",
+  "romaji": "hatachi",
+  "jenis": "Noun",
+  "arti": "20 years old; twenty years old"
+ },
+ {
+  "no": 155,
+  "kata": "働く",
+  "kana": "はたらく",
+  "romaji": "hataraku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to work"
+ },
+ {
+  "no": 156,
+  "kata": "二十日",
+  "kana": "はつか",
+  "romaji": "hatsuka",
+  "jenis": "Noun",
+  "arti": "twentieth day of the month / 20 days"
+ },
+ {
+  "no": 157,
+  "kata": "速い",
+  "kana": "はやい",
+  "romaji": "hayai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "fast; quick; hasty; brisk"
+ },
+ {
+  "no": 158,
+  "kata": "早い",
+  "kana": "はやい",
+  "romaji": "hayai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "fast; early"
+ },
+ {
+  "no": 159,
+  "kata": "辺",
+  "kana": "へん",
+  "romaji": "hen",
+  "jenis": "Noun",
+  "arti": "area"
+ },
+ {
+  "no": 160,
+  "kata": "下手",
+  "kana": "へた",
+  "romaji": "heta",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "unskillful; poor; awkward​"
+ },
+ {
+  "no": 161,
+  "kata": "部屋",
+  "kana": "へや",
+  "romaji": "heya",
+  "jenis": "Noun",
+  "arti": "room"
+ },
+ {
+  "no": 162,
+  "kata": "左",
+  "kana": "ひだり",
+  "romaji": "hidari",
+  "jenis": "Noun",
+  "arti": "left; left hand side"
+ },
+ {
+  "no": 163,
+  "kata": "東",
+  "kana": "ひがし",
+  "romaji": "higashi",
+  "jenis": "Noun",
+  "arti": "east"
+ },
+ {
+  "no": 164,
+  "kata": "飛行機",
+  "kana": "ひこうき",
+  "romaji": "hikouki",
+  "jenis": "Noun",
+  "arti": "airplane; aircraft"
+ },
+ {
+  "no": 165,
+  "kata": "引く",
+  "kana": "ひく",
+  "romaji": "hiku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to pull"
+ },
+ {
+  "no": 166,
+  "kata": "弾く",
+  "kana": "ひく",
+  "romaji": "hiku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to play"
+ },
+ {
+  "no": 167,
+  "kata": "低い",
+  "kana": "ひくい",
+  "romaji": "hikui",
+  "jenis": "い-adjective",
+  "arti": "short,low"
+ },
+ {
+  "no": 168,
+  "kata": "暇",
+  "kana": "ひま",
+  "romaji": "hima",
+  "jenis": "Noun, な-adjective",
+  "arti": "free time"
+ },
+ {
+  "no": 169,
+  "kata": "広い",
+  "kana": "ひろい",
+  "romaji": "hiroi",
+  "jenis": "い-adjective",
+  "arti": "spacious; vast; wide"
+ },
+ {
+  "no": 170,
+  "kata": "昼",
+  "kana": "ひる",
+  "romaji": "hiru",
+  "jenis": "Noun",
+  "arti": "noon; midday; daytime; lunch"
+ },
+ {
+  "no": 171,
+  "kata": "昼ご飯",
+  "kana": "ひるごはん",
+  "romaji": "hirugohan",
+  "jenis": "Noun",
+  "arti": "lunch"
+ },
+ {
+  "no": 172,
+  "kata": "人",
+  "kana": "ひと",
+  "romaji": "hito",
+  "jenis": "Noun",
+  "arti": "person; human"
+ },
+ {
+  "no": 173,
+  "kata": "一人",
+  "kana": "ひとり",
+  "romaji": "hitori",
+  "jenis": "Noun, Adverb",
+  "arti": "one person​; alone; single"
+ },
+ {
+  "no": 174,
+  "kata": "一つ",
+  "kana": "ひとつ",
+  "romaji": "hitotsu",
+  "jenis": "Noun, Numeric",
+  "arti": "one thing; only"
+ },
+ {
+  "no": 175,
+  "kata": "ほか",
+  "kana": "",
+  "romaji": "hoka",
+  "jenis": "Noun",
+  "arti": "other (place, thing, person); the rest"
+ },
+ {
+  "no": 176,
+  "kata": "本",
+  "kana": "ほん",
+  "romaji": "hon",
+  "jenis": "Noun",
+  "arti": "book; volume; script"
+ },
+ {
+  "no": 177,
+  "kata": "本棚",
+  "kana": "ほんだな",
+  "romaji": "hondana",
+  "jenis": "Noun",
+  "arti": "bookshelf; bookcase"
+ },
+ {
+  "no": 178,
+  "kata": "本当",
+  "kana": "ほんとう",
+  "romaji": "hontou",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "truth; reality; actuality; fact"
+ },
+ {
+  "no": 179,
+  "kata": "欲しい",
+  "kana": "ほしい",
+  "romaji": "hoshii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "want"
+ },
+ {
+  "no": 180,
+  "kata": "細い",
+  "kana": "ほそい",
+  "romaji": "hosoi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "thin; slender"
+ },
+ {
+  "no": 181,
+  "kata": "ホテル",
+  "kana": "",
+  "romaji": "hoteru",
+  "jenis": "Noun, Katakana",
+  "arti": "hotel"
+ },
+ {
+  "no": 182,
+  "kata": "百",
+  "kana": "ひゃく",
+  "romaji": "hyaku",
+  "jenis": "Noun, Numeric",
+  "arti": "100; hundred"
+ },
+ {
+  "no": 183,
+  "kata": "一",
+  "kana": "いち",
+  "romaji": "ichi",
+  "jenis": "Noun, Prefix, Suffix, Numeric",
+  "arti": "one; best; first; foremost; start"
+ },
+ {
+  "no": 184,
+  "kata": "一番",
+  "kana": "いちばん",
+  "romaji": "ichiban",
+  "jenis": "Noun, Adverb",
+  "arti": "number one; first; 1st, first place​; best; most​"
+ },
+ {
+  "no": 185,
+  "kata": "一日",
+  "kana": "いちにち",
+  "romaji": "ichinichi",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "one day, all day"
+ },
+ {
+  "no": 186,
+  "kata": "家",
+  "kana": "いえ",
+  "romaji": "ie",
+  "jenis": "Noun",
+  "arti": "house, residence, family"
+ },
+ {
+  "no": 187,
+  "kata": "いかが",
+  "kana": "",
+  "romaji": "ikaga",
+  "jenis": "Adverb",
+  "arti": "how; in what way; how about​"
+ },
+ {
+  "no": 188,
+  "kata": "池",
+  "kana": "いけ",
+  "romaji": "ike",
+  "jenis": "Noun",
+  "arti": "pond"
+ },
+ {
+  "no": 189,
+  "kata": "行く",
+  "kana": "いく",
+  "romaji": "iku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to go; to move"
+ },
+ {
+  "no": 190,
+  "kata": "いくら",
+  "kana": "",
+  "romaji": "ikura",
+  "jenis": "Noun, Adverb",
+  "arti": "how much?; how many?​"
+ },
+ {
+  "no": 191,
+  "kata": "いくつ",
+  "kana": "",
+  "romaji": "ikutsu",
+  "jenis": "Adverb",
+  "arti": "how many?,how old?"
+ },
+ {
+  "no": 192,
+  "kata": "今",
+  "kana": "いま",
+  "romaji": "ima",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "now; the present time; soon"
+ },
+ {
+  "no": 193,
+  "kata": "意味",
+  "kana": "いみ",
+  "romaji": "imi",
+  "jenis": "Noun",
+  "arti": "meaning; significance; sense"
+ },
+ {
+  "no": 194,
+  "kata": "妹",
+  "kana": "いもうと",
+  "romaji": "imouto",
+  "jenis": "Noun",
+  "arti": "younger sister"
+ },
+ {
+  "no": 195,
+  "kata": "犬",
+  "kana": "いぬ",
+  "romaji": "inu",
+  "jenis": "Noun",
+  "arti": "dog"
+ },
+ {
+  "no": 196,
+  "kata": "入れる",
+  "kana": "いれる",
+  "romaji": "ireru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to put in; to let in; to take in; to bring in; to insert; to install"
+ },
+ {
+  "no": 197,
+  "kata": "入口",
+  "kana": "いりぐち",
+  "romaji": "iriguchi",
+  "jenis": "Noun",
+  "arti": "entrance; entry; gate"
+ },
+ {
+  "no": 198,
+  "kata": "色",
+  "kana": "いろ",
+  "romaji": "iro",
+  "jenis": "Noun",
+  "arti": "colour; color"
+ },
+ {
+  "no": 199,
+  "kata": "色々",
+  "kana": "いろいろ",
+  "romaji": "iroiro",
+  "jenis": "Noun, Adjective, な-adjective, Adverb",
+  "arti": "various"
+ },
+ {
+  "no": 200,
+  "kata": "要る",
+  "kana": "いる",
+  "romaji": "iru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to be needed"
+ },
+ {
+  "no": 201,
+  "kata": "居る",
+  "kana": "いる",
+  "romaji": "iru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to be, to have"
+ },
+ {
+  "no": 202,
+  "kata": "医者",
+  "kana": "いしゃ",
+  "romaji": "isha",
+  "jenis": "Noun",
+  "arti": "(medical) doctor; physician"
+ },
+ {
+  "no": 203,
+  "kata": "忙しい",
+  "kana": "いそがしい",
+  "romaji": "isogashii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "busy"
+ },
+ {
+  "no": 204,
+  "kata": "一緒",
+  "kana": "いっしょ",
+  "romaji": "issho",
+  "jenis": "Noun",
+  "arti": "together; at the same time; same; identical"
+ },
+ {
+  "no": 205,
+  "kata": "椅子",
+  "kana": "いす",
+  "romaji": "isu",
+  "jenis": "Noun",
+  "arti": "chair"
+ },
+ {
+  "no": 206,
+  "kata": "痛い",
+  "kana": "いたい",
+  "romaji": "itai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "painful; sore​"
+ },
+ {
+  "no": 207,
+  "kata": "いつ",
+  "kana": "",
+  "romaji": "itsu",
+  "jenis": "Pronoun",
+  "arti": "when"
+ },
+ {
+  "no": 208,
+  "kata": "五日",
+  "kana": "いつか",
+  "romaji": "itsuka",
+  "jenis": "Noun",
+  "arti": "the fifth day of the month / 5 days"
+ },
+ {
+  "no": 209,
+  "kata": "五つ",
+  "kana": "いつつ",
+  "romaji": "itsutsu",
+  "jenis": "Noun, Numeric",
+  "arti": "five; 5"
+ },
+ {
+  "no": 210,
+  "kata": "言う",
+  "kana": "いう",
+  "romaji": "iu",
+  "jenis": "Verb, Godan verb",
+  "arti": "to say; to call"
+ },
+ {
+  "no": 211,
+  "kata": "嫌",
+  "kana": "いや",
+  "romaji": "iya",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "unpleasant"
+ },
+ {
+  "no": 212,
+  "kata": "じゃあ",
+  "kana": "",
+  "romaji": "jaa",
+  "jenis": "Conjunction",
+  "arti": "then; well; so; well then"
+ },
+ {
+  "no": 213,
+  "kata": "字引",
+  "kana": "じびき",
+  "romaji": "jibiki",
+  "jenis": "Noun",
+  "arti": "dictionary"
+ },
+ {
+  "no": 214,
+  "kata": "自分",
+  "kana": "じぶん",
+  "romaji": "jibun",
+  "jenis": "Pronoun",
+  "arti": "myself; yourself; oneself; himself; herself; i; me"
+ },
+ {
+  "no": 215,
+  "kata": "自動車",
+  "kana": "じどうしゃ",
+  "romaji": "jidousha",
+  "jenis": "Noun",
+  "arti": "automobile; motorcar; motor vehicle; car"
+ },
+ {
+  "no": 216,
+  "kata": "時間",
+  "kana": "じかん",
+  "romaji": "jikan",
+  "jenis": "Noun",
+  "arti": "time; hour(s)"
+ },
+ {
+  "no": 217,
+  "kata": "辞書",
+  "kana": "じしょ",
+  "romaji": "jisho",
+  "jenis": "Noun",
+  "arti": "dictionary"
+ },
+ {
+  "no": 218,
+  "kata": "自転車",
+  "kana": "じてんしゃ",
+  "romaji": "jitensha",
+  "jenis": "Noun",
+  "arti": "bicycle"
+ },
+ {
+  "no": 219,
+  "kata": "丈夫",
+  "kana": "じょうぶ",
+  "romaji": "joubu",
+  "jenis": "Adjective, な-adjective",
+  "arti": "strong, durable"
+ },
+ {
+  "no": 220,
+  "kata": "上手",
+  "kana": "じょうず",
+  "romaji": "jouzu",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "skillful; skilled; proficient; good (at)"
+ },
+ {
+  "no": 221,
+  "kata": "授業",
+  "kana": "じゅぎょう",
+  "romaji": "jugyou",
+  "jenis": "Noun, Suru verb",
+  "arti": "lesson; class work"
+ },
+ {
+  "no": 222,
+  "kata": "十",
+  "kana": "じゅう",
+  "romaji": "juu",
+  "jenis": "Noun, Numeric",
+  "arti": "ten; 10"
+ },
+ {
+  "no": 223,
+  "kata": "かばん",
+  "kana": "",
+  "romaji": "kaban",
+  "jenis": "Noun",
+  "arti": "bag; basket​"
+ },
+ {
+  "no": 224,
+  "kata": "花瓶",
+  "kana": "かびん",
+  "romaji": "kabin",
+  "jenis": "Noun",
+  "arti": "a vase"
+ },
+ {
+  "no": 225,
+  "kata": "角",
+  "kana": "かど",
+  "romaji": "kado",
+  "jenis": "Noun",
+  "arti": "a corner; angle​"
+ },
+ {
+  "no": 226,
+  "kata": "帰る",
+  "kana": "かえる",
+  "romaji": "kaeru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to go back​"
+ },
+ {
+  "no": 227,
+  "kata": "返す",
+  "kana": "かえす",
+  "romaji": "kaesu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to return something"
+ },
+ {
+  "no": 228,
+  "kata": "鍵",
+  "kana": "かぎ",
+  "romaji": "kagi",
+  "jenis": "Noun",
+  "arti": "key"
+ },
+ {
+  "no": 229,
+  "kata": "階段",
+  "kana": "かいだん",
+  "romaji": "kaidan",
+  "jenis": "Noun",
+  "arti": "stairs; stairway; staircase"
+ },
+ {
+  "no": 230,
+  "kata": "買い物",
+  "kana": "かいもの",
+  "romaji": "kaimono",
+  "jenis": "Noun",
+  "arti": "shopping; purchased goods"
+ },
+ {
+  "no": 231,
+  "kata": "会社",
+  "kana": "かいしゃ",
+  "romaji": "kaisha",
+  "jenis": "Noun",
+  "arti": "company; corporation"
+ },
+ {
+  "no": 232,
+  "kata": "掛かる",
+  "kana": "かかる",
+  "romaji": "kakaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to take (a resource, e.g. time or money)"
+ },
+ {
+  "no": 233,
+  "kata": "掛ける",
+  "kana": "かける",
+  "romaji": "kakeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to hang up; to make (a call)​;"
+ },
+ {
+  "no": 234,
+  "kata": "書く",
+  "kana": "かく",
+  "romaji": "kaku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to write; to compose; to pen; to draw"
+ },
+ {
+  "no": 235,
+  "kata": "カメラ",
+  "kana": "",
+  "romaji": "kamera",
+  "jenis": "Noun, Katakana",
+  "arti": "camera"
+ },
+ {
+  "no": 236,
+  "kata": "紙",
+  "kana": "かみ",
+  "romaji": "kami",
+  "jenis": "Noun",
+  "arti": "paper"
+ },
+ {
+  "no": 237,
+  "kata": "漢字",
+  "kana": "かんじ",
+  "romaji": "kanji",
+  "jenis": "Noun",
+  "arti": "kanji"
+ },
+ {
+  "no": 238,
+  "kata": "カップ",
+  "kana": "",
+  "romaji": "kappu",
+  "jenis": "Noun, Katakana",
+  "arti": "cup"
+ },
+ {
+  "no": 239,
+  "kata": "体",
+  "kana": "からだ",
+  "romaji": "karada",
+  "jenis": "Noun",
+  "arti": "body"
+ },
+ {
+  "no": 240,
+  "kata": "辛い",
+  "kana": "からい",
+  "romaji": "karai",
+  "jenis": "い-adjective",
+  "arti": "spicy"
+ },
+ {
+  "no": 241,
+  "kata": "カレー",
+  "kana": "",
+  "romaji": "karee",
+  "jenis": "Noun, Katakana",
+  "arti": "curry"
+ },
+ {
+  "no": 242,
+  "kata": "カレンダー",
+  "kana": "",
+  "romaji": "karendaa",
+  "jenis": "Noun, Katakana",
+  "arti": "calendar"
+ },
+ {
+  "no": 243,
+  "kata": "借りる",
+  "kana": "かりる",
+  "romaji": "kariru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to borrow"
+ },
+ {
+  "no": 244,
+  "kata": "軽い",
+  "kana": "かるい",
+  "romaji": "karui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "light"
+ },
+ {
+  "no": 245,
+  "kata": "傘",
+  "kana": "かさ",
+  "romaji": "kasa",
+  "jenis": "Noun",
+  "arti": "umbrella"
+ },
+ {
+  "no": 246,
+  "kata": "貸す",
+  "kana": "かす",
+  "romaji": "kasu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to lend; to loan"
+ },
+ {
+  "no": 247,
+  "kata": "方",
+  "kana": "かた",
+  "romaji": "kata",
+  "jenis": "Noun",
+  "arti": "way of doing something"
+ },
+ {
+  "no": 248,
+  "kata": "家庭",
+  "kana": "かてい",
+  "romaji": "katei",
+  "jenis": "Noun",
+  "arti": "household"
+ },
+ {
+  "no": 249,
+  "kata": "買う",
+  "kana": "かう",
+  "romaji": "kau",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to buy; to purchase"
+ },
+ {
+  "no": 250,
+  "kata": "川",
+  "kana": "かわ",
+  "romaji": "kawa",
+  "jenis": "Noun, Suffix",
+  "arti": "river; stream​"
+ },
+ {
+  "no": 251,
+  "kata": "可愛い",
+  "kana": "かわいい",
+  "romaji": "kawaii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "cute"
+ },
+ {
+  "no": 252,
+  "kata": "火曜日",
+  "kana": "かようび",
+  "romaji": "kayoubi",
+  "jenis": "Noun",
+  "arti": "Tuesday"
+ },
+ {
+  "no": 253,
+  "kata": "風",
+  "kana": "かぜ",
+  "romaji": "kaze",
+  "jenis": "Noun",
+  "arti": "wind"
+ },
+ {
+  "no": 254,
+  "kata": "風邪",
+  "kana": "かぜ",
+  "romaji": "kaze",
+  "jenis": "Noun",
+  "arti": "a cold"
+ },
+ {
+  "no": 255,
+  "kata": "家族",
+  "kana": "かぞく",
+  "romaji": "kazoku",
+  "jenis": "Noun",
+  "arti": "family; members of a family"
+ },
+ {
+  "no": 256,
+  "kata": "警官",
+  "kana": "けいかん",
+  "romaji": "keikan",
+  "jenis": "Noun",
+  "arti": "policeman; police officer"
+ },
+ {
+  "no": 257,
+  "kata": "結婚",
+  "kana": "けっこん",
+  "romaji": "kekkon",
+  "jenis": "Noun, Suru verb",
+  "arti": "marriage"
+ },
+ {
+  "no": 258,
+  "kata": "結構",
+  "kana": "けっこう",
+  "romaji": "kekkou",
+  "jenis": "Noun, Adverbial Noun, Adjective, な-adjective, Adverb",
+  "arti": "splendid, enough"
+ },
+ {
+  "no": 259,
+  "kata": "今朝",
+  "kana": "けさ",
+  "romaji": "kesa",
+  "jenis": "Noun, Temporal noun",
+  "arti": "this morning"
+ },
+ {
+  "no": 260,
+  "kata": "消す",
+  "kana": "けす",
+  "romaji": "kesu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to erase, to turn off power"
+ },
+ {
+  "no": 261,
+  "kata": "木",
+  "kana": "き",
+  "romaji": "ki",
+  "jenis": "Noun",
+  "arti": "tree; shrub; bush; wood; timber"
+ },
+ {
+  "no": 262,
+  "kata": "消える",
+  "kana": "きえる",
+  "romaji": "kieru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to disappear"
+ },
+ {
+  "no": 263,
+  "kata": "黄色い",
+  "kana": "きいろい",
+  "romaji": "kiiroi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "yellow"
+ },
+ {
+  "no": 264,
+  "kata": "聞く",
+  "kana": "きく",
+  "romaji": "kiku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to hear; to listen (to music); to ask; to learn of"
+ },
+ {
+  "no": 265,
+  "kata": "昨日",
+  "kana": "きのう",
+  "romaji": "kinou",
+  "jenis": "Noun",
+  "arti": "yesterday"
+ },
+ {
+  "no": 266,
+  "kata": "金曜日",
+  "kana": "きんようび",
+  "romaji": "kinyoubi",
+  "jenis": "Noun",
+  "arti": "Friday"
+ },
+ {
+  "no": 267,
+  "kata": "切符",
+  "kana": "きっぷ",
+  "romaji": "kippu",
+  "jenis": "Noun",
+  "arti": "ticket"
+ },
+ {
+  "no": 268,
+  "kata": "嫌い",
+  "kana": "きらい",
+  "romaji": "kirai",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "hate"
+ },
+ {
+  "no": 269,
+  "kata": "綺麗",
+  "kana": "きれい",
+  "romaji": "kirei",
+  "jenis": "Adjective, な-adjective",
+  "arti": "pretty; lovely; beautiful"
+ },
+ {
+  "no": 270,
+  "kata": "キログラム",
+  "kana": "",
+  "romaji": "kiro guramu",
+  "jenis": "Noun, Katakana",
+  "arti": "kilogram"
+ },
+ {
+  "no": 271,
+  "kata": "キロメートル",
+  "kana": "",
+  "romaji": "kiro meetoru",
+  "jenis": "Noun, Katakana",
+  "arti": "kilometer"
+ },
+ {
+  "no": 272,
+  "kata": "切る",
+  "kana": "きる",
+  "romaji": "kiru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to cut"
+ },
+ {
+  "no": 273,
+  "kata": "着る",
+  "kana": "きる",
+  "romaji": "kiru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to wear"
+ },
+ {
+  "no": 274,
+  "kata": "喫茶店",
+  "kana": "きっさてん",
+  "romaji": "kissaten",
+  "jenis": "Noun",
+  "arti": "coffee shop; tearoom; cafe"
+ },
+ {
+  "no": 275,
+  "kata": "北",
+  "kana": "きた",
+  "romaji": "kita",
+  "jenis": "Noun",
+  "arti": "north"
+ },
+ {
+  "no": 276,
+  "kata": "汚い",
+  "kana": "きたない",
+  "romaji": "kitanai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "dirty"
+ },
+ {
+  "no": 277,
+  "kata": "切手",
+  "kana": "きって",
+  "romaji": "kitte",
+  "jenis": "Noun",
+  "arti": "stamp (postage)"
+ },
+ {
+  "no": 278,
+  "kata": "こっち",
+  "kana": "",
+  "romaji": "kocchi",
+  "jenis": "Noun",
+  "arti": "this person or way"
+ },
+ {
+  "no": 279,
+  "kata": "こちら",
+  "kana": "",
+  "romaji": "kochira",
+  "jenis": "Noun",
+  "arti": "this way; this direction​"
+ },
+ {
+  "no": 280,
+  "kata": "子供",
+  "kana": "こども",
+  "romaji": "kodomo",
+  "jenis": "Noun",
+  "arti": "child"
+ },
+ {
+  "no": 281,
+  "kata": "声",
+  "kana": "こえ",
+  "romaji": "koe",
+  "jenis": "Noun",
+  "arti": "voice"
+ },
+ {
+  "no": 282,
+  "kata": "ここ",
+  "kana": "",
+  "romaji": "koko",
+  "jenis": "Pronoun",
+  "arti": "here; this place"
+ },
+ {
+  "no": 283,
+  "kata": "九日",
+  "kana": "ここのか",
+  "romaji": "kokonoka",
+  "jenis": "Noun",
+  "arti": "ninth day of the month / 9 days"
+ },
+ {
+  "no": 284,
+  "kata": "九つ",
+  "kana": "ここのつ",
+  "romaji": "kokonotsu",
+  "jenis": "Noun, Numeric",
+  "arti": "nine; 9"
+ },
+ {
+  "no": 285,
+  "kata": "困る",
+  "kana": "こまる",
+  "romaji": "komaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to be troubled"
+ },
+ {
+  "no": 286,
+  "kata": "今晩",
+  "kana": "こんばん",
+  "romaji": "konban",
+  "jenis": "Noun",
+  "arti": "tonight; this evening"
+ },
+ {
+  "no": 287,
+  "kata": "今月",
+  "kana": "こんげつ",
+  "romaji": "kongetsu",
+  "jenis": "Noun",
+  "arti": "this month"
+ },
+ {
+  "no": 288,
+  "kata": "こんな",
+  "kana": "",
+  "romaji": "konna",
+  "jenis": "Pre-noun adjectival",
+  "arti": "such; like this​"
+ },
+ {
+  "no": 289,
+  "kata": "この",
+  "kana": "",
+  "romaji": "kono",
+  "jenis": "Pre-noun adjectival",
+  "arti": "this​"
+ },
+ {
+  "no": 290,
+  "kata": "今週",
+  "kana": "こんしゅう",
+  "romaji": "konshuu",
+  "jenis": "Noun",
+  "arti": "this week"
+ },
+ {
+  "no": 291,
+  "kata": "コーヒー",
+  "kana": "",
+  "romaji": "koohii",
+  "jenis": "Noun, Katakana",
+  "arti": "Coffee"
+ },
+ {
+  "no": 292,
+  "kata": "コート",
+  "kana": "",
+  "romaji": "kooto",
+  "jenis": "Noun, Katakana",
+  "arti": "coat"
+ },
+ {
+  "no": 293,
+  "kata": "コピー",
+  "kana": "",
+  "romaji": "kopii",
+  "jenis": "Noun, Suru verb, Katakana",
+  "arti": "copy; photocopy"
+ },
+ {
+  "no": 294,
+  "kata": "コップ",
+  "kana": "",
+  "romaji": "koppu",
+  "jenis": "Noun, Katakana",
+  "arti": "glass (drinking vessel); tumbler​"
+ },
+ {
+  "no": 295,
+  "kata": "これ",
+  "kana": "",
+  "romaji": "kore",
+  "jenis": "Pronoun",
+  "arti": "this"
+ },
+ {
+  "no": 296,
+  "kata": "答える",
+  "kana": "こたえる",
+  "romaji": "kotaeru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to answer"
+ },
+ {
+  "no": 297,
+  "kata": "言葉",
+  "kana": "ことば",
+  "romaji": "kotoba",
+  "jenis": "Noun",
+  "arti": "word; words"
+ },
+ {
+  "no": 298,
+  "kata": "今年",
+  "kana": "ことし",
+  "romaji": "kotoshi",
+  "jenis": "Noun",
+  "arti": "this year"
+ },
+ {
+  "no": 299,
+  "kata": "交番",
+  "kana": "こうばん",
+  "romaji": "kouban",
+  "jenis": "Noun",
+  "arti": "police box"
+ },
+ {
+  "no": 300,
+  "kata": "紅茶",
+  "kana": "こうちゃ",
+  "romaji": "koucha",
+  "jenis": "Noun",
+  "arti": "black tea"
+ },
+ {
+  "no": 301,
+  "kata": "公園",
+  "kana": "こうえん",
+  "romaji": "kouen",
+  "jenis": "Noun",
+  "arti": "park"
+ },
+ {
+  "no": 302,
+  "kata": "交差点",
+  "kana": "こうさてん",
+  "romaji": "kousaten",
+  "jenis": "Noun",
+  "arti": "intersection"
+ },
+ {
+  "no": 303,
+  "kata": "口",
+  "kana": "くち",
+  "romaji": "kuchi",
+  "jenis": "Noun",
+  "arti": "mouth, opening"
+ },
+ {
+  "no": 304,
+  "kata": "果物",
+  "kana": "くだもの",
+  "romaji": "kudamono",
+  "jenis": "Noun",
+  "arti": "fruit"
+ },
+ {
+  "no": 305,
+  "kata": "下さい",
+  "kana": "ください",
+  "romaji": "kudasai",
+  "jenis": "Expression",
+  "arti": "please"
+ },
+ {
+  "no": 306,
+  "kata": "曇り",
+  "kana": "くもり",
+  "romaji": "kumori",
+  "jenis": "Noun",
+  "arti": "cloudiness; cloudy weather"
+ },
+ {
+  "no": 307,
+  "kata": "曇る",
+  "kana": "くもる",
+  "romaji": "kumoru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to become cloudy, to become dim"
+ },
+ {
+  "no": 308,
+  "kata": "国",
+  "kana": "くに",
+  "romaji": "kuni",
+  "jenis": "Noun",
+  "arti": "country; state; region"
+ },
+ {
+  "no": 309,
+  "kata": "暗い",
+  "kana": "くらい",
+  "romaji": "kurai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "dark; gloomy; murky"
+ },
+ {
+  "no": 310,
+  "kata": "クラス",
+  "kana": "",
+  "romaji": "kurasu",
+  "jenis": "Noun, Katakana",
+  "arti": "class"
+ },
+ {
+  "no": 311,
+  "kata": "黒",
+  "kana": "くろ",
+  "romaji": "kuro",
+  "jenis": "Noun",
+  "arti": "black"
+ },
+ {
+  "no": 312,
+  "kata": "黒い",
+  "kana": "くろい",
+  "romaji": "kuroi",
+  "jenis": "い-adjective",
+  "arti": "black"
+ },
+ {
+  "no": 313,
+  "kata": "来る",
+  "kana": "くる",
+  "romaji": "kuru",
+  "jenis": "Verb, Intransitive verb",
+  "arti": "to come"
+ },
+ {
+  "no": 314,
+  "kata": "車",
+  "kana": "くるま",
+  "romaji": "kuruma",
+  "jenis": "Noun",
+  "arti": "car; automobile; vehicle"
+ },
+ {
+  "no": 315,
+  "kata": "薬",
+  "kana": "くすり",
+  "romaji": "kusuri",
+  "jenis": "Noun",
+  "arti": "medicine"
+ },
+ {
+  "no": 316,
+  "kata": "靴",
+  "kana": "くつ",
+  "romaji": "kutsu",
+  "jenis": "Noun",
+  "arti": "shoes"
+ },
+ {
+  "no": 317,
+  "kata": "靴下",
+  "kana": "くつした",
+  "romaji": "kutsushita",
+  "jenis": "Noun",
+  "arti": "socks"
+ },
+ {
+  "no": 318,
+  "kata": "去年",
+  "kana": "きょねん",
+  "romaji": "kyonen",
+  "jenis": "Noun",
+  "arti": "last year"
+ },
+ {
+  "no": 319,
+  "kata": "今日",
+  "kana": "きょう",
+  "romaji": "kyou",
+  "jenis": "Noun, Temporal noun",
+  "arti": "today; this day"
+ },
+ {
+  "no": 320,
+  "kata": "兄弟",
+  "kana": "きょうだい",
+  "romaji": "kyoudai",
+  "jenis": "Noun",
+  "arti": "siblings; brothers and sisters​; mate"
+ },
+ {
+  "no": 321,
+  "kata": "教室",
+  "kana": "きょうしつ",
+  "romaji": "kyoushitsu",
+  "jenis": "Noun",
+  "arti": "classroom"
+ },
+ {
+  "no": 322,
+  "kata": "九",
+  "kana": "きゅう",
+  "romaji": "kyuu",
+  "jenis": "Noun, Numeric",
+  "arti": "nine; 9"
+ },
+ {
+  "no": 323,
+  "kata": "マッチ",
+  "kana": "",
+  "romaji": "macchi",
+  "jenis": "Noun, Katakana",
+  "arti": "match"
+ },
+ {
+  "no": 324,
+  "kata": "町",
+  "kana": "まち",
+  "romaji": "machi",
+  "jenis": "Noun",
+  "arti": "town; block; neighborhood"
+ },
+ {
+  "no": 325,
+  "kata": "窓",
+  "kana": "まど",
+  "romaji": "mado",
+  "jenis": "Noun",
+  "arti": "window"
+ },
+ {
+  "no": 326,
+  "kata": "前",
+  "kana": "まえ",
+  "romaji": "mae",
+  "jenis": "Noun, Suffix",
+  "arti": "previous; before; in front; ago"
+ },
+ {
+  "no": 327,
+  "kata": "曲がる",
+  "kana": "まがる",
+  "romaji": "magaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to turn, to bend"
+ },
+ {
+  "no": 328,
+  "kata": "毎朝",
+  "kana": "まいあさ",
+  "romaji": "maiasa",
+  "jenis": "Noun",
+  "arti": "every morning"
+ },
+ {
+  "no": 329,
+  "kata": "毎晩",
+  "kana": "まいばん",
+  "romaji": "maiban",
+  "jenis": "Noun",
+  "arti": "every night"
+ },
+ {
+  "no": 330,
+  "kata": "毎日",
+  "kana": "まいにち",
+  "romaji": "mainichi",
+  "jenis": "Noun",
+  "arti": "every day"
+ },
+ {
+  "no": 331,
+  "kata": "毎週",
+  "kana": "まいしゅう",
+  "romaji": "maishuu",
+  "jenis": "Noun",
+  "arti": "every week"
+ },
+ {
+  "no": 332,
+  "kata": "毎年",
+  "kana": "まいとし / まいねん",
+  "romaji": "maitoshi / mainen",
+  "jenis": "Noun",
+  "arti": "every year; yearly; annually"
+ },
+ {
+  "no": 333,
+  "kata": "毎月",
+  "kana": "まいつき",
+  "romaji": "maitsuki",
+  "jenis": "Noun",
+  "arti": "every month; monthly"
+ },
+ {
+  "no": 334,
+  "kata": "万",
+  "kana": "まん",
+  "romaji": "man",
+  "jenis": "Noun, Numeric",
+  "arti": "10,000; ten thousand"
+ },
+ {
+  "no": 335,
+  "kata": "万年筆",
+  "kana": "まんねんひつ",
+  "romaji": "mannenhitsu",
+  "jenis": "Noun",
+  "arti": "fountain pen"
+ },
+ {
+  "no": 336,
+  "kata": "丸い",
+  "kana": "まるい",
+  "romaji": "marui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "round,circular"
+ },
+ {
+  "no": 337,
+  "kata": "真っ直ぐ",
+  "kana": "まっすぐ",
+  "romaji": "massugu",
+  "jenis": "Noun, Adjective, な-adjective, Adverb",
+  "arti": "straight ahead,direct"
+ },
+ {
+  "no": 338,
+  "kata": "待つ",
+  "kana": "まつ",
+  "romaji": "matsu",
+  "jenis": "Verb, Godan verb, Intransitive verb, Transitive verb",
+  "arti": "to wait​"
+ },
+ {
+  "no": 339,
+  "kata": "不味い",
+  "kana": "まずい",
+  "romaji": "mazui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "unpleasant"
+ },
+ {
+  "no": 340,
+  "kata": "目",
+  "kana": "め",
+  "romaji": "me",
+  "jenis": "Noun",
+  "arti": "eye"
+ },
+ {
+  "no": 341,
+  "kata": "メートル",
+  "kana": "",
+  "romaji": "meetoru",
+  "jenis": "Noun, Katakana",
+  "arti": "metre; meter"
+ },
+ {
+  "no": 342,
+  "kata": "眼鏡",
+  "kana": "めがね",
+  "romaji": "megane",
+  "jenis": "Noun",
+  "arti": "glasses"
+ },
+ {
+  "no": 343,
+  "kata": "道",
+  "kana": "みち",
+  "romaji": "michi",
+  "jenis": "Noun",
+  "arti": "road; street"
+ },
+ {
+  "no": 344,
+  "kata": "緑",
+  "kana": "みどり",
+  "romaji": "midori",
+  "jenis": "Noun",
+  "arti": "green"
+ },
+ {
+  "no": 345,
+  "kata": "磨く",
+  "kana": "みがく",
+  "romaji": "migaku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to polish; to shine; to brush (e.g. teeth)"
+ },
+ {
+  "no": 346,
+  "kata": "右",
+  "kana": "みぎ",
+  "romaji": "migi",
+  "jenis": "Noun",
+  "arti": "right; right hand side"
+ },
+ {
+  "no": 347,
+  "kata": "短い",
+  "kana": "みじかい",
+  "romaji": "mijikai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "short"
+ },
+ {
+  "no": 348,
+  "kata": "三日",
+  "kana": "みっか",
+  "romaji": "mikka",
+  "jenis": "Noun",
+  "arti": "the third day of the month / 3 days"
+ },
+ {
+  "no": 349,
+  "kata": "耳",
+  "kana": "みみ",
+  "romaji": "mimi",
+  "jenis": "Noun",
+  "arti": "ear; hearing"
+ },
+ {
+  "no": 350,
+  "kata": "南",
+  "kana": "みなみ",
+  "romaji": "minami",
+  "jenis": "Noun",
+  "arti": "south"
+ },
+ {
+  "no": 351,
+  "kata": "皆さん",
+  "kana": "みなさん",
+  "romaji": "minasan",
+  "jenis": "Noun",
+  "arti": "everyone"
+ },
+ {
+  "no": 352,
+  "kata": "みんな",
+  "kana": "",
+  "romaji": "minna",
+  "jenis": "Noun, Adverb",
+  "arti": "all; everyone; everybody"
+ },
+ {
+  "no": 353,
+  "kata": "見る",
+  "kana": "みる",
+  "romaji": "miru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to see; to look; to watch; to view; to observe"
+ },
+ {
+  "no": 354,
+  "kata": "店",
+  "kana": "みせ",
+  "romaji": "mise",
+  "jenis": "Noun",
+  "arti": "store; shop; establishment; restaurant"
+ },
+ {
+  "no": 355,
+  "kata": "見せる",
+  "kana": "みせる",
+  "romaji": "miseru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to show; to display"
+ },
+ {
+  "no": 356,
+  "kata": "三つ",
+  "kana": "みっつ",
+  "romaji": "mittsu",
+  "jenis": "Noun, Numeric",
+  "arti": "three; 3"
+ },
+ {
+  "no": 357,
+  "kata": "水",
+  "kana": "みず",
+  "romaji": "mizu",
+  "jenis": "Noun",
+  "arti": "water; fluid; liquid​"
+ },
+ {
+  "no": 358,
+  "kata": "木曜日",
+  "kana": "もくようび",
+  "romaji": "mokuyoubi",
+  "jenis": "Noun",
+  "arti": "Thursday"
+ },
+ {
+  "no": 359,
+  "kata": "門",
+  "kana": "もん",
+  "romaji": "mon",
+  "jenis": "Noun",
+  "arti": "gate"
+ },
+ {
+  "no": 360,
+  "kata": "問題",
+  "kana": "もんだい",
+  "romaji": "mondai",
+  "jenis": "Noun",
+  "arti": "problem; question (e.g. on a test)"
+ },
+ {
+  "no": 361,
+  "kata": "物",
+  "kana": "もの",
+  "romaji": "mono",
+  "jenis": "Noun",
+  "arti": "thing"
+ },
+ {
+  "no": 362,
+  "kata": "持つ",
+  "kana": "もつ",
+  "romaji": "motsu",
+  "jenis": "Verb, Godan verb",
+  "arti": "to hold"
+ },
+ {
+  "no": 363,
+  "kata": "もっと",
+  "kana": "",
+  "romaji": "motto",
+  "jenis": "Adverb",
+  "arti": "more; longer; further"
+ },
+ {
+  "no": 364,
+  "kata": "もう一度",
+  "kana": "もういちど",
+  "romaji": "mouichido",
+  "jenis": "Expression",
+  "arti": "once more; again"
+ },
+ {
+  "no": 365,
+  "kata": "六日",
+  "kana": "むいか",
+  "romaji": "muika",
+  "jenis": "Noun",
+  "arti": "sixth day of the month / 6 days"
+ },
+ {
+  "no": 366,
+  "kata": "向こう",
+  "kana": "むこう",
+  "romaji": "mukou",
+  "jenis": "Noun",
+  "arti": "over there"
+ },
+ {
+  "no": 367,
+  "kata": "村",
+  "kana": "むら",
+  "romaji": "mura",
+  "jenis": "Noun",
+  "arti": "village"
+ },
+ {
+  "no": 368,
+  "kata": "六つ",
+  "kana": "むっつ",
+  "romaji": "muttsu",
+  "jenis": "Noun, Numeric",
+  "arti": "six; 6"
+ },
+ {
+  "no": 369,
+  "kata": "難しい",
+  "kana": "むずかしい",
+  "romaji": "muzukashii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "difficult"
+ },
+ {
+  "no": 370,
+  "kata": "長い",
+  "kana": "ながい",
+  "romaji": "nagai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "long (distance)​; long (time); lengthy."
+ },
+ {
+  "no": 371,
+  "kata": "ナイフ",
+  "kana": "",
+  "romaji": "naifu",
+  "jenis": "Noun, Katakana",
+  "arti": "knife"
+ },
+ {
+  "no": 372,
+  "kata": "中",
+  "kana": "なか",
+  "romaji": "naka",
+  "jenis": "Noun",
+  "arti": "inside; in; within; center"
+ },
+ {
+  "no": 373,
+  "kata": "鳴く",
+  "kana": "なく",
+  "romaji": "naku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "animal noise. to chirp"
+ },
+ {
+  "no": 374,
+  "kata": "無くす",
+  "kana": "なくす",
+  "romaji": "nakusu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to lose (something)"
+ },
+ {
+  "no": 375,
+  "kata": "名前",
+  "kana": "なまえ",
+  "romaji": "namae",
+  "jenis": "Noun",
+  "arti": "name; full name; given name"
+ },
+ {
+  "no": 376,
+  "kata": "七つ",
+  "kana": "ななつ",
+  "romaji": "nanatsu",
+  "jenis": "Noun, Numeric",
+  "arti": "seven; 7"
+ },
+ {
+  "no": 377,
+  "kata": "何",
+  "kana": "なに",
+  "romaji": "nani",
+  "jenis": "Noun, Pronoun, Prefix",
+  "arti": "what"
+ },
+ {
+  "no": 378,
+  "kata": "七日",
+  "kana": "なのか",
+  "romaji": "nanoka",
+  "jenis": "Noun",
+  "arti": "seventh day of the month / 7 days"
+ },
+ {
+  "no": 379,
+  "kata": "並べる",
+  "kana": "ならべる",
+  "romaji": "naraberu",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to line up,to set up"
+ },
+ {
+  "no": 380,
+  "kata": "並ぶ",
+  "kana": "ならぶ",
+  "romaji": "narabu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to line up,to stand in a line"
+ },
+ {
+  "no": 381,
+  "kata": "習う",
+  "kana": "ならう",
+  "romaji": "narau",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to be taught; to learn (from a teacher)"
+ },
+ {
+  "no": 382,
+  "kata": "夏",
+  "kana": "なつ",
+  "romaji": "natsu",
+  "jenis": "Noun",
+  "arti": "summer"
+ },
+ {
+  "no": 383,
+  "kata": "夏休み",
+  "kana": "なつやすみ",
+  "romaji": "natsuyasumi",
+  "jenis": "Noun",
+  "arti": "summer vacation; summer holiday"
+ },
+ {
+  "no": 384,
+  "kata": "何故",
+  "kana": "なぜ",
+  "romaji": "naze",
+  "jenis": "Adverb",
+  "arti": "why; how"
+ },
+ {
+  "no": 385,
+  "kata": "猫",
+  "kana": "ねこ",
+  "romaji": "neko",
+  "jenis": "Noun",
+  "arti": "cat"
+ },
+ {
+  "no": 386,
+  "kata": "ネクタイ",
+  "kana": "",
+  "romaji": "nekutai",
+  "jenis": "Noun, Katakana",
+  "arti": "tie; necktie"
+ },
+ {
+  "no": 387,
+  "kata": "寝る",
+  "kana": "ねる",
+  "romaji": "neru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to sleep; to go to bed; to lie down"
+ },
+ {
+  "no": 388,
+  "kata": "二",
+  "kana": "に",
+  "romaji": "ni",
+  "jenis": "Noun, Numeric",
+  "arti": "two; 2"
+ },
+ {
+  "no": 389,
+  "kata": "日曜日",
+  "kana": "にちようび",
+  "romaji": "nichiyoubi",
+  "jenis": "Noun",
+  "arti": "Sunday"
+ },
+ {
+  "no": 390,
+  "kata": "賑やか",
+  "kana": "にぎやか",
+  "romaji": "nigiyaka",
+  "jenis": "Adjective, な-adjective",
+  "arti": "bustling,busy"
+ },
+ {
+  "no": 391,
+  "kata": "日記",
+  "kana": "にっき",
+  "romaji": "nikki",
+  "jenis": "Noun",
+  "arti": "diary; journal"
+ },
+ {
+  "no": 392,
+  "kata": "肉",
+  "kana": "にく",
+  "romaji": "niku",
+  "jenis": "Noun",
+  "arti": "meat"
+ },
+ {
+  "no": 393,
+  "kata": "荷物",
+  "kana": "にもつ",
+  "romaji": "nimotsu",
+  "jenis": "Noun",
+  "arti": "luggage; baggage"
+ },
+ {
+  "no": 394,
+  "kata": "西",
+  "kana": "にし",
+  "romaji": "nishi",
+  "jenis": "Noun",
+  "arti": "west"
+ },
+ {
+  "no": 395,
+  "kata": "庭",
+  "kana": "にわ",
+  "romaji": "niwa",
+  "jenis": "Noun",
+  "arti": "garden"
+ },
+ {
+  "no": 396,
+  "kata": "登る",
+  "kana": "のぼる",
+  "romaji": "noboru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to climb"
+ },
+ {
+  "no": 397,
+  "kata": "飲み物",
+  "kana": "のみもの",
+  "romaji": "nomimono",
+  "jenis": "Noun",
+  "arti": "drink; beverage"
+ },
+ {
+  "no": 398,
+  "kata": "飲む",
+  "kana": "のむ",
+  "romaji": "nomu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to drink"
+ },
+ {
+  "no": 399,
+  "kata": "ノート",
+  "kana": "",
+  "romaji": "nooto",
+  "jenis": "Noun, Katakana",
+  "arti": "notebook"
+ },
+ {
+  "no": 400,
+  "kata": "乗る",
+  "kana": "のる",
+  "romaji": "noru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to get on (train, plane, bus, ship, etc.)"
+ },
+ {
+  "no": 401,
+  "kata": "脱ぐ",
+  "kana": "ぬぐ",
+  "romaji": "nugu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to take off clothes"
+ },
+ {
+  "no": 402,
+  "kata": "温い",
+  "kana": "ぬるい",
+  "romaji": "nurui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "luke warm"
+ },
+ {
+  "no": 403,
+  "kata": "ニュース",
+  "kana": "",
+  "romaji": "nyuusu",
+  "jenis": "Noun, Katakana",
+  "arti": "news"
+ },
+ {
+  "no": 404,
+  "kata": "おばあさん",
+  "kana": "",
+  "romaji": "obaasan",
+  "jenis": "Noun",
+  "arti": "grandmother"
+ },
+ {
+  "no": 405,
+  "kata": "伯母さん",
+  "kana": "おばさん",
+  "romaji": "obasan",
+  "jenis": "Noun",
+  "arti": "aunt; old lady"
+ },
+ {
+  "no": 406,
+  "kata": "お弁当",
+  "kana": "おべんとう",
+  "romaji": "obentou",
+  "jenis": "Noun",
+  "arti": "lunch box; Japanese box lunch"
+ },
+ {
+  "no": 407,
+  "kata": "覚える",
+  "kana": "おぼえる",
+  "romaji": "oboeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to remember"
+ },
+ {
+  "no": 408,
+  "kata": "お茶",
+  "kana": "おちゃ",
+  "romaji": "ocha",
+  "jenis": "Noun",
+  "arti": "tea"
+ },
+ {
+  "no": 409,
+  "kata": "お風呂",
+  "kana": "おふろ",
+  "romaji": "ofuro",
+  "jenis": "Noun",
+  "arti": "bath"
+ },
+ {
+  "no": 410,
+  "kata": "美味しい",
+  "kana": "おいしい",
+  "romaji": "oishii",
+  "jenis": "い-adjective",
+  "arti": "delicious"
+ },
+ {
+  "no": 411,
+  "kata": "伯父さん",
+  "kana": "おじさん",
+  "romaji": "ojisan",
+  "jenis": "Noun",
+  "arti": "uncle; old man; mister"
+ },
+ {
+  "no": 412,
+  "kata": "お母さん",
+  "kana": "おかあさん",
+  "romaji": "okaasan",
+  "jenis": "Noun",
+  "arti": "mother; mom; mum; ma"
+ },
+ {
+  "no": 413,
+  "kata": "お金",
+  "kana": "おかね",
+  "romaji": "okane",
+  "jenis": "Noun",
+  "arti": "money"
+ },
+ {
+  "no": 414,
+  "kata": "お菓子",
+  "kana": "おかし",
+  "romaji": "okashi",
+  "jenis": "Noun",
+  "arti": "confections; sweets; candy"
+ },
+ {
+  "no": 415,
+  "kata": "起きる",
+  "kana": "おきる",
+  "romaji": "okiru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to get up; to wake up"
+ },
+ {
+  "no": 416,
+  "kata": "置く",
+  "kana": "おく",
+  "romaji": "oku",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to put; to place​"
+ },
+ {
+  "no": 417,
+  "kata": "奥さん",
+  "kana": "おくさん",
+  "romaji": "okusan",
+  "jenis": "Noun",
+  "arti": "wife; your wife; his wife"
+ },
+ {
+  "no": 418,
+  "kata": "お巡りさん",
+  "kana": "おまわりさん",
+  "romaji": "omawari san",
+  "jenis": "Noun",
+  "arti": "police officer (friendly term for policeman)"
+ },
+ {
+  "no": 419,
+  "kata": "重い",
+  "kana": "おもい",
+  "romaji": "omoi",
+  "jenis": "い-adjective",
+  "arti": "heavy"
+ },
+ {
+  "no": 420,
+  "kata": "面白い",
+  "kana": "おもしろい",
+  "romaji": "omoshiroi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "interesting"
+ },
+ {
+  "no": 421,
+  "kata": "同じ",
+  "kana": "おなじ",
+  "romaji": "onaji",
+  "jenis": "Noun, Adverb",
+  "arti": "same"
+ },
+ {
+  "no": 422,
+  "kata": "お腹",
+  "kana": "おなか",
+  "romaji": "onaka",
+  "jenis": "Noun",
+  "arti": "stomach"
+ },
+ {
+  "no": 423,
+  "kata": "お姉さん",
+  "kana": "おねえさん",
+  "romaji": "oneesan",
+  "jenis": "Noun",
+  "arti": "elder sister; young lady; miss; ma'am"
+ },
+ {
+  "no": 424,
+  "kata": "音楽",
+  "kana": "おんがく",
+  "romaji": "ongaku",
+  "jenis": "Noun",
+  "arti": "music"
+ },
+ {
+  "no": 425,
+  "kata": "お兄さん",
+  "kana": "おにいさん",
+  "romaji": "oniisan",
+  "jenis": "Noun",
+  "arti": "older brother; elder brother; young man; buddy"
+ },
+ {
+  "no": 426,
+  "kata": "女",
+  "kana": "おんな",
+  "romaji": "onna",
+  "jenis": "Noun, Prefix",
+  "arti": "woman; female sex"
+ },
+ {
+  "no": 427,
+  "kata": "女の子",
+  "kana": "おんなのこ",
+  "romaji": "onnanoko",
+  "jenis": "Noun, Expression",
+  "arti": "girl; daughter; young women"
+ },
+ {
+  "no": 428,
+  "kata": "多い",
+  "kana": "おおい",
+  "romaji": "ooi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "many; numerous; a lot; large quantity; frequent"
+ },
+ {
+  "no": 429,
+  "kata": "大きい",
+  "kana": "おおきい",
+  "romaji": "ookii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "big; large; great; important"
+ },
+ {
+  "no": 430,
+  "kata": "大きな",
+  "kana": "おおきな",
+  "romaji": "ookina",
+  "jenis": "Pre-noun adjectival",
+  "arti": "big; large; great​"
+ },
+ {
+  "no": 431,
+  "kata": "大勢",
+  "kana": "おおぜい",
+  "romaji": "oozei",
+  "jenis": "Noun",
+  "arti": "crowd of people; great number of people"
+ },
+ {
+  "no": 432,
+  "kata": "降りる",
+  "kana": "おりる",
+  "romaji": "oriru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to get off"
+ },
+ {
+  "no": 433,
+  "kata": "お酒",
+  "kana": "おさけ",
+  "romaji": "osake",
+  "jenis": "Noun",
+  "arti": "alcohol"
+ },
+ {
+  "no": 434,
+  "kata": "お皿",
+  "kana": "おさら",
+  "romaji": "osara",
+  "jenis": "Noun",
+  "arti": "plate, dish"
+ },
+ {
+  "no": 435,
+  "kata": "教える",
+  "kana": "おしえる",
+  "romaji": "oshieru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to teach"
+ },
+ {
+  "no": 436,
+  "kata": "遅い",
+  "kana": "おそい",
+  "romaji": "osoi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "slow; time-consuming; late"
+ },
+ {
+  "no": 437,
+  "kata": "押す",
+  "kana": "おす",
+  "romaji": "osu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to push; to press​"
+ },
+ {
+  "no": 438,
+  "kata": "お手洗い",
+  "kana": "おてあらい",
+  "romaji": "otearai",
+  "jenis": "Noun",
+  "arti": "toilet; restroom; lavatory; bathroom"
+ },
+ {
+  "no": 439,
+  "kata": "男",
+  "kana": "おとこ",
+  "romaji": "otoko",
+  "jenis": "Noun",
+  "arti": "man; male"
+ },
+ {
+  "no": 440,
+  "kata": "男の子",
+  "kana": "おとこのこ",
+  "romaji": "otokonoko",
+  "jenis": "Noun, Expression",
+  "arti": "boy; male child; baby boy"
+ },
+ {
+  "no": 441,
+  "kata": "大人",
+  "kana": "おとな",
+  "romaji": "otona",
+  "jenis": "Noun",
+  "arti": "adult"
+ },
+ {
+  "no": 442,
+  "kata": "一昨日",
+  "kana": "おととい",
+  "romaji": "ototoi",
+  "jenis": "Noun",
+  "arti": "day before yesterday"
+ },
+ {
+  "no": 443,
+  "kata": "一昨年",
+  "kana": "おととし",
+  "romaji": "ototoshi",
+  "jenis": "Noun",
+  "arti": "year before last"
+ },
+ {
+  "no": 444,
+  "kata": "お父さん",
+  "kana": "おとうさん",
+  "romaji": "otousan",
+  "jenis": "Noun",
+  "arti": "father; dad; papa; pa; pop; daddy"
+ },
+ {
+  "no": 445,
+  "kata": "弟",
+  "kana": "おとうと",
+  "romaji": "otouto",
+  "jenis": "Noun",
+  "arti": "younger brother"
+ },
+ {
+  "no": 446,
+  "kata": "終わる",
+  "kana": "おわる",
+  "romaji": "owaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to finish; to end"
+ },
+ {
+  "no": 447,
+  "kata": "泳ぐ",
+  "kana": "およぐ",
+  "romaji": "oyogu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to swim"
+ },
+ {
+  "no": 448,
+  "kata": "パーティー",
+  "kana": "",
+  "romaji": "paatii",
+  "jenis": "Noun, Katakana",
+  "arti": "party"
+ },
+ {
+  "no": 449,
+  "kata": "パン",
+  "kana": "",
+  "romaji": "pan",
+  "jenis": "Noun, Katakana",
+  "arti": "bread"
+ },
+ {
+  "no": 450,
+  "kata": "ページ",
+  "kana": "",
+  "romaji": "peeji",
+  "jenis": "Noun, Katakana",
+  "arti": "page"
+ },
+ {
+  "no": 451,
+  "kata": "ペン",
+  "kana": "",
+  "romaji": "pen",
+  "jenis": "Noun, Katakana",
+  "arti": "pen"
+ },
+ {
+  "no": 452,
+  "kata": "ペット",
+  "kana": "",
+  "romaji": "petto",
+  "jenis": "Noun, Katakana",
+  "arti": "pet"
+ },
+ {
+  "no": 453,
+  "kata": "ポケット",
+  "kana": "",
+  "romaji": "poketto",
+  "jenis": "Noun",
+  "arti": "pocket"
+ },
+ {
+  "no": 454,
+  "kata": "ポスト",
+  "kana": "",
+  "romaji": "posuto",
+  "jenis": "Noun, Katakana",
+  "arti": "post"
+ },
+ {
+  "no": 455,
+  "kata": "プール",
+  "kana": "",
+  "romaji": "puuru",
+  "jenis": "Noun, Katakana",
+  "arti": "swimming pool"
+ },
+ {
+  "no": 456,
+  "kata": "来月",
+  "kana": "らいげつ",
+  "romaji": "raigetsu",
+  "jenis": "Noun",
+  "arti": "next month"
+ },
+ {
+  "no": 457,
+  "kata": "来年",
+  "kana": "らいねん",
+  "romaji": "rainen",
+  "jenis": "Noun",
+  "arti": "next year"
+ },
+ {
+  "no": 458,
+  "kata": "来週",
+  "kana": "らいしゅう",
+  "romaji": "raishuu",
+  "jenis": "Noun",
+  "arti": "next week"
+ },
+ {
+  "no": 459,
+  "kata": "ラジオ",
+  "kana": "",
+  "romaji": "rajiio",
+  "jenis": "Noun, Katakana",
+  "arti": "radio"
+ },
+ {
+  "no": 460,
+  "kata": "零",
+  "kana": "れい",
+  "romaji": "rei",
+  "jenis": "Noun",
+  "arti": "zero"
+ },
+ {
+  "no": 461,
+  "kata": "冷蔵庫",
+  "kana": "れいぞうこ",
+  "romaji": "reizouko",
+  "jenis": "Noun",
+  "arti": "refrigerator"
+ },
+ {
+  "no": 462,
+  "kata": "レコード",
+  "kana": "",
+  "romaji": "rekoodo",
+  "jenis": "Noun, Katakana",
+  "arti": "record"
+ },
+ {
+  "no": 463,
+  "kata": "練習",
+  "kana": "れんしゅう",
+  "romaji": "renshuu",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "practice; practicing"
+ },
+ {
+  "no": 464,
+  "kata": "レストラン",
+  "kana": "",
+  "romaji": "resutoran",
+  "jenis": "Noun, Katakana",
+  "arti": "restaurant"
+ },
+ {
+  "no": 465,
+  "kata": "立派",
+  "kana": "りっぱ",
+  "romaji": "rippa",
+  "jenis": "Adjective, な-adjective",
+  "arti": "splendid"
+ },
+ {
+  "no": 466,
+  "kata": "六",
+  "kana": "ろく",
+  "romaji": "roku",
+  "jenis": "Noun, Numeric",
+  "arti": "six; 6"
+ },
+ {
+  "no": 467,
+  "kata": "廊下",
+  "kana": "ろうか",
+  "romaji": "rouka",
+  "jenis": "Noun",
+  "arti": "corridor; hallway; passageway"
+ },
+ {
+  "no": 468,
+  "kata": "旅行",
+  "kana": "りょこう",
+  "romaji": "ryokou",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "travel; trip; journey; excursion; tour"
+ },
+ {
+  "no": 469,
+  "kata": "料理",
+  "kana": "りょうり",
+  "romaji": "ryouri",
+  "jenis": "Noun, Suru verb",
+  "arti": "cuisine"
+ },
+ {
+  "no": 470,
+  "kata": "両親",
+  "kana": "りょうしん",
+  "romaji": "ryoushin",
+  "jenis": "Noun",
+  "arti": "parents; both parents"
+ },
+ {
+  "no": 471,
+  "kata": "留学生",
+  "kana": "りゅうがくせい",
+  "romaji": "ryuugakusei",
+  "jenis": "Noun",
+  "arti": "overseas student; exchange student"
+ },
+ {
+  "no": 472,
+  "kata": "さあ",
+  "kana": "",
+  "romaji": "saa",
+  "jenis": "Conjunction",
+  "arti": "well…"
+ },
+ {
+  "no": 473,
+  "kata": "財布",
+  "kana": "さいふ",
+  "romaji": "saifu",
+  "jenis": "Noun",
+  "arti": "purse; wallet"
+ },
+ {
+  "no": 474,
+  "kata": "魚",
+  "kana": "さかな",
+  "romaji": "sakana",
+  "jenis": "Noun",
+  "arti": "fish"
+ },
+ {
+  "no": 475,
+  "kata": "先",
+  "kana": "さき",
+  "romaji": "saki",
+  "jenis": "Noun, Prefix, Suffix",
+  "arti": "previous; prior; first; earlier"
+ },
+ {
+  "no": 476,
+  "kata": "咲く",
+  "kana": "さく",
+  "romaji": "saku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to bloom"
+ },
+ {
+  "no": 477,
+  "kata": "作文",
+  "kana": "さくぶん",
+  "romaji": "sakubun",
+  "jenis": "Noun",
+  "arti": "writing; composition"
+ },
+ {
+  "no": 478,
+  "kata": "寒い",
+  "kana": "さむい",
+  "romaji": "samui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "cold"
+ },
+ {
+  "no": 479,
+  "kata": "三",
+  "kana": "さん",
+  "romaji": "san",
+  "jenis": "Noun, Numeric",
+  "arti": "three; 3"
+ },
+ {
+  "no": 480,
+  "kata": "散歩",
+  "kana": "さんぽ",
+  "romaji": "sanpo",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "walk; stroll"
+ },
+ {
+  "no": 481,
+  "kata": "再来年",
+  "kana": "さらいねん",
+  "romaji": "sarainen",
+  "jenis": "Noun",
+  "arti": "year after next"
+ },
+ {
+  "no": 482,
+  "kata": "差す",
+  "kana": "さす",
+  "romaji": "sasu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to stretch out hands, to raise an umbrella"
+ },
+ {
+  "no": 483,
+  "kata": "砂糖",
+  "kana": "さとう",
+  "romaji": "satou",
+  "jenis": "Noun",
+  "arti": "sugar"
+ },
+ {
+  "no": 484,
+  "kata": "背",
+  "kana": "せ",
+  "romaji": "se",
+  "jenis": "Noun",
+  "arti": "height; stature; back; spine"
+ },
+ {
+  "no": 485,
+  "kata": "背広",
+  "kana": "せびろ",
+  "romaji": "sebiro",
+  "jenis": "Noun",
+  "arti": "business suit"
+ },
+ {
+  "no": 486,
+  "kata": "セーター",
+  "kana": "",
+  "romaji": "seetaa",
+  "jenis": "Noun, Katakana",
+  "arti": "sweater; jumper"
+ },
+ {
+  "no": 487,
+  "kata": "生徒",
+  "kana": "せいと",
+  "romaji": "seito",
+  "jenis": "Noun",
+  "arti": "pupil; student"
+ },
+ {
+  "no": 488,
+  "kata": "石鹼",
+  "kana": "せっけん",
+  "romaji": "sekken",
+  "jenis": "Noun",
+  "arti": "soap"
+ },
+ {
+  "no": 489,
+  "kata": "狭い",
+  "kana": "せまい",
+  "romaji": "semai",
+  "jenis": "い-adjective",
+  "arti": "narrow"
+ },
+ {
+  "no": 490,
+  "kata": "千",
+  "kana": "せん",
+  "romaji": "sen",
+  "jenis": "Noun, Numeric",
+  "arti": "1,000; thousand"
+ },
+ {
+  "no": 491,
+  "kata": "先月",
+  "kana": "せんげつ",
+  "romaji": "sengetsu",
+  "jenis": "Noun",
+  "arti": "last month"
+ },
+ {
+  "no": 492,
+  "kata": "先生",
+  "kana": "せんせい",
+  "romaji": "sensei",
+  "jenis": "Noun, Suffix",
+  "arti": "teacher; instructor; master"
+ },
+ {
+  "no": 493,
+  "kata": "先週",
+  "kana": "せんしゅう",
+  "romaji": "senshuu",
+  "jenis": "Noun",
+  "arti": "last week"
+ },
+ {
+  "no": 494,
+  "kata": "洗濯",
+  "kana": "せんたく",
+  "romaji": "sentaku",
+  "jenis": "Noun, Suru verb",
+  "arti": "washing; laundry"
+ },
+ {
+  "no": 495,
+  "kata": "写真",
+  "kana": "しゃしん",
+  "romaji": "shashin",
+  "jenis": "Noun",
+  "arti": "photograph; photo"
+ },
+ {
+  "no": 496,
+  "kata": "シャツ",
+  "kana": "",
+  "romaji": "shatsu",
+  "jenis": "Noun, Katakana",
+  "arti": "shirt"
+ },
+ {
+  "no": 497,
+  "kata": "シャワー",
+  "kana": "",
+  "romaji": "shawaa",
+  "jenis": "Noun, Katakana",
+  "arti": "shower"
+ },
+ {
+  "no": 498,
+  "kata": "四",
+  "kana": "し",
+  "romaji": "shi",
+  "jenis": "Noun, Numeric",
+  "arti": "four; 4"
+ },
+ {
+  "no": 499,
+  "kata": "七",
+  "kana": "しち",
+  "romaji": "shichi",
+  "jenis": "Noun, Numeric",
+  "arti": "seven; 7"
+ },
+ {
+  "no": 500,
+  "kata": "仕事",
+  "kana": "しごと",
+  "romaji": "shigoto",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "work; job; business"
+ },
+ {
+  "no": 501,
+  "kata": "閉まる",
+  "kana": "しまる",
+  "romaji": "shimaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to close, to be closed"
+ },
+ {
+  "no": 502,
+  "kata": "閉める",
+  "kana": "しめる",
+  "romaji": "shimeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to close; to shut"
+ },
+ {
+  "no": 503,
+  "kata": "締める",
+  "kana": "しめる",
+  "romaji": "shimeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to tie; to fasten; to tighten​"
+ },
+ {
+  "no": 504,
+  "kata": "新聞",
+  "kana": "しんぶん",
+  "romaji": "shinbun",
+  "jenis": "Noun",
+  "arti": "newspaper"
+ },
+ {
+  "no": 505,
+  "kata": "死ぬ",
+  "kana": "しぬ",
+  "romaji": "shinu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to die"
+ },
+ {
+  "no": 506,
+  "kata": "塩",
+  "kana": "しお",
+  "romaji": "shio",
+  "jenis": "Noun",
+  "arti": "salt"
+ },
+ {
+  "no": 507,
+  "kata": "白",
+  "kana": "しろ",
+  "romaji": "shiro",
+  "jenis": "Noun",
+  "arti": "white; innocence; innocent person"
+ },
+ {
+  "no": 508,
+  "kata": "白い",
+  "kana": "しろい",
+  "romaji": "shiroi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "white"
+ },
+ {
+  "no": 509,
+  "kata": "知る",
+  "kana": "しる",
+  "romaji": "shiru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to know"
+ },
+ {
+  "no": 510,
+  "kata": "下",
+  "kana": "した",
+  "romaji": "shita",
+  "jenis": "Noun",
+  "arti": "below; down; under; bottom"
+ },
+ {
+  "no": 511,
+  "kata": "質問",
+  "kana": "しつもん",
+  "romaji": "shitsumon",
+  "jenis": "Noun, Verb, Suru verb",
+  "arti": "question; inquiry"
+ },
+ {
+  "no": 512,
+  "kata": "静か",
+  "kana": "しずか",
+  "romaji": "shizuka",
+  "jenis": "Adjective, な-adjective",
+  "arti": "quiet"
+ },
+ {
+  "no": 513,
+  "kata": "食堂",
+  "kana": "しょくどう",
+  "romaji": "shokudou",
+  "jenis": "Noun",
+  "arti": "cafeteria; dining room"
+ },
+ {
+  "no": 514,
+  "kata": "醬油",
+  "kana": "しょうゆ",
+  "romaji": "shouyu",
+  "jenis": "Noun",
+  "arti": "soy sauce"
+ },
+ {
+  "no": 515,
+  "kata": "宿題",
+  "kana": "しゅくだい",
+  "romaji": "shukudai",
+  "jenis": "Noun",
+  "arti": "homework; assignment; pending issue"
+ },
+ {
+  "no": 516,
+  "kata": "そば",
+  "kana": "",
+  "romaji": "soba",
+  "jenis": "Noun",
+  "arti": "near; beside"
+ },
+ {
+  "no": 517,
+  "kata": "そっち",
+  "kana": "",
+  "romaji": "socchi",
+  "jenis": "Pronoun",
+  "arti": "that way; ​over there"
+ },
+ {
+  "no": 518,
+  "kata": "そちら",
+  "kana": "",
+  "romaji": "sochira",
+  "jenis": "Pronoun",
+  "arti": "that way (distant from speaker, close to listener); you; your family"
+ },
+ {
+  "no": 519,
+  "kata": "そこ",
+  "kana": "",
+  "romaji": "soko",
+  "jenis": "Pronoun",
+  "arti": "that place​; there"
+ },
+ {
+  "no": 520,
+  "kata": "その",
+  "kana": "",
+  "romaji": "sono",
+  "jenis": "Pre-noun adjectival",
+  "arti": "that"
+ },
+ {
+  "no": 521,
+  "kata": "空",
+  "kana": "そら",
+  "romaji": "sora",
+  "jenis": "Noun",
+  "arti": "sky; the air"
+ },
+ {
+  "no": 522,
+  "kata": "それ",
+  "kana": "",
+  "romaji": "sore",
+  "jenis": "Pronoun",
+  "arti": "that"
+ },
+ {
+  "no": 523,
+  "kata": "それでは",
+  "kana": "",
+  "romaji": "sore dewa",
+  "jenis": "Expression",
+  "arti": "in that situation"
+ },
+ {
+  "no": 524,
+  "kata": "外",
+  "kana": "そと",
+  "romaji": "soto",
+  "jenis": "Noun",
+  "arti": "outside; exterior;"
+ },
+ {
+  "no": 525,
+  "kata": "掃除",
+  "kana": "そうじ",
+  "romaji": "souji",
+  "jenis": "Noun, Suru verb",
+  "arti": "to clean, to sweep"
+ },
+ {
+  "no": 526,
+  "kata": "直ぐに",
+  "kana": "すぐに",
+  "romaji": "sugu ni",
+  "jenis": "Adverb",
+  "arti": "immediately; right away; instantly​"
+ },
+ {
+  "no": 527,
+  "kata": "水曜日",
+  "kana": "すいようび",
+  "romaji": "suiyoubi",
+  "jenis": "Noun",
+  "arti": "Wednesday"
+ },
+ {
+  "no": 528,
+  "kata": "スカート",
+  "kana": "",
+  "romaji": "sukaato",
+  "jenis": "Noun, Katakana",
+  "arti": "skirt"
+ },
+ {
+  "no": 529,
+  "kata": "好き",
+  "kana": "すき",
+  "romaji": "suki",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "like"
+ },
+ {
+  "no": 530,
+  "kata": "少し",
+  "kana": "すこし",
+  "romaji": "sukoshi",
+  "jenis": "Noun, Adverb",
+  "arti": "a little (bit); small quantity; few; short distance"
+ },
+ {
+  "no": 531,
+  "kata": "少ない",
+  "kana": "すくない",
+  "romaji": "sukunai",
+  "jenis": "い-adjective",
+  "arti": "few; a little; scarce; insufficient; seldom"
+ },
+ {
+  "no": 532,
+  "kata": "住む",
+  "kana": "すむ",
+  "romaji": "sumu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to live in; to reside; to inhabit; to dwell; to abide"
+ },
+ {
+  "no": 533,
+  "kata": "スポーツ",
+  "kana": "",
+  "romaji": "supootsu",
+  "jenis": "Noun, Katakana",
+  "arti": "sport; sports"
+ },
+ {
+  "no": 534,
+  "kata": "スプーン",
+  "kana": "",
+  "romaji": "supuun",
+  "jenis": "Noun, Katakana",
+  "arti": "spoon"
+ },
+ {
+  "no": 535,
+  "kata": "スリッパ",
+  "kana": "",
+  "romaji": "surippa",
+  "jenis": "Noun, Katakana",
+  "arti": "slipper; slippers"
+ },
+ {
+  "no": 536,
+  "kata": "ストーブ",
+  "kana": "",
+  "romaji": "sutoobu",
+  "jenis": "Noun, Katakana",
+  "arti": "heater; stove"
+ },
+ {
+  "no": 537,
+  "kata": "吸う",
+  "kana": "すう",
+  "romaji": "suu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to smoke, to suck"
+ },
+ {
+  "no": 538,
+  "kata": "座る",
+  "kana": "すわる",
+  "romaji": "suwaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to sit"
+ },
+ {
+  "no": 539,
+  "kata": "涼しい",
+  "kana": "すずしい",
+  "romaji": "suzushii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "refreshing, cool"
+ },
+ {
+  "no": 540,
+  "kata": "たばこ",
+  "kana": "",
+  "romaji": "tabako",
+  "jenis": "Noun",
+  "arti": "tobacco; cigarette"
+ },
+ {
+  "no": 541,
+  "kata": "食べ物",
+  "kana": "たべもの",
+  "romaji": "tabemono",
+  "jenis": "Noun",
+  "arti": "food"
+ },
+ {
+  "no": 542,
+  "kata": "食べる",
+  "kana": "たべる",
+  "romaji": "taberu",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to eat"
+ },
+ {
+  "no": 543,
+  "kata": "多分",
+  "kana": "たぶん",
+  "romaji": "tabun",
+  "jenis": "Adjective, な-adjective, Adverb",
+  "arti": "perhaps; probably"
+ },
+ {
+  "no": 544,
+  "kata": "大変",
+  "kana": "たいへん",
+  "romaji": "taihen",
+  "jenis": "Noun, Adjective, な-adjective, Adverb",
+  "arti": "very; greatly; terribly; serious; difficult"
+ },
+ {
+  "no": 545,
+  "kata": "大切",
+  "kana": "たいせつ",
+  "romaji": "taisetsu",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "important; necessary; indispensable; beloved"
+ },
+ {
+  "no": 546,
+  "kata": "大使館",
+  "kana": "たいしかん",
+  "romaji": "taishikan",
+  "jenis": "Noun",
+  "arti": "embassy"
+ },
+ {
+  "no": 547,
+  "kata": "高い",
+  "kana": "たかい",
+  "romaji": "takai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "high; tall; expensive; above average"
+ },
+ {
+  "no": 548,
+  "kata": "沢山",
+  "kana": "たくさん",
+  "romaji": "takusan",
+  "jenis": "Noun, Adverbial Noun, Adjective, な-adjective",
+  "arti": "many"
+ },
+ {
+  "no": 549,
+  "kata": "タクシー",
+  "kana": "",
+  "romaji": "takushii",
+  "jenis": "Noun, Katakana",
+  "arti": "taxi"
+ },
+ {
+  "no": 550,
+  "kata": "卵",
+  "kana": "たまご",
+  "romaji": "tamago",
+  "jenis": "Noun",
+  "arti": "eggs; egg"
+ },
+ {
+  "no": 551,
+  "kata": "誕生日",
+  "kana": "たんじょうび",
+  "romaji": "tanjoubi",
+  "jenis": "Noun",
+  "arti": "birthday"
+ },
+ {
+  "no": 552,
+  "kata": "頼む",
+  "kana": "たのむ",
+  "romaji": "tanomu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to ask"
+ },
+ {
+  "no": 553,
+  "kata": "楽しい",
+  "kana": "たのしい",
+  "romaji": "tanoshii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "enjoyable; fun"
+ },
+ {
+  "no": 554,
+  "kata": "縦",
+  "kana": "たて",
+  "romaji": "tate",
+  "jenis": "Noun",
+  "arti": "length,height"
+ },
+ {
+  "no": 555,
+  "kata": "建物",
+  "kana": "たてもの",
+  "romaji": "tatemono",
+  "jenis": "Noun",
+  "arti": "building"
+ },
+ {
+  "no": 556,
+  "kata": "立つ",
+  "kana": "たつ",
+  "romaji": "tatsu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to stand; to stand up​"
+ },
+ {
+  "no": 557,
+  "kata": "手",
+  "kana": "て",
+  "romaji": "te",
+  "jenis": "Noun",
+  "arti": "hand; arm"
+ },
+ {
+  "no": 558,
+  "kata": "テーブル",
+  "kana": "",
+  "romaji": "teeburu",
+  "jenis": "Noun, Katakana",
+  "arti": "table"
+ },
+ {
+  "no": 559,
+  "kata": "テープ",
+  "kana": "",
+  "romaji": "teepu",
+  "jenis": "Noun, Katakana",
+  "arti": "tape"
+ },
+ {
+  "no": 560,
+  "kata": "テープレコーダー",
+  "kana": "",
+  "romaji": "teepu rekoodaa",
+  "jenis": "Noun, Katakana",
+  "arti": "tape recorder"
+ },
+ {
+  "no": 561,
+  "kata": "手紙",
+  "kana": "てがみ",
+  "romaji": "tegami",
+  "jenis": "Noun",
+  "arti": "Letter (message)​"
+ },
+ {
+  "no": 562,
+  "kata": "天気",
+  "kana": "てんき",
+  "romaji": "tenki",
+  "jenis": "Noun",
+  "arti": "weather; the elements"
+ },
+ {
+  "no": 563,
+  "kata": "テレビ",
+  "kana": "",
+  "romaji": "terebi",
+  "jenis": "Noun, Katakana",
+  "arti": "television; TV​"
+ },
+ {
+  "no": 564,
+  "kata": "テスト",
+  "kana": "",
+  "romaji": "tesuto",
+  "jenis": "Noun, Suru verb, Katakana",
+  "arti": "examination; quiz; test"
+ },
+ {
+  "no": 565,
+  "kata": "戸",
+  "kana": "と",
+  "romaji": "to",
+  "jenis": "Noun",
+  "arti": "Japanese style door"
+ },
+ {
+  "no": 566,
+  "kata": "飛ぶ",
+  "kana": "とぶ",
+  "romaji": "tobu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to fly; to hop"
+ },
+ {
+  "no": 567,
+  "kata": "トイレ",
+  "kana": "",
+  "romaji": "toire",
+  "jenis": "Noun, Katakana",
+  "arti": "toilet"
+ },
+ {
+  "no": 568,
+  "kata": "時計",
+  "kana": "とけい",
+  "romaji": "tokei",
+  "jenis": "Noun",
+  "arti": "watch; clock; timepiece"
+ },
+ {
+  "no": 569,
+  "kata": "時",
+  "kana": "とき",
+  "romaji": "toki",
+  "jenis": "Noun",
+  "arti": "time; moment; occasion; chance"
+ },
+ {
+  "no": 570,
+  "kata": "時々",
+  "kana": "ときどき",
+  "romaji": "tokidoki",
+  "jenis": "Noun, Adverb",
+  "arti": "sometimes; at times"
+ },
+ {
+  "no": 571,
+  "kata": "所",
+  "kana": "ところ",
+  "romaji": "tokoro",
+  "jenis": "Noun, Suffix",
+  "arti": "place"
+ },
+ {
+  "no": 572,
+  "kata": "止まる",
+  "kana": "とまる",
+  "romaji": "tomaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to stop; to come to a halt"
+ },
+ {
+  "no": 573,
+  "kata": "友達",
+  "kana": "ともだち",
+  "romaji": "tomodachi",
+  "jenis": "Noun",
+  "arti": "friend; companion"
+ },
+ {
+  "no": 574,
+  "kata": "隣",
+  "kana": "となり",
+  "romaji": "tonari",
+  "jenis": "Noun",
+  "arti": "next door to"
+ },
+ {
+  "no": 575,
+  "kata": "遠い",
+  "kana": "とおい",
+  "romaji": "tooi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "far"
+ },
+ {
+  "no": 576,
+  "kata": "十日",
+  "kana": "とおか",
+  "romaji": "tooka",
+  "jenis": "Noun",
+  "arti": "tenth day of the month / 10 days"
+ },
+ {
+  "no": 577,
+  "kata": "鳥",
+  "kana": "とり",
+  "romaji": "tori",
+  "jenis": "Noun",
+  "arti": "bird"
+ },
+ {
+  "no": 578,
+  "kata": "鶏肉",
+  "kana": "とりにく",
+  "romaji": "toriniku",
+  "jenis": "Noun",
+  "arti": "chicken meat"
+ },
+ {
+  "no": 579,
+  "kata": "取る",
+  "kana": "とる",
+  "romaji": "toru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to take; to pick up; to harvest; to earn; to win; to choose"
+ },
+ {
+  "no": 580,
+  "kata": "撮る",
+  "kana": "とる",
+  "romaji": "toru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to take a photo or record a film"
+ },
+ {
+  "no": 581,
+  "kata": "年",
+  "kana": "とし",
+  "romaji": "toshi",
+  "jenis": "Noun",
+  "arti": "year; age"
+ },
+ {
+  "no": 582,
+  "kata": "図書館",
+  "kana": "としょかん",
+  "romaji": "toshokan",
+  "jenis": "Noun",
+  "arti": "library"
+ },
+ {
+  "no": 583,
+  "kata": "次",
+  "kana": "つぎ",
+  "romaji": "tsugi",
+  "jenis": "Noun",
+  "arti": "next"
+ },
+ {
+  "no": 584,
+  "kata": "一日",
+  "kana": "ついたち",
+  "romaji": "tsuitachi",
+  "jenis": "Noun",
+  "arti": "first day of the month"
+ },
+ {
+  "no": 585,
+  "kata": "疲れる",
+  "kana": "つかれる",
+  "romaji": "tsukareru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to get tired"
+ },
+ {
+  "no": 586,
+  "kata": "使う",
+  "kana": "つかう",
+  "romaji": "tsukau",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to use"
+ },
+ {
+  "no": 587,
+  "kata": "つける",
+  "kana": "",
+  "romaji": "tsukeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to turn on"
+ },
+ {
+  "no": 588,
+  "kata": "付ける",
+  "kana": "つける",
+  "romaji": "tsukeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to attach; affix; add; apply"
+ },
+ {
+  "no": 589,
+  "kata": "着く",
+  "kana": "つく",
+  "romaji": "tsuku",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to arrive at"
+ },
+ {
+  "no": 590,
+  "kata": "机",
+  "kana": "つくえ",
+  "romaji": "tsukue",
+  "jenis": "Noun",
+  "arti": "desk"
+ },
+ {
+  "no": 591,
+  "kata": "作る",
+  "kana": "つくる",
+  "romaji": "tsukuru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to make"
+ },
+ {
+  "no": 592,
+  "kata": "詰まらない",
+  "kana": "つまらない",
+  "romaji": "tsumaranai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "boring"
+ },
+ {
+  "no": 593,
+  "kata": "冷たい",
+  "kana": "つめたい",
+  "romaji": "tsumetai",
+  "jenis": "い-adjective",
+  "arti": "cold to the touch"
+ },
+ {
+  "no": 594,
+  "kata": "勤める",
+  "kana": "つとめる",
+  "romaji": "tsutomeru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to work for someone"
+ },
+ {
+  "no": 595,
+  "kata": "強い",
+  "kana": "つよい",
+  "romaji": "tsuyoi",
+  "jenis": "Adjective, い-adjective",
+  "arti": "powerful"
+ },
+ {
+  "no": 596,
+  "kata": "上",
+  "kana": "うえ",
+  "romaji": "ue",
+  "jenis": "Noun, Suffix",
+  "arti": "above; up; over; top; surface"
+ },
+ {
+  "no": 597,
+  "kata": "生まれる",
+  "kana": "うまれる",
+  "romaji": "umareru",
+  "jenis": "Verb, Ichidan verb, Intransitive verb",
+  "arti": "to be born"
+ },
+ {
+  "no": 598,
+  "kata": "海",
+  "kana": "うみ",
+  "romaji": "umi",
+  "jenis": "Noun",
+  "arti": "sea"
+ },
+ {
+  "no": 599,
+  "kata": "売る",
+  "kana": "うる",
+  "romaji": "uru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to sell"
+ },
+ {
+  "no": 600,
+  "kata": "煩い",
+  "kana": "うるさい",
+  "romaji": "urusai",
+  "jenis": "い-adjective",
+  "arti": "noisy, annoying"
+ },
+ {
+  "no": 601,
+  "kata": "後ろ",
+  "kana": "うしろ",
+  "romaji": "ushiro",
+  "jenis": "Noun",
+  "arti": "back; behind; rear"
+ },
+ {
+  "no": 602,
+  "kata": "薄い",
+  "kana": "うすい",
+  "romaji": "usui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "thin; weak"
+ },
+ {
+  "no": 603,
+  "kata": "歌",
+  "kana": "うた",
+  "romaji": "uta",
+  "jenis": "Noun",
+  "arti": "song"
+ },
+ {
+  "no": 604,
+  "kata": "歌う",
+  "kana": "うたう",
+  "romaji": "utau",
+  "jenis": "Verb, Godan verb, Intransitive verb, Transitive verb",
+  "arti": "to sing"
+ },
+ {
+  "no": 605,
+  "kata": "上着",
+  "kana": "うわぎ",
+  "romaji": "uwagi",
+  "jenis": "Noun",
+  "arti": "coat; tunic; jacket; outer garment"
+ },
+ {
+  "no": 606,
+  "kata": "ワイシャツ",
+  "kana": "",
+  "romaji": "wai shatsu",
+  "jenis": "Noun, Katakana, Wasei",
+  "arti": "shirt"
+ },
+ {
+  "no": 607,
+  "kata": "若い",
+  "kana": "わかい",
+  "romaji": "wakai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "young"
+ },
+ {
+  "no": 608,
+  "kata": "分かる",
+  "kana": "わかる",
+  "romaji": "wakaru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to understand; to comprehend; to grasp; to see; to get; to follow"
+ },
+ {
+  "no": 609,
+  "kata": "悪い",
+  "kana": "わるい",
+  "romaji": "warui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "bad; poor; undesirable"
+ },
+ {
+  "no": 610,
+  "kata": "忘れる",
+  "kana": "わすれる",
+  "romaji": "wasureru",
+  "jenis": "Verb, Ichidan verb, Transitive verb",
+  "arti": "to forget"
+ },
+ {
+  "no": 611,
+  "kata": "渡る",
+  "kana": "わたる",
+  "romaji": "wataru",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to go across"
+ },
+ {
+  "no": 612,
+  "kata": "私",
+  "kana": "わたし",
+  "romaji": "watashi",
+  "jenis": "Pronoun",
+  "arti": "I; myself"
+ },
+ {
+  "no": 613,
+  "kata": "渡す",
+  "kana": "わたす",
+  "romaji": "watasu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to hand over"
+ },
+ {
+  "no": 614,
+  "kata": "山",
+  "kana": "やま",
+  "romaji": "yama",
+  "jenis": "Noun",
+  "arti": "mountain; hill"
+ },
+ {
+  "no": 615,
+  "kata": "八百屋",
+  "kana": "やおや",
+  "romaji": "yaoya",
+  "jenis": "Noun",
+  "arti": "greengrocer; fruit and vegetable shop; versatile"
+ },
+ {
+  "no": 616,
+  "kata": "やる",
+  "kana": "",
+  "romaji": "yaru",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to do"
+ },
+ {
+  "no": 617,
+  "kata": "野菜",
+  "kana": "やさい",
+  "romaji": "yasai",
+  "jenis": "Noun",
+  "arti": "vegetable"
+ },
+ {
+  "no": 618,
+  "kata": "易しい",
+  "kana": "やさしい",
+  "romaji": "yasashii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "easy, simple"
+ },
+ {
+  "no": 619,
+  "kata": "安い",
+  "kana": "やすい",
+  "romaji": "yasui",
+  "jenis": "Adjective, い-adjective",
+  "arti": "cheap; inexpensive"
+ },
+ {
+  "no": 620,
+  "kata": "休み",
+  "kana": "やすみ",
+  "romaji": "yasumi",
+  "jenis": "Noun",
+  "arti": "rest; vacation; holiday"
+ },
+ {
+  "no": 621,
+  "kata": "休む",
+  "kana": "やすむ",
+  "romaji": "yasumu",
+  "jenis": "Verb, Godan verb, Intransitive verb",
+  "arti": "to be absent; to take a day off; to rest"
+ },
+ {
+  "no": 622,
+  "kata": "八つ",
+  "kana": "やっつ",
+  "romaji": "yattsu",
+  "jenis": "Noun, Numeric",
+  "arti": "eight: 8"
+ },
+ {
+  "no": 623,
+  "kata": "呼ぶ",
+  "kana": "よぶ",
+  "romaji": "yobu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to call out, to invite"
+ },
+ {
+  "no": 624,
+  "kata": "良い",
+  "kana": "よい/いい",
+  "romaji": "yoi/ii",
+  "jenis": "Adjective, い-adjective",
+  "arti": "good"
+ },
+ {
+  "no": 625,
+  "kata": "四日",
+  "kana": "よっか",
+  "romaji": "yokka",
+  "jenis": "Noun",
+  "arti": "fourth day of the month / 4 days"
+ },
+ {
+  "no": 626,
+  "kata": "横",
+  "kana": "よこ",
+  "romaji": "yoko",
+  "jenis": "Noun",
+  "arti": "beside,side,width"
+ },
+ {
+  "no": 627,
+  "kata": "よく",
+  "kana": "",
+  "romaji": "yoku",
+  "jenis": "Adverb",
+  "arti": "often, well"
+ },
+ {
+  "no": 628,
+  "kata": "読む",
+  "kana": "よむ",
+  "romaji": "yomu",
+  "jenis": "Verb, Godan verb, Transitive verb",
+  "arti": "to read; to guess; to predict; to read (someone's thoughts)"
+ },
+ {
+  "no": 629,
+  "kata": "夜",
+  "kana": "よる",
+  "romaji": "yoru",
+  "jenis": "Noun",
+  "arti": "evening; night"
+ },
+ {
+  "no": 630,
+  "kata": "四つ",
+  "kana": "よつ",
+  "romaji": "yotsu",
+  "jenis": "Noun, Numeric",
+  "arti": "four; 4"
+ },
+ {
+  "no": 631,
+  "kata": "洋服",
+  "kana": "ようふく",
+  "romaji": "youfuku",
+  "jenis": "Noun",
+  "arti": "western clothes"
+ },
+ {
+  "no": 632,
+  "kata": "八日",
+  "kana": "ようか",
+  "romaji": "youka",
+  "jenis": "Noun",
+  "arti": "eighth day of the month / 8 days"
+ },
+ {
+  "no": 633,
+  "kata": "弱い",
+  "kana": "よわい",
+  "romaji": "yowai",
+  "jenis": "Adjective, い-adjective",
+  "arti": "weak"
+ },
+ {
+  "no": 634,
+  "kata": "雪",
+  "kana": "ゆき",
+  "romaji": "yuki",
+  "jenis": "Noun",
+  "arti": "snow"
+ },
+ {
+  "no": 635,
+  "kata": "ゆっくり",
+  "kana": "",
+  "romaji": "yukkuri",
+  "jenis": "Adverb",
+  "arti": "slowly"
+ },
+ {
+  "no": 636,
+  "kata": "昨夜",
+  "kana": "ゆうべ",
+  "romaji": "yuube",
+  "jenis": "Noun",
+  "arti": "last night"
+ },
+ {
+  "no": 637,
+  "kata": "郵便局",
+  "kana": "ゆうびんきょく",
+  "romaji": "yuubinkyoku",
+  "jenis": "Noun",
+  "arti": "post office"
+ },
+ {
+  "no": 638,
+  "kata": "夕方",
+  "kana": "ゆうがた",
+  "romaji": "yuugata",
+  "jenis": "Noun",
+  "arti": "evening; dusk"
+ },
+ {
+  "no": 639,
+  "kata": "夕飯",
+  "kana": "ゆうはん",
+  "romaji": "yuuhan",
+  "jenis": "Noun",
+  "arti": "evening meal"
+ },
+ {
+  "no": 640,
+  "kata": "有名",
+  "kana": "ゆうめい",
+  "romaji": "yuumei",
+  "jenis": "Noun, Adjective, な-adjective",
+  "arti": "famous"
+ },
+ {
+  "no": 641,
+  "kata": "雑誌",
+  "kana": "ざっし",
+  "romaji": "zasshi",
+  "jenis": "Noun",
+  "arti": "magazine"
+ },
+ {
+  "no": 642,
+  "kata": "全部",
+  "kana": "ぜんぶ",
+  "romaji": "zenbu",
+  "jenis": "Noun, Adverbial Noun",
+  "arti": "all"
+ },
+ {
+  "no": 643,
+  "kata": "ゼロ",
+  "kana": "",
+  "romaji": "zero",
+  "jenis": "Noun",
+  "arti": "zero"
+ },
+ {
+  "no": 644,
+  "kata": "ズボン",
+  "kana": "",
+  "romaji": "zubon",
+  "jenis": "Noun, Katakana",
+  "arti": "trousers; pants"
+ }
+]

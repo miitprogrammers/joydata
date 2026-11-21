@@ -1,0 +1,992 @@
+[
+ {
+  "no": 1,
+  "kanji": "日",
+  "on": "ニチ, ジツ",
+  "kun": "ひ, -び, -か",
+  "arti": "day, sun, Japan, counter for days",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 2,
+  "kanji": "一",
+  "on": "イチ",
+  "kun": "ひと(つ)",
+  "arti": "one",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL3",
+   "VOL5",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 3,
+  "kanji": "国",
+  "on": "コク",
+  "kun": "くに",
+  "arti": "country",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 4,
+  "kanji": "人",
+  "on": "ジン、 ニン",
+  "kun": "ひと",
+  "arti": "person",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 5,
+  "kanji": "年",
+  "on": "ネン",
+  "kun": "とし",
+  "arti": "year, counter for years",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 6,
+  "kanji": "大",
+  "on": "ダイ、 タイ",
+  "kun": "おお(きい)",
+  "arti": "large, big",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 7,
+  "kanji": "十",
+  "on": "ジュウ",
+  "kun": "とお、 と",
+  "arti": "ten, 10",
+  "volume": [
+   "DASAR",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 8,
+  "kanji": "二",
+  "on": "ニ、 ジ",
+  "kun": "ふた(つ)",
+  "arti": "two, 2",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 9,
+  "kanji": "本",
+  "on": "ホン",
+  "kun": "もと",
+  "arti": "book, present, true, counter for long cylindrical things",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 10,
+  "kanji": "中",
+  "on": "チュウ",
+  "kun": "なか、 うち、 あた(る)",
+  "arti": "in, inside, middle, mean, center",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4",
+   "N4VOL3",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 11,
+  "kanji": "長",
+  "on": "チョウ",
+  "kun": "なが(い)、 おさ",
+  "arti": "long, leader, superior, senior",
+  "volume": [
+   "DASAR",
+   "VOL4",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 12,
+  "kanji": "出",
+  "on": "シュツ、 スイ",
+  "kun": "で(る)、 だ(す)、 い(でる)",
+  "arti": "exit, leave, go out",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 13,
+  "kanji": "三",
+  "on": "サン",
+  "kun": "み(つ)",
+  "arti": "three, 3",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 14,
+  "kanji": "時",
+  "on": "ジ",
+  "kun": "とき、 -どき",
+  "arti": "time, hour",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 15,
+  "kanji": "行",
+  "on": "コウ、 ギョウ、 アン",
+  "kun": "い(く)、 ゆ(く)、 おこな(う)",
+  "arti": "going, journey, carry out, line, row",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL4",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 16,
+  "kanji": "見",
+  "on": "ケン",
+  "kun": "み(る)、 み(せる)",
+  "arti": "see, hopes, chances, idea, opinion, look at, visible",
+  "volume": [
+   "DASAR",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 17,
+  "kanji": "月",
+  "on": "ゲツ、 ガツ",
+  "kun": "つき",
+  "arti": "month, moon",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 18,
+  "kanji": "分",
+  "on": "ブン、 フン、 ブ",
+  "kun": "わ(ける)",
+  "arti": "part, minute of time, understand",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL5",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 19,
+  "kanji": "後",
+  "on": "ゴ、 コウ",
+  "kun": "のち、 うし(ろ)、 あと",
+  "arti": "behind, back, later",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 20,
+  "kanji": "前",
+  "on": "ゼン",
+  "kun": "まえ",
+  "arti": "in front, before",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 21,
+  "kanji": "生",
+  "on": "セイ、 ショウ",
+  "kun": "い(きる)、 う(む)、 お(う)、 は(える)、 なま",
+  "arti": "life, genuine, birth",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 22,
+  "kanji": "五",
+  "on": "ゴ",
+  "kun": "いつ(つ)",
+  "arti": "five, 5",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 23,
+  "kanji": "間",
+  "on": "カン、 ケン",
+  "kun": "あいだ、 ま、 あい",
+  "arti": "interval, space",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "N4VOL1",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 24,
+  "kanji": "上",
+  "on": "ジョウ、 ショウ、 シャン",
+  "kun": "うえ、 うわ-、 かみ、 あ(げる)、 のぼ(る)、 たてまつ(る)",
+  "arti": "above, up",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL3",
+   "N4VOL1",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 25,
+  "kanji": "東",
+  "on": "トウ",
+  "kun": "ひがし",
+  "arti": "east",
+  "volume": [
+   "DASAR",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 26,
+  "kanji": "四",
+  "on": "シ",
+  "kun": "よ(つ)、 よん",
+  "arti": "four, 4",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 27,
+  "kanji": "今",
+  "on": "コン、 キン",
+  "kun": "いま",
+  "arti": "now; the present",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 28,
+  "kanji": "金",
+  "on": "キン、 コン、 ゴン",
+  "kun": "かね、 かな-、 -がね",
+  "arti": "gold",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 29,
+  "kanji": "九",
+  "on": "キュウ、 ク",
+  "kun": "ここの(つ)",
+  "arti": "nine, 9",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 30,
+  "kanji": "入",
+  "on": "ニュウ",
+  "kun": "い(る)、はい(る)",
+  "arti": "enter, insert",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL4",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 31,
+  "kanji": "学",
+  "on": "ガク",
+  "kun": "まな(ぶ)",
+  "arti": "study, learning, science",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL3",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 32,
+  "kanji": "高",
+  "on": "コウ",
+  "kun": "たか(い)",
+  "arti": "tall, high, expensive",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 33,
+  "kanji": "円",
+  "on": "エン",
+  "kun": "まる(い)",
+  "arti": "circle, yen, round",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 34,
+  "kanji": "子",
+  "on": "シ、 ス、 ツ",
+  "kun": "こ、 ね",
+  "arti": "child",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "VOL3",
+   "VOL5",
+   "N4VOL2",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 35,
+  "kanji": "外",
+  "on": "ガイ、 ゲ",
+  "kun": "そと、 ほか、 はず(す)、 と-",
+  "arti": "outside",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 36,
+  "kanji": "八",
+  "on": "ハチ",
+  "kun": "や(つ)、 よう",
+  "arti": "eight, 8",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 37,
+  "kanji": "六",
+  "on": "ロク",
+  "kun": "む(つ)、 むい",
+  "arti": "six, 6",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 38,
+  "kanji": "下",
+  "on": "カ、 ゲ",
+  "kun": "した、 しも、 もと、 さ(げる)、 くだ(る)、 お(ろす)",
+  "arti": "below, down, descend, give, low, inferior",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 39,
+  "kanji": "来",
+  "on": "ライ、 タイ",
+  "kun": "く.る、 きた.る、 き、 こ",
+  "arti": "come, due, next, cause, become",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 40,
+  "kanji": "気",
+  "on": "キ、 ケ",
+  "kun": "いき",
+  "arti": "spirit, mind, air, atmosphere, mood",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL4",
+   "VOL5",
+   "N4VOL2",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 41,
+  "kanji": "小",
+  "on": "ショウ",
+  "kun": "ちい(さい)、 こ-、 お-、 さ-",
+  "arti": "little, small",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 42,
+  "kanji": "七",
+  "on": "シチ",
+  "kun": "なな(つ)、 なの",
+  "arti": "seven, 7",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 43,
+  "kanji": "山",
+  "on": "サン、 セン",
+  "kun": "やま",
+  "arti": "mountain",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 44,
+  "kanji": "話",
+  "on": "ワ",
+  "kun": "はな(す)、 はなし",
+  "arti": "tale, talk",
+  "volume": [
+   "DASAR",
+   "VOL4",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 45,
+  "kanji": "女",
+  "on": "ジョ",
+  "kun": "おんな、 め",
+  "arti": "woman, female",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 46,
+  "kanji": "北",
+  "on": "ホク",
+  "kun": "きた",
+  "arti": "north",
+  "volume": [
+   "DASAR",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 47,
+  "kanji": "午",
+  "on": "ゴ",
+  "kun": "うま",
+  "arti": "noon, sign of the horse",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 48,
+  "kanji": "百",
+  "on": "ヒャク、 ビャク",
+  "kun": "もも",
+  "arti": "hundred",
+  "volume": [
+   "DASAR",
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 49,
+  "kanji": "書",
+  "on": "ショ",
+  "kun": "か(く)",
+  "arti": "write",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 50,
+  "kanji": "先",
+  "on": "セン",
+  "kun": "さき、 ま(ず)",
+  "arti": "before, ahead, previous, future, precedence",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 51,
+  "kanji": "名",
+  "on": "メイ、 ミョウ",
+  "kun": "な",
+  "arti": "name, noted, distinguished, reputation",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 52,
+  "kanji": "川",
+  "on": "セン",
+  "kun": "かわ",
+  "arti": "river, stream",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 53,
+  "kanji": "千",
+  "on": "セン",
+  "kun": "ち",
+  "arti": "thousand",
+  "volume": [
+   "DASAR",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 54,
+  "kanji": "水",
+  "on": "スイ",
+  "kun": "みず",
+  "arti": "water",
+  "volume": [
+   "DASAR",
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 55,
+  "kanji": "半",
+  "on": "ハン",
+  "kun": "なか(ば)",
+  "arti": "half, middle, odd number, semi-",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 56,
+  "kanji": "男",
+  "on": "ダン、 ナン",
+  "kun": "おとこ、 お",
+  "arti": "male; man",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 57,
+  "kanji": "西",
+  "on": "セイ、 サイ",
+  "kun": "にし",
+  "arti": "west",
+  "volume": [
+   "DASAR",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 58,
+  "kanji": "電",
+  "on": "デン",
+  "kun": "",
+  "arti": "electricity; electric powered",
+  "volume": [
+   "DASAR",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 59,
+  "kanji": "校",
+  "on": "コウ",
+  "kun": "",
+  "arti": "school, exam",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 60,
+  "kanji": "語",
+  "on": "ゴ",
+  "kun": "かた(る)",
+  "arti": "word, speech, language",
+  "volume": [
+   "DASAR",
+   "VOL1"
+  ]
+ },
+ {
+  "no": 61,
+  "kanji": "土",
+  "on": "ド、 ト",
+  "kun": "つち",
+  "arti": "soil, earth, ground",
+  "volume": [
+   "DASAR",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 62,
+  "kanji": "木",
+  "on": "ボク、 モク",
+  "kun": "き、 こ-",
+  "arti": "tree, wood",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 63,
+  "kanji": "聞",
+  "on": "ブン、 モン",
+  "kun": "き(く)",
+  "arti": "to hear; to listen; to ask",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 64,
+  "kanji": "食",
+  "on": "ショク、 ジキ",
+  "kun": "く(う)、 た(べる)、 は(む)",
+  "arti": "eat, food",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 65,
+  "kanji": "車",
+  "on": "シャ",
+  "kun": "くるま",
+  "arti": "car, wheel",
+  "volume": [
+   "DASAR",
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 66,
+  "kanji": "何",
+  "on": "カ",
+  "kun": "なに、 なん",
+  "arti": "what",
+  "volume": [
+   "DASAR",
+   "VOL3",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 67,
+  "kanji": "南",
+  "on": "ナン、 ナ",
+  "kun": "みなみ",
+  "arti": "south",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 68,
+  "kanji": "万",
+  "on": "マン、 バン",
+  "kun": "",
+  "arti": "ten thousand, 10,000",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 69,
+  "kanji": "毎",
+  "on": "マイ",
+  "kun": "ごと(に)",
+  "arti": "every",
+  "volume": [
+   "DASAR"
+  ]
+ },
+ {
+  "no": 70,
+  "kanji": "白",
+  "on": "ハク、 ビャク",
+  "kun": "しろ(い)",
+  "arti": "white",
+  "volume": [
+   "DASAR",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 71,
+  "kanji": "天",
+  "on": "テン",
+  "kun": "あまつ",
+  "arti": "heavens, sky, imperial",
+  "volume": [
+   "DASAR",
+   "VOL4",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 72,
+  "kanji": "母",
+  "on": "ボ",
+  "kun": "はは、 かあ",
+  "arti": "mother",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 73,
+  "kanji": "火",
+  "on": "カ",
+  "kun": "ひ、 -び、 ほ-",
+  "arti": "fire",
+  "volume": [
+   "DASAR",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 74,
+  "kanji": "右",
+  "on": "ウ、 ユウ",
+  "kun": "みぎ",
+  "arti": "right (direction)",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 75,
+  "kanji": "読",
+  "on": "ドク、 トク、 トウ",
+  "kun": "よ(む)",
+  "arti": "to read",
+  "volume": [
+   "DASAR",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 76,
+  "kanji": "友",
+  "on": "ユウ",
+  "kun": "とも",
+  "arti": "friend",
+  "volume": [
+   "DASAR",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 77,
+  "kanji": "左",
+  "on": "サ、 シャ",
+  "kun": "ひだり",
+  "arti": "left",
+  "volume": [
+   "DASAR",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 78,
+  "kanji": "休",
+  "on": "キュウ",
+  "kun": "やす(む)",
+  "arti": "rest, day off, retire, sleep",
+  "volume": [
+   "DASAR",
+   "VOL5",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 79,
+  "kanji": "父",
+  "on": "フ",
+  "kun": "ちち、 とう",
+  "arti": "father",
+  "volume": [
+   "DASAR",
+   "VOL1",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 80,
+  "kanji": "雨",
+  "on": "ウ",
+  "kun": "あめ、 あま",
+  "arti": "rain",
+  "volume": [
+   "DASAR",
+   "VOL1"
+  ]
+ }
+]

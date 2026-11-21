@@ -1,0 +1,1815 @@
+[
+ {
+  "no": 1,
+  "kanji": "会",
+  "on": "カイ",
+  "kun": "あ(う)",
+  "arti": "meeting; meet",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 2,
+  "kanji": "同",
+  "on": "ドウ",
+  "kun": "おな(じ)",
+  "arti": "same, agree, equal",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 3,
+  "kanji": "事",
+  "on": "ジ",
+  "kun": "こと",
+  "arti": "matter, thing, fact, business, reason, possibly",
+  "volume": [
+   "VOL3",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 4,
+  "kanji": "自",
+  "on": "ジ、 シ",
+  "kun": "みずか(ら)",
+  "arti": "oneself",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 5,
+  "kanji": "社",
+  "on": "シャ",
+  "kun": "やしろ",
+  "arti": "company, firm, office, association, shrine",
+  "volume": [
+   "VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 6,
+  "kanji": "発",
+  "on": "ハツ、 ホツ",
+  "kun": "",
+  "arti": "departure, discharge, emit, start from",
+  "volume": [
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 7,
+  "kanji": "者",
+  "on": "シャ",
+  "kun": "もの",
+  "arti": "someone, person",
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 8,
+  "kanji": "地",
+  "on": "チ、 ジ",
+  "kun": "",
+  "arti": "ground, earth",
+  "volume": [
+   "VOL4",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 9,
+  "kanji": "業",
+  "on": "ギョウ",
+  "kun": "わざ",
+  "arti": "business, vocation, arts, performance",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 10,
+  "kanji": "方",
+  "on": "ホウ",
+  "kun": "かた",
+  "arti": "direction, person, alternative",
+  "volume": [
+   "VOL2",
+   "N4VOL1",
+   "N4VOL3",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 11,
+  "kanji": "新",
+  "on": "シン",
+  "kun": "あたら(しい)、 あら(た)",
+  "arti": "new",
+  "volume": [
+   "VOL1",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 12,
+  "kanji": "場",
+  "on": "ジョウ",
+  "kun": "ば",
+  "arti": "location, place",
+  "volume": [
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 13,
+  "kanji": "員",
+  "on": "イン",
+  "kun": "",
+  "arti": "employee, member, number, the one in charge",
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 14,
+  "kanji": "立",
+  "on": "リツ",
+  "kun": "た(つ)",
+  "arti": "stand up, rise",
+  "volume": [
+   "VOL3",
+   "N4VOL3",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 15,
+  "kanji": "開",
+  "on": "カイ",
+  "kun": "ひら(く)、 あ(ける)",
+  "arti": "open, unfold, unseal",
+  "volume": [
+   "VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 16,
+  "kanji": "手",
+  "on": "シュ",
+  "kun": "て",
+  "arti": "hand",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 17,
+  "kanji": "力",
+  "on": "リョク、 リキ",
+  "kun": "ちから",
+  "arti": "power, strength, strong, strain, bear up, exert",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 18,
+  "kanji": "問",
+  "on": "モン",
+  "kun": "と(う)",
+  "arti": "question, ask, problem",
+  "volume": [
+   "VOL3",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 19,
+  "kanji": "代",
+  "on": "ダイ",
+  "kun": "か(わり)",
+  "arti": "substitute, change, convert, replace, period",
+  "volume": [
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 20,
+  "kanji": "明",
+  "on": "メイ、 ミョウ",
+  "kun": "あか(るい)",
+  "arti": "bright, light",
+  "volume": [
+   "VOL1",
+   "N4VOL1",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 21,
+  "kanji": "動",
+  "on": "ドウ",
+  "kun": "うご(く)",
+  "arti": "move, motion, change",
+  "volume": [
+   "VOL3",
+   "VOL4",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 22,
+  "kanji": "京",
+  "on": "キョウ、 ケイ、 キン",
+  "kun": "みやこ",
+  "arti": "capital",
+  "volume": []
+ },
+ {
+  "no": 23,
+  "kanji": "目",
+  "on": "モク、 ボク",
+  "kun": "め",
+  "arti": "eye, class, look, insight, experience",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 24,
+  "kanji": "通",
+  "on": "ツウ",
+  "kun": "とお(る)、かよ(う)",
+  "arti": "traffic, pass through, avenue, commute",
+  "volume": [
+   "N4VOL2",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 25,
+  "kanji": "言",
+  "on": "ゲン、 ゴン",
+  "kun": "い（う）、 こと",
+  "arti": "say, word",
+  "volume": [
+   "VOL1",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 26,
+  "kanji": "理",
+  "on": "リ",
+  "kun": "",
+  "arti": "logic, arrangement, reason, justice, truth",
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 27,
+  "kanji": "体",
+  "on": "タイ",
+  "kun": "からだ",
+  "arti": "body, substance, object, reality",
+  "volume": [
+   "VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 28,
+  "kanji": "田",
+  "on": "デン",
+  "kun": "た",
+  "arti": "rice field, rice paddy",
+  "volume": [
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 29,
+  "kanji": "主",
+  "on": "シュ",
+  "kun": "ぬし、 おも",
+  "arti": "lord, chief, master, main thing, principal",
+  "volume": [
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 30,
+  "kanji": "題",
+  "on": "ダイ",
+  "kun": "",
+  "arti": "topic, subject",
+  "volume": [
+   "VOL3",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 31,
+  "kanji": "意",
+  "on": "イ",
+  "kun": "",
+  "arti": "idea, mind, heart, taste, thought",
+  "volume": [
+   "VOL1",
+   "N4VOL1",
+   "N4VOL3",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 32,
+  "kanji": "不",
+  "on": "フ、 ブ",
+  "kun": "",
+  "arti": "negative, non-, bad",
+  "volume": [
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 33,
+  "kanji": "作",
+  "on": "サク、 サ",
+  "kun": "つく(る)",
+  "arti": "make, production, prepare, build",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 34,
+  "kanji": "用",
+  "on": "ヨウ",
+  "kun": "もち(いる)",
+  "arti": "utilize, business, service, use, employ",
+  "volume": [
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 35,
+  "kanji": "度",
+  "on": "ド、 タク",
+  "kun": "たび、 た(い)",
+  "arti": "degrees, occurrence, time, counter for occurrences",
+  "volume": [
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 36,
+  "kanji": "強",
+  "on": "キョウ、 ゴウ",
+  "kun": "つよ(い)",
+  "arti": "strong",
+  "volume": [
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 37,
+  "kanji": "公",
+  "on": "コウ",
+  "kun": "",
+  "arti": "public, prince, official, governmental",
+  "volume": [
+   "VOL2",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 38,
+  "kanji": "持",
+  "on": "ジ",
+  "kun": "も(つ)",
+  "arti": "hold, have",
+  "volume": [
+   "VOL5",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 39,
+  "kanji": "野",
+  "on": "ヤ",
+  "kun": "の",
+  "arti": "plains, field, rustic, civilian life",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 40,
+  "kanji": "以",
+  "on": "イ",
+  "kun": "もっ(て)",
+  "arti": "by means of, because, in view of, compared with",
+  "volume": [
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 41,
+  "kanji": "思",
+  "on": "シ",
+  "kun": "おも(う)",
+  "arti": "think",
+  "volume": [
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 42,
+  "kanji": "家",
+  "on": "カ",
+  "kun": "いえ、 や、 うち",
+  "arti": "house, home, family, professional, expert",
+  "volume": [
+   "VOL1",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 43,
+  "kanji": "世",
+  "on": "セイ、 セ",
+  "kun": "よ",
+  "arti": "generation, world, society, public",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 44,
+  "kanji": "多",
+  "on": "タ",
+  "kun": "おお(い)",
+  "arti": "many, frequent, much",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 45,
+  "kanji": "正",
+  "on": "セイ、 ショウ",
+  "kun": "ただ(しい)、 まさ(に)",
+  "arti": "correct, justice, righteous",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 46,
+  "kanji": "安",
+  "on": "アン",
+  "kun": "やす(い)",
+  "arti": "safe, peaceful, cheap",
+  "volume": [
+   "VOL5",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 47,
+  "kanji": "院",
+  "on": "イン",
+  "kun": "",
+  "arti": "institution, temple, mansion, school",
+  "volume": [
+   "VOL4",
+   "N4VOL3",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 48,
+  "kanji": "心",
+  "on": "シン",
+  "kun": "こころ",
+  "arti": "heart, mind, spirit",
+  "volume": [
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 49,
+  "kanji": "界",
+  "on": "カイ",
+  "kun": "",
+  "arti": "world, boundary",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 50,
+  "kanji": "教",
+  "on": "キョウ",
+  "kun": "おし(える)、 おそ(わる)",
+  "arti": "teach, faith, doctrine",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 51,
+  "kanji": "文",
+  "on": "ブン、 モン",
+  "kun": "ふみ",
+  "arti": "sentence, literature, style, art",
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 52,
+  "kanji": "元",
+  "on": "ゲン、 ガン",
+  "kun": "もと",
+  "arti": "beginning, former time, origin",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 53,
+  "kanji": "重",
+  "on": "ジュウ、 チョウ",
+  "kun": "おも(い)、 かさ(ねる)",
+  "arti": "heavy, important, esteem, respect",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 54,
+  "kanji": "近",
+  "on": "キン",
+  "kun": "ちか(い)",
+  "arti": "near, early, akin, tantamount",
+  "volume": [
+   "VOL3",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 55,
+  "kanji": "考",
+  "on": "コウ",
+  "kun": "かんが(える)",
+  "arti": "consider, think over",
+  "volume": [
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 56,
+  "kanji": "画",
+  "on": "ガ、 カク",
+  "kun": "かく(する)",
+  "arti": "brush-stroke, picture",
+  "volume": [
+   "VOL1",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 57,
+  "kanji": "海",
+  "on": "カイ",
+  "kun": "うみ",
+  "arti": "sea, ocean",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 58,
+  "kanji": "売",
+  "on": "バイ",
+  "kun": "う(る)",
+  "arti": "sell",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 59,
+  "kanji": "知",
+  "on": "チ",
+  "kun": "し(る)",
+  "arti": "know, wisdom",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 60,
+  "kanji": "道",
+  "on": "ドウ",
+  "kun": "みち",
+  "arti": "road-way, street, district, journey, course",
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 61,
+  "kanji": "集",
+  "on": "シュウ",
+  "kun": "あつ(める)",
+  "arti": "gather, meet",
+  "volume": [
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 62,
+  "kanji": "別",
+  "on": "ベツ",
+  "kun": "わか(れる)、 わ(ける)",
+  "arti": "separate, branch off, diverge",
+  "volume": [
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 63,
+  "kanji": "物",
+  "on": "ブツ、 モツ",
+  "kun": "もの",
+  "arti": "thing, object, matter",
+  "volume": [
+   "VOL2",
+   "VOL3",
+   "VOL4",
+   "VOL5",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 64,
+  "kanji": "使",
+  "on": "シ",
+  "kun": "つか(う)",
+  "arti": "use, order, messenger, ambassador",
+  "volume": [
+   "VOL3",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 65,
+  "kanji": "品",
+  "on": "ヒン",
+  "kun": "しな",
+  "arti": "goods, refinement, dignity, article",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 66,
+  "kanji": "計",
+  "on": "ケイ",
+  "kun": "はか(る)",
+  "arti": "plot, plan, scheme, measure",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 67,
+  "kanji": "死",
+  "on": "シ",
+  "kun": "し(ぬ)",
+  "arti": "death, die",
+  "volume": [
+   "VOL3"
+  ]
+ },
+ {
+  "no": 68,
+  "kanji": "特",
+  "on": "トク",
+  "kun": "",
+  "arti": "special",
+  "volume": [
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 69,
+  "kanji": "私",
+  "on": "シ",
+  "kun": "わたくし、 わたし",
+  "arti": "private, I, me",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 70,
+  "kanji": "始",
+  "on": "シ",
+  "kun": "はじ(める)",
+  "arti": "commence, begin",
+  "volume": [
+   "VOL4",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 71,
+  "kanji": "朝",
+  "on": "チョウ",
+  "kun": "あさ",
+  "arti": "morning",
+  "volume": [
+   "VOL1",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 72,
+  "kanji": "運",
+  "on": "ウン",
+  "kun": "はこ(ぶ)",
+  "arti": "carry, luck, destiny, fate, transport",
+  "volume": [
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 73,
+  "kanji": "終",
+  "on": "シュウ",
+  "kun": "お(わる)",
+  "arti": "end, finish",
+  "volume": [
+   "VOL2",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 74,
+  "kanji": "台",
+  "on": "ダイ、 タイ",
+  "kun": "うてな",
+  "arti": "pedestal, a stand, counter for machines and vehicles",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 75,
+  "kanji": "広",
+  "on": "コウ",
+  "kun": "ひろ(い)",
+  "arti": "wide, broad, spacious",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 76,
+  "kanji": "住",
+  "on": "ジュウ、 チュウ",
+  "kun": "す(む)",
+  "arti": "dwell, reside, live, inhabit",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 77,
+  "kanji": "無",
+  "on": "ム、 ブ",
+  "kun": "な(い)",
+  "arti": "nothingness, none, ain't, nothing, nil, not",
+  "volume": [
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 78,
+  "kanji": "真",
+  "on": "シン",
+  "kun": "ま、 まこと",
+  "arti": "true, reality, Buddhist sect",
+  "volume": [
+   "VOL3",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 79,
+  "kanji": "有",
+  "on": "ユウ、 ウ",
+  "kun": "あ(る)",
+  "arti": "possess, have, exist, happen",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 80,
+  "kanji": "口",
+  "on": "コウ",
+  "kun": "くち",
+  "arti": "mouth",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL4",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 81,
+  "kanji": "少",
+  "on": "ショウ",
+  "kun": "すく(ない)、 すこ(し)",
+  "arti": "few, little",
+  "volume": [
+   "VOL3"
+  ]
+ },
+ {
+  "no": 82,
+  "kanji": "町",
+  "on": "チョウ",
+  "kun": "まち",
+  "arti": "town, village, block, street",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 83,
+  "kanji": "料",
+  "on": "リョウ",
+  "kun": "",
+  "arti": "fee, materials",
+  "volume": [
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 84,
+  "kanji": "工",
+  "on": "コウ、 ク、 グ",
+  "kun": "",
+  "arti": "craft, construction",
+  "volume": [
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 85,
+  "kanji": "建",
+  "on": "ケン、 コン",
+  "kun": "た(てる)",
+  "arti": "build",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 86,
+  "kanji": "空",
+  "on": "クウ",
+  "kun": "そら、 から、 あ(く)、 す(く)、 むな(しい)",
+  "arti": "empty, sky, void, vacant, vacuum",
+  "volume": [
+   "VOL3",
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 87,
+  "kanji": "急",
+  "on": "キュウ",
+  "kun": "いそ(ぐ)",
+  "arti": "hurry, emergency, sudden, steep",
+  "volume": [
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 88,
+  "kanji": "止",
+  "on": "シ",
+  "kun": "と(まる)、 とど(まる)、 や(める)、 よ(す)",
+  "arti": "stop, halt",
+  "volume": [
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 89,
+  "kanji": "送",
+  "on": "ソウ",
+  "kun": "おく(る)",
+  "arti": "escort, send",
+  "volume": [
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 90,
+  "kanji": "切",
+  "on": "セツ、 サイ",
+  "kun": "き(る)",
+  "arti": "cut, cutoff, be sharp",
+  "volume": [
+   "VOL2",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 91,
+  "kanji": "転",
+  "on": "テン",
+  "kun": "ころ(がる)",
+  "arti": "revolve, turn around, change",
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 92,
+  "kanji": "研",
+  "on": "ケン",
+  "kun": "と(ぐ)",
+  "arti": "polish, study of, sharpen",
+  "volume": [
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 93,
+  "kanji": "足",
+  "on": "ソク",
+  "kun": "あし、 た(りる)",
+  "arti": "leg, foot, be sufficient",
+  "volume": [
+   "VOL1",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 94,
+  "kanji": "究",
+  "on": "キュウ",
+  "kun": "",
+  "arti": "research, study",
+  "volume": [
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 95,
+  "kanji": "楽",
+  "on": "ガク、 ラク",
+  "kun": "たの(しい)",
+  "arti": "music, comfort, ease",
+  "volume": [
+   "VOL2",
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 96,
+  "kanji": "起",
+  "on": "キ",
+  "kun": "お(きる)、 おこ(す)",
+  "arti": "wake up, get up; rouse",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 97,
+  "kanji": "着",
+  "on": "チャク",
+  "kun": "き(る)、つ(く)",
+  "arti": "arrive, wear, counter for suits of clothing",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL4",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 98,
+  "kanji": "店",
+  "on": "テン",
+  "kun": "みせ",
+  "arti": "store, shop",
+  "volume": [
+   "VOL2",
+   "VOL5",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 99,
+  "kanji": "病",
+  "on": "ビョウ",
+  "kun": "や(む)",
+  "arti": "ill, sick",
+  "volume": [
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 100,
+  "kanji": "質",
+  "on": "シツ、 シチ",
+  "kun": "たち、 ただ(す)",
+  "arti": "substance, quality, matter, temperament",
+  "volume": [
+   "VOL3"
+  ]
+ },
+ {
+  "no": 101,
+  "kanji": "待",
+  "on": "タイ",
+  "kun": "ま(つ)",
+  "arti": "wait, depend on",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 102,
+  "kanji": "試",
+  "on": "シ",
+  "kun": "こころ(みる)、 ため(す)",
+  "arti": "test, try, attempt, experiment",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 103,
+  "kanji": "族",
+  "on": "ゾク",
+  "kun": "",
+  "arti": "tribe, family",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 104,
+  "kanji": "銀",
+  "on": "ギン",
+  "kun": "",
+  "arti": "silver",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 105,
+  "kanji": "早",
+  "on": "ソウ、 サッ",
+  "kun": "はや(い)",
+  "arti": "early, fast",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 106,
+  "kanji": "映",
+  "on": "エイ",
+  "kun": "うつ(る)、 は(える)",
+  "arti": "reflect, reflection, projection",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 107,
+  "kanji": "親",
+  "on": "シン",
+  "kun": "おや、 した(しい)",
+  "arti": "parent, intimacy, relative, familiarity",
+  "volume": [
+   "VOL5",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 108,
+  "kanji": "験",
+  "on": "ケン",
+  "kun": "",
+  "arti": "verification, effect, testing",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 109,
+  "kanji": "英",
+  "on": "エイ",
+  "kun": "",
+  "arti": "England, English, hero, outstanding",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 110,
+  "kanji": "医",
+  "on": "イ",
+  "kun": "",
+  "arti": "doctor, medicine",
+  "volume": [
+   "VOL1",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 111,
+  "kanji": "仕",
+  "on": "シ",
+  "kun": "",
+  "arti": "attend, doing, official, serve",
+  "volume": [
+   "VOL3",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 112,
+  "kanji": "去",
+  "on": "キョ、 コ",
+  "kun": "さ(る)",
+  "arti": "gone, past, quit, leave, elapse, eliminate",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 113,
+  "kanji": "味",
+  "on": "ミ",
+  "kun": "あじ",
+  "arti": "flavor, taste",
+  "volume": [
+   "VOL1",
+   "N4VOL1",
+   "N4VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 114,
+  "kanji": "写",
+  "on": "シャ",
+  "kun": "うつ(る)",
+  "arti": "copy, be photographed, describe",
+  "volume": [
+   "VOL3",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 115,
+  "kanji": "字",
+  "on": "ジ",
+  "kun": "",
+  "arti": "character, letter, word",
+  "volume": []
+ },
+ {
+  "no": 116,
+  "kanji": "答",
+  "on": "トウ",
+  "kun": "こた(える)",
+  "arti": "solution, answer",
+  "volume": [
+   "VOL3",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 117,
+  "kanji": "夜",
+  "on": "ヤ",
+  "kun": "よ、 よる",
+  "arti": "night, evening",
+  "volume": [
+   "VOL5",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 118,
+  "kanji": "音",
+  "on": "オン",
+  "kun": "おと、 ね",
+  "arti": "sound, noise",
+  "volume": [
+   "VOL2",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 119,
+  "kanji": "注",
+  "on": "チュウ",
+  "kun": "そそ(ぐ)、 さ(す)、 つ(ぐ)",
+  "arti": "pour, irrigate, shed (tears), flow into, concentrate on",
+  "volume": [
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 120,
+  "kanji": "帰",
+  "on": "キ",
+  "kun": "かえ(る)、 かえ(す)",
+  "arti": "homecoming, arrive at, lead to, result in",
+  "volume": [
+   "VOL2",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 121,
+  "kanji": "古",
+  "on": "コ",
+  "kun": "ふる(い)",
+  "arti": "old",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 122,
+  "kanji": "歌",
+  "on": "カ",
+  "kun": "うた、 うた(う)",
+  "arti": "song, sing",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 123,
+  "kanji": "買",
+  "on": "バイ",
+  "kun": "か(う)",
+  "arti": "buy",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 124,
+  "kanji": "悪",
+  "on": "アク",
+  "kun": "わる(い)",
+  "arti": "bad, evil, wrong",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 125,
+  "kanji": "図",
+  "on": "ズ、 ト",
+  "kun": "はか(る)",
+  "arti": "map, drawing, plan, extraordinary",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 126,
+  "kanji": "週",
+  "on": "シュウ",
+  "kun": "",
+  "arti": "week",
+  "volume": [
+   "VOL3",
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 127,
+  "kanji": "室",
+  "on": "シツ",
+  "kun": "むろ",
+  "arti": "room, apartment, chamber, greenhouse, cellar",
+  "volume": [
+   "VOL2",
+   "N4VOL1",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 128,
+  "kanji": "歩",
+  "on": "ホ、 ブ",
+  "kun": "ある(く)、 あゆ(む)",
+  "arti": "walk, counter for steps",
+  "volume": [
+   "VOL1",
+   "VOL3"
+  ]
+ },
+ {
+  "no": 129,
+  "kanji": "風",
+  "on": "フウ、 フ",
+  "kun": "かぜ、 かざ-",
+  "arti": "wind, air, style, manner",
+  "volume": [
+   "VOL2",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 130,
+  "kanji": "紙",
+  "on": "シ",
+  "kun": "かみ",
+  "arti": "paper",
+  "volume": [
+   "VOL2",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 131,
+  "kanji": "黒",
+  "on": "コク",
+  "kun": "くろ",
+  "arti": "black",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 132,
+  "kanji": "花",
+  "on": "カ、 ケ",
+  "kun": "はな",
+  "arti": "flower",
+  "volume": [
+   "VOL2",
+   "VOL4",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 133,
+  "kanji": "春",
+  "on": "シュン",
+  "kun": "はる",
+  "arti": "spring",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 134,
+  "kanji": "赤",
+  "on": "セキ、 シャク",
+  "kun": "あか(い)",
+  "arti": "red",
+  "volume": [
+   "VOL1",
+   "N4VOL1"
+  ]
+ },
+ {
+  "no": 135,
+  "kanji": "青",
+  "on": "セイ、 ショウ",
+  "kun": "あお(い)",
+  "arti": "blue",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 136,
+  "kanji": "館",
+  "on": "カン",
+  "kun": "やかた",
+  "arti": "building, mansion, large building, palace",
+  "volume": [
+   "VOL1",
+   "VOL3",
+   "VOL4",
+   "N4VOL4",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 137,
+  "kanji": "屋",
+  "on": "オク",
+  "kun": "や",
+  "arti": "roof, house, shop, dealer, seller",
+  "volume": [
+   "VOL5",
+   "N4VOL1",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 138,
+  "kanji": "色",
+  "on": "ショク、 シキ",
+  "kun": "いろ",
+  "arti": "color",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL4",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 139,
+  "kanji": "走",
+  "on": "ソウ",
+  "kun": "はし(る)",
+  "arti": "run",
+  "volume": [
+   "VOL4",
+   "N4VOL2"
+  ]
+ },
+ {
+  "no": 140,
+  "kanji": "秋",
+  "on": "シュウ",
+  "kun": "あき",
+  "arti": "autumn, fall",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 141,
+  "kanji": "夏",
+  "on": "カ、 ゲ",
+  "kun": "なつ",
+  "arti": "summer",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 142,
+  "kanji": "習",
+  "on": "シュウ",
+  "kun": "なら(う)",
+  "arti": "learn",
+  "volume": [
+   "VOL4",
+   "VOL5",
+   "N4VOL3"
+  ]
+ },
+ {
+  "no": 143,
+  "kanji": "駅",
+  "on": "エキ",
+  "kun": "",
+  "arti": "station",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 144,
+  "kanji": "洋",
+  "on": "ヨウ",
+  "kun": "",
+  "arti": "ocean, sea, foreign, Western style",
+  "volume": []
+ },
+ {
+  "no": 145,
+  "kanji": "旅",
+  "on": "リョ",
+  "kun": "たび",
+  "arti": "trip, travel",
+  "volume": [
+   "VOL5",
+   "N4VOL5"
+  ]
+ },
+ {
+  "no": 146,
+  "kanji": "服",
+  "on": "フク",
+  "kun": "",
+  "arti": "clothing, admit, obey",
+  "volume": [
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 147,
+  "kanji": "夕",
+  "on": "(none)",
+  "kun": "ゆう",
+  "arti": "evening",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 148,
+  "kanji": "借",
+  "on": "シャク",
+  "kun": "か(りる)",
+  "arti": "borrow, rent",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 149,
+  "kanji": "曜",
+  "on": "ヨウ",
+  "kun": "",
+  "arti": "weekday",
+  "volume": []
+ },
+ {
+  "no": 150,
+  "kanji": "飲",
+  "on": "イン",
+  "kun": "の(む)",
+  "arti": "drink",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 151,
+  "kanji": "肉",
+  "on": "ニク",
+  "kun": "",
+  "arti": "meat",
+  "volume": [
+   "VOL2",
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 152,
+  "kanji": "貸",
+  "on": "タイ",
+  "kun": "か(す)、 かし",
+  "arti": "lend",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 153,
+  "kanji": "堂",
+  "on": "ドウ",
+  "kun": "",
+  "arti": "public chamber, hall",
+  "volume": [
+   "VOL3"
+  ]
+ },
+ {
+  "no": 154,
+  "kanji": "鳥",
+  "on": "チョウ",
+  "kun": "とり",
+  "arti": "bird, chicken",
+  "volume": [
+   "VOL4"
+  ]
+ },
+ {
+  "no": 155,
+  "kanji": "飯",
+  "on": "ハン",
+  "kun": "めし",
+  "arti": "meal, rice",
+  "volume": [
+   "VOL1",
+   "VOL3",
+   "VOL4",
+   "VOL5"
+  ]
+ },
+ {
+  "no": 156,
+  "kanji": "勉",
+  "on": "ベン",
+  "kun": "つと(める)",
+  "arti": "exertion, endeavor, effort",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 157,
+  "kanji": "冬",
+  "on": "トウ",
+  "kun": "ふゆ",
+  "arti": "winter",
+  "volume": [
+   "VOL5"
+  ]
+ },
+ {
+  "no": 158,
+  "kanji": "昼",
+  "on": "チュウ",
+  "kun": "ひる",
+  "arti": "daytime, noon",
+  "volume": [
+   "VOL5",
+   "N4VOL4"
+  ]
+ },
+ {
+  "no": 159,
+  "kanji": "茶",
+  "on": "チャ、 サ",
+  "kun": "",
+  "arti": "tea",
+  "volume": [
+   "VOL1",
+   "VOL2",
+   "VOL4"
+  ]
+ },
+ {
+  "no": 160,
+  "kanji": "弟",
+  "on": "テイ、 ダイ、 デ",
+  "kun": "おとうと",
+  "arti": "younger brother",
+  "volume": [
+   "VOL1",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 161,
+  "kanji": "牛",
+  "on": "ギュウ",
+  "kun": "うし",
+  "arti": "cow",
+  "volume": [
+   "VOL2"
+  ]
+ },
+ {
+  "no": 162,
+  "kanji": "魚",
+  "on": "ギョ",
+  "kun": "うお、 さかな",
+  "arti": "fish",
+  "volume": [
+   "VOL3"
+  ]
+ },
+ {
+  "no": 163,
+  "kanji": "兄",
+  "on": "キョウ、 ケイ",
+  "kun": "あに",
+  "arti": "elder brother",
+  "volume": [
+   "VOL1",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 164,
+  "kanji": "犬",
+  "on": "ケン",
+  "kun": "いぬ",
+  "arti": "dog",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 165,
+  "kanji": "妹",
+  "on": "マイ",
+  "kun": "いもうと",
+  "arti": "younger sister",
+  "volume": [
+   "VOL1"
+  ]
+ },
+ {
+  "no": 166,
+  "kanji": "姉",
+  "on": "シ",
+  "kun": "あね",
+  "arti": "elder sister",
+  "volume": [
+   "VOL1",
+   "VOL2"
+  ]
+ },
+ {
+  "no": 167,
+  "kanji": "漢",
+  "on": "カン",
+  "kun": "",
+  "arti": "China",
+  "volume": []
+ }
+]
