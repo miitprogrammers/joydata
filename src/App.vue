@@ -42,7 +42,10 @@ const configNavItems = computed(() =>
 );
 
 const currentPageTitle = computed(() => {
-  const matched = appStore.allowedPages.find((p) => p.routePath === route.path);
+  // Sub-routes (e.g. /materi-bunpou/tara) share the title of their page via meta.pageKode.
+  const matched =
+    appStore.allowedPages.find((p) => p.routePath === route.path) ||
+    (route.meta.pageKode ? appStore.allowedPages.find((p) => p.kode === route.meta.pageKode) : undefined);
   if (matched) {
     return locale.value === 'ja' ? matched.titleJa : matched.titleId;
   }
@@ -177,6 +180,7 @@ onUnmounted(() => {
             v-for="item in mainNavItems"
             :key="item.kode"
             :to="item.routePath"
+            :active="route.meta.pageKode === item.kode ? true : undefined"
             :prepend-icon="item.icon"
             :title="locale === 'ja' ? item.titleJa : item.titleId"
             rounded="lg"
@@ -188,6 +192,7 @@ onUnmounted(() => {
             v-for="item in configNavItems"
             :key="item.kode"
             :to="item.routePath"
+            :active="route.meta.pageKode === item.kode ? true : undefined"
             :prepend-icon="item.icon"
             :title="locale === 'ja' ? item.titleJa : item.titleId"
             rounded="lg"

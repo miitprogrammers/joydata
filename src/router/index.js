@@ -19,6 +19,8 @@ import KaiwaMingguanView from '../views/KaiwaMingguanView.vue';
 import NilaiMensetsuView from '../views/NilaiMensetsuView.vue';
 import TesOnlineView from '../views/TesOnlineView.vue';
 import MonitorLatihanView from '../views/MonitorLatihanView.vue';
+import MateriBunpouView from '../views/MateriBunpouView.vue';
+import MateriBunpouPresentasiView from '../views/MateriBunpouPresentasiView.vue';
 import EvaluasiFisikView from '../views/EvaluasiFisikView.vue';
 import NilaiSikapView from '../views/NilaiSikapView.vue';
 import AbsensiView from '../views/AbsensiView.vue';
@@ -194,6 +196,8 @@ const routes = [
   { path: '/mensetsu', name: 'rekap-mensetsu', component: NilaiMensetsuView, meta: { pageKode: 'rekap-mensetsu' } },
   { path: '/tes-online', name: 'tes-online', component: TesOnlineView, meta: { pageKode: 'tes-online' } },
   { path: '/monitor-latihan', name: 'monitor-latihan', component: MonitorLatihanView, meta: { pageKode: 'monitor-latihan' } },
+  { path: '/materi-bunpou', name: 'materi-bunpou', component: MateriBunpouView, meta: { pageKode: 'materi-bunpou' } },
+  { path: '/materi-bunpou/:id', name: 'materi-bunpou-presentasi', component: MateriBunpouPresentasiView, meta: { pageKode: 'materi-bunpou' } },
   { path: '/evaluasi-fisik', name: 'evaluasi-fisik', component: EvaluasiFisikView, meta: { pageKode: 'evaluasi-fisik' } },
   { path: '/nilai-sikap', name: 'rekap-nilai-sikap', component: NilaiSikapView, meta: { pageKode: 'rekap-nilai-sikap' } },
   { path: '/absensi', name: 'rekap-absensi', component: AbsensiView, meta: { pageKode: 'rekap-absensi' } },
