@@ -70,7 +70,8 @@ export function validasiSoalBintang(soal, { katalog, jlpt }) {
   else {
     const polos = potongan.map((p) => tanpaSpasi(tanpaFurigana(p)));
     if (new Set(polos).size !== polos.length) tambah('potongan kembar');
-    if (polos.some((p) => TANDA_BACA.test(p))) tambah('potongan hanya tanda baca');
+    // ？ boleh sebagai potongan tunggal (pola pertanyaan informal futsuutai)
+    if (polos.some((p) => p !== '？' && TANDA_BACA.test(p))) tambah('potongan hanya tanda baca');
   }
 
   if (!Number.isInteger(soal.bintang) || soal.bintang < 0 || soal.bintang >= JUMLAH_KOTAK) {
@@ -111,7 +112,8 @@ export function validasiSoalBintang(soal, { katalog, jlpt }) {
     tambah(`pola di atas tingkat ${jlpt}: ${nama}`);
   }
 
-  if (!teksAda(soal.terjemahan)) tambah('terjemahan kosong');
+  // terjemahan boleh kosong untuk soal draf
+  if (soal.status !== 'draf' && !teksAda(soal.terjemahan)) tambah('terjemahan kosong');
   if (!teksAda(soal.pembahasan)) tambah('pembahasan kosong');
   return masalah;
 }

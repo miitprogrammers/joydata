@@ -183,6 +183,8 @@ Isi adalah bagian terberat: **N5 ±264 soal, N4 ±388 soal** (4 varian × pola).
 menjawab tanpa kunci dan wajib mencari urutan lain → inject. Pilot dulu: **12 pola (Bab 1, 2, 16, 19) × 4 varian = 48 soal**,
 dinilai user/sensei di layar sebelum produksi massal.
 
+Progres produksi per volume dan per pola dicatat di **[progres-soal.md](progres-soal.md)**.
+
 Urutan produksi: N5 Vol 1 → 5 (Joy 3 di tahap N5, Komprehensif Bab 1–25 belum lewat), lalu N4 Vol 1 → 5 (Joy 1/2).
 Rilis bisa dimulai begitu N5 Vol 1 dan N4 Vol 1 lengkap. Volume lain tampil "Segera" sampai banknya penuh.
 

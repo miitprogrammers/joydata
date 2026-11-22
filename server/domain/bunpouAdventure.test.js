@@ -105,8 +105,8 @@ test('statusRilis: dirilis hanya bila setiap pola punya >= MIN_VARIAN soal', () 
   assert.equal(kurang.dirilis, false);
   assert.equal(kurang.kurang.length, pola.length);
   assert.deepEqual(kurang.kurang[0], { pola: pola[0], ada: ba.MIN_VARIAN - 1 });
-  // Bank nyata masih kosong: tidak ada volume yang dirilis.
-  assert.equal(ba.statusRilis('BN5V1', {}).dirilis, false);
+  // Bank nyata sekarang ada isi: BN5V1 dirilis (10 pola × 4 soal = 40 soal).
+  assert.equal(ba.statusRilis('BN5V1', {}).dirilis, true);
 });
 
 test('volumeTersedia: Vol 1 tiap tingkat terbuka (N4 tanpa N5); Vol n perlu Vol n-1 selesai', () => {

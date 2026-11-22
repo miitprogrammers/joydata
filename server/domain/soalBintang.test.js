@@ -127,7 +127,8 @@ test('validator menolak bintang di luar 0-3, baris soal ganda, huruf Latin, dan 
   assert.match(masalahDari(salin(FUJISAN, { bintang: 4 })), /bintang/);
   assert.match(masalahDari(salin(FUJISAN, { baris: [{ sebelum: 'a', sesudah: 'b' }, { sebelum: 'c', sesudah: 'd' }] })), /tepat satu baris soal/);
   assert.match(masalahDari(salin(FUJISAN, { baris: [{ sebelum: 'わたしは ABC', sesudah: '。' }] })), /huruf Latin/);
-  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '' })), /terjemahan kosong/);
+  // terjemahan kosong hanya ditolak untuk soal status final (bukan draf)
+  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '', status: 'final' })), /terjemahan kosong/);
   assert.match(masalahDari(salin(FUJISAN, { pembahasan: ' ' })), /pembahasan kosong/);
 });
 

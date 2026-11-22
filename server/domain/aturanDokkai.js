@@ -15,7 +15,8 @@ export const HINDARI_N5_KANA = ['こうじょう', 'せんぱい', 'きゅうり
 export const POLA_DI_ATAS_N5 = [
   [/ので(?!す)/, '～ので (Bab 39; abaikan bila bagian dari kata lain)'],
   [/つもり/, '～つもり (Bab 31)'],
-  [/(?<![さばかげじたほゃょぶこしろらめぱにてどごぺぜけせ])んです/, '～んです (Bab 26)'],
+  // いんです dari かいしゃいん (会社員) + です adalah false positive, bukan pola ～んです
+  [/(?<![さばかげじたほゃょぶこしろらめぱにてどごぺぜけせやい])んです/, '～んです (Bab 26)'],
   [/ながら/, '～ながら (Bab 28)'],
   [/(です|ます)し[、，]/, '～し (Bab 28)'],
   [/[てで]しま[ういっわ]/, '～てしまう (Bab 29)'],
