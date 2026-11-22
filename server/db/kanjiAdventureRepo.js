@@ -161,9 +161,7 @@ export async function simpanProgresAdventure(pesertaId, materi, progres) {
 export async function pastikanProgresAdventure(pesertaId, materi, itemIds) {
   await ensureInitialized();
   return tanpaGagal(async () => {
-    const ada = await bacaProgresAdventure(pesertaId, materi);
-    if (ada?.itemIds?.length) return ada;
-    return simpanProgresAdventure(pesertaId, materi, {
+    const kosong = {
       itemIds: list(itemIds),
       dikuasai: [],
       bosses: [],
@@ -172,7 +170,37 @@ export async function pastikanProgresAdventure(pesertaId, materi, itemIds) {
       selesai: false,
       perlu_perhatian: false,
       riwayat: [],
-    });
+    };
+    if (getMode() === 'postgres') {
+      // Never overwrite: a failed read must not be mistaken for "no row" and wipe saved progress.
+      await getPool().query(
+        `INSERT INTO kanji_adventure_progres
+           (peserta_id, materi, item_ids, dikuasai, bosses, boss_ronde,
+            chunk_terbuka, selesai, perlu_perhatian, riwayat, updated_at)
+         VALUES ($1, $2, $3, '[]', '[]', 0, 0, false, false, '[]', NOW())
+         ON CONFLICT (peserta_id, materi) DO UPDATE
+           SET item_ids = EXCLUDED.item_ids, updated_at = NOW()
+           WHERE jsonb_array_length(kanji_adventure_progres.item_ids) = 0`,
+        [pesertaId, materi, JSON.stringify(kosong.itemIds)],
+      );
+      const { rows } = await getPool().query(
+        `SELECT ${KOLOM} FROM kanji_adventure_progres WHERE peserta_id = $1 AND materi = $2`,
+        [pesertaId, materi],
+      );
+      return progresView(rows[0]);
+    }
+    const baris = (readLocalState().kanjiAdventureProgres || []).find(
+      (p) => Number(p.pesertaId) === Number(pesertaId) && p.materi === materi,
+    );
+    if (baris) {
+      // Repair an empty snapshot only; every other field stays as saved.
+      if (!list(baris.itemIds).length && kosong.itemIds.length) {
+        baris.itemIds = kosong.itemIds;
+        saveLocalState();
+      }
+      return progresView(baris);
+    }
+    return simpanProgresAdventure(pesertaId, materi, kosong);
   }, null);
 }
 
@@ -268,6 +296,98 @@ export async function bacaSesiAdventure(id, pesertaId, { sekarang = Date.now() }
     }
     return sesi;
   }, null);
+}
+
+/**
+ * Grade one paper atomically. `evaluasi(sesi, progres, semuaProgres)` is a pure callback that runs the gates and
+ * returns `{ hasil, progresBaru }`; if it throws, nothing is written and the paper is kept. Postgres: one
+ * transaction (claim the paper, lock the progress row, update). Local mode: no await between read and write.
+ * Errors are not swallowed: a transient failure rolls back and the paper survives for a retry.
+ */
+export async function nilaiSesiAdventureAtomik(pesertaId, sesiId, evaluasi) {
+  await ensureInitialized();
+  let galatEvaluasi = null;
+  const jalankan = (sesi, progres, semua) => {
+    try {
+      return evaluasi(sesi, progres, semua);
+    } catch (err) {
+      galatEvaluasi = err;
+      throw err;
+    }
+  };
+  const bungkus = (err) => {
+    if (err === galatEvaluasi || err.message === 'SESI_TIDAK_ADA') return err;
+    console.error('Kanji Adventure repo:', err.message);
+    return new Error('GAGAL_SESI_ADVENTURE');
+  };
+
+  try {
+    if (getMode() === 'postgres') {
+      const client = await getPool().connect();
+      try {
+        await client.query('BEGIN');
+        const { rows: sesiRows } = await client.query(
+          `DELETE FROM kanji_adventure_sesi WHERE id = $1 AND peserta_id = $2 AND kedaluwarsa_pada > NOW()
+           RETURNING ${KOLOM_SESI}`,
+          [sesiId, pesertaId],
+        );
+        const sesi = sesiView(sesiRows[0]);
+        if (!sesi) throw new Error('SESI_TIDAK_ADA');
+        const { rows: kunci } = await client.query(
+          `SELECT ${KOLOM} FROM kanji_adventure_progres WHERE peserta_id = $1 AND materi = $2 FOR UPDATE`,
+          [pesertaId, sesi.materi],
+        );
+        const progres = progresView(kunci[0]);
+        if (!progres) throw new Error('SESI_TIDAK_ADA');
+        const { rows: semuaRows } = await client.query(
+          `SELECT ${KOLOM} FROM kanji_adventure_progres WHERE peserta_id = $1`,
+          [pesertaId],
+        );
+        const hasil = jalankan(sesi, progres, semuaRows.map(progresView).sort(urutanMateri));
+        const p = progresView({ ...hasil.progresBaru, pesertaId, materi: sesi.materi });
+        await client.query(
+          `UPDATE kanji_adventure_progres SET item_ids = $3, dikuasai = $4, bosses = $5, boss_ronde = $6,
+             chunk_terbuka = $7, selesai = $8, perlu_perhatian = $9, riwayat = $10, updated_at = NOW()
+           WHERE peserta_id = $1 AND materi = $2`,
+          [pesertaId, sesi.materi, JSON.stringify(p.itemIds), JSON.stringify(p.dikuasai), JSON.stringify(p.bosses),
+            p.boss_ronde, p.chunk_terbuka, p.selesai, p.perlu_perhatian, JSON.stringify(p.riwayat)],
+        );
+        await client.query('COMMIT');
+        return { sesi, progres, ...hasil };
+      } catch (err) {
+        await client.query('ROLLBACK').catch(() => {});
+        throw err;
+      } finally {
+        client.release();
+      }
+    }
+
+    // Local mode: no await between read and write, so another request cannot interleave.
+    const db = readLocalState();
+    const sesi = sesiView((db.kanjiAdventureSesi || []).find(
+      (s) => s.id === sesiId && Number(s.pesertaId) === Number(pesertaId),
+    ));
+    if (!sesi || !masihBerlaku(sesi)) throw new Error('SESI_TIDAK_ADA');
+    const semua = (db.kanjiAdventureProgres || [])
+      .filter((p) => Number(p.pesertaId) === Number(pesertaId))
+      .map(progresView)
+      .sort(urutanMateri);
+    const progres = semua.find((p) => p.materi === sesi.materi);
+    if (!progres) throw new Error('SESI_TIDAK_ADA');
+    const hasil = jalankan(sesi, progres, semua);
+    const p = progresView({
+      ...hasil.progresBaru, pesertaId, materi: sesi.materi, updatedAt: new Date().toISOString(),
+    });
+    const indeks = db.kanjiAdventureProgres.findIndex(
+      (x) => Number(x.pesertaId) === Number(pesertaId) && x.materi === sesi.materi,
+    );
+    db.kanjiAdventureProgres[indeks] = p;
+    db.kanjiAdventureSesi = db.kanjiAdventureSesi.filter((s) => s.id !== sesiId);
+    saveLocalState();
+    return { sesi, progres, ...hasil };
+  } catch (err) {
+    throw bungkus(err);
+  }
 }
 
 export async function hapusSesiAdventure(id, pesertaId = null) {

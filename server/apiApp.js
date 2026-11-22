@@ -123,10 +123,10 @@ import { ringkasanMateri, ambilMateri, kategoriModul } from './domain/materiBunp
 import {
   bacaProgresAdventure,
   bacaSesiAdventure,
+  nilaiSesiAdventureAtomik,
   daftarProgresAdventure,
   hapusSesiAdventure,
   pastikanProgresAdventure,
-  simpanProgresAdventure,
   simpanSesiAdventure,
   tambahSesiAdventure,
 } from './db/kanjiAdventureRepo.js';
@@ -302,6 +302,7 @@ function petaChunkAdventure(materi, progres, { terkunci = false } = {}) {
     boss: {
       status: statusBoss,
       jumlah: bosses.length,
+      ukuranRonde: Math.min(bosses.length, kanjiAdventure.UKURAN_CHUNK),
       items: bosses.map((b) => ({
         id: b.id,
         kanji: itemById.get(b.id)?.kanji ?? b.id.split(':').slice(1).join(':'),
@@ -666,28 +667,30 @@ export function createApiRouter() {
   router.post('/portal/kanji-adventure/nilai', requirePeserta(), async (req, res) => {
     try {
       const { sesiId, jawaban } = req.body || {};
-      const sesi = typeof sesiId === 'string' ? await bacaSesiAdventure(sesiId, req.peserta.id) : null;
-      if (!sesi) throw new Error('SESI_TIDAK_ADA');
-
-      const hasil = kanjiAdventure.nilaiChunk(sesi.soal, jawaban);
-      const progres = await bacaProgresAdventure(req.peserta.id, sesi.materi);
-      if (!progres) throw new Error('SESI_TIDAK_ADA');
-
-      // f5g: re-check the gate at grading time. A session opened earlier must not be able to
-      // unlock a chunk/volume that the server has since locked again.
-      const semuaProgres = await daftarProgresAdventure(req.peserta.id);
-      if (!kanjiAdventure.volumeTersedia(semuaProgres, sesi.materi)) throw new Error('VOLUME_TERKUNCI');
-      kanjiAdventure.rencanaSesiAdventure(progres, sesi.materi, {
-        mode: sesi.mode,
-        chunkIndex: sesi.chunkIndex,
-      });
-
-      const progresBaru = kanjiAdventure.evaluasiProgres(progres, hasil, {
-        chunkIndex: sesi.chunkIndex,
-        sekarang: new Date().toISOString(),
-      });
-      const tersimpan = await simpanProgresAdventure(req.peserta.id, sesi.materi, progresBaru);
-      if (!tersimpan) throw new Error('GAGAL_SESI_ADVENTURE');
+      // One atomic step: claim the paper, run the gates and save progress. A failed gate or a transient DB
+      // error rolls back and keeps the paper; a double submit finds it gone (SESI_TIDAK_ADA).
+      if (typeof sesiId !== 'string') throw new Error('SESI_TIDAK_ADA');
+      const { sesi, progres, hasil, progresBaru } = await nilaiSesiAdventureAtomik(
+        req.peserta.id,
+        sesiId,
+        (sesiKlaim, progresLama, semuaProgres) => {
+          const hasilNilai = kanjiAdventure.nilaiChunk(sesiKlaim.soal, jawaban);
+          // f5g: re-check the gate at grading time. A session opened earlier must not be able to
+          // unlock a chunk/volume that the server has since locked again.
+          if (!kanjiAdventure.volumeTersedia(semuaProgres, sesiKlaim.materi)) throw new Error('VOLUME_TERKUNCI');
+          kanjiAdventure.rencanaSesiAdventure(progresLama, sesiKlaim.materi, {
+            mode: sesiKlaim.mode,
+            chunkIndex: sesiKlaim.chunkIndex,
+          });
+          return {
+            hasil: hasilNilai,
+            progresBaru: kanjiAdventure.evaluasiProgres(progresLama, hasilNilai, {
+              chunkIndex: sesiKlaim.chunkIndex,
+              sekarang: new Date().toISOString(),
+            }),
+          };
+        },
+      );
 
       // The progress is safe now. Closing the practice session must not block showing the result, so a
       // session already closed elsewhere or a transient error here is tolerated; tutupLatihan is a no-op
@@ -700,7 +703,6 @@ export function createApiRouter() {
         itemSelesai: hasil.total,
         detikAktif: req.body?.detikAktif,
       }).catch(() => {});
-      await hapusSesiAdventure(sesiId, req.peserta.id);
 
       let grade = null;
       try {

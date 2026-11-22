@@ -123,3 +123,67 @@ test('sesi adventure yang kedaluwarsa dianggap tidak ada', async () => {
   });
   assert.equal(await repo.bacaSesiAdventure('sesi-repo-lewat', 1), null);
 });
+
+test('pastikanProgresAdventure tidak pernah mereset progres yang sudah ada', async () => {
+  await repo.pastikanProgresAdventure(21, 'DASAR', ['D1', 'D2']);
+  await repo.simpanProgresAdventure(21, 'DASAR', {
+    itemIds: ['D1', 'D2'], dikuasai: ['D1'], bosses: [{ id: 'D2', salah: 2 }],
+    boss_ronde: 1, chunk_terbuka: 1, selesai: true, perlu_perhatian: false, riwayat: [],
+  });
+  const lagi = await repo.pastikanProgresAdventure(21, 'DASAR', ['X']);
+  assert.deepEqual(lagi.dikuasai, ['D1']);
+  assert.equal(lagi.selesai, true);
+  assert.equal(lagi.bosses[0].salah, 2);
+});
+
+async function siapkanSesi(id, pesertaId) {
+  await repo.simpanProgresAdventure(pesertaId, 'DASAR', {
+    itemIds: ['D1', 'D2'], dikuasai: ['D1'], bosses: [], boss_ronde: 0,
+    chunk_terbuka: 0, selesai: false, perlu_perhatian: false, riwayat: [],
+  });
+  await repo.simpanSesiAdventure({
+    id, pesertaId, materi: 'DASAR', mode: 'reguler', chunkIndex: 0,
+    itemIds: ['D1', 'D2'], soal: [{ id: 'D1' }],
+    kedaluwarsaPada: new Date(Date.now() + 60_000).toISOString(),
+  });
+}
+
+test('nilaiSesiAdventureAtomik menilai sekali: yang kedua SESI_TIDAK_ADA, hanya pemilik yang bisa', async () => {
+  await siapkanSesi('sesi-atomik-1', 5);
+  const evaluasi = (sesi, progres) => ({ hasil: { ok: true }, progresBaru: { ...progres, chunk_terbuka: 1 } });
+  await assert.rejects(repo.nilaiSesiAdventureAtomik(6, 'sesi-atomik-1', evaluasi), /SESI_TIDAK_ADA/);
+  const [a, b] = await Promise.allSettled([
+    repo.nilaiSesiAdventureAtomik(5, 'sesi-atomik-1', evaluasi),
+    repo.nilaiSesiAdventureAtomik(5, 'sesi-atomik-1', evaluasi),
+  ]);
+  assert.deepEqual([a.status, b.status].sort(), ['fulfilled', 'rejected']);
+  assert.equal((await repo.bacaProgresAdventure(5, 'DASAR')).chunk_terbuka, 1);
+  assert.equal(await repo.bacaSesiAdventure('sesi-atomik-1', 5), null);
+});
+
+test('nilaiSesiAdventureAtomik: gerbang yang gagal membiarkan kertas dan progres utuh', async () => {
+  await siapkanSesi('sesi-atomik-2', 8);
+  const sebelum = await repo.bacaProgresAdventure(8, 'DASAR');
+  await assert.rejects(
+    repo.nilaiSesiAdventureAtomik(8, 'sesi-atomik-2', () => { throw new Error('VOLUME_TERKUNCI'); }),
+    /VOLUME_TERKUNCI/,
+  );
+  assert.ok(await repo.bacaSesiAdventure('sesi-atomik-2', 8));
+  const sesudah = await repo.bacaProgresAdventure(8, 'DASAR');
+  assert.deepEqual(sesudah, sebelum);
+});
+
+test('pastikanProgresAdventure mengisi itemIds kosong tanpa menyentuh dikuasai dan bosses', async () => {
+  await repo.simpanProgresAdventure(22, 'DASAR', {
+    itemIds: [], dikuasai: ['D1'], bosses: [{ id: 'D2', salah: 3 }],
+    boss_ronde: 2, chunk_terbuka: 1, selesai: false, perlu_perhatian: true, riwayat: [],
+  });
+  const hasil = await repo.pastikanProgresAdventure(22, 'DASAR', ['D1', 'D2', 'D3']);
+  assert.deepEqual(hasil.itemIds, ['D1', 'D2', 'D3']);
+  assert.deepEqual(hasil.dikuasai, ['D1']);
+  assert.equal(hasil.bosses[0].salah, 3);
+  assert.equal(hasil.boss_ronde, 2);
+  const baca = await repo.bacaProgresAdventure(22, 'DASAR');
+  assert.deepEqual(baca.itemIds, ['D1', 'D2', 'D3']);
+  assert.deepEqual(baca.dikuasai, ['D1']);
+});

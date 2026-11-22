@@ -219,3 +219,79 @@ test('f5f: server menolak nilai bila chunk sesi sudah dikunci ulang', async () =
     await call('POST', '/portal/kanji-adventure/detak', { sesiId: mulai.data.sesiId, selesai: true });
   }
 });
+
+test('bos: salah di chunk lalu ulang sampai lulus, ronde bos <= 10 soal, volume berikutnya terkunci sampai bos kosong', async () => {
+  const materi = 'DASAR';
+  const jawab = (soal, salahIds = []) => Object.fromEntries(soal.map((q) => [q.id, salahIds.includes(q.id)
+    ? { bacaan: q.bacaan.benar === 0 ? 1 : 0, arti: q.arti.benar === 0 ? 1 : 0 }
+    : { bacaan: q.bacaan.benar, arti: q.arti.benar }]));
+  const main = async (body, salahDepan) => {
+    const mulai = await call('POST', '/portal/kanji-adventure/mulai', body);
+    assert.equal(mulai.status, 200);
+    const salah = mulai.data.soal.slice(0, salahDepan).map((q) => q.id);
+    const nilai = await call('POST', '/portal/kanji-adventure/nilai', {
+      sesiId: mulai.data.sesiId, jawaban: jawab(mulai.data.soal, salah), detikAktif: 30,
+    });
+    assert.equal(nilai.status, 200);
+    return { mulai, nilai, salah };
+  };
+
+  const awal = await call('GET', `/portal/kanji-adventure/volume/${materi}`);
+  assert.equal(awal.status, 200);
+  const jumlahChunk = awal.data.chunks.length;
+  const pernahSalah = new Set();
+  for (let i = 0; i < jumlahChunk; i += 1) {
+    const salah = await main({ materi, chunkIndex: i }, 3);
+    salah.salah.forEach((id) => pernahSalah.add(id));
+    // Replay right until the chunk passes.
+    let lulus = false;
+    for (let t = 0; t < 3 && !lulus; t += 1) {
+      lulus = (await main({ materi, chunkIndex: i }, 0)).nilai.data.chunkTuntas;
+    }
+    assert.equal(lulus, true);
+  }
+
+  const peta = await call('GET', `/portal/kanji-adventure/volume/${materi}`);
+  assert.equal(peta.data.boss.status, 'tersedia');
+  assert.ok(peta.data.boss.jumlah >= pernahSalah.size);
+  assert.equal(peta.data.boss.ukuranRonde, Math.min(peta.data.boss.jumlah, 10));
+  const daftar = await call('GET', '/portal/kanji-adventure/volume');
+  assert.equal(daftar.data.find((v) => v.materi === materi).progres.selesai, false);
+  assert.equal((await call('POST', '/portal/kanji-adventure/mulai', { materi: 'VOL1', chunkIndex: 0 })).status, 403);
+
+  let guard = 0;
+  let akhir;
+  while (guard < 20) {
+    guard += 1;
+    const ronde = await main({ materi, mode: 'boss' }, 0);
+    assert.ok(ronde.mulai.data.soal.length <= 10);
+    akhir = ronde.nilai.data;
+    if (akhir.sisa === 0) break;
+    assert.equal((await call('POST', '/portal/kanji-adventure/mulai', { materi: 'VOL1', chunkIndex: 0 })).status, 403);
+  }
+  assert.equal(akhir.sisa, 0);
+  const sesudah = await call('GET', `/portal/kanji-adventure/volume/${materi}`);
+  assert.equal(sesudah.data.boss.status, 'selesai');
+  const buka = await call('POST', '/portal/kanji-adventure/mulai', { materi: 'VOL1', chunkIndex: 0 });
+  assert.equal(buka.status, 200);
+  await call('POST', '/portal/kanji-adventure/detak', { sesiId: buka.data.sesiId, selesai: true });
+});
+
+test('nilai: kertas yang sama dikirim dua kali dinilai sekali, yang kedua 404', async () => {
+  const mulai = await call('POST', '/portal/kanji-adventure/mulai', { materi: 'DASAR', chunkIndex: 0 });
+  assert.equal(mulai.status, 200);
+  const jawaban = Object.fromEntries(
+    mulai.data.soal.map((q) => [q.id, { bacaan: q.bacaan.benar, arti: q.arti.benar }]),
+  );
+  const riwayatDasar = () => engine.readLocalState().kanjiAdventureProgres
+    .find((p) => Number(p.pesertaId) === Number(uid) && p.materi === 'DASAR').riwayat;
+  const waktuAwal = riwayatDasar().at(-1)?.waktu || '';
+  const body = { sesiId: mulai.data.sesiId, jawaban, detikAktif: 10 };
+  const hasil = await Promise.all([
+    call('POST', '/portal/kanji-adventure/nilai', body),
+    call('POST', '/portal/kanji-adventure/nilai', body),
+  ]);
+  assert.deepEqual(hasil.map((h) => h.status).sort(), [200, 404]);
+  // riwayat is capped, so count the entries newer than before instead of its length.
+  assert.equal(riwayatDasar().filter((r) => r.waktu > waktuAwal).length, 1);
+});

@@ -128,7 +128,7 @@ test('a failed chunk opens a boss entry and does not advance the chunk', () => {
   assert.equal(p.dikuasai.length, 0);
 });
 
-test('mastered items leave the boss list and the chunk advances', () => {
+test('items answered right in a chunk replay stay in the boss list until a boss round', () => {
   const items = itemVolume('DASAR');
   const p = progresAwal();
   const soal = susunSoalChunk(items, pecahChunk(p.itemIds)[0].itemIds, { rng: rngDari(5) });
@@ -144,10 +144,95 @@ test('mastered items leave the boss list and the chunk advances', () => {
     { chunkIndex: 0, sekarang: '2026-11-19T04:05:00.000Z' }
   );
   assert.equal(kedua.dikuasai.length, 10);
-  assert.deepEqual(kedua.bosses, []);
+  assert.deepEqual(kedua.bosses.map((b) => b.id), [itemSalah]);
   assert.equal(kedua.chunk_terbuka, 1);
   assert.equal(kedua.chunk_tuntas, true);
   assert.equal(kedua.selesai, false);
+});
+
+// Plays a whole volume: the first `jumlahSalah` items of every chunk are wrong once, then the chunk is replayed right.
+function mainkanVolumeDenganSalah(materi, jumlahSalah) {
+  const items = itemVolume(materi);
+  let p = progresAwal(materi);
+  const pernahSalah = [];
+  let n = 0;
+  for (const chunk of pecahChunk(p.itemIds)) {
+    const soal = susunSoalChunk(items, chunk.itemIds, { rng: rngDari(100 + chunk.index) });
+    const salah = jumlahSalah ? soal.slice(0, jumlahSalah).map((s) => s.id) : [];
+    pernahSalah.push(...salah);
+    if (salah.length) {
+      n += 1;
+      p = evaluasiProgres(p, nilaiChunk(soal, jawabanSalah(soal, salah)), {
+        chunkIndex: chunk.index, sekarang: `2026-11-19T04:${String(n).padStart(2, '0')}:00.000Z`,
+      });
+    }
+    n += 1;
+    p = evaluasiProgres(p, nilaiChunk(soal, jawabanBenar(soal)), {
+      chunkIndex: chunk.index, sekarang: `2026-11-19T04:${String(n).padStart(2, '0')}:00.000Z`,
+    });
+  }
+  return { items, p, pernahSalah };
+}
+
+test('regression: a full volume with mistakes ends in a boss round, not in "selesai"', () => {
+  const { p, pernahSalah } = mainkanVolumeDenganSalah('DASAR', 3);
+  assert.equal(p.chunk_terbuka, p.chunk_count);
+  assert.equal(p.selesai, false);
+  assert.deepEqual(new Set(p.bosses.map((b) => b.id)), new Set(pernahSalah));
+  assert.equal(volumeTersedia([p], 'VOL1'), false);
+
+  // Boss rounds of at most ten items, repeated until the list is empty.
+  let sekarang = p;
+  let ronde = 0;
+  while (sekarang.bosses.length) {
+    const rencana = rencanaSesiAdventure(sekarang, 'DASAR', { mode: 'boss' });
+    assert.ok(rencana.itemIds.length <= UKURAN_CHUNK);
+    sekarang = evaluasiProgres(sekarang, nilaiChunk(rencana.soal, jawabanBenar(rencana.soal)), {
+      chunkIndex: -1, sekarang: `2026-11-19T06:0${ronde}:00.000Z`,
+    });
+    ronde += 1;
+    assert.equal(sekarang.selesai, sekarang.bosses.length === 0);
+  }
+  assert.equal(ronde, Math.ceil(pernahSalah.length / UKURAN_CHUNK));
+  assert.equal(sekarang.selesai, true);
+  assert.equal(volumeTersedia([sekarang], 'VOL1'), true);
+});
+
+test('a volume without mistakes finishes without a boss round', () => {
+  const { p } = mainkanVolumeDenganSalah('DASAR', 0);
+  assert.deepEqual(p.bosses, []);
+  assert.equal(p.selesai, true);
+  assert.equal(p.boss_ronde, 0);
+});
+
+test('a boss round holds at most ten items, most wrong first, the rest stay in the list', () => {
+  const ids = itemVolume('DASAR').map((i) => i.id);
+  const bosses = ids.slice(0, 15).map((id, i) => ({ id, salah: i === 14 ? 9 : 1 + (i % 3), terakhirSalah: null }));
+  const p = {
+    ...progresAwal('DASAR', ids),
+    chunk_terbuka: pecahChunk(ids).length,
+    dikuasai: ids,
+    bosses,
+  };
+  const rencana = rencanaSesiAdventure(p, 'DASAR', { mode: 'boss' });
+  assert.equal(rencana.itemIds.length, UKURAN_CHUNK);
+  assert.equal(rencana.itemIds[0], ids[14]); // most wrong first
+  assert.deepEqual(rencana.itemIds, daftarBossAdventure(p).slice(0, UKURAN_CHUNK).map((b) => b.id));
+
+  const next = evaluasiProgres(p, nilaiChunk(rencana.soal, jawabanBenar(rencana.soal)), { chunkIndex: -1 });
+  assert.equal(next.bosses.length, 5);
+  assert.ok(next.bosses.every((b) => !rencana.itemIds.includes(b.id)));
+  assert.equal(next.selesai, false);
+  assert.equal(next.chunk_tuntas, false);
+});
+
+test('selesai is sticky: replaying a finished volume wrongly adds no bosses and does not relock', () => {
+  const { items, p: tamat } = mainkanVolumeDenganSalah('DASAR', 0);
+  const soal = susunSoalChunk(items, pecahChunk(tamat.itemIds)[0].itemIds, { rng: rngDari(77) });
+  const ulang = evaluasiProgres(tamat, nilaiChunk(soal, jawabanSalah(soal, [soal[0].id])), { chunkIndex: 0 });
+  assert.equal(ulang.selesai, true);
+  assert.deepEqual(ulang.bosses, tamat.bosses);
+  assert.equal(volumeTersedia([ulang], 'VOL1'), true);
 });
 
 test('boss rounds need a perfect round to finish; needing attention is only a marker', () => {

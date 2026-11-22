@@ -114,25 +114,32 @@ export function evaluasiProgres(progres, hasil, {
   const chunkSekarang = chunkIndex >= 0 ? chunks[chunkIndex] : null;
   const chunkLulus = Boolean(chunkSekarang) && chunkSekarang.itemIds.every((id) => dikuasai.includes(id));
 
+  const sudahSelesai = Boolean(progres.selesai);
+  const modeBoss = chunkIndex < 0;
   let bosses = daftarBossAdventure(progres);
-  for (const id of hasil.itemSalah) {
-    const ada = bosses.find((b) => b.id === id);
-    bosses = ada
-      ? bosses.map((b) => (b.id === id ? { ...b, salah: b.salah + 1, terakhirSalah: sekarang } : b))
-      : [...bosses, { id, salah: 1, terakhirSalah: sekarang }];
+  // A finished volume stays finished: a wrong replay must not add bosses, or it would relock later volumes.
+  if (!sudahSelesai) {
+    for (const id of hasil.itemSalah) {
+      const ada = bosses.find((b) => b.id === id);
+      bosses = ada
+        ? bosses.map((b) => (b.id === id ? { ...b, salah: b.salah + 1, terakhirSalah: sekarang } : b))
+        : [...bosses, { id, salah: 1, terakhirSalah: sekarang }];
+    }
   }
-  // An item that is now fully mastered is no longer a boss, wherever it was answered.
-  bosses = bosses.filter((b) => !dikuasai.includes(b.id));
-
+  if (modeBoss) {
+    // Only a boss round clears bosses: those answered fully right in this session.
+    const benarSesiIni = new Set(hasil.detail.filter((d) => d.benar).map((d) => d.itemId));
+    bosses = bosses.filter((b) => !benarSesiIni.has(b.id));
+  }
   const chunkTerbuka = chunkIndex >= 0 && chunkLulus
     ? Math.max(progres.chunk_terbuka || 0, chunkIndex + 1)
     : progres.chunk_terbuka || 0;
   const semuaRegulerTuntas = chunkTerbuka >= chunks.length;
   const bossRonde = chunkIndex < 0 ? (progres.boss_ronde || 0) + 1 : progres.boss_ronde || 0;
-  const selesai = semuaRegulerTuntas && bosses.length === 0;
+  const selesai = sudahSelesai || (semuaRegulerTuntas && bosses.length === 0);
   // Whether the played step is now fully mastered across all attempts. A single session can be imperfect while
   // the chunk as a whole is complete, so the result screen must not decide from this session's score alone.
-  const chunkTuntas = chunkIndex < 0 ? bosses.length === 0 : chunkLulus;
+  const chunkTuntas = modeBoss ? bosses.length === 0 : chunkLulus;
 
   return {
     ...progres,
@@ -171,7 +178,8 @@ export function rencanaSesiAdventure(progres, materi, input = {}) {
 
   if (mintaBoss) {
     const regularTuntas = chunks.length > 0 && terbuka >= chunks.length;
-    const bosses = daftarBossAdventure(progres).map((b) => b.id);
+    // One round never exceeds a chunk (most wrong first); further rounds follow until the list is empty.
+    const bosses = daftarBossAdventure(progres).slice(0, UKURAN_CHUNK).map((b) => b.id);
     if (!regularTuntas || bosses.length === 0) throw new Error('CHUNK_TERKUNCI');
     const byId = new Map(itemVolume(materi).map((item) => [item.id, item]));
     if (bosses.some((id) => !byId.has(id))) throw new Error('CHUNK_TERKUNCI');

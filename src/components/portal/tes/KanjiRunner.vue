@@ -127,7 +127,7 @@ function lanjut() {
     index.value += 1;
     step.value = 'bacaan';
   } else if (props.mode === 'latihan') {
-    emit('selesai', jawaban.value);
+    if (!props.mengirim) emit('selesai', jawaban.value);
   } else {
     semuaTerjawab.value = true;
   }

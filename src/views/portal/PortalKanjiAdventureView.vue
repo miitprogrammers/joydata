@@ -141,6 +141,7 @@
             </v-btn>
             <span v-if="peta.boss?.jumlah" class="text-xs text-slate-600 tabular-nums">
               {{ t('portal.kanjiAdventure.jumlahBoss', { n: peta.boss.jumlah }) }}
+              <template v-if="peta.boss.status === 'tersedia' && peta.boss.ukuranRonde"> · {{ t('portal.kanjiAdventure.bossRonde', { a: peta.boss.ukuranRonde, n: peta.boss.jumlah }) }}</template>
               <template v-if="peta.boss?.items?.some((b) => b.salah > 1)"> · {{ t('portal.kanjiAdventure.perluPerhatian') }}</template>
             </span>
           </div>
@@ -244,6 +245,9 @@
         </v-btn>
         <v-btn v-else-if="bossSiap" color="primary" variant="flat" class="text-none" prepend-icon="mdi-sword" @click="mulaiBoss">
           {{ t('portal.kanjiAdventure.mulaiBoss') }}
+        </v-btn>
+        <v-btn v-else-if="rondeBerikutSiap" color="primary" variant="flat" class="text-none" prepend-icon="mdi-sword" @click="mulaiBoss">
+          {{ t('portal.kanjiAdventure.rondeBerikut') }}
         </v-btn>
         <v-btn v-else-if="perluUlang" color="primary" variant="flat" class="text-none" prepend-icon="mdi-refresh" @click="ulangi">
           {{ t('portal.kanjiAdventure.ulangiLangkah') }}
@@ -470,7 +474,8 @@ async function mulaiBoss() {
 }
 
 async function kirimNilai(jawaban) {
-  if (!sesi.value?.sesiId) return;
+  // Enter pressed twice must not grade twice; Vuetify's loading state does not block keyboard activation.
+  if (mengirim.value || !sesi.value?.sesiId) return;
   mengirim.value = true;
   error.value = '';
   try {
@@ -481,7 +486,17 @@ async function kirimNilai(jawaban) {
     await muat();
     window.scrollTo({ top: 0 });
   } catch (err) {
-    pesanGagal(err);
+    if (err?.status === 404 && err?.code === 'SESI_TIDAK_ADA') {
+      // The paper is gone (already graded or expired): stop the heartbeat quietly and go back to the map.
+      await aktivitas.berhenti({ kirimAkhir: false });
+      sesi.value = null;
+      hasil.value = null;
+      tahap.value = 'peta';
+      pesanGagal(err);
+      await muat();
+    } else {
+      pesanGagal(err);
+    }
   } finally {
     mengirim.value = false;
   }
@@ -536,6 +551,12 @@ const langkahBerikut = computed(() => {
 
 const bossSiap = computed(() => Boolean(hasil.value?.chunkTuntas && statusBoss(peta.value?.boss) === 'tersedia'));
 
+// A boss round answered fully right that still leaves bosses: offer the next round, not a retry.
+const rondeBerikutSiap = computed(() => Boolean(
+  sesi.value?.mode === 'boss' && hasil.value && !hasil.value.selesai && !hasil.value.chunkTuntas
+    && hasil.value.total > 0 && hasil.value.benar === hasil.value.total && Number(hasil.value.sisa) > 0
+));
+
 const perluUlang = computed(() => Boolean(hasil.value && !hasil.value.chunkTuntas && !hasil.value.selesai));
 
 const volumeBerikut = computed(() => {
@@ -552,6 +573,9 @@ const pesanHasil = computed(() => {
     return adaVolumeBerikut.value
       ? t('portal.kanjiAdventure.volumeSelesaiInfo')
       : t('portal.kanjiAdventure.volumeSelesaiAkhir');
+  }
+  if (sesi.value?.mode === 'boss' && Number(hasil.value?.sisa) > 0) {
+    return t(rondeBerikutSiap.value ? 'portal.kanjiAdventure.rondeSelesaiSisa' : 'portal.kanjiAdventure.sisaBoss', { n: hasil.value.sisa });
   }
   if (Number(hasil.value?.sisa) > 0) return t('portal.kanjiAdventure.sisaLangkah', { n: hasil.value.sisa });
   return t('portal.kanjiAdventure.gagalInfo');
