@@ -3543,5 +3543,62 @@ export const SOAL_BINTANG_N4 = [
     terjemahan: '',
     pembahasan: '自転車{じてんしゃ}に乗{の}れるようになりました',
     status: 'draf',
+  },
+  // you-to-suru: ～（よ）うとする - baru mau / hendak
+  {
+    id: 'N4-you-to-suru-1',
+    pola: 'you-to-suru',
+    situasi: null,
+    baris: [
+      { pembicara: null, sebelum: '電車{でんしゃ}のドアが', sesudah: '、男{おとこ}の人{ひと}が走{はし}ってきた。' },
+    ],
+    potongan: ['閉{し}まろう', 'と', 'した', 'とき'],
+    bintang: 0,
+    urutanLain: [],
+    terjemahan: '',
+    pembahasan: '電車{でんしゃ}のドアが閉{し}まろうとしたとき (saat pintu kereta baru akan menutup)',
+    status: 'draf',
+  },
+  {
+    id: 'N4-you-to-suru-2',
+    pola: 'you-to-suru',
+    situasi: null,
+    baris: [
+      { pembicara: null, sebelum: '出{で}かけよう', sesudah: '、電話{でんわ}がかかってきた。' },
+    ],
+    potongan: ['と', 'した', 'ら', '友達{ともだち}から'],
+    bintang: 1,
+    urutanLain: [],
+    terjemahan: '',
+    pembahasan: '出{で}かけようとしたら、友達{ともだち}から電話{でんわ}がかかってきた (saat baru mau pergi)',
+    status: 'draf',
+  },
+  {
+    id: 'N4-you-to-suru-3',
+    pola: 'you-to-suru',
+    situasi: null,
+    baris: [
+      { pembicara: null, sebelum: '寝{ね}よう', sesudah: '、地震{じしん}があった。' },
+    ],
+    potongan: ['と', 'した', 'とき', 'に'],
+    bintang: 2,
+    urutanLain: [],
+    terjemahan: '',
+    pembahasan: '寝{ね}ようとしたときに、地震{じしん}があった (saat baru mau tidur)',
+    status: 'draf',
+  },
+  {
+    id: 'N4-you-to-suru-4',
+    pola: 'you-to-suru',
+    situasi: null,
+    baris: [
+      { pembicara: null, sebelum: '何度{なんど}も説明{せつめい}しよう', sesudah: '、うまくできなかった。' },
+    ],
+    potongan: ['と', 'した', 'が', '結局{けっきょく}'],
+    bintang: 3,
+    urutanLain: [],
+    terjemahan: '',
+    pembahasan: '何度{なんど}も説明{せつめい}しようとしたが、結局{けっきょく}うまくできなかった (berkali-kali mencoba menjelaskan)',
+    status: 'draf',
   }
 ];
