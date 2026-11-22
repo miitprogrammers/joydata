@@ -8,13 +8,13 @@ const MUAT_ULANG_SAAT_KEMBALI_MS = 60_000;
 const tanggalWib = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());
 
 /**
- * The peserta's practice time today, the same figure as their row in Monitor Latihan ("1 hari"): flashcard, kanji
- * and dokkai sessions started today (WIB), tests included. Loaded from the server when the portal opens, when a
+ * The peserta's practice time today, the same figure as their row in Monitor Latihan ("1 hari"): flashcard, kanji,
+ * dokkai and bunpou sessions started today (WIB), tests included. Loaded from the server when the portal opens, when a
  * practice on this device stops, when the app comes back after a while, and after midnight WIB; in between, the
  * seconds of a practice running on this device are added as they are counted, so no polling is needed.
  */
 export function useLatihanHariIni() {
-  const server = ref({ tanggal: '', detikAktif: 0, perJenis: { flashcard: 0, kanji: 0, dokkai: 0 } });
+  const server = ref({ tanggal: '', detikAktif: 0, perJenis: { flashcard: 0, kanji: 0, dokkai: 0, bunpou: 0 } });
   const sekarang = ref(Date.now());
   // Seconds of each running timer already in the server's figure (counted when that figure arrived).
   const dasar = new Map();
@@ -59,7 +59,7 @@ export function useLatihanHariIni() {
   /** { detikAktif, perJenis } now: the server's figure plus what running practice here counted since. */
   const hariIni = computed(() => {
     void sekarang.value;
-    const perJenis = { flashcard: 0, kanji: 0, dokkai: 0, ...server.value.perJenis };
+    const perJenis = { flashcard: 0, kanji: 0, dokkai: 0, bunpou: 0, ...server.value.perJenis };
     let detikAktif = server.value.detikAktif;
     for (const p of latihanBerjalanDiPerangkat()) {
       const tambah = Math.max(0, p.detikAktif() - (dasar.get(p) ?? p.awal));

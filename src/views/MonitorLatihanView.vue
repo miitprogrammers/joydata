@@ -175,6 +175,7 @@
                     <div class="h-full bg-blue-600" :style="{ width: `${lebarBatang(r.perJenis.flashcard)}%` }" />
                     <div class="h-full bg-teal-500" :style="{ width: `${lebarBatang(r.perJenis.kanji)}%` }" />
                     <div class="h-full bg-amber-500" :style="{ width: `${lebarBatang(r.perJenis.dokkai)}%` }" />
+                    <div class="h-full bg-indigo-500" :style="{ width: `${lebarBatang(r.perJenis.bunpou)}%` }" />
                   </div>
                   <span class="text-sm font-semibold tabular-nums" :class="r.detikAktif ? 'text-slate-900' : 'text-slate-400'">{{ durasiJam(r.detikAktif) }}</span>
                 </div>
@@ -296,6 +297,8 @@
               </div>
             </div>
 
+            <MonitorBunpouAdventure v-if="bunpouPesertaId" :peserta-id="bunpouPesertaId" :query="bunpouQuery" />
+
             <div>
               <p class="text-sm font-semibold text-slate-900 mb-2">{{ $t('monitorLatihan.sesiJudul') }}</p>
               <p v-if="!detail.sesi.length" class="text-sm text-slate-500">{{ $t('monitorLatihan.sesiKosong') }}</p>
@@ -343,6 +346,7 @@ import { apiRequest } from '../services/api.js';
 import { buatKlienAdventure } from '../services/kanjiAdventure.js';
 import { useAppStore } from '../stores/appStore.js';
 import PesertaFoto from '../components/PesertaFoto.vue';
+import MonitorBunpouAdventure from '../components/monitor/MonitorBunpouAdventure.vue';
 import { urutkanRiwayatLatihan } from '@/server/domain/gradeLatihan.js';
 
 const { t, locale } = useI18n();
@@ -485,6 +489,7 @@ const JENIS = {
   flashcard: { ikon: 'mdi-cards-outline', warna: 'bg-blue-50 text-blue-800', teks: 'text-blue-800' },
   kanji: { ikon: 'mdi-ideogram-cjk', warna: 'bg-teal-50 text-teal-800', teks: 'text-teal-800' },
   dokkai: { ikon: 'mdi-book-open-variant', warna: 'bg-amber-50 text-amber-800', teks: 'text-amber-800' },
+  bunpou: { ikon: 'mdi-star-four-points', warna: 'bg-indigo-50 text-indigo-800', teks: 'text-indigo-800' },
 };
 const labelJenis = (s) =>
   s.mode === 'resmi'
@@ -503,6 +508,7 @@ const rincianJenis = (r) =>
     `${t('monitorLatihan.jenisFlashcard')} ${durasiJam(r.perJenis.flashcard)}`,
     `${t('monitorLatihan.jenisKanji')} ${durasiJam(r.perJenis.kanji)}`,
     `${t('monitorLatihan.jenisDokkai')} ${durasiJam(r.perJenis.dokkai)}`,
+    `${t('monitorLatihan.jenisBunpou')} ${durasiJam(r.perJenis.bunpou)}`,
   ].join(' · ');
 
 // --- ordering of the history table ---------------------------------------------------------------------------------
@@ -626,6 +632,10 @@ async function muatStatistik() {
   }
 }
 
+// Bunpou Adventure panel: the component loads and fails on its own, so it only needs the peserta and the period.
+const bunpouPesertaId = ref(null);
+const bunpouQuery = ref({});
+
 async function muatAdventure(pesertaId) {
   const nomor = ++muatAdventureKe;
   adventure.value = null;
@@ -645,6 +655,8 @@ async function bukaPeserta(pesertaId) {
   detailLoading.value = true;
   detail.value = null;
   muatAdventure(pesertaId);
+  bunpouQuery.value = paramPeriode();
+  bunpouPesertaId.value = pesertaId;
   try {
     detail.value = await apiRequest(`/monitor-latihan/peserta/${pesertaId}?${new URLSearchParams(paramPeriode())}`);
   } catch (err) {

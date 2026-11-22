@@ -38,6 +38,7 @@ import PortalUjianView from '../views/portal/PortalUjianView.vue';
 import PortalTesView from '../views/portal/PortalTesView.vue';
 import PortalFlashcardView from '../views/portal/PortalFlashcardView.vue';
 import PortalKanjiAdventureView from '../views/portal/PortalKanjiAdventureView.vue';
+import PortalBunpouAdventureView from '../views/portal/PortalBunpouAdventureView.vue';
 import PortalKehadiranView from '../views/portal/PortalKehadiranView.vue';
 import PortalSikapView from '../views/portal/PortalSikapView.vue';
 import PortalRaporView from '../views/portal/PortalRaporView.vue';
@@ -127,6 +128,7 @@ const routes = [
       { path: 'tes', name: 'portal-tes', component: PortalTesView, meta: { portalTitle: 'portal.menu.tes' } },
       { path: 'flashcard', name: 'portal-flashcard', component: PortalFlashcardView, meta: { portalTitle: 'portal.menu.flashcard' } },
       { path: 'kanji-adventure', name: 'portal-kanji-adventure', component: PortalKanjiAdventureView, meta: { portalTitle: 'portal.menu.kanjiAdventure' } },
+      { path: 'bunpou-adventure', name: 'portal-bunpou-adventure', component: PortalBunpouAdventureView, meta: { portalTitle: 'portal.menu.bunpouAdventure' } },
       { path: 'kehadiran', name: 'portal-kehadiran', component: PortalKehadiranView, meta: { portalTitle: 'portal.menu.kehadiran' } },
       { path: 'sikap', name: 'portal-sikap', component: PortalSikapView, meta: { portalTitle: 'portal.menu.sikap' } },
       { path: 'rapor', name: 'portal-rapor', component: PortalRaporView, meta: { portalTitle: 'portal.menu.rapor' } },

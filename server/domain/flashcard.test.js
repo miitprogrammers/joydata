@@ -179,7 +179,7 @@ test('Most diligent first: active time, then days with practice; everyone on the
   assert.deepEqual(rows.map((r) => r.pesertaId), [2, 1, 3, 4]); // 2 and 1 both 600 s; 2 practised on two days
   assert.deepEqual(
     [rows[0].detikAktif, rows[0].hariAktif, rows[0].soal, rows[0].rataSkorLatihan, rows[0].perJenis],
-    [600, 2, 30, 70, { flashcard: 0, kanji: 300, dokkai: 300 }]
+    [600, 2, 30, 70, { flashcard: 0, kanji: 300, dokkai: 300, bunpou: 0 }]
   );
   assert.equal(rows[1].kartu, 120);
   // Peserta 3 only practised before the period; peserta 4 never did.

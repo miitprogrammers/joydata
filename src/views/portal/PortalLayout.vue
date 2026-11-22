@@ -143,6 +143,7 @@ const NAV = [
       { key: 'tes', to: '/portal/tes', icon: 'mdi-pencil-box-multiple-outline' },
       { key: 'flashcard', to: '/portal/flashcard', icon: 'mdi-cards-outline' },
       { key: 'kanjiAdventure', to: '/portal/kanji-adventure', icon: 'mdi-sword-cross' },
+      { key: 'bunpouAdventure', to: '/portal/bunpou-adventure', icon: 'mdi-star-four-points' },
       { key: 'kehadiran', to: '/portal/kehadiran', icon: 'mdi-calendar-check-outline' },
       { key: 'sikap', to: '/portal/sikap', icon: 'mdi-scale-balance' },
     ],

@@ -119,6 +119,10 @@ import {
 } from './db/tesOnlineRepo.js';
 import { cariMateri, jlptKanji } from './domain/tesOnline.js';
 import * as kanjiAdventure from './domain/kanjiAdventure.js';
+import * as bunpouAdventure from './domain/bunpouAdventure.js';
+import { KATALOG_MATERI } from './domain/materiBunpou/katalog.js';
+import { SOAL_BINTANG_N5 } from './domain/bankSoal/bintangN5.js';
+import { SOAL_BINTANG_N4 } from './domain/bankSoal/bintangN4.js';
 import { ringkasanMateri, ambilMateri, kategoriModul } from './domain/materiBunpou/index.js';
 import {
   bacaProgresAdventure,
@@ -130,6 +134,16 @@ import {
   simpanSesiAdventure,
   tambahSesiAdventure,
 } from './db/kanjiAdventureRepo.js';
+import {
+  bacaSesiBunpou,
+  daftarProgresBunpou,
+  daftarProgresBunpouKetat,
+  nilaiSesiBunpouAtomik,
+  hapusSesiBunpou,
+  pastikanProgresBunpou,
+  simpanSesiBunpou,
+  tambahSesiBunpou,
+} from './db/bunpouAdventureRepo.js';
 import {
   detakAktivitas,
   getFlashcardPortal,
@@ -213,6 +227,8 @@ function handleRouteError(res, err) {
     'INVALID_FLASHCARD',
     'CHUNK_TIDAK_VALID',
     'INVALID_ADVENTURE_MATERI',
+    'INVALID_BUNPOU_VOLUME',
+    'TAHAP_TIDAK_VALID',
     'INVALID_NILAI_FISIK',
     'FISIK_JENIS_KELAMIN_KOSONG',
     'FISIK_KOSONG',
@@ -231,11 +247,13 @@ function handleRouteError(res, err) {
     'MANCATION_UNAVAILABLE',
     'TES_AI_GAGAL',
     'GAGAL_SESI_ADVENTURE',
+    'GAGAL_SESI_BUNPOU',
   ]);
   if (code === 'NOT_FOUND' || code === 'SESI_TIDAK_ADA') {
     return res.status(404).json({ error: code });
   }
-  if (code === 'CHUNK_TERKUNCI' || code === 'VOLUME_TERKUNCI' || code === 'AKSES_SESI_DITOLAK') {
+  const terlarang = ['CHUNK_TERKUNCI', 'VOLUME_TERKUNCI', 'AKSES_SESI_DITOLAK', 'TAHAP_TERKUNCI', 'VOLUME_BELUM_DIRILIS'];
+  if (terlarang.includes(code)) {
     return res.status(403).json({ error: code });
   }
   if (serviceCodes.has(code)) {
@@ -311,7 +329,82 @@ function petaChunkAdventure(materi, progres, { terkunci = false } = {}) {
   };
 }
 
-export function createApiRouter() {
+// ── Bunpou Adventure: tampilan volume dan peta tahap. Tidak ada kunci jawaban di sini. ──
+const BANK_BINTANG_BAWAAN = [...SOAL_BINTANG_N5, ...SOAL_BINTANG_N4];
+const KATALOG_PER_ID = new Map(KATALOG_MATERI.map((e) => [e.id, e]));
+
+function tahapBunpou(kode, progres) {
+  return progres?.tahap?.length ? progres.tahap : bunpouAdventure.tahapVolume(kode);
+}
+
+function labelTahapBunpou(t) {
+  const bab = t.babDari === t.babSampai ? `Bab ${t.babDari}` : `Bab ${t.babDari}–${t.babSampai}`;
+  return t.jumlahBagian > 1 ? `${bab} (${t.bagian}/${t.jumlahBagian})` : bab;
+}
+
+const judulVolumeBunpou = (vol) => `${vol.jlpt} Vol ${vol.nomor} · Bab ${vol.bab[0]}–${vol.bab[1]}`;
+
+function infoVolumeBunpou(vol, progres, bank) {
+  const tahap = tahapBunpou(vol.kode, progres);
+  return {
+    kode: vol.kode,
+    jlpt: vol.jlpt,
+    nomor: vol.nomor,
+    judul: judulVolumeBunpou(vol),
+    bab: vol.bab,
+    jumlahPola: tahap.reduce((n, t) => n + t.pola.length, 0),
+    tahapCount: tahap.length,
+    dirilis: bunpouAdventure.statusRilis(vol.kode, { bank, progres }).dirilis,
+  };
+}
+
+function polaBunpou(id, salah) {
+  const e = KATALOG_PER_ID.get(id);
+  return { id, pola: e?.pola ?? id, arti: e?.arti ?? '', salah };
+}
+
+function petaTahapBunpou(kode, progres, { terkunci = false } = {}) {
+  const dikuasai = new Set(progres?.dikuasai || []);
+  const terbuka = Number(progres?.tahap_terbuka) || 0;
+  const daftar = tahapBunpou(kode, progres);
+  const tahap = daftar.map((t, index) => {
+    const selesai = t.pola.length > 0 && t.pola.every((id) => dikuasai.has(id));
+    return {
+      index,
+      label: labelTahapBunpou(t),
+      babDari: t.babDari,
+      babSampai: t.babSampai,
+      bagian: t.bagian,
+      jumlahBagian: t.jumlahBagian,
+      jumlah: t.pola.length,
+      dikuasai: t.pola.filter((id) => dikuasai.has(id)).length,
+      status: terkunci ? 'terkunci' : selesai ? 'selesai' : index <= terbuka ? 'tersedia' : 'terkunci',
+    };
+  });
+  const bosses = bunpouAdventure.daftarBossBunpou(progres);
+  const semuaTahapTuntas = daftar.length > 0 && terbuka >= daftar.length;
+  let statusBoss = 'terkunci';
+  if (!terkunci) {
+    if (progres?.selesai) statusBoss = 'selesai';
+    else if (semuaTahapTuntas) statusBoss = bosses.length > 0 ? 'tersedia' : 'selesai';
+  }
+  return {
+    tahap,
+    bos: {
+      status: statusBoss,
+      jumlah: bosses.length,
+      rondeBerikut: (Number(progres?.bos_ronde) || 0) + 1,
+      ukuranRonde: Math.min(bosses.length, bunpouAdventure.MAKS_POLA_BOS),
+      pola: bosses.slice(0, bunpouAdventure.MAKS_POLA_BOS).map((b) => polaBunpou(b.id, b.salah)),
+    },
+  };
+}
+
+/**
+ * `bankBintang` (opsional): bank soal bintang pengganti, dibaca saat tiap permintaan. Dipakai tes; produksi
+ * memakai bank di bankSoal/bintangN5.js dan bintangN4.js.
+ */
+export function createApiRouter({ bankBintang = null } = {}) {
   const router = express.Router();
   router.use(express.json({ limit: '1mb' }));
 
@@ -792,6 +885,252 @@ export function createApiRouter() {
             };
           }),
           sesiAdventure: riwayat.sesi.filter((s) => s.materi === 'adventure'),
+        });
+      } catch (err) {
+        return handleRouteError(res, err);
+      }
+    },
+  );
+
+  // Bunpou Adventure: kembaran Kanji Adventure untuk soal bintang. Bank soal bisa disuntikkan (tes API).
+  const bankBunpou = () => bankBintang || BANK_BINTANG_BAWAAN;
+
+  router.get('/portal/bunpou-adventure/volume', requirePeserta(), async (req, res) => {
+    try {
+      const semuaProgres = await daftarProgresBunpou(req.peserta.id);
+      const bank = bankBunpou();
+      return res.json(bunpouAdventure.VOLUME_BUNPOU.map((vol) => {
+        const progres = semuaProgres.find((p) => p.volume === vol.kode) || null;
+        return {
+          ...infoVolumeBunpou(vol, progres, bank),
+          terkunci: !bunpouAdventure.volumeTersedia(semuaProgres, vol.kode),
+          progres: bunpouAdventure.ringkasProgres(progres),
+        };
+      }));
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/bunpou-adventure/volume/:kode', requirePeserta(), async (req, res) => {
+    try {
+      const vol = bunpouAdventure.cariVolume(req.params.kode);
+      if (!vol) throw new Error('NOT_FOUND');
+      const semuaProgres = await daftarProgresBunpou(req.peserta.id);
+      const progres = semuaProgres.find((p) => p.volume === vol.kode) || null;
+      const terkunci = !bunpouAdventure.volumeTersedia(semuaProgres, vol.kode);
+      return res.json({
+        ...infoVolumeBunpou(vol, progres, bankBunpou()),
+        terkunci,
+        progres: bunpouAdventure.ringkasProgres(progres),
+        ...petaTahapBunpou(vol.kode, progres, { terkunci }),
+      });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Hand out one paper and remember it; /detak only accepts the token that owns the session.
+  router.post('/portal/bunpou-adventure/mulai', requirePeserta(), async (req, res) => {
+    try {
+      const { volume, mode, tahapIndex } = req.body || {};
+      const vol = bunpouAdventure.cariVolume(volume);
+      if (!vol) throw new Error('INVALID_BUNPOU_VOLUME');
+      const semuaProgres = await daftarProgresBunpouKetat(req.peserta.id);
+      if (!bunpouAdventure.volumeTersedia(semuaProgres, vol.kode)) throw new Error('VOLUME_TERKUNCI');
+      const bank = bankBunpou();
+      const progresAda = semuaProgres.find((p) => p.volume === vol.kode) || null;
+      if (!bunpouAdventure.statusRilis(vol.kode, { bank, progres: progresAda }).dirilis) throw new Error('VOLUME_BELUM_DIRILIS');
+      const progres = await pastikanProgresBunpou(req.peserta.id, vol.kode, bunpouAdventure.tahapVolume(vol.kode));
+      if (!progres) throw new Error('GAGAL_SESI_BUNPOU');
+      const rencana = bunpouAdventure.rencanaSesi(progres, vol.kode, { mode, tahapIndex }, { bank });
+      if (rencana.kertas.length === 0) throw new Error('VOLUME_BELUM_DIRILIS');
+      const labelTahap = rencana.mode === 'bos' ? 'Bos' : labelTahapBunpou(progres.tahap[rencana.tahapIndex]);
+      const aktivitasId = await tambahSesiBunpou(req.peserta.id, {
+        volume: vol.kode,
+        judul: `${vol.jlpt} Vol ${vol.nomor} · ${labelTahap}`,
+        jlpt: vol.jlpt,
+        jumlahItem: rencana.kertas.length,
+      });
+      if (!aktivitasId) throw new Error('GAGAL_SESI_BUNPOU');
+
+      const sesiId = randomUUID();
+      const sesi = await simpanSesiBunpou({
+        id: sesiId,
+        pesertaId: req.peserta.id,
+        volume: vol.kode,
+        mode: rencana.mode,
+        tahapIndex: rencana.tahapIndex,
+        ronde: rencana.ronde,
+        aktivitasId,
+        polaIds: rencana.polaIds,
+        soal: rencana.kertas,
+      });
+      if (!sesi) {
+        // Do not leave an open practice session behind when the paper could not be stored.
+        await tutupLatihan(req.peserta.id, aktivitasId, { skor: 0, itemSelesai: 0, detikAktif: 0 });
+        throw new Error('GAGAL_SESI_BUNPOU');
+      }
+      return res.json({
+        sesiId,
+        aktivitasId,
+        volume: vol.kode,
+        mode: rencana.mode,
+        tahapIndex: rencana.tahapIndex,
+        ronde: rencana.ronde,
+        soal: rencana.kertas,
+      });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.post('/portal/bunpou-adventure/detak', requirePeserta(), async (req, res) => {
+    try {
+      const { sesiId } = req.body || {};
+      const sesi = typeof sesiId === 'string' ? await bacaSesiBunpou(sesiId, req.peserta.id) : null;
+      if (!sesi) throw new Error('SESI_TIDAK_ADA');
+      const hasil = await detakAktivitas(req.peserta.id, sesi.aktivitasId, req.body || {});
+      if (!hasil?.ok) {
+        await hapusSesiBunpou(sesiId, req.peserta.id);
+        throw new Error('AKSES_SESI_DITOLAK');
+      }
+      if (req.body?.selesai) await hapusSesiBunpou(sesiId, req.peserta.id);
+      return res.json({ ok: true, aktivitasId: sesi.aktivitasId });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Hand in the paper. The answer key comes from the stored session, never from the client (only the chosen
+  // numbers are read). The closed session stays mode 'latihan': it feeds rataSkorLatihan/grade, not the rapor.
+  router.post('/portal/bunpou-adventure/nilai', requirePeserta(), async (req, res) => {
+    try {
+      const { sesiId, jawaban } = req.body || {};
+      if (typeof sesiId !== 'string') throw new Error('SESI_TIDAK_ADA');
+
+      // One transaction: consume the paper, lock the progress row, re-check the gate, grade, save. A paper can
+      // therefore be graded only once and two tabs cannot overwrite each other. A gate error leaves both untouched.
+      const { sesi, progres, hasil, progresBaru } = await nilaiSesiBunpouAtomik(
+        req.peserta.id,
+        sesiId,
+        (sesiTersimpan, progresLama, semuaProgres) => {
+          // Re-check the gate at grading time: a session opened earlier must not unlock a tahap/volume that the
+          // server has since locked again (or a boss round whose bosses are gone).
+          if (!bunpouAdventure.volumeTersedia(semuaProgres, sesiTersimpan.volume)) throw new Error('VOLUME_TERKUNCI');
+          bunpouAdventure.periksaGerbang(progresLama, { mode: sesiTersimpan.mode, tahapIndex: sesiTersimpan.tahapIndex });
+          const nilai = bunpouAdventure.nilaiSesi(sesiTersimpan.soal, jawaban);
+          return {
+            hasil: nilai,
+            progresBaru: bunpouAdventure.evaluasiProgres(progresLama, nilai, {
+              tahapIndex: sesiTersimpan.tahapIndex,
+              sekarang: new Date().toISOString(),
+            }),
+          };
+        },
+      );
+
+      // The progress is safe now. Closing the practice session must not block showing the result.
+      await detakAktivitas(req.peserta.id, sesi.aktivitasId, { detikAktif: req.body?.detikAktif }).catch(() => {});
+      await tutupLatihan(req.peserta.id, sesi.aktivitasId, {
+        skor: hasil.skor,
+        itemSelesai: hasil.total,
+        detikAktif: req.body?.detikAktif,
+      }).catch(() => {});
+
+      let grade = null;
+      try {
+        const riwayat = await getRiwayatLatihanPeserta(req.peserta.id);
+        grade = riwayat.ringkasan?.grade ?? null;
+      } catch {
+        // The grade is a bonus on this screen; the saved progress is what matters.
+      }
+      const bosSebelum = new Set((progres.bosses || []).map((b) => b.id));
+      const sisa = sesi.mode === 'bos'
+        ? (progresBaru.bosses || []).length
+        : (sesi.polaIds || []).filter((id) => !(progresBaru.dikuasai || []).includes(id)).length;
+      return res.json({
+        mode: sesi.mode,
+        tahapIndex: sesi.tahapIndex,
+        ronde: sesi.ronde,
+        benar: hasil.benar,
+        total: hasil.total,
+        skor: hasil.skor,
+        lulus: hasil.lulus,
+        detail: hasil.detail,
+        tahapTuntas: bunpouAdventure.tahapTuntas(progresBaru, sesi.tahapIndex),
+        sisa,
+        bosBaru: (progresBaru.bosses || []).filter((b) => !bosSebelum.has(b.id)).length,
+        tahapTerbuka: progresBaru.tahap_terbuka,
+        selesai: progresBaru.selesai,
+        grade,
+        progres: bunpouAdventure.ringkasProgres(progresBaru),
+        bos: petaTahapBunpou(sesi.volume, progresBaru).bos,
+      });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/portal/bunpou-adventure/riwayat', requirePeserta(), async (req, res) => {
+    try {
+      const [semuaProgres, riwayat] = await Promise.all([
+        daftarProgresBunpou(req.peserta.id),
+        getRiwayatLatihanPeserta(req.peserta.id, req.query),
+      ]);
+      return res.json({
+        progres: semuaProgres.map((p) => {
+          const vol = bunpouAdventure.cariVolume(p.volume);
+          return {
+            volume: p.volume,
+            judul: vol ? judulVolumeBunpou(vol) : p.volume,
+            ...bunpouAdventure.ringkasProgres(p),
+          };
+        }),
+        ringkasan: riwayat.ringkasan,
+        sesiBunpou: riwayat.sesi.filter((s) => s.materi === 'adventure' && s.jenis === 'bunpou'),
+      });
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Sensei: same progress and grade data under the existing monitor-latihan permission, plus the weakest patterns.
+  router.get(
+    '/monitor-latihan/bunpou-adventure/peserta/:id',
+    requireAuth,
+    requirePageAccess('monitor-latihan'),
+    async (req, res) => {
+      try {
+        const pesertaId = Number(req.params.id);
+        if (!Number.isInteger(pesertaId) || pesertaId <= 0) throw new Error('INVALID_PAYLOAD');
+        const [semuaProgres, riwayat] = await Promise.all([
+          daftarProgresBunpou(pesertaId),
+          getRiwayatLatihanPeserta(pesertaId, req.query),
+        ]);
+        const bank = bankBunpou();
+        const polaLemah = semuaProgres
+          .flatMap((p) => Object.entries(p.salah || {}))
+          .filter(([, n]) => n > 0)
+          .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+          .slice(0, 10)
+          .map(([id, salah]) => ({ ...polaBunpou(id, salah), bab: bunpouAdventure.babPola(KATALOG_PER_ID.get(id)) }));
+        return res.json({
+          peserta: riwayat.peserta,
+          ringkasan: riwayat.ringkasan,
+          aturanGrade: riwayat.aturanGrade,
+          volume: bunpouAdventure.VOLUME_BUNPOU.map((vol) => {
+            const progres = semuaProgres.find((p) => p.volume === vol.kode) || null;
+            const terkunci = !bunpouAdventure.volumeTersedia(semuaProgres, vol.kode);
+            return {
+              ...infoVolumeBunpou(vol, progres, bank),
+              terkunci,
+              progres: bunpouAdventure.ringkasProgres(progres),
+              ...petaTahapBunpou(vol.kode, progres, { terkunci }),
+            };
+          }),
+          polaLemah,
+          sesiBunpou: riwayat.sesi.filter((s) => s.materi === 'adventure' && s.jenis === 'bunpou'),
         });
       } catch (err) {
         return handleRouteError(res, err);
