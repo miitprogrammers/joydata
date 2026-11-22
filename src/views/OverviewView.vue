@@ -590,6 +590,7 @@ const labelJenis = computed(() => ({
   flashcard: t('monitorLatihan.jenisFlashcard'),
   kanji: t('monitorLatihan.jenisKanji'),
   dokkai: t('monitorLatihan.jenisDokkai'),
+  bunpou: t('monitorLatihan.jenisBunpou'),
 }));
 
 const WARNA_GRADE = { A: 'bg-emerald-500', B: 'bg-blue-500', C: 'bg-amber-500', D: 'bg-red-500' };

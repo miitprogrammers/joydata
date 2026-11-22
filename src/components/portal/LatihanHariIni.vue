@@ -33,7 +33,7 @@
 
 <script setup>
 // Today's practice time in the portal app bar (every portal page): the same figure and format as the peserta's
-// row in Monitor Latihan, with the flashcard / kanji / dokkai split in the same colours.
+// row in Monitor Latihan, with the flashcard / kanji / dokkai / bunpou split in the same colours.
 import { useI18n } from 'vue-i18n';
 import { useLatihanHariIni } from '../../services/latihanHariIni.js';
 
@@ -41,6 +41,7 @@ const JENIS = [
   { kode: 'flashcard', warna: 'bg-blue-600' },
   { kode: 'kanji', warna: 'bg-teal-500' },
   { kode: 'dokkai', warna: 'bg-amber-500' },
+  { kode: 'bunpou', warna: 'bg-indigo-500' },
 ];
 
 const { t } = useI18n();

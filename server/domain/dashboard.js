@@ -65,7 +65,7 @@ export function ringkasAktivitasHarian(sesiList, { hari = HARI_GRAFIK_LATIHAN, n
   const per = new Map();
   for (let i = hari - 1; i >= 0; i -= 1) {
     const tanggal = addDays(hariIni, -i);
-    per.set(tanggal, { tanggal, detik: { flashcard: 0, kanji: 0, dokkai: 0 }, peserta: new Set() });
+    per.set(tanggal, { tanggal, detik: { flashcard: 0, kanji: 0, dokkai: 0, bunpou: 0 }, peserta: new Set() });
   }
   const sekarang = new Set();
   for (const s of sesiList) {
@@ -79,7 +79,7 @@ export function ringkasAktivitasHarian(sesiList, { hari = HARI_GRAFIK_LATIHAN, n
   const harian = [...per.values()].map((d) => ({
     tanggal: d.tanggal,
     detik: d.detik,
-    total: d.detik.flashcard + d.detik.kanji + d.detik.dokkai,
+    total: d.detik.flashcard + d.detik.kanji + d.detik.dokkai + d.detik.bunpou,
     peserta: d.peserta.size,
   }));
   const terakhir = harian[harian.length - 1];

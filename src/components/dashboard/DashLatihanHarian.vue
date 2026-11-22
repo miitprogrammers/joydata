@@ -20,7 +20,7 @@
           @focus="aktif = i"
           @blur="aktif = null"
         >
-          <!-- Flashcard at the bottom, then kanji, then dokkai; 2px of card between the parts -->
+          <!-- Flashcard at the bottom, then kanji, dokkai, bunpou; 2px of card between the parts -->
           <span
             v-if="h.total > 0"
             class="flex w-full max-w-[18px] flex-col-reverse gap-[2px] overflow-hidden rounded-t"
@@ -70,7 +70,7 @@
 import { ref, computed } from 'vue';
 import { posisiDalam } from './posisiTooltip.js';
 
-/** harian: [{ tanggal, detik: { flashcard, kanji, dokkai }, total, peserta }] oldest first. */
+/** harian: [{ tanggal, detik: { flashcard, kanji, dokkai, bunpou }, total, peserta }] oldest first. */
 const props = defineProps({
   harian: { type: Array, required: true },
   labelJenis: { type: Object, required: true },
@@ -86,6 +86,7 @@ const JENIS = computed(() => [
   { key: 'flashcard', label: props.labelJenis.flashcard, warna: 'bg-blue-600' },
   { key: 'kanji', label: props.labelJenis.kanji, warna: 'bg-teal-500' },
   { key: 'dokkai', label: props.labelJenis.dokkai, warna: 'bg-amber-500' },
+  { key: 'bunpou', label: props.labelJenis.bunpou, warna: 'bg-indigo-500' },
 ]);
 
 // The top line is the next whole hour above the busiest day.
@@ -94,6 +95,6 @@ const labelMaks = computed(() => `${maks.value / 3600}${props.satuanJam}`);
 // The tooltip stays inside the card: left-aligned on the left third, right-aligned on the right third, centred between.
 const posisiTooltip = computed(() => posisiDalam(aktif.value, props.harian.length));
 const totalJenis = computed(() =>
-  Object.fromEntries(['flashcard', 'kanji', 'dokkai'].map((k) => [k, props.harian.reduce((n, h) => n + h.detik[k], 0)]))
+  Object.fromEntries(['flashcard', 'kanji', 'dokkai', 'bunpou'].map((k) => [k, props.harian.reduce((n, h) => n + (h.detik[k] || 0), 0)]))
 );
 </script>

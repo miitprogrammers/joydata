@@ -32,7 +32,7 @@ test('Practice per day: active seconds per type, peserta per day, today and who 
   ];
   const r = ringkasAktivitasHarian(sesi, { hari: 3, now });
   assert.deepEqual(r.harian.map((d) => d.tanggal), ['2026-11-12', '2026-11-13', '2026-11-14']);
-  assert.deepEqual(r.harian[2].detik, { flashcard: 1800, kanji: 0, dokkai: 300 });
+  assert.deepEqual(r.harian[2].detik, { flashcard: 1800, kanji: 0, dokkai: 300, bunpou: 0 });
   assert.equal(r.harian[2].peserta, 1);
   assert.equal(r.harian[0].total, 120);
   assert.deepEqual(r.hariIni, { peserta: 1, detikAktif: 2100 });
@@ -224,4 +224,21 @@ test('Dashboard practice chart: starts at the first practice ever logged, not be
   assert.equal(buildDashboard(f).latihanHarian.length, 14);
   f.latihan.aturanGrade = { ...f.latihan.aturanGrade, mulaiData: '2026-11-13' };
   assert.deepEqual(buildDashboard(f).latihanHarian.map((h) => h.tanggal), ['2026-11-13', '2026-11-14']);
+});
+
+test('Bunpou practice counts per type in the daily chart total and in per-peserta statistics', async () => {
+  const { statistikLatihan } = await import('./aktivitasLatihan.js');
+  const now = new Date('2026-11-14T05:00:00Z');
+  const sesi = [
+    { pesertaId: 1, jenis: 'bunpou', mode: 'latihan', skor: 80, itemSelesai: 6, detikAktif: 420, mulaiAt: '2026-11-14T03:00:00Z', terakhirAt: '2026-11-14T03:07:00Z', selesaiAt: '2026-11-14T03:07:00Z' },
+    { pesertaId: 1, jenis: 'kanji', mode: 'latihan', skor: 100, itemSelesai: 10, detikAktif: 60, mulaiAt: '2026-11-14T04:00:00Z', terakhirAt: '2026-11-14T04:01:00Z', selesaiAt: '2026-11-14T04:01:00Z' },
+  ];
+  const r = ringkasAktivitasHarian(sesi, { hari: 1, now });
+  assert.deepEqual(r.harian[0].detik, { flashcard: 0, kanji: 60, dokkai: 0, bunpou: 420 });
+  assert.equal(r.harian[0].total, 480);
+  assert.deepEqual(r.hariIni, { peserta: 1, detikAktif: 480 });
+  const [baris] = statistikLatihan(sesi, [1]);
+  assert.deepEqual(baris.perJenis, { flashcard: 0, kanji: 60, dokkai: 0, bunpou: 420 });
+  assert.equal(baris.detikAktif, 480);
+  assert.equal(baris.soal, 16);
 });

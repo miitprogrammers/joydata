@@ -294,6 +294,8 @@ export function createInitialLocalState({ demo = isDemoSeedEnabled() } = {}) {
     flashcardProgres: [],
     kanjiAdventureProgres: [],
     kanjiAdventureSesi: [],
+    bunpouAdventureProgres: [],
+    bunpouAdventureSesi: [],
     latihanSesi: [],
     nilaiSikap,
     absensi,
@@ -379,6 +381,14 @@ function ensurePhase2Collections(state) {
   }
   if (!Array.isArray(state.kanjiAdventureSesi)) {
     state.kanjiAdventureSesi = [];
+    dirty = true;
+  }
+  if (!Array.isArray(state.bunpouAdventureProgres)) {
+    state.bunpouAdventureProgres = [];
+    dirty = true;
+  }
+  if (!Array.isArray(state.bunpouAdventureSesi)) {
+    state.bunpouAdventureSesi = [];
     dirty = true;
   }
   for (const p of SEED_PAGES) {

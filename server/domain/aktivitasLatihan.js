@@ -7,7 +7,7 @@
  * its last signal is under DETIK_AKTIF old.
  */
 
-export const JENIS_AKTIVITAS = ['flashcard', 'kanji', 'dokkai'];
+export const JENIS_AKTIVITAS = ['flashcard', 'kanji', 'dokkai', 'bunpou'];
 export const MODE_AKTIVITAS = ['latihan', 'resmi'];
 export const DETIK_AKTIF = 60;
 
@@ -89,7 +89,7 @@ function kosong() {
     soal: 0,
     tesResmi: 0,
     skorLatihan: [],
-    perJenis: { flashcard: 0, kanji: 0, dokkai: 0 },
+    perJenis: { flashcard: 0, kanji: 0, dokkai: 0, bunpou: 0 },
     terakhirAt: null,
   };
 }
