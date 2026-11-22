@@ -139,3 +139,13 @@ test('URL akhir klien adventure tidak boleh dobel /portal', async () => {
     globalThis.localStorage = storageAsli;
   }
 });
+
+test('detak meneruskan keepalive dan diam sebagai opsi permintaan, bukan isi JSON', async () => {
+  const dipanggil = [];
+  const klien = buatKlienAdventure({ request: async (path, opsi) => { dipanggil.push({ path, opsi }); return {}; } });
+  await klien.detak('s1', { detikAktif: 5, selesai: false, keepalive: true });
+  assert.deepEqual(dipanggil[0], {
+    path: '/kanji-adventure/detak',
+    opsi: { method: 'POST', body: { sesiId: 's1', detikAktif: 5, selesai: false }, diam: true, keepalive: true },
+  });
+});

@@ -95,9 +95,12 @@ export function buatKlienAdventure({ request = portalRequest, requestStaff = api
       if (chunkIndex !== undefined) body.chunkIndex = chunkIndex;
       return kirim(`${DASAR}/mulai`, { method: 'POST', body });
     },
-    detak: (sesiId, payload = {}) => kirim(`${DASAR}/detak`, {
+    // keepalive is a fetch option and diam a request option; neither belongs in the JSON body.
+    detak: (sesiId, { keepalive, ...payload } = {}) => kirim(`${DASAR}/detak`, {
       method: 'POST',
       body: { sesiId, ...payload },
+      diam: true,
+      keepalive,
     }),
     nilai: (sesiId, jawaban, payload = {}) => kirim(`${DASAR}/nilai`, {
       method: 'POST',
