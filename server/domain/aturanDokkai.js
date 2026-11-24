@@ -15,8 +15,11 @@ export const HINDARI_N5_KANA = ['こうじょう', 'せんぱい', 'きゅうり
 export const POLA_DI_ATAS_N5 = [
   [/ので(?!す)/, '～ので (Bab 39; abaikan bila bagian dari kata lain)'],
   [/つもり/, '～つもり (Bab 31)'],
-  // いんです dari かいしゃいん (会社員) + です adalah false positive, bukan pola ～んです
-  [/(?<![さばかげじたほゃょぶこしろらめぱにてどごぺぜけせやい])んです/, '～んです (Bab 26)'],
+  // ～んです bukan pola bila ん bagian dari nama benda yang ditulis kana: かいしゃいん/ぎんこういん/てんいん/こういん/
+  // びょういん/きょういん/にゅういん (alternatif う+い), えきいん, かいいん, だいがくいん, ごはん, ふとん, かびん, ゆうびん.
+  // いいん/かわいいん/おおきいん tidak dikecualikan, jadi いいんです/かわいいんです tetap ditandai.
+  // くん (田中くんです) tidak dikecualikan: くんです tak bisa dibedakan dari いくんです.
+  [/(?<![さばかげじたほゃょぶこしろらめぱにてどごぺぜけせ])(?<!(?:しゃ|こう|てん|う)い)(?<!(?:ごは|ふと|かび|ゆうび|えきい|かいい|だいがくい))んです/, '～んです (Bab 26)'],
   [/ながら/, '～ながら (Bab 28)'],
   [/(です|ます)し[、，]/, '～し (Bab 28)'],
   [/[てで]しま[ういっわ]/, '～てしまう (Bab 29)'],

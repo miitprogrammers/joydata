@@ -106,6 +106,14 @@ export function validasiSoalBintang(soal, { katalog, jlpt }) → string[]
 //  - panjang baris soal (tanpa furigana dan tanpa spasi pemisah frasa): N5 ≤ 40, N4 ≤ 55, N3 ≤ 70 karakter
 //  - polaDiAtasTingkat() dari aturanDokkai.js kosong (pola di atas tingkat tidak boleh dipakai)
 //  - terjemahan dan pembahasan terisi
+//  - terjemahan memuat >= 10 huruf Latin; pembahasan memuat >= 15 huruf Latin (penjelasan bahasa Indonesia, bukan kalimat Jepang saja)
+//  - tidak ada potongan yang diawali huruf yang tak bisa memulai kata (kana kecil, ん/ン, ー; って) — pengecualian: ん yang
+//    membuka ～んです / んでした / んでしょう / んじゃ
+//  - potongan satu kana wajib partikel (は が を に へ で と も の や か ね よ)
+//  - kata tidak boleh terputus di batas potongan: kalimat digabung dengan "|" (sebelum | potongan kunci | sesudah), akhiran
+//    konjugasi yang lepas dari batangnya ditolak (ま|しょ|う, くだ|さい, で|す, まし|た, いけま|せん)
+//  - status hanya 'draf' (lolos gate + peninjau buta) atau 'ditinjau' (juga disetujui sensei)
+//  Semua penjaga ini tidak boleh dilonggarkan agar konten lolos: perbaiki kontennya (AGENTS.md).
 
 /** Masalah tingkat bank: id unik, kalimat utuh tidak kembar, sebaran posisi ★ per volume. */
 export function validasiBankBintang(bank, { katalog, jlpt }) → string[]

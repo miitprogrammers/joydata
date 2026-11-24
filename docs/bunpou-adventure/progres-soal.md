@@ -22,17 +22,17 @@ lengkap tampil "Segera".
 
 | Volume | Bab | Tahap | Pola | Target soal | Ditulis | Di bank | Rilis | Catatan |
 |---|---|---:|---:|---:|---:|---:|---|---|
-| N5 Vol 1 | Bab 1–4 | 3 | 10 | 40 | 24 | 0 | belum | |
+| N5 Vol 1 | Bab 1–4 | 3 | 10 | 40 | 24 | 24 | belum | 6 dari 10 pola |
 | N5 Vol 2 | Bab 5–9 | 5 | 13 | 52 | 0 | 0 | belum | |
 | N5 Vol 3 | Bab 10–15 | 5 | 16 | 64 | 0 | 0 | belum | |
-| N5 Vol 4 | Bab 16–21 | 5 | 19 | 76 | 28 | 0 | belum | |
+| N5 Vol 4 | Bab 16–21 | 5 | 19 | 76 | 28 | 28 | belum | 7 dari 19 pola |
 | N5 Vol 5 | Bab 22–25 | 3 | 8 | 32 | 0 | 0 | belum | |
 | N4 Vol 1 | Bab 26–30 | 5 | 14 | 56 | 0 | 0 | belum | |
 | N4 Vol 2 | Bab 31–35 | 5 | 19 | 76 | 0 | 0 | belum | |
 | N4 Vol 3 | Bab 36–40 | 4 | 13 | 52 | 0 | 0 | belum | |
 | N4 Vol 4 | Bab 41–45 | 5 | 19 | 76 | 0 | 0 | belum | |
 | N4 Vol 5 | Bab 46–50 | 7 | 32 | 128 | 0 | 0 | belum | |
-| **Total** | | | **163** | **652** | **52** | **0** | | |
+| **Total** | | | **163** | **652** | **52** | **52** | | |
 
 Urutan produksi: pilot (Bab 1, 2, 16, 19) → lengkapi N5 Vol 1 (Bab 3–4) dan N4 Vol 1 untuk rilis pertama → N5 Vol 2–5 →
 N4 Vol 2–5.
@@ -43,6 +43,8 @@ N4 Vol 2–5.
 |---|---|---|---|---|
 | 2026-11-22 | Pilot, putaran 1 | 13 pola (Bab 1, 2, 16, 19) × 4 = 52 soal | gate 52/52; peninjau buta: ★ cocok 52/52, lolos bersih 29, catatan 18, gagal 5 (urutan lain memberi ★ berbeda); teks: 11 perbaikan | penulis Sonnet, peninjau buta Opus. Validator salah tangkap かいしゃいんです/ぎんこういんです sebagai ～んです |
 | 2026-11-22 | Pilot, putaran 2 | tulis ulang 26 soal, perbaiki teks 5 | berjalan | aturan baru R1–R9: ★ tidak boleh tertebak tanpa menyusun (penutup kalimat tunggal, potongan tetap, topik は tunggal, tanda baca unik); hindari unsur mengambang; jangan pakai tokoh Minna dengan fakta berbeda; tata bahasa ≤ bab; tulisan konsisten; terjemahan lengkap tanpa Pak/Bu; pembahasan tepat soal kata yang diterangkan; urutanLain hanya yang wajar |
+| 2026-11-24 | Pembersihan bank | 678 soal tanpa tinjauan dari commit dec8098–a4af548 (N5 264, N4 414) dihapus beserta 10 berkas dump markdown dan scripts/convert-bank-soal.cjs; bank kosong lagi (Di bank = 0, tidak ada volume rilis) | validator dikembalikan dan diperketat | cacat terukur: 522 tanpa terjemahan, 288 pembahasan hanya kalimat Jepang, ±175 potongan terpotong di tengah kata, 89 kunci bukan kalimat nyata, 11 potongan hanya tanda baca, ★ dirotasi 66/66/66/66, tanpa analisis ambiguitas, salah bahasa Jepang; ditulis tanpa alur §8 (penulis → gate → peninjau buta → inject) |
+| 2026-11-24 | Inject pilot | 52 soal pilot (13 pola) lewat `inject-bintang.mjs` ke `bintangN5.js` | semua 52 lolos peninjau buta; validator diperketat (kata terputus di batas potongan, potongan satu kana bukan partikel) dan 52/52 tetap lolos | tidak ada volume rilis (Vol 1: 6/10 pola, Vol 4: 7/19 pola); `tinjauan` diisi LOLOS untuk 52 id |
 
 ## Rincian per pola
 
@@ -52,12 +54,12 @@ Kolom angka = jumlah varian (dari 4) yang sudah melewati tahap itu.
 
 | Tahap | Pola | id | Ditulis | Lolos gate | Lolos peninjau | Di bank | Catatan |
 |---|---|---|---:|---:|---:|---:|---|
-| Bab 1 | N1はN2です | `wa-desu` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 1 | N1のN2 | `n-no-n` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 1 | N1もN2です | `mo` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 2 | これ／それ／あれ | `kore-sore-are` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 2 | N1ですか、N2ですか | `desu-ka-desu-ka` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 2 | この／その／あのN | `kono-sono-ano` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
+| Bab 1 | N1はN2です | `wa-desu` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 1 | N1のN2 | `n-no-n` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 1 | N1もN2です | `mo` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 2 | これ／それ／あれ | `kore-sore-are` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 2 | N1ですか、N2ですか | `desu-ka-desu-ka` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 2 | この／その／あのN | `kono-sono-ano` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
 | Bab 3–4 | ここ／そこ／あそこ | `koko-soko-asoko` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 3–4 | ～から～まで | `kara-made` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 3–4 | ［時間］にVます | `ni-jikan` | 0/4 | 0/4 | 0/4 | 0/4 |  |
@@ -106,10 +108,10 @@ Kolom angka = jumlah varian (dari 4) yang sudah melewati tahap itu.
 
 | Tahap | Pola | id | Ditulis | Lolos gate | Lolos peninjau | Di bank | Catatan |
 |---|---|---|---:|---:|---:|---:|---|
-| Bab 16 | V1-て、V2-て、～ | `te-te` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 16 | ～てから | `te-kara` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 16 | N1はN2が～ | `wa-ga` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 16 | イA-くて、～／ナA-で、～ | `kute-de` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
+| Bab 16 | V1-て、V2-て、～ | `te-te` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 16 | ～てから | `te-kara` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 16 | N1はN2が～ | `wa-ga` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 16 | イA-くて、～／ナA-で、～ | `kute-de` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
 | Bab 17 | ～なければなりません | `nakereba-narimasen` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 17 | ～なくてもいいです | `nakute-mo-ii` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 17 | ～までに | `made-ni` | 0/4 | 0/4 | 0/4 | 0/4 |  |
@@ -118,9 +120,9 @@ Kolom angka = jumlah varian (dari 4) yang sudah melewati tahap itu.
 | Bab 18 | ～ことができます | `koto-ga-dekiru` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 18 | ～こと | `koto` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 18 | ～まえに | `mae-ni` | 0/4 | 0/4 | 0/4 | 0/4 |  |
-| Bab 19 | ～たことがあります | `ta-koto-ga-aru` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 19 | ～たり～たりします | `tari-tari` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
-| Bab 19 | ～くなります／～になります | `naru` | 4/4 | 4/4 | 0/4 | 0/4 | pilot: putaran 2 |
+| Bab 19 | ～たことがあります | `ta-koto-ga-aru` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 19 | ～たり～たりします | `tari-tari` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
+| Bab 19 | ～くなります／～になります | `naru` | 4/4 | 4/4 | 4/4 | 4/4 | pilot: lolos peninjau buta, masuk bank 2026-11-24 |
 | Bab 20–21 | 普通体（～る／～た／～ない／～だ） | `futsuutai` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 20–21 | ～と思います | `to-omou` | 0/4 | 0/4 | 0/4 | 0/4 |  |
 | Bab 20–21 | ～と言います | `to-iu` | 0/4 | 0/4 | 0/4 | 0/4 |  |
