@@ -15,8 +15,9 @@ import { bacaBukuTerverifikasi, bacaTerima, bacaPilot, masalahBukti } from '../.
 const PANJANG_PILOT_PRA_BUKU = 46;
 // Sidik isi pilot-pra-buku.json. Mengubah daftar (juga dengan sidik soal yang disesuaikan) mengubah sidik ini, jadi
 // konstanta ini harus ikut diubah: perubahan tes yang terlihat dan perlu persetujuan user (AGENTS.md).
-const SIDIK_PILOT_PRA_BUKU = 'c97c31702b58fc2386a169cd64c26d900e0c2429e6f8d2db87b69e10e3efbbe4';
-const sidikBerkas = (berkas) => crypto.createHash('sha256').update(fs.readFileSync(berkas)).digest('hex');
+const SIDIK_PILOT_PRA_BUKU = '942605de3431f0b0fdb151c621f8c3a2437f277cbca3e5303a9ce92a107d249d';
+// Sidik isi kanonik (JSON hasil parse), bebas dari akhir baris CRLF/LF dan format spasi di checkout Windows vs Linux.
+const sidikBerkas = (berkas) => crypto.createHash('sha256').update(JSON.stringify(JSON.parse(fs.readFileSync(berkas, 'utf8')))).digest('hex');
 /** Soal berstatus ditinjau tanpa catatan persetujuan untuk sidik isinya sekarang. */
 const tanpaPersetujuan = (bank, persetujuan) => bank
   .filter((s) => s.status === 'ditinjau' && !persetujuan.some((x) => x.id === s.id && x.hash === hashSoal(s)))
