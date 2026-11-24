@@ -1,0 +1,242 @@
+[
+  {
+    "kode": "S01",
+    "bab": 2,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "あれは だれのですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "あれは"
+      },
+      {
+        "nomor": 2,
+        "teks": "です"
+      },
+      {
+        "nomor": 3,
+        "teks": "ミラーさんの"
+      },
+      {
+        "nomor": 4,
+        "teks": "かばん"
+      }
+    ]
+  },
+  {
+    "kode": "S02",
+    "bab": 1,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "サリさんは さくら大学{だいがく}の 人{ひと}です。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "です"
+      },
+      {
+        "nomor": 2,
+        "teks": "さくら大学{だいがく}の"
+      },
+      {
+        "nomor": 3,
+        "teks": "学生{がくせい}"
+      },
+      {
+        "nomor": 4,
+        "teks": "わたしも"
+      }
+    ]
+  },
+  {
+    "kode": "S03",
+    "bab": 1,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "デウィさんは インドネシアから 来{き}ました。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "インドネシア人{じん}"
+      },
+      {
+        "nomor": 2,
+        "teks": "も"
+      },
+      {
+        "nomor": 3,
+        "teks": "ブディさん"
+      },
+      {
+        "nomor": 4,
+        "teks": "です"
+      }
+    ]
+  },
+  {
+    "kode": "S04",
+    "bab": 2,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "？"
+      },
+      {
+        "pembicara": "B",
+        "teks": "ボールペンです。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "それは"
+      },
+      {
+        "nomor": 2,
+        "teks": "ですか、"
+      },
+      {
+        "nomor": 3,
+        "teks": "ボールペン"
+      },
+      {
+        "nomor": 4,
+        "teks": "シャープペンシルですか"
+      }
+    ]
+  },
+  {
+    "kode": "S05",
+    "bab": 1,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "サリさんは 医者{いしゃ}です。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "？"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "も"
+      },
+      {
+        "nomor": 2,
+        "teks": "アディさん"
+      },
+      {
+        "nomor": 3,
+        "teks": "医者{いしゃ}"
+      },
+      {
+        "nomor": 4,
+        "teks": "ですか"
+      }
+    ]
+  },
+  {
+    "kode": "S06",
+    "bab": 19,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "ミラーさんの 日本語{にほんご}は どうですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "日本語{にほんご}が"
+      },
+      {
+        "nomor": 2,
+        "teks": "ミラーさんは"
+      },
+      {
+        "nomor": 3,
+        "teks": "上手{じょうず}に"
+      },
+      {
+        "nomor": 4,
+        "teks": "なりました"
+      }
+    ]
+  }
+]

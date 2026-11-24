@@ -225,6 +225,7 @@ Semua keputusan diambil user pada 2026-11-21. "Sesuai usulan" = user menyetujui 
 | F1a | Bab untuk 19 pola modul-saja (spek-kode §3.2) | sesuai usulan |
 | F1b | N4 Vol 5 tetap satu volume (Bab 49 dan 50 masing-masing 2 tahap) | sesuai usulan |
 | Q12 | Kunci (`benar`, `urutan`) tetap dikirim bersama kertas agar umpan balik langsung tampil, seperti Kanji Adventure (peserta dengan devtools bisa membacanya; nilai tidak masuk rapor) | **dipilih user** 2026-11-22: dibiarkan |
+| Q13 | Standar soal bintang = standar JLPT N5 (★ boleh ditempatkan dari bentuk pola; gagal hanya bila jawaban ganda, ★ dibocorkan baris lain, ★ ditentukan tanda baca, kalimat tidak wajar, di atas bab) | **dipilih user** 2026-11-24 |
 
 ---
 

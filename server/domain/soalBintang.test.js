@@ -127,8 +127,7 @@ test('validator menolak bintang di luar 0-3, baris soal ganda, huruf Latin, dan 
   assert.match(masalahDari(salin(FUJISAN, { bintang: 4 })), /bintang/);
   assert.match(masalahDari(salin(FUJISAN, { baris: [{ sebelum: 'a', sesudah: 'b' }, { sebelum: 'c', sesudah: 'd' }] })), /tepat satu baris soal/);
   assert.match(masalahDari(salin(FUJISAN, { baris: [{ sebelum: 'わたしは ABC', sesudah: '。' }] })), /huruf Latin/);
-  // terjemahan kosong hanya ditolak untuk soal status final (bukan draf)
-  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '', status: 'final' })), /terjemahan kosong/);
+  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '' })), /terjemahan kosong/);
   assert.match(masalahDari(salin(FUJISAN, { pembahasan: ' ' })), /pembahasan kosong/);
 });
 
@@ -211,4 +210,51 @@ test('sebaran ★ miring dalam satu kelompok ditolak (pengaturan per volume)', (
   }));
   const m = validasiBankBintang(bank, { ...opsiN5, kelompok: [['ta-koto-ga-aru']] }).join(' | ');
   assert.match(m, /sebaran ★ miring/);
+});
+
+test('validator menolak pembahasan tanpa penjelasan Indonesia (hanya kalimat Jepang)', () => {
+  assert.match(masalahDari(salin(FUJISAN, { pembahasan: 'わたしは ふじさんに のぼった ことが あります。' })), /pembahasan harus berisi penjelasan/);
+  assert.match(masalahDari(salin(FUJISAN, { pembahasan: '富士{ふじ}山{さん}、pendek.' })), /pembahasan harus berisi penjelasan/);
+});
+
+test('validator menolak potongan yang diawali huruf yang tak bisa memulai kata', () => {
+  for (const awal of ['ゃくそく', 'っています', 'んだ', 'ーる', 'って', 'ょう', 'ン']) {
+    assert.match(masalahDari(salin(FUJISAN, { potongan: ['ふじさんに', awal, 'ことが', 'あります'] })), /dipotong di tengah kata/);
+  }
+  assert.match(masalahDari(salin(FUJISAN, { potongan: ['ふじさんに', 'のぼった', 'ことが', '？'] })), /hanya tanda baca/);
+});
+
+test('validator menolak terjemahan kurang dari 10 huruf Latin dan status di luar draf/ditinjau', () => {
+  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '富士山' })), /terjemahan harus berupa kalimat/);
+  assert.match(masalahDari(salin(FUJISAN, { terjemahan: 'Saya pergi.' })), /terjemahan harus berupa kalimat/);
+  assert.match(masalahDari(salin(FUJISAN, { terjemahan: '', status: 'draf' })), /terjemahan kosong/);
+  for (const status of ['final', undefined, '']) {
+    assert.match(masalahDari(salin(FUJISAN, { status })), /status harus draf atau ditinjau/);
+  }
+  assert.equal(masalahDari(salin(FUJISAN, { status: 'ditinjau' })), '');
+});
+
+test('validator menolak kata terputus di batas potongan dan potongan satu kana bukan partikel', () => {
+  const dgn = (potongan, sesudah = '。', sebelum = 'わたしは') => salin(FUJISAN, { baris: [{ sebelum, sesudah }], potongan });
+  for (const p of [['がくせいで', 'す', 'ここに', 'いま'], ['いきま', 'しょ', 'う', 'ね'], ['ここに', 'くだ', 'さい', 'ね'], ['いきま', 'した', 'きのう', 'ここに'], ['いけま', 'せん', 'ここは', 'から']]) {
+    assert.match(masalahDari(dgn(p)), /kata terputus|dipotong|satu kana/, p.join('/'));
+  }
+  assert.match(masalahDari(dgn(['がくせいで', 'す', 'ここに', 'いま'])), /kata terputus di batas potongan/);
+  assert.match(masalahDari(dgn(['ここ', 'あ', 'いま', 'です'])), /satu kana yang bukan partikel/);
+  assert.equal(masalahDari(dgn(['ここ', 'の', 'ほんが', 'あります'])), '');
+});
+
+test('potongan yang diawali ん sah bila ～んです / んでした / んでしょう / んじゃ', () => {
+  const dgn = (p) => salin(FUJISAN, { potongan: ['ふじさんに', 'のぼった', p, 'ね'], baris: [{ sebelum: 'わたしは', sesudah: '。' }] });
+  for (const p of ['んです', 'んでした', 'んでしょうか', 'んじゃない']) assert.doesNotMatch(masalahDari(dgn(p)), /dipotong di tengah kata/, p);
+  assert.match(masalahDari(dgn('んだ')), /dipotong di tengah kata/);
+});
+
+test('で partikel + した sah (としょかんで｜した); で｜す dan でし｜た tetap ditolak', () => {
+  const dgn = (potongan) => salin(FUJISAN, { baris: [{ sebelum: 'きのう', sesudah: '。' }], potongan });
+  assert.doesNotMatch(masalahDari(dgn(['わたしは', 'としょかんで', 'べんきょうを', 'しました'])), /kata terputus/);
+  assert.doesNotMatch(masalahDari(dgn(['わたしは', 'としょかんで', 'した', 'べんきょうを'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'がくせいで', 'す', 'きのう'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'がくせいでし', 'た', 'きのう'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'せんせいで', 'しょう', 'きのう'])), /kata terputus/);
 });

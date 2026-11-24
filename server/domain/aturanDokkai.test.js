@@ -33,3 +33,15 @@ test('N3 warnings: N2 patterns that slip into N3 passages', () => {
   assert.deepEqual(polaDiAtasTingkat('熱が出るおそれがある。', 'N3', 'L3').map((x) => x.nama), ['～おそれがある (N2) → ～かもしれない']);
   assert.deepEqual(polaDiAtasTingkat('熱が出るかもしれない。', 'N3', 'L3'), []);
 });
+
+test('～んです: nama pekerjaan berakhir いん + です bukan pola; ～んです sungguhan tetap ditandai', () => {
+  const ada = (t) => polaDiAtasTingkat(t, 'N5', 'L1').some((x) => /んです/.test(x.nama));
+  for (const t of ['かいしゃいんです。', 'ぎんこういんです。', 'てんいんです。']) assert.equal(ada(t), false, t);
+  for (const t of ['このりょうりはおいしいんです。', 'まいにちいくんです。', 'きのうやすんだんですか。']) assert.equal(ada(t), true, t);
+});
+
+test('～んです: nama benda berakhir ん + です (kana) dikecualikan; いいんです/かわいいんです tetap ditandai', () => {
+  const ada = (t) => polaDiAtasTingkat(t, 'N5', 'L1').some((x) => /んです/.test(x.nama));
+  for (const t of ['これはごはんです。', 'これはふとんです。', 'これはかびんです。', 'これはゆうびんです。', 'かれはえきいんです。', 'かれはかいいんです。', 'かれはだいがくいんです。', 'あれはびょういんです。']) assert.equal(ada(t), false, t);
+  for (const t of ['これでいいんです。', 'この花はかわいいんです。', 'この犬はおおきいんです。', 'まいにちいくんです。']) assert.equal(ada(t), true, t);
+});

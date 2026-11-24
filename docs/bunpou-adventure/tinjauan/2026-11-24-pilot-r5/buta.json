@@ -1,0 +1,42 @@
+[
+  {
+    "kode": "S01",
+    "bab": 2,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "インドネシアの チョコレートですか？"
+      },
+      {
+        "pembicara": "B",
+        "teks": "チョコレートです。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "ブラジルの"
+      },
+      {
+        "nomor": 2,
+        "teks": "コーヒー"
+      },
+      {
+        "nomor": 3,
+        "teks": "それは"
+      },
+      {
+        "nomor": 4,
+        "teks": "ですか、"
+      }
+    ]
+  }
+]

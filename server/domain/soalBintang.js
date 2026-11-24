@@ -10,6 +10,26 @@ export const PANJANG_MAKS = { N5: 40, N4: 55, N3: 70 };
 const HURUF_KANJI = /[㐀-鿿々〆ヶ]/g;
 const TANDA_BACA = /^[\s\p{P}\p{S}]+$/u;
 const HURUF_LATIN = /[A-Za-zＡ-Ｚａ-ｚ]/; // termasuk huruf Latin lebar penuh
+const HURUF_LATIN_SEMUA = /[A-Za-z]/g;
+// Potongan tidak boleh diawali huruf yang tak bisa memulai kata (tanda potongan di tengah kata).
+const TIDAK_BISA_AWAL = /^[ぁぃぅぇぉっゃゅょゎァィゥェォッャュョんンー]/;
+// ん di awal potongan sah bila itu ～んです (pola Bab 26): んです, んでした, んでしょう, んじゃ.
+const AWAL_N_SAH = /^ん(です|でした|でしょう|じゃ)/;
+const PARTIKEL_TUNGGAL = new Set([...'はがをにへでともやのかねよ']);
+const SATU_KANA = /^[ぁ-ゖァ-ヺ]$/;
+// Akhiran konjugasi yang terputus dari batangnya di batas potongan: ま|しょ|う, くだ|さい, まし|た, いけま|せん,
+// でし|た, で|す, で|しょう. で|した TIDAK ditolak: で adalah partikel + した (としょかんで｜した, Minna Bab 20).
+// いけ|ません tidak tertangkap (batangnya いけ ada di luar daftar); hanya akhiran yang lepas dari ま/まし/ませ.
+const BATAS = String.raw`(?:\||$|[。、？！])`;
+const TERPUTUS = new RegExp(
+  String.raw`(?:ま|まし|ませ|ましょ|くだ|くださ)\|(?:す|した|た|せん|ん|しょう?|う|さい|い)${BATAS}`
+  + String.raw`|(?:でし)\|た${BATAS}`
+  + String.raw`|(?:で)\|(?:す|しょう)${BATAS}`,
+);
+const STATUS_SAH = ['draf', 'ditinjau'];
+const MIN_LATIN_TERJEMAHAN = 10;
+const MIN_LATIN_PEMBAHASAN = 15;
+const hurufLatin = (s) => (String(s).match(HURUF_LATIN_SEMUA) || []).length;
 const permutasiValid = (u) => Array.isArray(u) && u.length === JUMLAH_KOTAK
   && [...u].sort((a, b) => a - b).every((n, i) => n === i);
 
@@ -70,8 +90,17 @@ export function validasiSoalBintang(soal, { katalog, jlpt }) {
   else {
     const polos = potongan.map((p) => tanpaSpasi(tanpaFurigana(p)));
     if (new Set(polos).size !== polos.length) tambah('potongan kembar');
-    // ？ boleh sebagai potongan tunggal (pola pertanyaan informal futsuutai)
-    if (polos.some((p) => p !== '？' && TANDA_BACA.test(p))) tambah('potongan hanya tanda baca');
+    if (polos.some((p) => TANDA_BACA.test(p))) tambah('potongan hanya tanda baca');
+    for (const p of polos) {
+      if ((TIDAK_BISA_AWAL.test(p) && !AWAL_N_SAH.test(p)) || p.startsWith('って')) tambah(`potongan dipotong di tengah kata: ${p}`);
+      if (SATU_KANA.test(p) && !PARTIKEL_TUNGGAL.has(p)) tambah(`potongan satu kana yang bukan partikel: ${p}`);
+    }
+    if (barisSoal.length === 1) {
+      const gabung = [barisSoal[0].sebelum, ...potongan, barisSoal[0].sesudah]
+        .map((x) => tanpaSpasi(tanpaFurigana(typeof x === 'string' ? x : ''))).join('|');
+      const m = gabung.match(TERPUTUS);
+      if (m) tambah(`kata terputus di batas potongan: ${m[0]}`);
+    }
   }
 
   if (!Number.isInteger(soal.bintang) || soal.bintang < 0 || soal.bintang >= JUMLAH_KOTAK) {
@@ -112,9 +141,11 @@ export function validasiSoalBintang(soal, { katalog, jlpt }) {
     tambah(`pola di atas tingkat ${jlpt}: ${nama}`);
   }
 
-  // terjemahan boleh kosong untuk soal draf
-  if (soal.status !== 'draf' && !teksAda(soal.terjemahan)) tambah('terjemahan kosong');
+  if (!teksAda(soal.terjemahan)) tambah('terjemahan kosong');
+  else if (hurufLatin(soal.terjemahan) < MIN_LATIN_TERJEMAHAN) tambah('terjemahan harus berupa kalimat bahasa Indonesia (min 10 huruf Latin)');
   if (!teksAda(soal.pembahasan)) tambah('pembahasan kosong');
+  else if (hurufLatin(soal.pembahasan) < MIN_LATIN_PEMBAHASAN) tambah('pembahasan harus berisi penjelasan bahasa Indonesia (min 15 huruf Latin)');
+  if (!STATUS_SAH.includes(soal.status)) tambah(`status harus draf atau ditinjau: ${soal.status}`);
   return masalah;
 }
 

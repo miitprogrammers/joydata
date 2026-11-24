@@ -1,0 +1,86 @@
+[
+  {
+    "kode": "S01",
+    "id": "N5-kore-sore-are-2",
+    "hash": "3c37e87a81f805d0",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ かばん can be placed from form alone: noun between ミラーさんの and です. A's line holds あれは (box 1) and だれの (mirrors box 2), but not the ★ piece. ミラーさん is a main Minna character; owning a bag contradicts nothing, but R4 prefers an Indonesian name."
+  },
+  {
+    "kode": "S02",
+    "id": "N5-mo-3",
+    "hash": "bb281bd24cb08869",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (minor: B's も implies Sari is a student, while A only says さくら大学の 人; still acceptable)",
+    "tingkat": "ok",
+    "catatan": "A's さくら大学の 人です gives the frame さくら大学の [N] です, so box 3 is easy. The ★ piece 学生 is not in A, so this is not a leak. ★ is placeable from form (noun before です)."
+  },
+  {
+    "kode": "S03",
+    "id": "N5-mo-4",
+    "hash": "3cee142f7861b418",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (も rests on the inference 'came from Indonesia → Indonesian'; natural enough)",
+    "tingkat": "ok (～から 来ました is the chapter 1 set phrase)",
+    "catatan": "A contains インドネシア (in インドネシアから), close to the ★ piece インドネシア人 but not the same piece. It shows nothing about position. ★ is placeable from form (noun before です)."
+  },
+  {
+    "kode": "S04",
+    "id": "N5-desu-ka-desu-ka-1",
+    "hash": "ed618091e63dca86",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: tanda-baca",
+      "peninjau menandai GAGAL: bocor"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "tanda-baca",
+      "bocor"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Without punctuation, それは シャープペンシルですか、ボールペンですか (order 1-4-3-2, ★ = 4) is just as natural. Only the comma inside piece 2 'ですか、' rules it out. B's answer ボールペンです also repeats the ★ piece ボールペン followed by です."
+  },
+  {
+    "kode": "S05",
+    "id": "N5-mo-2",
+    "hash": "e286829765bed110",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ is the single-kana particle も, placed right after the name, so it can be placed from form. A's 医者です mirrors boxes 3–4 but not the ★ piece."
+  },
+  {
+    "kode": "S06",
+    "id": "N5-naru-2",
+    "hash": "fc6d5bfaf1fe3e6f",
+    "dinilai": "2026-11-24T13:48:35.506Z",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (B restating 'ミラーさんは 日本語が' after the question is a bit redundant but textbook-natural)",
+    "tingkat": "ok (上手 ch. 9, ナAになります ch. 19)",
+    "catatan": "Borderline hint, not a fail: A's 'ミラーさんの 日本語は' has the same word order as boxes 1→2 (ミラーさん → 日本語), with ★ on 日本語が. The pieces differ (の/は vs は/が), and topic-は-first grammar places ★ anyway. Changing A (e.g. ミラーさんは どうですか) would remove the hint. ミラーさん is a main Minna character (R4)."
+  }
+]

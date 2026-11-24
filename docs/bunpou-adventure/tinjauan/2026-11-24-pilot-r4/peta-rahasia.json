@@ -1,0 +1,62 @@
+{
+  "S01": {
+    "id": "N5-kore-sore-are-2",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "3c37e87a81f805d0"
+  },
+  "S02": {
+    "id": "N5-mo-3",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "bb281bd24cb08869"
+  },
+  "S03": {
+    "id": "N5-mo-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "3cee142f7861b418"
+  },
+  "S04": {
+    "id": "N5-desu-ka-desu-ka-1",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "ed618091e63dca86"
+  },
+  "S05": {
+    "id": "N5-mo-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "e286829765bed110"
+  },
+  "S06": {
+    "id": "N5-naru-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "fc6d5bfaf1fe3e6f"
+  }
+}
