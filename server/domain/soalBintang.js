@@ -17,8 +17,15 @@ const TIDAK_BISA_AWAL = /^[ぁぃぅぇぉっゃゅょゎァィゥェォッャ�
 const AWAL_N_SAH = /^ん(です|でした|でしょう|じゃ)/;
 const PARTIKEL_TUNGGAL = new Set([...'はがをにへでともやのかねよ']);
 const SATU_KANA = /^[ぁ-ゖァ-ヺ]$/;
-// Akhiran konjugasi yang terputus dari batangnya di batas potongan (ま|しょ|う, くだ|さい, で|す, まし|た, いけ|ません).
-const TERPUTUS = /(?:ま|まし|ませ|ましょ|で|でし|くだ|くださ)\|(?:す|した|た|せん|ん|しょう?|う|さい|い)(?:\||$|[。、？！])/;
+// Akhiran konjugasi yang terputus dari batangnya di batas potongan: ま|しょ|う, くだ|さい, まし|た, いけま|せん,
+// でし|た, で|す, で|しょう. で|した TIDAK ditolak: で adalah partikel + した (としょかんで｜した, Minna Bab 20).
+// いけ|ません tidak tertangkap (batangnya いけ ada di luar daftar); hanya akhiran yang lepas dari ま/まし/ませ.
+const BATAS = String.raw`(?:\||$|[。、？！])`;
+const TERPUTUS = new RegExp(
+  String.raw`(?:ま|まし|ませ|ましょ|くだ|くださ)\|(?:す|した|た|せん|ん|しょう?|う|さい|い)${BATAS}`
+  + String.raw`|(?:でし)\|た${BATAS}`
+  + String.raw`|(?:で)\|(?:す|しょう)${BATAS}`,
+);
 const STATUS_SAH = ['draf', 'ditinjau'];
 const MIN_LATIN_TERJEMAHAN = 10;
 const MIN_LATIN_PEMBAHASAN = 15;

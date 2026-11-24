@@ -249,3 +249,12 @@ test('potongan yang diawali ん sah bila ～んです / んでした / んでし
   for (const p of ['んです', 'んでした', 'んでしょうか', 'んじゃない']) assert.doesNotMatch(masalahDari(dgn(p)), /dipotong di tengah kata/, p);
   assert.match(masalahDari(dgn('んだ')), /dipotong di tengah kata/);
 });
+
+test('で partikel + した sah (としょかんで｜した); で｜す dan でし｜た tetap ditolak', () => {
+  const dgn = (potongan) => salin(FUJISAN, { baris: [{ sebelum: 'きのう', sesudah: '。' }], potongan });
+  assert.doesNotMatch(masalahDari(dgn(['わたしは', 'としょかんで', 'べんきょうを', 'しました'])), /kata terputus/);
+  assert.doesNotMatch(masalahDari(dgn(['わたしは', 'としょかんで', 'した', 'べんきょうを'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'がくせいで', 'す', 'きのう'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'がくせいでし', 'た', 'きのう'])), /kata terputus/);
+  assert.match(masalahDari(dgn(['わたしは', 'せんせいで', 'しょう', 'きのう'])), /kata terputus/);
+});

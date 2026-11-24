@@ -1,16 +1,23 @@
 // Membuat kertas tanpa kunci untuk peninjau buta, plus peta rahasia untuk menilai jawabannya.
-// Pakai: node buat-buta.mjs <draf.json> --tingkat N5 --keluar <folder> [--subset id1,id2]
-// Berkas yang diberikan ke peninjau: <folder>/buta.json SAJA. peta-rahasia.json jangan dibuka peninjau.
+// Pakai: node buat-buta.mjs <draf.json> --tingkat N5 --keluar <folder> [--rahasia <folder>] [--subset id1,id2]
+// <keluar>/buta.json = satu-satunya yang dilihat peninjau (tempel ISINYA ke prompt peninjau, bukan foldernya).
+// peta-rahasia.json (kunci + sidik isi) ditulis ke --rahasia (bawaan: folder `rahasia/` di samping --keluar).
 import path from 'node:path';
 import fs from 'node:fs';
-import { bacaArgumen, bacaJson, tulisJson, tingkatSah, babDariPola } from './_umum.mjs';
+import { bacaArgumen, bacaJson, tulisJson, tingkatSah, babDariPola, hashSoal, rahasiaBawaan } from './_umum.mjs';
 
 const { _: [berkas], opsi } = bacaArgumen(process.argv.slice(2));
 if (!berkas || !opsi.keluar) { console.error('Pakai: node buat-buta.mjs <draf.json> --tingkat N5|N4 --keluar <folder> [--subset ids]'); process.exit(2); }
 tingkatSah(opsi.tingkat);
 const draf = bacaJson(berkas);
 const pilih = opsi.subset ? new Set(opsi.subset.split(',')) : null;
+const rahasia = opsi.rahasia || rahasiaBawaan(opsi.keluar);
+const relRahasia = path.relative(path.resolve(opsi.keluar), path.resolve(rahasia));
+if (relRahasia === '' || (!relRahasia.startsWith('..') && !path.isAbsolute(relRahasia))) {
+  console.error('--rahasia tidak boleh sama dengan atau berada di dalam folder peninjau (--keluar)'); process.exit(2);
+}
 fs.mkdirSync(opsi.keluar, { recursive: true });
+fs.mkdirSync(rahasia, { recursive: true });
 
 // mulberry32 dengan benih tetap: ulang jalan memberi kertas yang sama.
 let benih = 20261122;
@@ -43,9 +50,9 @@ kocok(draf.filter((s) => !pilih || pilih.has(s.id))).forEach((s, i) => {
       : { pembicara: b.pembicara ?? null, teks: b.teks })),
     pilihan: urutanTampil.map((idx, n) => ({ nomor: n + 1, teks: s.potongan[idx] })),
   });
-  peta[kode] = { id: s.id, urutanTampil };
+  peta[kode] = { id: s.id, urutanTampil, hash: hashSoal(s) };
 });
 
 tulisJson(path.join(opsi.keluar, 'buta.json'), buta);
-tulisJson(path.join(opsi.keluar, 'peta-rahasia.json'), peta);
-console.log(`${buta.length} soal -> ${opsi.keluar}/buta.json (tanpa kunci); peta-rahasia.json jangan diberikan ke peninjau`);
+tulisJson(path.join(rahasia, 'peta-rahasia.json'), peta);
+console.log(`${buta.length} soal -> ${opsi.keluar}/buta.json (tanpa kunci); peta rahasia -> ${rahasia}/peta-rahasia.json (jangan diberikan ke peninjau)`);

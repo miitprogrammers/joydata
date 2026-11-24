@@ -1,56 +1,37 @@
 // Menilai jawaban peninjau buta terhadap kunci draf.
-// Pakai: node bandingkan.mjs <draf.json> <jawaban.json> --keluar <folder yang sama dengan buat-buta>
-// jawaban.json: [{ kode, bintang: nomor, urutan: [n,n,n,n], urutanLain: [[n,n,n,n]...], kewajaran, tingkat, catatan }]
-// Hasil: <folder>/hasil-banding.json = [{ id, status: LOLOS|CATATAN|GAGAL, ... }]. Salin id berstatus LOLOS
-// (setelah cek teks untuk CATATAN) ke berkas tinjauan untuk inject-bintang.mjs.
+// Pakai: node bandingkan.mjs <draf.json> <jawaban.json> --keluar <folder peninjau> [--rahasia <folder>]
+//   --rahasia = folder yang dipakai buat-buta.mjs untuk peta rahasia (bawaan: `rahasia/` di samping --keluar).
+//   Hasil ditulis ke <rahasia>/hasil-banding.json. Satu putaran = satu pasang folder; putaran ulang pakai folder baru.
+// jawaban.json: [{ kode, bintang: nomor 1-4, urutan: [n,n,n,n], urutanLain: [[n,n,n,n]...], kewajaran, tingkat, gagal: [...], catatan }]
+//   gagal: larik WAJIB ada (boleh kosong) dari ganda | bocor | tanda-baca | tidak-wajar | di-atas-bab. Isi apa pun = GAGAL.
+//   Catatan lain (mis. "★ bisa ditempatkan dari bentuk pola") masuk kewajaran/catatan dan hanya menjadi CATATAN.
+// Aturan lain: urutan harus permutasi 1-4, kewajaran dan tingkat wajib (jika tidak: GAGAL "jawaban tidak lengkap");
+// bila tak satu pun urutan peninjau sama dengan urutan kunci: CATATAN; kode ganda di jawaban.json = galat.
+// Baris hasil memuat `hash` isi yang ditinjau. Fungsi penilai ada di _penilaian.mjs (dipakai juga inject untuk hitung ulang).
+// Setelah putaran selesai, salin buta.json, jawaban.json, peta-rahasia.json, hasil-banding.json ke
+// docs/bunpou-adventure/tinjauan/<putaran>/.
 import path from 'node:path';
-import { bacaArgumen, bacaJson, tulisJson } from './_umum.mjs';
+import { bacaArgumen, bacaJson, tulisJson, rahasiaBawaan } from './_umum.mjs';
+import { nilaiSemua } from './_penilaian.mjs';
 
 const { _: [berkasDraf, berkasJawaban], opsi } = bacaArgumen(process.argv.slice(2));
-if (!berkasDraf || !berkasJawaban || !opsi.keluar) { console.error('Pakai: node bandingkan.mjs <draf.json> <jawaban.json> --keluar <folder>'); process.exit(2); }
+if (!berkasDraf || !berkasJawaban || !(opsi.keluar || opsi.rahasia)) {
+  console.error('Pakai: node bandingkan.mjs <draf.json> <jawaban.json> --keluar <folder peninjau> [--rahasia <folder>]');
+  process.exit(2);
+}
+const rahasia = opsi.rahasia || rahasiaBawaan(opsi.keluar);
 const draf = new Map(bacaJson(berkasDraf).map((s) => [s.id, s]));
-const peta = bacaJson(path.join(opsi.keluar, 'peta-rahasia.json'));
+const peta = bacaJson(path.join(rahasia, 'peta-rahasia.json'));
 const jawaban = bacaJson(berkasJawaban);
 
-const sama = (a, b) => a.length === b.length && a.every((x, i) => x === b[i]);
-const hasil = [];
-const dijawab = new Set();
-for (const j of jawaban) {
-  const p = peta[j.kode];
-  if (!p) { hasil.push({ kode: j.kode, status: 'GAGAL', masalah: ['kode tidak dikenal'] }); continue; }
-  dijawab.add(j.kode);
-  const s = draf.get(p.id);
-  const keIndeks = (nomor) => nomor.map((n) => p.urutanTampil[n - 1]);
-  const kunci = s.potongan[s.bintang];
-  const sah = [[0, 1, 2, 3], ...(s.urutanLain || [])];
-  const masalah = [];
-
-  const pilihan = s.potongan[p.urutanTampil[j.bintang - 1]];
-  if (pilihan !== kunci) masalah.push(`★ peninjau "${pilihan}" != kunci "${kunci}"`);
-  const utama = keIndeks(j.urutan || []);
-  if (utama.length === 4 && s.potongan[utama[s.bintang]] !== pilihan) masalah.push('urutan peninjau tidak cocok dengan pilihan ★-nya sendiri');
-  const baru = [];
-  for (const u of [utama, ...(j.urutanLain || []).map(keIndeks)]) {
-    if (u.length !== 4) continue;
-    if (s.potongan[u[s.bintang]] !== kunci) masalah.push(`urutan sah menurut peninjau [${u.map((i) => s.potongan[i]).join(' / ')}] memberi ★ lain`);
-    else if (!sah.some((v) => sama(v, u))) baru.push(u);
-  }
-  const catatan = [j.kewajaran, j.tingkat].filter((x) => x && x !== 'ok');
-  hasil.push({
-    kode: j.kode, id: p.id,
-    status: masalah.length ? 'GAGAL' : catatan.length ? 'CATATAN' : 'LOLOS',
-    masalah, urutanLainBaru: baru, kewajaran: j.kewajaran, tingkat: j.tingkat, catatan: j.catatan,
-  });
-}
-for (const [kode, p] of Object.entries(peta)) {
-  if (!dijawab.has(kode)) hasil.push({ kode, id: p.id, status: 'GAGAL', masalah: ['tidak dijawab peninjau'] });
-}
+let hasil;
+try { hasil = nilaiSemua(draf, peta, jawaban, new Date().toISOString()); } catch (e) { console.error(e.message); process.exit(1); }
 const hitung = (st) => hasil.filter((h) => h.status === st).length;
 console.log(`LOLOS ${hitung('LOLOS')} · CATATAN ${hitung('CATATAN')} · GAGAL ${hitung('GAGAL')} · dari ${hasil.length}`);
-tulisJson(path.join(opsi.keluar, 'hasil-banding.json'), hasil);
+tulisJson(path.join(rahasia, 'hasil-banding.json'), hasil);
 for (const h of hasil.filter((x) => x.status !== 'LOLOS')) {
   console.log(`\n${h.status} ${h.id} (${h.kode})`);
-  for (const m of h.masalah) console.log(`  - ${m}`);
+  for (const m of h.masalah || []) console.log(`  - ${m}`);
   if (h.kewajaran && h.kewajaran !== 'ok') console.log(`  kewajaran: ${h.kewajaran}`);
   if (h.tingkat && h.tingkat !== 'ok') console.log(`  tingkat: ${h.tingkat}`);
   if (h.catatan) console.log(`  catatan: ${h.catatan}`);

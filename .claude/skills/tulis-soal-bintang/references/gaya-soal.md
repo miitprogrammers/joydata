@@ -40,9 +40,12 @@ yang jatuh di ★ (potongan ditampilkan dalam urutan acak). Spek lengkap: `docs/
 
 ## Aturan gaya R1–R10 (pelajaran pilot)
 
-- **R1.** ★ tidak boleh tertebak tanpa menyusun kalimat: tidak jatuh di satu-satunya potongan penutup kalimat, potongan
-  tetap (fixed chunk), satu-satunya topik は, atau potongan dengan tanda baca unik.
-- **R2.** ★ di kotak 1 atau 4 butuh paling sedikit dua kandidat masuk akal untuk kotak itu.
+- **R1.** Standar = soal JLPT N5 resmi (keputusan user 2026-11-24, plan Q13). ★ yang bisa ditempatkan dari bentuk pola saja
+  (mis. Vた + ことが, kata benda + です) **boleh**, seperti di sampel JLPT. Soal GAGAL hanya bila: ada lebih dari satu urutan wajar
+  yang memberi ★ berbeda, ★ dibocorkan baris dialog lain, ★ ditentukan hanya oleh tanda baca, kalimat tidak wajar atau tidak
+  logis, atau kosakata/tata bahasa di atas bab. Hindari bila ada pilihan lain (bukan kegagalan): ★ di satu-satunya potongan
+  penutup kalimat, potongan tetap (fixed chunk), satu-satunya topik は.
+- **R2.** Hindari bila ada pilihan lain: ★ di kotak 1 atau 4 sebaiknya punya paling sedikit dua kandidat masuk akal untuk kotak itu.
 - **R3.** Hindari unsur mengambang (kebangsaan + nama, dua pewatas の, kata keterangan, keterangan teman atau tempat) kecuali
   ★ tetap sama di semua urutan sah.
 - **R4.** Jangan memakai tokoh utama Minna dengan fakta yang bertentangan; pilih nama peserta Indonesia (Sari, Adi, Budi, ...).

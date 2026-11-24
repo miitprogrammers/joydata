@@ -1,0 +1,20 @@
+[
+  {
+    "id": "N5-mo-3",
+    "hash": "bb281bd24cb08869",
+    "tanggal": "2026-11-24",
+    "alasan": "Diterima 2026-11-24 setelah cek teks: catatan peninjau hanya soal kewajaran kecil, bukan salah satu dari lima jenis gagal."
+  },
+  {
+    "id": "N5-mo-4",
+    "hash": "3cee142f7861b418",
+    "tanggal": "2026-11-24",
+    "alasan": "Diterima 2026-11-24 setelah cek teks: catatan peninjau hanya soal kewajaran kecil, bukan salah satu dari lima jenis gagal."
+  },
+  {
+    "id": "N5-naru-2",
+    "hash": "fc6d5bfaf1fe3e6f",
+    "tanggal": "2026-11-24",
+    "alasan": "Catatan peninjau: baris A meniru urutan kata kotak 1 ke 2; dinilai petunjuk batas, bukan gagal. Diterima 2026-11-24."
+  }
+]
