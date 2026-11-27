@@ -1,0 +1,154 @@
+[
+  {
+    "kode": "S01",
+    "bab": 28,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "この レストランは",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "やすいし"
+      },
+      {
+        "nomor": 2,
+        "teks": "店{みせ}の 人{ひと}も"
+      },
+      {
+        "nomor": 3,
+        "teks": "おいしいし"
+      },
+      {
+        "nomor": 4,
+        "teks": "しんせつです"
+      }
+    ]
+  },
+  {
+    "kode": "S02",
+    "bab": 26,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "どうして きょう はやく 帰{かえ}るんですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "行{い}きたいんです"
+      },
+      {
+        "nomor": 2,
+        "teks": "あたまが"
+      },
+      {
+        "nomor": 3,
+        "teks": "びょういんへ"
+      },
+      {
+        "nomor": 4,
+        "teks": "いたいから"
+      }
+    ]
+  },
+  {
+    "kode": "S03",
+    "bab": 50,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "すみません、 トイレは どこですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "おてあらいは"
+      },
+      {
+        "nomor": 2,
+        "teks": "エレベーターの"
+      },
+      {
+        "nomor": 3,
+        "teks": "あちらの"
+      },
+      {
+        "nomor": 4,
+        "teks": "うしろでございます"
+      }
+    ]
+  },
+  {
+    "kode": "S04",
+    "bab": 34,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "けさは",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "ごはんを"
+      },
+      {
+        "nomor": 2,
+        "teks": "行{い}きました"
+      },
+      {
+        "nomor": 3,
+        "teks": "学校{がっこう}へ"
+      },
+      {
+        "nomor": 4,
+        "teks": "食{た}べないで"
+      }
+    ]
+  }
+]

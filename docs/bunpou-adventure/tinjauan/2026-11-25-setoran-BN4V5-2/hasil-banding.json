@@ -1,0 +1,865 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-kenjougo-mairu-1",
+    "hash": "2ed280f308c44699",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Urutan 3-4-1-2 (日本へ インドネシアから まいりました, ★=から) gramatikal tetapi janggal (tujuan sebelum asal); tidak dihitung sebagai urutan wajar.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-sonkeigo-nasaru-3",
+    "hash": "e8c8f9c795a76027",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-sonkeigo-meshiagaru-3",
+    "hash": "62972fbea3eaa84f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "コーヒーを パンと めしあがりますか tidak wajar tanpa いっしょに, jadi kotak 1 hanya パンと.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-kenjougo-haiken-suru-2",
+    "hash": "cde2458f9f90c052",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ bisa ditempatkan dari bentuk はいけん + しても + よろしいですか saja (boleh).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N4-o-suru-1",
+    "hash": "849fff65351a8b56",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [おにもつを / わたしが / お持{も}ち / します] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "おにもつを わたしが お持ちします sama wajarnya (が fokus 'biar saya' paling alami tepat sebelum verba; modul #72 sendiri memberi お荷物は私がお持ちいたします). Di urutan itu ★ = わたしが (1), bukan おにもつを (2).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N4-de-gozaimasu-1",
+    "hash": "41ad404749f6945f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N4-kenjougo-ukagau-4",
+    "hash": "7f1791d33b6d6653",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (うかがいたいです), terjawab dari bentuk saja; すこし mengambang tetapi ★ tetap.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N4-o-itadaku-4",
+    "hash": "a8056ea3d03bfb31",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "Kolokasi 親切な ごれんらく agak tidak lazim (biasanya ごていねいな ごれんらく), tetapi masih dapat diterima; arah memberi-menerima (ぶちょうから いただきました) benar.",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (いただきました).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N4-sonkeigo-gozonji-1",
+    "hash": "d08ce06061956120",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N4-kenjougo-mairu-2",
+    "hash": "2e3f4abef8b7e854",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [そちら / へ / わたくしが / まいります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "そちらへ わたくしが まいります (tempat dulu, わたくしが fokus tepat sebelum verba) juga wajar: あした午前10時に そちらへ わたくしが まいります. Di urutan itu ★ = へ (4), bukan そちら (2).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N4-sonkeigo-goran-ni-naru-2",
+    "hash": "83f161e1cebbaaff",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N4-kenjougo-haiken-suru-3",
+    "hash": "e8740647ecd22fb7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di kotak 1 hanya punya satu kandidat (メール setelah ぶちょうの); boleh menurut R1.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N4-kenjougo-oru-3",
+    "hash": "51ee90dac40c7617",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S14",
+    "id": "N4-kenjougo-mousu-1",
+    "hash": "b11f3d5d42240c17",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S15",
+    "id": "N4-sonkeigo-gozonji-2",
+    "hash": "1b95350061052c00",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S16",
+    "id": "N4-sonkeigo-goran-ni-naru-3",
+    "hash": "480850c195cb5880",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S17",
+    "id": "N4-kenjougo-itasu-1",
+    "hash": "e3c116f5e496c0da",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "こころ | から dipotong di batas kata benda + partikel; ほんとうに + こころから agak berlebihan tetapi wajar dalam ucapan.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S18",
+    "id": "N4-sonkeigo-nasaru-2",
+    "hash": "49ca9a05db063f8d",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (いつも dalam pertanyaan ya/tidak sedikit kurang lazim dibanding よく, tetapi masih wajar)",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S19",
+    "id": "N4-o-suru-2",
+    "hash": "a1eba795da06c92f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (します); 駅まで/車で bertukar tanpa mengubah ★.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S20",
+    "id": "N4-sonkeigo-meshiagaru-1",
+    "hash": "52431135d7c00a1a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "たくさん mengambang tetapi ★ tetap めしあがって.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S21",
+    "id": "N4-sonkeigo-meshiagaru-4",
+    "hash": "d481f80d0dc782a4",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = ね di akhir, terjawab dari bentuk ～てください + ね.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S22",
+    "id": "N4-kenjougo-ukagau-1",
+    "hash": "51c0a7660dae2a7b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Urutan 2-4-3-1 (先生の おたくへ 2時に うかがいます, ★=2時に) memisahkan 午後 dari 2時に; gramatikal tetapi kaku tanpa koma, jadi tidak dihitung wajar. Perlu diperhatikan bila ingin lebih aman.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S23",
+    "id": "N4-sonkei-rareru-1",
+    "hash": "ec96d57a6f255872",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S24",
+    "id": "N4-kenjougo-zonjiru-2",
+    "hash": "876f5890fdbb689e",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (わたくしも 'saya juga' sedikit menggantung karena A tidak menyebut dirinya kenal; untuk orang, ぞんじあげて おります lebih tepat, tetapi itu di luar Minna)",
+    "tingkat": "ok",
+    "catatan": "Tidak bocor: baris A memuat ごぞんじですか, bukan potongan ぞんじて.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S25",
+    "id": "N4-kenjougo-itasu-2",
+    "hash": "4cbfe35b5cc67053",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S26",
+    "id": "N4-de-gozaimasu-3",
+    "hash": "b65e7109de08a077",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: tidak-wajar"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "tidak-wajar"
+    ],
+    "kewajaran": "Tidak wajar: 今 ぶちょうは かいぎ室の 中でございます. Untuk keberadaan orang, penutur asli berkata かいぎ室に おります / いらっしゃいます atau ただいま かいぎ中でございます; の中 berlebihan dan でございます untuk lokasi orang terasa janggal.",
+    "tingkat": "ok",
+    "catatan": "Urutan tunggal; masalahnya hanya kalimat kunci.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S27",
+    "id": "N4-kenjougo-moushiageru-4",
+    "hash": "797d8fc85249a17c",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok (ほんとうに + おれいを もうしあげます kurang lazim dibanding こころから, tetapi diterima)",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (もうしあげます).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S28",
+    "id": "N4-sonkeigo-goran-ni-naru-4",
+    "hash": "7386bc1b83bac8c7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (なりましたか).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S29",
+    "id": "N4-o-suru-4",
+    "hash": "47565aa0400a3aa7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ぶちょうに/メールで bertukar tanpa mengubah ★.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S30",
+    "id": "N4-sonkei-rareru-4",
+    "hash": "a9f368f54e2ad504",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (います).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S31",
+    "id": "N4-kenjougo-zonjiru-4",
+    "hash": "781f58c0ddd793a9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (おります).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S32",
+    "id": "N4-sonkeigo-meshiagaru-2",
+    "hash": "5c32ddf6f690c088",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S33",
+    "id": "N4-de-gozaimasu-2",
+    "hash": "d63ad41511f5f440",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "でございます dipotong menjadi で | ございます; masih di batas kata (kopula + ございます), tetapi kurang lazim dibanding satu potongan でございます.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S34",
+    "id": "N4-kenjougo-mousu-2",
+    "hash": "8b92da2e51add3fe",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S35",
+    "id": "N4-kenjougo-itasu-3",
+    "hash": "6d92f3085451694f",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (ごせつめい いたします lebih halus, tetapi せつめい いたします wajar)",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S36",
+    "id": "N4-kenjougo-mousu-4",
+    "hash": "9aaf0ca00600f8b2",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (もうします).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S37",
+    "id": "N4-kenjougo-ukagau-2",
+    "hash": "e930743839f0d0ab",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Furigana ditulis お名{な}前{まえ} (per kanji), berbeda dari 名前{なまえ}; hanya gaya.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S38",
+    "id": "N4-sonkei-rareru-2",
+    "hash": "2b6dbf95d55c1e26",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "何時に きのう (umum setelah khusus) tidak wajar, jadi tidak ada urutan lain.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S39",
+    "id": "N4-kenjougo-moushiageru-2",
+    "hash": "510f791fb91f7d9d",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [おいわい / を / こころから / もうしあげます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Kata keterangan こころから mengambang: みなさまに おいわいを こころから もうしあげます juga wajar (keterangan cara tepat sebelum verba). Di urutan itu ★ = を (3), bukan おいわい (1).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S40",
+    "id": "N4-kenjougo-mairu-3",
+    "hash": "5c76c51f1004751c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Urutan 4-2-1-3 (しゅっちょうに 本社へ まいります, ★=しゅっちょうに) gramatikal tetapi kurang wajar (しゅっちょうに terpisah dari verba); tidak dihitung, tetapi di tepi.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S41",
+    "id": "N4-sonkei-rareru-3",
+    "hash": "2e0d5791e2123f98",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [会社{かいしゃ}へ / 9時{じ}に / 来{こ}られます / よ] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok (来られます juga bisa dibaca potensial, tetapi konteks sonkei jelas)",
+    "tingkat": "ok",
+    "catatan": "Waktu dan tempat bertukar: 社長は あした 会社へ 9時に 来られますよ sama wajarnya. Di urutan itu ★ = 会社へ (3), bukan 9時に (4).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S42",
+    "id": "N4-kenjougo-haiken-suru-1",
+    "hash": "fa8b7cbf19e8cc60",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S43",
+    "id": "N4-kenjougo-moushiageru-3",
+    "hash": "1cadc7eb754f6483",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [おいわい / を / こころから / もうしあげます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "こころから mengambang: ごけっこん、おいわいを こころから もうしあげます juga wajar. Di urutan itu ★ (kotak 1) = おいわい (4), bukan こころから (3).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S44",
+    "id": "N4-kenjougo-zonjiru-3",
+    "hash": "4cec0c26ba110dfd",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "よく わたくしも ぞんじて おります tidak wajar, jadi ★ tetap わたくしも.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S45",
+    "id": "N4-o-suru-3",
+    "hash": "ffbbf6f19c774cc9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S46",
+    "id": "N4-kenjougo-moushiageru-1",
+    "hash": "204a4f8ccbf7ae56",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [おれい / を / こころから / もうしあげます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "こころから mengambang: きょうは ほんとうに おれいを こころから もうしあげます juga wajar. Di urutan itu ★ (kotak 3) = こころから (1), bukan を (2).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S47",
+    "id": "N4-kenjougo-mousu-3",
+    "hash": "4aa76d0ca03692da",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S48",
+    "id": "N4-sonkeigo-nasaru-4",
+    "hash": "c7bc3febe4986235",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = か di akhir, satu-satunya penutup.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S49",
+    "id": "N4-kenjougo-haiken-suru-4",
+    "hash": "4cb7be7c78c696b3",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (いたします).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S50",
+    "id": "N4-kenjougo-oru-4",
+    "hash": "a8c75e02a670fd66",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (おります); ずっと mengambang tanpa mengubah ★.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S51",
+    "id": "N4-o-itadaku-2",
+    "hash": "42bf12ac02af6254",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok (ご～いただけませんか = modul #73, Bab 50)",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S52",
+    "id": "N4-sonkeigo-nasaru-1",
+    "hash": "907f4286913c0b7a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S53",
+    "id": "N4-o-itadaku-1",
+    "hash": "abf16492e19fb3c8",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S54",
+    "id": "N4-kenjougo-itasu-4",
+    "hash": "7883d7d5d33a7581",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (いたします).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S55",
+    "id": "N4-kenjougo-zonjiru-1",
+    "hash": "d15bbef8b60c5dec",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Tidak bocor: baris A hanya memuat ごぞんじですか.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S56",
+    "id": "N4-kenjougo-oru-2",
+    "hash": "91f6272337f13994",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S57",
+    "id": "N4-de-gozaimasu-4",
+    "hash": "bfcfa9af4964652d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (でございます); dua pewatas の, tetapi ★ tetap.",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S58",
+    "id": "N4-sonkeigo-goran-ni-naru-1",
+    "hash": "4ae39263a08d2a60",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S59",
+    "id": "N4-sonkeigo-gozonji-4",
+    "hash": "64497676761494e8",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup kalimat (ですか).",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  },
+  {
+    "kode": "S60",
+    "id": "N4-o-itadaku-3",
+    "hash": "12beb7b7ce2f0188",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok (お～いただけませんか = modul #73, Bab 50)",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:47:49.851Z"
+  }
+]

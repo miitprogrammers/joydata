@@ -1,0 +1,807 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-n-desu-2",
+    "hash": "c6a9ee740d2fd3d7",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [車{くるま}が / 多{おお}くて / あの道{みち}は / 危{あぶ}ないんです] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "多くて (イA-くて) memakai bentuk sambung Bab 16; nuansa sebab baru Bab 39, masih bisa dibaca dengan Bab 16",
+    "catatan": "車が多くて、あの道は危ないんです juga wajar: anak kalimat 車が多くて punya subjeknya sendiri sehingga bisa mendahului topik あの道は; ★ (kotak 2) lalu jatuh di 多くて, bukan 車が.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-wa-taihi-4",
+    "hash": "246a81367cccd652",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        1,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup (いそがしいです), bisa ditempatkan dari bentuk saja. Kedua hari bisa ditukar, ★ tetap sama.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-shi-2",
+    "hash": "44aadf07fb23e7d3",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-te-itadakemasen-ka-1",
+    "hash": "45a5062f72c1ebe3",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N4-jidoushi-te-imasu-4",
+    "hash": "24276f508113d4cf",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N4-nagara-2",
+    "hash": "be61f4a4b35eb85d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Strukturnya sama dengan S36 (いつも すきな N を V-ながら V).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N4-toka-4",
+    "hash": "7ff9136a231a9e2a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup (しました), bisa ditempatkan dari bentuk saja.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N4-tara-ii-desu-ka-3",
+    "hash": "6e84ebf0c07d8fdc",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "R6: situasi menulis 行{い}きます dengan kanji, potongan menulis いったら dengan kana; いったら dalam kana juga bisa terbaca 言ったら (konteks tetap jelas).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N4-jidoushi-te-imasu-3",
+    "hash": "ec6a67c46a12771c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N4-te-aru-1",
+    "hash": "ce892f1e865c9e5a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N4-shika-nai-4",
+    "hash": "b148eae172fa654f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "友だちは クラスの 3人しか 来ませんでした juga mungkin; ★ tetap 3人しか.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N4-mieru-kikoeru-2",
+    "hash": "6518998b73890ec6",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "peninjau menandai GAGAL: di-atas-bab",
+      "urutan sah menurut peninjau [なみの / おとが / 遠{とお}くから / 聞{き}こえます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda",
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "遠く (nomina 'tempat jauh') baru Bab 36 di daftar kosakata; soal Bab 27",
+    "catatan": "Keterangan asal 遠くから mengambang: 夜は なみの おとが 遠くから 聞こえます sama wajarnya; ★ (kotak 3) lalu jatuh di 遠くから, bukan おとが.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N4-te-shimau-2",
+    "hash": "4a5128817d94aaca",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "大きい あの かさ secara tata bahasa mungkin tetapi tidak wajar; urutan baku あの 大きい.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S14",
+    "id": "N4-tara-ii-desu-ka-2",
+    "hash": "f7aee30dd133c8de",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "Logikanya agak lemah: kehilangan dompet lalu bertanya 'apakah sebaiknya menghubungi orang kantor?'. Masuk akal bagi pemagang yang melapor ke perusahaan, tetapi pola Bab 26 biasanya memakai kata tanya (どこに/だれに～たらいいですか).",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S15",
+    "id": "N4-wa-taihi-3",
+    "hash": "15aec0365ddf90fb",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Menukar なつ/ふゆ tidak logis, tetapi ★ tetap あついですが; ★ bisa ditempatkan dari bentuk saja.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S16",
+    "id": "N4-te-itadakemasen-ka-3",
+    "hash": "fccb6a8295a3c7f2",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S17",
+    "id": "N4-tara-ii-desu-ka-1",
+    "hash": "bc425a7330db50ea",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ 聞いたら ditentukan oleh bentuk (V-たら + いいですか); kedua urutan memberi ★ sama.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S18",
+    "id": "N4-n-desu-3",
+    "hash": "1ed1ab586afa3b65",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S19",
+    "id": "N4-kanoukei-1",
+    "hash": "3c60ace5f275cac8",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "むずかしい あの 本 tidak wajar; urutan baku あの むずかしい.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S20",
+    "id": "N4-shika-nai-2",
+    "hash": "55203266a3b72cd5",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (いいえ lalu 'hanya punya kamus lama ini' masih wajar secara lisan)",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S21",
+    "id": "N4-shika-nai-1",
+    "hash": "d41788fdfc2d54c0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "500円しか さいふの なかには ありません tidak wajar; tidak dihitung urutan lain.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S22",
+    "id": "N4-te-aru-3",
+    "hash": "d35310d02a74e178",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup yang juga memuat seluruh pola (かざってあります).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S23",
+    "id": "N4-mieru-kikoeru-3",
+    "hash": "a27bd596046d518e",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [鳥{とり}の / とても / きれいな / 声{こえ}が聞{き}こえます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Dua urutan wajar: とても きれいな 鳥の 声が聞こえます (★ kotak 2 = きれいな) dan 鳥の とても きれいな 声が聞こえます (★ kotak 2 = とても).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S24",
+    "id": "N4-n-desu-4",
+    "hash": "b74ababb2e3f3a27",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "大変で (ナA-で) memakai bentuk sambung Bab 16; nuansa sebab baru Bab 39",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S25",
+    "id": "N4-te-shimau-1",
+    "hash": "580f6f7d18607a14",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "へやに/さいふを bisa ditukar, ★ tetap わすれて (ditentukan bentuk V-て + しまいました).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S26",
+    "id": "N4-jidoushi-te-imasu-1",
+    "hash": "cb74ff9e17b1b581",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S27",
+    "id": "N4-nagara-4",
+    "hash": "3cfb220dd09f1262",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup (話しました); 友だちと mengambang tetapi ★ tetap sama.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S28",
+    "id": "N4-te-itadakemasen-ka-4",
+    "hash": "e5ea13efddb27b9c",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok; bila petugas bank yang berbicara, お名前 lebih wajar daripada 名前",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S29",
+    "id": "N4-te-aru-2",
+    "hash": "7b11e5215865d8db",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S30",
+    "id": "N4-kanoukei-4",
+    "hash": "8c70c6fb2e355dba",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "軽いので: ～ので baru Bab 39; soal Bab 27",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S31",
+    "id": "N4-shika-nai-3",
+    "hash": "e5fbdf0232dfeea5",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup (いません), bisa ditempatkan dari bentuk saja.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S32",
+    "id": "N4-te-shimau-4",
+    "hash": "cb2b4f2e9515df72",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "やぶって (破ります, transitif) tidak ada di kosakata Minna; Bab 29 hanya mengajarkan 破れます (intransitif)",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S33",
+    "id": "N4-wa-taihi-2",
+    "hash": "45832c8a0acbac83",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [さかなは / すきですが / にくは / きらいです] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Pertanyaan 'mana yang kamu suka' bisa dijawab dua arah: にくは すきですが さかなは きらいです atau さかなは すきですが にくは きらいです; ★ kotak 1 = にくは atau さかなは. Juga R6: 肉/魚 kanji di baris A, kana di potongan.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S34",
+    "id": "N4-kanoukei-3",
+    "hash": "f9b887dd88b2e768",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S35",
+    "id": "N4-toka-2",
+    "hash": "fb743ddaaa63995f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Strukturnya mirip S47 (Xとか Yとか + pewatas + nomina).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S36",
+    "id": "N4-nagara-1",
+    "hash": "6ee4ca8abd57da0a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Strukturnya sama dengan S06.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S37",
+    "id": "N4-mieru-kikoeru-1",
+    "hash": "6b47f0c87ee16436",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "白い あの 山 tidak wajar; urutan baku あの 白い.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S38",
+    "id": "N4-nagara-3",
+    "hash": "b46033200c5ef938",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [大学{だいがく}に / アルバイトを / しながら / かよいます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok; かよって います (kebiasaan, Bab 28) lebih wajar daripada かよいます",
+    "tingkat": "ok",
+    "catatan": "Keterangan tujuan 大学に bisa mendahului anak kalimat ながら: 大学に アルバイトを しながら かよいます wajar (bandingkan 駅まで音楽を聞きながら歩きます); ★ (kotak 2) lalu jatuh di アルバイトを, bukan しながら.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S39",
+    "id": "N4-te-aru-4",
+    "hash": "1860f858563c1b19",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S40",
+    "id": "N4-toka-3",
+    "hash": "d836de7a9a1079dc",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "クッキー tidak ada di kosakata Minna (kata serapan yang mudah dipahami; tidak dianggap gagal, tetapi sebaiknya dicek)",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S41",
+    "id": "N4-mieru-kikoeru-4",
+    "hash": "f78da04281a03c56",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "せき (席) baru Bab 33; soal Bab 27",
+    "catatan": "★ di satu-satunya potongan penutup; よく mengambang tetapi ★ tetap sama.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S42",
+    "id": "N4-te-oku-1",
+    "hash": "ee003a83b4ca1579",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S43",
+    "id": "N4-te-shimau-3",
+    "hash": "b27265eb4329c6f3",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: bocor",
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "bocor",
+      "di-atas-bab"
+    ],
+    "kewajaran": "Kalimatnya wajar, tetapi situasi （友だちの 本を） hanya potongan frasa berakhiran を, bukan deskripsi situasi",
+    "tingkat": "よごして (汚します, transitif) baru Bab 37; Bab 29 hanya mengajarkan 汚れます",
+    "catatan": "Situasi memuat 友だちの 本を persis, jadi potongan ★ 本を dan tetangganya 友だちの terbocorkan.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S44",
+    "id": "N4-kanoukei-2",
+    "hash": "ed5c3e62f37a87d3",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok; Bab 27 mengajarkan objek bentuk potensial dengan が (にもつが), tetapi を tetap wajar",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S45",
+    "id": "N4-jidoushi-te-imasu-2",
+    "hash": "73a5d4c9b967c1a9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S46",
+    "id": "N4-shi-3",
+    "hash": "24af095dcc813e9d",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "できるので: ～ので baru Bab 39; soal Bab 28",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S47",
+    "id": "N4-toka-1",
+    "hash": "7b7e7f219ded8a18",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S48",
+    "id": "N4-tara-ii-desu-ka-4",
+    "hash": "780735393f4e75a0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ 来たら ditentukan oleh bentuk; 何時に あしたは … kurang wajar tetapi ★ tetap sama.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S49",
+    "id": "N4-te-oku-2",
+    "hash": "9319e09d1823e827",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ 買って ditentukan oleh bentuk (V-て + おきます).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S50",
+    "id": "N4-wa-taihi-1",
+    "hash": "f5b7baa83398ca3a",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "★ peninjau \"ごはんは\" != kunci \"パンは\"",
+      "urutan sah menurut peninjau [パンは / 食{た}べますが / ごはんは / 食{た}べません] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Tanpa konteks, パンは 食べますが ごはんは 食べません dan ごはんは 食べますが パンは 食べません sama-sama sah; ★ kotak 3 = ごはんは atau パンは.",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S51",
+    "id": "N4-shi-4",
+    "hash": "55afcf1e34db98e0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S52",
+    "id": "N4-shi-1",
+    "hash": "25c0a918a46319ed",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S53",
+    "id": "N4-te-oku-4",
+    "hash": "9f269ad372e5642b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya potongan penutup yang juga memuat seluruh pola (つくっておきます).",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S54",
+    "id": "N4-n-desu-1",
+    "hash": "fdff6736a46100ef",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "熱が あって: V-て urutan Bab 16; nuansa sebab Bab 39, masih bisa dibaca dengan Bab 16",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S55",
+    "id": "N4-te-itadakemasen-ka-2",
+    "hash": "bd7b075292fc9172",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: tidak-wajar"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "tidak-wajar"
+    ],
+    "kewajaran": "Tidak logis: A yang berkata よく わかりませんでした, jadi A yang mestinya meminta diulang pelan-pelan; B (pembicara asal) malah meminta A mengulang",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  },
+  {
+    "kode": "S56",
+    "id": "N4-te-oku-3",
+    "hash": "72a8685ce4dd6693",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "あついので (di sebelum): ～ので baru Bab 39; soal Bab 30",
+    "catatan": "",
+    "dinilai": "2026-11-27T04:37:06.588Z"
+  }
+]

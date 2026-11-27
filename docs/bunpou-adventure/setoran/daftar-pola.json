@@ -1,0 +1,3679 @@
+[
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 1",
+    "bab": 1,
+    "pola": "wa-desu",
+    "polaTeks": "N1はN2です",
+    "varian": [
+      "～じゃありません",
+      "～ではありません",
+      "～ですか"
+    ],
+    "arti": "… adalah … / bukan … / apakah …?",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 1",
+    "bab": 1,
+    "pola": "n-no-n",
+    "polaTeks": "N1のN2",
+    "varian": [
+      "Nのです"
+    ],
+    "arti": "milik / dari (penghubung kata benda)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 1",
+    "bab": 1,
+    "pola": "mo",
+    "polaTeks": "N1もN2です",
+    "varian": [
+      "～も"
+    ],
+    "arti": "juga",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 2",
+    "bab": 2,
+    "pola": "kore-sore-are",
+    "polaTeks": "これ／それ／あれ",
+    "varian": [
+      "どれ"
+    ],
+    "arti": "ini / itu / itu (yang jauh)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 2",
+    "bab": 2,
+    "pola": "desu-ka-desu-ka",
+    "polaTeks": "N1ですか、N2ですか",
+    "varian": [],
+    "arti": "… atau …? (pertanyaan pilihan)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 2",
+    "bab": 2,
+    "pola": "kono-sono-ano",
+    "polaTeks": "この／その／あのN",
+    "varian": [
+      "どのN"
+    ],
+    "arti": "… ini / … itu (sebelum kata benda)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 3–4",
+    "bab": 3,
+    "pola": "koko-soko-asoko",
+    "polaTeks": "ここ／そこ／あそこ",
+    "varian": [
+      "こちら／そちら／あちら",
+      "どこ",
+      "どちら"
+    ],
+    "arti": "di sini / di situ / di sana",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-koko-soko-asoko-1",
+      "N5-koko-soko-asoko-2",
+      "N5-koko-soko-asoko-3",
+      "N5-koko-soko-asoko-4"
+    ]
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 3–4",
+    "bab": 4,
+    "pola": "kara-made",
+    "polaTeks": "～から～まで",
+    "varian": [],
+    "arti": "dari … sampai …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-kara-made-1",
+      "N5-kara-made-2",
+      "N5-kara-made-3",
+      "N5-kara-made-4"
+    ]
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 3–4",
+    "bab": 4,
+    "pola": "ni-jikan",
+    "polaTeks": "［時間］にVます",
+    "varian": [
+      "～時に",
+      "～日に"
+    ],
+    "arti": "pada (jam, hari, tanggal)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ni-jikan-1",
+      "N5-ni-jikan-2",
+      "N5-ni-jikan-3",
+      "N5-ni-jikan-4"
+    ]
+  },
+  {
+    "volume": "BN5V1",
+    "tingkat": "N5",
+    "prioritas": 1,
+    "tahap": "Bab 3–4",
+    "bab": 4,
+    "pola": "masu",
+    "polaTeks": "～ます／～ました",
+    "varian": [
+      "～ません",
+      "～ませんでした"
+    ],
+    "arti": "kata kerja sopan: sekarang & lampau",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-masu-1",
+      "N5-masu-2",
+      "N5-masu-3",
+      "N5-masu-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 26",
+    "bab": 26,
+    "pola": "n-desu",
+    "polaTeks": "～んです",
+    "varian": [
+      "～のです",
+      "～んですか",
+      "～んですが"
+    ],
+    "arti": "penjelasan / menanyakan alasan",
+    "modulN4": [
+      103
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-n-desu-1",
+      "N4-n-desu-2",
+      "N4-n-desu-3",
+      "N4-n-desu-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 26",
+    "bab": 26,
+    "pola": "te-itadakemasen-ka",
+    "polaTeks": "～ていただけませんか",
+    "varian": [
+      "～てくださいませんか"
+    ],
+    "arti": "bisakah Anda …? (permintaan sopan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-itadakemasen-ka-1",
+      "N4-te-itadakemasen-ka-2",
+      "N4-te-itadakemasen-ka-3",
+      "N4-te-itadakemasen-ka-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 26",
+    "bab": 26,
+    "pola": "tara-ii-desu-ka",
+    "polaTeks": "～たらいいですか",
+    "varian": [
+      "～ばいいですか",
+      "どうしたらいいですか"
+    ],
+    "arti": "sebaiknya … bagaimana?",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-tara-ii-desu-ka-1",
+      "N4-tara-ii-desu-ka-2",
+      "N4-tara-ii-desu-ka-3",
+      "N4-tara-ii-desu-ka-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 27",
+    "bab": 27,
+    "pola": "kanoukei",
+    "polaTeks": "～（ら）れます（可能形）",
+    "varian": [
+      "～えます",
+      "可能動詞"
+    ],
+    "arti": "bentuk potensial (bisa …)",
+    "modulN4": [
+      34
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kanoukei-1",
+      "N4-kanoukei-2",
+      "N4-kanoukei-3",
+      "N4-kanoukei-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 27",
+    "bab": 27,
+    "pola": "mieru-kikoeru",
+    "polaTeks": "Nが見えます／聞こえます",
+    "varian": [],
+    "arti": "terlihat / terdengar",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-mieru-kikoeru-1",
+      "N4-mieru-kikoeru-2",
+      "N4-mieru-kikoeru-3",
+      "N4-mieru-kikoeru-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 27",
+    "bab": 27,
+    "pola": "shika-nai",
+    "polaTeks": "～しか～ません",
+    "varian": [
+      "～しか～ない"
+    ],
+    "arti": "hanya … (tidak lebih)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-shika-nai-1",
+      "N4-shika-nai-2",
+      "N4-shika-nai-3",
+      "N4-shika-nai-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 27",
+    "bab": 27,
+    "pola": "wa-taihi",
+    "polaTeks": "N1は～が、N2は～",
+    "varian": [],
+    "arti": "は untuk membandingkan (kontras)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-wa-taihi-1",
+      "N4-wa-taihi-2",
+      "N4-wa-taihi-3",
+      "N4-wa-taihi-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 28",
+    "bab": 28,
+    "pola": "shi",
+    "polaTeks": "～し、～し",
+    "varian": [
+      "～し、それに～"
+    ],
+    "arti": "lagi pula … / sudah …, juga …",
+    "modulN4": [
+      53
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-shi-1",
+      "N4-shi-2",
+      "N4-shi-3",
+      "N4-shi-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 28",
+    "bab": 28,
+    "pola": "nagara",
+    "polaTeks": "～ながら",
+    "varian": [],
+    "arti": "sambil …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-nagara-1",
+      "N4-nagara-2",
+      "N4-nagara-3",
+      "N4-nagara-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 29",
+    "bab": 29,
+    "pola": "jidoushi-te-imasu",
+    "polaTeks": "Nが～ています（自動詞）",
+    "varian": [],
+    "arti": "keadaan benda (terbuka, rusak, dsb.)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-jidoushi-te-imasu-1",
+      "N4-jidoushi-te-imasu-2",
+      "N4-jidoushi-te-imasu-3",
+      "N4-jidoushi-te-imasu-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 29",
+    "bab": 29,
+    "pola": "te-shimau",
+    "polaTeks": "～てしまいます",
+    "varian": [
+      "～てしまいました",
+      "～てしまう",
+      "～ちゃう"
+    ],
+    "arti": "sudah habis … / telanjur …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-shimau-1",
+      "N4-te-shimau-2",
+      "N4-te-shimau-3",
+      "N4-te-shimau-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 30",
+    "bab": 30,
+    "pola": "te-oku",
+    "polaTeks": "～ておきます",
+    "varian": [
+      "～ておく"
+    ],
+    "arti": "… dulu (persiapan) / dibiarkan",
+    "modulN4": [
+      7
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-oku-1",
+      "N4-te-oku-2",
+      "N4-te-oku-3",
+      "N4-te-oku-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 30",
+    "bab": 30,
+    "pola": "toka",
+    "polaTeks": "～とか",
+    "varian": [
+      "～とか～とか"
+    ],
+    "arti": "misalnya … atau … (contoh)",
+    "modulN4": [
+      54
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-toka-1",
+      "N4-toka-2",
+      "N4-toka-3",
+      "N4-toka-4"
+    ]
+  },
+  {
+    "volume": "BN4V1",
+    "tingkat": "N4",
+    "prioritas": 2,
+    "tahap": "Bab 30",
+    "bab": 30,
+    "pola": "te-aru",
+    "polaTeks": "～てあります",
+    "varian": [
+      "～てある"
+    ],
+    "arti": "sudah di-… (keadaan, disengaja)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-aru-1",
+      "N4-te-aru-2",
+      "N4-te-aru-3",
+      "N4-te-aru-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 16",
+    "bab": 16,
+    "pola": "te-te",
+    "polaTeks": "V1-て、V2-て、～",
+    "varian": [],
+    "arti": "… lalu … (urutan kegiatan)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 16",
+    "bab": 16,
+    "pola": "te-kara",
+    "polaTeks": "～てから",
+    "varian": [],
+    "arti": "setelah …, (baru) …",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 16",
+    "bab": 16,
+    "pola": "wa-ga",
+    "polaTeks": "N1はN2が～",
+    "varian": [],
+    "arti": "(sesuatu) …-nya … (は～が)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 16",
+    "bab": 16,
+    "pola": "kute-de",
+    "polaTeks": "イA-くて、～／ナA-で、～",
+    "varian": [],
+    "arti": "… dan … (menyambung kata sifat)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 17",
+    "bab": 17,
+    "pola": "nakereba-narimasen",
+    "polaTeks": "～なければなりません",
+    "varian": [
+      "～なければならない",
+      "～なくてはいけません",
+      "～なくてはいけない"
+    ],
+    "arti": "harus …",
+    "modulN4": [
+      20,
+      21
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-nakereba-narimasen-1",
+      "N5-nakereba-narimasen-2",
+      "N5-nakereba-narimasen-3",
+      "N5-nakereba-narimasen-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 17",
+    "bab": 17,
+    "pola": "nakute-mo-ii",
+    "polaTeks": "～なくてもいいです",
+    "varian": [
+      "～なくてもいい"
+    ],
+    "arti": "tidak perlu …",
+    "modulN4": [
+      22
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-nakute-mo-ii-1",
+      "N5-nakute-mo-ii-2",
+      "N5-nakute-mo-ii-3",
+      "N5-nakute-mo-ii-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 17",
+    "bab": 17,
+    "pola": "made-ni",
+    "polaTeks": "～までに",
+    "varian": [],
+    "arti": "paling lambat … / sebelum …",
+    "modulN4": [
+      45
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-made-ni-1",
+      "N5-made-ni-2",
+      "N5-made-ni-3",
+      "N5-made-ni-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 17",
+    "bab": 17,
+    "pola": "naide-kudasai",
+    "polaTeks": "～ないでください",
+    "varian": [],
+    "arti": "tolong jangan …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-naide-kudasai-1",
+      "N5-naide-kudasai-2",
+      "N5-naide-kudasai-3",
+      "N5-naide-kudasai-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 17",
+    "bab": 17,
+    "pola": "wa-toritate",
+    "polaTeks": "Nは～（目的語）",
+    "varian": [],
+    "arti": "は menggantikan を (objek jadi topik)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-wa-toritate-1",
+      "N5-wa-toritate-2",
+      "N5-wa-toritate-3",
+      "N5-wa-toritate-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 18",
+    "bab": 18,
+    "pola": "koto-ga-dekiru",
+    "polaTeks": "～ことができます",
+    "varian": [
+      "Nができます",
+      "～ことができる"
+    ],
+    "arti": "bisa / dapat …",
+    "modulN4": [
+      33
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-koto-ga-dekiru-1",
+      "N5-koto-ga-dekiru-2",
+      "N5-koto-ga-dekiru-3",
+      "N5-koto-ga-dekiru-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 18",
+    "bab": 18,
+    "pola": "koto",
+    "polaTeks": "～こと",
+    "varian": [
+      "趣味は～ことです"
+    ],
+    "arti": "hal … (membendakan kata kerja)",
+    "modulN4": [
+      94
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-koto-1",
+      "N5-koto-2",
+      "N5-koto-3",
+      "N5-koto-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 18",
+    "bab": 18,
+    "pola": "mae-ni",
+    "polaTeks": "～まえに",
+    "varian": [
+      "～前に"
+    ],
+    "arti": "sebelum …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-mae-ni-1",
+      "N5-mae-ni-2",
+      "N5-mae-ni-3",
+      "N5-mae-ni-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 19",
+    "bab": 19,
+    "pola": "ta-koto-ga-aru",
+    "polaTeks": "～たことがあります",
+    "varian": [
+      "～たことがありません",
+      "～たことがない"
+    ],
+    "arti": "pernah … / tidak pernah …",
+    "modulN4": [
+      40,
+      41
+    ],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 19",
+    "bab": 19,
+    "pola": "tari-tari",
+    "polaTeks": "～たり～たりします",
+    "varian": [],
+    "arti": "… dan … (antara lain)",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 19",
+    "bab": 19,
+    "pola": "naru",
+    "polaTeks": "～くなります／～になります",
+    "varian": [],
+    "arti": "menjadi …",
+    "modulN4": [],
+    "diBank": 4,
+    "perluDitulis": 0,
+    "idSoal": []
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 20–21",
+    "bab": 20,
+    "pola": "futsuutai",
+    "polaTeks": "普通体（～る／～た／～ない／～だ）",
+    "varian": [],
+    "arti": "bentuk biasa (gaya akrab)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-futsuutai-1",
+      "N5-futsuutai-2",
+      "N5-futsuutai-3",
+      "N5-futsuutai-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 20–21",
+    "bab": 21,
+    "pola": "to-omou",
+    "polaTeks": "～と思います",
+    "varian": [
+      "～と思う",
+      "～だろうと思う"
+    ],
+    "arti": "saya pikir … / menurut saya …",
+    "modulN4": [
+      26
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-to-omou-1",
+      "N5-to-omou-2",
+      "N5-to-omou-3",
+      "N5-to-omou-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 20–21",
+    "bab": 21,
+    "pola": "to-iu",
+    "polaTeks": "～と言います",
+    "varian": [
+      "～と言う"
+    ],
+    "arti": "berkata bahwa … / mengatakan …",
+    "modulN4": [
+      104
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-to-iu-1",
+      "N5-to-iu-2",
+      "N5-to-iu-3",
+      "N5-to-iu-4"
+    ]
+  },
+  {
+    "volume": "BN5V4",
+    "tingkat": "N5",
+    "prioritas": 3,
+    "tahap": "Bab 20–21",
+    "bab": 21,
+    "pola": "deshou-kakunin",
+    "polaTeks": "～でしょう？",
+    "varian": [],
+    "arti": "… kan? (minta persetujuan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-deshou-kakunin-1",
+      "N5-deshou-kakunin-2",
+      "N5-deshou-kakunin-3",
+      "N5-deshou-kakunin-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 5",
+    "bab": 5,
+    "pola": "e-ikimasu",
+    "polaTeks": "［場所］へ行きます",
+    "varian": [
+      "～へ来ます",
+      "～へ帰ります"
+    ],
+    "arti": "pergi / datang / pulang ke …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-e-ikimasu-1",
+      "N5-e-ikimasu-2",
+      "N5-e-ikimasu-3",
+      "N5-e-ikimasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 5",
+    "bab": 5,
+    "pola": "de-shudan",
+    "polaTeks": "［道具・手段］でVます",
+    "varian": [
+      "［乗り物］で行きます",
+      "［言語］で～"
+    ],
+    "arti": "dengan / naik / memakai (alat, bahasa)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-de-shudan-1",
+      "N5-de-shudan-2",
+      "N5-de-shudan-3",
+      "N5-de-shudan-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 5",
+    "bab": 5,
+    "pola": "to-ikimasu",
+    "polaTeks": "［人］と行きます",
+    "varian": [],
+    "arti": "bersama (orang)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-to-ikimasu-1",
+      "N5-to-ikimasu-2",
+      "N5-to-ikimasu-3",
+      "N5-to-ikimasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 6",
+    "bab": 6,
+    "pola": "wo",
+    "polaTeks": "NをVます",
+    "varian": [
+      "何をしますか"
+    ],
+    "arti": "penanda objek (を)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-wo-1",
+      "N5-wo-2",
+      "N5-wo-3",
+      "N5-wo-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 6",
+    "bab": 6,
+    "pola": "de-basho",
+    "polaTeks": "［場所］でVます",
+    "varian": [],
+    "arti": "di (tempat kegiatan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-de-basho-1",
+      "N5-de-basho-2",
+      "N5-de-basho-3",
+      "N5-de-basho-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 6",
+    "bab": 6,
+    "pola": "masen-ka",
+    "polaTeks": "～ませんか",
+    "varian": [],
+    "arti": "maukah …? (ajakan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-masen-ka-1",
+      "N5-masen-ka-2",
+      "N5-masen-ka-3",
+      "N5-masen-ka-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 6",
+    "bab": 6,
+    "pola": "mashou",
+    "polaTeks": "～ましょう",
+    "varian": [],
+    "arti": "mari … / ayo …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-mashou-1",
+      "N5-mashou-2",
+      "N5-mashou-3",
+      "N5-mashou-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 7",
+    "bab": 7,
+    "pola": "agemasu-moraimasu",
+    "polaTeks": "［人］に［物］をあげます",
+    "varian": [
+      "～をもらいます"
+    ],
+    "arti": "memberi / menerima (barang)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-agemasu-moraimasu-1",
+      "N5-agemasu-moraimasu-2",
+      "N5-agemasu-moraimasu-3",
+      "N5-agemasu-moraimasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 7",
+    "bab": 7,
+    "pola": "mou-mashita",
+    "polaTeks": "もう～ました",
+    "varian": [],
+    "arti": "sudah …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-mou-mashita-1",
+      "N5-mou-mashita-2",
+      "N5-mou-mashita-3",
+      "N5-mou-mashita-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 8",
+    "bab": 8,
+    "pola": "keiyoushi",
+    "polaTeks": "イA-いです／ナA-です",
+    "varian": [
+      "～くないです",
+      "ナA-なN"
+    ],
+    "arti": "kata sifat -i dan -na",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-keiyoushi-1",
+      "N5-keiyoushi-2",
+      "N5-keiyoushi-3",
+      "N5-keiyoushi-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 8",
+    "bab": 8,
+    "pola": "amari-nai",
+    "polaTeks": "あまり～ません",
+    "varian": [
+      "ぜんぜん～ません",
+      "あまり～ない"
+    ],
+    "arti": "tidak begitu … / sama sekali tidak …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-amari-nai-1",
+      "N5-amari-nai-2",
+      "N5-amari-nai-3",
+      "N5-amari-nai-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 9",
+    "bab": 9,
+    "pola": "ga-suki",
+    "polaTeks": "～はNが好きです",
+    "varian": [
+      "～が上手です",
+      "～がわかります",
+      "～があります"
+    ],
+    "arti": "suka / pandai / paham / punya …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ga-suki-1",
+      "N5-ga-suki-2",
+      "N5-ga-suki-3",
+      "N5-ga-suki-4"
+    ]
+  },
+  {
+    "volume": "BN5V2",
+    "tingkat": "N5",
+    "prioritas": 4,
+    "tahap": "Bab 9",
+    "bab": 9,
+    "pola": "kara-riyuu",
+    "polaTeks": "～から、～",
+    "varian": [
+      "どうして～か"
+    ],
+    "arti": "karena … (alasan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-kara-riyuu-1",
+      "N5-kara-riyuu-2",
+      "N5-kara-riyuu-3",
+      "N5-kara-riyuu-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 10–11",
+    "bab": 10,
+    "pola": "ni-ga-arimasu",
+    "polaTeks": "［場所］にNがあります",
+    "varian": [
+      "～にNがいます",
+      "Nは［場所］にあります",
+      "Nがある"
+    ],
+    "arti": "ada … di … (keberadaan)",
+    "modulN4": [
+      47
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ni-ga-arimasu-1",
+      "N5-ni-ga-arimasu-2",
+      "N5-ni-ga-arimasu-3",
+      "N5-ni-ga-arimasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 10–11",
+    "bab": 11,
+    "pola": "josuushi",
+    "polaTeks": "～つ／～枚／～人",
+    "varian": [
+      "ひとつ",
+      "～台",
+      "～ぐらい",
+      "～かかります"
+    ],
+    "arti": "kata bantu bilangan (jumlah)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-josuushi-1",
+      "N5-josuushi-2",
+      "N5-josuushi-3",
+      "N5-josuushi-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 10–11",
+    "bab": 11,
+    "pola": "ni-kai",
+    "polaTeks": "［期間］に～回",
+    "varian": [],
+    "arti": "… kali dalam (seminggu, sebulan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ni-kai-1",
+      "N5-ni-kai-2",
+      "N5-ni-kai-3",
+      "N5-ni-kai-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 12",
+    "bab": 12,
+    "pola": "dochira-hou-ga",
+    "polaTeks": "N1とN2とどちらが～ですか",
+    "varian": [
+      "～のほうが～です",
+      "N1よりN2のほうが～"
+    ],
+    "arti": "mana yang lebih …? / … lebih …",
+    "modulN4": [
+      55,
+      98,
+      100
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-dochira-hou-ga-1",
+      "N5-dochira-hou-ga-2",
+      "N5-dochira-hou-ga-3",
+      "N5-dochira-hou-ga-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 12",
+    "bab": 12,
+    "pola": "yori",
+    "polaTeks": "N1はN2より～",
+    "varian": [],
+    "arti": "A lebih … daripada B",
+    "modulN4": [
+      97
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-yori-1",
+      "N5-yori-2",
+      "N5-yori-3",
+      "N5-yori-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 12",
+    "bab": 12,
+    "pola": "keiyoushi-kako",
+    "polaTeks": "～かったです／～でした",
+    "varian": [
+      "～くなかったです",
+      "～じゃありませんでした"
+    ],
+    "arti": "bentuk lampau kata sifat & kata benda",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-keiyoushi-kako-1",
+      "N5-keiyoushi-kako-2",
+      "N5-keiyoushi-kako-3",
+      "N5-keiyoushi-kako-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 12",
+    "bab": 12,
+    "pola": "ichiban",
+    "polaTeks": "～で～が一番～",
+    "varian": [],
+    "arti": "paling … (di antara …)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ichiban-1",
+      "N5-ichiban-2",
+      "N5-ichiban-3",
+      "N5-ichiban-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 13",
+    "bab": 13,
+    "pola": "hoshii",
+    "polaTeks": "Nが欲しいです",
+    "varian": [],
+    "arti": "ingin (memiliki) …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-hoshii-1",
+      "N5-hoshii-2",
+      "N5-hoshii-3",
+      "N5-hoshii-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 13",
+    "bab": 13,
+    "pola": "tai",
+    "polaTeks": "～たいです",
+    "varian": [
+      "～たい"
+    ],
+    "arti": "ingin (melakukan) …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-tai-1",
+      "N5-tai-2",
+      "N5-tai-3",
+      "N5-tai-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 13",
+    "bab": 13,
+    "pola": "ni-ikimasu",
+    "polaTeks": "［V-ます／N］に行きます",
+    "varian": [],
+    "arti": "pergi untuk …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-ni-ikimasu-1",
+      "N5-ni-ikimasu-2",
+      "N5-ni-ikimasu-3",
+      "N5-ni-ikimasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 14",
+    "bab": 14,
+    "pola": "kata",
+    "polaTeks": "V-かた",
+    "varian": [
+      "～方"
+    ],
+    "arti": "cara …",
+    "modulN4": [
+      10
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-kata-1",
+      "N5-kata-2",
+      "N5-kata-3",
+      "N5-kata-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 14",
+    "bab": 14,
+    "pola": "te-kudasai",
+    "polaTeks": "～てください",
+    "varian": [],
+    "arti": "tolong … / silakan …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-kudasai-1",
+      "N5-te-kudasai-2",
+      "N5-te-kudasai-3",
+      "N5-te-kudasai-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 14",
+    "bab": 14,
+    "pola": "mashou-ka",
+    "polaTeks": "～ましょうか",
+    "varian": [],
+    "arti": "bagaimana kalau saya …? (menawarkan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-mashou-ka-1",
+      "N5-mashou-ka-2",
+      "N5-mashou-ka-3",
+      "N5-mashou-ka-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 14",
+    "bab": 14,
+    "pola": "te-imasu",
+    "polaTeks": "～ています",
+    "varian": [],
+    "arti": "sedang … / (keadaan) …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-imasu-1",
+      "N5-te-imasu-2",
+      "N5-te-imasu-3",
+      "N5-te-imasu-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 15",
+    "bab": 15,
+    "pola": "te-mo-ii",
+    "polaTeks": "～てもいいです",
+    "varian": [],
+    "arti": "boleh …",
+    "modulN4": [
+      18
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-mo-ii-1",
+      "N5-te-mo-ii-2",
+      "N5-te-mo-ii-3",
+      "N5-te-mo-ii-4"
+    ]
+  },
+  {
+    "volume": "BN5V3",
+    "tingkat": "N5",
+    "prioritas": 5,
+    "tahap": "Bab 15",
+    "bab": 15,
+    "pola": "te-wa-ikemasen",
+    "polaTeks": "～てはいけません",
+    "varian": [],
+    "arti": "tidak boleh …",
+    "modulN4": [
+      19
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-wa-ikemasen-1",
+      "N5-te-wa-ikemasen-2",
+      "N5-te-wa-ikemasen-3",
+      "N5-te-wa-ikemasen-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 22–23",
+    "bab": 22,
+    "pola": "meishi-shuushoku",
+    "polaTeks": "［普通形］＋N",
+    "varian": [],
+    "arti": "kalimat penjelas kata benda (yang …)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-meishi-shuushoku-1",
+      "N5-meishi-shuushoku-2",
+      "N5-meishi-shuushoku-3",
+      "N5-meishi-shuushoku-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 22–23",
+    "bab": 23,
+    "pola": "to",
+    "polaTeks": "～と",
+    "varian": [],
+    "arti": "kalau / begitu … (pasti terjadi)",
+    "modulN4": [
+      13
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-to-1",
+      "N5-to-2",
+      "N5-to-3",
+      "N5-to-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 22–23",
+    "bab": 23,
+    "pola": "toki",
+    "polaTeks": "～とき",
+    "varian": [],
+    "arti": "ketika … / saat …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-toki-1",
+      "N5-toki-2",
+      "N5-toki-3",
+      "N5-toki-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 24",
+    "bab": 24,
+    "pola": "te-ageru",
+    "polaTeks": "～てあげます",
+    "varian": [
+      "～てあげる"
+    ],
+    "arti": "melakukan … untuk orang lain",
+    "modulN4": [
+      62
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-ageru-1",
+      "N5-te-ageru-2",
+      "N5-te-ageru-3",
+      "N5-te-ageru-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 24",
+    "bab": 24,
+    "pola": "te-kureru",
+    "polaTeks": "～てくれます",
+    "varian": [
+      "Nをくれます",
+      "～てくれる"
+    ],
+    "arti": "memberi / melakukan … untuk saya",
+    "modulN4": [
+      63
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-kureru-1",
+      "N5-te-kureru-2",
+      "N5-te-kureru-3",
+      "N5-te-kureru-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 24",
+    "bab": 24,
+    "pola": "te-morau",
+    "polaTeks": "～てもらいます",
+    "varian": [
+      "～てもらう"
+    ],
+    "arti": "menerima bantuan / minta …",
+    "modulN4": [
+      64
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-te-morau-1",
+      "N5-te-morau-2",
+      "N5-te-morau-3",
+      "N5-te-morau-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 25",
+    "bab": 25,
+    "pola": "tara",
+    "polaTeks": "～たら",
+    "varian": [
+      "もし～たら",
+      "～かったら",
+      "～だったら"
+    ],
+    "arti": "kalau … / setelah …",
+    "modulN4": [
+      11
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-tara-1",
+      "N5-tara-2",
+      "N5-tara-3",
+      "N5-tara-4"
+    ]
+  },
+  {
+    "volume": "BN5V5",
+    "tingkat": "N5",
+    "prioritas": 6,
+    "tahap": "Bab 25",
+    "bab": 25,
+    "pola": "temo",
+    "polaTeks": "～ても",
+    "varian": [
+      "いくら～ても",
+      "～くても",
+      "～でも"
+    ],
+    "arti": "meskipun …",
+    "modulN4": [
+      16
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N5-temo-1",
+      "N5-temo-2",
+      "N5-temo-3",
+      "N5-temo-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "you-to-omou",
+    "polaTeks": "～（よ）うと思っています",
+    "varian": [
+      "～（よ）うと思う"
+    ],
+    "arti": "bermaksud / berniat …",
+    "modulN4": [
+      1
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-to-omou-1",
+      "N4-you-to-omou-2",
+      "N4-you-to-omou-3",
+      "N4-you-to-omou-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "tsumori",
+    "polaTeks": "～つもりです",
+    "varian": [
+      "～つもりだ"
+    ],
+    "arti": "berniat / berencana …",
+    "modulN4": [
+      3
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-tsumori-1",
+      "N4-tsumori-2",
+      "N4-tsumori-3",
+      "N4-tsumori-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "mada-te-imasen",
+    "polaTeks": "まだ～ていません",
+    "varian": [
+      "まだ～ていない"
+    ],
+    "arti": "belum …",
+    "modulN4": [
+      39
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-mada-te-imasen-1",
+      "N4-mada-te-imasen-2",
+      "N4-mada-te-imasen-3",
+      "N4-mada-te-imasen-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "ikoukei",
+    "polaTeks": "V-（よ）う（意向形）",
+    "varian": [
+      "～おう",
+      "～よう"
+    ],
+    "arti": "bentuk maksud: ayo … (gaya akrab)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ikoukei-1",
+      "N4-ikoukei-2",
+      "N4-ikoukei-3",
+      "N4-ikoukei-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "yotei",
+    "polaTeks": "～予定です",
+    "varian": [],
+    "arti": "rencananya … / dijadwalkan …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-yotei-1",
+      "N4-yotei-2",
+      "N4-yotei-3",
+      "N4-yotei-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 31",
+    "bab": 31,
+    "pola": "you-to-suru",
+    "polaTeks": "～（よ）うとする",
+    "varian": [
+      "～（よ）うとしたとき"
+    ],
+    "arti": "baru mau … / hendak …",
+    "modulN4": [
+      2
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-to-suru-1",
+      "N4-you-to-suru-2",
+      "N4-you-to-suru-3",
+      "N4-you-to-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 32",
+    "bab": 32,
+    "pola": "kamoshirenai",
+    "polaTeks": "～かもしれません",
+    "varian": [
+      "～かもしれない"
+    ],
+    "arti": "mungkin … / bisa jadi …",
+    "modulN4": [
+      24
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kamoshirenai-1",
+      "N4-kamoshirenai-2",
+      "N4-kamoshirenai-3",
+      "N4-kamoshirenai-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 32",
+    "bab": 32,
+    "pola": "deshou",
+    "polaTeks": "～でしょう",
+    "varian": [
+      "～だろう"
+    ],
+    "arti": "mungkin … / barangkali … (dugaan)",
+    "modulN4": [
+      27
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-deshou-1",
+      "N4-deshou-2",
+      "N4-deshou-3",
+      "N4-deshou-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 32",
+    "bab": 32,
+    "pola": "hou-ga-ii",
+    "polaTeks": "～ほうがいいです",
+    "varian": [
+      "～たほうがいい",
+      "～ないほうがいい"
+    ],
+    "arti": "sebaiknya … / lebih baik …",
+    "modulN4": [
+      99
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-hou-ga-ii-1",
+      "N4-hou-ga-ii-2",
+      "N4-hou-ga-ii-3",
+      "N4-hou-ga-ii-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 33",
+    "bab": 33,
+    "pola": "kinshikei",
+    "polaTeks": "V-るな（禁止形）",
+    "varian": [],
+    "arti": "jangan …! (larangan keras)",
+    "modulN4": [
+      23
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kinshikei-1",
+      "N4-kinshikei-2",
+      "N4-kinshikei-3",
+      "N4-kinshikei-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 33",
+    "bab": 33,
+    "pola": "meireikei",
+    "polaTeks": "V-え／V-ろ（命令形）",
+    "varian": [
+      "～しろ",
+      "～こい"
+    ],
+    "arti": "bentuk perintah (…lah!)",
+    "modulN4": [
+      50
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-meireikei-1",
+      "N4-meireikei-2",
+      "N4-meireikei-3",
+      "N4-meireikei-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 33",
+    "bab": 33,
+    "pola": "to-iu-imi",
+    "polaTeks": "～という意味です",
+    "varian": [
+      "～と書いてあります",
+      "～と読みます"
+    ],
+    "arti": "artinya … / tertulis …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-to-iu-imi-1",
+      "N4-to-iu-imi-2",
+      "N4-to-iu-imi-3",
+      "N4-to-iu-imi-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 33",
+    "bab": 33,
+    "pola": "to-itte-imashita",
+    "polaTeks": "～と言っていました",
+    "varian": [
+      "～と伝えていただけませんか"
+    ],
+    "arti": "katanya … / tolong sampaikan …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-to-itte-imashita-1",
+      "N4-to-itte-imashita-2",
+      "N4-to-itte-imashita-3",
+      "N4-to-itte-imashita-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 34",
+    "bab": 34,
+    "pola": "toori-ni",
+    "polaTeks": "～とおりに",
+    "varian": [],
+    "arti": "sesuai dengan … / seperti …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-toori-ni-1",
+      "N4-toori-ni-2",
+      "N4-toori-ni-3",
+      "N4-toori-ni-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 34",
+    "bab": 34,
+    "pola": "ato-de",
+    "polaTeks": "～あとで",
+    "varian": [
+      "～後で"
+    ],
+    "arti": "setelah …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ato-de-1",
+      "N4-ato-de-2",
+      "N4-ato-de-3",
+      "N4-ato-de-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 34",
+    "bab": 34,
+    "pola": "naide",
+    "polaTeks": "～ないで、～",
+    "varian": [],
+    "arti": "tanpa … / tidak …, melainkan …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-naide-1",
+      "N4-naide-2",
+      "N4-naide-3",
+      "N4-naide-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 34",
+    "bab": 34,
+    "pola": "mama",
+    "polaTeks": "～まま",
+    "varian": [
+      "～たまま",
+      "～ないまま"
+    ],
+    "arti": "dalam keadaan … (dibiarkan)",
+    "modulN4": [
+      46
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-mama-1",
+      "N4-mama-2",
+      "N4-mama-3",
+      "N4-mama-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 35",
+    "bab": 35,
+    "pola": "ba",
+    "polaTeks": "～ば",
+    "varian": [
+      "～ければ",
+      "～なければ"
+    ],
+    "arti": "jika … (syarat)",
+    "modulN4": [
+      12
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ba-1",
+      "N4-ba-2",
+      "N4-ba-3",
+      "N4-ba-4"
+    ]
+  },
+  {
+    "volume": "BN4V2",
+    "tingkat": "N4",
+    "prioritas": 7,
+    "tahap": "Bab 35",
+    "bab": 35,
+    "pola": "nara",
+    "polaTeks": "～なら",
+    "varian": [],
+    "arti": "kalau (soal) …",
+    "modulN4": [
+      14,
+      15
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-nara-1",
+      "N4-nara-2",
+      "N4-nara-3",
+      "N4-nara-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 36",
+    "bab": 36,
+    "pola": "you-ni-naru",
+    "polaTeks": "～ようになります",
+    "varian": [
+      "～ようになる"
+    ],
+    "arti": "menjadi bisa / mulai terbiasa …",
+    "modulN4": [
+      35
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-ni-naru-1",
+      "N4-you-ni-naru-2",
+      "N4-you-ni-naru-3",
+      "N4-you-ni-naru-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 36",
+    "bab": 36,
+    "pola": "you-ni",
+    "polaTeks": "～ように、～",
+    "varian": [],
+    "arti": "supaya … / agar …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-ni-1",
+      "N4-you-ni-2",
+      "N4-you-ni-3",
+      "N4-you-ni-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 36",
+    "bab": 36,
+    "pola": "you-ni-suru",
+    "polaTeks": "～ようにしています",
+    "varian": [
+      "～ようにしてください",
+      "～ようにする"
+    ],
+    "arti": "berusaha (membiasakan) …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-ni-suru-1",
+      "N4-you-ni-suru-2",
+      "N4-you-ni-suru-3",
+      "N4-you-ni-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 36",
+    "bab": 36,
+    "pola": "koto-ni-suru",
+    "polaTeks": "～ことにする",
+    "varian": [
+      "～ことにしました"
+    ],
+    "arti": "memutuskan untuk …",
+    "modulN4": [
+      5
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-koto-ni-suru-1",
+      "N4-koto-ni-suru-2",
+      "N4-koto-ni-suru-3",
+      "N4-koto-ni-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 36",
+    "bab": 36,
+    "pola": "koto-ni-naru",
+    "polaTeks": "～ことになる",
+    "varian": [
+      "～ことになりました"
+    ],
+    "arti": "diputuskan (pihak lain) bahwa …",
+    "modulN4": [
+      6
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-koto-ni-naru-1",
+      "N4-koto-ni-naru-2",
+      "N4-koto-ni-naru-3",
+      "N4-koto-ni-naru-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 37–38",
+    "bab": 37,
+    "pola": "ukemi",
+    "polaTeks": "～（ら）れます（受身）",
+    "varian": [
+      "～れる",
+      "～られる"
+    ],
+    "arti": "kalimat pasif (di-…)",
+    "modulN4": [
+      56,
+      57,
+      58
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ukemi-1",
+      "N4-ukemi-2",
+      "N4-ukemi-3",
+      "N4-ukemi-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 37–38",
+    "bab": 38,
+    "pola": "no-meishika",
+    "polaTeks": "～のは／～のが／～のを",
+    "varian": [
+      "～のは～です"
+    ],
+    "arti": "membendakan kata kerja (の)",
+    "modulN4": [
+      102
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-no-meishika-1",
+      "N4-no-meishika-2",
+      "N4-no-meishika-3",
+      "N4-no-meishika-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 39",
+    "bab": 39,
+    "pola": "node",
+    "polaTeks": "～ので",
+    "varian": [],
+    "arti": "karena … (halus, objektif)",
+    "modulN4": [
+      51
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-node-1",
+      "N4-node-2",
+      "N4-node-3",
+      "N4-node-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 39",
+    "bab": 39,
+    "pola": "te-riyuu",
+    "polaTeks": "～て、～（理由）",
+    "varian": [
+      "～なくて、～",
+      "～くて、～"
+    ],
+    "arti": "karena … (sebab, bentuk て)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-riyuu-1",
+      "N4-te-riyuu-2",
+      "N4-te-riyuu-3",
+      "N4-te-riyuu-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 40",
+    "bab": 40,
+    "pola": "te-miru",
+    "polaTeks": "～てみます",
+    "varian": [
+      "～てみる"
+    ],
+    "arti": "mencoba …",
+    "modulN4": [
+      8
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-miru-1",
+      "N4-te-miru-2",
+      "N4-te-miru-3",
+      "N4-te-miru-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 40",
+    "bab": 40,
+    "pola": "ka-dou-ka",
+    "polaTeks": "～かどうか",
+    "varian": [],
+    "arti": "apakah … atau tidak",
+    "modulN4": [
+      31
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ka-dou-ka-1",
+      "N4-ka-dou-ka-2",
+      "N4-ka-dou-ka-3",
+      "N4-ka-dou-ka-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 40",
+    "bab": 40,
+    "pola": "gimonshi-ka",
+    "polaTeks": "［疑問詞］～か、～",
+    "varian": [],
+    "arti": "kalimat tanya di dalam kalimat",
+    "modulN4": [
+      32
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-gimonshi-ka-1",
+      "N4-gimonshi-ka-2",
+      "N4-gimonshi-ka-3",
+      "N4-gimonshi-ka-4"
+    ]
+  },
+  {
+    "volume": "BN4V3",
+    "tingkat": "N4",
+    "prioritas": 8,
+    "tahap": "Bab 40",
+    "bab": 40,
+    "pola": "gimonshi-demo",
+    "polaTeks": "［疑問詞］＋でも",
+    "varian": [
+      "だれでも",
+      "どこでも",
+      "いつでも",
+      "なんでも"
+    ],
+    "arti": "siapa pun / di mana pun / kapan pun",
+    "modulN4": [
+      17
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-gimonshi-demo-1",
+      "N4-gimonshi-demo-2",
+      "N4-gimonshi-demo-3",
+      "N4-gimonshi-demo-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 41",
+    "bab": 41,
+    "pola": "te-kudasaru",
+    "polaTeks": "～てくださいます",
+    "varian": [
+      "くださいます",
+      "～てくださる"
+    ],
+    "arti": "(atasan) melakukan … untuk saya",
+    "modulN4": [
+      66
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-kudasaru-1",
+      "N4-te-kudasaru-2",
+      "N4-te-kudasaru-3",
+      "N4-te-kudasaru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 41",
+    "bab": 41,
+    "pola": "te-itadaku",
+    "polaTeks": "～ていただきます",
+    "varian": [
+      "いただきます",
+      "～ていただく"
+    ],
+    "arti": "menerima (bantuan) dari atasan",
+    "modulN4": [
+      67
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-itadaku-1",
+      "N4-te-itadaku-2",
+      "N4-te-itadaku-3",
+      "N4-te-itadaku-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 41",
+    "bab": 41,
+    "pola": "te-yaru",
+    "polaTeks": "～てやります",
+    "varian": [
+      "やります",
+      "～てやる"
+    ],
+    "arti": "memberi … ke bawahan / hewan / tanaman",
+    "modulN4": [
+      68
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-yaru-1",
+      "N4-te-yaru-2",
+      "N4-te-yaru-3",
+      "N4-te-yaru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 41",
+    "bab": 41,
+    "pola": "te-hoshii",
+    "polaTeks": "～てほしい",
+    "varian": [],
+    "arti": "ingin orang lain …",
+    "modulN4": [
+      9
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-hoshii-1",
+      "N4-te-hoshii-2",
+      "N4-te-hoshii-3",
+      "N4-te-hoshii-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 41",
+    "bab": 41,
+    "pola": "te-sashiageru",
+    "polaTeks": "～てさしあげる",
+    "varian": [
+      "さしあげる"
+    ],
+    "arti": "memberi / melakukan … untuk atasan",
+    "modulN4": [
+      65
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-sashiageru-1",
+      "N4-te-sashiageru-2",
+      "N4-te-sashiageru-3",
+      "N4-te-sashiageru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 42",
+    "bab": 42,
+    "pola": "tame-ni",
+    "polaTeks": "～ために",
+    "varian": [
+      "Nのために"
+    ],
+    "arti": "demi … / untuk (tujuan) …",
+    "modulN4": [
+      4
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-tame-ni-1",
+      "N4-tame-ni-2",
+      "N4-tame-ni-3",
+      "N4-tame-ni-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 42",
+    "bab": 42,
+    "pola": "noni-youto",
+    "polaTeks": "～のに（用途）",
+    "varian": [
+      "～のに～かかります",
+      "～のに使います"
+    ],
+    "arti": "untuk (keperluan) …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-noni-youto-1",
+      "N4-noni-youto-2",
+      "N4-noni-youto-3",
+      "N4-noni-youto-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 43",
+    "bab": 43,
+    "pola": "sou-youtai",
+    "polaTeks": "～そうです（様態）",
+    "varian": [
+      "～そうな",
+      "～そうに",
+      "～そうだ"
+    ],
+    "arti": "kelihatannya … (dari penampilan)",
+    "modulN4": [
+      25
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sou-youtai-1",
+      "N4-sou-youtai-2",
+      "N4-sou-youtai-3",
+      "N4-sou-youtai-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 43",
+    "bab": 43,
+    "pola": "te-kimasu",
+    "polaTeks": "～て来ます",
+    "varian": [
+      "～てきます"
+    ],
+    "arti": "pergi … lalu kembali",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-kimasu-1",
+      "N4-te-kimasu-2",
+      "N4-te-kimasu-3",
+      "N4-te-kimasu-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 43",
+    "bab": 43,
+    "pola": "te-iku",
+    "polaTeks": "～ていく",
+    "varian": [],
+    "arti": "akan terus … (ke depan)",
+    "modulN4": [
+      36
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-iku-1",
+      "N4-te-iku-2",
+      "N4-te-iku-3",
+      "N4-te-iku-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 43",
+    "bab": 43,
+    "pola": "te-kuru",
+    "polaTeks": "～てくる",
+    "varian": [],
+    "arti": "mulai … / makin … (sampai kini)",
+    "modulN4": [
+      37
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-kuru-1",
+      "N4-te-kuru-2",
+      "N4-te-kuru-3",
+      "N4-te-kuru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "ni-suru",
+    "polaTeks": "Nにします",
+    "varian": [
+      "Nにする"
+    ],
+    "arti": "memilih / memutuskan (N)",
+    "modulN4": [
+      49
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ni-suru-1",
+      "N4-ni-suru-2",
+      "N4-ni-suru-3",
+      "N4-ni-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "yasui-nikui",
+    "polaTeks": "～やすいです／～にくいです",
+    "varian": [
+      "～やすい",
+      "～にくい"
+    ],
+    "arti": "mudah … / sulit …",
+    "modulN4": [
+      90,
+      91,
+      92
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-yasui-nikui-1",
+      "N4-yasui-nikui-2",
+      "N4-yasui-nikui-3",
+      "N4-yasui-nikui-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "sugiru",
+    "polaTeks": "～すぎます",
+    "varian": [
+      "～すぎる"
+    ],
+    "arti": "terlalu …",
+    "modulN4": [
+      93
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sugiru-1",
+      "N4-sugiru-2",
+      "N4-sugiru-3",
+      "N4-sugiru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "ku-suru",
+    "polaTeks": "イA-くします／ナA-にします",
+    "varian": [],
+    "arti": "membuat jadi …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ku-suru-1",
+      "N4-ku-suru-2",
+      "N4-ku-suru-3",
+      "N4-ku-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "suushi-mo",
+    "polaTeks": "数詞＋も",
+    "varian": [],
+    "arti": "sampai … (jumlah yang banyak)",
+    "modulN4": [
+      96
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-suushi-mo-1",
+      "N4-suushi-mo-2",
+      "N4-suushi-mo-3",
+      "N4-suushi-mo-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 44",
+    "bab": 44,
+    "pola": "sa",
+    "polaTeks": "～さ",
+    "varian": [
+      "大きさ",
+      "高さ"
+    ],
+    "arti": "kata sifat jadi kata benda (-nya)",
+    "modulN4": [
+      101
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sa-1",
+      "N4-sa-2",
+      "N4-sa-3",
+      "N4-sa-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 45",
+    "bab": 45,
+    "pola": "noni",
+    "polaTeks": "～のに、～",
+    "varian": [],
+    "arti": "padahal …",
+    "modulN4": [
+      52
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-noni-1",
+      "N4-noni-2",
+      "N4-noni-3",
+      "N4-noni-4"
+    ]
+  },
+  {
+    "volume": "BN4V4",
+    "tingkat": "N4",
+    "prioritas": 9,
+    "tahap": "Bab 45",
+    "bab": 45,
+    "pola": "baai",
+    "polaTeks": "～場合は、～",
+    "varian": [],
+    "arti": "jika (terjadi) … / dalam hal …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-baai-1",
+      "N4-baai-2",
+      "N4-baai-3",
+      "N4-baai-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 46",
+    "bab": 46,
+    "pola": "hazu",
+    "polaTeks": "～はずです",
+    "varian": [
+      "～はずだ"
+    ],
+    "arti": "seharusnya … / mestinya …",
+    "modulN4": [
+      28
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-hazu-1",
+      "N4-hazu-2",
+      "N4-hazu-3",
+      "N4-hazu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 46",
+    "bab": 46,
+    "pola": "tokoro",
+    "polaTeks": "～ところです",
+    "varian": [
+      "～ているところです",
+      "～たところです"
+    ],
+    "arti": "baru akan / sedang / baru saja …",
+    "modulN4": [
+      42,
+      43,
+      44
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-tokoro-1",
+      "N4-tokoro-2",
+      "N4-tokoro-3",
+      "N4-tokoro-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 46",
+    "bab": 46,
+    "pola": "ta-bakari",
+    "polaTeks": "～たばかりです",
+    "varian": [],
+    "arti": "baru saja … (terasa belum lama)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ta-bakari-1",
+      "N4-ta-bakari-2",
+      "N4-ta-bakari-3",
+      "N4-ta-bakari-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 46",
+    "bab": 46,
+    "pola": "te-bakari-iru",
+    "polaTeks": "～てばかりいる",
+    "varian": [],
+    "arti": "kerjanya … melulu",
+    "modulN4": [
+      38
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-te-bakari-iru-1",
+      "N4-te-bakari-iru-2",
+      "N4-te-bakari-iru-3",
+      "N4-te-bakari-iru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 46",
+    "bab": 46,
+    "pola": "bakari",
+    "polaTeks": "Nばかり",
+    "varian": [],
+    "arti": "hanya … saja / melulu …",
+    "modulN4": [
+      95
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-bakari-1",
+      "N4-bakari-2",
+      "N4-bakari-3",
+      "N4-bakari-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 47",
+    "bab": 47,
+    "pola": "sou-denbun",
+    "polaTeks": "～そうです（伝聞）",
+    "varian": [],
+    "arti": "katanya … / kabarnya …",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sou-denbun-1",
+      "N4-sou-denbun-2",
+      "N4-sou-denbun-3",
+      "N4-sou-denbun-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 47",
+    "bab": 47,
+    "pola": "you-desu",
+    "polaTeks": "～ようです",
+    "varian": [
+      "～ようだ"
+    ],
+    "arti": "tampaknya … (dari keadaan)",
+    "modulN4": [],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-you-desu-1",
+      "N4-you-desu-2",
+      "N4-you-desu-3",
+      "N4-you-desu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 47",
+    "bab": 47,
+    "pola": "mitai",
+    "polaTeks": "～みたいだ",
+    "varian": [
+      "～みたいな",
+      "～みたいに"
+    ],
+    "arti": "sepertinya … / mirip …",
+    "modulN4": [
+      29
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-mitai-1",
+      "N4-mitai-2",
+      "N4-mitai-3",
+      "N4-mitai-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 47",
+    "bab": 47,
+    "pola": "rashii",
+    "polaTeks": "～らしい",
+    "varian": [],
+    "arti": "sepertinya … / katanya …",
+    "modulN4": [
+      30
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-rashii-1",
+      "N4-rashii-2",
+      "N4-rashii-3",
+      "N4-rashii-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 47",
+    "bab": 47,
+    "pola": "ga-suru",
+    "polaTeks": "Nがする",
+    "varian": [
+      "音がする",
+      "においがする",
+      "味がする"
+    ],
+    "arti": "terdengar / tercium / terasa",
+    "modulN4": [
+      48
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-ga-suru-1",
+      "N4-ga-suru-2",
+      "N4-ga-suru-3",
+      "N4-ga-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 48",
+    "bab": 48,
+    "pola": "shieki",
+    "polaTeks": "～（さ）せます",
+    "varian": [
+      "～せる",
+      "～させる"
+    ],
+    "arti": "menyuruh / membiarkan … (kausatif)",
+    "modulN4": [
+      59,
+      60
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-shieki-1",
+      "N4-shieki-2",
+      "N4-shieki-3",
+      "N4-shieki-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 48",
+    "bab": 48,
+    "pola": "sasete-kudasai",
+    "polaTeks": "～（さ）せていただけませんか",
+    "varian": [
+      "～（さ）せてください"
+    ],
+    "arti": "izinkan saya … / bolehkah saya …",
+    "modulN4": [
+      61
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sasete-kudasai-1",
+      "N4-sasete-kudasai-2",
+      "N4-sasete-kudasai-3",
+      "N4-sasete-kudasai-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "o-ni-naru",
+    "polaTeks": "お～になります",
+    "varian": [
+      "ご～になります",
+      "お～になる"
+    ],
+    "arti": "bentuk hormat (sonkeigo)",
+    "modulN4": [
+      69
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-o-ni-naru-1",
+      "N4-o-ni-naru-2",
+      "N4-o-ni-naru-3",
+      "N4-o-ni-naru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "o-kudasai",
+    "polaTeks": "お～ください",
+    "varian": [
+      "ご～ください",
+      "お～くださる"
+    ],
+    "arti": "silakan … (sangat sopan)",
+    "modulN4": [
+      70
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-o-kudasai-1",
+      "N4-o-kudasai-2",
+      "N4-o-kudasai-3",
+      "N4-o-kudasai-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-irassharu",
+    "polaTeks": "いらっしゃいます",
+    "varian": [
+      "いらっしゃる",
+      "～ていらっしゃる"
+    ],
+    "arti": "ada / datang / pergi (hormat)",
+    "modulN4": [
+      74
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-irassharu-1",
+      "N4-sonkeigo-irassharu-2",
+      "N4-sonkeigo-irassharu-3",
+      "N4-sonkeigo-irassharu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-ossharu",
+    "polaTeks": "おっしゃいます",
+    "varian": [
+      "おっしゃる"
+    ],
+    "arti": "berkata (hormat)",
+    "modulN4": [
+      75
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-ossharu-1",
+      "N4-sonkeigo-ossharu-2",
+      "N4-sonkeigo-ossharu-3",
+      "N4-sonkeigo-ossharu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-goran-ni-naru",
+    "polaTeks": "ごらんになります",
+    "varian": [
+      "ごらんください",
+      "ごらんになる"
+    ],
+    "arti": "melihat (hormat)",
+    "modulN4": [
+      76
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-goran-ni-naru-1",
+      "N4-sonkeigo-goran-ni-naru-2",
+      "N4-sonkeigo-goran-ni-naru-3",
+      "N4-sonkeigo-goran-ni-naru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-gozonji",
+    "polaTeks": "ごぞんじです",
+    "varian": [
+      "ご存じです"
+    ],
+    "arti": "tahu / kenal (hormat)",
+    "modulN4": [
+      77
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-gozonji-1",
+      "N4-sonkeigo-gozonji-2",
+      "N4-sonkeigo-gozonji-3",
+      "N4-sonkeigo-gozonji-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-meshiagaru",
+    "polaTeks": "めしあがります",
+    "varian": [
+      "召し上がります",
+      "めしあがる"
+    ],
+    "arti": "makan / minum (hormat)",
+    "modulN4": [
+      78
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-meshiagaru-1",
+      "N4-sonkeigo-meshiagaru-2",
+      "N4-sonkeigo-meshiagaru-3",
+      "N4-sonkeigo-meshiagaru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkeigo-nasaru",
+    "polaTeks": "なさいます",
+    "varian": [
+      "なさる"
+    ],
+    "arti": "melakukan (hormat)",
+    "modulN4": [
+      79
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkeigo-nasaru-1",
+      "N4-sonkeigo-nasaru-2",
+      "N4-sonkeigo-nasaru-3",
+      "N4-sonkeigo-nasaru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 49",
+    "bab": 49,
+    "pola": "sonkei-rareru",
+    "polaTeks": "～（ら）れます（尊敬）",
+    "varian": [],
+    "arti": "bentuk hormat dengan ～れる／～られる",
+    "modulN4": [
+      80
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-sonkei-rareru-1",
+      "N4-sonkei-rareru-2",
+      "N4-sonkei-rareru-3",
+      "N4-sonkei-rareru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "o-suru",
+    "polaTeks": "お～します",
+    "varian": [
+      "ご～します",
+      "お～いたします",
+      "お～する"
+    ],
+    "arti": "bentuk merendahkan diri (kenjougo)",
+    "modulN4": [
+      71,
+      72
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-o-suru-1",
+      "N4-o-suru-2",
+      "N4-o-suru-3",
+      "N4-o-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-itasu",
+    "polaTeks": "いたします",
+    "varian": [
+      "いたす"
+    ],
+    "arti": "melakukan (merendah)",
+    "modulN4": [
+      81
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-itasu-1",
+      "N4-kenjougo-itasu-2",
+      "N4-kenjougo-itasu-3",
+      "N4-kenjougo-itasu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-ukagau",
+    "polaTeks": "うかがいます",
+    "varian": [
+      "伺います",
+      "うかがう"
+    ],
+    "arti": "berkunjung / bertanya (merendah)",
+    "modulN4": [
+      82
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-ukagau-1",
+      "N4-kenjougo-ukagau-2",
+      "N4-kenjougo-ukagau-3",
+      "N4-kenjougo-ukagau-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-oru",
+    "polaTeks": "おります",
+    "varian": [
+      "～ております",
+      "おる"
+    ],
+    "arti": "ada / sedang … (merendah)",
+    "modulN4": [
+      83
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-oru-1",
+      "N4-kenjougo-oru-2",
+      "N4-kenjougo-oru-3",
+      "N4-kenjougo-oru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-zonjiru",
+    "polaTeks": "ぞんじます",
+    "varian": [
+      "ぞんじております",
+      "ぞんじません",
+      "存じます"
+    ],
+    "arti": "tahu / berpikir (merendah)",
+    "modulN4": [
+      84
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-zonjiru-1",
+      "N4-kenjougo-zonjiru-2",
+      "N4-kenjougo-zonjiru-3",
+      "N4-kenjougo-zonjiru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-haiken-suru",
+    "polaTeks": "はいけんします",
+    "varian": [
+      "拝見します",
+      "はいけんする"
+    ],
+    "arti": "melihat / membaca (merendah)",
+    "modulN4": [
+      85
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-haiken-suru-1",
+      "N4-kenjougo-haiken-suru-2",
+      "N4-kenjougo-haiken-suru-3",
+      "N4-kenjougo-haiken-suru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-mairu",
+    "polaTeks": "まいります",
+    "varian": [
+      "参ります",
+      "まいる"
+    ],
+    "arti": "datang / pergi (merendah)",
+    "modulN4": [
+      86
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-mairu-1",
+      "N4-kenjougo-mairu-2",
+      "N4-kenjougo-mairu-3",
+      "N4-kenjougo-mairu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-mousu",
+    "polaTeks": "～と申します",
+    "varian": [
+      "もうします",
+      "もうす"
+    ],
+    "arti": "nama saya … / berkata (merendah)",
+    "modulN4": [
+      88
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-mousu-1",
+      "N4-kenjougo-mousu-2",
+      "N4-kenjougo-mousu-3",
+      "N4-kenjougo-mousu-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "o-itadaku",
+    "polaTeks": "お～いただく",
+    "varian": [
+      "ご～いただく",
+      "お～いただけませんか"
+    ],
+    "arti": "menerima kebaikan dari atasan",
+    "modulN4": [
+      73
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-o-itadaku-1",
+      "N4-o-itadaku-2",
+      "N4-o-itadaku-3",
+      "N4-o-itadaku-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "kenjougo-moushiageru",
+    "polaTeks": "もうしあげる",
+    "varian": [
+      "申し上げます"
+    ],
+    "arti": "menyampaikan / mengucapkan (merendah)",
+    "modulN4": [
+      87
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-kenjougo-moushiageru-1",
+      "N4-kenjougo-moushiageru-2",
+      "N4-kenjougo-moushiageru-3",
+      "N4-kenjougo-moushiageru-4"
+    ]
+  },
+  {
+    "volume": "BN4V5",
+    "tingkat": "N4",
+    "prioritas": 10,
+    "tahap": "Bab 50",
+    "bab": 50,
+    "pola": "de-gozaimasu",
+    "polaTeks": "～でございます",
+    "varian": [
+      "ございます"
+    ],
+    "arti": "adalah (sangat sopan)",
+    "modulN4": [
+      89
+    ],
+    "diBank": 0,
+    "perluDitulis": 4,
+    "idSoal": [
+      "N4-de-gozaimasu-1",
+      "N4-de-gozaimasu-2",
+      "N4-de-gozaimasu-3",
+      "N4-de-gozaimasu-4"
+    ]
+  }
+]

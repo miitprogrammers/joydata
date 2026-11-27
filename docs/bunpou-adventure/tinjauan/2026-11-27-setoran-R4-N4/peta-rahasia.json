@@ -1,0 +1,42 @@
+{
+  "S01": {
+    "id": "N4-shi-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "91e7333a91ab491d"
+  },
+  "S02": {
+    "id": "N4-n-desu-2",
+    "urutanTampil": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "hash": "aeb2d199f89c7d03"
+  },
+  "S03": {
+    "id": "N4-de-gozaimasu-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "5cf501a958fc3d23"
+  },
+  "S04": {
+    "id": "N4-naide-3",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "1f4baeeeeb3f1481"
+  }
+}

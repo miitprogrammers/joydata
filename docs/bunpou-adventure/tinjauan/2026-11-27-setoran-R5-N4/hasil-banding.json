@@ -1,0 +1,15 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-naide-3",
+    "hash": "d1e84a6068358ece",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (けさは ごはんを 食べないで 学校へ 行きました). This is the Minna Bab 34 V1-ないで V2 'do V2 without doing V1' use, and it is natural.",
+    "tingkat": "ok: V-ないで V2 (Bab 34), けさ (Bab 4), 学校 / 行きます (Bab 5), ごはん / 食べます (Bab 6).",
+    "catatan": "All 24 orders checked. 行きました is the only finite predicate, so the ★ in box 4 can be placed from the sentence form alone, without understanding ないで. This is allowed under R1, but R1/R2 advise avoiding a ★ on the only sentence-closing piece (only one candidate for box 4). It is not decided by punctuation: the 。 is not the clue. ごはんを must come before 食べないで. 学校へ can float in front of it (学校へ ごはんを 食べないで 行きました, natural enough), which keeps the ★ the same. ごはんを 学校へ 食べないで 行きました is unnatural.",
+    "dinilai": "2026-11-27T04:58:04.314Z"
+  }
+]

@@ -1,0 +1,322 @@
+{
+  "S01": {
+    "id": "N5-toki-2",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "1e78b194144d12b0"
+  },
+  "S02": {
+    "id": "N5-temo-4",
+    "urutanTampil": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "hash": "ac4fc6f05166fd79"
+  },
+  "S03": {
+    "id": "N5-meishi-shuushoku-3",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "f998d55d7bc964a2"
+  },
+  "S04": {
+    "id": "N5-meishi-shuushoku-2",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "dbd5168db33f8bbb"
+  },
+  "S05": {
+    "id": "N5-temo-2",
+    "urutanTampil": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "hash": "dfb2f7d8860d561f"
+  },
+  "S06": {
+    "id": "N5-te-morau-2",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "c15f0dfa8973436b"
+  },
+  "S07": {
+    "id": "N5-te-ageru-2",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "5e0aec2e4063e324"
+  },
+  "S08": {
+    "id": "N5-temo-3",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "a8cc4fb1ef91b257"
+  },
+  "S09": {
+    "id": "N5-to-3",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "cf1a242742673ba4"
+  },
+  "S10": {
+    "id": "N5-to-1",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "1c598455c84e46bf"
+  },
+  "S11": {
+    "id": "N5-to-4",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "c49ac2473a5f0089"
+  },
+  "S12": {
+    "id": "N5-toki-3",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "850c290820b916f6"
+  },
+  "S13": {
+    "id": "N5-te-kureru-4",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "cc4d1cb540461228"
+  },
+  "S14": {
+    "id": "N5-te-morau-1",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "dc99635efa887fdd"
+  },
+  "S15": {
+    "id": "N5-toki-4",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "fe2a4839f1ae11a4"
+  },
+  "S16": {
+    "id": "N5-temo-1",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "6cdb00791d32afc8"
+  },
+  "S17": {
+    "id": "N5-toki-1",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "2a7820ce54824c3c"
+  },
+  "S18": {
+    "id": "N5-tara-4",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "fc386834368f4701"
+  },
+  "S19": {
+    "id": "N5-te-kureru-3",
+    "urutanTampil": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "hash": "e6f1c3c9fd4a7db9"
+  },
+  "S20": {
+    "id": "N5-tara-1",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "21db46f472b575e0"
+  },
+  "S21": {
+    "id": "N5-te-kureru-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "38e5f18943feb4e7"
+  },
+  "S22": {
+    "id": "N5-te-ageru-3",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "1ca1075d02d17557"
+  },
+  "S23": {
+    "id": "N5-te-morau-3",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "a30cb152bb2e9f52"
+  },
+  "S24": {
+    "id": "N5-to-2",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "3c12276cf66830f9"
+  },
+  "S25": {
+    "id": "N5-te-morau-4",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "e6392690088671af"
+  },
+  "S26": {
+    "id": "N5-te-ageru-1",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "5c0c114b5a32e278"
+  },
+  "S27": {
+    "id": "N5-te-kureru-1",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "faf25a9b5bff0adb"
+  },
+  "S28": {
+    "id": "N5-te-ageru-4",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "3da314deae771137"
+  },
+  "S29": {
+    "id": "N5-tara-2",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "99c130d7b52d3175"
+  },
+  "S30": {
+    "id": "N5-meishi-shuushoku-1",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "76e123cec710e600"
+  },
+  "S31": {
+    "id": "N5-meishi-shuushoku-4",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "e5858a55a294a7cb"
+  },
+  "S32": {
+    "id": "N5-tara-3",
+    "urutanTampil": [
+      2,
+      0,
+      1,
+      3
+    ],
+    "hash": "b13872d4e8fa4a36"
+  }
+}

@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { KATALOG_MATERI } from './materiBunpou/katalog.js';
 import * as ba from './bunpouAdventure.js';
+import { SOAL_BINTANG_N5 } from './bankSoal/bintangN5.js';
+import { SOAL_BINTANG_N4 } from './bankSoal/bintangN4.js';
 
 function rngBenih(benih) {
   let a = benih >>> 0;
@@ -105,12 +107,22 @@ test('statusRilis: dirilis hanya bila setiap pola punya >= MIN_VARIAN soal', () 
   assert.equal(kurang.dirilis, false);
   assert.equal(kurang.kurang.length, pola.length);
   assert.deepEqual(kurang.kurang[0], { pola: pola[0], ada: ba.MIN_VARIAN - 1 });
-  // Bank nyata baru berisi pilot (6 dari 10 pola Vol 1, 7 dari 19 pola Vol 4): tidak ada volume yang dirilis.
-  const v1 = ba.statusRilis('BN5V1', {});
-  assert.equal(v1.dirilis, false);
-  assert.equal(v1.kurang.length, 4);
-  assert.equal(ba.statusRilis('BN5V4', {}).dirilis, false);
-  for (const k of ba.URUTAN_VOLUME_BUNPOU) assert.equal(ba.statusRilis(k, {}).dirilis, false, k);
+  // Bank nyata diisi bertahap lewat alur peninjauan, jadi jumlah soalnya berubah tiap setoran. Tes ini
+  // tidak mengunci angka itu; ia hanya memeriksa konsistensi statusRilis terhadap isi bank nyata.
+  const bankNyata = [...SOAL_BINTANG_N5, ...SOAL_BINTANG_N4];
+  const hitung = (p) => bankNyata.filter((s) => s.pola === p).length;
+  for (const k of ba.URUTAN_VOLUME_BUNPOU) {
+    const r = ba.statusRilis(k, {});
+    assert.equal(r.dirilis, r.kurang.length === 0, k);
+    for (const e of r.kurang) {
+      assert.ok(e.ada < ba.MIN_VARIAN, `${k} ${e.pola}`);
+      assert.equal(e.ada, hitung(e.pola), `${k} ${e.pola}`);
+    }
+    const idKurang = new Set(r.kurang.map((e) => e.pola));
+    for (const p of ba.polaVolume(k)) {
+      if (!idKurang.has(p)) assert.ok(hitung(p) >= ba.MIN_VARIAN, `${k} ${p}`);
+    }
+  }
 });
 
 test('volumeTersedia: Vol 1 tiap tingkat terbuka (N4 tanpa N5); Vol n perlu Vol n-1 selesai', () => {

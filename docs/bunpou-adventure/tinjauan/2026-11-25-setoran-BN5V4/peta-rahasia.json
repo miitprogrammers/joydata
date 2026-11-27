@@ -1,0 +1,462 @@
+{
+  "S01": {
+    "id": "N5-koto-ga-dekiru-3",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "77d46204be823836"
+  },
+  "S02": {
+    "id": "N5-wa-toritate-4",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "b9e225d6e001f2bd"
+  },
+  "S03": {
+    "id": "N5-nakute-mo-ii-4",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "873a6ddb3a298790"
+  },
+  "S04": {
+    "id": "N5-futsuutai-2",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "d43a36e40adc89ba"
+  },
+  "S05": {
+    "id": "N5-nakute-mo-ii-2",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "4341f1619f05a106"
+  },
+  "S06": {
+    "id": "N5-wa-toritate-2",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "d25d4bfc3d8efe99"
+  },
+  "S07": {
+    "id": "N5-futsuutai-1",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "308ebcb04bf4c977"
+  },
+  "S08": {
+    "id": "N5-naide-kudasai-3",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "9051bd367fb126e4"
+  },
+  "S09": {
+    "id": "N5-nakute-mo-ii-3",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "189135efb28344a3"
+  },
+  "S10": {
+    "id": "N5-nakereba-narimasen-3",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "8641683baa65236c"
+  },
+  "S11": {
+    "id": "N5-naide-kudasai-2",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "2d52ff22e30884e7"
+  },
+  "S12": {
+    "id": "N5-nakereba-narimasen-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "ccb82721df60ae84"
+  },
+  "S13": {
+    "id": "N5-to-iu-2",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "edc1bef24280dadd"
+  },
+  "S14": {
+    "id": "N5-nakereba-narimasen-2",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "11a3e0c794298208"
+  },
+  "S15": {
+    "id": "N5-koto-4",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "b560af4c764cb969"
+  },
+  "S16": {
+    "id": "N5-made-ni-2",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "812ace603aec1654"
+  },
+  "S17": {
+    "id": "N5-koto-ga-dekiru-2",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "8d3012d990d1745c"
+  },
+  "S18": {
+    "id": "N5-deshou-kakunin-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "721c5f8dfa747628"
+  },
+  "S19": {
+    "id": "N5-deshou-kakunin-2",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "f6b38335384659b0"
+  },
+  "S20": {
+    "id": "N5-mae-ni-1",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "a8c3d45a3dfdc280"
+  },
+  "S21": {
+    "id": "N5-wa-toritate-1",
+    "urutanTampil": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "hash": "63b7482c294928f1"
+  },
+  "S22": {
+    "id": "N5-to-omou-4",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "9644e515b6822f9a"
+  },
+  "S23": {
+    "id": "N5-to-iu-3",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "279f77f4cfc068a0"
+  },
+  "S24": {
+    "id": "N5-futsuutai-4",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "de7fb0b7d17985b2"
+  },
+  "S25": {
+    "id": "N5-wa-toritate-3",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "0dbcab3fcf281448"
+  },
+  "S26": {
+    "id": "N5-mae-ni-3",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "fdd4ca1c27bbf917"
+  },
+  "S27": {
+    "id": "N5-made-ni-4",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "bc3dbe1d5bc30d86"
+  },
+  "S28": {
+    "id": "N5-koto-3",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "7112a30b911b534a"
+  },
+  "S29": {
+    "id": "N5-koto-ga-dekiru-4",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "3882baee7973a347"
+  },
+  "S30": {
+    "id": "N5-deshou-kakunin-1",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "96b7c7e6ee0cff84"
+  },
+  "S31": {
+    "id": "N5-naide-kudasai-4",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "3253901cc04fc7cf"
+  },
+  "S32": {
+    "id": "N5-to-omou-1",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "a737d6fe1e1fd818"
+  },
+  "S33": {
+    "id": "N5-futsuutai-3",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "064686affa590c2f"
+  },
+  "S34": {
+    "id": "N5-made-ni-3",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "0fb833f4f80ec93e"
+  },
+  "S35": {
+    "id": "N5-mae-ni-2",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "5d1b701dddf61930"
+  },
+  "S36": {
+    "id": "N5-to-iu-4",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "11e021fa06c52b9e"
+  },
+  "S37": {
+    "id": "N5-to-omou-2",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "8e64e45d604cfa30"
+  },
+  "S38": {
+    "id": "N5-made-ni-1",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "03748809d56d0090"
+  },
+  "S39": {
+    "id": "N5-to-omou-3",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "0d5a1d174ed0abb0"
+  },
+  "S40": {
+    "id": "N5-koto-ga-dekiru-1",
+    "urutanTampil": [
+      2,
+      0,
+      1,
+      3
+    ],
+    "hash": "12d4a01af60abba5"
+  },
+  "S41": {
+    "id": "N5-koto-2",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "cb21f31940b21242"
+  },
+  "S42": {
+    "id": "N5-koto-1",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "41cacb4b30da9a13"
+  },
+  "S43": {
+    "id": "N5-deshou-kakunin-4",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "584622f5d02f0345"
+  },
+  "S44": {
+    "id": "N5-nakereba-narimasen-1",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "f3e80f527baaabc5"
+  },
+  "S45": {
+    "id": "N5-nakute-mo-ii-1",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "d57867f59dc86ae9"
+  },
+  "S46": {
+    "id": "N5-to-iu-1",
+    "urutanTampil": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "hash": "89c85bddd33642ba"
+  }
+}

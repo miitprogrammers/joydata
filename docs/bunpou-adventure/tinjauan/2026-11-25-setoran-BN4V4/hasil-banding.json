@@ -1,0 +1,1063 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-baai-3",
+    "hash": "0860bb09594b4daf",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "りょうしゅうしょが いる ばあいは、かかりいんに 言って ください. ★ di kotak 1 hanya bisa diisi predikat いる (要る), jadi ditentukan bentuk; boleh (R1). いる ditulis kana, bisa dibaca 居る sekilas, tapi konteks jelas.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-te-kuru-4",
+    "hash": "79f89b0990f29a0c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = ね, satu-satunya penutup kalimat di kotak 4 (ditentukan bentuk; hindari bila ada pilihan lain, R1/R2).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-ku-suru-4",
+    "hash": "8b96146e5cd107bc",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = ください, satu-satunya penutup di kotak 4 (ditentukan bentuk). Struktur sama persis dengan S35 (もう すこし ～く して ください).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-te-hoshii-4",
+    "hash": "c7a5e232ed691a9b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = です, penutup kalimat di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N4-sugiru-3",
+    "hash": "9149222a6c20369f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N4-te-yaru-1",
+    "hash": "fcdb57bb7d17bd37",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [水{みず}を / にわの / 花{はな}に / やります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Objek を dan penerima に bisa bertukar: わたしは 毎朝 水を にわの 花に やります juga wajar (urutan を-に sah dalam bahasa Jepang), dan kotak 3 menjadi 花に (2), bukan 水を (3).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N4-sa-4",
+    "hash": "da09f027565474b0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = いいです, penutup kalimat di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N4-te-yaru-3",
+    "hash": "7ecc78bd0300fb0e",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N4-noni-youto-2",
+    "hash": "3458c0093be8222b",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [とても / 旅行{りょこう} / に / べんりです] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Kata keterangan とても bisa mendahului frasa に: この かばんは かるくて、とても 旅行に べんりです juga wajar (seperti とても 日本語が 上手です), dan kotak 2 menjadi 旅行 (1), bukan に (3).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N4-tame-ni-1",
+    "hash": "ff86b258e1c36b80",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N4-te-kimasu-1",
+    "hash": "289ba2cb2a758e20",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "コンビニで dan おべんとうを bisa bertukar, tetapi ★ tetap 買って di kotak 3.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N4-te-hoshii-2",
+    "hash": "34a6e8743204ce3f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N4-tame-ni-2",
+    "hash": "9859b27e244cb501",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [いっしょうけんめい / 家族{かぞく}の / ために / 働{はたら}いて います] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Kata keterangan いっしょうけんめい mengambang: アディさんは いっしょうけんめい 家族の ために 働いて います sama wajarnya, dan kotak 3 menjadi ために (1), bukan いっしょうけんめい (2).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S14",
+    "id": "N4-te-kudasaru-3",
+    "hash": "57948d3250a630b4",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [これを / たんじょうびに / くださいました / よ] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Keterangan waktu dan objek bisa bertukar: 社長の おくさんが これを たんじょうびに くださいましたよ juga wajar, dan kotak 2 menjadi たんじょうびに (3), bukan これを (1).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S15",
+    "id": "N4-te-itadaku-3",
+    "hash": "cafbfcb731b66828",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S16",
+    "id": "N4-sou-youtai-4",
+    "hash": "a5e595fdf223a93c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = ですね, penutup di kotak 4 (ditentukan bentuk). Potongan おいし memotong kata sifat di batang sebelum そう; ini batas morfem pola (イA-い → そう) sehingga tidak saya gagalkan, tetapi berisiko: batang kata sifat tidak berdiri sendiri, dan JLPT biasanya memotong di batas bunsetsu (lebih aman: おいしそう / ですね / とても / ケーキは dsb.).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S17",
+    "id": "N4-ku-suru-3",
+    "hash": "65db61435e2749f1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S18",
+    "id": "N4-baai-2",
+    "hash": "a64d9829f928972b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S19",
+    "id": "N4-ku-suru-2",
+    "hash": "b5f879fe7cced4c7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S20",
+    "id": "N4-te-itadaku-1",
+    "hash": "5bbdb3f653e85ca8",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S21",
+    "id": "N4-sa-3",
+    "hash": "ec444984a120e27b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S22",
+    "id": "N4-sou-youtai-3",
+    "hash": "68549db37274f885",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Potongan 楽し memotong kata sifat di batang sebelum そう (sama seperti S16): batas morfem pola, jadi tidak digagalkan, tetapi berisiko secara gaya JLPT.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S23",
+    "id": "N4-yasui-nikui-2",
+    "hash": "fab982672836bd9c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = です, ditentukan bentuk (sesudah 歩きにくい, sebelum ね).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S24",
+    "id": "N4-te-kudasaru-4",
+    "hash": "05565a511f99c2b8",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [親切{しんせつ}に / わたしたちに / 教{おし}えて / くださいます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "かちょうは いつも わたしたちに 親切に 教えて くださいます dan かちょうは いつも 親切に わたしたちに 教えて くださいます sama-sama wajar; kotak 1 bisa わたしたちに (3) atau 親切に (1).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S25",
+    "id": "N4-te-kuru-1",
+    "hash": "9eaf05ba02dc665a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S26",
+    "id": "N4-te-kimasu-3",
+    "hash": "db9c7c25110dadbb",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S27",
+    "id": "N4-sou-youtai-2",
+    "hash": "2d4706aec2da1af9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S28",
+    "id": "N4-te-iku-2",
+    "hash": "161372870162bdc1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S29",
+    "id": "N4-te-kimasu-4",
+    "hash": "f3fb105d2dec8a03",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = よ, satu-satunya penutup di kotak 4 (ditentukan bentuk). Untuk pengumuman diri sendiri (haus → beli air) ね terasa lebih wajar daripada よ, tapi よ masih bisa diterima.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S30",
+    "id": "N4-te-yaru-4",
+    "hash": "cf8a200c4fcc8917",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "子どもに dan えほんを bisa bertukar; ★ tetap やります (penutup kalimat, ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S31",
+    "id": "N4-yasui-nikui-4",
+    "hash": "5aec7c217d5c7f97",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "とても bisa menerangkan うすくて atau われやすい; ★ tetap です (penutup, ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S32",
+    "id": "N4-te-sashiageru-2",
+    "hash": "576477424b17938b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ぶちょうに … コピーして さしあげました dapat diterima (salinan diberikan ke 部長). Catatan pragmatik: ～てさしあげる terhadap atasan terdengar menggurui bila diucapkan langsung kepada atasan; sebagai cerita kepada pihak ketiga masih sah.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S33",
+    "id": "N4-ni-suru-2",
+    "hash": "a07e893edae9ffe2",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Baris A memuat シングル (kotak 1), bukan potongan ★ (して), jadi tidak bocor.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S34",
+    "id": "N4-te-sashiageru-1",
+    "hash": "89481518fe4c8fc4",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S35",
+    "id": "N4-ku-suru-1",
+    "hash": "4e3c5659fab1060a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Struktur sama dengan S03 (もう すこし ～く して ください).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S36",
+    "id": "N4-ni-suru-4",
+    "hash": "ef9c0249c4932e0c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = します, satu-satunya penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S37",
+    "id": "N4-sugiru-4",
+    "hash": "321ea9433e9d4faf",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = です, penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S38",
+    "id": "N4-te-iku-3",
+    "hash": "698ce08bf5585fb5",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S39",
+    "id": "N4-te-yaru-2",
+    "hash": "d91a8eaa8951efbf",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [さんぽに / 犬{いぬ}を / つれて / 行{い}って やります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Frasa tujuan bisa mendahului objek: サリさんは 毎日 さんぽに 犬を つれて 行って やります juga wajar, dan kotak 2 menjadi 犬を (3), bukan さんぽに (4).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S40",
+    "id": "N4-baai-1",
+    "hash": "f1c84074d96fa006",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S41",
+    "id": "N4-te-itadaku-2",
+    "hash": "0c4bb6bc73996642",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S42",
+    "id": "N4-noni-1",
+    "hash": "2e80b16db091786c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = のに、 ditentukan bentuk (した + のに); tanda koma tidak menentukan posisinya.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S43",
+    "id": "N4-noni-youto-3",
+    "hash": "9817340a68118fb0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S44",
+    "id": "N4-te-kuru-2",
+    "hash": "ed6cf65143112869",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S45",
+    "id": "N4-te-hoshii-1",
+    "hash": "176ee1eca70585eb",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "もっと bisa sebelum atau sesudah 日本語を; ★ tetap 教えて di kotak 3.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S46",
+    "id": "N4-te-kudasaru-2",
+    "hash": "2fd3faa12b0aa2a5",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "車で dan 駅まで bisa bertukar; ★ tetap くださいました (penutup, ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S47",
+    "id": "N4-noni-youto-1",
+    "hash": "ef7ac9da4c411e61",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S48",
+    "id": "N4-sa-2",
+    "hash": "8bb67401c89cde71",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S49",
+    "id": "N4-te-sashiageru-4",
+    "hash": "e2e2ec09ae91747d",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: tidak-wajar"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "tidak-wajar"
+    ],
+    "kewajaran": "かちょうに … にもつを 持って さしあげました tidak wajar: 持つ tidak mengambil penerima に, jadi penerima manfaat ditandai の (かちょうの 重い にもつを 持って さしあげました), seperti contoh modul #62 妹の 宿題を 見て あげる. Ditambah ～てさしあげる ke atasan yang terdengar menggurui.",
+    "tingkat": "ok",
+    "catatan": "Perbaikan konten: sebelum menjadi わたしは かちょうの … atau ganti kata kerja yang mengambil に (見せる, 送る, 貸す, 地図を 書く dsb.).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S50",
+    "id": "N4-noni-4",
+    "hash": "1354069cf6e7df8f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = なおりません, penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S51",
+    "id": "N4-tame-ni-3",
+    "hash": "0d394aa995927b5c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "日本語を dan 毎日 bisa bertukar; ★ tetap ために di kotak 1 (ditentukan bentuk: の + ために).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S52",
+    "id": "N4-te-iku-1",
+    "hash": "7306fd7b27d21312",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S53",
+    "id": "N4-yasui-nikui-1",
+    "hash": "8c18357c8f600f36",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S54",
+    "id": "N4-tame-ni-4",
+    "hash": "d5ad819458e02d55",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = 来ました, satu-satunya penutup di kotak 4 (ditentukan bentuk). 日本 muncul dua kali (日本の ぶんか / 日本へ), sedikit berulang tapi wajar.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S55",
+    "id": "N4-yasui-nikui-3",
+    "hash": "47bdeb37a60c910a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S56",
+    "id": "N4-ni-suru-1",
+    "hash": "99c8140567331423",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: bocor"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "bocor"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Baris A 何に しますか memuat potongan ★ に dengan tetangga yang sama (に します), jadi pola jawaban ＿に します terbaca dari pertanyaan.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S57",
+    "id": "N4-ni-suru-3",
+    "hash": "13005555bad9e640",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Baris A いつに しますか memuat に + します, tetapi ★ di あしたの (kotak 1), jadi tidak bocor.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S58",
+    "id": "N4-sou-youtai-1",
+    "hash": "97582ee2568e13fc",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "今にも dan 雨が bisa bertukar; ★ tetap 降り di kotak 3.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S59",
+    "id": "N4-sugiru-2",
+    "hash": "deb61e9c35e1df76",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしには dan すこし bisa bertukar; ★ tetap 大きすぎます di kotak 3.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S60",
+    "id": "N4-suushi-mo-1",
+    "hash": "72d4acd8f888276a",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [5本{ほん} / も / ビールを / 飲{の}みました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Bilangan + も bisa mendahului kata benda: ブディさんは きのう 5本も ビールを 飲みました juga wajar, dan kotak 3 menjadi ビールを (1), bukan も (3).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S61",
+    "id": "N4-te-sashiageru-3",
+    "hash": "ebc28adff47153ff",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Catatan pragmatik ～てさしあげる terhadap atasan sama seperti S32; sebagai cerita masih sah.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S62",
+    "id": "N4-sugiru-1",
+    "hash": "a827a8643fd96760",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S63",
+    "id": "N4-noni-2",
+    "hash": "465abafbb5eaa0d1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S64",
+    "id": "N4-baai-4",
+    "hash": "8323c2df45e407c5",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = です, penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S65",
+    "id": "N4-te-hoshii-3",
+    "hash": "90187f87fc851f41",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [むりを / あまり / しないで / ほしいです] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "あまり bisa diletakkan antara objek dan kata kerja: ブディさんには むりを あまり しないで ほしいです tata bahasanya sah dan masih wajar (seperti おさけを あまり 飲まないで), meski あまり むりを しないで lebih lazim; kotak 1 menjadi むりを (1), bukan あまり (3). Kasus batas, tapi pembelajar kuat bisa memilih keduanya.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S66",
+    "id": "N4-suushi-mo-2",
+    "hash": "8bc013218f90d71f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S67",
+    "id": "N4-te-kimasu-2",
+    "hash": "040042bdcff6638f",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [はがきを 出{だ}しに / ゆうびんきょくへ / 行{い}って / 来{き}ます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Frasa tujuan V-ます + に dan tempat へ bisa bertukar: ちょっと はがきを 出しに ゆうびんきょくへ 行って 来ます sama wajarnya, dan kotak 2 menjadi ゆうびんきょくへ (3), bukan はがきを 出しに (2).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S68",
+    "id": "N4-te-kuru-3",
+    "hash": "5a81551f3f17133a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S69",
+    "id": "N4-te-iku-4",
+    "hash": "d29fa2a3e6349616",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = でしょう, satu-satunya penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S70",
+    "id": "N4-sa-1",
+    "hash": "d8404f1ab8b032cf",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S71",
+    "id": "N4-te-kudasaru-1",
+    "hash": "0465db8ae67966e9",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: tidak-wajar"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "tidak-wajar"
+    ],
+    "kewajaran": "先生が わたしに 作文の まちがいを なおして くださいました tidak wajar: なおす tidak mengambil penerima に, jadi penerima manfaat seharusnya ditandai の (先生が わたしの 作文の まちがいを なおして くださいました), atau わたしに dihapus (dengan ～てくださる penerima 'saya' biasanya tidak disebut).",
+    "tingkat": "ok",
+    "catatan": "Urutan sendiri unik (★ なおして). Perbaikan cukup di sebelum.",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S72",
+    "id": "N4-te-itadaku-4",
+    "hash": "65cbc40966fc8e19",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ = いただきました, penutup di kotak 4 (ditentukan bentuk).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  },
+  {
+    "kode": "S73",
+    "id": "N4-suushi-mo-3",
+    "hash": "62ee429b6c53c4d3",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "★ peninjau \"人{ひと}が\" != kunci \"50人{にん}も\"",
+      "urutan sah menurut peninjau [人{ひと}が / 50人{にん}も / 来{き}ました / よ] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Bilangan + も bisa mendahului kata benda: きのうの パーティーに 50人も 人が 来ましたよ juga wajar, dan kotak 1 menjadi 50人も (4), bukan 人が (3).",
+    "dinilai": "2026-11-24T17:49:42.748Z"
+  }
+]
