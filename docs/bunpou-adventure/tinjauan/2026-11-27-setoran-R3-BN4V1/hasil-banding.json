@@ -1,0 +1,179 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-te-oku-3",
+    "hash": "34570e14c8c17e2d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "しりょうを コピーして おいて ください. Other orders (コピーして しりょうを おいて…, しりょうを おいて コピーして…) are unnatural. しりょう Bab 15, コピーします Bab 14, ～ておきます Bab 30.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-mieru-kikoeru-3",
+    "hash": "5912b4b5472737ff",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "The ★ falls on the only sentence-ending piece (声が聞こえます), so the form alone places it. That is acceptable, but avoid it if another choice exists. 1-3-4-2 (こうえんで 子どもの 遊んで いる 声…, の as the subject marker inside the relative clause) is also natural, with the same ★. Spacing is inconsistent: 声{こえ}が聞{き}こえます has no space, while 遊{あそ}んで いる does.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-mieru-kikoeru-4",
+    "hash": "73209f59be67e481",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "The ★ falls on the only sentence-ending piece (聞こえません), so the form alone places it. That is acceptable, but avoid it if another choice exists. よく can float (よく 先生の 話が…), and the ★ stays the same. 話 (はなし) Bab 21, 教室 Bab 3.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-nagara-3",
+    "hash": "aab14dfe0b2c0b18",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "The ★ falls on the only sentence-ending piece (作ります), so the form alone places it. That is acceptable, but avoid it if another choice exists. ばんごはんを ラジオを 聞きながら 作ります is a possible but slightly awkward scrambling, with the same ★.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N4-te-itadakemasen-ka-2",
+    "hash": "c6d3f5f77307275c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "The ★ (言って) is fixed by the pattern 言って いただけませんか, which is acceptable. もう一度 and ゆっくり can swap, and the ★ stays the same. Line A does not give the ★ away.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N4-wa-taihi-2",
+    "hash": "4571ffb5729cb3fb",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Only logic decides boxes 1 and 3. The reverse (かんじは 書けますが、ひらがなは 書けません, which would put 4 at ★) is grammatical but illogical for a learner, so it is not counted as ganda. Mild risk only. Contrastive は is Bab 27.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N4-kanoukei-4",
+    "hash": "c0c95cd8c0916755",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "The ★ falls on the only sentence-ending piece (持てます), so the form alone places it. That is acceptable, but avoid it if another choice exists. 軽い Bab 12, potential form Bab 27.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N4-shi-3",
+    "hash": "e2957558fb867c01",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "店員 is not in the Minna vocabulary list (docs/kb-dokkai/16-kosakata-minna.md lists it under 'Tidak ada di Minna'; Minna uses 店の 人).",
+    "catatan": "Structurally good: the ★ is unique, and swapping おいしいし and やすいし keeps it on 店員さんも. The only problem is the word 店員, which is outside the Minna vocabulary. 店の 人も would fix it.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N4-te-shimau-4",
+    "hash": "01f783f757c627c0",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "友だちに 借りた 本を なくして しまいました. No other natural order. なくします Bab 17, ～てしまいました Bab 29.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N4-te-shimau-3",
+    "hash": "159552e074caebf9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わすれて しまいました is a fixed chunk, and the ★ (約束を) follows from たいせつな + noun. This is acceptable. 約束 Bab 9, たいせつ Bab 17.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N4-n-desu-2",
+    "hash": "c2e35f1032f5bb67",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "歩けない is the potential form (可能動詞), which is Bab 27. The item is Bab 26.",
+    "catatan": "Grammar above the chapter: the item is for ～んです (Bab 26), but the ★ piece 歩けないんです needs the potential form from Bab 27. Also, the ★ falls on the only sentence-ending piece. わたしは can move after いたいから, and the ★ stays the same.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N4-mieru-kikoeru-2",
+    "hash": "cc6f97199cb6986d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Three の modifiers, but only となりの へやの ラジオの おと is natural. The other permutations (へやの となりの ラジオの, ラジオの となりの へやの, …) are unnatural, so the ★ is unique. おと/聞こえます Bab 27.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N4-wa-taihi-1",
+    "hash": "cf60cbc32fff98cb",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Only logic decides boxes 1 and 3. The reverse (昼は 寒いですが、朝は あたたかいです, which would put 3 at ★) is grammatical but goes against both the usual daily temperature pattern and time order, so it is not counted as ganda. Mild risk, like S06. あたたかい Bab 12, contrastive は Bab 27.",
+    "dinilai": "2026-11-27T04:45:30.339Z"
+  }
+]

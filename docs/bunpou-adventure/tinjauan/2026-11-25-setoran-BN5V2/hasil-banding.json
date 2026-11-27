@@ -1,0 +1,893 @@
+[
+  {
+    "kode": "S01",
+    "id": "N5-wo-1",
+    "hash": "c3e4aaf25593a8f6",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは パンを 食べます。★ を ditentukan dari bentuk saja (N + を), boleh menurut standar JLPT.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N5-mou-mashita-3",
+    "hash": "8daae697176cc91c",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [もう / きのう / きっぷを / 買{か}いました] memberi ★ lain",
+      "urutan sah menurut peninjau [きっぷを / もう / きのう / 買{か}いました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "もう bersama waktu lampau tertentu (きのう) agak berlebihan, tetapi masih bisa diterima",
+    "tingkat": "ok",
+    "catatan": "Kotak 1 (★) bisa きのう (きのう もう きっぷを 買いました) atau もう (もう きのう きっぷを 買いました); きっぷを juga bisa di depan. Kata keterangan もう dan waktu きのう sama-sama mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N5-mashou-1",
+    "hash": "7a488c4c1ca3c22f",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya penutup kalimat (食べましょう); いっしょに mengambang tetapi ★ tetap sama. Sangat mudah ditebak dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N5-mou-mashita-1",
+    "hash": "8a759299f19c646a",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [わたしは / ひるごはんを / もう / 食{た}べました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは もう ひるごはんを 食べました (★ もう) dan わたしは ひるごはんを もう 食べました (★ ひるごはんを) sama-sama wajar; もう mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N5-to-ikimasu-1",
+    "hash": "381aae9c49913cc9",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [日本{にほん}へ / かぞく / と / 来{き}ました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは かぞくと 日本へ 来ました (★ と) dan わたしは 日本へ かぞくと 来ました (★ かぞく) sama-sama wajar; keterangan teman dan tujuan bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N5-to-ikimasu-2",
+    "hash": "8df5ca3a26ba66b4",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは ともだちと 行きました。だれと di baris A memberi isyarat pola Nと, tetapi tetangga と berbeda (bukan bocor). ★ ditentukan dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N5-agemasu-moraimasu-4",
+    "hash": "657aee11c6f96c71",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "pembuka 買いませんでした。 tanpa いいえ agak mendadak, masih wajar",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (もらいました); urutan ともだちに/これを bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N5-e-ikimasu-2",
+    "hash": "67b5bfe1a60cba05",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは スーパーへ 行きました。Baris A memuat へ 行きました, tetapi ★ (スーパー) tidak bocor.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N5-e-ikimasu-4",
+    "hash": "bb21551f7a7a20b2",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [うち / へ / 6時{じ}に / 帰{かえ}ります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "6時に うちへ 帰ります (★ 6時に) dan うちへ 6時に 帰ります (★ うち) sama-sama wajar; yang kedua bahkan menaruh info baru tepat sebelum kata kerja, cocok dengan pertanyaan 何時に 帰りますか.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N5-de-shudan-4",
+    "hash": "df0375b681eccad5",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (来ました); ひこうきで/日本へ bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N5-kara-riyuu-3",
+    "hash": "c6b44e3399baed8d",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "いっしょに 行きません tanpa konteks ajakan terdengar agak kaku/blak-blakan, masih gramatikal dan logis",
+    "tingkat": "ok",
+    "catatan": "あしたは やくそくが ありますから、いっしょに 行きません。Koma pada ありますから、 tidak menentukan ★ (klausa から tetap harus di depan).",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N5-de-basho-3",
+    "hash": "93df7debd18f3906",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [てがみを / へや / で / 書{か}きました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "へやで てがみを 書きました (★ へや) dan てがみを へやで 書きました (★ てがみを) sama-sama wajar; keterangan tempat dan objek bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N5-masen-ka-4",
+    "hash": "4ebe5e3b2956da59",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [テニス / を / にちようびに / しませんか] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "にちようびに テニスを しませんか (★ テニス) dan テニスを にちようびに しませんか (★ を) sama-sama wajar; keterangan waktu mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S14",
+    "id": "N5-ga-suki-4",
+    "hash": "63266615051ddbcb",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok (jawaban 'sama sekali tidak punya uang' atas pertanyaan uang kecil masih logis)",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (ありません); ぜんぜん mengambang tetapi ★ tetap. Baris A memuat おかねが あります (bukan potongan ★ yang sama). Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S15",
+    "id": "N5-kara-riyuu-1",
+    "hash": "122416d93c5ec3c7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "時間が ありませんから、しんぶんを 読みません。Koma pada ありませんから、 tidak menentukan ★. しんぶん ditulis kana di sini, 新聞 kanji di S21/S33 (catatan R6 antarsoal).",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S16",
+    "id": "N5-keiyoushi-1",
+    "hash": "8a8f6cd244a32b9a",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ふじさんは とても 高い 山です。Urutan tunggal.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S17",
+    "id": "N5-masen-ka-1",
+    "hash": "1d5fb19902dacbc2",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [おちゃ / を / いっしょに / 飲{の}みませんか] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "いっしょに おちゃを 飲みませんか (★ を) dan おちゃを いっしょに 飲みませんか (★ いっしょに) sama-sama wajar; いっしょに mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S18",
+    "id": "N5-de-shudan-1",
+    "hash": "a03b33ec1a365970",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [学校{がっこう}へ / 電車{でんしゃ} / で / 行{い}きます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "電車で 学校へ 行きます (★ で) dan 学校へ 電車で 行きます (★ 電車) sama-sama wajar; alat dan tujuan bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S19",
+    "id": "N5-wo-4",
+    "hash": "0d58cb8b2843658b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (見ます); まいばん mengambang tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S20",
+    "id": "N5-e-ikimasu-3",
+    "hash": "d3d82e1fdbf74fca",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (来ます); topik, waktu, tujuan bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S21",
+    "id": "N5-de-basho-1",
+    "hash": "f1465753310f9e1d",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [新聞{しんぶん}を / えき / で / 買{か}います] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "えきで 新聞を 買います (★ で) dan 新聞を えきで 買います (★ えき) sama-sama wajar; tempat dan objek bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S22",
+    "id": "N5-mashou-2",
+    "hash": "c67fc06956b0f303",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [しゃしん / を / いっしょに / とりましょう] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "menjawab あした 何を しますか dengan ajakan ～ましょう sedikit janggal, masih bisa bila mereka merencanakan bersama",
+    "tingkat": "ok",
+    "catatan": "いっしょに しゃしんを とりましょう (★ を) dan しゃしんを いっしょに とりましょう (★ いっしょに) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S23",
+    "id": "N5-keiyoushi-2",
+    "hash": "8b7b275af3f31fb9",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: bocor"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "bocor"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Urutan tunggal (とても しずかな まち です), tetapi baris A 「どんな まちですか」 memuat potongan ★ まち dengan tetangga yang sama (です), jadi posisi まち langsung terbaca dari dialog.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S24",
+    "id": "N5-de-shudan-3",
+    "hash": "503c92135e55a6ad",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [えきへ / じてんしゃ / で / 行{い}きました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "じてんしゃで えきへ 行きました (★ じてんしゃ) dan えきへ じてんしゃで 行きました (★ えきへ) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S25",
+    "id": "N5-kara-riyuu-2",
+    "hash": "0fcd98009eff706e",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ようじが ありますから。Jawaban どうして～か → ～から sesuai Bab 9. Urutan tunggal.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S26",
+    "id": "N5-agemasu-moraimasu-2",
+    "hash": "d1b669e0557432d6",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [これを / 父{ちち} / に / もらいました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "父に これを もらいました (★ これを) dan これを 父に もらいました (★ に) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S27",
+    "id": "N5-de-basho-4",
+    "hash": "701cb7a593d365c1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (買いました); tempat dan objek bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S28",
+    "id": "N5-keiyoushi-4",
+    "hash": "4c6407d9641a09fd",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "新しいですが、べんりじゃありません。Koma pada ですが、 tidak menentukan ★ (新しい じゃありません tidak gramatikal). ★ di kotak 4 praktis hanya punya satu kandidat (R2).",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S29",
+    "id": "N5-ga-suki-2",
+    "hash": "90c970fea45e4b47",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [とても / りょうり / が / じょうずです] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "りょうりが とても じょうずです (★ が) dan とても りょうりが じょうずです (★ りょうり) sama-sama wajar; とても mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S30",
+    "id": "N5-wo-2",
+    "hash": "4780af91149c7958",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは おちゃを 飲みます。Baris A memuat を 飲みます, tetapi ★ (おちゃ) tidak bocor.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S31",
+    "id": "N5-masen-ka-2",
+    "hash": "b20a7a4cb120635b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya penutup (見ませんか); あした mengambang tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S32",
+    "id": "N5-mou-mashita-4",
+    "hash": "8b970c7f31324a36",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (おくりました); もう/けさ/tempat bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S33",
+    "id": "N5-wo-3",
+    "hash": "fa72bdec9dafc5ba",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [新聞{しんぶん} / を / きのう / 読{よ}みました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "きのう 新聞を 読みました (★ きのう) dan 新聞を きのう 読みました (★ 新聞) sama-sama wajar; waktu mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S34",
+    "id": "N5-agemasu-moraimasu-3",
+    "hash": "c11792aa34486af9",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [チョコレート / を / アディさんに / あげました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "アディさんに チョコレートを あげました (★ アディさんに) dan チョコレートを アディさんに あげました (★ チョコレート) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S35",
+    "id": "N5-amari-nai-3",
+    "hash": "cda4538032670944",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [あまり / テレビは / 見{み}ません / よ] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "テレビは あまり 見ませんよ (★ テレビは) dan あまり テレビは 見ませんよ (★ あまり) sama-sama wajar; あまり mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S36",
+    "id": "N5-ga-suki-3",
+    "hash": "12dc4e6e4e2ecff9",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [だいたい / ひらがな / が / わかります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ひらがなが だいたい わかります (★ ひらがな) dan だいたい ひらがなが わかります (★ だいたい) sama-sama wajar; だいたい mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S37",
+    "id": "N5-de-basho-2",
+    "hash": "9bce75842f50c8ff",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "会社の しょくどうで 食べます。どこで di baris A memberi isyarat [tempat]で, tetapi tetangga で berbeda (bukan bocor). ★ ditentukan dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S38",
+    "id": "N5-amari-nai-1",
+    "hash": "eaa99e2a30259280",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "たべものは あまり 安くないです; urutan あまり たべものは … kurang wajar, tetapi bila pun diterima ★ (安くない) tetap sama.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S39",
+    "id": "N5-keiyoushi-3",
+    "hash": "464692af866418c4",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok (おもしろいですか → むずかしいです sedikit tidak langsung, tetapi wajar dalam percakapan)",
+    "tingkat": "ok",
+    "catatan": "この 本は むずかしいです。★ この di kotak 1 hanya punya satu kandidat (R2) dan その 本は di baris A memberi isyarat kuat; potongan ★ sendiri tidak muncul di A, jadi bukan bocor.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S40",
+    "id": "N5-to-ikimasu-4",
+    "hash": "1b965a4513f3b1e8",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        2,
+        0,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (行きます), yang juga muncul di akhir baris A (行きますか) dengan tetangga berbeda. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S41",
+    "id": "N5-mou-mashita-2",
+    "hash": "b92a8c76781451c8",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [レポート / を / もう / 書{か}きましたか] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "もう レポートを 書きましたか (★ を) dan レポートを もう 書きましたか (★ もう) sama-sama wajar; もう mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S42",
+    "id": "N5-mashou-4",
+    "hash": "2313e305c0f3f96f",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [えき / で / 9時{じ}に / あいましょう] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "9時に えきで あいましょう (★ 9時に) dan えきで 9時に あいましょう (★ えき) sama-sama wajar; waktu dan tempat bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S43",
+    "id": "N5-ga-suki-1",
+    "hash": "176638c8b610e620",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: bocor"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "bocor"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Urutan tunggal (わたしは サッカーが すきです), tetapi baris A 「スポーツが すきですか」 memuat potongan ★ が dengan tetangga yang sama (すきです), jadi posisi が langsung terbaca dari dialog.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S44",
+    "id": "N5-to-ikimasu-3",
+    "hash": "3174433e4e1784ed",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [うちへ / かぞく / と / 帰{かえ}ります] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "かぞくと うちへ 帰ります (★ かぞく) dan うちへ かぞくと 帰ります (★ うちへ) sama-sama wajar; teman dan tujuan bisa ditukar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S45",
+    "id": "N5-amari-nai-2",
+    "hash": "c752212f687abcf2",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "きょうは あまり さむくないです。あまり きょうは … kurang wajar, jadi urutan dianggap tunggal.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S46",
+    "id": "N5-masen-ka-3",
+    "hash": "e714033e3c3f8f9a",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [ひるごはんを / 会社{かいしゃ}の / しょくどうで / 食{た}べませんか] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "会社の しょくどうで ひるごはんを 食べませんか (★ 会社の) dan ひるごはんを 会社の しょくどうで 食べませんか (★ ひるごはんを) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S47",
+    "id": "N5-agemasu-moraimasu-1",
+    "hash": "b5f1c400340cb681",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [花{はな}を / 母{はは} / に / あげました] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "母に 花を あげました (★ に) dan 花を 母に あげました (★ 母) sama-sama wajar.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S48",
+    "id": "N5-mashou-3",
+    "hash": "bca18c5b116fa7d7",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "じゃ、うちへ 帰りましょう。Koma pada じゃ、 tidak menentukan ★ (じゃ tetap pembuka kalimat). Urutan tunggal.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S49",
+    "id": "N5-kara-riyuu-4",
+    "hash": "9c9c9d0ac0acaa1f",
+    "status": "CATATAN",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "クラシック lalu おんがくを sedikit berulang (lebih wajar まいばん 聞きます), masih bisa diterima",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya kata kerja penutup (聞きます); まいばん/おんがくを bebas tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S50",
+    "id": "N5-e-ikimasu-1",
+    "hash": "ccfda69a6e9632c3",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [会社{かいしゃ} / へ / あした / 行{い}きます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "あした 会社へ 行きます (★ へ) dan 会社へ あした 行きます (★ あした) sama-sama wajar; waktu mengambang.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S51",
+    "id": "N5-de-shudan-2",
+    "hash": "cf64530a95e7812d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたしは バスで 来ます。何で di baris A memberi isyarat Nで, tetapi tetangga で berbeda (bukan bocor). ★ ditentukan dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  },
+  {
+    "kode": "S52",
+    "id": "N5-amari-nai-4",
+    "hash": "04fe498da4f2930b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        1,
+        0,
+        2,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "★ di satu-satunya penutup (じゃありません); あまり mengambang tetapi ★ tetap. Sangat mudah dari bentuk.",
+    "dinilai": "2026-11-24T17:46:33.255Z"
+  }
+]

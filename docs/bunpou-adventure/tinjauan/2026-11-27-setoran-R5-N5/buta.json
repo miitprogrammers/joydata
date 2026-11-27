@@ -1,0 +1,82 @@
+[
+  {
+    "kode": "S01",
+    "bab": 8,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "サリさん、 その レストランは どうですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "うーん、",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "コーヒーは"
+      },
+      {
+        "nomor": 2,
+        "teks": "みせの"
+      },
+      {
+        "nomor": 3,
+        "teks": "あまり おいしくないです"
+      },
+      {
+        "nomor": 4,
+        "teks": "この"
+      }
+    ]
+  },
+  {
+    "kode": "S02",
+    "bab": 7,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "あした なごやへ 行{い}きますね。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "はい、",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "もう 買{か}いました"
+      },
+      {
+        "nomor": 2,
+        "teks": "なごやまでの"
+      },
+      {
+        "nomor": 3,
+        "teks": "電車{でんしゃ}の"
+      },
+      {
+        "nomor": 4,
+        "teks": "きっぷを"
+      }
+    ]
+  }
+]

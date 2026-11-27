@@ -1,0 +1,322 @@
+[
+  {
+    "kode": "S01",
+    "bintang": 1,
+    "urutan": [3, 2, 1, 4],
+    "urutanLain": [[1, 3, 2, 4]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": ["ganda"],
+    "catatan": "Kata keterangan よく mengambang: 「わたしは よく ひまな とき テレビを 見ます」 (よく di depan klausa とき) juga wajar, dan urutan itu menaruh とき (2) di ★, bukan よく (1). ★ jatuh tepat di kotak yang berubah karena posisi よく (melanggar R3)."
+  },
+  {
+    "kode": "S02",
+    "bintang": 1,
+    "urutan": [2, 4, 3, 1],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di よ, satu-satunya potongan penutup kalimat; bisa ditempatkan dari bentuk saja (boleh, R1 menyarankan dihindari)."
+  },
+  {
+    "kode": "S03",
+    "bintang": 3,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di kotak 1 hanya punya satu kandidat wajar (あさごはんを); R2 menyarankan dihindari, bukan kegagalan."
+  },
+  {
+    "kode": "S04",
+    "bintang": 4,
+    "urutan": [1, 4, 2, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "Baris A memuat 「いる 人」 sehingga urutan kotak 3–4 (いる → 人ですか) tertebak, tetapi potongan ★ (かけて) tidak muncul di baris A; bukan bocor ★."
+  },
+  {
+    "kode": "S05",
+    "bintang": 2,
+    "urutan": [3, 4, 2, 1],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di partikel が; ditempatkan dari bentuk (こたえ + が)."
+  },
+  {
+    "kode": "S06",
+    "bintang": 3,
+    "urutan": [4, 3, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  },
+  {
+    "kode": "S07",
+    "bintang": 2,
+    "urutan": [4, 2, 3, 1],
+    "urutanLain": [[2, 4, 3, 1]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": ["ganda"],
+    "catatan": "Objek dan penerima bisa bertukar: 「母の 日に ばんごはんを 母に つくって あげました」 juga gramatikal dan wajar (urutan を–に), dan menaruh 母に (4) di ★. ★ jatuh tepat di kotak yang berubah karena pertukaran itu."
+  },
+  {
+    "kode": "S08",
+    "bintang": 3,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [[1, 3, 4, 2]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": ["ganda"],
+    "catatan": "Kata keterangan ぜひ mengambang: 「この 車は ぜひ 高くても 買いたいです」 juga berterima (bandingkan ぜひ、時間が あったら 来て ください), dan menaruh ぜひ (1) di ★ kotak 1, bukan 高くても (3). Urutan kunci lebih wajar, tetapi dua kandidat kotak 1 sama-sama sah."
+  },
+  {
+    "kode": "S09",
+    "bintang": 4,
+    "urutan": [4, 3, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  },
+  {
+    "kode": "S10",
+    "bintang": 4,
+    "urutan": [3, 4, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di と; ditempatkan dari bentuk pola (V-る + と). Kalimat hampir sama dengan contoh Minna Bab 23."
+  },
+  {
+    "kode": "S11",
+    "bintang": 3,
+    "urutan": [4, 2, 1, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di satu-satunya potongan penutup sopan (なります); pembeda hanya なる (bentuk kamus sebelum と) vs なります. 「はるに なりますと あたたかく なる」 tidak wajar (campur sopan–biasa), jadi bukan urutan lain."
+  },
+  {
+    "kode": "S12",
+    "bintang": 3,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [[4, 3, 1, 2]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": ["ganda"],
+    "catatan": "Kata keterangan よく mengambang: 「わたしは よく 子どもの とき かわで およぎました」 (よく di depan keterangan waktu) masih berterima dalam bahasa lisan, dan menaruh よく (4) di ★ kotak 1, bukan 子どもの (3). Urutan kunci lebih wajar, tetapi よく adalah unsur mengambang yang dilarang R3 di kotak ★."
+  },
+  {
+    "kode": "S13",
+    "bintang": 2,
+    "urutan": [1, 4, 3, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di satu-satunya potongan penutup (くれました); ditempatkan dari bentuk."
+  },
+  {
+    "kode": "S14",
+    "bintang": 3,
+    "urutan": [1, 2, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "Potongan memisahkan kata kerja する: あんない | して. Tidak memotong morfem (あんない kata benda), tetapi あんないして satu bunsetsu, dan ★ (して) jadi sangat tertebak dari bentuk. Perlu dipertimbangkan; bukan kegagalan."
+  },
+  {
+    "kode": "S15",
+    "bintang": 2,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di satu-satunya potongan penutup (飲みます); ditempatkan dari bentuk."
+  },
+  {
+    "kode": "S16",
+    "bintang": 2,
+    "urutan": [1, 2, 4, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "「あした サッカーを 雨が ふっても します」 tidak wajar, jadi tidak dihitung."
+  },
+  {
+    "kode": "S17",
+    "bintang": 2,
+    "urutan": [4, 2, 3, 1],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di とき; ditempatkan dari bentuk pola (V-る + とき)."
+  },
+  {
+    "kode": "S18",
+    "bintang": 2,
+    "urutan": [4, 1, 3, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di satu-satunya potongan penutup (あそびましょう). Potongan ひま | だったら memisahkan batang ナ dari kopula; masih dalam gaya JLPT."
+  },
+  {
+    "kode": "S19",
+    "bintang": 2,
+    "urutan": [2, 3, 4, 1],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  },
+  {
+    "kode": "S20",
+    "bintang": 2,
+    "urutan": [1, 2, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "どこへも～ません dari Bab 5."
+  },
+  {
+    "kode": "S21",
+    "bintang": 3,
+    "urutan": [1, 2, 3, 4],
+    "urutanLain": [[2, 1, 3, 4]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "えきまで / 車で bisa bertukar, ★ (おくって) tetap sama."
+  },
+  {
+    "kode": "S22",
+    "bintang": 4,
+    "urutan": [4, 2, 1, 3],
+    "urutanLain": [],
+    "kewajaran": "「おばあさんに にもつを もって あげました」 tidak wajar: ～てあげる tidak menambah penerima に bila kata kerja dasarnya (持つ) tidak mengambil に. Bentuk baku: おばあさんの にもつを もって あげました.",
+    "tingkat": "ok",
+    "gagal": ["tidak-wajar"],
+    "catatan": "Ini contoh klasik kesalahan ～てあげる di buku pegangan tata bahasa (×Xに荷物を持ってあげた → ○Xの荷物を持ってあげた). Kalimat sebelum (おばあさんに) adalah bagian tetap, jadi peserta melihatnya sebagai model."
+  },
+  {
+    "kode": "S23",
+    "bintang": 2,
+    "urutan": [2, 4, 1, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di kotak 1 hanya punya satu kandidat wajar (しゃしんを)."
+  },
+  {
+    "kode": "S24",
+    "bintang": 1,
+    "urutan": [3, 4, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di と; ditempatkan dari bentuk. 「みぎへ まがると あります」 tanpa keterangan tempat (mis. 左に) agak polos, tetapi wajar sebagai petunjuk arah."
+  },
+  {
+    "kode": "S25",
+    "bintang": 3,
+    "urutan": [4, 1, 2, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di よ, satu-satunya potongan penutup kalimat; ditempatkan dari bentuk."
+  },
+  {
+    "kode": "S26",
+    "bintang": 1,
+    "urutan": [3, 2, 1, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "えきまでの (N までの N) tidak diajarkan sebagai pola tersendiri, tetapi mudah dipahami dari まで (Bab 4) + の; tidak saya anggap di atas bab."
+  },
+  {
+    "kode": "S27",
+    "bintang": 2,
+    "urutan": [4, 2, 1, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  },
+  {
+    "kode": "S28",
+    "bintang": 3,
+    "urutan": [4, 1, 2, 3],
+    "urutanLain": [],
+    "kewajaran": "「ともだちに しゅくだいを てつだって あげました」 tidak wajar: 手伝う tidak mengambil penerima に (手伝う memakai を untuk orang/tugas), dan ～てあげる tidak menambahkannya. Bentuk baku: ともだちの しゅくだいを てつだって あげました.",
+    "tingkat": "ok",
+    "gagal": ["tidak-wajar"],
+    "catatan": "Masalah sama dengan S22. Dengan ～てもらう (S06) に menandai pemberi bantuan, jadi wajar; dengan ～てあげる tidak. ★ juga di satu-satunya potongan penutup (あげました)."
+  },
+  {
+    "kode": "S29",
+    "bintang": 1,
+    "urutan": [2, 4, 1, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  },
+  {
+    "kode": "S30",
+    "bintang": 3,
+    "urutan": [1, 2, 3, 4],
+    "urutanLain": [[2, 1, 3, 4]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "わたしが / きのう bisa bertukar, ★ (買った) tetap sama."
+  },
+  {
+    "kode": "S31",
+    "bintang": 3,
+    "urutan": [2, 1, 4, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "★ di よ, satu-satunya potongan penutup kalimat; ditempatkan dari bentuk."
+  },
+  {
+    "kode": "S32",
+    "bintang": 2,
+    "urutan": [2, 3, 1, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": ""
+  }
+]

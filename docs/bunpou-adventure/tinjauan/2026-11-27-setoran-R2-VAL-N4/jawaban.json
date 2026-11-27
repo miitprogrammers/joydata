@@ -1,0 +1,272 @@
+[
+  {
+    "kode": "S01",
+    "bintang": 2,
+    "urutan": [
+      1,
+      4,
+      3,
+      2
+    ],
+    "urutanLain": [
+      [
+        3,
+        1,
+        4,
+        2
+      ]
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "わたくしは さ来週 とうきょうへ しゅっちょうに まいります。 ★ = まいります, satu-satunya kata kerja/penutup (kotak 4 satu kandidat). とうきょうへ dan しゅっちょうに bisa bertukar, ★ tetap. Keigo merendah untuk diri sendiri benar."
+  },
+  {
+    "kode": "S02",
+    "bintang": 4,
+    "urutan": [
+      1,
+      3,
+      2,
+      4
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "この じしょは かんじを しらべる のに やくに 立ちます。 ★ = penutup やくに 立ちます, ditempatkan dari bentuk V-るのに やくに立ちます saja (kotak 4 satu kandidat)."
+  },
+  {
+    "kode": "S03",
+    "bintang": 1,
+    "urutan": [
+      1,
+      3,
+      4,
+      2
+    ],
+    "urutanLain": [
+      [
+        4,
+        1,
+        3,
+        2
+      ]
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [
+      "ganda"
+    ],
+    "catatan": "Kunci yang saya pilih: にちようびは どこへも 行かないで うちで ゆっくり 休みます (★ = どこへも). Tetapi keterangan tempat うちで (milik 休みます) bisa maju ke depan: にちようびは うちで どこへも 行かないで ゆっくり 休みます (bandingkan うちで 何も しないで ゆっくり 休みます, 家でどこにも行かずにのんびりする), sehingga kotak ★ diisi うちで (4). Dua urutan memberi ★ berbeda. Perbaikan: ★ jangan di kotak 1, atau gabungkan うちで dengan ゆっくり 休みます."
+  },
+  {
+    "kode": "S04",
+    "bintang": 1,
+    "urutan": [
+      1,
+      4,
+      3,
+      2
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "きょうは にちようびな のに、会社へ 行かなければ なりません。 ★ = にちようびな, ditempatkan dari bentuk Nな + のに. 会社へ di kotak 1 tidak wajar. Koma di potongan のに、 ikut membantu, tetapi ★ tidak hanya ditentukan tanda baca."
+  },
+  {
+    "kode": "S05",
+    "bintang": 1,
+    "urutan": [
+      4,
+      2,
+      1,
+      3
+    ],
+    "urutanLain": [
+      [
+        2,
+        4,
+        1,
+        3
+      ]
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ニュースでは、あしたは ゆきが 降る そうです。 ★ = 降る (V biasa + そうです), ditempatkan dari bentuk. あしたは dan ゆきが bisa bertukar, ★ tetap di kotak 3."
+  },
+  {
+    "kode": "S06",
+    "bintang": 2,
+    "urutan": [
+      2,
+      1,
+      4,
+      3
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "今度の にちようびに みんなで 山へ のぼる ことに なりました。 ★ = みんなで. Karena 山へ のぼる satu potongan, みんなで tidak punya posisi wajar lain, jadi ★ tunggal; kotak 1 punya dua kandidat (みんなで, 山へ のぼる)."
+  },
+  {
+    "kode": "S07",
+    "bintang": 1,
+    "urutan": [
+      2,
+      3,
+      1,
+      4
+    ],
+    "urutanLain": [
+      [
+        3,
+        2,
+        1,
+        4
+      ]
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "新聞では、だいとうりょうが 来月 日本へ 来る そうです。 ★ = 日本へ 来る. 来月 dan だいとうりょうが bisa bertukar, ★ tetap di kotak 3. だいとうりょう tanpa negara agak samar tetapi wajar."
+  },
+  {
+    "kode": "S08",
+    "bintang": 3,
+    "urutan": [
+      2,
+      4,
+      3,
+      1
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "わたくしは 今 とうきょうに 住んで おります。 ★ = 住んで, ditempatkan dari bentuk ～に Vて おります."
+  },
+  {
+    "kode": "S09",
+    "bintang": 2,
+    "urutan": [
+      1,
+      4,
+      2,
+      3
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "きょうは にちようびですから、銀行は 休みの はず です。 ★ = はず, ditempatkan dari bentuk Nの はず です."
+  },
+  {
+    "kode": "S10",
+    "bintang": 1,
+    "urutan": [
+      2,
+      3,
+      4,
+      1
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "来週の かいぎは すいようびに 開く ことに なりました。 ★ = なりました, satu-satunya penutup dan bagian tetap sesudah ことに (kotak 4 satu kandidat). かいぎは + 開く aktif (objek jadi topik) wajar; 開きます ada di Bab 27."
+  },
+  {
+    "kode": "S11",
+    "bintang": 3,
+    "urutan": [
+      3,
+      4,
+      1,
+      2
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "すみません、この かんじの 読みかたを ごぞんじですか。 ★ = この かんじの (pewatas の harus mendahului 読みかたを)."
+  },
+  {
+    "kode": "S12",
+    "bintang": 2,
+    "urutan": [
+      3,
+      4,
+      1,
+      2
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "サリさんは 本を 20さつ も 持って います。 ★ = います, satu-satunya penutup dan bagian tetap 持って います (kotak 4 satu kandidat), jadi ditempatkan dari bentuk saja; pola 数詞＋も sendiri tidak diuji oleh ★."
+  },
+  {
+    "kode": "S13",
+    "bintang": 1,
+    "urutan": [
+      2,
+      1,
+      4,
+      3
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ニュースでは、あしたは ひどい 台風 らしいです。 ★ = ひどい (pewatas sebelum 台風). ひどい 台風 sedikit kurang lazim dibanding 強い／大きい 台風, tetapi masih wajar."
+  },
+  {
+    "kode": "S14",
+    "bintang": 3,
+    "urutan": [
+      4,
+      2,
+      1,
+      3
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "天気が よかったら、どうぶつえんへ 行こう よ。 ★ = partikel akhir よ, satu-satunya kandidat kotak 4 (ditentukan bentuk saja). Gaya akrab cocok dengan baris A."
+  },
+  {
+    "kode": "S15",
+    "bintang": 2,
+    "urutan": [
+      2,
+      4,
+      1,
+      3
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "「ひじょうぐち」と 読みますよ。 ★ = 「ひじょうぐち」, satu-satunya kata benda (kotak 1 satu kandidat), ditempatkan dari bentuk saja. と 読みます juga ada di baris A, tetapi itu bukan potongan ★. Tanda kutip tidak menjadi satu-satunya penentu."
+  },
+  {
+    "kode": "S16",
+    "bintang": 3,
+    "urutan": [
+      3,
+      1,
+      2,
+      4
+    ],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "来週の げつようびに そちらの 会社へ うかがいます。 ★ = そちらの (pewatas の harus mendahului 会社へ); tidak ada urutan wajar lain."
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "kode": "S01",
+    "bintang": 1,
+    "urutan": [3, 1, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "この みせの コーヒーは あまり おいしくないです。 is the only natural order: あまり おいしくないです must close before 。, この needs a following noun (みせ), and みせの modifies コーヒー; the other 23 orders are ungrammatical. The reply answers どうですか with one aspect of the restaurant, which is natural. A's line uses この with レストラン, not with みせの, so the ★ piece does not leak. Vocabulary: この/コーヒー Bab 2, 店 Bab 6, レストラン/おいしい/あまり～ないです/どうですか Bab 8, all at or below Bab 8."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "kode": "S01",
+    "bab": 8,
+    "situasi": "（レストランで）",
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "サリさん、 この レストランは どうですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "みせの"
+      },
+      {
+        "nomor": 2,
+        "teks": "コーヒーは"
+      },
+      {
+        "nomor": 3,
+        "teks": "この"
+      },
+      {
+        "nomor": 4,
+        "teks": "あまり おいしくないです"
+      }
+    ]
+  }
+]

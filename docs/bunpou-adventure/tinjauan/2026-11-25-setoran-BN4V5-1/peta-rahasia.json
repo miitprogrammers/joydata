@@ -1,0 +1,602 @@
+{
+  "S01": {
+    "id": "N4-sasete-kudasai-2",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "9f1221a1b82112c0"
+  },
+  "S02": {
+    "id": "N4-te-bakari-iru-3",
+    "urutanTampil": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "hash": "24371e94d5a604f7"
+  },
+  "S03": {
+    "id": "N4-ta-bakari-3",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "7d69845701e7eb5c"
+  },
+  "S04": {
+    "id": "N4-shieki-3",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "863177f084cb5215"
+  },
+  "S05": {
+    "id": "N4-sou-denbun-2",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "e2514bbe1c7010dd"
+  },
+  "S06": {
+    "id": "N4-sonkeigo-ossharu-1",
+    "urutanTampil": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "hash": "541da6f375ce49b2"
+  },
+  "S07": {
+    "id": "N4-rashii-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "6b2ac39328287776"
+  },
+  "S08": {
+    "id": "N4-o-kudasai-4",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "07b0cdd9c8f1ba95"
+  },
+  "S09": {
+    "id": "N4-tokoro-2",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "11662a14d94836df"
+  },
+  "S10": {
+    "id": "N4-sasete-kudasai-3",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "d9df759c0960d6c0"
+  },
+  "S11": {
+    "id": "N4-hazu-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "543f6378d6ab9c12"
+  },
+  "S12": {
+    "id": "N4-shieki-4",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "e2852a6d35bbffb1"
+  },
+  "S13": {
+    "id": "N4-rashii-4",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "532d02df10b9a20e"
+  },
+  "S14": {
+    "id": "N4-o-ni-naru-1",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "618f7b8fe1fd6879"
+  },
+  "S15": {
+    "id": "N4-tokoro-3",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "109e6e0556404d61"
+  },
+  "S16": {
+    "id": "N4-hazu-4",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "8997f65eac51d4ec"
+  },
+  "S17": {
+    "id": "N4-you-desu-3",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "39ff35bdfd22304a"
+  },
+  "S18": {
+    "id": "N4-te-bakari-iru-2",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "f72c7e6a22247c31"
+  },
+  "S19": {
+    "id": "N4-sou-denbun-4",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "f828c9db9a20b982"
+  },
+  "S20": {
+    "id": "N4-ta-bakari-1",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "0d94e7317b558e08"
+  },
+  "S21": {
+    "id": "N4-ta-bakari-4",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "439e342d5342d58f"
+  },
+  "S22": {
+    "id": "N4-mitai-3",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "fb9c75ff1047a8e2"
+  },
+  "S23": {
+    "id": "N4-bakari-1",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "3ebc7088d3ce06b9"
+  },
+  "S24": {
+    "id": "N4-ga-suru-3",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "8a0dd768fa509281"
+  },
+  "S25": {
+    "id": "N4-you-desu-4",
+    "urutanTampil": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "hash": "b5edb9ceb7a718e6"
+  },
+  "S26": {
+    "id": "N4-sonkeigo-ossharu-3",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "b79fb4db4e270c03"
+  },
+  "S27": {
+    "id": "N4-sonkeigo-irassharu-4",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "d488b34fec8a23bd"
+  },
+  "S28": {
+    "id": "N4-tokoro-1",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "d39527723c9e95d0"
+  },
+  "S29": {
+    "id": "N4-you-desu-2",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "42a587a6ed49412d"
+  },
+  "S30": {
+    "id": "N4-bakari-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "73344714d13cdf3e"
+  },
+  "S31": {
+    "id": "N4-shieki-1",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "72ae4b6db70e39dc"
+  },
+  "S32": {
+    "id": "N4-ta-bakari-2",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "2555f2617fc118ea"
+  },
+  "S33": {
+    "id": "N4-sonkeigo-ossharu-2",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "0abb0d83aab1e78f"
+  },
+  "S34": {
+    "id": "N4-o-ni-naru-2",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "888d92bb33e8b77b"
+  },
+  "S35": {
+    "id": "N4-mitai-1",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "bb9acfb5b46bc740"
+  },
+  "S36": {
+    "id": "N4-o-ni-naru-4",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "70de2aed55280991"
+  },
+  "S37": {
+    "id": "N4-mitai-4",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "2c8123a60371992f"
+  },
+  "S38": {
+    "id": "N4-bakari-2",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "ef8a72ad43f1d9bb"
+  },
+  "S39": {
+    "id": "N4-sonkeigo-irassharu-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "b749a78832cbd30b"
+  },
+  "S40": {
+    "id": "N4-sasete-kudasai-4",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "c3a1c89f575585f2"
+  },
+  "S41": {
+    "id": "N4-bakari-3",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "e2e22cb6b85a4f4c"
+  },
+  "S42": {
+    "id": "N4-shieki-2",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "49e891c8f60aa99c"
+  },
+  "S43": {
+    "id": "N4-sonkeigo-irassharu-3",
+    "urutanTampil": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "hash": "1561839969f3d6a1"
+  },
+  "S44": {
+    "id": "N4-ga-suru-4",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "acafd4e8482316a5"
+  },
+  "S45": {
+    "id": "N4-you-desu-1",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "11c89a90eb2afcd0"
+  },
+  "S46": {
+    "id": "N4-sonkeigo-irassharu-1",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "d50626f2fda08c43"
+  },
+  "S47": {
+    "id": "N4-o-ni-naru-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "182a0ab90c5af1d4"
+  },
+  "S48": {
+    "id": "N4-te-bakari-iru-4",
+    "urutanTampil": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "hash": "07111976ac531f54"
+  },
+  "S49": {
+    "id": "N4-sasete-kudasai-1",
+    "urutanTampil": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "hash": "51752fe8def569fd"
+  },
+  "S50": {
+    "id": "N4-ga-suru-1",
+    "urutanTampil": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "hash": "43cb2bb3a53ef160"
+  },
+  "S51": {
+    "id": "N4-o-kudasai-2",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "0539de228277a6e7"
+  },
+  "S52": {
+    "id": "N4-te-bakari-iru-1",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "ef4eb3cba1328b75"
+  },
+  "S53": {
+    "id": "N4-o-kudasai-1",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "9f7816e2dc9defa6"
+  },
+  "S54": {
+    "id": "N4-mitai-2",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "6bd1bf2f165acb4d"
+  },
+  "S55": {
+    "id": "N4-ga-suru-2",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "5f5c4de8c659406d"
+  },
+  "S56": {
+    "id": "N4-rashii-3",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "eaa00c323d8d6e7a"
+  },
+  "S57": {
+    "id": "N4-sonkeigo-ossharu-4",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "1b188970672a2d40"
+  },
+  "S58": {
+    "id": "N4-hazu-1",
+    "urutanTampil": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "hash": "60fa3b61c323ba13"
+  },
+  "S59": {
+    "id": "N4-tokoro-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "f3ac65e6d3856753"
+  },
+  "S60": {
+    "id": "N4-o-kudasai-3",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "9a9b0e699c8fb612"
+  }
+}

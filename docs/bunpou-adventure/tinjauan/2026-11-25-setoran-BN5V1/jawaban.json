@@ -1,0 +1,152 @@
+[
+  {
+    "kode": "S01",
+    "bintang": 3,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "あそこは 日本語の きょうしつ です。 Urutan tunggal: あそこは wajib di depan, pewatas 日本語の wajib tepat sebelum きょうしつ."
+  },
+  {
+    "kode": "S02",
+    "bintang": 2,
+    "urutan": [2, 1, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "午後 4時 に おわります。 ★ bisa ditempatkan dari bentuk saja (午後 selalu sebelum jam); boleh menurut standar JLPT N5."
+  },
+  {
+    "kode": "S03",
+    "bintang": 3,
+    "urutan": [2, 1, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "いいえ、あしたは 9時から 5時まで はたらきます。 Urutan 9時から 5時まで あしたは はたらきます (★=あしたは) tidak wajar sebagai jawaban, jadi tidak dihitung."
+  },
+  {
+    "kode": "S04",
+    "bintang": 3,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "わたしは 11時半 に ねます。 Urutan 11時半 に わたしは ねます (★=に) secara tata bahasa mungkin, tetapi sebagai jawaban dialog tidak wajar (topik わたしは di tengah), jadi tidak dihitung ganda. Batas tipis; aman bila わたしは dihapus atau ★ dipindah ke kotak yang tetap di semua urutan."
+  },
+  {
+    "kode": "S05",
+    "bintang": 3,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "サリさんの かさ は あそこです。 Urutan tunggal."
+  },
+  {
+    "kode": "S06",
+    "bintang": 2,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "12時 から 1時 まで です。 Urutan 1時から 12時まで (★=12時) hanya disingkirkan oleh logika (istirahat siang 12-1), bukan tata bahasa; dapat diterima. Baris A (何時から 何時まで) memberi kerangka から/まで, tetapi tidak membocorkan potongan ★."
+  },
+  {
+    "kode": "S07",
+    "bintang": 4,
+    "urutan": [4, 1, 3, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "きのうの あさ 7時に おきました。 Urutan tunggal: きのうの harus langsung sebelum あさ; 7時に きのうの あさ おきました tidak wajar."
+  },
+  {
+    "kode": "S08",
+    "bintang": 1,
+    "urutan": [3, 2, 1, 4],
+    "urutanLain": [[2, 3, 1, 4], [2, 1, 3, 4]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": ["ganda"],
+    "catatan": "Kunci wajar: わたしは 毎朝 6時に おきます (★=6時に). Tetapi 毎朝 mengambang: 毎朝 6時に わたしは おきます (2-1-3-4) adalah kalimat lepas yang berterima (keterangan waktu di depan, lalu topik, lazim dalam tulisan), dan menaruh わたしは di kotak ★. 毎朝 わたしは 6時に おきます (2-3-1-4) juga wajar tetapi ★ tetap 6時に."
+  },
+  {
+    "kode": "S09",
+    "bintang": 3,
+    "urutan": [4, 3, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ぎんこうは 午前 9時から 午後 3時まで です。 Satu-satunya urutan lain yang gramatikal, 午後 9時から 午前 3時まで (1-3-4-2), tidak logis untuk jam buka bank; lagi pula ★ tetap 9時から di kotak 2, jadi tidak ada ganda."
+  },
+  {
+    "kode": "S10",
+    "bintang": 3,
+    "urutan": [2, 1, 4, 3],
+    "urutanLain": [[1, 4, 2, 3]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "アディさんは きのうの 晩 べんきょうしました。 きのうの 晩 アディさんは べんきょうしました juga wajar, ★ tetap べんきょうしました. ★ jatuh di satu-satunya potongan penutup kalimat (predikat), jadi bisa ditempatkan dari bentuk saja; boleh, tetapi lemah (R1)."
+  },
+  {
+    "kode": "S11",
+    "bintang": 4,
+    "urutan": [4, 3, 1, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "午前10時 から 午後6時 までです。 Urutan 午後6時から 午前10時まで (★=午後6時) hanya disingkirkan oleh logika jam buka perpustakaan; dapat diterima. Baris A memuat までです tetapi itu bukan potongan ★. Jawaban memberi jam buka juga walau hanya ditanya 何時まで; masih wajar."
+  },
+  {
+    "kode": "S12",
+    "bintang": 1,
+    "urutan": [2, 3, 4, 1],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "きのうは 10時 に ねました。 ★ di satu-satunya predikat penutup (ねました), bisa ditempatkan dari bentuk saja; boleh, tetapi lemah (R1)."
+  },
+  {
+    "kode": "S13",
+    "bintang": 2,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ここは サリさんの へや じゃありません。 Urutan tunggal."
+  },
+  {
+    "kode": "S14",
+    "bintang": 3,
+    "urutan": [4, 1, 2, 3],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "すみません。アディさんの 会社の じむしょは どちら ですか。 ★ = どちら, satu-satunya potongan yang bisa langsung sebelum ですか; bisa ditempatkan dari bentuk saja (R1, lemah). Urutan 会社の アディさんの じむしょは tidak wajar, dan ★ tetap どちら di urutan apa pun."
+  },
+  {
+    "kode": "S15",
+    "bintang": 1,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "いいえ、どようび と にちようびは はたらきません。 ★ = と bisa ditempatkan dari bentuk N と N は saja; boleh. Baris A memuat どようび (dengan に), bukan と, jadi tidak bocor."
+  }
+]

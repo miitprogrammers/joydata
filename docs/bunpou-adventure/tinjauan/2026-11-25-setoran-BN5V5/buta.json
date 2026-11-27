@@ -1,0 +1,1162 @@
+[
+  {
+    "kode": "S01",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "よく"
+      },
+      {
+        "nomor": 2,
+        "teks": "とき"
+      },
+      {
+        "nomor": 3,
+        "teks": "ひまな"
+      },
+      {
+        "nomor": 4,
+        "teks": "テレビを 見{み}ます"
+      }
+    ]
+  },
+  {
+    "kode": "S02",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "にちようび",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "よ"
+      },
+      {
+        "nomor": 2,
+        "teks": "でも"
+      },
+      {
+        "nomor": 3,
+        "teks": "行{い}きます"
+      },
+      {
+        "nomor": 4,
+        "teks": "会社{かいしゃ}へ"
+      }
+    ]
+  },
+  {
+    "kode": "S03",
+    "bab": 22,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは きょう",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "食{た}べる"
+      },
+      {
+        "nomor": 2,
+        "teks": "ありませんでした"
+      },
+      {
+        "nomor": 3,
+        "teks": "あさごはんを"
+      },
+      {
+        "nomor": 4,
+        "teks": "時間{じかん}が"
+      }
+    ]
+  },
+  {
+    "kode": "S04",
+    "bab": 22,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "あそこに いる 人{ひと}は だれですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "めがねを"
+      },
+      {
+        "nomor": 2,
+        "teks": "いる"
+      },
+      {
+        "nomor": 3,
+        "teks": "人{ひと}ですか"
+      },
+      {
+        "nomor": 4,
+        "teks": "かけて"
+      }
+    ]
+  },
+  {
+    "kode": "S05",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "いくら",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "わかりません"
+      },
+      {
+        "nomor": 2,
+        "teks": "が"
+      },
+      {
+        "nomor": 3,
+        "teks": "かんがえても"
+      },
+      {
+        "nomor": 4,
+        "teks": "こたえ"
+      }
+    ]
+  },
+  {
+    "kode": "S06",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは サリさんに",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "もらいました"
+      },
+      {
+        "nomor": 2,
+        "teks": "よ"
+      },
+      {
+        "nomor": 3,
+        "teks": "てつだって"
+      },
+      {
+        "nomor": 4,
+        "teks": "ひっこしを"
+      }
+    ]
+  },
+  {
+    "kode": "S07",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは 母{はは}の 日{ひ}に",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "あげました"
+      },
+      {
+        "nomor": 2,
+        "teks": "ばんごはんを"
+      },
+      {
+        "nomor": 3,
+        "teks": "つくって"
+      },
+      {
+        "nomor": 4,
+        "teks": "母{はは}に"
+      }
+    ]
+  },
+  {
+    "kode": "S08",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "この 車{くるま}は",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "ぜひ"
+      },
+      {
+        "nomor": 2,
+        "teks": "です"
+      },
+      {
+        "nomor": 3,
+        "teks": "高{たか}くても"
+      },
+      {
+        "nomor": 4,
+        "teks": "買{か}いたい"
+      }
+    ]
+  },
+  {
+    "kode": "S09",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "これを",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "と"
+      },
+      {
+        "nomor": 2,
+        "teks": "おとが 大{おお}きくなります"
+      },
+      {
+        "nomor": 3,
+        "teks": "まわす"
+      },
+      {
+        "nomor": 4,
+        "teks": "みぎへ"
+      }
+    ]
+  },
+  {
+    "kode": "S10",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "この ボタンを",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "おつりが"
+      },
+      {
+        "nomor": 2,
+        "teks": "出{で}ます"
+      },
+      {
+        "nomor": 3,
+        "teks": "おす"
+      },
+      {
+        "nomor": 4,
+        "teks": "と"
+      }
+    ]
+  },
+  {
+    "kode": "S11",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "はるに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "あたたかく"
+      },
+      {
+        "nomor": 2,
+        "teks": "と"
+      },
+      {
+        "nomor": 3,
+        "teks": "なります"
+      },
+      {
+        "nomor": 4,
+        "teks": "なる"
+      }
+    ]
+  },
+  {
+    "kode": "S12",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "とき"
+      },
+      {
+        "nomor": 2,
+        "teks": "かわで およぎました"
+      },
+      {
+        "nomor": 3,
+        "teks": "子{こ}どもの"
+      },
+      {
+        "nomor": 4,
+        "teks": "よく"
+      }
+    ]
+  },
+  {
+    "kode": "S13",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "先生{せんせい}は わたしに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "かんじの"
+      },
+      {
+        "nomor": 2,
+        "teks": "くれました"
+      },
+      {
+        "nomor": 3,
+        "teks": "おしえて"
+      },
+      {
+        "nomor": 4,
+        "teks": "読{よ}みかたを"
+      }
+    ]
+  },
+  {
+    "kode": "S14",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは アディさんに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "まちを"
+      },
+      {
+        "nomor": 2,
+        "teks": "あんない"
+      },
+      {
+        "nomor": 3,
+        "teks": "して"
+      },
+      {
+        "nomor": 4,
+        "teks": "もらいました"
+      }
+    ]
+  },
+  {
+    "kode": "S15",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "あたまが",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "とき"
+      },
+      {
+        "nomor": 2,
+        "teks": "飲{の}みます"
+      },
+      {
+        "nomor": 3,
+        "teks": "いたい"
+      },
+      {
+        "nomor": 4,
+        "teks": "くすりを"
+      }
+    ]
+  },
+  {
+    "kode": "S16",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "あした",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "雨{あめ}が"
+      },
+      {
+        "nomor": 2,
+        "teks": "ふっても"
+      },
+      {
+        "nomor": 3,
+        "teks": "します"
+      },
+      {
+        "nomor": 4,
+        "teks": "サッカーを"
+      }
+    ]
+  },
+  {
+    "kode": "S17",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "みちを",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "きを つけます"
+      },
+      {
+        "nomor": 2,
+        "teks": "とき"
+      },
+      {
+        "nomor": 3,
+        "teks": "車{くるま}に"
+      },
+      {
+        "nomor": 4,
+        "teks": "わたる"
+      }
+    ]
+  },
+  {
+    "kode": "S18",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "あした",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "だったら"
+      },
+      {
+        "nomor": 2,
+        "teks": "あそびましょう"
+      },
+      {
+        "nomor": 3,
+        "teks": "いっしょに"
+      },
+      {
+        "nomor": 4,
+        "teks": "ひま"
+      }
+    ]
+  },
+  {
+    "kode": "S19",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "アディさんは",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "くれました"
+      },
+      {
+        "nomor": 2,
+        "teks": "わたしの"
+      },
+      {
+        "nomor": 3,
+        "teks": "じてんしゃを"
+      },
+      {
+        "nomor": 4,
+        "teks": "なおして"
+      }
+    ]
+  },
+  {
+    "kode": "S20",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "あした",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "雨{あめ}が"
+      },
+      {
+        "nomor": 2,
+        "teks": "ふったら"
+      },
+      {
+        "nomor": 3,
+        "teks": "どこへも"
+      },
+      {
+        "nomor": 4,
+        "teks": "行{い}きません"
+      }
+    ]
+  },
+  {
+    "kode": "S21",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "ブディさんは わたしを",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "えきまで"
+      },
+      {
+        "nomor": 2,
+        "teks": "車{くるま}で"
+      },
+      {
+        "nomor": 3,
+        "teks": "おくって"
+      },
+      {
+        "nomor": 4,
+        "teks": "くれました"
+      }
+    ]
+  },
+  {
+    "kode": "S22",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "アディさんは おばあさんに",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "あげました"
+      },
+      {
+        "nomor": 2,
+        "teks": "もって"
+      },
+      {
+        "nomor": 3,
+        "teks": "よ"
+      },
+      {
+        "nomor": 4,
+        "teks": "にもつを"
+      }
+    ]
+  },
+  {
+    "kode": "S23",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは ともだちに",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "もらいました"
+      },
+      {
+        "nomor": 2,
+        "teks": "しゃしんを"
+      },
+      {
+        "nomor": 3,
+        "teks": "よ"
+      },
+      {
+        "nomor": 4,
+        "teks": "とって"
+      }
+    ]
+  },
+  {
+    "kode": "S24",
+    "bab": 23,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "すみません、 ぎんこうは どこですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "まっすぐ 行{い}って、",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "と"
+      },
+      {
+        "nomor": 2,
+        "teks": "あります"
+      },
+      {
+        "nomor": 3,
+        "teks": "みぎへ"
+      },
+      {
+        "nomor": 4,
+        "teks": "まがる"
+      }
+    ]
+  },
+  {
+    "kode": "S25",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは デウィさんに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "なおして"
+      },
+      {
+        "nomor": 2,
+        "teks": "もらいました"
+      },
+      {
+        "nomor": 3,
+        "teks": "よ"
+      },
+      {
+        "nomor": 4,
+        "teks": "てがみを"
+      }
+    ]
+  },
+  {
+    "kode": "S26",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは サリさんに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "書{か}いて"
+      },
+      {
+        "nomor": 2,
+        "teks": "ちずを"
+      },
+      {
+        "nomor": 3,
+        "teks": "えきまでの"
+      },
+      {
+        "nomor": 4,
+        "teks": "あげました"
+      }
+    ]
+  },
+  {
+    "kode": "S27",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "デウィさんは わたしに",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "買{か}って"
+      },
+      {
+        "nomor": 2,
+        "teks": "おかしを"
+      },
+      {
+        "nomor": 3,
+        "teks": "くれました"
+      },
+      {
+        "nomor": 4,
+        "teks": "日本{にほん}の"
+      }
+    ]
+  },
+  {
+    "kode": "S28",
+    "bab": 24,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "わたしは ともだちに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "しゅくだいを"
+      },
+      {
+        "nomor": 2,
+        "teks": "てつだって"
+      },
+      {
+        "nomor": 3,
+        "teks": "あげました"
+      },
+      {
+        "nomor": 4,
+        "teks": "日本語{にほんご}の"
+      }
+    ]
+  },
+  {
+    "kode": "S29",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "えきに",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "かけて"
+      },
+      {
+        "nomor": 2,
+        "teks": "ついたら"
+      },
+      {
+        "nomor": 3,
+        "teks": "ください"
+      },
+      {
+        "nomor": 4,
+        "teks": "でんわを"
+      }
+    ]
+  },
+  {
+    "kode": "S30",
+    "bab": 22,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "これは",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "わたしが"
+      },
+      {
+        "nomor": 2,
+        "teks": "きのう"
+      },
+      {
+        "nomor": 3,
+        "teks": "買{か}った"
+      },
+      {
+        "nomor": 4,
+        "teks": "本{ほん}です"
+      }
+    ]
+  },
+  {
+    "kode": "S31",
+    "bab": 22,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "これは サリさんが",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "ケーキ"
+      },
+      {
+        "nomor": 2,
+        "teks": "つくった"
+      },
+      {
+        "nomor": 3,
+        "teks": "よ"
+      },
+      {
+        "nomor": 4,
+        "teks": "です"
+      }
+    ]
+  },
+  {
+    "kode": "S32",
+    "bab": 25,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "もし",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "いなかへ"
+      },
+      {
+        "nomor": 2,
+        "teks": "1おく円{えん}"
+      },
+      {
+        "nomor": 3,
+        "teks": "あったら"
+      },
+      {
+        "nomor": 4,
+        "teks": "帰{かえ}りたいです"
+      }
+    ]
+  }
+]

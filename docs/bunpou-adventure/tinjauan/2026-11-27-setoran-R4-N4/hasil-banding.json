@@ -1,0 +1,58 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-shi-3",
+    "hash": "91e7333a91ab491d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "この レストランは やすいし おいしいし 店の人も しんせつです。やすいし/おいしいし bisa bertukar, tetapi ★ (kotak 3) tetap 店の人も. ～し、～し Bab 28; kosakata semuanya <= Bab 28.",
+    "dinilai": "2026-11-27T04:53:06.526Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-n-desu-2",
+    "hash": "aeb2d199f89c7d03",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "あたまが いたいから びょういんへ 行きたいんです。Jawaban wajar untuk どうして～んですか (Bab 26). Urutan びょういんへ あたまが いたいから 行きたいんです (klausa から disisipkan di antara びょういんへ dan verbanya) tidak wajar, jadi tidak dihitung. Baris A tidak membocorkan potongan.",
+    "dinilai": "2026-11-27T04:53:06.526Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-de-gozaimasu-3",
+    "hash": "5cf501a958fc3d23",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "おてあらいは あちらの エレベーターの うしろでございます。でございます (丁寧語) tepat untuk staf yang menjawab tamu; A memakai トイレ, B menggantinya dengan おてあらい secara wajar, tidak ada potongan yang bocor. あちらの おてあらいは エレベーターの うしろでございます tidak logis sebagai jawaban (lagi pula ★ tetap エレベーターの). ★ cukup mudah karena あちらの harus mendahului エレベーターの.",
+    "dinilai": "2026-11-27T04:53:06.526Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-naide-3",
+    "hash": "1f4baeeeeb3f1481",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Kunci yang saya tulis: けさは ごはんを 食べないで 学校へ 行きました (★ kotak 2 = 食べないで). Tetapi frasa tempat 学校へ mengambang: けさは 学校へ ごはんを 食べないで 行きました [3,1,4,2] juga wajar (bandingkan 学校へ かさを 持たないで 行きました; 学校へ hanya bisa melekat pada 行きました), dan menaruh ごはんを (1) di kotak ★. Saran: keluarkan 学校へ ke sebelum/sesudah atau ganti potongan supaya ★ tetap sama di kedua urutan. ～ないで Bab 34, kosakata <= Bab 34.",
+    "dinilai": "2026-11-27T04:53:06.526Z"
+  }
+]

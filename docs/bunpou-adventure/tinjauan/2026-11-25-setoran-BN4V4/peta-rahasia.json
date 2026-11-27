@@ -1,0 +1,732 @@
+{
+  "S01": {
+    "id": "N4-baai-3",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "0860bb09594b4daf"
+  },
+  "S02": {
+    "id": "N4-te-kuru-4",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "79f89b0990f29a0c"
+  },
+  "S03": {
+    "id": "N4-ku-suru-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "8b96146e5cd107bc"
+  },
+  "S04": {
+    "id": "N4-te-hoshii-4",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "c7a5e232ed691a9b"
+  },
+  "S05": {
+    "id": "N4-sugiru-3",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "9149222a6c20369f"
+  },
+  "S06": {
+    "id": "N4-te-yaru-1",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "fcdb57bb7d17bd37"
+  },
+  "S07": {
+    "id": "N4-sa-4",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "da09f027565474b0"
+  },
+  "S08": {
+    "id": "N4-te-yaru-3",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "7ecc78bd0300fb0e"
+  },
+  "S09": {
+    "id": "N4-noni-youto-2",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "3458c0093be8222b"
+  },
+  "S10": {
+    "id": "N4-tame-ni-1",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "ff86b258e1c36b80"
+  },
+  "S11": {
+    "id": "N4-te-kimasu-1",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "289ba2cb2a758e20"
+  },
+  "S12": {
+    "id": "N4-te-hoshii-2",
+    "urutanTampil": [
+      3,
+      0,
+      2,
+      1
+    ],
+    "hash": "34a6e8743204ce3f"
+  },
+  "S13": {
+    "id": "N4-tame-ni-2",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "9859b27e244cb501"
+  },
+  "S14": {
+    "id": "N4-te-kudasaru-3",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "57948d3250a630b4"
+  },
+  "S15": {
+    "id": "N4-te-itadaku-3",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "cafbfcb731b66828"
+  },
+  "S16": {
+    "id": "N4-sou-youtai-4",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "a5e595fdf223a93c"
+  },
+  "S17": {
+    "id": "N4-ku-suru-3",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "65db61435e2749f1"
+  },
+  "S18": {
+    "id": "N4-baai-2",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "a64d9829f928972b"
+  },
+  "S19": {
+    "id": "N4-ku-suru-2",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "b5f879fe7cced4c7"
+  },
+  "S20": {
+    "id": "N4-te-itadaku-1",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "5bbdb3f653e85ca8"
+  },
+  "S21": {
+    "id": "N4-sa-3",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "ec444984a120e27b"
+  },
+  "S22": {
+    "id": "N4-sou-youtai-3",
+    "urutanTampil": [
+      2,
+      1,
+      3,
+      0
+    ],
+    "hash": "68549db37274f885"
+  },
+  "S23": {
+    "id": "N4-yasui-nikui-2",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "fab982672836bd9c"
+  },
+  "S24": {
+    "id": "N4-te-kudasaru-4",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "05565a511f99c2b8"
+  },
+  "S25": {
+    "id": "N4-te-kuru-1",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "9eaf05ba02dc665a"
+  },
+  "S26": {
+    "id": "N4-te-kimasu-3",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "db9c7c25110dadbb"
+  },
+  "S27": {
+    "id": "N4-sou-youtai-2",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "2d4706aec2da1af9"
+  },
+  "S28": {
+    "id": "N4-te-iku-2",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "161372870162bdc1"
+  },
+  "S29": {
+    "id": "N4-te-kimasu-4",
+    "urutanTampil": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "hash": "f3fb105d2dec8a03"
+  },
+  "S30": {
+    "id": "N4-te-yaru-4",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "cf8a200c4fcc8917"
+  },
+  "S31": {
+    "id": "N4-yasui-nikui-4",
+    "urutanTampil": [
+      2,
+      0,
+      1,
+      3
+    ],
+    "hash": "5aec7c217d5c7f97"
+  },
+  "S32": {
+    "id": "N4-te-sashiageru-2",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "576477424b17938b"
+  },
+  "S33": {
+    "id": "N4-ni-suru-2",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "a07e893edae9ffe2"
+  },
+  "S34": {
+    "id": "N4-te-sashiageru-1",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "89481518fe4c8fc4"
+  },
+  "S35": {
+    "id": "N4-ku-suru-1",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "4e3c5659fab1060a"
+  },
+  "S36": {
+    "id": "N4-ni-suru-4",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "ef9c0249c4932e0c"
+  },
+  "S37": {
+    "id": "N4-sugiru-4",
+    "urutanTampil": [
+      3,
+      0,
+      1,
+      2
+    ],
+    "hash": "321ea9433e9d4faf"
+  },
+  "S38": {
+    "id": "N4-te-iku-3",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "698ce08bf5585fb5"
+  },
+  "S39": {
+    "id": "N4-te-yaru-2",
+    "urutanTampil": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "hash": "d91a8eaa8951efbf"
+  },
+  "S40": {
+    "id": "N4-baai-1",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "f1c84074d96fa006"
+  },
+  "S41": {
+    "id": "N4-te-itadaku-2",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "0c4bb6bc73996642"
+  },
+  "S42": {
+    "id": "N4-noni-1",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "2e80b16db091786c"
+  },
+  "S43": {
+    "id": "N4-noni-youto-3",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "9817340a68118fb0"
+  },
+  "S44": {
+    "id": "N4-te-kuru-2",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "ed6cf65143112869"
+  },
+  "S45": {
+    "id": "N4-te-hoshii-1",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "176ee1eca70585eb"
+  },
+  "S46": {
+    "id": "N4-te-kudasaru-2",
+    "urutanTampil": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "hash": "2fd3faa12b0aa2a5"
+  },
+  "S47": {
+    "id": "N4-noni-youto-1",
+    "urutanTampil": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "hash": "ef7ac9da4c411e61"
+  },
+  "S48": {
+    "id": "N4-sa-2",
+    "urutanTampil": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "hash": "8bb67401c89cde71"
+  },
+  "S49": {
+    "id": "N4-te-sashiageru-4",
+    "urutanTampil": [
+      2,
+      0,
+      3,
+      1
+    ],
+    "hash": "e2e2ec09ae91747d"
+  },
+  "S50": {
+    "id": "N4-noni-4",
+    "urutanTampil": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "hash": "1354069cf6e7df8f"
+  },
+  "S51": {
+    "id": "N4-tame-ni-3",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "0d394aa995927b5c"
+  },
+  "S52": {
+    "id": "N4-te-iku-1",
+    "urutanTampil": [
+      0,
+      2,
+      1,
+      3
+    ],
+    "hash": "7306fd7b27d21312"
+  },
+  "S53": {
+    "id": "N4-yasui-nikui-1",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "8c18357c8f600f36"
+  },
+  "S54": {
+    "id": "N4-tame-ni-4",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "d5ad819458e02d55"
+  },
+  "S55": {
+    "id": "N4-yasui-nikui-3",
+    "urutanTampil": [
+      1,
+      3,
+      2,
+      0
+    ],
+    "hash": "47bdeb37a60c910a"
+  },
+  "S56": {
+    "id": "N4-ni-suru-1",
+    "urutanTampil": [
+      3,
+      1,
+      0,
+      2
+    ],
+    "hash": "99c8140567331423"
+  },
+  "S57": {
+    "id": "N4-ni-suru-3",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "13005555bad9e640"
+  },
+  "S58": {
+    "id": "N4-sou-youtai-1",
+    "urutanTampil": [
+      0,
+      2,
+      3,
+      1
+    ],
+    "hash": "97582ee2568e13fc"
+  },
+  "S59": {
+    "id": "N4-sugiru-2",
+    "urutanTampil": [
+      3,
+      2,
+      1,
+      0
+    ],
+    "hash": "deb61e9c35e1df76"
+  },
+  "S60": {
+    "id": "N4-suushi-mo-1",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "72d4acd8f888276a"
+  },
+  "S61": {
+    "id": "N4-te-sashiageru-3",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "ebc28adff47153ff"
+  },
+  "S62": {
+    "id": "N4-sugiru-1",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "a827a8643fd96760"
+  },
+  "S63": {
+    "id": "N4-noni-2",
+    "urutanTampil": [
+      1,
+      0,
+      3,
+      2
+    ],
+    "hash": "465abafbb5eaa0d1"
+  },
+  "S64": {
+    "id": "N4-baai-4",
+    "urutanTampil": [
+      0,
+      3,
+      2,
+      1
+    ],
+    "hash": "8323c2df45e407c5"
+  },
+  "S65": {
+    "id": "N4-te-hoshii-3",
+    "urutanTampil": [
+      1,
+      2,
+      0,
+      3
+    ],
+    "hash": "90187f87fc851f41"
+  },
+  "S66": {
+    "id": "N4-suushi-mo-2",
+    "urutanTampil": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "hash": "8bc013218f90d71f"
+  },
+  "S67": {
+    "id": "N4-te-kimasu-2",
+    "urutanTampil": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "hash": "040042bdcff6638f"
+  },
+  "S68": {
+    "id": "N4-te-kuru-3",
+    "urutanTampil": [
+      1,
+      0,
+      2,
+      3
+    ],
+    "hash": "5a81551f3f17133a"
+  },
+  "S69": {
+    "id": "N4-te-iku-4",
+    "urutanTampil": [
+      3,
+      2,
+      0,
+      1
+    ],
+    "hash": "d29fa2a3e6349616"
+  },
+  "S70": {
+    "id": "N4-sa-1",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "d8404f1ab8b032cf"
+  },
+  "S71": {
+    "id": "N4-te-kudasaru-1",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "0465db8ae67966e9"
+  },
+  "S72": {
+    "id": "N4-te-itadaku-4",
+    "urutanTampil": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "hash": "65cbc40966fc8e19"
+  },
+  "S73": {
+    "id": "N4-suushi-mo-3",
+    "urutanTampil": [
+      2,
+      3,
+      1,
+      0
+    ],
+    "hash": "62ee429b6c53c4d3"
+  }
+}

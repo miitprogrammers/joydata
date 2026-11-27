@@ -1,0 +1,92 @@
+[
+  {
+    "kode": "S01",
+    "bintang": 3,
+    "urutan": [4, 2, 3, 1],
+    "urutanLain": [[2, 4, 3, 1]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ええ、いくら 雨が ふっても 行きます。 Urutan lain 雨が いくら ふっても 行きます juga wajar; ★ tetap ふっても (kotak 3). ★ bisa ditempatkan dari bentuk pola (いくら/雨が sebelum ～ても, 行きます penutup). 雨 Bab 12, 降ります Bab 14, いくら～ても Bab 25."
+  },
+  {
+    "kode": "S02",
+    "bintang": 2,
+    "urutan": [3, 2, 1, 4],
+    "urutanLain": [],
+    "kewajaran": "Kalimat soal wajar (うーん、あの みせの コーヒーは あまり おいしくないです), tetapi A bertanya dalam bentuk lampau (どうでしたか) dan B menjawab dalam bentuk sekarang; masih bisa diterima sebagai penilaian umum tentang toko itu, meski penutur asli lebih sering berkata おいしくなかったです.",
+    "tingkat": "Baris A memakai どうでしたか: bentuk lampau です/kata sifat (でした) baru diajarkan di Bab 12 (きのうは雨でした), di atas bab soal 8.",
+    "gagal": ["di-atas-bab"],
+    "catatan": "Urutan unik: あの + みせの + コーヒーは; みせの あの コーヒーは tidak wajar. Ganti baris A ke bentuk Bab 8 (mis. ～は どうですか) atau naikkan bab soal ke 12."
+  },
+  {
+    "kode": "S03",
+    "bintang": 3,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "えきまで ブディさんを むかえに 行きましょう か。 Urutan unik (ブディさんを むかえに tetap; か pasti di kotak 4). ★ むかえに bisa ditempatkan dari bentuk pola V-ます+に 行きます. Tawaran ～ましょうか (Bab 14) cocok dengan jawaban ええ、おねがいします."
+  },
+  {
+    "kode": "S04",
+    "bintang": 3,
+    "urutan": [2, 1, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ともだちと 日本の えいが を 見たよ。 Urutan unik. ★ di partikel satu kana を (antara えいが dan 見たよ) — bisa ditempatkan dari bentuk saja (N を V); sah menurut standar JLPT N5, tetapi lemah."
+  },
+  {
+    "kode": "S05",
+    "bintang": 1,
+    "urutan": [2, 1, 3, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "Potongan 2まい memakai kata bantu bilangan ～枚, yang baru diajarkan di Bab 11 (～枚／～台), di atas bab soal 7.",
+    "gagal": ["di-atas-bab"],
+    "catatan": "はい、電車の きっぷを 2まい もう 買いました。 Urutan unik (2まい 電車の きっぷを tanpa の tidak wajar; もう 買いました pasti di akhir). Kalimatnya wajar; masalahnya hanya bab."
+  },
+  {
+    "kode": "S06",
+    "bintang": 2,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ええ、わたしは てんぷら が 食べたい です。 Urutan unik. ★ 食べたい bisa ditempatkan dari bentuk saja (V-たい + です; です pasti di kotak 4) dan semua potongan praktis tetap; sah tetapi lemah. Baris A (食べに 行きませんか) tidak membocorkan potongan ★ yang sama."
+  },
+  {
+    "kode": "S07",
+    "bintang": 4,
+    "urutan": [3, 1, 4, 2],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ひこうきと しんかんせんと どちら が はやいですか。 Urutan unik. ★ di partikel が (どちら が) — bisa ditempatkan dari bentuk pola どちらが saja. Jawaban ひこうきです wajar sebagai jawaban singkat."
+  },
+  {
+    "kode": "S08",
+    "bintang": 3,
+    "urutan": [1, 3, 2, 4],
+    "urutanLain": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "あしたは 6時に ともだちの うち へ 行きます。 Urutan unik. ★ うち bisa ditempatkan dari bentuk (N の N へ). Baris A memuat どこへ 行きますか (へ+行きます), tetapi itu bukan potongan ★."
+  },
+  {
+    "kode": "S09",
+    "bintang": 2,
+    "urutan": [4, 1, 3, 2],
+    "urutanLain": [[3, 4, 1, 2]],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "gagal": [],
+    "catatan": "ええ、スポーツの 中で サッカーが いちばん おもしろいです。 Urutan lain サッカーが スポーツの 中で いちばん おもしろいです juga wajar; ★ tetap potongan 2. ★ ada di satu-satunya potongan penutup kalimat (kotak 4 hanya punya satu kandidat) — sah, tetapi sebaiknya dihindari (R1/R2)."
+  }
+]

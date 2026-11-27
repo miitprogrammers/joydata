@@ -1,0 +1,230 @@
+[
+  {
+    "kode": "S01",
+    "bab": 14,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "sebelum": "あの、",
+        "kotak": [
+          "＿＿",
+          "★",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      },
+      {
+        "pembicara": "B",
+        "teks": "ありがとう ございます。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "にもつ"
+      },
+      {
+        "nomor": 2,
+        "teks": "か"
+      },
+      {
+        "nomor": 3,
+        "teks": "を"
+      },
+      {
+        "nomor": 4,
+        "teks": "もちましょう"
+      }
+    ]
+  },
+  {
+    "kode": "S02",
+    "bab": 12,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "コーヒーと こうちゃと どちらが すきですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "★",
+          "＿＿",
+          "＿＿",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "すきです"
+      },
+      {
+        "nomor": 2,
+        "teks": "の"
+      },
+      {
+        "nomor": 3,
+        "teks": "ほうが"
+      },
+      {
+        "nomor": 4,
+        "teks": "こうちゃ"
+      }
+    ]
+  },
+  {
+    "kode": "S03",
+    "bab": 12,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": "A",
+        "teks": "くだものの 中{なか}で 何{なに}が すきですか。"
+      },
+      {
+        "pembicara": "B",
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "いちばん"
+      },
+      {
+        "nomor": 2,
+        "teks": "が"
+      },
+      {
+        "nomor": 3,
+        "teks": "りんご"
+      },
+      {
+        "nomor": 4,
+        "teks": "すきです"
+      }
+    ]
+  },
+  {
+    "kode": "S04",
+    "bab": 17,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "ここは きょうしつですから、",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "★",
+          "＿＿"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "たばこ"
+      },
+      {
+        "nomor": 2,
+        "teks": "すわないで"
+      },
+      {
+        "nomor": 3,
+        "teks": "を"
+      },
+      {
+        "nomor": 4,
+        "teks": "ください"
+      }
+    ]
+  },
+  {
+    "kode": "S05",
+    "bab": 4,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "げつようびから"
+      },
+      {
+        "nomor": 2,
+        "teks": "わたしは"
+      },
+      {
+        "nomor": 3,
+        "teks": "きんようびまで"
+      },
+      {
+        "nomor": 4,
+        "teks": "はたらきます"
+      }
+    ]
+  },
+  {
+    "kode": "S06",
+    "bab": 18,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "りょこうの",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "ちずを"
+      },
+      {
+        "nomor": 2,
+        "teks": "まえに"
+      },
+      {
+        "nomor": 3,
+        "teks": "かばんに"
+      },
+      {
+        "nomor": 4,
+        "teks": "入{い}れます"
+      }
+    ]
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "kode": "S01",
+    "id": "N4-kenjougo-mairu-4",
+    "hash": "a93064fbbd3f1385",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [
+      [
+        2,
+        0,
+        1,
+        3
+      ]
+    ],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたくしは さ来週 とうきょうへ しゅっちょうに まいります。 ★ = まいります, satu-satunya kata kerja/penutup (kotak 4 satu kandidat). とうきょうへ dan しゅっちょうに bisa bertukar, ★ tetap. Keigo merendah untuk diri sendiri benar.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N4-noni-youto-4",
+    "hash": "93498458142dd8b9",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "この じしょは かんじを しらべる のに やくに 立ちます。 ★ = penutup やくに 立ちます, ditempatkan dari bentuk V-るのに やくに立ちます saja (kotak 4 satu kandidat).",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N4-naide-3",
+    "hash": "7fe0e3a31caa31c2",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: ganda",
+      "urutan sah menurut peninjau [うちで / どこへも / 行{い}かないで / ゆっくり 休{やす}みます] memberi ★ lain"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "ganda"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "Kunci yang saya pilih: にちようびは どこへも 行かないで うちで ゆっくり 休みます (★ = どこへも). Tetapi keterangan tempat うちで (milik 休みます) bisa maju ke depan: にちようびは うちで どこへも 行かないで ゆっくり 休みます (bandingkan うちで 何も しないで ゆっくり 休みます, 家でどこにも行かずにのんびりする), sehingga kotak ★ diisi うちで (4). Dua urutan memberi ★ berbeda. Perbaikan: ★ jangan di kotak 1, atau gabungkan うちで dengan ゆっくり 休みます.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N4-noni-3",
+    "hash": "e60e64d8e645dc5d",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "きょうは にちようびな のに、会社へ 行かなければ なりません。 ★ = にちようびな, ditempatkan dari bentuk Nな + のに. 会社へ di kotak 1 tidak wajar. Koma di potongan のに、 ikut membantu, tetapi ★ tidak hanya ditentukan tanda baca.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N4-sou-denbun-1",
+    "hash": "74ea8677afd9006b",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ニュースでは、あしたは ゆきが 降る そうです。 ★ = 降る (V biasa + そうです), ditempatkan dari bentuk. あしたは dan ゆきが bisa bertukar, ★ tetap di kotak 3.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N4-koto-ni-naru-3",
+    "hash": "f947559b6b2e2dff",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "今度の にちようびに みんなで 山へ のぼる ことに なりました。 ★ = みんなで. Karena 山へ のぼる satu potongan, みんなで tidak punya posisi wajar lain, jadi ★ tunggal; kotak 1 punya dua kandidat (みんなで, 山へ のぼる).",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N4-sou-denbun-3",
+    "hash": "53839dd35083f0d1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "新聞では、だいとうりょうが 来月 日本へ 来る そうです。 ★ = 日本へ 来る. 来月 dan だいとうりょうが bisa bertukar, ★ tetap di kotak 3. だいとうりょう tanpa negara agak samar tetapi wajar.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N4-kenjougo-oru-1",
+    "hash": "08e0d5ef4bfd5822",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "わたくしは 今 とうきょうに 住んで おります。 ★ = 住んで, ditempatkan dari bentuk ～に Vて おります.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N4-hazu-2",
+    "hash": "928ed2e04bd98a88",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "きょうは にちようびですから、銀行は 休みの はず です。 ★ = はず, ditempatkan dari bentuk Nの はず です.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S10",
+    "id": "N4-koto-ni-naru-4",
+    "hash": "704dbae558e6c527",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "来週の かいぎは すいようびに 開く ことに なりました。 ★ = なりました, satu-satunya penutup dan bagian tetap sesudah ことに (kotak 4 satu kandidat). かいぎは + 開く aktif (objek jadi topik) wajar; 開きます ada di Bab 27.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S11",
+    "id": "N4-sonkeigo-gozonji-3",
+    "hash": "8f9221b57d3b5df2",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "すみません、この かんじの 読みかたを ごぞんじですか。 ★ = この かんじの (pewatas の harus mendahului 読みかたを).",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S12",
+    "id": "N4-suushi-mo-4",
+    "hash": "6fc441bff4e5b440",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "サリさんは 本を 20さつ も 持って います。 ★ = います, satu-satunya penutup dan bagian tetap 持って います (kotak 4 satu kandidat), jadi ditempatkan dari bentuk saja; pola 数詞＋も sendiri tidak diuji oleh ★.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S13",
+    "id": "N4-rashii-1",
+    "hash": "6a27aef1dff8fd4c",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ニュースでは、あしたは ひどい 台風 らしいです。 ★ = ひどい (pewatas sebelum 台風). ひどい 台風 sedikit kurang lazim dibanding 強い／大きい 台風, tetapi masih wajar.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S14",
+    "id": "N4-ikoukei-4",
+    "hash": "cf073bbc26ce88c1",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "天気が よかったら、どうぶつえんへ 行こう よ。 ★ = partikel akhir よ, satu-satunya kandidat kotak 4 (ditentukan bentuk saja). Gaya akrab cocok dengan baris A.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S15",
+    "id": "N4-to-iu-imi-3",
+    "hash": "52f294a3d3d38d29",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "「ひじょうぐち」と 読みますよ。 ★ = 「ひじょうぐち」, satu-satunya kata benda (kotak 1 satu kandidat), ditempatkan dari bentuk saja. と 読みます juga ada di baris A, tetapi itu bukan potongan ★. Tanda kutip tidak menjadi satu-satunya penentu.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  },
+  {
+    "kode": "S16",
+    "id": "N4-kenjougo-ukagau-3",
+    "hash": "956f00052d61ad60",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "来週の げつようびに そちらの 会社へ うかがいます。 ★ = そちらの (pewatas の harus mendahului 会社へ); tidak ada urutan wajar lain.",
+    "dinilai": "2026-11-27T04:34:38.330Z"
+  }
+]

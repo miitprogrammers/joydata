@@ -1,0 +1,38 @@
+[
+  {
+    "kode": "S01",
+    "bab": 34,
+    "situasi": null,
+    "baris": [
+      {
+        "pembicara": null,
+        "sebelum": "けさは",
+        "kotak": [
+          "＿＿",
+          "＿＿",
+          "＿＿",
+          "★"
+        ],
+        "sesudah": "。"
+      }
+    ],
+    "pilihan": [
+      {
+        "nomor": 1,
+        "teks": "食{た}べないで"
+      },
+      {
+        "nomor": 2,
+        "teks": "学校{がっこう}へ"
+      },
+      {
+        "nomor": 3,
+        "teks": "ごはんを"
+      },
+      {
+        "nomor": 4,
+        "teks": "行{い}きました"
+      }
+    ]
+  }
+]

@@ -1,0 +1,127 @@
+[
+  {
+    "kode": "S01",
+    "id": "N5-temo-3",
+    "hash": "3d4addab5693e260",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ええ、いくら 雨が ふっても 行きます。 Urutan lain 雨が いくら ふっても 行きます juga wajar; ★ tetap ふっても (kotak 3). ★ bisa ditempatkan dari bentuk pola (いくら/雨が sebelum ～ても, 行きます penutup). 雨 Bab 12, 降ります Bab 14, いくら～ても Bab 25.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S02",
+    "id": "N5-amari-nai-3",
+    "hash": "deb2bf85a847ca68",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "Kalimat soal wajar (うーん、あの みせの コーヒーは あまり おいしくないです), tetapi A bertanya dalam bentuk lampau (どうでしたか) dan B menjawab dalam bentuk sekarang; masih bisa diterima sebagai penilaian umum tentang toko itu, meski penutur asli lebih sering berkata おいしくなかったです.",
+    "tingkat": "Baris A memakai どうでしたか: bentuk lampau です/kata sifat (でした) baru diajarkan di Bab 12 (きのうは雨でした), di atas bab soal 8.",
+    "catatan": "Urutan unik: あの + みせの + コーヒーは; みせの あの コーヒーは tidak wajar. Ganti baris A ke bentuk Bab 8 (mis. ～は どうですか) atau naikkan bab soal ke 12.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S03",
+    "id": "N5-mashou-ka-3",
+    "hash": "b515c673657d9821",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "えきまで ブディさんを むかえに 行きましょう か。 Urutan unik (ブディさんを むかえに tetap; か pasti di kotak 4). ★ むかえに bisa ditempatkan dari bentuk pola V-ます+に 行きます. Tawaran ～ましょうか (Bab 14) cocok dengan jawaban ええ、おねがいします.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S04",
+    "id": "N5-futsuutai-2",
+    "hash": "121d7fb814079860",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ともだちと 日本の えいが を 見たよ。 Urutan unik. ★ di partikel satu kana を (antara えいが dan 見たよ) — bisa ditempatkan dari bentuk saja (N を V); sah menurut standar JLPT N5, tetapi lemah.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S05",
+    "id": "N5-mou-mashita-3",
+    "hash": "dd709911235a4318",
+    "status": "GAGAL",
+    "masalah": [
+      "peninjau menandai GAGAL: di-atas-bab"
+    ],
+    "urutanLainBaru": [],
+    "gagal": [
+      "di-atas-bab"
+    ],
+    "kewajaran": "ok",
+    "tingkat": "Potongan 2まい memakai kata bantu bilangan ～枚, yang baru diajarkan di Bab 11 (～枚／～台), di atas bab soal 7.",
+    "catatan": "はい、電車の きっぷを 2まい もう 買いました。 Urutan unik (2まい 電車の きっぷを tanpa の tidak wajar; もう 買いました pasti di akhir). Kalimatnya wajar; masalahnya hanya bab.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S06",
+    "id": "N5-tai-2",
+    "hash": "5b2b13292090fae4",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ええ、わたしは てんぷら が 食べたい です。 Urutan unik. ★ 食べたい bisa ditempatkan dari bentuk saja (V-たい + です; です pasti di kotak 4) dan semua potongan praktis tetap; sah tetapi lemah. Baris A (食べに 行きませんか) tidak membocorkan potongan ★ yang sama.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S07",
+    "id": "N5-dochira-hou-ga-2",
+    "hash": "43907747fee7fddf",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ひこうきと しんかんせんと どちら が はやいですか。 Urutan unik. ★ di partikel が (どちら が) — bisa ditempatkan dari bentuk pola どちらが saja. Jawaban ひこうきです wajar sebagai jawaban singkat.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S08",
+    "id": "N5-e-ikimasu-4",
+    "hash": "5742f12d92e517c4",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "あしたは 6時に ともだちの うち へ 行きます。 Urutan unik. ★ うち bisa ditempatkan dari bentuk (N の N へ). Baris A memuat どこへ 行きますか (へ+行きます), tetapi itu bukan potongan ★.",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  },
+  {
+    "kode": "S09",
+    "id": "N5-ichiban-1",
+    "hash": "be3ff7eeb2274d17",
+    "status": "LOLOS",
+    "masalah": [],
+    "urutanLainBaru": [],
+    "gagal": [],
+    "kewajaran": "ok",
+    "tingkat": "ok",
+    "catatan": "ええ、スポーツの 中で サッカーが いちばん おもしろいです。 Urutan lain サッカーが スポーツの 中で いちばん おもしろいです juga wajar; ★ tetap potongan 2. ★ ada di satu-satunya potongan penutup kalimat (kotak 4 hanya punya satu kandidat) — sah, tetapi sebaiknya dihindari (R1/R2).",
+    "dinilai": "2026-11-27T04:54:03.347Z"
+  }
+]
