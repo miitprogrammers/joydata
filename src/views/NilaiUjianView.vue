@@ -6,16 +6,28 @@
         <h1 class="text-2xl font-bold text-slate-900 font-display">{{ $t('ujian.heading') }}</h1>
         <p class="text-sm text-slate-600 mt-1">{{ $t('ujian.subheading') }}</p>
       </div>
-      <v-btn
-        color="primary"
-        variant="flat"
-        size="small"
-        prepend-icon="mdi-plus"
-        class="text-none whitespace-nowrap shrink-0"
-        @click="openCreate()"
-      >
-        {{ $t('ujian.addBtn') }}
-      </v-btn>
+      <div class="flex items-center gap-2 shrink-0">
+        <v-btn
+          variant="tonal"
+          color="primary"
+          size="small"
+          prepend-icon="mdi-printer"
+          class="text-none whitespace-nowrap"
+          :to="cetakLink"
+        >
+          {{ $t('cetakUjian.btn') }}
+        </v-btn>
+        <v-btn
+          color="primary"
+          variant="flat"
+          size="small"
+          prepend-icon="mdi-plus"
+          class="text-none whitespace-nowrap"
+          @click="openCreate()"
+        >
+          {{ $t('ujian.addBtn') }}
+        </v-btn>
+      </div>
     </div>
 
     <!-- Mancation Snapshot Notice if applicable -->
@@ -550,6 +562,13 @@ const kelasFilterOptions = computed(() => [
   { value: 'all', label: t('app.all') },
   ...kelasOptions.value.map((k) => ({ value: k.id, label: k.namaKelas })),
 ]);
+
+// Cetak Hasil Ujian opens on the class picked in the filter here.
+const cetakLink = computed(() =>
+  filterKelasId.value && filterKelasId.value !== 'all'
+    ? { path: '/nilai-ujian/cetak', query: { kelasId: String(filterKelasId.value) } }
+    : '/nilai-ujian/cetak'
+);
 
 const kelasSelectItems = computed(() =>
   kelasOptions.value.map((k) => ({ value: k.id, label: k.namaKelas }))

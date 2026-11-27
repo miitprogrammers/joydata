@@ -25,6 +25,7 @@ import {
   computeAbsensiPesertaLintasKelas,
 } from '../domain/rules.js';
 import { todayJakarta, isIsoDate, weekOf, addDays, kaiwaRule, kaiwaWeekProgress } from '../domain/kaiwaMingguan.js';
+import { daftarKodeUjian, susunHasilUjian } from '../domain/hasilUjian.js';
 
 function currentYearMonth() {
   return new Date().toISOString().slice(0, 7);
@@ -206,6 +207,76 @@ export async function listNilaiUjian({ periode, kelasId, search } = {}) {
     studentSummary,
     kelasOptions: lookups.kelasOptions,
     rosterOptions: lookups.rosterItems,
+  };
+}
+
+// Cetak Hasil Ujian (/nilai-ujian/cetak): every exam code per class, across all months, for the pickers.
+export async function listKodeUjianCetak() {
+  await ensureInitialized();
+  let rows;
+  if (getMode() === 'postgres') {
+    const res = await getPool().query(
+      `SELECT DISTINCT kelas_id AS "kelasId", nama_ujian AS "codeUjian", tanggal_ujian::text AS "tanggalUjian",
+              peserta_id AS "pesertaId"
+       FROM nilai_ujian WHERE kelas_id IS NOT NULL`
+    );
+    rows = res.rows;
+  } else {
+    rows = readLocalState().nilaiUjian;
+  }
+  const kelasData = await listKelas();
+  return { kelasOptions: kelasData.items, kode: daftarKodeUjian(rows) };
+}
+
+// The printable result of one exam code: one class (kelasId) or every class that took it (no kelasId).
+export async function getHasilUjianCetak({ kelasId, kode } = {}) {
+  await ensureInitialized();
+  const codeUjian = String(kode || '').trim();
+  if (!codeUjian) throw new Error('VALIDATION_ERROR');
+  const kId = kelasId && kelasId !== 'all' ? Number(kelasId) : null;
+  if (kelasId && kelasId !== 'all' && !Number.isInteger(kId)) throw new Error('VALIDATION_ERROR');
+
+  let rawRows;
+  if (getMode() === 'postgres') {
+    const params = [codeUjian];
+    let sql = `
+      SELECT id, peserta_id AS "pesertaId", kelas_id AS "kelasId", tanggal_ujian::text AS "tanggalUjian",
+             nama_ujian AS "codeUjian", tipe_penilaian AS "pola", nilai_tunggal::float AS "nilaiTunggal",
+             moji_goi::float AS "nilaiMojiGoi", COALESCE(bunpou, dokkai)::float AS "nilaiBunpou",
+             choukai::float AS "nilaiChoukai", nilai_avg::float AS "nilaiAvg"
+      FROM v_nilai_ujian_avg
+      WHERE nama_ujian = $1 AND kelas_id IS NOT NULL`;
+    if (kId) {
+      params.push(kId);
+      sql += ` AND kelas_id = $2`;
+    }
+    rawRows = (await getPool().query(sql, params)).rows;
+  } else {
+    rawRows = readLocalState().nilaiUjian.filter(
+      (r) => String(r.codeUjian || '').trim() === codeUjian && r.kelasId != null && (!kId || Number(r.kelasId) === kId)
+    );
+  }
+
+  const [lookups, settings] = await Promise.all([loadAcademicLookups(), getSystemSettings()]);
+  const rows = rawRows.map((r) => ({
+    ...r,
+    pesertaNama: lookups.pesertaById.get(Number(r.pesertaId))?.nama || `Peserta #${r.pesertaId}`,
+    kelasNama: lookups.kelasById.get(Number(r.kelasId))?.namaKelas || '-',
+  }));
+  const kelas = kId ? lookups.kelasById.get(kId) || null : null;
+
+  return {
+    codeUjian,
+    kelas: kelas
+      ? {
+          id: kelas.id,
+          namaKelas: kelas.namaKelas,
+          programNamaId: kelas.programNamaId || '',
+          programNamaJa: kelas.programNamaJa || '',
+          senseiNama: kelas.senseiNama || '',
+        }
+      : null,
+    ...susunHasilUjian({ rows, kkm: settings.kkm_ujian }),
   };
 }
 
