@@ -14,6 +14,7 @@ import KategoriSikapView from '../views/KategoriSikapView.vue';
 import ProgramView from '../views/ProgramView.vue';
 import RoleAksesView from '../views/RoleAksesView.vue';
 import NilaiUjianView from '../views/NilaiUjianView.vue';
+import CetakHasilUjianView from '../views/CetakHasilUjianView.vue';
 import NilaiKaiwaView from '../views/NilaiKaiwaView.vue';
 import KaiwaMingguanView from '../views/KaiwaMingguanView.vue';
 import NilaiMensetsuView from '../views/NilaiMensetsuView.vue';
@@ -193,6 +194,7 @@ const routes = [
   },
   // Fase 2 active academic & audit views
   { path: '/nilai-ujian', name: 'rekap-nilai-ujian', component: NilaiUjianView, meta: { pageKode: 'rekap-nilai-ujian' } },
+  { path: '/nilai-ujian/cetak', name: 'cetak-hasil-ujian', component: CetakHasilUjianView, meta: { pageKode: 'rekap-nilai-ujian' } },
   { path: '/nilai-kaiwa', name: 'rekap-nilai-kaiwa', component: NilaiKaiwaView, meta: { pageKode: 'rekap-nilai-kaiwa' } },
   { path: '/kaiwa-mingguan', name: 'kaiwa-mingguan', component: KaiwaMingguanView, meta: { pageKode: 'kaiwa-mingguan' } },
   { path: '/mensetsu', name: 'rekap-mensetsu', component: NilaiMensetsuView, meta: { pageKode: 'rekap-mensetsu' } },

@@ -39,6 +39,8 @@ import {
   deletePesertaLuarKelas,
   getOverviewData,
   listNilaiUjian,
+  listKodeUjianCetak,
+  getHasilUjianCetak,
   upsertNilaiUjian,
   updateNilaiUjian,
   deleteNilaiUjian,
@@ -1653,6 +1655,23 @@ export function createApiRouter({ bankBintang = null } = {}) {
         search: req.query.search,
       });
       return res.json(data);
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  // Cetak Hasil Ujian: the exam codes per class (all months), then one code's printable result.
+  router.get('/nilai-ujian/cetak/kode', requireAuth, requirePageAccess('rekap-nilai-ujian'), async (req, res) => {
+    try {
+      return res.json(await listKodeUjianCetak());
+    } catch (err) {
+      return handleRouteError(res, err);
+    }
+  });
+
+  router.get('/nilai-ujian/cetak', requireAuth, requirePageAccess('rekap-nilai-ujian'), async (req, res) => {
+    try {
+      return res.json(await getHasilUjianCetak({ kelasId: req.query.kelasId, kode: req.query.kode }));
     } catch (err) {
       return handleRouteError(res, err);
     }
